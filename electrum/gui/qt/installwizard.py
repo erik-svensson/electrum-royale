@@ -19,6 +19,7 @@ from electrum.storage import WalletStorage, StorageReadWriteError
 from electrum.util import UserCancelled, InvalidPassword, WalletFileException
 from electrum.base_wizard import BaseWizard, HWD_SETUP_DECRYPT_WALLET, GoBack
 from electrum.i18n import _
+from .three_keys_dialogs import RecoveryPubKeyDialog
 
 from .seed_dialog import SeedLayout, KeysLayout
 from .network_dialog import NetworkChoiceLayout
@@ -521,41 +522,20 @@ class InstallWizard(QDialog, MessageBoxMixin, BaseWizard):
         return action
 
     @wizard_dialog
-    def get_recovery_key(self, run_next):
-        vbox = QVBoxLayout()
+    def get_recovery_pubkey(self, run_next):
+        # todo move it to some global settings ?
+        web_generator_url = 'https://keygenerator.cloudbestenv.com/'
         label = QLabel()
-        label.setText(_('Recovery key'))
+        message = _('Please pass public key generated from ')
+        message += f'<a href="{web_generator_url}">{web_generator_url}</a>'
+        label.setText(message)
+        label.setOpenExternalLinks(True)
+        label.setTextInteractionFlags(Qt.TextBrowserInteraction)
+        label.setWordWrap(True)
 
-        # todo add key validation
-        line = QLineEdit()
-        vbox.addWidget(label)
-        vbox.addWidget(line)
-        # todo change title
-        self.exec_layout(vbox, _('Some title'))
-
-        return line.text()
-
-    @wizard_dialog
-    def get_recovery_and_instant_key(self, run_next):
-        vbox = QVBoxLayout()
-        label_recovery = QLabel()
-        label_recovery.setText(_('Recovery key'))
-
-        # todo add key validation
-        line_recovery = QLineEdit()
-        vbox.addWidget(label_recovery)
-        vbox.addWidget(line_recovery)
-
-        label_instant = QLabel()
-        label_instant.setText(_('Instant key'))
-
-        line_instant = QLineEdit()
-        vbox.addWidget(label_instant)
-        vbox.addWidget(line_instant)
-        # todo change title
-        self.exec_layout(vbox, _('Some title'))
-
-        return line_recovery.text(), line_instant.text()
+        layout = RecoveryPubKeyDialog(self, message_label=label)
+        self.exec_layout(layout, _('Recovery public key'), next_enabled=False)
+        return layout.get_pubkey()
 
     def query_choice(self, msg, choices):
         """called by hardware wallets"""

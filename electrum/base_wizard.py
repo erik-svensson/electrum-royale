@@ -135,8 +135,8 @@ class BaseWizard(Logger):
             _("What kind of wallet do you want to create?")
         ])
         wallet_kinds = [
-            ('2Keys', _('2 Keys wallet')),
-            ('3Keys', _('3 Keys wallet')),
+            ('AR', _('AR wallet')),
+            ('AIR', _('AIR wallet')),
             ('standard',  _("Standard wallet")),
             # Needs implementation on TrustedCoin, will be done later
            # ('2fa', _("Wallet with two-factor authentication")),
@@ -177,21 +177,22 @@ class BaseWizard(Logger):
             action = self.plugin.get_action(self.data)
         elif choice == 'imported':
             action = 'import_addresses_or_keys'
-        elif choice == '2Keys':
+        elif choice == 'AR':
             action = 'two_keys'
             # dirty workaround for 2 keys wallet, it will be treated as standard wallet
             self.wallet_type = 'standard'
-        elif choice == '3Keys':
+        elif choice == 'AIR':
+            # todo add function definition for action
             action = 'tree_keys'
             # dirty workaround for 3 keys wallet, it will be treated as standard wallet
             self.wallet_type = 'standard'
         self.run(action)
 
     def two_keys(self):
-        def on_two_keys(recovery_pub_key):
-            self.data['recovery_pubkey'] = recovery_pub_key
+        def on_two_keys(recovery_pubkey):
+            self.data['recovery_pubkey'] = recovery_pubkey
             self.run('choose_keystore')
-        self.get_recovery_key(run_next=on_two_keys)
+        self.get_recovery_pubkey(run_next=on_two_keys)
 
     def choose_multisig(self):
         def on_multisig(m, n):

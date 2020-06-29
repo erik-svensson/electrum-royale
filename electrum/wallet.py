@@ -2266,12 +2266,11 @@ class TwoKeysWallet(Simple_Deterministic_Wallet):
     )
 
     def __init__(self, storage: WalletStorage, *, config: SimpleConfig):
-        # wallet type has to be set before base class init
         self.wallet_type = storage.get('wallet_type')
-        super().__init__(storage=storage, config=config)
         self.multisig_script_generator = TwoKeysScriptGenerator(recovery_pubkey=storage.get('recovery_pubkey'))
-        # set default for alert
         self.set_alert()
+        # super has to be at the end otherwise wallet breaks
+        super().__init__(storage=storage, config=config)
 
     def set_alert(self):
         self.multisig_script_generator.set_alert()
@@ -2359,19 +2358,27 @@ class TwoKeysWallet(Simple_Deterministic_Wallet):
         return tx
 
 
-wallet_types = ['2Keys', '3Keys', 'standard', 'multisig', 'imported']
+wallet_types = [
+    'AR',
+    'AIR',
+    'standard',
+    'multisig',
+    'imported',
+]
+
 
 def register_wallet_type(category):
     wallet_types.append(category)
+
 
 wallet_constructors = {
     'standard': Standard_Wallet,
     'old': Standard_Wallet,
     'xpub': Standard_Wallet,
     'imported': Imported_Wallet,
-    '2Keys': TwoKeysWallet,
+    'AR': TwoKeysWallet,
     # todo add 3Keys class definition
-    '3Keys': None
+    'AIR': None
 }
 
 def register_constructor(wallet_type, constructor):
