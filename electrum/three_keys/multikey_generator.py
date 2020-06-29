@@ -3,7 +3,7 @@ from abc import ABC, abstractmethod
 from typing import List
 
 
-class MultisigScriptGenerator(ABC):
+class MultiKeyScriptGenerator(ABC):
 
     @abstractmethod
     def get_redeem_script(self, public_keys: List[str]) -> str:

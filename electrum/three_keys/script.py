@@ -1,14 +1,14 @@
 from typing import List
 
 from electrum.bitcoin import opcodes, push_script
-from electrum.three_keys.multisig_generator import MultisigScriptGenerator
+from electrum.three_keys.multikey_generator import MultiKeyScriptGenerator
 
 
 class ThreeKeysError(Exception):
     pass
 
 
-class TwoKeysScriptGenerator(MultisigScriptGenerator):
+class TwoKeysScriptGenerator(MultiKeyScriptGenerator):
     def __init__(self, recovery_pubkey: str):
         self.recovery_pubkey = recovery_pubkey
         self._recovery_alert_flag = None
@@ -52,7 +52,7 @@ class TwoKeysScriptGenerator(MultisigScriptGenerator):
         self._recovery_alert_flag = opcodes.OP_0.hex()
 
 
-class ThreeKeysScriptGenerator(MultisigScriptGenerator):
+class ThreeKeysScriptGenerator(MultiKeyScriptGenerator):
     def __init__(self, recovery_pubkey: str, instant_pubkey: str):
         self.recovery_pubkey = recovery_pubkey
         self.instant_pubkey = instant_pubkey

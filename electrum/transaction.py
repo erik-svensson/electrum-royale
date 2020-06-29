@@ -41,7 +41,7 @@ import binascii
 
 from . import ecc, bitcoin, constants, segwit_addr, bip32
 from .bip32 import BIP32Node
-from .three_keys.multisig_generator import MultisigScriptGenerator
+from .three_keys.multikey_generator import MultiKeyScriptGenerator
 from .util import profiler, to_bytes, bh2u, bfh, chunks, is_hex_str
 from .bitcoin import (TYPE_ADDRESS, TYPE_SCRIPT, hash_160,
                       hash160_to_p2sh, hash160_to_p2pkh, hash_to_segwit_addr,
@@ -512,7 +512,7 @@ class Transaction:
 
     @multisig_script_generator.setter
     def multisig_script_generator(self, generator):
-        if not isinstance(generator, MultisigScriptGenerator) and generator is not None:
+        if not isinstance(generator, MultiKeyScriptGenerator) and generator is not None:
             raise TypeError('Cannot set multisig_script_generator. It has to be MultisigScriptGenerator')
         self._multisig_script_generator = generator
 

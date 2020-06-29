@@ -3,13 +3,13 @@ from typing import List
 from unittest import TestCase
 
 from electrum import Transaction
-from electrum.three_keys.multisig_generator import MultisigScriptGenerator
+from electrum.three_keys.multikey_generator import MultiKeyScriptGenerator
 from electrum.three_keys.transaction import ThreeKeysTransaction, TxType
 
 TX = '0200000001eaa85f4446a8d48b345592b7bc540678ef1e0f4a80b4893e9bedbf9aae636d9400000000280000255121023765a77db702ab87d5cf6431d81a4734d9a636eb95446ffe01fa06ac190ce56c51aefdffffff02008c86470000000017a9142664929e5ed5356477dad1404f51bb507e89f9aa87b0398ecb0300000017a914a2703755a1b5e5aa06e742f3db127628d6ed40cd876c030000'
 
 
-class DummyGenerator(MultisigScriptGenerator):
+class DummyGenerator(MultiKeyScriptGenerator):
 
     def get_redeem_script(self, public_keys: List[str]) -> str:
         pass
