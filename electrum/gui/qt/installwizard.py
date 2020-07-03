@@ -526,8 +526,8 @@ class InstallWizard(QDialog, MessageBoxMixin, BaseWizard):
         # todo move it to some global settings ?
         web_generator_url = 'https://keygenerator.cloudbestenv.com/'
         label = QLabel()
-        message = _('Please pass public key generated from ')
-        message += f'<a href="{web_generator_url}">{web_generator_url}</a>'
+        message = _('Please pass public key generated from')
+        message += f' <a href="{web_generator_url}">{web_generator_url}</a>'
         label.setText(message)
         label.setOpenExternalLinks(True)
         label.setTextInteractionFlags(Qt.TextBrowserInteraction)
@@ -535,7 +535,7 @@ class InstallWizard(QDialog, MessageBoxMixin, BaseWizard):
 
         layout = RecoveryPubKeyDialog(self, message_label=label)
         self.exec_layout(layout, _('Recovery public key'), next_enabled=False)
-        return layout.get_pubkey()
+        return layout.get_compressed_pubkey()
 
     def query_choice(self, msg, choices):
         """called by hardware wallets"""
