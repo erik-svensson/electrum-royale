@@ -887,12 +887,13 @@ class JsonDB(Logger):
                 if len(item) == 3:
                     tx_type = TxType.from_str(item[2])
                 else:
-                    tx_type = TxType.STANDARD
+                    tx_type = TxType.NONVAULT
 
-                tx = self.transactions[tx_hash]
-                three_keys_tx = ThreeKeysTransaction.from_tx(tx)
-                three_keys_tx.tx_type = tx_type
-                self.transactions[tx_hash] = three_keys_tx
+                tx = self.transactions.get(tx_hash, None)
+                if tx:
+                    three_keys_tx = ThreeKeysTransaction.from_tx(tx)
+                    three_keys_tx.tx_type = tx_type
+                    self.transactions[tx_hash] = three_keys_tx
 
     @modifier
     def clear_history(self):

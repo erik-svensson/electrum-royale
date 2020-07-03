@@ -1,20 +1,22 @@
-from enum import Enum
+from enum import IntEnum
 
 from electrum.transaction import Transaction
 
 
-class TxType(Enum):
-    STANDARD = 'standard'
-    ALERT = 'alert'
-    RECOVERY = 'recovery'
-    RECOVERED = 'recovered'
-    INSTANT = 'instant'
+class TxType(IntEnum):
+    NONVAULT = 0
+    ALERT_PENDING = 1
+    ALERT_RECOVERED = 2
+    RECOVERY = 3
+    INSTANT = 4
+    ALERT_CONFIRMED = 5
 
     @classmethod
     def from_str(cls, str_type: str):
-        type_ = str_type.lower()
         for t in cls:
-            if t.value == type_:
+            if t.name == str_type:
+                return t
+            if str(t.value) == str_type:
                 return t
         raise ValueError(f"Cannot get TxType for '{str_type}'")
 
@@ -39,4 +41,4 @@ class ThreeKeysTransaction(Transaction):
         if not isinstance(tx, Transaction):
             raise ValueError(f'Wrong transaction type {type(tx).__name__}')
         raw = tx.serialize()
-        return cls(raw, TxType.STANDARD)
+        return cls(raw, TxType.NONVAULT)

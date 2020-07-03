@@ -175,7 +175,7 @@ class Synchronizer(SynchronizerBase):
         hist = list(map(lambda item: (
             item['tx_hash'],
             item['height'],
-            item.get('tx_type', TxType.STANDARD.value)
+            item.get('tx_type', TxType.NONVAULT.name)
         ), result))
         # tx_fees
         tx_fees = [(item['tx_hash'], item.get('fee')) for item in result]
@@ -205,7 +205,7 @@ class Synchronizer(SynchronizerBase):
             try:
                 tx_type = TxType.from_str(item[2])
             except IndexError:
-                tx_type = TxType.STANDARD
+                tx_type = TxType.NONVAULT
 
             if tx_hash in self.requested_tx:
                 continue
@@ -219,7 +219,7 @@ class Synchronizer(SynchronizerBase):
             for tx_hash, tx_type in transaction_hashes_and_types:
                 await group.spawn(self._get_transaction(tx_hash, tx_type=tx_type, allow_server_not_finding_tx=allow_server_not_finding_tx))
 
-    async def _get_transaction(self, tx_hash, *, allow_server_not_finding_tx=False, tx_type=TxType.STANDARD):
+    async def _get_transaction(self, tx_hash, *, allow_server_not_finding_tx=False, tx_type=TxType.NONVAULT):
         self._requests_sent += 1
         try:
             raw_tx = await self.network.get_transaction(tx_hash)

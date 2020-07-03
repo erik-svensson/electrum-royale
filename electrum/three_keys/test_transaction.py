@@ -38,8 +38,8 @@ class Test3KeysTransaction(TestCase):
         )
 
     def test_tx_type_setting(self):
-        tx = ThreeKeysTransaction(None, TxType.ALERT)
-        self.assertEqual(tx.tx_type, TxType.ALERT)
+        tx = ThreeKeysTransaction(None, TxType.ALERT_PENDING)
+        self.assertEqual(tx.tx_type, TxType.ALERT_PENDING)
         with self.assertRaises(ValueError) as err:
             ThreeKeysTransaction(None, 'unknown type')
 
@@ -57,19 +57,13 @@ class Test3KeysTransaction(TestCase):
 
         three_key_tx = ThreeKeysTransaction.from_tx(tx)
         self.assertEqual(TX, three_key_tx.serialize())
-        self.assertEqual(TxType.STANDARD, three_key_tx.tx_type)
+        self.assertEqual(TxType.NONVAULT, three_key_tx.tx_type)
         self.assertTrue(isinstance(three_key_tx, Transaction))
 
 
 class TestTxType(TestCase):
     def setUp(self):
-        self.inputs = [
-            ('standard', TxType.STANDARD),
-            ('alert', TxType.ALERT),
-            ('recovery', TxType.RECOVERY),
-            ('recovered', TxType.RECOVERED),
-            ('instant', TxType.INSTANT)
-        ]
+        self.inputs = [(item.name, item) for item in TxType]
 
     def test_creating_from_string(self):
         for str_, type_ in self.inputs:
@@ -85,5 +79,5 @@ class TestTxType(TestCase):
 
     def test_identity(self):
         type1 = TxType.INSTANT
-        type2 = TxType.from_str(type1.value)
+        type2 = TxType.from_str(str(type1.value))
         self.assertEqual(type1, type2)

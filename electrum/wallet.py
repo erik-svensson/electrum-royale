@@ -2260,9 +2260,9 @@ class Multisig_Wallet(Deterministic_Wallet):
 class TwoKeysWallet(Simple_Deterministic_Wallet):
     TX_STATUS_INDEX_SHIFT = 10
     TX_TYPES_LIKE_STANDARD = (
-        TxType.STANDARD,
+        TxType.NONVAULT,
         TxType.INSTANT,
-        TxType.RECOVERY,
+        TxType.ALERT_CONFIRMED,
     )
 
     def __init__(self, storage: WalletStorage, *, config: SimpleConfig):
@@ -2302,18 +2302,10 @@ class TwoKeysWallet(Simple_Deterministic_Wallet):
             return status, status_str
 
         confirmations = tx_mined_info.conf
-        if tx.tx_type == TxType.ALERT:
-            # unconfirmed alert
-            if confirmations == 0:
-                return self.TX_STATUS_INDEX_SHIFT + 0, status_str
-            elif confirmations < 144:
-                return  self.TX_STATUS_INDEX_SHIFT + 1, status_str
-            elif confirmations == 144:
-                return self.TX_STATUS_INDEX_SHIFT + 2, status_str
-        elif tx.tx_type == TxType.RECOVERED:
-            return self.TX_STATUS_INDEX_SHIFT + 3, status_str
-        else:
-            raise ValueError(f'Unknown transaction type {tx.tx_type}')
+        # unconfirmed alert
+        if confirmations == 0:
+            return self.TX_STATUS_INDEX_SHIFT, status_str
+        return self.TX_STATUS_INDEX_SHIFT + tx.tx_type, status_str
 
     def get_spendable_coins(self, domain, *, nonlocal_only=False) -> Sequence[PartialTxInput]:
         utxos = super().get_spendable_coins(domain=domain, nonlocal_only=nonlocal_only)
