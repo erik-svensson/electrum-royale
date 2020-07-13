@@ -78,15 +78,15 @@ class SPV(NetworkJobOnDefaultServer):
         unverified = self.wallet.get_unverified_txs()
 
         for tx_hash, (tx_height, tx_type) in unverified.items():
-            # do not verify ALERT_PENDING txs
-            if tx_type == TxType.ALERT_PENDING.name:
-                await self.group.spawn(self._mark_as_verified, tx_hash, tx_height, tx_type)
-                continue
             # do not request merkle branch if we already requested it
             if tx_hash in self.requested_merkle or tx_hash in self.merkle_roots:
                 continue
             # or before headers are available
             if tx_height <= 0 or tx_height > local_height:
+                continue
+            # verify ALERT_PENDING txs without merkle check
+            if tx_type == TxType.ALERT_PENDING.name:
+                await self.group.spawn(self._mark_as_verified, tx_hash, tx_height, tx_type)
                 continue
             # if it's in the checkpoint region, we still might not have the header
             header = self.blockchain.read_header(tx_height)
