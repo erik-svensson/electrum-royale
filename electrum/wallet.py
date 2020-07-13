@@ -35,6 +35,7 @@ import copy
 import errno
 import traceback
 import operator
+from collections import defaultdict
 from functools import partial
 from numbers import Number
 from decimal import Decimal
@@ -44,7 +45,7 @@ from .i18n import _
 from .bip32 import BIP32Node
 from .crypto import sha256
 from .three_keys.script import TwoKeysScriptGenerator
-from .three_keys.transaction import TxType
+from .three_keys.transaction import TxType, ThreeKeysTransaction
 from .util import (NotEnoughFunds, UserCancelled, profiler,
                    format_satoshis, format_fee_satoshis, NoDynamicFeeEstimates,
                    WalletFileException, BitcoinException,
@@ -64,7 +65,9 @@ from .transaction import (Transaction, TxInput, UnknownTxinType, TxOutput,
                           PartialTransaction, PartialTxInput, PartialTxOutput, TxOutpoint)
 from .plugin import run_hook
 from .address_synchronizer import (AddressSynchronizer, TX_HEIGHT_LOCAL,
-                                   TX_HEIGHT_UNCONF_PARENT, TX_HEIGHT_UNCONFIRMED, TX_HEIGHT_FUTURE)
+                                   TX_HEIGHT_UNCONF_PARENT,
+                                   TX_HEIGHT_UNCONFIRMED, TX_HEIGHT_FUTURE,
+                                   UnrelatedTransactionException)
 from .util import PR_PAID, PR_UNPAID, PR_UNKNOWN, PR_EXPIRED, PR_INFLIGHT
 from .contacts import Contacts
 from .interface import NetworkException
@@ -2272,6 +2275,9 @@ class TwoKeysWallet(Simple_Deterministic_Wallet):
         # super has to be at the end otherwise wallet breaks
         super().__init__(storage=storage, config=config)
 
+        # Transactions pending verification.  txid -> (tx_height, tx_type).
+        self.unverified_tx = defaultdict(tuple)
+
     def set_alert(self):
         self.multisig_script_generator.set_alert()
 
@@ -2352,6 +2358,106 @@ class TwoKeysWallet(Simple_Deterministic_Wallet):
         tx.add_info_from_wallet(self, include_xpubs_and_full_paths=False)
         return tx
 
+    def _add_unverified_tx(self, tx_hash, tx_height, tx_type):
+        if self.db.is_in_verified_tx(tx_hash):
+            if tx_height in (TX_HEIGHT_UNCONFIRMED, TX_HEIGHT_UNCONF_PARENT):
+                with self.lock:
+                    self.db.remove_verified_tx(tx_hash)
+                if self.verifier:
+                    self.verifier.remove_spv_proof_for_tx(tx_hash)
+        else:
+            with self.lock:
+                # tx will be verified only if height > 0
+                self.unverified_tx[tx_hash] = (tx_height, tx_type)
+
+    def load_unverified_transactions(self):
+        # review transactions that are in the history
+        for addr in self.db.get_history():
+            hist = self.db.get_addr_history(addr)
+            for tx_hash, tx_height, tx_type, *__ in hist:
+                # add it in case it was previously unconfirmed
+                self._add_unverified_tx(tx_hash, tx_height, tx_type)
+
+    def get_address_history(self, addr):
+        h = []
+        # we need self.transaction_lock but get_tx_height will take self.lock
+        # so we need to take that too here, to enforce order of locks
+        with self.lock, self.transaction_lock:
+            related_txns = self._history_local.get(addr, set())
+            for tx_hash in related_txns:
+                mined_info = self.get_tx_height(tx_hash)
+                h.append((tx_hash, mined_info.height, mined_info.txtype))
+        return h
+
+    def receive_history_callback(self, addr: str, hist, tx_fees: Dict[str, int]):
+        with self.lock:
+            old_hist = self.get_address_history(addr)
+            for tx_hash, height, tx_type in old_hist:
+                if (tx_hash, height, tx_type) not in hist:
+                    # make tx local
+                    self.unverified_tx.pop(tx_hash, None)
+                    self.db.remove_verified_tx(tx_hash)
+                    if self.verifier:
+                        self.verifier.remove_spv_proof_for_tx(tx_hash)
+            self.db.set_addr_history(addr, hist)
+
+        for tx_hash, tx_height, tx_type, *__ in hist:
+            # add it in case it was previously unconfirmed
+            self._add_unverified_tx(tx_hash, tx_height, tx_type)
+            # if addr is new, we have to recompute txi and txo
+            tx = self.db.get_transaction(tx_hash)
+            if tx is None:
+                continue
+            self._mutate_transaction_type(current_tx=tx, incoming_type=TxType.from_str(tx_type))
+            self.add_transaction(tx_hash, tx, allow_unrelated=True)
+
+        # Store fees
+        for tx_hash, fee_sat in tx_fees.items():
+            self.db.add_tx_fee_from_server(tx_hash, fee_sat)
+
+    def receive_tx_callback(self, tx_hash, tx, tx_height, tx_type=TxType.NONVAULT):
+        self._add_unverified_tx(tx_hash, tx_height, tx_type.name)
+        self.add_transaction(tx_hash, tx, allow_unrelated=True)
+
+        for txo in tx.outputs():
+            addr = self.get_txout_address(txo)
+            if addr in self.receive_requests:
+                status, conf = self.get_request_status(addr)
+                self.network.trigger_callback('payment_received', self, addr, status)
+
+    def _mutate_transaction_type(self, current_tx: 'ThreeKeysTransaction', incoming_type: TxType):
+        current_tx_type = current_tx.tx_type
+        if incoming_type != current_tx_type:
+            current_tx.tx_type = incoming_type
+
+    def get_txpos(self, tx_hash):
+        """Returns (height, txpos) tuple, even if the tx is unverified."""
+        with self.lock:
+            verified_tx_mined_info = self.db.get_verified_tx(tx_hash)
+            if verified_tx_mined_info:
+                return verified_tx_mined_info.height, verified_tx_mined_info.txpos
+            elif tx_hash in self.unverified_tx:
+                height, _ = self.unverified_tx[tx_hash]
+                return (height, -1) if height > 0 else ((1e9 - height), -1)
+            else:
+                return (1e9+1, -1)
+
+    def get_tx_height(self, tx_hash: str) -> TxMinedInfo:
+        with self.lock:
+            verified_tx_mined_info = self.db.get_verified_tx(tx_hash)
+            if verified_tx_mined_info:
+                conf = max(self.get_local_height() - verified_tx_mined_info.height + 1, 0)
+                return verified_tx_mined_info._replace(conf=conf, txtype=verified_tx_mined_info.txtype)
+            elif tx_hash in self.unverified_tx:
+                height, tx_type = self.unverified_tx[tx_hash]
+                return TxMinedInfo(height=height, conf=0, txtype=tx_type)
+            elif tx_hash in self.future_tx:
+                # FIXME this is ugly
+                conf = self.future_tx[tx_hash]
+                return TxMinedInfo(height=TX_HEIGHT_FUTURE, conf=conf)
+            else:
+                # local transaction
+                return TxMinedInfo(height=TX_HEIGHT_LOCAL, conf=0)
 
 wallet_types = [
     'AR',

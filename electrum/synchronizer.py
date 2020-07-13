@@ -238,7 +238,7 @@ class Synchronizer(SynchronizerBase):
             for tx_hash, tx_type in transaction_hashes_and_types:
                 await group.spawn(self._get_transaction(tx_hash, tx_type=tx_type, allow_server_not_finding_tx=allow_server_not_finding_tx))
 
-    async def _get_transaction(self, tx_hash, *, allow_server_not_finding_tx=False, tx_type=TxType.NONVAULT):
+    async def _get_transaction(self, tx_hash, *, allow_server_not_finding_tx=False, tx_type):
         self._requests_sent += 1
         try:
             raw_tx = await self.network.get_transaction(tx_hash)
@@ -264,7 +264,7 @@ class Synchronizer(SynchronizerBase):
         if tx_hash != tx.txid():
             raise SynchronizerFailure(f"received tx does not match expected txid ({tx_hash} != {tx.txid()})")
         tx_height = self.requested_tx.pop(tx_hash)
-        self.wallet.receive_tx_callback(tx_hash, tx, tx_height)
+        self.wallet.receive_tx_callback(tx_hash, tx, tx_height, tx_type=tx_type)
         self.logger.info(f"received tx {tx_hash} height: {tx_height} bytes: {len(raw_tx)}")
         # callbacks
         self.wallet.network.trigger_callback('new_transaction', self.wallet, tx)

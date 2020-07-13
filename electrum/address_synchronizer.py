@@ -30,7 +30,6 @@ from typing import TYPE_CHECKING, Dict, Optional, Set, Tuple, NamedTuple, Sequen
 
 from . import bitcoin
 from .bitcoin import COINBASE_MATURITY
-from .three_keys.transaction import TxType
 from .util import profiler, bfh, TxMinedInfo
 from .transaction import Transaction, TxOutput, TxInput, PartialTxInput, TxOutpoint, PartialTransaction
 from .synchronizer import Synchronizer
@@ -342,11 +341,6 @@ class AddressSynchronizer(Logger):
         self.add_unverified_tx(tx_hash, tx_height)
         self.add_transaction(tx_hash, tx, allow_unrelated=True)
 
-    def _mutate_transcation_type(self, current_tx: 'ThreeKeysTransaction', incoming_type: TxType):
-        current_tx_type = current_tx.tx_type
-        if incoming_type != current_tx_type:
-            current_tx.tx_type = incoming_type
-
     def receive_history_callback(self, addr: str, hist, tx_fees: Dict[str, int]):
         with self.lock:
             old_hist = self.get_address_history(addr)
@@ -359,14 +353,13 @@ class AddressSynchronizer(Logger):
                         self.verifier.remove_spv_proof_for_tx(tx_hash)
             self.db.set_addr_history(addr, hist)
 
-        for tx_hash, tx_height, tx_type in hist:
+        for tx_hash, tx_height, *__ in hist:
             # add it in case it was previously unconfirmed
             self.add_unverified_tx(tx_hash, tx_height)
             # if addr is new, we have to recompute txi and txo
             tx = self.db.get_transaction(tx_hash)
             if tx is None:
                 continue
-            self._mutate_transcation_type(current_tx=tx, incoming_type=TxType.from_str(tx_type))
             self.add_transaction(tx_hash, tx, allow_unrelated=True)
 
         # Store fees

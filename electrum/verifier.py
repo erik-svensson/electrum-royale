@@ -26,6 +26,7 @@ from typing import Sequence, Optional, TYPE_CHECKING
 
 import aiorpcx
 
+from .three_keys.transaction import TxType
 from .util import bh2u, TxMinedInfo, NetworkJobOnDefaultServer
 from .crypto import sha256d
 from .bitcoin import hash_decode, hash_encode
@@ -76,7 +77,11 @@ class SPV(NetworkJobOnDefaultServer):
         local_height = self.blockchain.height()
         unverified = self.wallet.get_unverified_txs()
 
-        for tx_hash, tx_height, *__ in unverified.items():
+        for tx_hash, (tx_height, tx_type) in unverified.items():
+            # do not verify ALERT_PENDING txs
+            if tx_type == TxType.ALERT_PENDING.name:
+                await self.group.spawn(self._mark_as_verified, tx_hash, tx_height, tx_type)
+                continue
             # do not request merkle branch if we already requested it
             if tx_hash in self.requested_merkle or tx_hash in self.merkle_roots:
                 continue
@@ -92,9 +97,21 @@ class SPV(NetworkJobOnDefaultServer):
             # request now
             self.logger.info(f'requested merkle {tx_hash}')
             self.requested_merkle.add(tx_hash)
-            await self.group.spawn(self._request_and_verify_single_proof, tx_hash, tx_height)
+            await self.group.spawn(self._request_and_verify_single_proof, tx_hash, tx_height, tx_type)
 
-    async def _request_and_verify_single_proof(self, tx_hash, tx_height):
+    async def _mark_as_verified(self, tx_hash, tx_height, tx_type):
+        self.requested_merkle.discard(tx_hash)
+        self.logger.info(f"verified {tx_hash}")
+        header = self.network.blockchain().read_header(tx_height)
+        header_hash = hash_header(header)
+        tx_info = TxMinedInfo(height=tx_height,
+                              timestamp=header.get('timestamp'),
+                              txpos=0,
+                              header_hash=header_hash,
+                              txtype=tx_type)
+        self.wallet.add_verified_tx(tx_hash, tx_info)
+
+    async def _request_and_verify_single_proof(self, tx_hash, tx_height, tx_type):
         try:
             merkle = await self.network.get_merkle_for_transaction(tx_hash, tx_height)
         except UntrustedServerReturnedError as e:
@@ -131,7 +148,8 @@ class SPV(NetworkJobOnDefaultServer):
         tx_info = TxMinedInfo(height=tx_height,
                               timestamp=header.get('timestamp'),
                               txpos=pos,
-                              header_hash=header_hash)
+                              header_hash=header_hash,
+                              txtype=tx_type)
         self.wallet.add_verified_tx(tx_hash, tx_info)
 
     @classmethod
