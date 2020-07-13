@@ -39,7 +39,8 @@ from collections import defaultdict
 from functools import partial
 from numbers import Number
 from decimal import Decimal
-from typing import TYPE_CHECKING, List, Optional, Tuple, Union, NamedTuple, Sequence, Dict, Any
+from typing import TYPE_CHECKING, List, Optional, Tuple, Union, NamedTuple, \
+    Sequence, Dict, Any, Set
 
 from .i18n import _
 from .bip32 import BIP32Node
@@ -54,7 +55,8 @@ from .util import (NotEnoughFunds, UserCancelled, profiler,
 from .util import PR_TYPE_ONCHAIN, PR_TYPE_LN
 from .simple_config import SimpleConfig
 from .bitcoin import (COIN, is_address, address_to_script,
-                      is_minikey, relayfee, dust_threshold, push_script)
+                      is_minikey, relayfee, dust_threshold, push_script,
+                      COINBASE_MATURITY)
 from .crypto import sha256d
 from . import keystore
 from .keystore import load_keystore, Hardware_KeyStore, KeyStore
@@ -67,7 +69,7 @@ from .plugin import run_hook
 from .address_synchronizer import (AddressSynchronizer, TX_HEIGHT_LOCAL,
                                    TX_HEIGHT_UNCONF_PARENT,
                                    TX_HEIGHT_UNCONFIRMED, TX_HEIGHT_FUTURE,
-                                   UnrelatedTransactionException)
+                                   UnrelatedTransactionException, HistoryItem)
 from .util import PR_PAID, PR_UNPAID, PR_UNKNOWN, PR_EXPIRED, PR_INFLIGHT
 from .contacts import Contacts
 from .interface import NetworkException
@@ -546,8 +548,8 @@ class Abstract_Wallet(AddressSynchronizer):
     def get_frozen_balance(self):
         if not self.frozen_coins:  # shortcut
             return self.get_balance(self.frozen_addresses)
-        c1, u1, x1 = self.get_balance()
-        c2, u2, x2 = self.get_balance(excluded_addresses=self.frozen_addresses,
+        c1, u1, x1, *__ = self.get_balance()
+        c2, u2, x2, *__ = self.get_balance(excluded_addresses=self.frozen_addresses,
                                       excluded_coins=self.frozen_coins)
         return c1-c2, u1-u2, x1-x2
 
@@ -1250,7 +1252,7 @@ class Abstract_Wallet(AddressSynchronizer):
     def _add_input_utxo_info(self, txin: PartialTxInput, address: str) -> None:
         if Transaction.is_segwit_input(txin):
             if txin.witness_utxo is None:
-                received, spent = self.get_addr_io(address)
+                received, spent, *__ = self.get_addr_io(address)
                 item = received.get(txin.prevout.to_str())
                 if item:
                     txin_value = item[1]
@@ -1420,7 +1422,7 @@ class Abstract_Wallet(AddressSynchronizer):
 
     def get_payment_status(self, address, amount):
         local_height = self.get_local_height()
-        received, sent = self.get_addr_io(address)
+        received, sent, *__ = self.get_addr_io(address)
         l = []
         for txo, x in received.items():
             h, v, is_cb = x
@@ -2458,6 +2460,180 @@ class TwoKeysWallet(Simple_Deterministic_Wallet):
             else:
                 # local transaction
                 return TxMinedInfo(height=TX_HEIGHT_LOCAL, conf=0)
+
+    def get_addr_io(self, address):
+        with self.lock, self.transaction_lock:
+            h = self.get_address_history(address)
+            received = {}
+            sent = {}
+            alert_incoming = {}
+            alert_outgoing = {}
+            for tx_hash, height, tx_type, *__ in h:
+                l = self.db.get_txo_addr(tx_hash, address)
+                for n, v, is_cb in l:
+                    _key = tx_hash + ':%d'%n
+                    _value = (height, v, is_cb)
+                    if tx_type == TxType.ALERT_PENDING.name:
+                        alert_incoming[_key] = _value
+                    elif tx_type == TxType.ALERT_CONFIRMED.name:
+                        if _key in alert_incoming:
+                            del alert_incoming[_key]
+                        received[_key] = _value
+                    else:
+                        received[_key] = _value
+            for tx_hash, height, tx_type, *__ in h:
+                l = self.db.get_txi_addr(tx_hash, address)
+                for txi, v in l:
+                    if tx_type == TxType.ALERT_PENDING.name:
+                        alert_outgoing[txi] = height
+                    elif tx_type == TxType.ALERT_CONFIRMED.name:
+                        if txi in alert_outgoing:
+                            del alert_outgoing[txi]
+                        sent[txi] = height
+                    else:
+                        sent[txi] = height
+        return received, sent, alert_incoming, alert_outgoing
+
+    def get_addr_utxo(self, address: str) -> Dict[TxOutpoint, PartialTxInput]:
+        coins, spent, alert_incoming, alert_outgoing = self.get_addr_io(address)
+        for txi in spent:
+            coins.pop(txi)
+        for txi in alert_outgoing:
+            coins.pop(txi)
+        out = {}
+        for prevout_str, v in coins.items():
+            tx_height, value, is_cb = v
+            prevout = TxOutpoint.from_str(prevout_str)
+            utxo = PartialTxInput(prevout=prevout)
+            utxo._trusted_address = address
+            utxo._trusted_value_sats = value
+            utxo.block_height = tx_height
+            out[prevout] = utxo
+        return out
+
+    def get_addr_received(self, address):
+        received, *__ = self.get_addr_io(address)
+        return sum([v for height, v, is_cb in received.values()])
+
+    def with_local_height_cached(func):
+        def f(self, *args, **kwargs):
+            orig_val = getattr(self.threadlocal_cache, 'local_height', None)
+            self.threadlocal_cache.local_height = orig_val or self.get_local_height()
+            try:
+                return func(self, *args, **kwargs)
+            finally:
+                self.threadlocal_cache.local_height = orig_val
+        return f
+
+    @with_local_height_cached
+    def get_history(self, *, domain=None) -> Sequence[HistoryItem]:
+        # get domain
+        if domain is None:
+            domain = self.get_addresses()
+        domain = set(domain)
+        # 1. Get the history of each address in the domain, maintain the
+        #    delta of a tx as the sum of its deltas on domain addresses
+        tx_deltas = defaultdict(int)
+        for addr in domain:
+            h = self.get_address_history(addr)
+            for tx_hash, height, *__ in h:
+                delta = self.get_tx_delta(tx_hash, addr)
+                if delta is None or tx_deltas[tx_hash] is None:
+                    tx_deltas[tx_hash] = None
+                else:
+                    tx_deltas[tx_hash] += delta
+        # 2. create sorted history
+        history = []
+        for tx_hash in tx_deltas:
+            delta = tx_deltas[tx_hash]
+            tx_mined_status = self.get_tx_height(tx_hash)
+            fee = self.get_tx_fee(tx_hash)
+            history.append((tx_hash, tx_mined_status, delta, fee))
+        history.sort(key = lambda x: self.get_txpos(x[0]), reverse=True)
+        # 3. add balance
+        c, u, x, ao, ai = self.get_balance(domain)
+        balance = c + u + x + ao
+        h2 = []
+        for tx_hash, tx_mined_status, delta, fee in history:
+            h2.append(HistoryItem(txid=tx_hash,
+                                  tx_mined_status=tx_mined_status,
+                                  delta=delta,
+                                  fee=fee,
+                                  balance=balance))
+            if balance is None or delta is None:
+                balance = None
+            else:
+                balance -= delta
+        h2.reverse()
+        # fixme: this may happen if history is incomplete
+        if balance not in [None, 0]:
+            self.logger.warning("history not synchronized")
+            return []
+
+        return h2
+
+    @with_local_height_cached
+    def get_addr_balance(self, address, *, excluded_coins: Set[str] = None):
+        if not excluded_coins:  # cache is only used if there are no excluded_coins
+            cached_value = self._get_addr_balance_cache.get(address)
+            if cached_value:
+                return cached_value
+        if excluded_coins is None:
+            excluded_coins = set()
+        assert isinstance(excluded_coins, set), f"excluded_coins should be set, not {type(excluded_coins)}"
+        received, sent, alert_incoming, alert_outgoing = self.get_addr_io(address)
+        c = u = x = ai = ao = 0
+        mempool_height = self.get_local_height() + 1  # height of next block
+        for txo, (tx_height, v, is_cb) in received.items():
+            if txo in excluded_coins:
+                continue
+            if is_cb and tx_height + COINBASE_MATURITY > mempool_height:
+                x += v
+            elif tx_height > 0:
+                c += v
+            else:
+                u += v
+            if txo in sent:
+                if sent[txo] > 0:
+                    c -= v
+                else:
+                    u -= v
+            if txo in alert_outgoing:
+                if alert_outgoing[txo] > 0:
+                    c -= v
+                    ao -= v
+                else:
+                    u -= v
+        for txo, (tx_height, v, _) in alert_incoming.items():
+            if tx_height > 0:
+                ai += v
+            else:
+                u += v
+        result = c, u, x, ai, ao
+        # cache result.
+        if not excluded_coins:
+            # Cache needs to be invalidated if a transaction is added to/
+            # removed from history; or on new blocks (maturity...)
+            self._get_addr_balance_cache[address] = result
+        return result
+
+    def get_balance(self, domain=None, *, excluded_addresses: Set[str] = None,
+                    excluded_coins: Set[str] = None) -> Tuple[int, int, int, int, int]:
+        if domain is None:
+            domain = self.get_addresses()
+        if excluded_addresses is None:
+            excluded_addresses = set()
+        assert isinstance(excluded_addresses, set), f"excluded_addresses should be set, not {type(excluded_addresses)}"
+        domain = set(domain) - excluded_addresses
+        cc = uu = xx = ai = ao = 0
+        for addr in domain:
+            c, u, x, _ai, _ao = self.get_addr_balance(addr, excluded_coins=excluded_coins)
+            cc += c
+            uu += u
+            xx += x
+            ai += _ai
+            ao += _ao
+        return cc, uu, xx, ai, ao
 
 wallet_types = [
     'AR',
