@@ -1,5 +1,6 @@
-from electrum.three_keys.tx_type import TxType
-from electrum.transaction import Transaction
+from .tx_type import TxType
+from ..transaction import Transaction
+
 
 class ThreeKeysTransaction(Transaction):
     def __init__(self, raw: str, tx_type: TxType):
