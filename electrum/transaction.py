@@ -680,7 +680,10 @@ class Transaction:
                 return txin.multisig_script_generator.get_script_sig(signatures=sig_list, public_keys=pubkeys)
             # put op_0 before script
             script = '00' + script
-            redeem_script = multisig_script(pubkeys, txin.num_sig)
+            if txin.redeem_script and txin.redeem_script != b'':
+                redeem_script = bh2u(txin.redeem_script)
+            else:
+                redeem_script = multisig_script(pubkeys, txin.num_sig)
             script += push_script(redeem_script)
             return script
         elif _type == 'p2pkh':
