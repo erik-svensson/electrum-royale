@@ -26,21 +26,19 @@
 import os
 import sys
 import copy
-import traceback
-from functools import partial
 from typing import List, TYPE_CHECKING, Tuple, NamedTuple, Any, Dict, Optional
 
-from . import bitcoin, bitcoinvault
+from . import bitcoin
+from .three_keys import short_mnemonic
 from . import keystore
 from . import mnemonic
 from .bip32 import is_bip32_derivation, xpub_type, normalize_bip32_derivation, BIP32Node
 from .keystore import bip44_derivation, purpose48_derivation
-from .wallet import (Imported_Wallet, Standard_Wallet, Multisig_Wallet,
-                     wallet_types, Wallet, Abstract_Wallet)
+from .wallet import (wallet_types)
 from .storage import (WalletStorage, StorageEncryptionVersion,
                       get_derivation_used_for_hw_device_encryption)
 from .i18n import _
-from .util import UserCancelled, InvalidPassword, WalletFileException
+from .util import UserCancelled, InvalidPassword
 from .simple_config import SimpleConfig
 from .plugin import Plugins, HardwarePluginLibraryUnavailable
 from .logging import Logger
@@ -195,16 +193,15 @@ class BaseWizard(Logger):
     def choose_multikey_wallet_type(self):
         def process_choice(choice):
             if choice == 'multikey_standalone':
-                self.data['wallet_type'] = 'standalone'
+                self.data['multikey_type'] = 'standalone'
                 if self.wallet_type == 'AR':
                     action = 'two_keys_standalone'
                 elif self.wallet_type == 'AIR':
                     action = 'three_keys_standalone'
                 else:
                     raise Exception('Invalid multikey wallet type: ' + self.wallet_type)
-                self.run(action)
             elif choice == 'multikey_2fa':
-                self.data['wallet_type'] = '2fa'
+                self.data['multikey_type'] = '2fa'
                 if self.wallet_type == 'AR':
                     action = 'two_keys_2fa'
                 elif self.wallet_type == 'AIR':
@@ -215,7 +212,7 @@ class BaseWizard(Logger):
                 raise Exception('Invalid choice: ' + choice)
             self.run(action)
 
-        assert self.wallet_type in ['AR', 'AIR']
+        assert self.wallet_type in ['AR', 'AIR'], "Wrong multikey wallet type: " + self.wallet_type
         title = _('Multikey wallet type')
         message = _('Do you want to use GoldWallet as a transaction authenticator?')
         choices = [
@@ -228,13 +225,13 @@ class BaseWizard(Logger):
     def two_keys_standalone(self):
         self.get_recovery_pubkey(run_next=self.on_two_keys)
 
+    def two_keys_2fa(self):
+        entropy_2fa = short_mnemonic.generate_entropy()
+        self.display_2fa_pairing_qr(run_next=self.on_two_keys, entropy=entropy_2fa)
+
     def on_two_keys(self, recovery_pubkey: str):
         self.data['recovery_pubkey'] = recovery_pubkey
         self.run('choose_keystore')
-
-    def two_keys_2fa(self):
-        entropy_2fa = bitcoinvault.generate_entropy()
-        self.display_2fa_pairing_qr(run_next=self.on_two_keys, entropy=entropy_2fa)
 
     def three_keys_standalone(self):
         def collect_recovery_pubkey(pubkey: str):
@@ -258,7 +255,7 @@ class BaseWizard(Logger):
         self.get_recovery_pubkey(run_next=collect_recovery_pubkey)
 
     def three_keys_2fa_generate_instant_privkey(self):
-        entropy_2fa = bitcoinvault.generate_entropy()
+        entropy_2fa = short_mnemonic.generate_entropy()
         self.display_privkey_qr(run_next=self.on_three_keys, privkey=entropy_2fa)
 
     def on_three_keys(self, pubkey: str):

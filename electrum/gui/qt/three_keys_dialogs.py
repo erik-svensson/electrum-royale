@@ -1,13 +1,12 @@
 import copy
-import json
 from enum import IntEnum
-from PyQt5.QtCore import QPoint, Qt, QRect
+from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QFont
-from PyQt5.QtWidgets import QVBoxLayout, QToolTip, QTextEdit, QLineEdit, QLabel
+from PyQt5.QtWidgets import QVBoxLayout, QTextEdit, QLineEdit, QLabel
 from .qrcodewidget import QRCodeWidget
 from electrum.ecc import ECPubkey, ECPrivkey
 from electrum.i18n import _
-from ... import bitcoinvault
+from ...three_keys import short_mnemonic
 
 
 class ValidationState(IntEnum):
@@ -128,7 +127,7 @@ class Qr2FaDialog(QVBoxLayout):
     def __init__(self, parent, title_label: str, pin_label: str, qr_data: dict):
         super().__init__()
         self.parent = parent
-        self.pubkey = ECPrivkey(bitcoinvault.entropy_to_privkey(qr_data['entropy'])).get_public_key_hex()
+        self.pubkey = ECPrivkey(short_mnemonic.entropy_to_privkey(qr_data['entropy'])).get_public_key_hex()
         qr = QRCodeWidget(self.prepare_qr_data_for_display(qr_data))
         self.edit = QLineEdit()
         self.edit.setMaxLength(4)

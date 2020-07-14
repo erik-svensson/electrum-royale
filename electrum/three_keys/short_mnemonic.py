@@ -4,7 +4,7 @@ from Cryptodome.Protocol.KDF import PBKDF2
 from Cryptodome.Hash import SHA256, HMAC
 
 ENTROPY_LEN = 16
-PBKDF_ITERATIONS = 100000
+PBKDF_ITERATIONS = 100_000
 
 
 def generate_entropy():
