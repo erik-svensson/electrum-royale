@@ -2469,18 +2469,17 @@ class TwoKeysWallet(Simple_Deterministic_Wallet):
             alert_incoming = {}
             alert_outgoing = {}
             for tx_hash, height, tx_type, *__ in h:
-                l = self.db.get_txo_addr(tx_hash, address)
-                for n, v, is_cb in l:
-                    _key = tx_hash + ':%d'%n
-                    _value = (height, v, is_cb)
+                for n, v, is_cb in self.db.get_txo_addr(tx_hash, address):
+                    key = tx_hash + ':%d'%n
+                    value = (height, v, is_cb)
                     if tx_type == TxType.ALERT_PENDING.name:
-                        alert_incoming[_key] = _value
+                        alert_incoming[key] = value
                     elif tx_type == TxType.ALERT_CONFIRMED.name:
-                        if _key in alert_incoming:
-                            del alert_incoming[_key]
-                        received[_key] = _value
+                        if key in alert_incoming:
+                            del alert_incoming[key]
+                        received[key] = value
                     else:
-                        received[_key] = _value
+                        received[key] = value
             for tx_hash, height, tx_type, *__ in h:
                 l = self.db.get_txi_addr(tx_hash, address)
                 for txi, v in l:
