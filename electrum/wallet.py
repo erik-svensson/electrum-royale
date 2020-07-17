@@ -42,10 +42,12 @@ from decimal import Decimal
 from typing import TYPE_CHECKING, List, Optional, Tuple, Union, NamedTuple, \
     Sequence, Dict, Any, Set
 
+from electrum.three_keys.multikey_generator import MultiKeyScriptGenerator
+
 from .i18n import _
 from .bip32 import BIP32Node
 from .crypto import sha256
-from .three_keys.script import TwoKeysScriptGenerator
+from .three_keys.script import TwoKeysScriptGenerator, ThreeKeysScriptGenerator
 from .three_keys.transaction import TxType, ThreeKeysTransaction
 from .util import (NotEnoughFunds, UserCancelled, profiler,
                    format_satoshis, format_fee_satoshis, NoDynamicFeeEstimates,
@@ -2263,7 +2265,7 @@ class Multisig_Wallet(Deterministic_Wallet):
         return ''.join(sorted(self.get_master_public_keys()))
 
 
-class TwoKeysWallet(Simple_Deterministic_Wallet):
+class MultikeyWallet(Simple_Deterministic_Wallet):
     TX_STATUS_INDEX_SHIFT = 10
     TX_TYPES_LIKE_STANDARD = (
         TxType.NONVAULT,
@@ -2271,9 +2273,10 @@ class TwoKeysWallet(Simple_Deterministic_Wallet):
         TxType.ALERT_CONFIRMED,
     )
 
-    def __init__(self, storage: WalletStorage, *, config: SimpleConfig):
+    def __init__(self, storage: WalletStorage, *, config: SimpleConfig, scriptGenerator: MultiKeyScriptGenerator):
         self.wallet_type = storage.get('wallet_type')
-        self.multisig_script_generator = TwoKeysScriptGenerator(recovery_pubkey=storage.get('recovery_pubkey'))
+        self.multikey_type = storage.get('multikey_type')
+        self.multisig_script_generator = scriptGenerator
         self.set_alert()
         # super has to be at the end otherwise wallet breaks
         super().__init__(storage=storage, config=config)
@@ -2753,6 +2756,21 @@ class TwoKeysWallet(Simple_Deterministic_Wallet):
             ao += _ao
         return cc, uu, xx, ai, ao
 
+
+class TwoKeysWallet(MultikeyWallet):
+
+    def __init__(self, storage: WalletStorage, *, config: SimpleConfig):
+        script_generator = TwoKeysScriptGenerator(recovery_pubkey=storage.get('recovery_pubkey'))
+        super().__init__(storage=storage, config=config, scriptGenerator=script_generator)
+
+
+class ThreeKeysWallet(MultikeyWallet):
+    def __init__(self, storage: WalletStorage, *, config: SimpleConfig):
+        script_generator = ThreeKeysScriptGenerator(recovery_pubkey=storage.get('recovery_pubkey'),
+                                                    instant_pubkey=storage.get('instant_pubkey'))
+        super().__init__(storage=storage, config=config, scriptGenerator=script_generator)
+
+
 wallet_types = [
     'AR',
     'AIR',
@@ -2772,8 +2790,7 @@ wallet_constructors = {
     'xpub': Standard_Wallet,
     'imported': Imported_Wallet,
     'AR': TwoKeysWallet,
-    # todo add 3Keys class definition
-    'AIR': None
+    'AIR': ThreeKeysWallet
 }
 
 def register_constructor(wallet_type, constructor):
