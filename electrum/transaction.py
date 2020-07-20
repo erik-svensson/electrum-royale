@@ -608,6 +608,9 @@ class Transaction:
         elif _type in ['p2wsh', 'p2wsh-p2sh']:
             if txin.multisig_script_generator:
                 witness_script = txin.multisig_script_generator.get_redeem_script(public_keys=pubkeys)
+                # todo: quick and dirty workaround, please refactor me
+                flags = txin.multisig_script_generator.witness_flags
+                return construct_witness([0] + sig_list + flags + [witness_script])
             else:
                 witness_script = multisig_script(pubkeys, txin.num_sig)
             return construct_witness([0] + sig_list + [witness_script])

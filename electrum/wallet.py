@@ -2288,17 +2288,43 @@ class TwoKeysWallet(Simple_Deterministic_Wallet):
         self.multisig_script_generator.set_recovery()
 
     def load_keystore(self):
-        super().load_keystore()
-        # force set of txin_type
-        self.txin_type = 'p2sh'
+        self.keystore = load_keystore(self.storage, 'keystore')
+        self.txin_type = TwoKeysWallet.derive_txin_type_from_keystore(self.keystore)
+
+    @staticmethod
+    def derive_txin_type_from_keystore(keystore):
+        try:
+            txin_type = bip32.xpub_type(keystore.xpub)
+        except:
+            txin_type = 'standard'
+
+        if txin_type == 'standard':
+            return 'p2sh'
+        if txin_type == 'p2wpkh':
+            return 'p2wsh-p2sh'
+        raise UnknownTxinType(f'Cannot derive txin_type from {txin_type}')
 
     def pubkeys_to_address(self, pubkey):
         redeem_script = self.multisig_script_generator.get_redeem_script([pubkey])
         return bitcoin.redeem_script_to_address(self.txin_type, redeem_script)
 
-    def get_redeem_script(self, address: str) -> Optional[str]:
+    def get_redeem_script(self, address):
         pubkey = super().get_public_key(address)
-        return self.multisig_script_generator.get_redeem_script([pubkey])
+        scriptcode = self.multisig_script_generator.get_redeem_script([pubkey])
+        if self.txin_type == 'p2sh':
+            return scriptcode
+        elif self.txin_type == 'p2wsh-p2sh':
+            return bitcoin.p2wsh_nested_script(scriptcode)
+        raise UnknownTxinType(f'unexpected txin_type {self.txin_type}')
+
+    def get_witness_script(self, address):
+        pubkey = super().get_public_key(address)
+        scriptcode = self.multisig_script_generator.get_redeem_script([pubkey])
+        if self.txin_type == 'p2sh':
+            return None
+        elif self.txin_type in ('p2wsh-p2sh', 'p2wsh'):
+            return scriptcode
+        raise UnknownTxinType(f'unexpected txin_type {self.txin_type}')
 
     def get_tx_status(self, tx_hash, tx_mined_info: TxMinedInfo):
         status, status_str = super().get_tx_status(tx_hash, tx_mined_info)
@@ -2330,6 +2356,23 @@ class TwoKeysWallet(Simple_Deterministic_Wallet):
                 filtered_utxos.append(utxo)
         return filtered_utxos
 
+    def make_unsigned_transaction(self, *, coins: Sequence[PartialTxInput],
+                                  outputs: List[PartialTxOutput], fee=None,
+                                  change_addr: str = None, is_sweep=False) -> PartialTransaction:
+        tx = super().make_unsigned_transaction(
+            coins=coins,
+            outputs=outputs,
+            fee=fee,
+            change_addr=change_addr,
+            is_sweep=is_sweep
+        )
+        self.update_transaction_multisig_generator(tx)
+        return tx
+
+    def update_transaction_multisig_generator(self, tx: Transaction):
+        tx.multisig_script_generator = self.multisig_script_generator
+        tx.update_inputs()
+
     def sign_transaction(self, tx: Transaction, password) -> Optional[PartialTransaction]:
         if self.is_watching_only():
             return
@@ -2339,8 +2382,7 @@ class TwoKeysWallet(Simple_Deterministic_Wallet):
         # and full derivation paths as hw keystores might want them
         tmp_tx = copy.deepcopy(tx)
         # update tmp tx
-        tmp_tx.multisig_script_generator = self.multisig_script_generator
-        tmp_tx.update_inputs()
+        self.update_transaction_multisig_generator(tmp_tx)
 
         tmp_tx.add_info_from_wallet(self, include_xpubs_and_full_paths=True)
 
@@ -2354,8 +2396,7 @@ class TwoKeysWallet(Simple_Deterministic_Wallet):
         # remove sensitive info; then copy back details from temporary tx
         tmp_tx.remove_xpubs_and_bip32_paths()
         # update tx
-        tx.multisig_script_generator = self.multisig_script_generator
-        tx.update_inputs()
+        self.update_transaction_multisig_generator(tx)
 
         tx.combine_with_other_psbt(tmp_tx)
         tx.add_info_from_wallet(self, include_xpubs_and_full_paths=False)
