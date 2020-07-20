@@ -55,7 +55,7 @@ def history_status(h):
     return bh2u(hashlib.sha256(status.encode('ascii')).digest())
 
 
-def get_unique_atxid_form_history(raw_history) -> list:
+def get_unique_atxid_from_history(raw_history) -> list:
     # descending sorting over transaction height
     sorted_history = sorted(
         raw_history,
@@ -195,7 +195,7 @@ class Synchronizer(SynchronizerBase):
             item['height'],
             item.get('tx_type', TxType.NONVAULT.name)
         ), result))
-        filtered_history = get_unique_atxid_form_history(hist)
+        filtered_history = get_unique_atxid_from_history(hist)
         # tx_fees
         tx_fees = [(item['tx_hash'], item.get('fee')) for item in result]
         tx_fees = dict(filter(lambda x:x[1] is not None, tx_fees))
