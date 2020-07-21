@@ -2374,17 +2374,10 @@ class TwoKeysWallet(Simple_Deterministic_Wallet):
         tx.update_inputs()
 
     def get_atxs_to_recovery(self):
-        atxs = []
         for tx_hash, tx in self.db.transactions.items():
             mined_info = self.get_tx_height(tx_hash)
             if tx.tx_type == TxType.ALERT_PENDING and mined_info.conf > 0:  # skip alerts from mempool
-                atxs.append({
-                    'transaction': tx,
-                    'timestamp': mined_info.timestamp,
-                    'confirmations': mined_info.conf,
-                    'balance': self.get_tx_value(txid=tx_hash),
-                })
-        return atxs
+                yield tx
 
     def add_recovery_pubkey_to_transaction(self, tx):
         """Updating transaction inputs pubkeys list by recovery pubkey and adjusting num_sig variable"""
