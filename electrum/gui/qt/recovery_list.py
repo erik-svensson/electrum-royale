@@ -23,9 +23,8 @@ from .confirm_tx_dialog import ConfirmTxDialog
 from .completion_text_edit import CompletionTextEdit
 from ...mnemonic import load_wordlist
 from ...plugin import run_hook
-from ... import bitcoin
-from ...transaction import PartialTxOutput, PartialTxInput, PartialTransaction
-from ...util import bfh, PR_UNPAID, PR_UNKNOWN
+from ...transaction import PartialTransaction
+from ...util import PR_UNPAID, PR_UNKNOWN
 
 _logger = get_logger(__name__)
 
@@ -152,7 +151,7 @@ class RecoveryTab(QWidget):
         # Row 2
         grid_layout.addWidget(QLabel(_('Private key Phrase')), 1, 0)
 
-        # wordlis
+        # wordlist
         self.wordlist = load_wordlist("english.txt")
         ###
 
@@ -233,19 +232,6 @@ class RecoveryTab(QWidget):
     def _get_checked_atxs(self):
         return [row.data(ROLE_REQUEST_ID) for row in self.invoice_list.selectedIndexes() if row.data(ROLE_REQUEST_ID)]
 
-    @staticmethod
-    def _get_recovery_inputs_and_output(atxs, address):
-        scriptpubkey = bfh(bitcoin.address_to_script(address))
-        value = 0
-        inputs = []
-        for atx in atxs:
-            for txout in atx.outputs():
-                value += txout.value
-            for txinp in atx.inputs():
-                # todo check script witness flag !!!
-                inputs.append(PartialTxInput.from_txin(txinp))
-        return inputs, PartialTxOutput(scriptpubkey=scriptpubkey, value=value)
-
     def recovery_onchain_dialog(self, inputs, outputs, recovery_keypairs):
         """Code copied from pay_onchain_dialog"""
         external_keypairs = None
@@ -304,7 +290,7 @@ class RecoveryTab(QWidget):
             recovery_keypair = self._get_recovery_keypair()
             atxs = self._get_checked_atxs()
 
-            inputs, output = self._get_recovery_inputs_and_output(atxs, address)
+            inputs, output = self.wallet.get_inputs_and_output_for_recovery(atxs, address)
             inputs = self.wallet.prepare_inputs_for_recovery(inputs)
         except Exception as e:
             self.electrum_main_window.on_error([0, e])
