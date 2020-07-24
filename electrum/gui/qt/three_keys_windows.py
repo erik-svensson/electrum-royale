@@ -292,15 +292,27 @@ class ElectrumAIRWindow(ElectrumMultikeyWalletWindow):
         text = self.instant_privkey_line.text()
         return text.split()
 
+    def get_instant_keypair(self):
+        stored_instant_pubkey = self.wallet.storage.get('instant_pubkey')
+        seed = self.get_instant_seed()
+        if not short_mnemonic.is_valid(seed):
+            raise ValueError(_("Invalid instant TX seed"))
+        privkey, pubkey = short_mnemonic.seed_to_keypair(seed)
+        if pubkey != stored_instant_pubkey:
+            raise Exception(_("Instant TX seed not matching any key in this wallet"))
+        return {pubkey: (privkey, True)}
+
     def do_pay(self):
         invoice = self.read_invoice()
         if not invoice:
             return
         if self.tx_type_combo.currentIndex() == self.TX_TYPES['instant']:
-            seed = self.get_instant_seed()
-            privkey, pubkey = short_mnemonic.seed_to_keypair(seed)
-            keypair = {pubkey: (privkey, True)}
-            self.wallet.set_instant()
+            try:
+                keypair = self.get_instant_keypair()
+                self.wallet.set_instant()
+            except Exception as e:
+                self.on_error([0, str(e)])
+                return
         else:
             keypair = None
             self.wallet.set_alert()
