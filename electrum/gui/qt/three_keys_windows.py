@@ -7,8 +7,6 @@ from .recovery_list import RecoveryTab
 class ElectrumARWindow(ElectrumWindow):
     def __init__(self, gui_object: 'ElectrumGui', wallet: 'Abstract_Wallet'):
         super().__init__(gui_object=gui_object, wallet=wallet)
-        self.alert_transactions = []
-
         self.recovery_tab = self.create_recovery_tab(wallet, self.config)
         # todo add proper icon
         self.tabs.addTab(self.recovery_tab, read_QIcon('recovery.png'), _('Recovery'))
