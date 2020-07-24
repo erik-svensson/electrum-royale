@@ -1,21 +1,21 @@
-from datetime import datetime
-from functools import partial
+import enum
 
 from PyQt5.QtCore import Qt, QRect
-from PyQt5.QtGui import QStandardItemModel, QStandardItem
-from PyQt5.QtWidgets import QVBoxLayout, QLabel, QPushButton, QWidget, QHBoxLayout, QLineEdit, \
-    QTreeView, QAbstractItemView, QHeaderView, QStyleOptionButton, QStyle, QGridLayout, QCompleter, QComboBox
+from PyQt5.QtGui import QStandardItem
+from PyQt5.QtWidgets import QVBoxLayout, QLabel, QWidget, QHBoxLayout, QHeaderView, QStyleOptionButton, QStyle, \
+    QGridLayout, QCompleter, QComboBox, \
+    QStyledItemDelegate
 
-from .amountedit import BTCAmountEdit, MyLineEdit, AmountEdit
-from .confirm_tx_dialog import ConfirmTxDialog
-from .util import read_QIcon, WaitingDialog, HelpLabel, EnterButton
-from .main_window import ElectrumWindow
 from electrum.i18n import _
-from ... import bitcoin
+from .amountedit import BTCAmountEdit, MyLineEdit, AmountEdit
+from .completion_text_edit import CompletionTextEdit
+from .confirm_tx_dialog import ConfirmTxDialog
+from .main_window import ElectrumWindow
+from .recovery_list import RecoveryTabARStandalone, RecoveryTabAIRStandalone
+from .util import read_QIcon, HelpLabel, EnterButton
+from ...mnemonic import load_wordlist
 from ...plugin import run_hook
-from ...transaction import PartialTxOutput, PartialTxInput, PartialTransaction
-from ...util import bfh
-from .recovery_list import RecoveryTab
+from ...three_keys import short_mnemonic
 
 
 class CheckableHeader(QHeaderView):
@@ -70,7 +70,7 @@ class ElectrumMultikeyWalletWindow(ElectrumWindow):
         self.tabs.addTab(self.recovery_tab, read_QIcon('recovery.png'), _('Recovery'))
 
     def create_recovery_tab(self, wallet: 'Abstract_Wallet', config):
-        return RecoveryTab(self, wallet, config)
+        raise Exception("Base class method should not be implemented")
 
     def recovery_onchain_dialog(self, inputs, outputs, recovery_keypairs):
         """Code copied from pay_onchain_dialog"""
@@ -112,14 +112,6 @@ class ElectrumMultikeyWalletWindow(ElectrumWindow):
         self.wallet.set_alert()
         super().sweep_key_dialog()
 
-    def pay_multiple_invoices(self, invoices):
-        self.wallet.set_alert()
-        super().pay_multiple_invoices(invoices)
-
-    def do_pay_invoice(self, invoice):
-        self.wallet.set_alert()
-        super().do_pay_invoice(invoice)
-
     def show_recovery_tab(self):
         self.tabs.setCurrentIndex(self.tabs.indexOf(self.recovery_tab))
 
@@ -129,11 +121,31 @@ class ElectrumARWindow(ElectrumMultikeyWalletWindow):
     def __init__(self, gui_object: 'ElectrumGui', wallet: 'Abstract_Wallet'):
         super().__init__(gui_object=gui_object, wallet=wallet)
 
+    def create_recovery_tab(self, wallet: 'Abstract_Wallet', config):
+        return RecoveryTabARStandalone(self, wallet, config)
+
+    def do_pay(self):
+        invoice = self.read_invoice()
+        if not invoice:
+            return
+        self.wallet.save_invoice(invoice)
+        self.invoice_list.update()
+        self.do_clear()
+        self.wallet.set_alert()
+        self.do_pay_invoice(invoice)
+
 
 class ElectrumAIRWindow(ElectrumMultikeyWalletWindow):
+    class TX_TYPES(enum.IntEnum):
+        alert = 0
+        instant = 1
 
     def __init__(self, gui_object: 'ElectrumGui', wallet: 'Abstract_Wallet'):
+        self.wordlist = load_wordlist("english.txt")
         super().__init__(gui_object=gui_object, wallet=wallet)
+
+    def create_recovery_tab(self, wallet: 'Abstract_Wallet', config):
+        return RecoveryTabAIRStandalone(self, wallet, config)
 
     def create_send_tab(self):
         # A 4-column grid layout.  All the stretch is in the last column.
@@ -187,15 +199,44 @@ class ElectrumAIRWindow(ElectrumMultikeyWalletWindow):
         self.max_button.setCheckable(True)
         grid.addWidget(self.max_button, 3, 3)
 
+        def on_tx_type(index):
+            if self.tx_type_combo.currentIndex() == self.TX_TYPES['alert']:
+                self.instant_privkey_line.setEnabled(False)
+                self.instant_privkey_line.clear()
+            elif self.tx_type_combo.currentIndex() == self.TX_TYPES['instant']:
+                self.instant_privkey_line.setEnabled(True)
+
         msg = _('Choose transaction type.') + '\n\n' + \
               _('Alert - confirmed after 24h, reversible.') + '\n' + \
               _('Instant - confirmed immediately, non-reversible. Needs an additional signature.')
         tx_type_label = HelpLabel(_('Transaction type'), msg)
         self.tx_type_combo = QComboBox()
-        self.tx_type_combo.addItems([_('alert'), _('instant')])
-        self.tx_type_combo.setCurrentIndex(0)
+        self.tx_type_combo.addItems([_(tx_type.name) for tx_type in self.TX_TYPES])
+        self.tx_type_combo.setCurrentIndex(self.TX_TYPES['alert'])
+        self.tx_type_combo.currentIndexChanged.connect(on_tx_type)
         grid.addWidget(tx_type_label, 4, 0)
-        grid.addWidget(self.tx_type_combo, 4, 1)
+        grid.addWidget(self.tx_type_combo, 4, 1, 1, -1)
+
+        instant_privkey_label = HelpLabel(_('Instant TX seed'), msg)
+        self.instant_privkey_line = CompletionTextEdit()
+        self.instant_privkey_line.setTabChangesFocus(False)
+        self.instant_privkey_line.setEnabled(False)
+        self.instant_privkey_line.textChanged.connect(self.on_instant_priv_key_line_edit)
+
+        # complete line edit with suggestions
+        class CompleterDelegate(QStyledItemDelegate):
+            def initStyleOption(self, option, index):
+                super().initStyleOption(option, index)
+
+        delegate = CompleterDelegate(self.instant_privkey_line)
+        self.completer = QCompleter(self.wordlist)
+        self.completer.popup().setItemDelegate(delegate)
+        self.instant_privkey_line.set_completer(self.completer)
+
+        height = self.payto_e.height()
+        self.instant_privkey_line.setMaximumHeight(2 * height)
+        grid.addWidget(instant_privkey_label, 5, 0)
+        grid.addWidget(self.instant_privkey_line, 5, 1, 1, -1)
 
         self.save_button = EnterButton(_("Save"), self.do_save_invoice)
         self.send_button = EnterButton(_("Pay"), self.do_pay)
@@ -239,3 +280,46 @@ class ElectrumAIRWindow(ElectrumMultikeyWalletWindow):
         w.searchable_list = self.invoice_list
         run_hook('create_send_tab', grid)
         return w
+
+    def on_instant_priv_key_line_edit(self):
+        for word in self.get_instant_seed()[:-1]:
+            if word not in self.wordlist:
+                self.instant_privkey_line.disable_suggestions()
+                return
+        self.instant_privkey_line.enable_suggestions()
+
+    def get_instant_seed(self):
+        text = self.instant_privkey_line.text()
+        return text.split()
+
+    def do_pay(self):
+        invoice = self.read_invoice()
+        if not invoice:
+            return
+        if self.tx_type_combo.currentIndex() == self.TX_TYPES['instant']:
+            seed = self.get_instant_seed()
+            privkey, pubkey = short_mnemonic.seed_to_keypair(seed)
+            keypair = {pubkey: (privkey, True)}
+            self.wallet.set_instant()
+        else:
+            keypair = None
+            self.wallet.set_alert()
+        self.wallet.save_invoice(invoice)
+        self.invoice_list.update()
+        self.do_clear()
+        self.do_pay_invoice(invoice, external_keypairs=keypair)
+
+    def do_clear(self):
+        self.max_button.setChecked(False)
+        self.payment_request = None
+        self.payto_URI = None
+        self.payto_e.is_pr = False
+        self.is_onchain = False
+        self.set_onchain(False)
+        for e in [self.payto_e, self.message_e, self.amount_e]:
+            e.setText('')
+            e.setFrozen(False)
+        self.instant_privkey_line.clear()
+        self.tx_type_combo.setCurrentIndex(self.TX_TYPES['alert'])
+        self.update_status()
+        run_hook('do_clear', self)

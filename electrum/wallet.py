@@ -26,60 +26,51 @@
 #   - Standard_Wallet: one keystore, P2PKH
 #   - Multisig_Wallet: several keystores, P2SH
 
+import copy
+import operator
 import os
-import sys
 import random
 import time
-import json
-import copy
-import errno
-import traceback
-import operator
 from collections import defaultdict
-from functools import partial
-from numbers import Number
 from decimal import Decimal
+from numbers import Number
 from typing import TYPE_CHECKING, List, Optional, Tuple, Union, NamedTuple, \
-    Sequence, Dict, Any, Set
+    Sequence, Dict, Set
 
 from electrum.three_keys.multikey_generator import MultiKeyScriptGenerator
-
-from .i18n import _
-from .bip32 import BIP32Node
-from .crypto import sha256
-from .three_keys.script import TwoKeysScriptGenerator, ThreeKeysScriptGenerator
-from .three_keys.transaction import TxType, ThreeKeysTransaction
-from .util import (NotEnoughFunds, UserCancelled, profiler,
-                   format_satoshis, format_fee_satoshis, NoDynamicFeeEstimates,
-                   WalletFileException, BitcoinException,
-                   InvalidPassword, format_time, timestamp_to_datetime, Satoshis,
-                   Fiat, bfh, bh2u, TxMinedInfo, quantize_feerate, create_bip21_uri, OrderedDictWithIndex)
-from .util import PR_TYPE_ONCHAIN, PR_TYPE_LN
-from .simple_config import SimpleConfig
-from .bitcoin import (COIN, is_address, address_to_script,
-                      is_minikey, relayfee, dust_threshold, push_script,
-                      COINBASE_MATURITY)
-from .crypto import sha256d
 from . import keystore
-from .keystore import load_keystore, Hardware_KeyStore, KeyStore
-from .util import multisig_type
-from .storage import StorageEncryptionVersion, WalletStorage
 from . import transaction, bitcoin, coinchooser, paymentrequest, ecc, bip32
-from .transaction import (Transaction, TxInput, UnknownTxinType, TxOutput,
-                          PartialTransaction, PartialTxInput, PartialTxOutput, TxOutpoint)
-from .plugin import run_hook
 from .address_synchronizer import (AddressSynchronizer, TX_HEIGHT_LOCAL,
                                    TX_HEIGHT_UNCONF_PARENT,
                                    TX_HEIGHT_UNCONFIRMED, TX_HEIGHT_FUTURE,
-                                   UnrelatedTransactionException, HistoryItem)
-from .util import PR_PAID, PR_UNPAID, PR_UNKNOWN, PR_EXPIRED, PR_INFLIGHT
+                                   HistoryItem)
+from .bip32 import BIP32Node
+from .bitcoin import (COIN, is_address, is_minikey, relayfee, dust_threshold, COINBASE_MATURITY)
 from .contacts import Contacts
-from .interface import NetworkException
+from .crypto import sha256
+from .crypto import sha256d
 from .ecc_fast import is_using_fast_ecc
-from .mnemonic import Mnemonic
-from .logging import get_logger
+from .i18n import _
+from .interface import NetworkException
+from .keystore import load_keystore, Hardware_KeyStore, KeyStore
 from .lnworker import LNWallet
-from .paymentrequest import PaymentRequest
+from .logging import get_logger
+from .mnemonic import Mnemonic
+from .plugin import run_hook
+from .simple_config import SimpleConfig
+from .storage import StorageEncryptionVersion, WalletStorage
+from .three_keys.script import TwoKeysScriptGenerator, ThreeKeysScriptGenerator
+from .three_keys.transaction import TxType, ThreeKeysTransaction
+from .transaction import (Transaction, TxInput, UnknownTxinType, TxOutput,
+                          PartialTransaction, PartialTxInput, PartialTxOutput, TxOutpoint)
+from .util import (NotEnoughFunds, UserCancelled, profiler,
+                   format_fee_satoshis, NoDynamicFeeEstimates,
+                   WalletFileException, BitcoinException,
+                   InvalidPassword, format_time, timestamp_to_datetime, Satoshis,
+                   Fiat, bfh, bh2u, TxMinedInfo, quantize_feerate, create_bip21_uri, OrderedDictWithIndex)
+from .util import PR_PAID, PR_UNPAID, PR_UNKNOWN, PR_EXPIRED
+from .util import PR_TYPE_ONCHAIN, PR_TYPE_LN
+from .util import multisig_type
 
 if TYPE_CHECKING:
     from .network import Network
@@ -2290,6 +2281,18 @@ class MultikeyWallet(Simple_Deterministic_Wallet):
     def set_recovery(self):
         self.multisig_script_generator.set_recovery()
 
+    def set_instant(self):
+        self.multisig_script_generator.set_instant()
+
+    def is_alert_mode(self):
+        return self.multisig_script_generator.is_alert_mode()
+
+    def is_recovery_mode(self):
+        return self.multisig_script_generator.is_recovery_mode()
+
+    def is_instant_mode(self):
+        return self.multisig_script_generator.is_instant_mode()
+
     def load_keystore(self):
         self.keystore = load_keystore(self.storage, 'keystore')
         self.txin_type = TwoKeysWallet.derive_txin_type_from_keystore(self.keystore)
@@ -2381,15 +2384,6 @@ class MultikeyWallet(Simple_Deterministic_Wallet):
             mined_info = self.get_tx_height(tx_hash)
             if tx.tx_type == TxType.ALERT_PENDING and mined_info.conf > 0:  # skip alerts from mempool
                 yield tx
-
-    def add_recovery_pubkey_to_transaction(self, tx):
-        """Updating transaction inputs pubkeys list by recovery pubkey and adjusting num_sig variable"""
-        for input in tx.inputs():
-            input.pubkeys.append(bytes.fromhex(self.multisig_script_generator.recovery_pubkey))
-            input.num_sig += 1
-            assert len(input.pubkeys) == 2 and input.num_sig == 2, 'Wrong number of pubkeys for performing recovery tx'
-            _logger.info('Updated input by recovery pubkey')
-        return tx
 
     def prepare_inputs_for_recovery(self, inputs: list):
         """Methods for modification tx inputs coming from alert transaction to work with recovery tx.
@@ -2763,12 +2757,73 @@ class TwoKeysWallet(MultikeyWallet):
         script_generator = TwoKeysScriptGenerator(recovery_pubkey=storage.get('recovery_pubkey'))
         super().__init__(storage=storage, config=config, scriptGenerator=script_generator)
 
+    def add_recovery_pubkey_to_transaction(self, tx):
+        """Updating transaction inputs pubkeys list by recovery pubkey and adjusting num_sig variable"""
+        for input in tx.inputs():
+            input.pubkeys.append(bytes.fromhex(self.multisig_script_generator.recovery_pubkey))
+            input.num_sig += 1
+            assert len(input.pubkeys) == 2 and input.num_sig == 2, 'Wrong number of pubkeys for performing recovery tx'
+            _logger.info('Updated input by recovery pubkey')
+        return tx
+
 
 class ThreeKeysWallet(MultikeyWallet):
     def __init__(self, storage: WalletStorage, *, config: SimpleConfig):
         script_generator = ThreeKeysScriptGenerator(recovery_pubkey=storage.get('recovery_pubkey'),
                                                     instant_pubkey=storage.get('instant_pubkey'))
         super().__init__(storage=storage, config=config, scriptGenerator=script_generator)
+
+    def add_recovery_pubkey_to_transaction(self, tx):
+        """Updating transaction inputs pubkeys list by recovery pubkey and adjusting num_sig variable"""
+        for input in tx.inputs():
+            input.pubkeys.append(bytes.fromhex(self.multisig_script_generator.instant_pubkey))
+            input.pubkeys.append(bytes.fromhex(self.multisig_script_generator.recovery_pubkey))
+            input.num_sig += 2
+            assert len(input.pubkeys) == 3 and input.num_sig == 3, 'Wrong number of pubkeys for performing recovery tx'
+            _logger.info('Updated input by recovery pubkey')
+        return tx
+
+    def add_instant_pubkey_to_transaction(self, tx):
+        """Updating transaction inputs pubkeys list by recovery pubkey and adjusting num_sig variable"""
+        for input in tx.inputs():
+            input.pubkeys.append(bytes.fromhex(self.multisig_script_generator.instant_pubkey))
+            input.num_sig += 1
+            assert len(
+                input.pubkeys) == 2 and input.num_sig == 2, 'Wrong number of pubkeys for performing instant tx'
+            _logger.info('Updated input by instant pubkey')
+        return tx
+
+    def sign_transaction(self, tx: Transaction, password, external_keypairs) -> Optional[PartialTransaction]:
+        if self.is_watching_only():
+            return
+        if not isinstance(tx, PartialTransaction):
+            return
+        # add info to a temporary tx copy; including xpubs
+        # and full derivation paths as hw keystores might want them
+        tmp_tx = copy.deepcopy(tx)
+        # update tmp tx
+        self.update_transaction_multisig_generator(tmp_tx)
+
+        tmp_tx.add_info_from_wallet(self, include_xpubs_and_full_paths=True)
+        if self.is_instant_mode():
+            self.add_instant_pubkey_to_transaction(tmp_tx)
+        # sign. start with ready keystores.
+        for k in sorted(self.get_keystores(), key=lambda ks: ks.ready_to_sign(), reverse=True):
+            try:
+                if k.can_sign(tmp_tx):
+                    k.sign_transaction(tmp_tx, password)
+            except UserCancelled:
+                continue
+
+        tmp_tx.sign(external_keypairs)
+        # remove sensitive info; then copy back details from temporary tx
+        tmp_tx.remove_xpubs_and_bip32_paths()
+        # update tx
+        self.update_transaction_multisig_generator(tx)
+
+        tx.combine_with_other_psbt(tmp_tx)
+        tx.add_info_from_wallet(self, include_xpubs_and_full_paths=False)
+        return tx
 
 
 wallet_types = [
