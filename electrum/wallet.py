@@ -924,8 +924,7 @@ class Abstract_Wallet(AddressSynchronizer):
 
     def make_unsigned_transaction(self, *, coins: Sequence[PartialTxInput],
                                   outputs: List[PartialTxOutput], fee=None,
-                                  change_addr: str = None, is_sweep=False,
-                                  coin_chooser_type: str = None) -> PartialTransaction:
+                                  change_addr: str = None, is_sweep=False) -> PartialTransaction:
 
         # prevent side-effect with '!'
         outputs = copy.deepcopy(outputs)
@@ -956,10 +955,7 @@ class Abstract_Wallet(AddressSynchronizer):
 
         if i_max is None:
             # Let the coin chooser select the coins to spend
-            if coin_chooser_type is None:
-                coin_chooser = coinchooser.get_coin_chooser(self.config)
-            else:
-                coin_chooser = coinchooser.get_coin_chooser(coin_chooser_type)
+            coin_chooser = coinchooser.get_coin_chooser(self.config)
             # If there is an unconfirmed RBF tx, merge with it
             base_tx = self.get_unconfirmed_base_tx_for_batching()
             if self.config.get('batch_rbf', False) and base_tx:
@@ -2363,19 +2359,13 @@ class TwoKeysWallet(Simple_Deterministic_Wallet):
 
     def make_unsigned_transaction(self, *, coins: Sequence[PartialTxInput],
                                   outputs: List[PartialTxOutput], fee=None,
-                                  change_addr: str = None, is_sweep=False,
-                                  coin_chooser_type: str = None) -> PartialTransaction:
-        if self.multisig_script_generator.is_recovery_mode():
-            coin_chooser_type = 'Recovery'
-        elif self.multisig_script_generator.is_alert_mode():
-            coin_chooser_type = None
+                                  change_addr: str = None, is_sweep=False) -> PartialTransaction:
         tx = super().make_unsigned_transaction(
             coins=coins,
             outputs=outputs,
             fee=fee,
             change_addr=change_addr,
             is_sweep=is_sweep,
-            coin_chooser_type=coin_chooser_type,
         )
         self.update_transaction_multisig_generator(tx)
         return tx
@@ -2392,21 +2382,11 @@ class TwoKeysWallet(Simple_Deterministic_Wallet):
             if tx.tx_type == TxType.ALERT_PENDING and mined_info.conf > 0 and tx_hash in txi_list:
                 yield tx
 
-    # todo check the logic
     def get_inputs_and_output_for_recovery(self, alert_transactions: ThreeKeysTransaction, destination_address: str):
-        change_adresses = self.get_change_addresses()
-        value = 0
-        inputs = []
-        for atx in alert_transactions:
-            for txin in atx.inputs():
-                inputs.append(PartialTxInput.from_txin(txin))
-            for txout in atx.outputs():
-                if txout.address not in change_adresses:
-                    value += txout.value
-
+        inputs = [PartialTxInput.from_txin(txin) for atx in alert_transactions for txin in atx.inputs()]
         scriptpubkey = bfh(bitcoin.address_to_script(destination_address))
-        # todo check script witness flag
-        output = PartialTxOutput(scriptpubkey=scriptpubkey, value=value)
+        # ! sign sets max value to output
+        output = PartialTxOutput(scriptpubkey=scriptpubkey, value='!')
         return inputs, output
 
     def add_recovery_pubkey_to_transaction(self, tx):

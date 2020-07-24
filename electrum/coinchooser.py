@@ -474,18 +474,8 @@ class CoinChooserPrivacy(CoinChooserRandom):
         return penalty
 
 
-class CoinChooserRecovery(CoinChooserPrivacy):
-    def choose_buckets(self, buckets, sufficient_funds, penalty_func):
-        candidates = self.bucket_candidates_prefer_confirmed(buckets, sufficient_funds)
-        candidates = functools.reduce(lambda a, b: a + b, candidates)
-        winner = penalty_func(candidates)
-        self.logger.info(f"Total number of buckets: {len(buckets)}")
-        return winner
-
-
 COIN_CHOOSERS = {
     'Privacy': CoinChooserPrivacy,
-    'Recovery': CoinChooserRecovery,
 }
 
 
@@ -497,15 +487,7 @@ def get_name(config):
 
 
 def get_coin_chooser(config):
-    """config can be SimpleConfig or string for Recovery Coin Chooser"""
-    if isinstance(config, str):
-        if config not in COIN_CHOOSERS:
-            raise ValueError(f"Unknown coin chooser for '{config}'")
-        klass = COIN_CHOOSERS[config]
-        output_rounding = False
-    else:
-        klass = COIN_CHOOSERS[get_name(config)]
-        output_rounding = config.get('coin_chooser_output_rounding', False)
+    klass = COIN_CHOOSERS[get_name(config)]
     coinchooser = klass()
-    coinchooser.enable_output_value_rounding = output_rounding
+    coinchooser.enable_output_value_rounding = config.get('coin_chooser_output_rounding', False)
     return coinchooser
