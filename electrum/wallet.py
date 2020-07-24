@@ -2793,7 +2793,7 @@ class ThreeKeysWallet(MultikeyWallet):
             _logger.info('Updated input by instant pubkey')
         return tx
 
-    def sign_transaction(self, tx: Transaction, password, external_keypairs) -> Optional[PartialTransaction]:
+    def sign_transaction(self, tx: Transaction, password, external_keypairs=None) -> Optional[PartialTransaction]:
         if self.is_watching_only():
             return
         if not isinstance(tx, PartialTransaction):
