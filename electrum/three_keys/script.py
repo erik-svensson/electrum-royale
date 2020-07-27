@@ -17,14 +17,10 @@ class TwoKeysScriptGenerator(MultiKeyScriptGenerator):
     def get_redeem_script(self, public_keys: List[str]) -> str:
         if not isinstance(public_keys, list) or len(public_keys) not in [1, 2]:
             raise ThreeKeysError(f"Wrong input type! Expected 1 or 2 elements list not '{public_keys}'")
-
-        if len(public_keys) == 2:
-            if self.recovery_pubkey not in public_keys:
-                raise ThreeKeysError('No pubkey in input')
-            if self.recovery_pubkey == public_keys[0]:
-                del public_keys[0]
-            else:
-                del public_keys[1]
+        # filter out recovery pubkey
+        filtered_keys = list(filter(lambda item: item != self.recovery_pubkey, public_keys))
+        if len(filtered_keys) == 2:
+            raise ThreeKeysError('No pubkey in input')
 
         pub_key = public_keys[0]
         return (
