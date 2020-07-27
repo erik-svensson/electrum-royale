@@ -85,13 +85,15 @@ class TestScripts(TestCase):
         pub_keys = ['dummy-key-1', 'dummy-key-2']
         with self.assertRaises(ThreeKeysError) as error:
             generator.get_redeem_script(pub_keys)
-        self.assertTrue(str(error.exception) == 'No pubkey in input')
+        self.assertTrue('Cannot deduce pubkey from' in str(error.exception))
 
         pub_keys = [self.random_2keys_pub_key, self.recovery_pub_key]
         generator.get_redeem_script(pub_keys)
 
         pub_keys = [self.recovery_pub_key, self.recovery_pub_key]
-        generator.get_redeem_script(pub_keys)
+        with self.assertRaises(ThreeKeysError) as error:
+            generator.get_redeem_script(pub_keys)
+        self.assertTrue('Cannot deduce pubkey from' in str(error.exception))
 
     @skip('It needs re-implementation in ThreeKeysScriptGenerator class')
     def test_3keys_errors(self):

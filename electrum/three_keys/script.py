@@ -19,10 +19,10 @@ class TwoKeysScriptGenerator(MultiKeyScriptGenerator):
             raise ThreeKeysError(f"Wrong input type! Expected 1 or 2 elements list not '{public_keys}'")
         # filter out recovery pubkey
         filtered_keys = list(filter(lambda item: item != self.recovery_pubkey, public_keys))
-        if len(filtered_keys) == 2:
-            raise ThreeKeysError('No pubkey in input')
+        if len(filtered_keys) != 1:
+            raise ThreeKeysError(f'Cannot deduce pubkey from {public_keys}')
 
-        pub_key = public_keys[0]
+        pub_key = filtered_keys[0]
         return (
                 opcodes.OP_IF.hex() +
                 opcodes.OP_1.hex() +
