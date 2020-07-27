@@ -211,7 +211,7 @@ class RecoveryTab(QWidget):
             address = self.recovery_address_line.text()
             recovery_keypair = self._get_recovery_keypair()
             atxs = self._get_checked_atxs()
-            inputs, output = self._get_recovery_inputs_and_output(atxs, address)
+            inputs, output = self.wallet.get_inputs_and_output_for_recovery(atxs, address)
             inputs = self.wallet.prepare_inputs_for_recovery(inputs)
         except Exception as e:
             self.electrum_main_window.on_error([0, e])
@@ -341,7 +341,7 @@ class RecoveryTabAIRStandalone(RecoveryTab):
             recovery_keypair = self._get_recovery_keypair()
             atxs = self._get_checked_atxs()
 
-            inputs, output = self._get_recovery_inputs_and_output(atxs, address)
+            inputs, output = self.wallet.get_inputs_and_output_for_recovery(atxs, address)
             inputs = self.wallet.prepare_inputs_for_recovery(inputs)
         except Exception as e:
             self.electrum_main_window.on_error([0, e])
