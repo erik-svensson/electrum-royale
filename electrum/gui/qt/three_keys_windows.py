@@ -64,49 +64,12 @@ class ElectrumMultikeyWalletWindow(ElectrumWindow):
     def __init__(self, gui_object: 'ElectrumGui', wallet: 'Abstract_Wallet'):
         super().__init__(gui_object=gui_object, wallet=wallet)
         self.alert_transactions = []
-
         self.recovery_tab = self.create_recovery_tab(wallet, self.config)
         # todo add proper icon
         self.tabs.addTab(self.recovery_tab, read_QIcon('recovery.png'), _('Recovery'))
 
     def create_recovery_tab(self, wallet: 'Abstract_Wallet', config):
         raise Exception("Base class method should not be implemented")
-
-    def recovery_onchain_dialog(self, inputs, outputs, recovery_keypairs):
-        """Code copied from pay_onchain_dialog"""
-        external_keypairs = None
-        invoice = None
-        # trustedcoin requires this
-        if run_hook('abort_send', self):
-            return
-        is_sweep = bool(external_keypairs)
-        make_tx = lambda fee_est: self.wallet.make_unsigned_transaction(
-            coins=inputs,
-            outputs=outputs,
-            fee=fee_est,
-            is_sweep=is_sweep)
-        if self.config.get('advanced_preview'):
-            self.preview_tx_dialog(make_tx, outputs, external_keypairs=external_keypairs, invoice=invoice)
-            return
-
-        output_values = [x.value for x in outputs]
-        output_value = '!' if '!' in output_values else sum(output_values)
-        d = ConfirmTxDialog(self, make_tx, output_value, is_sweep)
-        d.update_tx()
-        if d.not_enough_funds:
-            self.show_message(_('Not Enough Funds'))
-            return
-        cancelled, is_send, password, tx = d.run()
-        if cancelled:
-            return
-        if is_send:
-            def sign_done(success):
-                if success:
-                    self.broadcast_or_show(tx, invoice=invoice)
-
-            self.sign_tx_with_password(tx, sign_done, password, recovery_keypairs)
-        else:
-            self.preview_tx_dialog(make_tx, outputs, external_keypairs=external_keypairs, invoice=invoice)
 
     def sweep_key_dialog(self):
         self.wallet.set_alert()

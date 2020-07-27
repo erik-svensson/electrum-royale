@@ -87,11 +87,11 @@ class RecoveryView(MyTreeView):
         for index, txid in enumerate(self.parent.wallet.get_atxs_to_recovery()):
             invoice_type = PR_TYPE_ONCHAIN
             if invoice_type == PR_TYPE_LN:
-                # key = item['rhash']
+                #key = item['rhash']
                 icon_name = 'lightning.png'
             elif invoice_type == PR_TYPE_ONCHAIN:
                 icon_name = 'bitcoin.png'
-                # if item.get('bip70'):
+                #if item.get('bip70'):
                 #   icon_name = 'seal.png'
             else:
                 raise Exception('Unsupported type')
@@ -154,19 +154,6 @@ class RecoveryTab(QWidget):
     def _get_checked_atxs(self):
         return [row.data(ROLE_REQUEST_ID) for row in self.invoice_list.selectedIndexes() if row.data(ROLE_REQUEST_ID)]
 
-    @staticmethod
-    def _get_recovery_inputs_and_output(atxs, address):
-        scriptpubkey = bfh(bitcoin.address_to_script(address))
-        value = 0
-        inputs = []
-        for atx in atxs:
-            for txout in atx.outputs():
-                value += txout.value
-            for txinp in atx.inputs():
-                # todo check script witness flag !!!
-                inputs.append(PartialTxInput.from_txin(txinp))
-        return inputs, PartialTxOutput(scriptpubkey=scriptpubkey, value=value)
-
     def recovery_onchain_dialog(self, inputs, outputs, recovery_keypairs):
         """Code copied from pay_onchain_dialog"""
         external_keypairs = None
@@ -212,7 +199,6 @@ class RecoveryTab(QWidget):
             callback(False)
 
         on_success = run_hook('tc_sign_wrapper', self.wallet, tx, on_success, on_failure) or on_success
-
         if external_keypairs and self.wallet.is_recovery_mode():
             task = partial(self.wallet.sign_recovery_transaction, tx, password, external_keypairs)
         else:
@@ -225,7 +211,6 @@ class RecoveryTab(QWidget):
             address = self.recovery_address_line.text()
             recovery_keypair = self._get_recovery_keypair()
             atxs = self._get_checked_atxs()
-
             inputs, output = self._get_recovery_inputs_and_output(atxs, address)
             inputs = self.wallet.prepare_inputs_for_recovery(inputs)
         except Exception as e:
@@ -369,6 +354,5 @@ class RecoveryTabAIRStandalone(RecoveryTab):
             outputs=[output],
             recovery_keypairs=recovery_keypair,
         )
-
         self.instant_privkey_line.setText('')
         self.recovery_privkey_line.setText('')

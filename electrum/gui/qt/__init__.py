@@ -29,7 +29,6 @@ import sys
 import traceback
 import threading
 from typing import Optional, TYPE_CHECKING
-
 from .three_keys_windows import ElectrumARWindow, ElectrumAIRWindow
 
 try:
