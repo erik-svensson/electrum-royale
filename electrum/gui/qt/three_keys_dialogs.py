@@ -1,6 +1,7 @@
 import copy
 import json
 from enum import IntEnum
+from typing import List
 
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QFont
@@ -25,9 +26,10 @@ class PubKeyValidator:
     COMPRESSED_PUBKEY_LENGTH = 66
     UNCOMPRESSED_PUBKEY_LENGTH = 130
 
-    def __init__(self, text_edit: QTextEdit, error_label: QLabel):
+    def __init__(self, text_edit: QTextEdit, error_label: QLabel, disallowed_pubkeys: List[str]):
         self.text_edit = text_edit
         self.error_label = error_label
+        self.disallowed_pubkeys = disallowed_pubkeys
 
     def _set_label(self, message: str):
         self.error_label.setText(message)
@@ -53,13 +55,13 @@ class PubKeyValidator:
         if len(input_str) > pubkey_max_length:
             self._set_label(_('PubKey cropped because too long string passed'))
             return ValidationState.CROPPED
-        return self.is_pubkey(input_str)
+        return self.is_allowed_pubkey(input_str)
 
     def _fixup_too_long_pubkey(self, input_str: str, pubkey_max_length: int):
         pubkey = input_str[:pubkey_max_length]
         return self.validate(pubkey)
 
-    def is_pubkey(self, pubkey_str: str) -> ValidationState:
+    def is_allowed_pubkey(self, pubkey_str: str) -> ValidationState:
         try:
             pubkey_bytes = bytes.fromhex(pubkey_str)
         except ValueError:
@@ -68,6 +70,10 @@ class PubKeyValidator:
 
         if not ECPubkey.is_pubkey_bytes(pubkey_bytes):
             self._set_label(_('Wrong pubkey format'))
+            return ValidationState.INVALID
+
+        if ECPubkey(pubkey_bytes).get_public_key_hex() in self.disallowed_pubkeys:
+            self._set_label(_('This public key was already used. Please generate a new one.'))
             return ValidationState.INVALID
 
         return ValidationState.VALID
@@ -80,7 +86,7 @@ class ErrorLabel(QLabel):
 
 
 class InsertPubKeyDialog(QVBoxLayout):
-    def __init__(self, parent, message_label):
+    def __init__(self, parent, message_label, disallowed_keys: List[str] = []):
         super().__init__()
         self.parent = parent
         self._if_apply_validation_logic = True
@@ -88,7 +94,7 @@ class InsertPubKeyDialog(QVBoxLayout):
         edit = QTextEdit()
         error_label = ErrorLabel()
 
-        self.validator = PubKeyValidator(edit, error_label)
+        self.validator = PubKeyValidator(edit, error_label, disallowed_keys)
         edit.textChanged.connect(self._on_change)
         self.addWidget(label)
         self.addWidget(edit)
