@@ -2803,7 +2803,7 @@ class ThreeKeysWallet(MultikeyWallet):
         return tx
 
     def add_instant_pubkey_to_transaction(self, tx):
-        """Updating transaction inputs pubkeys list by recovery pubkey and adjusting num_sig variable"""
+        """Updating transaction inputs pubkeys list by instant pubkey and adjusting num_sig variable"""
         for input in tx.inputs():
             input.pubkeys.append(bytes.fromhex(self.multisig_script_generator.instant_pubkey))
             input.num_sig += 1
@@ -2837,11 +2837,14 @@ class ThreeKeysWallet(MultikeyWallet):
         tmp_tx.sign(external_keypairs)
         # remove sensitive info; then copy back details from temporary tx
         tmp_tx.remove_xpubs_and_bip32_paths()
+        tmp_tx.finalize_psbt()
         # update tx
-        self.update_transaction_multisig_generator(tx)
+        tx.multisig_script_generator = self.multisig_script_generator
+        tx.update_inputs()
 
         tx.combine_with_other_psbt(tmp_tx)
         tx.add_info_from_wallet(self, include_xpubs_and_full_paths=False)
+        tx.finalize_psbt()
         return tx
 
 
