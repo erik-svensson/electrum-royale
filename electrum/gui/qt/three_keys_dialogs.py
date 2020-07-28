@@ -86,7 +86,8 @@ class ErrorLabel(QLabel):
 
 
 class InsertPubKeyDialog(QVBoxLayout):
-    def __init__(self, parent, message_label, disallowed_keys: List[str] = []):
+    def __init__(self, parent, message_label, disallowed_keys: List[str] = None):
+        disallowed_keys = disallowed_keys or []
         super().__init__()
         self.parent = parent
         self._if_apply_validation_logic = True

@@ -9,7 +9,6 @@ from PyQt5.QtWidgets import QVBoxLayout, QLabel, QWidget, QHBoxLayout, QHeaderVi
 from electrum.i18n import _
 from .amountedit import BTCAmountEdit, MyLineEdit, AmountEdit
 from .completion_text_edit import CompletionTextEdit
-from .confirm_tx_dialog import ConfirmTxDialog
 from .main_window import ElectrumWindow
 from .recovery_list import RecoveryTabARStandalone, RecoveryTabAIRStandalone
 from .util import read_QIcon, HelpLabel, EnterButton
@@ -69,7 +68,7 @@ class ElectrumMultikeyWalletWindow(ElectrumWindow):
         self.tabs.addTab(self.recovery_tab, read_QIcon('recovery.png'), _('Recovery'))
 
     def create_recovery_tab(self, wallet: 'Abstract_Wallet', config):
-        raise Exception("Base class method should not be implemented")
+        raise NotImplementedError()
 
     def sweep_key_dialog(self):
         self.wallet.set_alert()

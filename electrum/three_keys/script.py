@@ -100,7 +100,6 @@ class ThreeKeysScriptGenerator(MultiKeyScriptGenerator):
         if self._instant_recovery_alert_flag is None:
             raise ThreeKeysError('Recovery/alert/instant flag not set!')
         sigs = ''.join(push_script(sig) for sig in signatures)
-        self.get_redeem_script(public_keys)
         return (
                 opcodes.OP_0.hex() +
                 sigs +
