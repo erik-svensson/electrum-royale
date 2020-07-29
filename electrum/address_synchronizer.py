@@ -738,7 +738,7 @@ class AddressSynchronizer(Logger):
                     value = (height, v, is_cb)
                     if tx_type == TxType.ALERT_PENDING.name:
                         alert_incoming[key] = value
-                    elif tx_type == TxType.ALERT_CONFIRMED.name:
+                    elif tx_type == TxType.ALERT_CONFIRMED.name or tx_type == TxType.ALERT_RECOVERED.name:
                         if key in alert_incoming:
                             del alert_incoming[key]
                         received[key] = value
@@ -749,7 +749,7 @@ class AddressSynchronizer(Logger):
                 for txi, v in l:
                     if tx_type == TxType.ALERT_PENDING.name:
                         alert_outgoing[txi] = height
-                    elif tx_type == TxType.ALERT_CONFIRMED.name:
+                    elif tx_type == TxType.ALERT_CONFIRMED.name or tx_type == TxType.ALERT_RECOVERED.name:
                         if txi in alert_outgoing:
                             del alert_outgoing[txi]
                         sent[txi] = height
