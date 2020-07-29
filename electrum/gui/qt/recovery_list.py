@@ -1,17 +1,13 @@
 from enum import IntEnum
 from datetime import datetime, timedelta
 from functools import partial
-from hashlib import sha256
-from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
-from cryptography.hazmat.backends import default_backend
-from cryptography.hazmat.primitives import hashes
 
-from typing import Optional, Union, List, Dict
+from typing import Union, List, Dict
 
 from PyQt5.QtCore import Qt
-from PyQt5.QtGui import QStandardItemModel, QStandardItem, QMouseEvent, QFocusEvent, QValidator
-from PyQt5.QtWidgets import QPushButton, QLabel, QWidget, QComboBox, QLineEdit,\
-    QCompleter, QAbstractItemView, QTreeView, QHeaderView, QStyledItemDelegate,\
+from PyQt5.QtGui import QStandardItemModel, QStandardItem, QMouseEvent, QValidator
+from PyQt5.QtWidgets import QPushButton, QLabel, QWidget, QComboBox,\
+    QCompleter, QTreeView, QHeaderView, QStyledItemDelegate,\
     QVBoxLayout, QGridLayout
 
 from electrum.i18n import _
@@ -191,18 +187,6 @@ class RecoveryTab(QWidget):
     def get_recovery_seed(self):
         text = self.recovery_privkey_line.text()
         return text.split()
-
-    @staticmethod
-    def generate_encryption_key(salt: bytes, password: bytes) -> [bytes, int]:
-        kdf = PBKDF2HMAC(
-            algorithm=hashes.SHA256(),
-            length=32,
-            salt=salt,
-            iterations=100000,
-            backend=default_backend()
-        )
-        key = kdf.derive(password)
-        return key
 
     def _get_recovery_keypair(self):
         stored_recovery_pubkey = self.wallet.storage.get('recovery_pubkey')
