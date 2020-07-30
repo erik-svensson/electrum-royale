@@ -17,7 +17,7 @@ from electrum.wallet import Abstract_Wallet
 from electrum.util import get_request_status, PR_TYPE_ONCHAIN, PR_TYPE_LN
 from electrum import bitcoin
 
-from .util import read_QIcon, pr_icons, WaitingDialog, filter_non_printable
+from .util import read_QIcon, pr_icons, WaitingDialog, filter_non_printable, ColorScheme
 from .confirm_tx_dialog import ConfirmTxDialog
 from .completion_text_edit import CompletionTextEdit
 from ...mnemonic import load_wordlist
@@ -189,9 +189,17 @@ class RecoveryTab(QWidget):
         for addr in addr_list:
             obj.addItem(addr)
 
+        # must be after item add
         obj.setValidator(Validator(obj))
+        obj.editTextChanged.connect(self.onEditTextChanged)
 
         return obj
+
+    def onEditTextChanged(self, input: str):
+        if not is_address_valid(input):
+            self.recovery_address_line.setStyleSheet(ColorScheme.RED.as_stylesheet(True))
+        else:
+            self.recovery_address_line.setStyleSheet(ColorScheme.DEFAULT.as_stylesheet(True))
 
     def on_priv_key_line_edit(self):
         for word in self.get_recovery_seed()[:-1]:
