@@ -244,18 +244,28 @@ class BaseWizard(Logger):
         self.get_instant_pubkey(run_next=self.on_three_keys, recovery_key=self.data['recovery_pubkey'])
 
     def three_keys_2fa(self):
-        def collect_recovery_pubkey(pubkey: str):
-            self.data['recovery_pubkey'] = pubkey
-            self.run('three_keys_2fa_generate_instant_privkey')
+        def collect_instant_pubkey(instant_pubkey: str):
+            self.data['instant_pubkey'] = instant_pubkey
+            self.run('get_recovery_pubkey', run_next=self.on_three_keys, instant_key=self.data['instant_pubkey'])
 
-        self.get_recovery_pubkey(run_next=collect_recovery_pubkey)
+        def process_choice(choice):
+            if choice == 'multikey_2fa_create':
+                entropy_2fa = short_mnemonic.generate_entropy()
+                self.display_2fa_pairing_qr(run_next=collect_instant_pubkey, entropy=entropy_2fa)
+            elif choice == 'multikey_2fa_import':
+                self.get_instant_pubkey(run_next=collect_instant_pubkey)
 
-    def three_keys_2fa_generate_instant_privkey(self):
-        entropy_2fa = short_mnemonic.generate_entropy()
-        self.display_2fa_pairing_qr(run_next=self.on_three_keys, entropy=entropy_2fa)
+        title = _('Transaction authenticator')
+        message = _('Do you want to use existing GoldWallet transaction authenticator?')
+        choices = [
+            ('multikey_2fa_create', _('Create new authenticator')),
+            ('multikey_2fa_import', _('Use existing authenticator')),
+        ]
 
-    def on_three_keys(self, instant_pubkey: str):
-        self.data['instant_pubkey'] = instant_pubkey
+        self.choice_dialog(title=title, message=message, choices=choices, run_next=process_choice)
+
+    def on_three_keys(self, recovery_pubkey: str):
+        self.data['recovery_pubkey'] = recovery_pubkey
         self.run('choose_keystore')
 
     def choose_keystore(self):

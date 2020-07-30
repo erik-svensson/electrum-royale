@@ -517,7 +517,7 @@ class InstallWizard(QDialog, MessageBoxMixin, BaseWizard):
         return action
 
     @wizard_dialog
-    def get_recovery_pubkey(self, run_next):
+    def get_recovery_pubkey(self, run_next, instant_key=None):
         # todo move it to some global settings ?
         web_generator_url = 'https://keygenerator.cloudbestenv.com/'
         label = QLabel()
@@ -528,12 +528,13 @@ class InstallWizard(QDialog, MessageBoxMixin, BaseWizard):
         label.setTextInteractionFlags(Qt.TextBrowserInteraction)
         label.setWordWrap(True)
 
-        layout = InsertPubKeyDialog(self, message_label=label)
+        disallowed_keys = [instant_key] if instant_key else []
+        layout = InsertPubKeyDialog(self, message_label=label, disallowed_keys=disallowed_keys)
         self.exec_layout(layout, _('Recovery public key'), next_enabled=False)
         return layout.get_compressed_pubkey()
 
     @wizard_dialog
-    def get_instant_pubkey(self, run_next, recovery_key):
+    def get_instant_pubkey(self, run_next, recovery_key=None):
         # todo move it to some global settings ?
         web_generator_url = 'https://keygenerator.cloudbestenv.com/'
         label = QLabel()
@@ -544,7 +545,8 @@ class InstallWizard(QDialog, MessageBoxMixin, BaseWizard):
         label.setTextInteractionFlags(Qt.TextBrowserInteraction)
         label.setWordWrap(True)
 
-        layout = InsertPubKeyDialog(self, message_label=label, disallowed_keys=[recovery_key])
+        disallowed_keys = [recovery_key] if recovery_key else []
+        layout = InsertPubKeyDialog(self, message_label=label, disallowed_keys=disallowed_keys)
         self.exec_layout(layout, _('Instant public key'), next_enabled=False)
         return layout.get_compressed_pubkey()
 
