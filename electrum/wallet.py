@@ -691,7 +691,7 @@ class Abstract_Wallet(AddressSynchronizer):
             tx = self.db.get_transaction(item['txid'])
             if tx.tx_type == TxType.ALERT_PENDING and item['confirmations'] > 0:
                 potential_conflicted_alerts[tx] = value
-            if tx.tx_type == TxType.ALERT_RECOVERED:
+            elif tx.tx_type == TxType.ALERT_RECOVERED:
                 # todo change this value?
                 item['balance'] = Satoshis(0)
             # mempool recovery tx
