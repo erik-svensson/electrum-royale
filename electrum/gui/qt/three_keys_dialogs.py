@@ -9,9 +9,10 @@ from PyQt5.QtWidgets import QVBoxLayout, QTextEdit, QLineEdit, QLabel
 
 from electrum.ecc import ECPubkey, ECPrivkey
 from electrum.i18n import _
-from .qrcodewidget import QRCodeWidget
+from .qrcodewidget import QRCodeWidget, QRDialog
 from ...three_keys import short_mnemonic
 from .util import filter_non_printable
+from ...transaction import PartialTransaction
 
 
 class ValidationState(IntEnum):
@@ -136,6 +137,7 @@ class InsertPubKeyDialog(QVBoxLayout):
 
 
 class Qr2FaDialog(QVBoxLayout):
+
     def __init__(self, parent, title_label: str, pin_label: str, qr_data: dict):
         super().__init__()
         self.parent = parent
@@ -165,3 +167,21 @@ class Qr2FaDialog(QVBoxLayout):
         new_qr_data = copy.deepcopy(qr_data)
         new_qr_data['entropy'] = new_qr_data['entropy'].hex()
         return json.dumps(new_qr_data)
+
+
+class PSBTDialog(QRDialog):
+
+    def __init__(self, psbt: PartialTransaction, parent: 'ElectrumWindow', invoice):
+
+        self.psbt = psbt
+        self.minimize_psbt()
+
+        title = "Transaction QRCode"
+        qr_data = self.psbt.serialize()
+        super().__init__(qr_data, parent, title)
+
+        self.invoice = invoice
+
+    def minimize_psbt(self):
+        self.psbt.convert_all_utxos_to_witness_utxos()
+        self.psbt.remove_xpubs_and_bip32_paths()
