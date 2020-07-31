@@ -200,12 +200,12 @@ class BaseWizard(Logger):
                     action = 'three_keys_standalone'
                 else:
                     raise Exception('Invalid multikey wallet type: ' + self.wallet_type)
-            elif choice == 'multikey_2fa':
+            elif choice[:12] == 'multikey_2fa':
                 self.data['multikey_type'] = '2fa'
                 if self.wallet_type == 'AR':
-                    action = 'two_keys_2fa'
+                    action = 'two_keys_2fa' + choice[-7:]
                 elif self.wallet_type == 'AIR':
-                    action = 'three_keys_2fa'  # TODO: implement this
+                    action = 'three_keys_2fa' + choice[-7:]
                 else:
                     raise Exception('Invalid multikey wallet type: ' + self.wallet_type)
             else:
@@ -216,7 +216,8 @@ class BaseWizard(Logger):
         title = _('Multikey wallet type')
         message = _('Do you want to use GoldWallet as a transaction authenticator?')
         choices = [
-            ('multikey_2fa', _('Use Goldwallet')),
+            ('multikey_2fa_create', _('Use Goldwallet and create a new authenticator')),
+            ('multikey_2fa_import', _('Use Goldwallet and import existing authenticator')),
             ('multikey_standalone', _('Do not use GoldWallet')),
         ]
 
@@ -225,7 +226,10 @@ class BaseWizard(Logger):
     def two_keys_standalone(self):
         self.get_recovery_pubkey(run_next=self.on_two_keys)
 
-    def two_keys_2fa(self):
+    def two_keys_2fa_import(self):
+        self.get_recovery_pubkey(run_next=self.on_two_keys)
+
+    def two_keys_2fa_create(self):
         entropy_2fa = short_mnemonic.generate_entropy()
         self.display_2fa_pairing_qr(run_next=self.on_two_keys, entropy=entropy_2fa)
 
@@ -243,26 +247,20 @@ class BaseWizard(Logger):
     def three_keys_standalone_get_instant_pubkey(self):
         self.get_instant_pubkey(run_next=self.on_three_keys, recovery_key=self.data['recovery_pubkey'])
 
-    def three_keys_2fa(self):
+    def three_keys_2fa_import(self):
         def collect_instant_pubkey(instant_pubkey: str):
             self.data['instant_pubkey'] = instant_pubkey
             self.run('get_recovery_pubkey', run_next=self.on_three_keys, instant_key=self.data['instant_pubkey'])
 
-        def process_choice(choice):
-            if choice == 'multikey_2fa_create':
-                entropy_2fa = short_mnemonic.generate_entropy()
-                self.display_2fa_pairing_qr(run_next=collect_instant_pubkey, entropy=entropy_2fa)
-            elif choice == 'multikey_2fa_import':
-                self.get_instant_pubkey(run_next=collect_instant_pubkey)
+        self.get_instant_pubkey(run_next=collect_instant_pubkey)
 
-        title = _('Transaction authenticator')
-        message = _('Do you want to use existing GoldWallet transaction authenticator?')
-        choices = [
-            ('multikey_2fa_create', _('Create new authenticator')),
-            ('multikey_2fa_import', _('Use existing authenticator')),
-        ]
+    def three_keys_2fa_create(self):
+        def collect_instant_pubkey(instant_pubkey: str):
+            self.data['instant_pubkey'] = instant_pubkey
+            self.run('get_recovery_pubkey', run_next=self.on_three_keys, instant_key=self.data['instant_pubkey'])
 
-        self.choice_dialog(title=title, message=message, choices=choices, run_next=process_choice)
+        entropy_2fa = short_mnemonic.generate_entropy()
+        self.display_2fa_pairing_qr(run_next=collect_instant_pubkey, entropy=entropy_2fa)
 
     def on_three_keys(self, recovery_pubkey: str):
         self.data['recovery_pubkey'] = recovery_pubkey
