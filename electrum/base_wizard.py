@@ -202,10 +202,11 @@ class BaseWizard(Logger):
                     raise Exception('Invalid multikey wallet type: ' + self.wallet_type)
             elif choice[:12] == 'multikey_2fa':
                 self.data['multikey_type'] = '2fa'
+                sub_action = choice[-7:]
                 if self.wallet_type == 'AR':
-                    action = 'two_keys_2fa' + choice[-7:]
+                    action = 'two_keys_2fa' + sub_action
                 elif self.wallet_type == 'AIR':
-                    action = 'three_keys_2fa' + choice[-7:]
+                    action = 'three_keys_2fa' + sub_action
                 else:
                     raise Exception('Invalid multikey wallet type: ' + self.wallet_type)
             else:
