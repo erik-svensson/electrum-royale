@@ -551,6 +551,21 @@ class InstallWizard(QDialog, MessageBoxMixin, BaseWizard):
         return layout.get_compressed_pubkey()
 
     @wizard_dialog
+    def get_authenticator_pubkey(self, run_next, disallowed_key=None):
+        # todo move it to some global settings ?
+        label = QLabel()
+        message = _('Please pass authenticator public key exported from your GoldWallet application')
+        label.setText(message)
+        label.setOpenExternalLinks(True)
+        label.setTextInteractionFlags(Qt.TextBrowserInteraction)
+        label.setWordWrap(True)
+
+        disallowed_keys = [disallowed_key] if disallowed_key else []
+        layout = InsertPubKeyDialog(self, message_label=label, disallowed_keys=disallowed_keys)
+        self.exec_layout(layout, _('GoldWallet authenticator public key'), next_enabled=False)
+        return layout.get_compressed_pubkey()
+
+    @wizard_dialog
     def display_2fa_pairing_qr(self, run_next, entropy: bytes):
         title_label = QLabel()
         title_message = _('Generate an authenticator on GoldWallet and scan the following QR code: ')
