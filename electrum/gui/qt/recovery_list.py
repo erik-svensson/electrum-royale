@@ -6,10 +6,11 @@ import re
 from typing import Union, List, Dict
 
 from PyQt5.QtCore import Qt
-from PyQt5.QtGui import QStandardItemModel, QStandardItem, QMouseEvent, QValidator
+from PyQt5.QtGui import QStandardItemModel, QStandardItem, QMouseEvent, QValidator, QKeySequence
 from PyQt5.QtWidgets import QPushButton, QLabel, QWidget, QComboBox,\
-    QCompleter, QTreeView, QHeaderView, QStyledItemDelegate,\
-    QVBoxLayout, QGridLayout
+    QTreeView, QHeaderView, QStyledItemDelegate,\
+    QVBoxLayout, QGridLayout,\
+    QCompleter, QShortcut
 
 from electrum.i18n import _
 from electrum.logging import get_logger
@@ -62,6 +63,9 @@ class RecoveryView(QTreeView):
         self.setModel(QStandardItemModel(self))
         self.setSelectionMode(QTreeView.NoSelection)
 
+        shortcut = QShortcut(QKeySequence(QKeySequence.SelectAll), self, self.onSelectAll)
+        self.selected_all = False
+
         now = datetime.now()
         self.to_timestamp = datetime.timestamp(now)
         self.from_timestamp = datetime.timestamp(now + timedelta(days=-2))
@@ -71,6 +75,20 @@ class RecoveryView(QTreeView):
     def mouseDoubleClickEvent(self, event: QMouseEvent):
         super().mouseDoubleClickEvent(event)
         self.update_data()
+
+    def onSelectAll(self):
+        model = self.model()
+        state = Qt.Checked
+        if self.selected_all:
+            self.selected_all = False
+            state = Qt.Unchecked
+        else:
+            self.selected_all = True
+
+        for i in range(model.rowCount()):
+            m_index = model.index(i, 0)
+            item = model.itemFromIndex(m_index)
+            item.setCheckState(state)
 
     def update_data(self):
         self.model().clear()
@@ -169,9 +187,7 @@ class RecoveryTab(QWidget):
                 i_len = len(input)
                 state = QValidator.Acceptable
 
-                if i_len > self.ADDRESS_LENGTH:
-                    state = QValidator.Invalid
-                elif i_len < self.ADDRESS_LENGTH:
+                if i_len < self.ADDRESS_LENGTH:
                     state = QValidator.Intermediate
                 else:
                     if not is_address_valid(input):
