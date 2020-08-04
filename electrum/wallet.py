@@ -2412,7 +2412,7 @@ class MultikeyWallet(Simple_Deterministic_Wallet):
             input.block_height = fetched_data['height']
         return updated_inputs
 
-    def sign_transaction(self, tx: PartialTransaction, password, external_keypairs = None, update_pubkeys = None) -> Optional[PartialTransaction]:
+    def sign_transaction(self, tx: PartialTransaction, password, external_keypairs = None, update_pubkeys_fn = None) -> Optional[PartialTransaction]:
         if self.is_watching_only():
             return
         if not isinstance(tx, PartialTransaction):
@@ -2423,9 +2423,9 @@ class MultikeyWallet(Simple_Deterministic_Wallet):
         # update tmp tx
         self.update_transaction_multisig_generator(tmp_tx)
         tmp_tx.add_info_from_wallet(self, include_xpubs_and_full_paths=True)
-        if update_pubkeys:
-            update_pubkeys(tx)
-            update_pubkeys(tmp_tx)
+        if update_pubkeys_fn:
+            update_pubkeys_fn(tx)
+            update_pubkeys_fn(tmp_tx)
         # sign. start with ready keystores.
         for k in sorted(self.get_keystores(), key=lambda ks: ks.ready_to_sign(), reverse=True):
             try:
@@ -2456,7 +2456,7 @@ class TwoKeysWallet(MultikeyWallet):
         for input in tx.inputs():
             input.pubkeys.append(bytes.fromhex(self.multisig_script_generator.recovery_pubkey))
             input.num_sig = 2
-            assert len(input.pubkeys) == 2 and input.num_sig == 2, 'Wrong number of pubkeys for performing recovery tx'
+            assert len(input.pubkeys) == 2, 'Wrong number of pubkeys for performing recovery tx'
             _logger.info('Updated input by recovery pubkey')
         return tx
 
@@ -2484,7 +2484,7 @@ class ThreeKeysWallet(MultikeyWallet):
             input.pubkeys.append(bytes.fromhex(self.multisig_script_generator.instant_pubkey))
             input.pubkeys.append(bytes.fromhex(self.multisig_script_generator.recovery_pubkey))
             input.num_sig = 3
-            assert len(input.pubkeys) == 3 and input.num_sig == 3, 'Wrong number of pubkeys for performing recovery tx'
+            assert len(input.pubkeys) == 3, 'Wrong number of pubkeys for performing recovery tx'
             _logger.info('Updated input by recovery pubkey')
         return tx
 
@@ -2493,7 +2493,7 @@ class ThreeKeysWallet(MultikeyWallet):
         for input in tx.inputs():
             input.pubkeys.append(bytes.fromhex(self.multisig_script_generator.instant_pubkey))
             input.num_sig = 2
-            assert len(input.pubkeys) == 2 and input.num_sig == 2, 'Wrong number of pubkeys for performing instant tx'
+            assert len(input.pubkeys) == 2, 'Wrong number of pubkeys for performing instant tx'
             _logger.info('Updated input by instant pubkey')
         return tx
 
