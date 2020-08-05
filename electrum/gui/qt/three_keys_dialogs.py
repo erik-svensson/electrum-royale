@@ -180,8 +180,14 @@ class PSBTDialog(QRDialog):
         qr_data = self.psbt.serialize()
         super().__init__(qr_data, parent, title)
 
+        self.parent = parent
         self.invoice = invoice
 
     def minimize_psbt(self):
         self.psbt.convert_all_utxos_to_witness_utxos()
         self.psbt.remove_xpubs_and_bip32_paths()
+
+    def accept(self):
+        if self.invoice:
+            self.parent.delete_invoice(self.invoice['id'])
+        super().accept()
