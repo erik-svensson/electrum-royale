@@ -16,9 +16,14 @@ class FeeSlider(QSlider):
         self.callback = callback
         self.dyn = False
         self.lock = threading.RLock()
-        self.update()
+        self._initialize_fee_value()
         self.valueChanged.connect(self.moved)
         self._active = True
+        
+    def _initialize_fee_value(self):
+        self.update()
+        _, pos, _ = self.config.get_fee_slider(self.dyn, self.config.use_mempool_fees())
+        self.moved(pos)
 
     def moved(self, pos):
         with self.lock:
