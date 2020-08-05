@@ -12,6 +12,8 @@ from .completion_text_edit import CompletionTextEdit
 from .confirm_tx_dialog import ConfirmTxDialog
 from .main_window import ElectrumWindow
 from .recovery_list import RecoveryTabAR, RecoveryTabAIR
+from .three_keys_dialogs import PreviewPsbtTxDialog
+from .transaction_dialog import PreviewTxDialog
 from .util import read_QIcon, HelpLabel, EnterButton
 from ...mnemonic import load_wordlist
 from ...plugin import run_hook
@@ -62,6 +64,7 @@ class ElectrumMultikeyWalletWindow(ElectrumWindow):
     LABELS = ['Date', 'Confirmation', 'Balance']
 
     def __init__(self, gui_object: 'ElectrumGui', wallet: 'Abstract_Wallet'):
+        self.is_2fa = wallet.storage.get('multikey_type', '') == '2fa'
         super().__init__(gui_object=gui_object, wallet=wallet)
         self.alert_transactions = []
         self.recovery_tab = self.create_recovery_tab(wallet, self.config)
@@ -124,13 +127,20 @@ class ElectrumARWindow(ElectrumMultikeyWalletWindow):
         if is_send:
             def sign_done(success):
                 if success:
-                    if self.wallet.storage.get('multikey_type', '') == '2fa' and self.wallet.is_recovery_mode():
+                    if self.is_2fa and self.wallet.is_recovery_mode():
                         self.show_psbt_qrcode(tx, invoice=invoice)
                     else:
                         self.broadcast_or_show(tx, invoice=invoice)
             self.sign_tx_with_password(tx, sign_done, password, external_keypairs)
         else:
             self.preview_tx_dialog(make_tx, outputs, external_keypairs=external_keypairs, invoice=invoice)
+
+    def preview_tx_dialog(self, make_tx, outputs, external_keypairs=None, invoice=None):
+        dialog_class = PreviewPsbtTxDialog \
+            if self.is_2fa and self.wallet.is_recovery_mode() \
+            else PreviewTxDialog
+        d = dialog_class(make_tx, outputs, external_keypairs, window=self, invoice=invoice)
+        d.show()
 
 
 class ElectrumAIRWindow(ElectrumMultikeyWalletWindow):
@@ -198,7 +208,7 @@ class ElectrumAIRWindow(ElectrumMultikeyWalletWindow):
         grid.addWidget(self.max_button, 3, 3)
 
         def on_tx_type(index):
-            if self.wallet.storage.get('multikey_type', '') != '2fa':
+            if not self.is_2fa:
                 if self.tx_type_combo.currentIndex() == self.TX_TYPES['alert']:
                     self.instant_privkey_line.setEnabled(False)
                     self.instant_privkey_line.clear()
@@ -216,7 +226,7 @@ class ElectrumAIRWindow(ElectrumMultikeyWalletWindow):
         grid.addWidget(tx_type_label, 4, 0)
         grid.addWidget(self.tx_type_combo, 4, 1, 1, -1)
 
-        if self.wallet.storage.get('multikey_type', '') != '2fa':
+        if not self.is_2fa:
             instant_privkey_label = HelpLabel(_('Instant TX seed'), msg)
             self.instant_privkey_line = CompletionTextEdit()
             self.instant_privkey_line.setTabChangesFocus(False)
@@ -310,7 +320,7 @@ class ElectrumAIRWindow(ElectrumMultikeyWalletWindow):
         keypair = None
         if self.tx_type_combo.currentIndex() == self.TX_TYPES['instant']:
             try:
-                if self.wallet.storage.get('multikey_type', '') != '2fa':
+                if not self.is_2fa:
                     keypair = self.get_instant_keypair()
                 self.wallet.set_instant()
             except Exception as e:
@@ -333,7 +343,7 @@ class ElectrumAIRWindow(ElectrumMultikeyWalletWindow):
         for e in [self.payto_e, self.message_e, self.amount_e]:
             e.setText('')
             e.setFrozen(False)
-        if self.wallet.storage.get('multikey_type', '') != '2fa':
+        if not self.is_2fa:
             self.instant_privkey_line.clear()
         self.tx_type_combo.setCurrentIndex(self.TX_TYPES['alert'])
         self.update_status()
@@ -366,11 +376,17 @@ class ElectrumAIRWindow(ElectrumMultikeyWalletWindow):
         if is_send:
             def sign_done(success):
                 if success:
-                    if self.wallet.storage.get('multikey_type', '') == '2fa' and \
-                       (self.wallet.is_instant_mode() or self.wallet.is_recovery_mode()):
+                    if self.is_2fa and (self.wallet.is_instant_mode() or self.wallet.is_recovery_mode()):
                         self.show_psbt_qrcode(tx, invoice=invoice)
                     else:
                         self.broadcast_or_show(tx, invoice=invoice)
             self.sign_tx_with_password(tx, sign_done, password, external_keypairs)
         else:
             self.preview_tx_dialog(make_tx, outputs, external_keypairs=external_keypairs, invoice=invoice)
+
+    def preview_tx_dialog(self, make_tx, outputs, external_keypairs=None, invoice=None):
+        dialog_class = PreviewPsbtTxDialog \
+            if self.is_2fa and (self.wallet.is_instant_mode() or self.wallet.is_recovery_mode()) \
+            else PreviewTxDialog
+        d = dialog_class(make_tx, outputs, external_keypairs, window=self, invoice=invoice)
+        d.show()

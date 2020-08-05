@@ -5,11 +5,13 @@ from typing import List
 
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QFont
-from PyQt5.QtWidgets import QVBoxLayout, QTextEdit, QLineEdit, QLabel
+from PyQt5.QtWidgets import QVBoxLayout, QTextEdit, QLineEdit, QLabel, \
+    QPushButton
 
 from electrum.ecc import ECPubkey, ECPrivkey
 from electrum.i18n import _
 from .qrcodewidget import QRCodeWidget, QRDialog
+from .transaction_dialog import PreviewTxDialog
 from ...three_keys import short_mnemonic
 from .util import filter_non_printable
 from ...transaction import PartialTransaction
@@ -191,3 +193,21 @@ class PSBTDialog(QRDialog):
         if self.invoice:
             self.parent.delete_invoice(self.invoice['id'])
         super().accept()
+
+
+class PreviewPsbtTxDialog(PreviewTxDialog):
+
+    def __init__(self, make_tx, outputs, external_keypairs, *, window: 'ElectrumWindow', invoice):
+        super().__init__(make_tx, outputs, external_keypairs, window=window, invoice=invoice)
+
+    def do_broadcast(self):
+        self.main_window.push_top_level_window(self)
+        try:
+            if self.is_2fa and (self.wallet.is_instant_mode() or self.wallet.is_recovery_mode()):
+                self.main_window.show_psbt_qrcode(self.tx, invoice=self.invoice)
+            else:
+                self.main_window.broadcast_transaction(self.tx, invoice=self.invoice, tx_desc=self.desc)
+        finally:
+            self.main_window.pop_top_level_window(self)
+        self.saved = True
+        self.update()

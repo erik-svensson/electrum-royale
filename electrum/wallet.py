@@ -2456,14 +2456,12 @@ class TwoKeysWallet(MultikeyWallet):
         super().__init__(storage=storage, config=config, scriptGenerator=script_generator)
 
     def _add_recovery_pubkey_to_transaction(self, tx):
-        """Updating transaction inputs pubkeys list by recovery pubkey and adjusting num_sig variable"""
         for input in tx.inputs():
             recovery_pubkey = bytes.fromhex(self.multisig_script_generator.recovery_pubkey)
             if recovery_pubkey not in input.pubkeys:
                 input.pubkeys.append(recovery_pubkey)
             input.num_sig = 2
             assert len(input.pubkeys) == 2, 'Wrong number of pubkeys for performing recovery tx'
-            _logger.info('Updated input by recovery pubkey')
         return tx
 
     def sign_recovery_transaction(self, tx: PartialTransaction, password, recovery_keypairs) -> Optional[PartialTransaction]:
@@ -2489,7 +2487,6 @@ class ThreeKeysWallet(MultikeyWallet):
         super().__init__(storage=storage, config=config, scriptGenerator=script_generator)
 
     def _add_recovery_pubkey_to_transaction(self, tx):
-        """Updating transaction inputs pubkeys list by recovery pubkey and adjusting num_sig variable"""
         for input in tx.inputs():
             instant_pubkey = bytes.fromhex(self.multisig_script_generator.instant_pubkey)
             if instant_pubkey not in input.pubkeys:
@@ -2499,25 +2496,22 @@ class ThreeKeysWallet(MultikeyWallet):
                 input.pubkeys.append(recovery_pubkey)
             input.num_sig = 3
             assert len(input.pubkeys) == 3, 'Wrong number of pubkeys for performing recovery tx'
-            _logger.info('Updated input by recovery pubkey')
         return tx
 
     def _add_instant_pubkey_to_transaction(self, tx):
-        """Updating transaction inputs pubkeys list by instant pubkey and adjusting num_sig variable"""
         for input in tx.inputs():
             instant_pubkey = bytes.fromhex(self.multisig_script_generator.instant_pubkey)
             if instant_pubkey not in input.pubkeys:
                 input.pubkeys.append(instant_pubkey)
             input.num_sig = 2
             assert len(input.pubkeys) == 2, 'Wrong number of pubkeys for performing instant tx'
-            _logger.info('Updated input by instant pubkey')
         return tx
 
     def sign_instant_transaction(self, tx: PartialTransaction, password, instant_keypairs) -> Optional[PartialTransaction]:
         if not isinstance(tx, PartialTransaction):
             return
 
-        # Skip inputs finalization
+        # Skip tx finalization when tx should be authenticated
         skip_finalize = self.multikey_type == '2fa'
         tx = self.sign_transaction(tx, password, instant_keypairs, self._add_instant_pubkey_to_transaction, skip_finalize)
 
@@ -2532,7 +2526,7 @@ class ThreeKeysWallet(MultikeyWallet):
         if not isinstance(tx, PartialTransaction):
             return
 
-        # Skip inputs finalization
+        # Skip tx finalization when tx should be authenticated
         skip_finalize = self.multikey_type == '2fa'
         tx = self.sign_transaction(tx, password, recovery_keypairs, self._add_recovery_pubkey_to_transaction, skip_finalize)
 
