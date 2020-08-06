@@ -178,7 +178,6 @@ class RecoveryTab(QWidget):
 
         self.is_address_valid = True
         self.is_recovery_seed_valid = False
-        self.is_instant_seed_valid = False
 
         self.recover_button = QPushButton(_('Recover'))
 
@@ -215,6 +214,9 @@ class RecoveryTab(QWidget):
 
         return obj
 
+    def set_recovery_seed_validity(self, is_valid):
+        self.is_recovery_seed_valid = is_valid
+
     def update_recovery_button(self):
         raise NotImplementedError
 
@@ -224,32 +226,35 @@ class RecoveryTab(QWidget):
         else:
             self.recovery_address_line.setStyleSheet(ColorScheme.DEFAULT.as_stylesheet(True))
 
-    def on_priv_key_line_edit(self):
+    def on_recovery_seed_line_edit(self):
+        return self.on_seed_line_edit(self.recovery_privkey_line,
+                                      self.get_recovery_seed(),
+                                      self.set_recovery_seed_validity)
+
+    def on_seed_line_edit(self, seed_line, seed, validity_fn):
         def set_style(valid):
             if valid:
-                self.recovery_privkey_line.setStyleSheet(ColorScheme.DEFAULT.as_stylesheet(True))
+                seed_line.setStyleSheet(ColorScheme.DEFAULT.as_stylesheet(True))
             else:
-                self.recovery_privkey_line.setStyleSheet(ColorScheme.RED.as_stylesheet(True))
+                seed_line.setStyleSheet(ColorScheme.RED.as_stylesheet(True))
 
         def validate_words(words):
             return all([word in self.wordlist for word in words])
 
-        self.recovery_privkey_line.enable_suggestions()
-        recovery_seed = self.get_recovery_seed()
-
+        seed_line.enable_suggestions()
         is_valid = True
-        if 1 < len(recovery_seed) < 12:
-            if recovery_seed[-2] not in self.wordlist:
-                self.recovery_privkey_line.disable_suggestions()
-            is_valid = validate_words(recovery_seed[:-1])
-        elif len(recovery_seed) == 12:
-            is_valid = validate_words(recovery_seed)
-        elif len(recovery_seed) > 12:
+        if 1 < len(seed) < 12:
+            if seed[-2] not in self.wordlist:
+                seed_line.disable_suggestions()
+            is_valid = validate_words(seed[:-1])
+        elif len(seed) == 12:
+            is_valid = validate_words(seed)
+        elif len(seed) > 12:
             is_valid = False
 
         set_style(is_valid)
 
-        self.is_recovery_seed_valid = is_valid and len(recovery_seed) == 12
+        validity_fn(is_valid and len(seed) == 12)
         self.update_recovery_button()
 
     def get_recovery_seed(self):
@@ -348,14 +353,14 @@ class RecoveryTab(QWidget):
         if not self.is_2fa:
             self.recovery_privkey_line.setText('')
 
-    def _create_privkey_line(self):
+    def _create_privkey_line(self, on_edit):
         class CompleterDelegate(QStyledItemDelegate):
             def initStyleOption(self, option, index):
                 super().initStyleOption(option, index)
 
         recovery_privkey_line = CompletionTextEdit()
         recovery_privkey_line.setTabChangesFocus(False)
-        recovery_privkey_line.textChanged.connect(self.on_priv_key_line_edit)
+        recovery_privkey_line.textChanged.connect(on_edit)
 
         delegate = CompleterDelegate(recovery_privkey_line)
         completer = QCompleter(self.wordlist)
@@ -386,7 +391,7 @@ class RecoveryTabAR(RecoveryTab):
         if not self.is_2fa:
             grid_layout.addWidget(QLabel(_('Recovery tx seed')), 1, 0)
             # complete line edit with suggestions
-            self.recovery_privkey_line = self._create_privkey_line()
+            self.recovery_privkey_line = self._create_privkey_line(self.on_recovery_seed_line_edit)
             grid_layout.addWidget(self.recovery_privkey_line, 1, 1)
 
         # Row 3
@@ -414,6 +419,9 @@ class RecoveryTabAIR(RecoveryTab):
 
     def __init__(self, parent, wallet: Abstract_Wallet, config):
         super().__init__(parent, wallet, config)
+
+        self.is_instant_seed_valid = False
+
         self.main_layout = QVBoxLayout()
         label = QLabel(_('Alert transaction to recover'))
         self.main_layout.addWidget(label)
@@ -429,13 +437,13 @@ class RecoveryTabAIR(RecoveryTab):
         if not self.is_2fa:
             grid_layout.addWidget(QLabel(_('Instant tx seed')), 1, 0)
             # complete line edit with suggestions
-            self.instant_privkey_line = self._create_privkey_line()
+            self.instant_privkey_line = self._create_privkey_line(self.on_instant_seed_line_edit)
             grid_layout.addWidget(self.instant_privkey_line, 1, 1)
 
         # Row 3
         grid_layout.addWidget(QLabel(_('Recovery tx seed')), 2, 0)
         # complete line edit with suggestions
-        self.recovery_privkey_line = self._create_privkey_line()
+        self.recovery_privkey_line = self._create_privkey_line(self.on_recovery_seed_line_edit)
         grid_layout.addWidget(self.recovery_privkey_line, 2, 1)
 
         # Row 4
@@ -494,6 +502,9 @@ class RecoveryTabAIR(RecoveryTab):
             self.instant_privkey_line.setText('')
         self.recovery_privkey_line.setText('')
 
+    def set_instant_seed_validity(self, is_valid):
+        self.is_instant_seed_valid = is_valid
+
     def update_recovery_button(self):
         if self.is_2fa:
             enabled = self.is_address_valid \
@@ -505,3 +516,8 @@ class RecoveryTabAIR(RecoveryTab):
                       and self.is_recovery_seed_valid \
                       and len(self.invoice_list.selected())
         self.recover_button.setEnabled(enabled)
+
+    def on_instant_seed_line_edit(self):
+        return self.on_seed_line_edit(self.instant_privkey_line,
+                                      self.get_instant_seed(),
+                                      self.set_instant_seed_validity)
