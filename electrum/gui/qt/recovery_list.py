@@ -174,10 +174,13 @@ class RecoveryTab(QWidget):
         QWidget.__init__(self)
 
         self.invoice_list = RecoveryView(self.electrum_main_window)
-
-        # wordlist
         self.wordlist = load_wordlist("english.txt")
-        ###
+
+        self.is_address_valid = True
+        self.is_recovery_seed_valid = False
+        self.is_instant_seed_valid = False
+
+        self.recover_button = QPushButton(_('Recover'))
 
     def _create_recovery_address(self):
         class Validator(QValidator):
@@ -212,6 +215,9 @@ class RecoveryTab(QWidget):
 
         return obj
 
+    def update_recovery_button(self):
+        raise NotImplementedError
+
     def onEditTextChanged(self, input: str):
         if not is_address_valid(input):
             self.recovery_address_line.setStyleSheet(ColorScheme.RED.as_stylesheet(True))
@@ -219,11 +225,32 @@ class RecoveryTab(QWidget):
             self.recovery_address_line.setStyleSheet(ColorScheme.DEFAULT.as_stylesheet(True))
 
     def on_priv_key_line_edit(self):
-        for word in self.get_recovery_seed()[:-1]:
-            if word not in self.wordlist:
-                self.recovery_privkey_line.disable_suggestions()
-                return
+        def set_style(valid):
+            if valid:
+                self.recovery_privkey_line.setStyleSheet(ColorScheme.DEFAULT.as_stylesheet(True))
+            else:
+                self.recovery_privkey_line.setStyleSheet(ColorScheme.RED.as_stylesheet(True))
+
+        def validate_words(words):
+            return all([word in self.wordlist for word in words])
+
         self.recovery_privkey_line.enable_suggestions()
+        recovery_seed = self.get_recovery_seed()
+
+        is_valid = True
+        if 1 < len(recovery_seed) < 12:
+            if recovery_seed[-2] not in self.wordlist:
+                self.recovery_privkey_line.disable_suggestions()
+            is_valid = validate_words(recovery_seed[:-1])
+        elif len(recovery_seed) == 12:
+            is_valid = validate_words(recovery_seed)
+        elif len(recovery_seed) > 12:
+            is_valid = False
+
+        set_style(is_valid)
+
+        self.is_recovery_seed_valid = is_valid and len(recovery_seed) == 12
+        self.update_recovery_button()
 
     def get_recovery_seed(self):
         text = self.recovery_privkey_line.text()
@@ -363,7 +390,8 @@ class RecoveryTabAR(RecoveryTab):
             grid_layout.addWidget(self.recovery_privkey_line, 1, 1)
 
         # Row 3
-        button = QPushButton(_('Recover'))
+        button = self.recover_button
+        button.setDisabled(True)
         button.clicked.connect(self.recover_action)
         # if line edit with suggestions size change 3rd argument needs to be adjusted
         grid_layout.addWidget(button, 2, 0, 1, 3)
@@ -371,6 +399,15 @@ class RecoveryTabAR(RecoveryTab):
 
         self.main_layout.addLayout(grid_layout)
         self.setLayout(self.main_layout)
+
+    def update_recovery_button(self):
+        if self.is_2fa:
+            enabled = self.is_address_valid and len(self.invoice_list.selected())
+        else:
+            enabled = self.is_address_valid \
+                      and self.is_recovery_seed_valid \
+                      and len(self.invoice_list.selected())
+        self.recover_button.setEnabled(enabled)
 
 
 class RecoveryTabAIR(RecoveryTab):
@@ -402,7 +439,8 @@ class RecoveryTabAIR(RecoveryTab):
         grid_layout.addWidget(self.recovery_privkey_line, 2, 1)
 
         # Row 4
-        button = QPushButton(_('Recover'))
+        button = self.recover_button
+        button.setDisabled(True)
         button.clicked.connect(self.recover_action)
         # if line edit with suggestions size change 3rd argument needs to be adjusted
         grid_layout.addWidget(button, 3, 0, 1, 3)
@@ -455,3 +493,15 @@ class RecoveryTabAIR(RecoveryTab):
         if not self.is_2fa:
             self.instant_privkey_line.setText('')
         self.recovery_privkey_line.setText('')
+
+    def update_recovery_button(self):
+        if self.is_2fa:
+            enabled = self.is_address_valid \
+                      and self.is_recovery_seed_valid \
+                      and len(self.invoice_list.selected())
+        else:
+            enabled = self.is_address_valid \
+                      and self.is_instant_seed_valid \
+                      and self.is_recovery_seed_valid \
+                      and len(self.invoice_list.selected())
+        self.recover_button.setEnabled(enabled)
