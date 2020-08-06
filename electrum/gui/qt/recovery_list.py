@@ -49,11 +49,12 @@ class RecoveryView(QTreeView):
     }
     filter_columns = [Columns.DATE, Columns.DESCRIPTION, Columns.AMOUNT]
 
-    def __init__(self, parent):
+    def __init__(self, parent, tab):
         super().__init__(parent)
 
         self.wallet = parent.wallet
         self.main_window = parent
+        self.tab = tab
 
         self.required_confirmations = 144
         self.stretch_column = self.Columns.DESCRIPTION
@@ -63,18 +64,22 @@ class RecoveryView(QTreeView):
         self.setModel(QStandardItemModel(self))
         self.setSelectionMode(QTreeView.NoSelection)
 
+        self.model().dataChanged.connect(self.onItemChecked)
+
         shortcut = QShortcut(QKeySequence(QKeySequence.SelectAll), self, self.onSelectAll)
         self.selected_all = False
 
         now = datetime.now()
         self.to_timestamp = datetime.timestamp(now)
         self.from_timestamp = datetime.timestamp(now + timedelta(days=-2))
-
         self.update_data()
 
     def mouseDoubleClickEvent(self, event: QMouseEvent):
         super().mouseDoubleClickEvent(event)
         self.update_data()
+
+    def onItemChecked(self):
+        self.tab.update_recovery_button()
 
     def onSelectAll(self):
         model = self.model()
@@ -173,7 +178,7 @@ class RecoveryTab(QWidget):
         self.is_2fa = self.wallet.storage.get('multikey_type', '') == '2fa'
         QWidget.__init__(self)
 
-        self.invoice_list = RecoveryView(self.electrum_main_window)
+        self.invoice_list = RecoveryView(self.electrum_main_window, self)
         self.wordlist = load_wordlist("english.txt")
 
         self.is_address_valid = True
@@ -223,8 +228,11 @@ class RecoveryTab(QWidget):
     def onEditTextChanged(self, input: str):
         if not is_address_valid(input):
             self.recovery_address_line.setStyleSheet(ColorScheme.RED.as_stylesheet(True))
+            self.is_address_valid = False
         else:
             self.recovery_address_line.setStyleSheet(ColorScheme.DEFAULT.as_stylesheet(True))
+            self.is_address_valid = True
+        self.update_recovery_button()
 
     def on_recovery_seed_line_edit(self):
         return self.on_seed_line_edit(self.recovery_privkey_line,
