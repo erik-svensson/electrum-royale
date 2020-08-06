@@ -246,7 +246,7 @@ class RecoveryTab(QWidget):
         # trusted coin requires this
         if run_hook('abort_send', self):
             return
-        is_sweep = bool(external_keypairs)
+        is_sweep = False
         make_tx = lambda fee_est: self.wallet.make_unsigned_transaction(
             coins=inputs,
             outputs=outputs,
