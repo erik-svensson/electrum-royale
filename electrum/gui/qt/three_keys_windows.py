@@ -1,8 +1,6 @@
 import enum
 
-from PyQt5.QtCore import Qt, QRect
-from PyQt5.QtGui import QStandardItem
-from PyQt5.QtWidgets import QVBoxLayout, QLabel, QWidget, QHBoxLayout, QHeaderView, QStyleOptionButton, QStyle, \
+from PyQt5.QtWidgets import QVBoxLayout, QLabel, QWidget, QHBoxLayout, \
     QGridLayout, QCompleter, QComboBox, \
     QStyledItemDelegate
 
@@ -20,56 +18,16 @@ from ...plugin import run_hook
 from ...three_keys import short_mnemonic
 
 
-class CheckableHeader(QHeaderView):
-    def __init__(self, orientation, parent=None):
-        super().__init__(orientation, parent)
-        self.parent = parent
-        self.is_on = False
-
-    def paintSection(self, painter: 'QPainter', rect: 'QRect', logical_index: int):
-        painter.save()
-        super().paintSection(painter, rect, logical_index)
-        painter.restore()
-
-        # assure set only in first column
-        if logical_index == 0:
-            option = QStyleOptionButton()
-            option.rect = QRect(
-                23, 3,
-                14, 14
-            )
-            if self.is_on:
-                option.state = QStyle.State_On
-            else:
-                option.state = QStyle.State_Off
-            self.style().drawPrimitive(QStyle.PE_IndicatorCheckBox, option, painter)
-
-    def mousePressEvent(self, event):
-        if self.is_on:
-            self.is_on = False
-        else:
-            self.is_on = True
-        super().updateSection(0)
-        super().mousePressEvent(event)
-
-
-class TableItem(QStandardItem):
-    def __init__(self, text, if_checkable=False):
-        super().__init__(text)
-        self.setCheckable(if_checkable)
-        self.setTextAlignment(Qt.AlignRight)
-
-
 class ElectrumMultikeyWalletWindow(ElectrumWindow):
-    LABELS = ['Date', 'Confirmation', 'Balance']
 
     def __init__(self, gui_object: 'ElectrumGui', wallet: 'Abstract_Wallet'):
         self.is_2fa = wallet.storage.get('multikey_type', '') == '2fa'
         super().__init__(gui_object=gui_object, wallet=wallet)
-        self.alert_transactions = []
         self.recovery_tab = self.create_recovery_tab(wallet, self.config)
         # todo add proper icon
         self.tabs.addTab(self.recovery_tab, read_QIcon('recovery.png'), _('Recovery'))
+        # update recovery tab when description changed in history tab
+        self.history_model.dataChanged.connect(self.update_tabs)
 
     def create_recovery_tab(self, wallet: 'Abstract_Wallet', config):
         raise NotImplementedError()
@@ -80,6 +38,11 @@ class ElectrumMultikeyWalletWindow(ElectrumWindow):
 
     def show_recovery_tab(self):
         self.tabs.setCurrentIndex(self.tabs.indexOf(self.recovery_tab))
+
+    def update_tabs(self, wallet=None):
+        super().update_tabs(wallet=wallet)
+        self.recovery_tab.clear_cache()
+        self.recovery_tab.update_view()
 
 
 class ElectrumARWindow(ElectrumMultikeyWalletWindow):

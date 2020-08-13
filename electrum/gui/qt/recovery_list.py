@@ -72,11 +72,11 @@ class RecoveryView(QTreeView):
         now = datetime.now()
         self.to_timestamp = datetime.timestamp(now)
         self.from_timestamp = datetime.timestamp(now + timedelta(days=-2))
+        self._selected_atxids_cache = set()
         self.update_data()
 
-    def mouseDoubleClickEvent(self, event: QMouseEvent):
-        super().mouseDoubleClickEvent(event)
-        self.update_data()
+    def clear_cache(self):
+        self._selected_atxids_cache = set()
 
     def onItemChecked(self):
         self.tab.update_recovery_button()
@@ -99,26 +99,26 @@ class RecoveryView(QTreeView):
         self.model().clear()
         self.update_headers(self.__class__.headers)
 
-        for index, txid in enumerate(self.wallet.get_atxs_to_recovery()):
+        index = 0
+        for alert_transaction in self.wallet.get_atxs_to_recovery():
+            if alert_transaction.txid() in self._selected_atxids_cache:
+                continue
             invoice_type = PR_TYPE_ONCHAIN
             if invoice_type == PR_TYPE_LN:
-                #key = item['rhash']
                 icon_name = 'lightning.png'
             elif invoice_type == PR_TYPE_ONCHAIN:
                 icon_name = 'bitcoin.png'
-                #if item.get('bip70'):
-                #   icon_name = 'seal.png'
             else:
                 raise Exception('Unsupported type')
 
-            txinfo = self.wallet.get_tx_info(txid)
+            txinfo = self.wallet.get_tx_info(alert_transaction)
             if txinfo.tx_mined_status.txtype == 'ALERT_PENDING':
                 status, status_str = get_request_status({'status': PR_UNPAID})
             else:
                 status, status_str = get_request_status({'status': PR_UNKNOWN})
 
             status_str = '{} {}/{}'.format(status_str, txinfo.tx_mined_status.conf, self.required_confirmations)
-            num_status, date_str = self.wallet.get_tx_status(txid.txid(), txinfo.tx_mined_status)
+            num_status, date_str = self.wallet.get_tx_status(alert_transaction.txid(), txinfo.tx_mined_status)
             amount_str = self.main_window.format_amount(txinfo.amount - txinfo.fee, whitespaces=True)
             labels = [date_str, txinfo.label, amount_str, status_str]
 
@@ -130,10 +130,11 @@ class RecoveryView(QTreeView):
             items[self.Columns.DATE].setIcon(read_QIcon(icon_name))
             items[self.Columns.STATUS].setIcon(read_QIcon(pr_icons.get(status)))
             items[self.Columns.DATE].setData(invoice_type, role=ROLE_REQUEST_TYPE)
-            items[self.Columns.DATE].setData(txid, role=ROLE_REQUEST_ID)
+            items[self.Columns.DATE].setData(alert_transaction, role=ROLE_REQUEST_ID)
             items[self.Columns.DATE].setCheckable(True)
 
             self.model().insertRow(index, items)
+            index += 1
 
         # sort requests by date
         self.model().sort(self.Columns.DATE)
@@ -157,6 +158,7 @@ class RecoveryView(QTreeView):
             item = model.itemFromIndex(m_index)
             if item.checkState() == Qt.Checked:
                 out.append(item.data())
+                self._selected_atxids_cache |= set([item.data(ROLE_REQUEST_ID).txid()])
         return out
 
 
@@ -319,6 +321,7 @@ class RecoveryTab(QWidget):
 
     def sign_tx_with_password(self, tx: PartialTransaction, callback, password, external_keypairs=None):
         def on_success(result):
+            self.update_view()
             callback(True)
 
         def on_failure(exc_info):
@@ -378,6 +381,12 @@ class RecoveryTab(QWidget):
         height = self.recovery_address_line.sizeHint().height()
         recovery_privkey_line.setMaximumHeight(height)
         return recovery_privkey_line
+
+    def clear_cache(self):
+        self.invoice_list.clear_cache()
+
+    def update_view(self):
+        self.invoice_list.update_data()
 
 
 class RecoveryTabAR(RecoveryTab):
