@@ -186,7 +186,7 @@ class RecoveryTab(QWidget):
         self.is_address_valid = True
         self.is_recovery_seed_valid = False
 
-        self.recover_button = QPushButton(_('Recover'))
+        self.recover_button = QPushButton(_('Cancel transactions'))
 
     def _create_recovery_address(self):
         class Validator(QValidator):
@@ -275,10 +275,10 @@ class RecoveryTab(QWidget):
         stored_recovery_pubkey = self.wallet.storage.get('recovery_pubkey')
         seed = self.get_recovery_seed()
         if not short_mnemonic.is_valid(seed):
-            raise ValueError(_("Invalid recovery TX seed"))
+            raise ValueError(_("Invalid cancel Tx seed"))
         privkey, pubkey = short_mnemonic.seed_to_keypair(seed)
         if pubkey != stored_recovery_pubkey:
-            raise Exception(_("Recovery TX seed not matching any key in this wallet"))
+            raise Exception(_("Cancel Tx seed not matching any key in this wallet"))
         return {pubkey: (privkey, True)}
 
     def recovery_onchain_dialog(self, inputs, outputs, recovery_keypairs):
@@ -346,7 +346,7 @@ class RecoveryTab(QWidget):
                 recovery_keypair = self._get_recovery_keypair()
 
             if not is_address_valid(address):
-                raise Exception(_('Invalid recovery address'))
+                raise Exception(_('Invalid cancellation address'))
 
             inputs, output = self.wallet.get_inputs_and_output_for_recovery(atxs, address)
             inputs = self.wallet.prepare_inputs_for_recovery(inputs)
@@ -394,19 +394,19 @@ class RecoveryTabAR(RecoveryTab):
     def __init__(self, parent, wallet: Abstract_Wallet, config):
         super().__init__(parent, wallet, config)
         self.main_layout = QVBoxLayout()
-        label = QLabel(_('Alert transaction to recover'))
+        label = QLabel(_('Transaction to recover'))
         self.main_layout.addWidget(label)
         self.main_layout.addWidget(self.invoice_list)
 
         grid_layout = QGridLayout()
         # Row 1
-        grid_layout.addWidget(QLabel(_('Recovery address')), 0, 0)
+        grid_layout.addWidget(QLabel(_('Cancellation address')), 0, 0)
         self.recovery_address_line = self._create_recovery_address()
         grid_layout.addWidget(self.recovery_address_line, 0, 1)
 
         # Row 2
         if not self.is_2fa:
-            grid_layout.addWidget(QLabel(_('Recovery tx seed')), 1, 0)
+            grid_layout.addWidget(QLabel(_('Cancel Tx seed')), 1, 0)
             # complete line edit with suggestions
             self.recovery_privkey_line = self._create_privkey_line(self.on_recovery_seed_line_edit)
             grid_layout.addWidget(self.recovery_privkey_line, 1, 1)
@@ -440,25 +440,25 @@ class RecoveryTabAIR(RecoveryTab):
         self.is_instant_seed_valid = False
 
         self.main_layout = QVBoxLayout()
-        label = QLabel(_('Alert transaction to recover'))
+        label = QLabel(_('Transaction to cancel'))
         self.main_layout.addWidget(label)
         self.main_layout.addWidget(self.invoice_list)
 
         grid_layout = QGridLayout()
         # Row 1
-        grid_layout.addWidget(QLabel(_('Recovery address')), 0, 0)
+        grid_layout.addWidget(QLabel(_('Cancellation address')), 0, 0)
         self.recovery_address_line = self._create_recovery_address()
         grid_layout.addWidget(self.recovery_address_line, 0, 1)
 
         # Row 2
         if not self.is_2fa:
-            grid_layout.addWidget(QLabel(_('Instant tx seed')), 1, 0)
+            grid_layout.addWidget(QLabel(_('Fast Tx seed')), 1, 0)
             # complete line edit with suggestions
             self.instant_privkey_line = self._create_privkey_line(self.on_instant_seed_line_edit)
             grid_layout.addWidget(self.instant_privkey_line, 1, 1)
 
         # Row 3
-        grid_layout.addWidget(QLabel(_('Recovery tx seed')), 2, 0)
+        grid_layout.addWidget(QLabel(_('Cancel Tx seed')), 2, 0)
         # complete line edit with suggestions
         self.recovery_privkey_line = self._create_privkey_line(self.on_recovery_seed_line_edit)
         grid_layout.addWidget(self.recovery_privkey_line, 2, 1)
@@ -482,10 +482,10 @@ class RecoveryTabAIR(RecoveryTab):
         stored_instant_pubkey = self.wallet.storage.get('instant_pubkey')
         seed = self.get_instant_seed()
         if not short_mnemonic.is_valid(seed):
-            raise ValueError(_("Invalid instant TX seed"))
+            raise ValueError(_("Invalid fast Tx seed"))
         privkey, pubkey = short_mnemonic.seed_to_keypair(seed)
         if pubkey != stored_instant_pubkey:
-            raise Exception(_("Instant TX seed not matching any key in this wallet"))
+            raise Exception(_("Fast Tx seed not matching any key in this wallet"))
         return {pubkey: (privkey, True)}
 
     def recover_action(self):
@@ -498,7 +498,7 @@ class RecoveryTabAIR(RecoveryTab):
             atxs = self.invoice_list.selected()
 
             if not is_address_valid(address):
-                raise Exception(_('Invalid recovery address'))
+                raise Exception(_('Invalid cancellation address'))
 
             inputs, output = self.wallet.get_inputs_and_output_for_recovery(atxs, address)
             inputs = self.wallet.prepare_inputs_for_recovery(inputs)

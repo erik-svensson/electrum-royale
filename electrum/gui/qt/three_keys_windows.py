@@ -25,7 +25,7 @@ class ElectrumMultikeyWalletWindow(ElectrumWindow):
         super().__init__(gui_object=gui_object, wallet=wallet)
         self.recovery_tab = self.create_recovery_tab(wallet, self.config)
         # todo add proper icon
-        self.tabs.addTab(self.recovery_tab, read_QIcon('recovery.png'), _('Recovery'))
+        self.tabs.addTab(self.recovery_tab, read_QIcon('recovery.png'), _('Cancellation'))
         # update recovery tab when description changed in history tab
         self.history_model.dataChanged.connect(self.update_tabs)
 
@@ -108,8 +108,8 @@ class ElectrumARWindow(ElectrumMultikeyWalletWindow):
 
 class ElectrumAIRWindow(ElectrumMultikeyWalletWindow):
     class TX_TYPES(enum.IntEnum):
-        alert = 0
-        instant = 1
+        standard = 0
+        fast = 1
 
     def __init__(self, gui_object: 'ElectrumGui', wallet: 'Abstract_Wallet'):
         self.wordlist = load_wordlist("english.txt")
@@ -172,25 +172,25 @@ class ElectrumAIRWindow(ElectrumMultikeyWalletWindow):
 
         def on_tx_type(index):
             if not self.is_2fa:
-                if self.tx_type_combo.currentIndex() == self.TX_TYPES['alert']:
+                if self.tx_type_combo.currentIndex() == self.TX_TYPES['standard']:
                     self.instant_privkey_line.setEnabled(False)
                     self.instant_privkey_line.clear()
-                elif self.tx_type_combo.currentIndex() == self.TX_TYPES['instant']:
+                elif self.tx_type_combo.currentIndex() == self.TX_TYPES['fast']:
                     self.instant_privkey_line.setEnabled(True)
 
         msg = _('Choose transaction type.') + '\n\n' + \
-              _('Alert - confirmed after 24h, reversible.') + '\n' + \
-              _('Instant - confirmed immediately, non-reversible. Needs an additional signature.')
+              _('Standard - confirmed after 24h, reversible.') + '\n' + \
+              _('Fast - confirmed immediately, non-reversible. Needs an additional signature.')
         tx_type_label = HelpLabel(_('Transaction type'), msg)
         self.tx_type_combo = QComboBox()
         self.tx_type_combo.addItems([_(tx_type.name) for tx_type in self.TX_TYPES])
-        self.tx_type_combo.setCurrentIndex(self.TX_TYPES['alert'])
+        self.tx_type_combo.setCurrentIndex(self.TX_TYPES['standard'])
         self.tx_type_combo.currentIndexChanged.connect(on_tx_type)
         grid.addWidget(tx_type_label, 4, 0)
         grid.addWidget(self.tx_type_combo, 4, 1, 1, -1)
 
         if not self.is_2fa:
-            instant_privkey_label = HelpLabel(_('Instant TX seed'), msg)
+            instant_privkey_label = HelpLabel(_('Fast Tx seed'), msg)
             self.instant_privkey_line = CompletionTextEdit()
             self.instant_privkey_line.setTabChangesFocus(False)
             self.instant_privkey_line.setEnabled(False)
@@ -269,10 +269,10 @@ class ElectrumAIRWindow(ElectrumMultikeyWalletWindow):
         stored_instant_pubkey = self.wallet.storage.get('instant_pubkey')
         seed = self.get_instant_seed()
         if not short_mnemonic.is_valid(seed):
-            raise ValueError(_("Invalid instant TX seed"))
+            raise ValueError(_("Invalid fast Tx seed"))
         privkey, pubkey = short_mnemonic.seed_to_keypair(seed)
         if pubkey != stored_instant_pubkey:
-            raise Exception(_("Instant TX seed not matching any key in this wallet"))
+            raise Exception(_("Fast Tx seed not matching any key in this wallet"))
         return {pubkey: (privkey, True)}
 
     def do_pay(self):
@@ -281,7 +281,7 @@ class ElectrumAIRWindow(ElectrumMultikeyWalletWindow):
             return
 
         keypair = None
-        if self.tx_type_combo.currentIndex() == self.TX_TYPES['instant']:
+        if self.tx_type_combo.currentIndex() == self.TX_TYPES['fast']:
             try:
                 if not self.is_2fa:
                     keypair = self.get_instant_keypair()
@@ -308,7 +308,7 @@ class ElectrumAIRWindow(ElectrumMultikeyWalletWindow):
             e.setFrozen(False)
         if not self.is_2fa:
             self.instant_privkey_line.clear()
-        self.tx_type_combo.setCurrentIndex(self.TX_TYPES['alert'])
+        self.tx_type_combo.setCurrentIndex(self.TX_TYPES['standard'])
         self.update_status()
         run_hook('do_clear', self)
 

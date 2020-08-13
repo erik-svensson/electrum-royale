@@ -2549,8 +2549,8 @@ class ThreeKeysWallet(MultikeyWallet):
 
 
 wallet_types = [
-    'AR',
-    'AIR',
+    '2-key',
+    '3-key',
     'standard',
     'multisig',
     'imported',
@@ -2566,8 +2566,8 @@ wallet_constructors = {
     'old': Standard_Wallet,
     'xpub': Standard_Wallet,
     'imported': Imported_Wallet,
-    'AR': TwoKeysWallet,
-    'AIR': ThreeKeysWallet
+    '2-key': TwoKeysWallet,
+    '3-key': ThreeKeysWallet
 }
 
 def register_constructor(wallet_type, constructor):
