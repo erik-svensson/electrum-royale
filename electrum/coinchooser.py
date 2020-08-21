@@ -446,7 +446,7 @@ class CoinChooserPrivacy(CoinChooserRandom):
     """
 
     def keys(self, coins):
-        return [os.urandom(16).hex() for _ in coins]
+        return [coin.scriptpubkey.hex() for coin in coins]
 
     def penalty_func(self, base_tx, *, tx_from_buckets):
         min_change = min(o.value for o in base_tx.outputs()) * 0.75
@@ -469,8 +469,6 @@ class CoinChooserPrivacy(CoinChooserRandom):
                 badness += (change - max_change) / (max_change + 10000)
                 # Penalize large change; 5 BTC excess ~= using 1 more input
                 badness += change / (COIN * 5)
-            # Penalize the larger change for alert transactions
-            badness += change / min_change
             return ScoredCandidate(badness, tx, buckets)
 
         return penalty
