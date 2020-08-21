@@ -2304,6 +2304,7 @@ class MultikeyWallet(Simple_Deterministic_Wallet):
         self.set_alert()
         # super has to be at the end otherwise wallet breaks
         super().__init__(storage=storage, config=config)
+        self.multiple_change = storage.get('multiple_change', True)
 
     def set_alert(self):
         self.multisig_script_generator.set_alert()
