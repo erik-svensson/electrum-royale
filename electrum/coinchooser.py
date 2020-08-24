@@ -498,7 +498,7 @@ class CoinChooserMinChange(CoinChooserRandom):
             if change == 0:
                 pass  # no change is great!
             # Penalize really small change; under 1 mBTC ~= using 1 more input
-            if change < COIN / 1000:
+            elif change < COIN / 1000:
                 badness += 1
             # Penalize the change
             badness += change / min_output
