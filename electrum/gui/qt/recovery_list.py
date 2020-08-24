@@ -440,7 +440,7 @@ class RecoveryTabAIR(RecoveryTab):
         self.is_instant_seed_valid = False
 
         self.main_layout = QVBoxLayout()
-        label = QLabel(_('Transaction to cancel'))
+        label = QLabel(_('Transactions to cancel'))
         self.main_layout.addWidget(label)
         self.main_layout.addWidget(self.invoice_list)
 
@@ -452,13 +452,13 @@ class RecoveryTabAIR(RecoveryTab):
 
         # Row 2
         if not self.is_2fa:
-            grid_layout.addWidget(QLabel(_('Fast Tx seed')), 1, 0)
+            grid_layout.addWidget(QLabel(_('Fast seedphrase')), 1, 0)
             # complete line edit with suggestions
             self.instant_privkey_line = self._create_privkey_line(self.on_instant_seed_line_edit)
             grid_layout.addWidget(self.instant_privkey_line, 1, 1)
 
         # Row 3
-        grid_layout.addWidget(QLabel(_('Cancel Tx seed')), 2, 0)
+        grid_layout.addWidget(QLabel(_('Cancel seedphrase')), 2, 0)
         # complete line edit with suggestions
         self.recovery_privkey_line = self._create_privkey_line(self.on_recovery_seed_line_edit)
         grid_layout.addWidget(self.recovery_privkey_line, 2, 1)

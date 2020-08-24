@@ -25,7 +25,7 @@ class ElectrumMultikeyWalletWindow(ElectrumWindow):
         super().__init__(gui_object=gui_object, wallet=wallet)
         self.recovery_tab = self.create_recovery_tab(wallet, self.config)
         # todo add proper icon
-        self.tabs.addTab(self.recovery_tab, read_QIcon('recovery.png'), _('Cancellation'))
+        self.tabs.addTab(self.recovery_tab, read_QIcon('recovery.png'), _('Cancel'))
         # update recovery tab when description changed in history tab
         self.history_model.dataChanged.connect(self.update_tabs)
 
@@ -94,6 +94,7 @@ class ElectrumARWindow(ElectrumMultikeyWalletWindow):
                         self.show_psbt_qrcode(tx, invoice=invoice)
                     else:
                         self.broadcast_or_show(tx, invoice=invoice)
+
             self.sign_tx_with_password(tx, sign_done, password, external_keypairs)
         else:
             self.preview_tx_dialog(make_tx, outputs, external_keypairs=external_keypairs, invoice=invoice)
@@ -179,8 +180,8 @@ class ElectrumAIRWindow(ElectrumMultikeyWalletWindow):
                     self.instant_privkey_line.setEnabled(True)
 
         msg = _('Choose transaction type.') + '\n\n' + \
-              _('Standard - confirmed after 24h, reversible.') + '\n' + \
-              _('Fast - confirmed immediately, non-reversible. Needs an additional signature.')
+              _('Standard - confirmed after 24 hours. Can be canceled within that time.') + '\n' + \
+              _('Fast - confirmed immediately. Cannot be canceled. Requires an additional seed phrase.')
         tx_type_label = HelpLabel(_('Transaction type'), msg)
         self.tx_type_combo = QComboBox()
         self.tx_type_combo.addItems([_(tx_type.name) for tx_type in self.TX_TYPES])
@@ -343,6 +344,7 @@ class ElectrumAIRWindow(ElectrumMultikeyWalletWindow):
                         self.show_psbt_qrcode(tx, invoice=invoice)
                     else:
                         self.broadcast_or_show(tx, invoice=invoice)
+
             self.sign_tx_with_password(tx, sign_done, password, external_keypairs)
         else:
             self.preview_tx_dialog(make_tx, outputs, external_keypairs=external_keypairs, invoice=invoice)
