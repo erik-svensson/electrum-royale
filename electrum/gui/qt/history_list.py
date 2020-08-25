@@ -76,7 +76,6 @@ TX_ICONS = [
     "clock4.png",
     "clock5.png",
     "confirmed.png",
-#     todo add missing icons
     "alert_unconfirmed.png",
     "alert_pending.png",
     "alert_recovered.png",

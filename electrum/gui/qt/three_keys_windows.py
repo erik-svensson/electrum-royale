@@ -25,7 +25,6 @@ class ElectrumMultikeyWalletWindow(ElectrumWindow):
         self.is_2fa = wallet.storage.get('multikey_type', '') == '2fa'
         super().__init__(gui_object=gui_object, wallet=wallet)
         self.recovery_tab = self.create_recovery_tab(wallet, self.config)
-        # todo add proper icon
         self.tabs.addTab(self.recovery_tab, read_QIcon('recovery.png'), _('Cancel'))
         # update recovery tab when description changed in history tab
         self.history_model.dataChanged.connect(self.update_tabs)
