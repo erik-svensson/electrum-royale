@@ -72,6 +72,7 @@ class RecoveryView(QTreeView):
         now = datetime.now()
         self.to_timestamp = datetime.timestamp(now)
         self.from_timestamp = datetime.timestamp(now + timedelta(days=-2))
+        self.invisible_selected_atxs = False
         self._selected_atxids_cache = set()
         self.update_data()
 
@@ -79,6 +80,7 @@ class RecoveryView(QTreeView):
         self._selected_atxids_cache = set()
 
     def onItemChecked(self):
+        self.selected()
         self.tab.update_recovery_button()
 
     def onSelectAll(self):
@@ -101,7 +103,7 @@ class RecoveryView(QTreeView):
 
         index = 0
         for alert_transaction in self.wallet.get_atxs_to_recovery():
-            if alert_transaction.txid() in self._selected_atxids_cache:
+            if alert_transaction.txid() in self._selected_atxids_cache and self.invisible_selected_atxs:
                 continue
             invoice_type = PR_TYPE_ONCHAIN
             if invoice_type == PR_TYPE_LN:
@@ -132,7 +134,8 @@ class RecoveryView(QTreeView):
             items[self.Columns.DATE].setData(invoice_type, role=ROLE_REQUEST_TYPE)
             items[self.Columns.DATE].setData(alert_transaction, role=ROLE_REQUEST_ID)
             items[self.Columns.DATE].setCheckable(True)
-
+            if alert_transaction.txid() in self._selected_atxids_cache:
+                items[self.Columns.DATE].setCheckState(Qt.Checked)
             self.model().insertRow(index, items)
             index += 1
 
@@ -321,7 +324,9 @@ class RecoveryTab(QWidget):
 
     def sign_tx_with_password(self, tx: PartialTransaction, callback, password, external_keypairs=None):
         def on_success(result):
+            self.invisible_selected_atxs = True
             self.update_view()
+            self.clear_cache()
             callback(True)
 
         def on_failure(exc_info):
@@ -383,6 +388,7 @@ class RecoveryTab(QWidget):
         return recovery_privkey_line
 
     def clear_cache(self):
+        self.invoice_list.invisible_selected_atxs = False
         self.invoice_list.clear_cache()
 
     def update_view(self):

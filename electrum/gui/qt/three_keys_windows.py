@@ -19,6 +19,7 @@ from ...three_keys import short_mnemonic
 
 
 class ElectrumMultikeyWalletWindow(ElectrumWindow):
+    READY_TO_UPDATE = False
 
     def __init__(self, gui_object: 'ElectrumGui', wallet: 'Abstract_Wallet'):
         self.is_2fa = wallet.storage.get('multikey_type', '') == '2fa'
@@ -28,6 +29,12 @@ class ElectrumMultikeyWalletWindow(ElectrumWindow):
         self.tabs.addTab(self.recovery_tab, read_QIcon('recovery.png'), _('Cancel'))
         # update recovery tab when description changed in history tab
         self.history_model.dataChanged.connect(self.update_tabs)
+        self.READY_TO_UPDATE = True
+
+    def timer_actions(self):
+        # synchronizing the timer thread with end of the __init__ call
+        if self.READY_TO_UPDATE:
+            super().timer_actions()
 
     def create_recovery_tab(self, wallet: 'Abstract_Wallet', config):
         raise NotImplementedError()
@@ -41,8 +48,8 @@ class ElectrumMultikeyWalletWindow(ElectrumWindow):
 
     def update_tabs(self, wallet=None):
         super().update_tabs(wallet=wallet)
-        self.recovery_tab.clear_cache()
         self.recovery_tab.update_view()
+        self.recovery_tab.update_recovery_button()
 
 
 class ElectrumARWindow(ElectrumMultikeyWalletWindow):
