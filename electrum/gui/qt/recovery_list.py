@@ -159,6 +159,8 @@ class RecoveryView(QTreeView):
         for i in range(model.rowCount()):
             m_index = model.index(i, 0)
             item = model.itemFromIndex(m_index)
+            if item.data(ROLE_REQUEST_ID).txid() in self._selected_atxids_cache and item.checkState() == Qt.Unchecked:
+                self._selected_atxids_cache.remove(item.data(ROLE_REQUEST_ID).txid())
             if item.checkState() == Qt.Checked:
                 out.append(item.data())
                 self._selected_atxids_cache |= set([item.data(ROLE_REQUEST_ID).txid()])
