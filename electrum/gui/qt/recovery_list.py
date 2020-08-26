@@ -280,10 +280,10 @@ class RecoveryTab(QWidget):
         stored_recovery_pubkey = self.wallet.storage.get('recovery_pubkey')
         seed = self.get_recovery_seed()
         if not short_mnemonic.is_valid(seed):
-            raise ValueError(_("Invalid cancel Tx seed"))
+            raise ValueError(_("Invalid cancel seedphrase"))
         privkey, pubkey = short_mnemonic.seed_to_keypair(seed)
         if pubkey != stored_recovery_pubkey:
-            raise Exception(_("Cancel Tx seed not matching any key in this wallet"))
+            raise Exception(_("Cancel seedphrase not matching any key in this wallet"))
         return {pubkey: (privkey, True)}
 
     def recovery_onchain_dialog(self, inputs, outputs, recovery_keypairs):
@@ -402,7 +402,7 @@ class RecoveryTabAR(RecoveryTab):
     def __init__(self, parent, wallet: Abstract_Wallet, config):
         super().__init__(parent, wallet, config)
         self.main_layout = QVBoxLayout()
-        label = QLabel(_('Transaction to recover'))
+        label = QLabel(_('Transactions to cancel'))
         self.main_layout.addWidget(label)
         self.main_layout.addWidget(self.invoice_list)
 
@@ -414,7 +414,7 @@ class RecoveryTabAR(RecoveryTab):
 
         # Row 2
         if not self.is_2fa:
-            grid_layout.addWidget(QLabel(_('Cancel Tx seed')), 1, 0)
+            grid_layout.addWidget(QLabel(_('Cancel seedphrase')), 1, 0)
             # complete line edit with suggestions
             self.recovery_privkey_line = self._create_privkey_line(self.on_recovery_seed_line_edit)
             grid_layout.addWidget(self.recovery_privkey_line, 1, 1)
