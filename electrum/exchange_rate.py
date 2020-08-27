@@ -351,9 +351,7 @@ class FxThread(ThreadJob):
     def get_fiat_status_text(self, btc_balance, base_unit, decimal_point):
         rate = self.exchange_rate()
         return _("  (No FX rate available)") if rate.is_nan() else " 1 %s~%s %s" % (base_unit,
-                                                                                    self.value_str(COIN / (10 ** (
-                                                                                                8 - decimal_point)),
-                                                                                                   rate), self.ccy)
+                 self.value_str(COIN / (10 ** (8 - decimal_point)), rate), self.ccy)
 
     def fiat_value(self, satoshis, rate):
         return Decimal('NaN') if satoshis is None else Decimal(satoshis) / COIN * Decimal(rate)
