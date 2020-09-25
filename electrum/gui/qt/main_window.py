@@ -1237,7 +1237,7 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
         buttons = QHBoxLayout()
         buttons.addStretch(1)
         buttons.addWidget(self.clear_button)
-        buttons.addWidget(self.save_button)
+        # buttons.addWidget(self.save_button)
         buttons.addWidget(self.send_button)
         grid.addLayout(buttons, 6, 1, 1, 4)
 
@@ -1845,7 +1845,7 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
                 self.invoice_list.update()
                 d.close()
         deleteButton = EnterButton(_('Delete'), do_delete)
-        vbox.addLayout(Buttons(exportButton, deleteButton, CloseButton(d)))
+        # vbox.addLayout(Buttons(exportButton, deleteButton, CloseButton(d)))
         d.exec_()
 
     def pay_bip70_invoice(self, key):

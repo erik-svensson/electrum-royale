@@ -235,7 +235,7 @@ class ElectrumAIRWindow(ElectrumMultikeyWalletWindow):
         buttons = QHBoxLayout()
         buttons.addStretch(1)
         buttons.addWidget(self.clear_button)
-        buttons.addWidget(self.save_button)
+        # buttons.addWidget(self.save_button)
         buttons.addWidget(self.send_button)
         grid.addLayout(buttons, 6, 1, 1, 4)
 
