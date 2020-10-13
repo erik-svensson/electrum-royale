@@ -6,14 +6,14 @@ from typing import List
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QFont
 from PyQt5.QtWidgets import QVBoxLayout, QTextEdit, QLineEdit, QLabel, \
-    QPushButton
+    QPushButton, QHBoxLayout, QFileDialog, QApplication
 
 from electrum.ecc import ECPubkey, ECPrivkey
 from electrum.i18n import _
 from .qrcodewidget import QRCodeWidget, QRDialog
 from .transaction_dialog import PreviewTxDialog
 from ...three_keys import short_mnemonic
-from .util import filter_non_printable
+from .util import filter_non_printable, WindowModalDialog, get_parent_main_window
 from ...transaction import PartialTransaction
 
 
@@ -171,24 +171,93 @@ class Qr2FaDialog(QVBoxLayout):
         return json.dumps(new_qr_data)
 
 
-class PSBTDialog(QRDialog):
+class PSBTDialog(WindowModalDialog):
+    def __init__(self, data_chunks, parent: 'ElectrumWindow', invoice, chunk=0, title="Transaction QRCode",
+                 show_text=False, description=''):
+        WindowModalDialog.__init__(self, parent, title)
 
-    def __init__(self, psbt: PartialTransaction, parent: 'ElectrumWindow', invoice):
+        data = data_chunks[chunk]
+        vbox = QVBoxLayout()
+        qrw = QRCodeWidget(data)
 
-        self.psbt = psbt
-        self.minimize_psbt()
+        if description:
+            chunk_description = description
+            if len(data_chunks) > 0:
+                chunk_description += '\n' + _('Chunk') + ' %d/%d' % (chunk + 1, len(data_chunks))
+            label = QLabel(chunk_description)
+            label.setWordWrap(True)
+            hbox2 = QHBoxLayout()
+            hbox2.addWidget(label)
+            vbox.addLayout(hbox2)
 
-        title = "Transaction QRCode"
-        qr_data = self.psbt.serialize()
-        super().__init__(qr_data, parent, title, description=_('In order to confirm the transaction, scan the QR code \
-in the "Authenticators" tab in the Gold Wallet app.'))
+        vbox.addWidget(qrw, 1)
+        if show_text:
+            text = QTextEdit()
+            text.setText(data)
+            text.setReadOnly(True)
+            vbox.addWidget(text)
+        hbox = QHBoxLayout()
+        hbox.addStretch(1)
 
+        def print_qr():
+            main_window = get_parent_main_window(self)
+            if main_window:
+                filename = main_window.getSaveFileName(_("Select where to save file"), "qrcode.png")
+            else:
+                filename, __ = QFileDialog.getSaveFileName(self, _("Select where to save file"), "qrcode.png")
+            if not filename:
+                return
+            p = qrw.grab()  # FIXME also grabs neutral colored padding
+            p.save(filename, 'png')
+            self.show_message(_("QR code saved to file") + " " + filename)
+
+        def copy_to_clipboard():
+            p = qrw.grab()
+            QApplication.clipboard().setPixmap(p)
+            self.show_message(_("QR code copied to clipboard"))
+
+        b = QPushButton(_("Copy"))
+        hbox.addWidget(b)
+        b.clicked.connect(copy_to_clipboard)
+
+        b = QPushButton(_("Save"))
+        hbox.addWidget(b)
+        b.clicked.connect(print_qr)
+
+        if chunk+1 == len(data_chunks):
+            b = QPushButton(_("Close"))
+            hbox.addWidget(b)
+            b.clicked.connect(self.accept)
+            b.setDefault(True)
+
+        if 0 < chunk < len(data_chunks):
+            b = QPushButton(_("< Prev"))
+            hbox.addWidget(b)
+            b.clicked.connect(self.show_prev)
+
+        if chunk+1 < len(data_chunks):
+            b = QPushButton(_("Next >"))
+            hbox.addWidget(b)
+            b.clicked.connect(self.show_next)
+
+        vbox.addLayout(hbox)
+        self.setLayout(vbox)
+        self.data_chunks = data_chunks
         self.parent = parent
         self.invoice = invoice
+        self.chunk = chunk
+        self.title = title
+        self.description = description
 
-    def minimize_psbt(self):
-        self.psbt.convert_all_utxos_to_witness_utxos()
-        self.psbt.remove_xpubs_and_bip32_paths()
+    def show_next(self):
+        super().accept()
+        d = PSBTDialog(self.data_chunks, self.parent, self.invoice, chunk=self.chunk+1, title=self.title, description=self.description)
+        d.exec_()
+
+    def show_prev(self):
+        super().accept()
+        d = PSBTDialog(self.data_chunks, self.parent, self.invoice, chunk=self.chunk-1, title=self.title, description=self.description)
+        d.exec_()
 
     def accept(self):
         if self.invoice:
