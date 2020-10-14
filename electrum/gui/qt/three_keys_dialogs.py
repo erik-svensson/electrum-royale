@@ -172,30 +172,32 @@ class Qr2FaDialog(QVBoxLayout):
 
 
 class PSBTDialog(WindowModalDialog):
-    def __init__(self, data_chunks, parent: 'ElectrumWindow', invoice, chunk=0, title="Transaction QRCode",
-                 show_text=False, description=''):
+    def __init__(self, data_chunks, parent: 'ElectrumWindow', invoice, title="Transaction QRCode", description=''):
         WindowModalDialog.__init__(self, parent, title)
 
-        data = data_chunks[chunk]
+        self.data_chunks = data_chunks
+        self.chunk = 0
+
         vbox = QVBoxLayout()
-        qrw = QRCodeWidget(data)
+        self.qrw = QRCodeWidget(self.data_chunks[self.chunk])
+        self.qrw_label = None
 
         if description:
-            chunk_description = description
-            if len(data_chunks) > 0:
-                chunk_description += '\n' + _('Chunk') + ' %d/%d' % (chunk + 1, len(data_chunks))
-            label = QLabel(chunk_description)
+            label = QLabel(description)
             label.setWordWrap(True)
             hbox2 = QHBoxLayout()
             hbox2.addWidget(label)
             vbox.addLayout(hbox2)
 
-        vbox.addWidget(qrw, 1)
-        if show_text:
-            text = QTextEdit()
-            text.setText(data)
-            text.setReadOnly(True)
-            vbox.addWidget(text)
+        vbox.addWidget(self.qrw, 1)
+
+        if len(data_chunks) > 0:
+            self.qrw_label = QLabel('')
+            self.qrw_label.setWordWrap(True)
+            self.qrw_label.setAlignment(Qt.AlignRight)
+            self.update_qrw_label()
+            vbox.addWidget(self.qrw_label)
+
         hbox = QHBoxLayout()
         hbox.addStretch(1)
 
@@ -207,12 +209,12 @@ class PSBTDialog(WindowModalDialog):
                 filename, __ = QFileDialog.getSaveFileName(self, _("Select where to save file"), "qrcode.png")
             if not filename:
                 return
-            p = qrw.grab()  # FIXME also grabs neutral colored padding
+            p = self.qrw.grab()  # FIXME also grabs neutral colored padding
             p.save(filename, 'png')
             self.show_message(_("QR code saved to file") + " " + filename)
 
         def copy_to_clipboard():
-            p = qrw.grab()
+            p = self.qrw.grab()
             QApplication.clipboard().setPixmap(p)
             self.show_message(_("QR code copied to clipboard"))
 
@@ -224,40 +226,68 @@ class PSBTDialog(WindowModalDialog):
         hbox.addWidget(b)
         b.clicked.connect(print_qr)
 
-        if chunk+1 == len(data_chunks):
-            b = QPushButton(_("Close"))
-            hbox.addWidget(b)
-            b.clicked.connect(self.accept)
-            b.setDefault(True)
+        self.close_button = QPushButton(_("Close"))
+        hbox.addWidget(self.close_button)
+        self.close_button.clicked.connect(self.accept)
+        self.close_button.setDefault(True)
 
-        if 0 < chunk < len(data_chunks):
-            b = QPushButton(_("< Prev"))
-            hbox.addWidget(b)
-            b.clicked.connect(self.show_prev)
+        self.prev_button = QPushButton(_("Previous part"))
+        hbox.addWidget(self.prev_button)
+        self.prev_button.clicked.connect(self.prev_chunk)
 
-        if chunk+1 < len(data_chunks):
-            b = QPushButton(_("Next >"))
-            hbox.addWidget(b)
-            b.clicked.connect(self.show_next)
+        self.next_button = QPushButton(_("Next part"))
+        hbox.addWidget(self.next_button)
+        self.next_button.clicked.connect(self.next_chunk)
 
         vbox.addLayout(hbox)
         self.setLayout(vbox)
-        self.data_chunks = data_chunks
+
+        self.update_buttons()
+
         self.parent = parent
         self.invoice = invoice
-        self.chunk = chunk
-        self.title = title
-        self.description = description
 
-    def show_next(self):
-        super().accept()
-        d = PSBTDialog(self.data_chunks, self.parent, self.invoice, chunk=self.chunk+1, title=self.title, description=self.description)
-        d.exec_()
+    def next_chunk(self):
+        self.chunk += 1
+        self.update_qrw()
+        self.update_qrw_label()
+        self.update_buttons()
 
-    def show_prev(self):
-        super().accept()
-        d = PSBTDialog(self.data_chunks, self.parent, self.invoice, chunk=self.chunk-1, title=self.title, description=self.description)
-        d.exec_()
+    def prev_chunk(self):
+        self.chunk -= 1
+        self.update_qrw()
+        self.update_qrw_label()
+        self.update_buttons()
+
+    def update_qrw(self):
+        self.qrw.setData(self.data_chunks[self.chunk])
+
+    def update_qrw_label(self):
+        if not self.qrw_label:
+            return
+
+        chunks_text = _('Transaction part') + ' %d/%d' % (self.chunk + 1, len(self.data_chunks))
+        self.qrw_label.setText(chunks_text)
+
+    def update_buttons(self):
+        if len(self.data_chunks) == 1:
+            self.close_button.setVisible(True)
+            self.prev_button.setHidden(True)
+            self.next_button.setHidden(True)
+            return
+
+        if self.chunk + 1 == len(self.data_chunks):
+            self.close_button.setVisible(True)
+            self.prev_button.setVisible(True)
+            self.next_button.setHidden(True)
+        elif self.chunk + 1 == 1:
+            self.close_button.setHidden(True)
+            self.prev_button.setHidden(True)
+            self.next_button.setVisible(True)
+        else:
+            self.close_button.setHidden(True)
+            self.prev_button.setVisible(True)
+            self.next_button.setVisible(True)
 
     def accept(self):
         if self.invoice:
