@@ -942,8 +942,8 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
             chunks_count = len(data)//max_size + 1
             chunk_size = (len(data)//chunks_count) + 1
             for c in range(chunks_count):
-                # chunk_no + chunk_count + chunk_data
-                chunk = str(c + 1) + str(chunks_count)
+                # chunk_no ; chunk_count ; chunk_data
+                chunk = str(c + 1) + ';' + str(chunks_count) + ';'
                 chunk += data[c*chunk_size:(c+1)*chunk_size]
                 chunks.append(chunk)
 
