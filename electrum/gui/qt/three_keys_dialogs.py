@@ -191,7 +191,7 @@ class PSBTDialog(WindowModalDialog):
 
         vbox.addWidget(self.qrw, 1)
 
-        if len(data_chunks) > 0:
+        if len(data_chunks) > 1:
             self.qrw_label = QLabel('')
             self.qrw_label.setWordWrap(True)
             self.qrw_label.setAlignment(Qt.AlignRight)
@@ -274,9 +274,7 @@ class PSBTDialog(WindowModalDialog):
             self.close_button.setVisible(True)
             self.prev_button.setHidden(True)
             self.next_button.setHidden(True)
-            return
-
-        if self.chunk + 1 == len(self.data_chunks):
+        elif self.chunk + 1 == len(self.data_chunks):
             self.close_button.setVisible(True)
             self.prev_button.setVisible(True)
             self.next_button.setHidden(True)
