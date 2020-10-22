@@ -714,9 +714,9 @@ class BaseWizard(Logger):
             message = ' '.join([
                 _("The type of addresses used by your wallet will depend on your seed."),
                 _("Segwit wallets use bech32 addresses, defined in BIP173."),
-                _("Please note that websites and other wallets may not support these addresses yet."),
-                _(
-                    "Thus, you might want to keep using a non-segwit wallet in order to be able to receive bitcoins during the transition period.")
+                _("'Legacy' is the original BTC address while 'Segwit' is the newer address format with lower fees."),
+                _("If you want to ensure that your wallet is backward compatible, meaning that you are able to send funds " \
+                  "from a Segwit address to a Legacy address, choose the Segwit type of wallet.")
             ])
         if choices is None:
             choices = [

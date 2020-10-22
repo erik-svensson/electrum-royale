@@ -468,7 +468,7 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
         name = "Electrum Vault"
         title = '%s %s  -  %s' % (name, ELECTRUM_VERSION,
                                         self.wallet.basename())
-        extra = [self.wallet.storage.get('wallet_type', '?')]
+        extra = [self.wallet.get_wallet_label()]#[self.wallet.storage.get('wallet_type', '?')]
         if self.wallet.is_watching_only():
             extra.append(_('watching only'))
         title += '  [%s]'% ', '.join(extra)
@@ -855,7 +855,7 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
 
                 text =  _("Balance" ) + ": %s "%(self.format_amount_and_units(c))
                 if u:
-                    text +=  " [%s "%(self.format_amount(u, is_diff=True).strip()) + _("unconfirmed") + "]"
+                    text +=  " [%s "%(self.format_amount(u, is_diff=True).strip()) + _("pending") + "]"
                 if x:
                     text +=  " [%s "%(self.format_amount(x, is_diff=True).strip()) + _("unmatured") + "]"
                 if ai:
@@ -2051,7 +2051,7 @@ verified (after approximately 24 hrs) or canceled (within 24 hrs).'))
         dialog.setMinimumSize(500, 100)
         mpk_list = self.wallet.get_master_public_keys()
         vbox = QVBoxLayout()
-        wallet_type = self.wallet.storage.get('wallet_type', '')
+        wallet_type = self.wallet.get_wallet_label()#self.wallet.storage.get('wallet_type', '')
         if self.wallet.is_watching_only():
             wallet_type += ' [{}]'.format(_('watching-only'))
         seed_available = _('True') if self.wallet.has_seed() else _('False')
@@ -2755,7 +2755,7 @@ verified (after approximately 24 hrs) or canceled (within 24 hrs).'))
         d = WindowModalDialog(self, _('Child Pays for Parent'))
         vbox = QVBoxLayout(d)
         msg = (
-            "A CPFP is a transaction that sends an unconfirmed output back to "
+            "A CPFP is a transaction that sends an pending output back to "
             "yourself, with a high fee. The goal is to have miners confirm "
             "the parent transaction in order to get the fee attached to the "
             "child transaction.")
@@ -2763,7 +2763,7 @@ verified (after approximately 24 hrs) or canceled (within 24 hrs).'))
         msg2 = ("The proposed fee is computed using your "
             "fee/kB settings, applied to the total size of both child and "
             "parent transactions. After you broadcast a CPFP transaction, "
-            "it is normal to see a new unconfirmed transaction in your history.")
+            "it is normal to see a new pending transaction in your history.")
         vbox.addWidget(WWLabel(_(msg2)))
         grid = QGridLayout()
         grid.addWidget(QLabel(_('Total size') + ':'), 0, 0)

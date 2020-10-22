@@ -80,8 +80,8 @@ if TYPE_CHECKING:
 _logger = get_logger(__name__)
 
 TX_STATUS = [
-    _('Unconfirmed'),
-    _('Unconfirmed parent'),
+    _('Pending'),
+    _('Pending'),
     _('Not Verified'),
     _('Local'),
 ]
@@ -477,7 +477,7 @@ class Abstract_Wallet(AddressSynchronizer):
                     else:
                         status = _('Not verified')
                 elif tx_mined_status.height in (TX_HEIGHT_UNCONF_PARENT, TX_HEIGHT_UNCONFIRMED):
-                    status = _('Unconfirmed')
+                    status = _('Pending')
                     if fee is None:
                         fee = self.get_tx_fee(tx_hash)
                     if fee and self.network and self.config.has_fee_mempool():
@@ -1783,6 +1783,9 @@ class Abstract_Wallet(AddressSynchronizer):
 
     def save_keystore(self):
         raise NotImplementedError()
+    
+    def get_wallet_label(self):
+        return self.wallet_type if self.wallet_type != None else ''
 
 
 
@@ -2505,6 +2508,9 @@ class TwoKeysWallet(MultikeyWallet):
             tx.finalize_psbt()
 
         return tx
+    
+    def get_wallet_label(self):
+        return '2-Key Vault'
 
 
 class ThreeKeysWallet(MultikeyWallet):
@@ -2563,6 +2569,9 @@ class ThreeKeysWallet(MultikeyWallet):
             tx.finalize_psbt()
 
         return tx
+    
+    def get_wallet_label(self):
+        return '3-Key Vault'
 
 
 wallet_types = [

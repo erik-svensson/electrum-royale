@@ -125,7 +125,7 @@ class ElectrumGui:
                 except Exception:
                     time_str = "------"
             else:
-                time_str = 'unconfirmed'
+                time_str = 'pending'
 
             label = self.wallet.get_label(hist_item.txid)
             if len(label) > 40:
@@ -144,7 +144,7 @@ class ElectrumGui:
                 c, u, x, *__ = self.wallet.get_balance()
                 msg = _("Balance")+": %f  "%(Decimal(c) / COIN)
                 if u:
-                    msg += "  [%f unconfirmed]"%(Decimal(u) / COIN)
+                    msg += "  [%f pending]"%(Decimal(u) / COIN)
                 if x:
                     msg += "  [%f unmatured]"%(Decimal(x) / COIN)
         else:
