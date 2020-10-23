@@ -61,7 +61,7 @@ Compile the protobuf description file::
 
 
 Creating Binaries
-=================
+====================
 
 Linux (tarball)
 ---------------
