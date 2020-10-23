@@ -555,7 +555,7 @@ class InstallWizard(QDialog, MessageBoxMixin, BaseWizard):
         # todo move it to some global settings ?
         web_generator_url = 'https://keygenerator.bitcoinvault.global/'
         label = QLabel()
-        message = _('Please paste a cancel transaction public key. Use an existing one, if you are importing a wallet, '
+        message = _('Please paste a Cancel transaction public key. Use an existing one, if you are importing a wallet, '
                     'or generate a new one at')
         message += f' <a href="{web_generator_url}">{web_generator_url}</a>'
         label.setText(message)
