@@ -148,7 +148,7 @@ class HistoryModel(QAbstractItemModel, Logger):
             status = 0
             txpos = tx_item['txpos']
             if timestamp is None:
-                status_str = 'pending'
+                status_str = 'unconfirmed'
             else:
                 status_str = format_time(int(timestamp))
         else:

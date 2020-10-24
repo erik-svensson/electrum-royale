@@ -102,7 +102,7 @@ class ElectrumGui:
                 except Exception:
                     time_str = "unknown"
             else:
-                time_str = 'pending'
+                time_str = 'unconfirmed'
 
             label = self.wallet.get_label(hist_item.txid)
             messages.append(format_str % (time_str, label, format_satoshis(delta, whitespaces=True),
@@ -122,7 +122,7 @@ class ElectrumGui:
                 c, u, x, *__ =  self.wallet.get_balance()
                 msg = _("Balance")+": %f  "%(Decimal(c) / COIN)
                 if u:
-                    msg += "  [%f pending]"%(Decimal(u) / COIN)
+                    msg += "  [%f unconfirmed]"%(Decimal(u) / COIN)
                 if x:
                     msg += "  [%f unmatured]"%(Decimal(x) / COIN)
         else:

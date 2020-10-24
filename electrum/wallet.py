@@ -80,8 +80,8 @@ if TYPE_CHECKING:
 _logger = get_logger(__name__)
 
 TX_STATUS = [
-    _('Pending'),
-    _('Pending'),
+    _('Unconfirmed'),
+    _('Unconfirmed Parent'),
     _('Not Verified'),
     _('Local'),
 ]
@@ -477,7 +477,7 @@ class Abstract_Wallet(AddressSynchronizer):
                     else:
                         status = _('Not verified')
                 elif tx_mined_status.height in (TX_HEIGHT_UNCONF_PARENT, TX_HEIGHT_UNCONFIRMED):
-                    status = _('Pending')
+                    status = _('Unconfirmed')
                     if fee is None:
                         fee = self.get_tx_fee(tx_hash)
                     if fee and self.network and self.config.has_fee_mempool():

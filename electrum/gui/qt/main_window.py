@@ -855,7 +855,7 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
 
                 text =  _("Balance" ) + ": %s "%(self.format_amount_and_units(c))
                 if u:
-                    text +=  " [%s "%(self.format_amount(u, is_diff=True).strip()) + _("pending") + "]"
+                    text +=  " [%s "%(self.format_amount(u, is_diff=True).strip()) + _("unconfirmed") + "]"
                 if x:
                     text +=  " [%s "%(self.format_amount(x, is_diff=True).strip()) + _("unmatured") + "]"
                 if ai:
@@ -2755,7 +2755,7 @@ verified (after approximately 24 hrs) or canceled (within 24 hrs).'))
         d = WindowModalDialog(self, _('Child Pays for Parent'))
         vbox = QVBoxLayout(d)
         msg = (
-            "A CPFP is a transaction that sends an pending output back to "
+            "A CPFP is a transaction that sends an unconfirmed output back to "
             "yourself, with a high fee. The goal is to have miners confirm "
             "the parent transaction in order to get the fee attached to the "
             "child transaction.")
@@ -2763,7 +2763,7 @@ verified (after approximately 24 hrs) or canceled (within 24 hrs).'))
         msg2 = ("The proposed fee is computed using your "
             "fee/kB settings, applied to the total size of both child and "
             "parent transactions. After you broadcast a CPFP transaction, "
-            "it is normal to see a new pending transaction in your history.")
+            "it is normal to see a new unconfirmed transaction in your history.")
         vbox.addWidget(WWLabel(_(msg2)))
         grid = QGridLayout()
         grid.addWidget(QLabel(_('Total size') + ':'), 0, 0)

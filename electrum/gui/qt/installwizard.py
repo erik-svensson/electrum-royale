@@ -590,7 +590,7 @@ class InstallWizard(QDialog, MessageBoxMixin, BaseWizard):
     def get_authenticator_pubkey(self, run_next, disallowed_key=None):
         # todo move it to some global settings ?
         label = QLabel()
-        message = _('Please pass authenticator public key exported from your Gold Wallet application')
+        message = _('Please paste authenticator public key exported from your Gold Wallet application')
         label.setText(message)
         label.setOpenExternalLinks(True)
         label.setTextInteractionFlags(Qt.TextBrowserInteraction)

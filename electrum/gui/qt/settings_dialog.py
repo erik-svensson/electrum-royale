@@ -124,7 +124,7 @@ class SettingsDialog(WindowModalDialog):
         use_rbf_cb.setChecked(use_rbf)
         use_rbf_cb.setToolTip(
             _('If you check this box, your transactions will be marked as non-final,') + '\n' + \
-            _('and you will have the possibility, while they are pending, to replace them with transactions that pay higher fees.') + '\n' + \
+            _('and you will have the possibility, while they are unconfirmed, to replace them with transactions that pay higher fees.') + '\n' + \
             _('Note that some merchants do not accept non-final transactions until they are confirmed.'))
         def on_use_rbf(x):
             self.config.set_key('use_rbf', bool(x))
@@ -136,7 +136,7 @@ class SettingsDialog(WindowModalDialog):
         batch_rbf_cb.setChecked(bool(self.config.get('batch_rbf', False)))
         batch_rbf_cb.setEnabled(use_rbf)
         batch_rbf_cb.setToolTip(
-            _('If you check this box, your pending transactions will be consolidated into a single transaction.') + '\n' + \
+            _('If you check this box, your unconfirmed transactions will be consolidated into a single transaction.') + '\n' + \
             _('This will save fees.'))
         def on_batch_rbf(x):
             self.config.set_key('batch_rbf', bool(x))
