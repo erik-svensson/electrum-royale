@@ -714,7 +714,7 @@ class BaseWizard(Logger):
             message = ' '.join([
                 _("The type of addresses used by your wallet will depend on your seed."),
                 _("Segwit wallets use bech32 addresses, defined in BIP173."),
-                _("'Legacy' is the original BTC address while 'Segwit' is the newer address format with lower fees.")
+                _("'Legacy' is the original address type, while 'Segwit' is the newer address format with lower fees.")
             ])
         if choices is None:
             choices = [
