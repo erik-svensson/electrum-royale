@@ -468,7 +468,7 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
         name = "Electrum Vault"
         title = '%s %s  -  %s' % (name, ELECTRUM_VERSION,
                                         self.wallet.basename())
-        extra = [self.wallet.get_wallet_label()]#[self.wallet.storage.get('wallet_type', '?')]
+        extra = [self.wallet.get_wallet_label()]
         if self.wallet.is_watching_only():
             extra.append(_('watching only'))
         title += '  [%s]'% ', '.join(extra)
@@ -2051,7 +2051,7 @@ verified (after approximately 24 hrs) or canceled (within 24 hrs).'))
         dialog.setMinimumSize(500, 100)
         mpk_list = self.wallet.get_master_public_keys()
         vbox = QVBoxLayout()
-        wallet_type = self.wallet.get_wallet_label()#self.wallet.storage.get('wallet_type', '')
+        wallet_type = self.wallet.get_wallet_label()
         if self.wallet.is_watching_only():
             wallet_type += ' [{}]'.format(_('watching-only'))
         seed_available = _('True') if self.wallet.has_seed() else _('False')
