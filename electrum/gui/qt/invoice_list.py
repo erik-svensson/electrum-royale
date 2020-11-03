@@ -42,7 +42,7 @@ from .util import (MyTreeView, read_QIcon, MONOSPACE_FONT,
                    import_meta_gui, export_meta_gui, pr_icons)
 from .util import CloseButton, Buttons
 from .util import WindowModalDialog
-from ...three_keys.tx_type import TxType
+from ...three_keys.tx_type import TxType, TX_TYPES_DISPLAY_MAP
 
 ROLE_REQUEST_TYPE = Qt.UserRole
 ROLE_REQUEST_ID = Qt.UserRole + 1
@@ -65,15 +65,6 @@ class InvoiceList(MyTreeView):
         Columns.STATUS: _('Status'),
     }
     filter_columns = [Columns.DATE, Columns.DESCRIPTION, Columns.TXTYPE, Columns.AMOUNT]
-
-    tx_types_display_map = {
-        TxType.NONVAULT.name: _('Standard'),
-        TxType.ALERT_PENDING.name: _('Secure'),
-        TxType.ALERT_RECOVERED.name: _('Secure'),
-        TxType.RECOVERY.name: _('Secure'),
-        TxType.INSTANT.name: _('Secure fast'),
-        TxType.ALERT_CONFIRMED.name: _('Secure'),
-    }
 
     def __init__(self, parent):
         super().__init__(parent, self.create_menu,
@@ -129,7 +120,7 @@ class InvoiceList(MyTreeView):
             timestamp = item.get('time', 0)
             date_str = format_time(timestamp) if timestamp else _('Unknown')
             txtype_str = TxType.NONVAULT.name if 'txtype' not in item else item['txtype']
-            txtype_str = self.tx_types_display_map[txtype_str]
+            txtype_str = TX_TYPES_DISPLAY_MAP[txtype_str]
             amount_str = self.parent.format_amount(amount, whitespaces=True)
             labels = [date_str, message, txtype_str, amount_str, status_str]
             items = [QStandardItem(e) for e in labels]
