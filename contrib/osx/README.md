@@ -53,6 +53,13 @@ Move `prebuilt_qr` to El Capitan: `contrib/osx/CalinsQRReader/prebuilt_qr`.
     
 This creates both a folder named Electrum.app and the .dmg file.
 
+If you want the binaries codesigned for MacOS and notarised by Apple's central server,
+provide these env vars to the `make_osx` script:
+
+    CODESIGN_CERT="Developer ID Application: Electrum Technologies GmbH (L6P37P7P56)" \
+    APPLE_ID_USER="me@email.com" \
+    APPLE_ID_PASSWORD="1234" \ # note this is app-speciffic password
+    ./contrib/osx/make_osx
 
 ## 2. Building the image deterministically (WIP)
 The usual way to distribute macOS applications is to use image files containing the 
