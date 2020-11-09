@@ -45,6 +45,9 @@ class AmountEdit(MyLineEdit):
         if text == '!':
             self.shortcut.emit()
             return
+        if ',' in text:
+            text = text[: text.find(',')]
+
         pos = self.cursorPosition()
         chars = '0123456789'
         if not self.is_int: chars +='.'
@@ -54,6 +57,10 @@ class AmountEdit(MyLineEdit):
                 p = s.find('.')
                 s = s.replace('.','')
                 s = s[:p] + '.' + s[p:p+self.max_precision()]
+
+        if len(s) > 0 and s != '0' and '.' not in s:
+            s = s.lstrip('0')
+            s = '0' if not s else s
         self.setText(s)
         # setText sets Modified to False.  Instead we want to remember
         # if updates were because of user modification.
