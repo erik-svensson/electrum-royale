@@ -51,11 +51,7 @@ def history_status(h):
         return None
     status = ''
     for tx_hash, height, *tx_type in h:
-        if tx_type:
-            status += f'{tx_hash}:{height:d}:{tx_type[0]:s}:'
-        else:
-            status += f'{tx_hash}:{height:d}:{TxType.NONVAULT.name:s}:'
-
+        status += f'{tx_hash}:{height:d}:{tx_type[0] if tx_type else TxType.NONVAULT.name:s}:'
     return bh2u(hashlib.sha256(status.encode('ascii')).digest())
 
 
