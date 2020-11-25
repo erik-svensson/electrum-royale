@@ -199,14 +199,14 @@ msgid "10 minutes"
 msgstr "10 分钟"
 
 msgid "2-Key Vault"
-msgstr "2 重密钥 Vault"
+msgstr "2-Key Vault"
 
 msgid ""
 "2. Align your Revealer borderlines to the dashed lines on the top and left."
 msgstr "2.请将Revealer的边界线与顶部和左侧的虚线对齐"
 
 msgid "3-Key Vault"
-msgstr "3 重密钥 Vault"
+msgstr "3-Key Vault"
 
 msgid ""
 "3. Press slightly the Revealer against the paper and read the numbers that "
@@ -502,8 +502,8 @@ msgstr "取消助记词"
 msgid "Cancel seedphrase not matching any key in this wallet"
 msgstr "取消此钱包中不匹配任何密钥的种子助记词"
 
-msgid "Cancel transaction public key"
-msgstr "取消交易公钥"
+msgid "Cancel Transaction Key"
+msgstr "取消交易金钥"
 
 msgid "Cancelation address"
 msgstr "取消地址"
@@ -2050,7 +2050,7 @@ msgid "More info at: {link}"
 msgstr "更多信息： {link}"
 
 msgid "Multi-Signature Standard"
-msgstr "多重签名标准"
+msgstr "Multi-Signature Standard"
 
 msgid "NOT DEVICE PIN - see above"
 msgstr "飞设备PIN - 请参考上文"
@@ -2307,10 +2307,10 @@ msgid "Paid"
 msgstr "已支付"
 
 msgid "Pair your 2-Key Vault wallet with Gold Wallet"
-msgstr "将您的 2 重密钥 Vault 钱包与 Gold Wallet 配对"
+msgstr "将您的 2-Key Vault 钱包与 Gold Wallet 配对"
 
 msgid "Pair your 3-Key Vault wallet with Gold Wallet"
-msgstr "将您的 3 重密钥 Vault 钱包与 Gold Wallet 配对"
+msgstr "将您的 3-Key Vault 钱包与 Gold Wallet 配对"
 
 msgid "Partially signed"
 msgstr "部分签署"
@@ -2432,16 +2432,16 @@ msgid "Please insert your {device}"
 msgstr "请插入{device}"
 
 msgid ""
-"Please paste a Cancel transaction public key. Use an existing one, if you "
+"Please paste a Cancel Transaction Key. Use an existing one, if you "
 "are importing a wallet, or generate a new one at"
 msgstr ""
-"请粘贴取消交易公钥。如果要导入钱包，请使用现有的交易公钥，或生成一个新的于"
+"请粘贴取消交易密钥。如果要导入钱包，请使用现有的交易公钥，或生成一个新的于"
 
 msgid ""
-"Please paste a Secure Fast transaction public key. Use an existing one, if "
+"Please paste a Fast Transaction Key. Use an existing one, if "
 "you are importing a wallet, or generate a new one at"
 msgstr ""
-"请粘贴安全快速交易公钥。 如果要导入钱包，请使用现有的交易公钥，或生成一个新的"
+"请粘贴全快速交易钥。 如果要导入钱包，请使用现有的交易公钥，或生成一个新的"
 "于"
 
 msgid ""
@@ -2807,8 +2807,8 @@ msgstr "安全快速交易种子不符合此钱包中的任何密钥"
 msgid "Secure Fast seedphrase"
 msgstr "安全快速种子口令"
 
-msgid "Secure Fast transaction public key"
-msgstr "安全快速交易公钥"
+msgid "Fast Transaction Key"
+msgstr "快速交易键"
 
 msgid "Secure fast"
 msgstr "快速"
@@ -3073,7 +3073,7 @@ msgid "Spend only confirmed inputs."
 msgstr "仅能消费确认的输入值"
 
 msgid "Standard"
-msgstr "标准"
+msgstr "Standard"
 
 msgid "Start"
 msgstr "开始"

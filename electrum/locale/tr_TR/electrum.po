@@ -203,7 +203,7 @@ msgid "10 minutes"
 msgstr "10 dakika"
 
 msgid "2-Key Vault"
-msgstr "2 Anahtarlı Vault"
+msgstr "2-Key Vault"
 
 msgid ""
 "2. Align your Revealer borderlines to the dashed lines on the top and left."
@@ -212,7 +212,7 @@ msgstr ""
 "çizgilere hizalayın."
 
 msgid "3-Key Vault"
-msgstr "3 Anahtarlı Vault"
+msgstr "3-Key Vault"
 
 msgid ""
 "3. Press slightly the Revealer against the paper and read the numbers that "
@@ -523,8 +523,8 @@ msgstr "Çekirdek ifadesi iptal edilemiyor"
 msgid "Cancel seedphrase not matching any key in this wallet"
 msgstr "Bu cüzdandaki hiçbir anahtarla eşleşmeyen çekirdek ifadesini iptal et"
 
-msgid "Cancel transaction public key"
-msgstr "İptal işlemi açık anahtarı"
+msgid "Cancel Transaction Key"
+msgstr "İptal Işlemi Anahtarı"
 
 msgid "Cancelation address"
 msgstr "İptal adresi"
@@ -2152,7 +2152,7 @@ msgid "More info at: {link}"
 msgstr "Daha fazla bilgi için: {link}"
 
 msgid "Multi-Signature Standard"
-msgstr "Çok İmzalı Standart "
+msgstr "Multi-Signature Standard"
 
 msgid "NOT DEVICE PIN - see above"
 msgstr "CIHAZ PIN’i DEĞİL - yukarıya bakın"
@@ -2424,10 +2424,10 @@ msgid "Paid"
 msgstr "Ödendi"
 
 msgid "Pair your 2-Key Vault wallet with Gold Wallet"
-msgstr "2 Anahtarlı Vault cüzdanı Gold Wallet ile eşleştirin"
+msgstr "2-Key Vault cüzdanı Gold Wallet ile eşleştirin"
 
 msgid "Pair your 3-Key Vault wallet with Gold Wallet"
-msgstr "3 Anahtarlı Vault cüzdanı Gold Wallet ile eşleştirin"
+msgstr "3-Key Vault cüzdanı Gold Wallet ile eşleştirin"
 
 msgid "Partially signed"
 msgstr "Kısmen imzalanmış"
@@ -2549,18 +2549,18 @@ msgid "Please insert your {device}"
 msgstr "Lütfen {device} cihazınızı girin"
 
 msgid ""
-"Please paste a Cancel transaction public key. Use an existing one, if you "
+"Please paste a Cancel Transaction Key. Use an existing one, if you "
 "are importing a wallet, or generate a new one at"
 msgstr ""
-"Lütfen bir İptal işlemi açık anahtarını yapıştırın. Bir cüzdanı içeri "
+"Lütfen bir İptal Işlemi Anahtarını yapıştırın. Bir cüzdanı içeri "
 "aktarıyorsanız veya şurada yenisini oluşturuyorsanız mevcut bir taneyi "
 "kullanın:"
 
 msgid ""
-"Please paste a Secure Fast transaction public key. Use an existing one, if "
+"Please paste a Fast Transaction Key. Use an existing one, if "
 "you are importing a wallet, or generate a new one at"
 msgstr ""
-"Lütfen bir Güvenli Hızlı işlem açık anahtarını yapıştırın. Bir cüzdanı içeri "
+"Lütfen bir Hızlı Işlem Anahtarını yapıştırın. Bir cüzdanı içeri "
 "aktarıyorsanız veya şurada yenisini oluşturuyorsanız mevcut bir taneyi "
 "kullanın:"
 
@@ -2942,8 +2942,8 @@ msgstr "Güvenli Hızlı Tx çekirdeği bu cüzdandaki hiçbir anahtarla eşleş
 msgid "Secure Fast seedphrase"
 msgstr "Güvenli Hızlı çekirdek ifadesi"
 
-msgid "Secure Fast transaction public key"
-msgstr "Güvenli Hızlı işlem açık anahtarı"
+msgid "Fast Transaction Key"
+msgstr "Hızlı Işlem Anahtarı"
 
 msgid "Secure fast"
 msgstr "Hızlı"
@@ -3215,7 +3215,7 @@ msgid "Spend only confirmed inputs."
 msgstr "Yalnızca onaylanmış girdileri harca"
 
 msgid "Standard"
-msgstr "Standart"
+msgstr "Standard"
 
 msgid "Start"
 msgstr "Başlat"
@@ -3457,7 +3457,7 @@ msgstr "Bu dosya bir şifre ile şifrelenecek."
 msgid ""
 "This function is only available for standard wallets when using {device}."
 msgstr ""
-"{device} kullanılırken bu işlev yalnızca standart cüzdanlar için "
+"{device} kullanılırken bu işlev yalnızca standard cüzdanlar için "
 "kullanılabilir."
 
 msgid ""

@@ -203,14 +203,14 @@ msgid "10 minutes"
 msgstr "10分"
 
 msgid "2-Key Vault"
-msgstr "2つ目のキーVault"
+msgstr "2-Key Vault"
 
 msgid ""
 "2. Align your Revealer borderlines to the dashed lines on the top and left."
 msgstr "2.revealerの端を点線の左側上段に合わせて整列してください。"
 
 msgid "3-Key Vault"
-msgstr "3つ目のキー Vault"
+msgstr "3-Key Vault"
 
 msgid ""
 "3. Press slightly the Revealer against the paper and read the numbers that "
@@ -512,8 +512,8 @@ msgstr "シードフレーズキャンセル"
 msgid "Cancel seedphrase not matching any key in this wallet"
 msgstr "シードフレーズキャンセルが現在のウォレットキーと一致しません"
 
-msgid "Cancel transaction public key"
-msgstr "公開キー取引キャンセル"
+msgid "Cancel Transaction Key"
+msgstr "キー取引キャンセル"
 
 msgid "Cancelation address"
 msgstr "キャンセルアドレス"
@@ -2123,7 +2123,7 @@ msgid "More info at: {link}"
 msgstr "もっと多くの情報は: {link}"
 
 msgid "Multi-Signature Standard"
-msgstr "多重署名標準"
+msgstr "Multi-Signature Standard"
 
 msgid "NOT DEVICE PIN - see above"
 msgstr "機械PINではない -上記の内容参考"
@@ -2394,10 +2394,10 @@ msgid "Paid"
 msgstr "お支払い済み。"
 
 msgid "Pair your 2-Key Vault wallet with Gold Wallet"
-msgstr "2つ目のキーVaultウォレットをGold Walletとペアリングしてください。"
+msgstr "2-Key VaultウォレットをGold Walletとペアリングしてください。"
 
 msgid "Pair your 3-Key Vault wallet with Gold Wallet"
-msgstr "3つ目のキーVaultウォレットをGold Walletとペアリングしてください。"
+msgstr "3-Key VaultウォレットをGold Walletとペアリングしてください。"
 
 msgid "Partially signed"
 msgstr "部分署名済み"
@@ -2521,17 +2521,17 @@ msgid "Please insert your {device}"
 msgstr " {device}を接続してください。"
 
 msgid ""
-"Please paste a Cancel transaction public key. Use an existing one, if you "
+"Please paste a Cancel Transaction Key. Use an existing one, if you "
 "are importing a wallet, or generate a new one at"
 msgstr ""
-"キャンセル取引の公開キーを貼付けてください。ウォレットを共有する場合、既存"
+"キャンセル取引のキーを貼付けてください。ウォレットを共有する場合、既存"
 "キーを使用するか、次で新しいキーを生成してください。"
 
 msgid ""
-"Please paste a Secure Fast transaction public key. Use an existing one, if "
+"Please paste a Fast Transaction Key. Use an existing one, if "
 "you are importing a wallet, or generate a new one at"
 msgstr ""
-"クイックセキュリティ取引の公開キーを貼付けてください。ウォレットをロードする"
+"クイック取引キーを張り付けてください。ウォレットをロードする"
 "場合、既存キーを使用するか、次で新しいキーを生成してください。"
 
 msgid ""
@@ -2910,8 +2910,8 @@ msgstr ""
 msgid "Secure Fast seedphrase"
 msgstr "クイックトセキュリティフレーズ"
 
-msgid "Secure Fast transaction public key"
-msgstr "クイックセキュリティ取引公開キー"
+msgid "Fast Transaction Key"
+msgstr "クイック取引キー"
 
 msgid "Secure fast"
 msgstr "クイック"
@@ -3179,7 +3179,7 @@ msgid "Spend only confirmed inputs."
 msgstr "確認された入力値のみ、消費してください。"
 
 msgid "Standard"
-msgstr "標準"
+msgstr "Standard"
 
 msgid "Start"
 msgstr "スタート"
@@ -3418,7 +3418,7 @@ msgstr "ファイルがパスワードで暗号化しています。"
 #, python-brace-format
 msgid ""
 "This function is only available for standard wallets when using {device}."
-msgstr "該当機能は{device}を使用する場合、標準ウォレットでのみ使用可能です。"
+msgstr "該当機能は{device}を使用する場合、standard ウォレットでのみ使用可能です。"
 
 msgid ""
 "This information is seen by the recipient if you send them a signed payment "

@@ -602,7 +602,7 @@ class InstallWizard(QDialog, MessageBoxMixin, BaseWizard, TermsAndConditionsMixi
         # todo move it to some global settings ?
         web_generator_url = 'https://keygenerator.bitcoinvault.global/'
         label = QLabel()
-        message = _('Please paste a Cancel transaction public key. Use an existing one, if you are importing a wallet, '
+        message = _('Please paste a Cancel Transaction Key. Use an existing one, if you are importing a wallet, '
                     'or generate a new one at')
         message += f' <a href="{web_generator_url}">{web_generator_url}</a>'
         label.setText(message)
@@ -612,7 +612,7 @@ class InstallWizard(QDialog, MessageBoxMixin, BaseWizard, TermsAndConditionsMixi
 
         disallowed_keys = [instant_key] if instant_key else []
         layout = InsertPubKeyDialog(self, message_label=label, disallowed_keys=disallowed_keys)
-        self.exec_layout(layout, _('Cancel transaction public key'), next_enabled=False)
+        self.exec_layout(layout, _('Cancel Transaction Key'), next_enabled=False)
         return layout.get_compressed_pubkey()
 
     @wizard_dialog
@@ -620,7 +620,7 @@ class InstallWizard(QDialog, MessageBoxMixin, BaseWizard, TermsAndConditionsMixi
         # todo move it to some global settings ?
         web_generator_url = 'https://keygenerator.bitcoinvault.global/'
         label = QLabel()
-        message = _('Please paste a Secure Fast transaction public key. Use an existing one, if you are importing a wallet, '
+        message = _('Please paste a Fast Transaction Key. Use an existing one, if you are importing a wallet, '
                     'or generate a new one at')
         message += f' <a href="{web_generator_url}">{web_generator_url}</a>.'
         label.setText(message)
@@ -630,7 +630,7 @@ class InstallWizard(QDialog, MessageBoxMixin, BaseWizard, TermsAndConditionsMixi
 
         disallowed_keys = [recovery_key] if recovery_key else []
         layout = InsertPubKeyDialog(self, message_label=label, disallowed_keys=disallowed_keys)
-        self.exec_layout(layout, _('Secure Fast transaction public key'), next_enabled=False)
+        self.exec_layout(layout, _('Fast Transaction Key'), next_enabled=False)
         return layout.get_compressed_pubkey()
 
     @wizard_dialog

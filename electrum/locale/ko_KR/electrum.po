@@ -203,14 +203,14 @@ msgid "10 minutes"
 msgstr "10 분"
 
 msgid "2-Key Vault"
-msgstr "2 키 Vault"
+msgstr "2-Key Vault"
 
 msgid ""
 "2. Align your Revealer borderlines to the dashed lines on the top and left."
 msgstr "2. Revealer의 가장자리를 점선의 좌측 상단에 맞추어 정렬하세요."
 
 msgid "3-Key Vault"
-msgstr "3 키 Vault"
+msgstr "3-Key Vault"
 
 msgid ""
 "3. Press slightly the Revealer against the paper and read the numbers that "
@@ -512,8 +512,8 @@ msgstr "시드 프레이즈 취소"
 msgid "Cancel seedphrase not matching any key in this wallet"
 msgstr "시드 프레이즈 취소가 현재 지갑의 키와 일치하지 않습니다"
 
-msgid "Cancel transaction public key"
-msgstr "공개키 거래 취소"
+msgid "Cancel Transaction Key"
+msgstr "키 거래 취소"
 
 msgid "Cancelation address"
 msgstr "취소 주소"
@@ -2107,7 +2107,7 @@ msgid "More info at: {link}"
 msgstr "더 많은 정보는: {link}"
 
 msgid "Multi-Signature Standard"
-msgstr "다중 서명 표준"
+msgstr "Multi-Signature Standard"
 
 msgid "NOT DEVICE PIN - see above"
 msgstr "기기 PIN 아님 - 위 내용 참고"
@@ -2370,10 +2370,10 @@ msgid "Paid"
 msgstr "지불됨."
 
 msgid "Pair your 2-Key Vault wallet with Gold Wallet"
-msgstr "2 키 Vault 지갑을 Gold Wallet과 페어링하세요"
+msgstr "2-Key Vault 지갑을 Gold Wallet과 페어링하세요"
 
 msgid "Pair your 3-Key Vault wallet with Gold Wallet"
-msgstr "3 키 Vault 지갑을 Gold Wallet과 페어링하세요"
+msgstr "3-Key Vault 지갑을 Gold Wallet과 페어링하세요"
 
 msgid "Partially signed"
 msgstr "부분 서명됨"
@@ -2495,17 +2495,17 @@ msgid "Please insert your {device}"
 msgstr " {device}를 삽입해주세요"
 
 msgid ""
-"Please paste a Cancel transaction public key. Use an existing one, if you "
+"Please paste a Cancel Transaction Key. Use an existing one, if you "
 "are importing a wallet, or generate a new one at"
 msgstr ""
-"취소 거래 공용 키를 붙여넣으세요. 지갑을 가져오시는 경우 기존 키를 사용하시거"
+"취소 거래 키를 붙여넣으세요. 지갑을 가져오시는 경우 기존 키를 사용하시거"
 "나다음에서 새로운 키를 생성하세요"
 
 msgid ""
-"Please paste a Secure Fast transaction public key. Use an existing one, if "
+"Please paste a Fast Transaction Key. Use an existing one, if "
 "you are importing a wallet, or generate a new one at"
 msgstr ""
-"빠른 보안 거래 공용 키를 붙여넣으세요. 지갑을 가져오시는 경우 기존 키를 사용"
+"빠른 거래 키를 붙여넣으세요. 지갑을 가져오시는 경우 기존 키를 사용"
 "하시거나다음에서 새로운 키를 생성하세요"
 
 msgid ""
@@ -2876,8 +2876,8 @@ msgstr "빠른 보안 거래 속도 시드가 이 지갑의 어떤 키와도 매
 msgid "Secure Fast seedphrase"
 msgstr "빠른 보안 시드phrase"
 
-msgid "Secure Fast transaction public key"
-msgstr "빠른 보안 거래 공용 키"
+msgid "Fast Transaction Key"
+msgstr "빠른 거래 키"
 
 msgid "Secure fast"
 msgstr "보안 고속 거래"
@@ -3143,7 +3143,7 @@ msgid "Spend only confirmed inputs."
 msgstr "확인된 입력값만 소비하십시오"
 
 msgid "Standard"
-msgstr "표준"
+msgstr "Standard"
 
 msgid "Start"
 msgstr "시작"

@@ -203,7 +203,7 @@ msgid "10 minutes"
 msgstr "10 phút"
 
 msgid "2-Key Vault"
-msgstr "Mã Vault 2 Khóa"
+msgstr "2-Key Vault"
 
 msgid ""
 "2. Align your Revealer borderlines to the dashed lines on the top and left."
@@ -212,7 +212,7 @@ msgstr ""
 "bên trái. "
 
 msgid "3-Key Vault"
-msgstr "Mã Vault 3 Khóa"
+msgstr "3-Key Vault"
 
 msgid ""
 "3. Press slightly the Revealer against the paper and read the numbers that "
@@ -525,8 +525,8 @@ msgstr "Hủy cụm từ hạt giống"
 msgid "Cancel seedphrase not matching any key in this wallet"
 msgstr "Hủy cụm từ hạt giống không khớp với bất kỳ khóa nào trong ví này"
 
-msgid "Cancel transaction public key"
-msgstr "Hủy khóa giao dịch công khai"
+msgid "Cancel Transaction Key"
+msgstr "Hủy khóa giao dịch"
 
 msgid "Cancelation address"
 msgstr "Địa chỉ hủy"
@@ -2158,7 +2158,7 @@ msgid "More info at: {link}"
 msgstr "Thông tin thêm tại: {link}"
 
 msgid "Multi-Signature Standard"
-msgstr "Tiêu chuẩn đa chữ ký"
+msgstr "Multi-Signature Standard"
 
 msgid "NOT DEVICE PIN - see above"
 msgstr "KHÔNG PHẢI PIN THIẾT BỊ - xem ở trên"
@@ -2430,10 +2430,10 @@ msgid "Paid"
 msgstr "Đã thanh toán"
 
 msgid "Pair your 2-Key Vault wallet with Gold Wallet"
-msgstr "Kết nối ví 2 mã khóa Vault của bạn với Gold Wallet."
+msgstr "Kết nối ví 2-Key Vault của bạn với Gold Wallet."
 
 msgid "Pair your 3-Key Vault wallet with Gold Wallet"
-msgstr "Kết nối ví 3 mã khóa Vault của bạn với Gold Wallet."
+msgstr "Kết nối ví 3-Key Vault của bạn với Gold Wallet."
 
 msgid "Partially signed"
 msgstr "Đã ký một phần"
@@ -2454,7 +2454,7 @@ msgid "Password is disabled, this wallet is not protected"
 msgstr "Mật khẩu bị vô hiệu hóa, ví này không được bảo vệ"
 
 msgid "Password was updated successfully"
-msgstr "Mật khẩu đã được cập nhật thành công"
+msgstr "Mật khẩu đã đư��c cập nhật thành công"
 
 msgid "Password:"
 msgstr "Mật khẩu:"
@@ -2556,17 +2556,17 @@ msgid "Please insert your {device}"
 msgstr "Vui lòng chèn {device} của quý khách"
 
 msgid ""
-"Please paste a Cancel transaction public key. Use an existing one, if you "
+"Please paste a Cancel Transaction Key. Use an existing one, if you "
 "are importing a wallet, or generate a new one at"
 msgstr ""
-"Vui lòng dán khóa công khai Hủy giao dịch. Sử dụng khóa hiện có, nếu bạn "
+"Vui lòng dán Khóa giao dịch Hủy. Sử dụng khóa hiện có, nếu bạn "
 "đang nhập ví hoặc tạo ví mới tại "
 
 msgid ""
-"Please paste a Secure Fast transaction public key. Use an existing one, if "
+"Please paste a Fast Transaction Key. Use an existing one, if "
 "you are importing a wallet, or generate a new one at"
 msgstr ""
-"Vui lòng dán khóa công khai giao dịch Nhanh An Toàn. Sử dụng một mã hiện có, "
+"Vui lòng gắn Khóa giao dịch Nhanh. Sử dụng một mã hiện có, "
 "nếubạn đang nhập ví hoặc tạo ví mới tại "
 
 msgid ""
@@ -2945,8 +2945,8 @@ msgstr "Hạt giống Tx nhanh an toàn không khớp với bất kỳ khóa nà
 msgid "Secure Fast seedphrase"
 msgstr "Cụm từ hạt giống nhanh an toàn"
 
-msgid "Secure Fast transaction public key"
-msgstr "Khóa công khai giao dịch nhanh an toàn"
+msgid "Fast Transaction Key"
+msgstr "Khóa giao dịch nhanh"
 
 msgid "Secure fast"
 msgstr "Nhanh"
@@ -3216,7 +3216,7 @@ msgid "Spend only confirmed inputs."
 msgstr "Chỉ sử dụng các đầu vào đã xác nhận."
 
 msgid "Standard"
-msgstr "Tiêu chuẩn"
+msgstr "Standard"
 
 msgid "Start"
 msgstr "Bắt đầu"
@@ -3463,7 +3463,7 @@ msgstr "Tệp này được mã hóa bằng mật khẩu."
 msgid ""
 "This function is only available for standard wallets when using {device}."
 msgstr ""
-" Chức năng này chỉ khả dụng cho các ví tiêu chuẩn khi sử dụng {device}.  "
+" Chức năng này chỉ khả dụng cho các ví standard khi sử dụng {device}.  "
 
 msgid ""
 "This information is seen by the recipient if you send them a signed payment "
