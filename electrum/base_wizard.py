@@ -304,7 +304,7 @@ class BaseWizard(Logger, AdvancedOptionMixin):
             advanced_choices = [
                 ('restore_from_key', _('Use a master key')),
             ]
-            if not self.is_kivy:
+            if not self.is_kivy and self.wallet_type not in ['2-key', '3-key']:
                 advanced_choices.append(('choose_hw_device', _('Use a hardware device')))
         if self.wallet_type == 'multisig':
             self.choice_dialog(title=title, message=message, choices=base_choices + advanced_choices, run_next=self.run)
