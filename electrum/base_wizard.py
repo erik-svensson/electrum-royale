@@ -32,6 +32,7 @@ from . import bitcoin
 from . import keystore
 from . import mnemonic
 from .bip32 import is_bip32_derivation, xpub_type, normalize_bip32_derivation, BIP32Node
+from .gui.qt.advanced_option_mixin import AdvancedOptionMixin
 from .i18n import _
 from .keystore import bip44_derivation, purpose48_derivation
 from .logging import Logger
@@ -71,7 +72,7 @@ class WizardWalletPasswordSetting(NamedTuple):
     encrypt_keystore: bool
 
 
-class BaseWizard(Logger):
+class BaseWizard(Logger, AdvancedOptionMixin):
 
     def __init__(self, config: SimpleConfig, plugins: Plugins):
         super(BaseWizard, self).__init__()
@@ -131,15 +132,22 @@ class BaseWizard(Logger):
         message = '\n'.join([
             _("Choose the type of wallet")
         ])
-        wallet_kinds = [
+        base_wallet_kinds = [
             ('2-key', _('2-Key Vault')),
             ('3-key', _('3-Key Vault')),
             ('standard', _('Standard')),
+        ]
+        advanced_wallet_kinds = [
             ('multisig', _('Multi-Signature Standard')),
             ('imported', _('Import external watch-only BTCV addresses or private keys')),
         ]
-        choices = [pair for pair in wallet_kinds if pair[0] in wallet_types]
-        self.choice_dialog(title=title, message=message, choices=choices, run_next=self.on_wallet_type)
+
+        base_choices = [pair for pair in base_wallet_kinds if pair[0] in wallet_types]
+        advanced_choices = [pair for pair in advanced_wallet_kinds if pair[0] in wallet_types]
+        self.choice_dialog_with_advanced_options(
+            title=title, message=message, base_choices=base_choices, advanced_choices=advanced_choices,
+            run_next=self.on_wallet_type
+        )
 
     def upgrade_storage(self, storage):
         exc = None
@@ -289,15 +297,22 @@ class BaseWizard(Logger):
             # for 2- & 3- keys wallets we use only segwit type seed
             if self.wallet_type in ['2-key', '3-key']:
                 run_next_method = 'create_segwit_seed'
-            choices = [
+            base_choices = [
                 (run_next_method, _('Create a new seed')),
                 ('restore_from_seed', _('I already have a seed')),
+            ]
+            advanced_choices = [
                 ('restore_from_key', _('Use a master key')),
             ]
             if not self.is_kivy:
-                choices.append(('choose_hw_device', _('Use a hardware device')))
-
-        self.choice_dialog(title=title, message=message, choices=choices, run_next=self.run)
+                advanced_choices.append(('choose_hw_device', _('Use a hardware device')))
+        if self.wallet_type == 'multisig':
+            self.choice_dialog(title=title, message=message, choices=base_choices + advanced_choices, run_next=self.run)
+        else:
+            self.choice_dialog_with_advanced_options(
+                title=title, message=message, base_choices=base_choices, advanced_choices=advanced_choices,
+                run_next=self.run
+            )
 
     def import_addresses_or_keys(self):
         v = lambda x: keystore.is_address_list(x) or keystore.is_private_key_list(x, raise_on_error=True)
@@ -719,11 +734,16 @@ class BaseWizard(Logger):
                 _("'Legacy' is the original address type, while 'Segwit' is the newer address format with lower fees.")
             ])
         if choices is None:
-            choices = [
+            base_choices = [
                 ('create_segwit_seed', _('Segwit')),
+            ]
+            advanced_choices = [
                 ('create_standard_seed', _('Legacy')),
             ]
-        self.choice_dialog(title=title, message=message, choices=choices, run_next=self.run)
+        self.choice_dialog_with_advanced_options(
+            title=title, message=message, base_choices=base_choices, advanced_choices=advanced_choices,
+            run_next=self.run
+        )
 
     def create_segwit_seed(self):
         self.create_seed('segwit')

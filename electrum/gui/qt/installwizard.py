@@ -159,6 +159,7 @@ class InstallWizard(QDialog, MessageBoxMixin, BaseWizard, TermsAndConditionsMixi
         hbox.setStretchFactor(scroll, 1)
         outer_vbox.addLayout(hbox)
         outer_vbox.addLayout(Buttons(self.back_button, self.next_button))
+        self._add_advanced_button()
         self.set_icon('electrum.png')
         self._set_gui_text()
         self.show()
@@ -551,6 +552,24 @@ class InstallWizard(QDialog, MessageBoxMixin, BaseWizard, TermsAndConditionsMixi
         vbox = QVBoxLayout()
         vbox.addLayout(clayout.layout())
         self.exec_layout(vbox, title)
+        action = c_values[clayout.selected_index()]
+        return action
+
+    @wizard_dialog
+    def choice_dialog_with_advanced_options(self, title, message, base_choices, advanced_choices, run_next):
+        choices = base_choices + advanced_choices
+        c_values = [x[0] for x in choices]
+        c_titles = [x[1] for x in choices]
+        clayout = ChoicesLayout(message, c_titles)
+        clayout.show_index(len(base_choices))
+        vbox = QVBoxLayout()
+        vbox.addLayout(clayout.layout())
+        self.exec_advanced_layout(
+            layout=vbox,
+            default_show_function=lambda: clayout.show_index(len(base_choices)),
+            advanced_show_function=lambda: clayout.show_index(len(choices)),
+            title=title,
+        )
         action = c_values[clayout.selected_index()]
         return action
 
