@@ -8,7 +8,7 @@ from typing import List
 
 def extract_all_msgid(file_path: str) -> List[str]:
     with open(file_path, 'r') as file:
-        finder = re.compile(r'msgid ((.+[\s])+)msgstr', re.MULTILINE)
+        finder = re.compile(r'msgid ((.+\n)+)msgstr', re.MULTILINE)
         # filter out empty msgids
         return list(filter(
             lambda item: item != '""',
