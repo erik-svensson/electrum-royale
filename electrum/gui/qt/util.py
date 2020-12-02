@@ -343,6 +343,7 @@ def text_dialog(parent, title, header_layout, ok_label, default=None, allow_mult
     if dialog.exec_():
         return txt.toPlainText()
 
+
 class ChoicesLayout(object):
     def __init__(self, msg, choices, on_clicked=None, checked_index=0):
         vbox = QVBoxLayout()
@@ -375,6 +376,13 @@ class ChoicesLayout(object):
 
     def selected_index(self):
         return self.group.checkedId()
+
+    def show_index(self, max_index_to_show):
+        for i, button in enumerate(self.group.buttons()):
+            button.setVisible(True)
+            if i >= max_index_to_show:
+                button.setVisible(False)
+
 
 def address_field(addresses):
     hbox = QHBoxLayout()
