@@ -42,7 +42,7 @@ def main():
     parser.add_argument('--root-dir', default='../electrum/locale', help='directory where po files are looking for, default is ../electrum/locale')
     parser.add_argument('csv-file', help='results will be written in this file')
     args = vars(parser.parse_args())
-    files = find_all_po(args['root-dir'])
+    files = find_all_po(args['root_dir'])
     data = prepare_data(files)
     save_into_csv(data, args['csv-file'])
 

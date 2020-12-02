@@ -40,7 +40,7 @@ python make_locale.py compile-po <csv-file>
 ```
 e.g
 ```bash 
-python make_locale.py compile-po <csv-file>
+python make_locale.py compile-po copy.csv
 ```
 For more options look in `help`
 ```bash
