@@ -16,6 +16,7 @@ from electrum.plugin import Plugins
 from electrum.storage import WalletStorage, StorageReadWriteError
 from electrum.util import UserCancelled, InvalidPassword, WalletFileException
 from electrum.wallet import Abstract_Wallet
+from .advanced_option_mixin import LastChosenState
 from .network_dialog import NetworkChoiceLayout
 from .password_dialog import PasswordLayout, PasswordLayoutForHW, PW_NEW
 from .seed_dialog import SeedLayout, KeysLayout
@@ -159,6 +160,7 @@ class InstallWizard(QDialog, MessageBoxMixin, BaseWizard, TermsAndConditionsMixi
         hbox.setStretchFactor(scroll, 1)
         outer_vbox.addLayout(hbox)
         outer_vbox.addLayout(Buttons(self.back_button, self.next_button))
+        self._add_advanced_button()
         self.set_icon('electrum.png')
         self._set_gui_text()
         self.show()
@@ -547,11 +549,40 @@ class InstallWizard(QDialog, MessageBoxMixin, BaseWizard, TermsAndConditionsMixi
     def choice_dialog(self, title, message, choices, run_next):
         c_values = [x[0] for x in choices]
         c_titles = [x[1] for x in choices]
-        clayout = ChoicesLayout(message, c_titles)
+        id_ = self.compute_window_id(message, c_titles, list(self.data.values()))
+        checked_index = LastChosenState.get_index(id_)
+        clayout = ChoicesLayout(message, c_titles, checked_index=checked_index)
         vbox = QVBoxLayout()
         vbox.addLayout(clayout.layout())
         self.exec_layout(vbox, title)
         action = c_values[clayout.selected_index()]
+        LastChosenState.set_state(id_, clayout.selected_index())
+        return action
+
+    @wizard_dialog
+    def choice_dialog_with_advanced_options(self, title, message, base_choices, advanced_choices, run_next):
+        choices = base_choices + advanced_choices
+        c_values = [x[0] for x in choices]
+        c_titles = [x[1] for x in choices]
+        id_ = self.compute_window_id(message, c_titles, list(self.data.values()))
+        checked_index = LastChosenState.get_index(id_)
+        clayout = ChoicesLayout(message, c_titles, checked_index=checked_index)
+        if checked_index < len(base_choices):
+            clayout.show_index(len(base_choices))
+            self._show_advanced_text()
+        else:
+            clayout.show_index(len(choices))
+            self._hide_advanced_text()
+        vbox = QVBoxLayout()
+        vbox.addLayout(clayout.layout())
+        self.exec_advanced_layout(
+            layout=vbox,
+            default_show_function=lambda: clayout.show_index(len(base_choices)),
+            advanced_show_function=lambda: clayout.show_index(len(choices)),
+            title=title,
+        )
+        action = c_values[clayout.selected_index()]
+        LastChosenState.set_state(id_, clayout.selected_index())
         return action
 
     @wizard_dialog
