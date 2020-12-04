@@ -1,3 +1,60 @@
+## Translation workflow
+Below scheme shows workflow of translation process
+```
+   +----+                 +-------+                  +-------+                   +----+
++----+  |        (1)      |       |       (2)        |       |      (3)       +----+  |
+|    |  |   ----------->  | CSV_1 |  ------------->  | CSV_2 |  ----------->  | po |  |
+| py |  |    create-csv   |       |   translating    |       |   compile-po   |  & |  |
+|    |--+                 +-------+                  +-------+                | mo |--+
++----+                                                                        +----+
+```
+where:
+
+1. is creating [new](#prepare-new-csv-to-translation) or [diff](#prepare-diff-csv-to-translation) csv from local `py` files, example output `CSV_1` looks like:
+   ```csv
+    """Show advanced"""
+    """Hide advanced"""
+   ```
+   where after formatting by csv reader it looks like
+    <table>
+        <tr>
+            <td>"Show advanced"</td>
+        </tr>
+        <tr>
+            <td>"Hide advanced"</td>
+        </tr>
+    </table>
+
+2. is translating all keys from single column `CSV_1` into many column `CSV_2`, each of the column represents different language, which abbreviation is added in first row of `CSV_2`, example `CSV_2` looks like:
+   ```csv
+    en_UK,ko_KR
+    """Show advanced""","""고급 옵션 표시"""
+    """Hide advanced""","""고급 옵션 숨김"""
+   ```
+   where after formatting by csv reader it looks like
+    <table>
+        <tr>
+            <td>en_UK</td>
+            <td>ko_KR</td>
+        </tr>
+        <tr>
+            <td>"Show advanced"</td>
+            <td>"고급 옵션 표시"</td>
+        </tr>
+        <tr>
+            <td>"Hide advanced"</td>
+            <td>"고급 옵션 숨김"</td>
+        </tr>
+    </table>
+
+   Translated items have to keep the same string formatting like corresponding key items. Otherwise it can causes troubles during compilation or execution.
+
+   EV supports following abbreviations:
+   ```
+   en_UK,ko_KR,ja_JP,zh_CN,vi_VN,es_ES,pt_PT,id_ID,tr_TR
+   ```
+3. is [compiling](#compile-po-from-csv) csv file `CSV_2` into `po` and `mo` files
+
 ## Set Up
 In case of proper running, program has to be launched from `utils` directory, e.g
 
