@@ -165,6 +165,7 @@ class InstallWizard(QDialog, MessageBoxMixin, BaseWizard, TermsAndConditionsMixi
         self.back_button.setText(_('Back') if self.can_go_back() else _('Cancel'))
         self.next_button.setText(_("Next"))
         self.please_wait.setText(_("Please wait..."))
+        self._translate_advanced_options()
 
     def select_and_save_language(self):
         """Method for selecting and saving language in config file as {'language': <language-abbreviation: str>}"""
