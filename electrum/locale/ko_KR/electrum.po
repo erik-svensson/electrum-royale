@@ -2590,6 +2590,9 @@ msgstr "보안"
 msgid "Secure - confirmed after 24 hours. Can be canceled within that time."
 msgstr "보안 - 24시간 후 확인됨. 이 시간 내에 취소할 수 있습니다."
 
+msgid "Secure Fast"
+msgstr "보안 고속"
+
 msgid "Secure Fast - confirmed immediately. Cannot be canceled. Requires an additional seed phrase."
 msgstr "보안 고속 - 즉시 확인됨. 취소할 수 없습니다. 추가 시드 문구가필요합니다."
 
@@ -2601,9 +2604,6 @@ msgstr "보안 고속 거래 속도 시드가 이 지갑의 어떤 키와도 매
 
 msgid "Secure Fast seedphrase"
 msgstr "보안 고속 시드 문구"
-
-msgid "Secure fast"
-msgstr "보안 고속"
 
 msgid "Secure incoming"
 msgstr "보안 수신"

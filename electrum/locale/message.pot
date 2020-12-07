@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-07 15:26+0100\n"
+"POT-Creation-Date: 2020-12-07 19:46+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2621,6 +2621,9 @@ msgstr ""
 msgid "Secure - confirmed after 24 hours. Can be canceled within that time."
 msgstr ""
 
+msgid "Secure Fast"
+msgstr ""
+
 msgid "Secure Fast - confirmed immediately. Cannot be canceled. Requires an additional seed phrase."
 msgstr ""
 
@@ -2631,9 +2634,6 @@ msgid "Secure Fast Tx seed not matching any key in this wallet"
 msgstr ""
 
 msgid "Secure Fast seedphrase"
-msgstr ""
-
-msgid "Secure fast"
 msgstr ""
 
 msgid "Secure incoming"

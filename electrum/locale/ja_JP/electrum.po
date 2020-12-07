@@ -2590,6 +2590,9 @@ msgstr "保安"
 msgid "Secure - confirmed after 24 hours. Can be canceled within that time."
 msgstr "保安 - 24時間後に承認されます。この時間内であればキャンセルできます。"
 
+msgid "Secure Fast"
+msgstr "保安・クイック"
+
 msgid "Secure Fast - confirmed immediately. Cannot be canceled. Requires an additional seed phrase."
 msgstr "保安・クイック - 直ちに承認されます。キャンセルできません。追加のシードフレーズが必要です。"
 
@@ -2601,9 +2604,6 @@ msgstr "保安・クイックTxシードがこのウォレットのどのキー�
 
 msgid "Secure Fast seedphrase"
 msgstr "保安・クイックシードフレーズ"
-
-msgid "Secure fast"
-msgstr "保安・クイック"
 
 msgid "Secure incoming"
 msgstr "安全な受信"

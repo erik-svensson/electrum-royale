@@ -2589,6 +2589,9 @@ msgstr "安全"
 msgid "Secure - confirmed after 24 hours. Can be canceled within that time."
 msgstr "安全——24 小时后确认。在此时间内可以取消。"
 
+msgid "Secure Fast"
+msgstr "快速"
+
 msgid "Secure Fast - confirmed immediately. Cannot be canceled. Requires an additional seed phrase."
 msgstr "快速安全——立即确认。 无法取消。 需要一个额外的密语种子"
 
@@ -2600,9 +2603,6 @@ msgstr "安全快速交易种子不符合此钱包中的任何密钥"
 
 msgid "Secure Fast seedphrase"
 msgstr "安全快速种子密语种子"
-
-msgid "Secure fast"
-msgstr "快速"
 
 msgid "Secure incoming"
 msgstr "安全接收"

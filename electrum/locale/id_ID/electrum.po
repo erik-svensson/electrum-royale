@@ -2589,6 +2589,9 @@ msgstr "Aman"
 msgid "Secure - confirmed after 24 hours. Can be canceled within that time."
 msgstr "Aman (Secure) - dikonfirmasi setelah 24 jam. Dapat dibatalkan dalam periode tersebut."
 
+msgid "Secure Fast"
+msgstr "Cepat"
+
 msgid "Secure Fast - confirmed immediately. Cannot be canceled. Requires an additional seed phrase."
 msgstr "Aman Cepat (Secure Fast) - dinkonfirmasi secara langsung. Tidak dapat dibatalkan. Membutuhkan sebuah frase seed tambahan."
 
@@ -2600,9 +2603,6 @@ msgstr "Seed Tx Secure Fast tidak cocok dengan kunci manapun yang tersedia di do
 
 msgid "Secure Fast seedphrase"
 msgstr "Seedphrase Aman Cepat (Secure Fast)"
-
-msgid "Secure fast"
-msgstr "Cepat"
 
 msgid "Secure incoming"
 msgstr "Transaksi Aman Masuk"

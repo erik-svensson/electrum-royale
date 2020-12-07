@@ -2590,6 +2590,9 @@ msgstr "Seguro"
 msgid "Secure - confirmed after 24 hours. Can be canceled within that time."
 msgstr "Segura: confirmado después de 24 horas. Puede cancelarse dentro de ese tiempo."
 
+msgid "Secure Fast"
+msgstr "Rápida y Segura"
+
 msgid "Secure Fast - confirmed immediately. Cannot be canceled. Requires an additional seed phrase."
 msgstr " Rápida Segura: confirmado de inmediato. No se puede cancelar. Requiere un  frase semilla adicional. "
 
@@ -2601,9 +2604,6 @@ msgstr "La semilla de la Tx Segura y Rápida  no coincide con ninguna clave en e
 
 msgid "Secure Fast seedphrase"
 msgstr "Frase semilla Segura y Rápida"
-
-msgid "Secure fast"
-msgstr "Rápida y Segura"
 
 msgid "Secure incoming"
 msgstr "Entrante segura"
