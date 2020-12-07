@@ -60,11 +60,12 @@ class SeedLayout(QVBoxLayout):
         vbox = QVBoxLayout()
         # order matters when we align checkboxes to right
         if import_gw_option:
-            cb_gw = QCheckBox(_('Gold Wallet integration'))
+            cb_gw = QCheckBox(_('Gold Wallet seed'))
             cb_gw.toggled.connect(self.toggle_cb_gold_wallet)
             cb_gw.setChecked(self.is_gold_wallet_import)
             vbox.addWidget(cb_gw, alignment=Qt.AlignLeft)
             self.checkboxes['gw'] = cb_gw
+            self.is_gold_wallet_import = cb_gw.isChecked()
         if 'bip39' in self.options:
             def f(b):
                 if b:
@@ -216,10 +217,10 @@ class SeedLayout(QVBoxLayout):
 
     def on_edit(self):
         s = self.get_seed()
-        if not self.is_bip39 and not self.is_gold_wallet_import:
-            b = bool(seed_type(s))
-        else:
+        if self.is_bip39 or self.is_gold_wallet_import:
             b = bip39_is_checksum_valid(s)[0]
+        else:
+            b = bool(seed_type(s))
         self.parent.next_button.setEnabled(b)
 
         # disable suggestions if user already typed an unknown word
