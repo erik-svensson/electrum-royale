@@ -17,37 +17,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-msgid "Are you sure you want to disagree?"
-msgstr "本当に同意しなくてよろしいですか？"
-
-msgid "Are you sure?"
-msgstr "本当によろしですか？"
-
-msgid "Description is not supported for Secure Fast transaction"
-msgstr "保安・クイック取引では説明をサポートしておりません。"
-
-msgid "I agree"
-msgstr "同意する"
-
-msgid "I disagree"
-msgstr "同意しない"
-
-msgid "No, I changed my mind"
-msgstr "いいえ、同意します"
-
-msgid ""
-"Note that if you disagree to our Terms & Conditions you won't be able to use "
-"the Electrum Vault application."
-msgstr ""
-"利用規約に同意しない場合、Electrum Vaultアプリケーションを使用できないことに"
-"注意してください。"
-
-msgid "Terms & Conditions"
-msgstr "利用規約"
-
-msgid "Yes, I disagree"
-msgstr "はい、同意しません"
-
 msgid "  (No FX rate available)"
 msgstr " (使用できるレート無し)"
 
@@ -55,10 +24,10 @@ msgid " confirmation"
 msgstr "確認"
 
 msgid " is not a valid Lightning invoice: "
-msgstr "有効なライトニングインボイスではない"
+msgstr "有効なライトニングインボイスではありません"
 
 msgid "&About"
-msgstr "&約"
+msgstr "&について"
 
 msgid "&Addresses"
 msgstr "&アドレス"
@@ -76,7 +45,7 @@ msgid "&Encrypt/decrypt message"
 msgstr "&メッセージ暗号化/非暗号化"
 
 msgid "&Export"
-msgstr "&共有する"
+msgstr "&エキスポート"
 
 msgid "&File"
 msgstr "&ファイル"
@@ -100,10 +69,10 @@ msgid "&Help"
 msgstr "&ヘルプ"
 
 msgid "&History"
-msgstr "&内訳"
+msgstr "&履歴"
 
 msgid "&Import"
-msgstr "&読み込む"
+msgstr "&インポート"
 
 msgid "&Information"
 msgstr "&情報"
@@ -112,7 +81,7 @@ msgid "&Labels"
 msgstr "&ラベル"
 
 msgid "&Load transaction"
-msgstr "&取引内訳を読み込む"
+msgstr "&取引を読み込む"
 
 msgid "&Network"
 msgstr "&ネットワーク"
@@ -133,7 +102,7 @@ msgid "&Password"
 msgstr "&パスワード"
 
 msgid "&Pay to many"
-msgstr "&多数の送金"
+msgstr "&複数への送金"
 
 msgid "&Plot"
 msgstr "&プロット"
@@ -142,7 +111,7 @@ msgid "&Plugins"
 msgstr "&プラグイン"
 
 msgid "&Private keys"
-msgstr "&個人用キー"
+msgstr "&個人キー"
 
 msgid "&Quit"
 msgstr "&終了する"
@@ -154,7 +123,7 @@ msgid "&Report Bug"
 msgstr "&不具合報告"
 
 msgid "&Save Copy"
-msgstr "&コピー保存"
+msgstr "&コピーの保存"
 
 msgid "&Seed"
 msgstr "&シード"
@@ -177,24 +146,20 @@ msgstr "&表示"
 msgid "&Wallet"
 msgstr "&ウォレット"
 
-msgid ""
-"'Legacy' is the original address type, while 'Segwit' is the newer address "
-"format with lower fees."
-msgstr ""
-"'Legacy'は既存アドレス形態で、'Segwit'は新しいアドレス 形態であり、手数料がよ"
-"り安いです。"
+msgid "'Legacy' is the original address type, while 'Segwit' is the newer address format with lower fees."
+msgstr "'Legacy'は元のアドレスタイプであり 'Segwit'は新しいアドレスタイプですより安い手数料のフォーマットです。"
 
 msgid "+"
-msgstr "&+"
+msgstr "+"
 
 msgid "1 day"
-msgstr "&1日"
+msgstr "1日"
 
 msgid "1 hour"
-msgstr "&1時間"
+msgstr "1時間"
 
 msgid "1 week"
-msgstr "&1週間"
+msgstr "1週間"
 
 msgid "1. Place this paper on a flat and well iluminated surface."
 msgstr "1.用紙を平らで、日当たり良い所に置いてください。"
@@ -205,57 +170,44 @@ msgstr "10分"
 msgid "2-Key Vault"
 msgstr "2-Key Vault"
 
-msgid ""
-"2. Align your Revealer borderlines to the dashed lines on the top and left."
-msgstr "2.revealerの端を点線の左側上段に合わせて整列してください。"
+msgid "2. Align your Revealer borderlines to the dashed lines on the top and left."
+msgstr "2. Revealerの端を上と左の点線に合わせます。"
 
 msgid "3-Key Vault"
 msgstr "3-Key Vault"
 
-msgid ""
-"3. Press slightly the Revealer against the paper and read the numbers that "
-"best match on the opposite sides. "
-msgstr ""
-"3.紙にrevealerを軽く押して、反対側に最も一致する数字を読み込ませてください。"
+msgid "3. Press slightly the Revealer against the paper and read the numbers that best match on the opposite sides. "
+msgstr "3.revealerを紙に軽く押し当て、反対側にある最も一致する数字を読みます。"
 
 msgid "4. Type the numbers in the software"
 msgstr "4.ソフトウェアに数字を入力してください。"
 
 msgid "A copy of your wallet file was created in"
-msgstr "貴方のウォレットコピーファイルが生成されました"
+msgstr "あなたのウォレットファイルのコピーが生成されました"
 
 msgid "A few examples"
 msgstr "例"
 
 msgid "A library is probably missing."
-msgstr "ライブラリーーが消えた可能性があります。"
+msgstr "ライブラリーが消えた可能性があります。"
 
 msgid "A payment was already initiated for this invoice"
-msgstr "該当インボイスについて支払いがすでに始まりました。"
+msgstr "該当のインボイスについては支払いがすでに開始されております"
 
-msgid ""
-"A small fee will be charged on each transaction that uses the remote "
-"server.  You may check and modify your billing preferences once the "
-"installation is complete."
-msgstr ""
-"遠隔サーバーを使用する各取引に所定の手数料が請求されます。インストールが完了"
-"すると請求関連事項を確認し修正できます。"
+msgid "A small fee will be charged on each transaction that uses the remote server.  You may check and modify your billing preferences once the installation is complete."
+msgstr "遠隔サーバーを使用する各取引に所定の手数料が請求されます。インストールが完了したら、請求書の設定事項を変更できます。"
 
-msgid ""
-"A suggested fee is automatically added to this field. You may override it. "
-"The suggested fee increases with the size of the transaction."
-msgstr ""
-"発生した手数料が自動的にこちらに追加されます。該当内訳を無視することができま"
-"す。発生する手数料は取引の大きさによって増加します。"
+msgid "A suggested fee is automatically added to this field. You may override it. The suggested fee increases with the size of the transaction."
+msgstr "提案された手数料が自動的にこちらに追加されます。それを無視することも可能です。提案された手数料は取引の大きさによって増減します。"
 
 msgid "About"
-msgstr "もう少し調べる"
+msgstr "について"
 
 msgid "About Electrum"
-msgstr "エレクトラムについて"
+msgstr "Electrumについて"
 
 msgid "Accept"
-msgstr "承知"
+msgstr "承認する"
 
 msgid "Acquisition price"
 msgstr "取得価格"
@@ -264,7 +216,7 @@ msgid "Add Cosigner"
 msgstr "共同署名人追加"
 
 msgid "Add a cosigner to your multi-sig wallet"
-msgstr "ウォレット共同署名人追加"
+msgstr "multi-sigウォレットに共同署名人を追加する"
 
 msgid "Add an optional virtual keyboard to the password dialog."
 msgstr "パスワード入力欄に仮想キーボードオプション追加"
@@ -275,60 +227,55 @@ msgstr "共同署名人追加"
 msgid "Additional fees"
 msgstr "追加手数料"
 
-#, python-brace-format
 msgid "Additional {num_satoshis_added} satoshis are going to be added."
-msgstr "追加された {num_satoshis_added} が追加されます。"
+msgstr " {num_satoshis_added} satohiが追加されます。"
 
 msgid "Address"
 msgstr "アドレス"
 
 msgid "Address Details"
-msgstr "詳細アドレス"
+msgstr "アドレス詳細"
 
 msgid "Address copied to clipboard"
-msgstr "アドレスコピー完了"
+msgstr "アドレスがクリップボードにコピーされました"
 
 msgid "Address is frozen"
-msgstr "凍結されたアドレス"
+msgstr "アドレスが凍結されました"
 
 msgid "Address not in wallet."
-msgstr "アドレスのないウォレット。"
+msgstr "ウォレットにアドレスがありません"
 
 msgid "Address:"
-msgstr "アドレス"
+msgstr "アドレス："
 
 msgid "Addresses"
-msgstr "多重アドレス"
+msgstr "複数アドレス"
 
 msgid "Addresses generated:"
-msgstr "多重アドレス生成完了"
+msgstr "複数アドレス生成完了"
 
 msgid "Advanced"
-msgstr "高級設定"
+msgstr "詳細設定"
 
 msgid "Advanced preview"
-msgstr "高級設定プレビュー"
+msgstr "詳細設定プレビュー"
 
 msgid "All"
-msgstr "全体"
+msgstr "全て"
 
 msgid "All fields must be filled out"
-msgstr "全体様式を記入してください"
+msgstr "全ての項目を埋めてください"
 
-msgid ""
-"Allows validating if your transactions have instant confirmations by "
-"GreenAddress"
-msgstr "グリーンアドレスが取引を確認すると承認を許可する"
+msgid "Allows validating if your transactions have instant confirmations by GreenAddress"
+msgstr "グリーンアドレスによって取引を即座に確認できるようにするのを承認します"
 
 msgid "Already up to date"
-msgstr "既に最新資料です"
+msgstr "既に最新の状態です"
 
 msgid "Also, dust is not kept as change, but added to the fee."
 msgstr "dustが変更に保存されませんが、手数料には追加されます。"
 
-msgid ""
-"Also, when batching RBF transactions, BIP 125 imposes a lower bound on the "
-"fee."
+msgid "Also, when batching RBF transactions, BIP 125 imposes a lower bound on the fee."
 msgstr "又、RBF取引が一括処理される際、BIP 125はより低い手数料を請求します。"
 
 msgid "Always check your backups."
@@ -341,78 +288,73 @@ msgid "Amount for OP_RETURN output must be zero."
 msgstr "OP_RETURN結果は必ず0でなければなりません。"
 
 msgid "Amount received:"
-msgstr "受信された数量"
+msgstr "受信した金額:"
 
 msgid "Amount sent:"
-msgstr "送金した数量"
+msgstr "送金した金額:"
 
 msgid "Amount to be sent"
-msgstr "送金する数量"
+msgstr "送金する金額"
 
 msgid "Amount to be sent."
-msgstr "送金する数量"
+msgstr "送金する金額"
 
 msgid "An Error Occurred"
-msgstr "エラー発生"
+msgstr "エラーが発生しました"
 
 msgid "An encrypted transaction was retrieved from cosigning pool."
-msgstr "暗号化された取引が共同署名プールから回数されました。"
+msgstr "暗号化された取引が共同署名プールから回収されました。"
 
-#, python-brace-format
 msgid "An unnamed {device_name}"
-msgstr "指定されてない名前{device_name}"
+msgstr "名前が指定されていません{device_name}"
 
-msgid ""
-"Are you sure you want to delete this channel? This will purge associated "
-"transactions from your wallet history."
-msgstr "該当チャンネルを削除しますか？ウォレット内訳から連関取引を削除します。"
+msgid "Are you sure you want to delete this channel? This will purge associated transactions from your wallet history."
+msgstr "このチャンネルを本当に削除してもよろしいですか？ウォレットの履歴から関連する取引を全て削除します。"
 
-#, python-brace-format
-msgid ""
-"Are you sure you want to remove this transaction and {number} child "
-"transactions?"
-msgstr "該当取引と{number}番下位取引を削除しますか？"
+msgid "Are you sure you want to disagree?"
+msgstr "本当に同意しなくてよろしいですか？"
+
+msgid "Are you sure you want to remove this transaction and {number} child transactions?"
+msgstr "この取引と{number}の下位取引を本当に削除してもよろしいですか？"
 
 msgid "Are you sure you want to remove this transaction?"
-msgstr "該当取引を削除しますか?"
+msgstr "この取引を本当に削除してもよろしいですか？"
 
-#, python-brace-format
+msgid "Are you sure?"
+msgstr "本当によろしですか？"
+
 msgid "At block height: {height}"
 msgstr "ブロックの高さ:{height}"
 
 msgid "At least a hostname must be supplied after the at symbol."
-msgstr "at 記号の次にはサーバー名が入力されなければなりません。"
+msgstr "アットマークの後には少なくともホスト名が入力されなければなりません。"
 
 msgid "At most 100 satoshis might be lost due to this rounding."
-msgstr "四捨五入により、最大100サトシーの差が発生する可能性があります。"
+msgstr "四捨五入により、最大100satoshiが失われる可能性があります。"
 
 msgid "Audio MODEM"
-msgstr "オーディオモデム"
+msgstr "Audio MODEM"
 
 msgid "Audio Modem Settings"
-msgstr "オーディオモデム設定"
+msgstr "Audio Modem設定"
 
 msgid "Authorization"
 msgstr "許可"
 
 msgid "Auto connect"
-msgstr "自動連結"
+msgstr "自動接続"
 
 msgid "Auto-connect"
-msgstr "自動連結"
+msgstr "自動接続"
 
 msgid "Automatically check for software updates"
 msgstr "ソフトウェアアップデートを自動で確認します。"
 
 msgid "BIP39 seed (Gold Wallet integration)"
-msgstr "BIP39シード(ゴールドウォレット統合)"
+msgstr "BIP39シード(Gold Wallet連携)"
 
-msgid ""
-"BIP39 seeds can be imported in Electrum, so that users can access funds "
-"locked in other wallets."
-msgstr ""
-"BIP39 シードは利用者の他のウォレット資金に接近する為、 Electrumから読み込ませ"
-"ることが出来ます。"
+msgid "BIP39 seeds can be imported in Electrum, so that users can access funds locked in other wallets."
+msgstr "BIP39 シードはElectrumからインポートできます。ユーザーが他のウォレットからロックされた資金にアクセスできるようにします。"
 
 msgid "BIP70 Invoice"
 msgstr "BIP70インボイス"
@@ -435,12 +377,8 @@ msgstr "ウォレットの基本単位"
 msgid "Batch RBF transactions"
 msgstr "RBF取引の一括処理"
 
-msgid ""
-"Before reporting a bug, upgrade to the most recent version of Electrum "
-"(latest release or git HEAD), and include the version number in your report."
-msgstr ""
-"エラー報告以前、最新バージョンのElectrum (latest release or git HEAD)にアップ"
-"デートし、バージョン名を記入して報告してください。"
+msgid "Before reporting a bug, upgrade to the most recent version of Electrum (latest release or git HEAD), and include the version number in your report."
+msgstr "エラーを報告する前に、最新バージョンのElectrum (最新リリース、またはgit HEAD)にアップデートし、ご自分のバージョン名を記入して報告してください。"
 
 msgid "Bit rate [kbps]: "
 msgstr "ビットレート[kbps]: "
@@ -451,12 +389,8 @@ msgstr "ビットコインアドレス"
 msgid "Bitcoin Address is None"
 msgstr "ビットコインアドレスが存在しません。"
 
-msgid ""
-"Bitcoin transactions are in general not free. A transaction fee is paid by "
-"the sender of the funds."
-msgstr ""
-"ビットコイン取引は一般的に無料ではありません。取引手数料が送信者に請求されま"
-"す。"
+msgid "Bitcoin transactions are in general not free. A transaction fee is paid by the sender of the funds."
+msgstr "一般的にビットコイン取引は無料ではありません。取引手数料が送信者に請求されます。"
 
 msgid "Blacklist"
 msgstr "ブラックリスト"
@@ -468,16 +402,16 @@ msgid "Bottom"
 msgstr "下段"
 
 msgid "Broadcast"
-msgstr "発信"
+msgstr "ブロードキャスト"
 
 msgid "Broadcasting transaction..."
-msgstr "取引放送"
+msgstr "ブロードキャストトランザクション"
 
 msgid "Bump Fee"
-msgstr "手数料バンピング"
+msgstr "手数料をバンプする"
 
 msgid "Bump fee"
-msgstr "手数料バンピング"
+msgstr "手数料をバンプする"
 
 msgid "CLTV expiry"
 msgstr "CLTV満了"
@@ -486,52 +420,52 @@ msgid "CSV"
 msgstr "CSV"
 
 msgid "Calibration sheet"
-msgstr "校正シート"
+msgstr "キャリブレーションシート"
 
 msgid "Calibration values:"
-msgstr "校正値:"
+msgstr "キャリブレーション値:"
 
 msgid "Can send"
 msgstr "送信可能"
 
 msgid "Can't CPFP: unknown fee for parent transaction."
-msgstr "CPEP不可：上位取引の手数料確認不可。"
+msgstr "CPEP不可：上位取引の手数料が不明です。"
 
 msgid "Can't bump fee: unknown fee for original transaction."
-msgstr "手数料バンピング不可：既存取引の手数料確認不可。"
+msgstr "手数料バンプ不可：元の取引の手数料が不明です。"
 
 msgid "Can't plot history."
-msgstr "内訳を読み込めません。"
+msgstr "履歴を読み込めません。"
 
 msgid "Cancel"
 msgstr "キャンセル"
 
+msgid "Cancel Transaction Key"
+msgstr "キャンセル取引・キー"
+
 msgid "Cancel seedphrase"
-msgstr "シードフレーズキャンセル"
+msgstr "キャンセルシードフレーズ"
 
 msgid "Cancel seedphrase not matching any key in this wallet"
-msgstr "シードフレーズキャンセルが現在のウォレットキーと一致しません"
-
-msgid "Cancel Transaction Key"
-msgstr "キー取引キャンセル"
+msgstr "キャンセルシードフレーズがこのウォレットのキーと一致しません"
 
 msgid "Cancelation address"
 msgstr "キャンセルアドレス"
 
 msgid "Cancelled by user"
-msgstr "使用者のキャンセル"
+msgstr "ユーザーによってキャンセルされた"
 
 msgid "Cannot add this cosigner:"
-msgstr "該当共同署名人を追加出来ません:"
+msgstr "こちらの共同署名人を追加出来ません:"
 
 msgid "Cannot broadcast transaction"
 msgstr "取引を発信できません"
 
 msgid "Cannot bump fee"
-msgstr "手数料をバンピング出来ません"
+msgstr "手数料をバンプ出来ません"
 
 msgid "Cannot create window for wallet"
-msgstr "ウォレット生成画面を生成出来ません"
+msgstr "ウォレット用のウィンドウを作成できません"
 
 msgid "Cannot load wallet"
 msgstr "ウォレットを読み込めません"
@@ -540,18 +474,17 @@ msgid "Cannot read file"
 msgstr "ファイルを読み込めません"
 
 msgid "Cannot sign messages with this type of address:"
-msgstr "該当アドレスのメッセージは承認出来ません:"
+msgstr "このタイプのアドレスではメッセージに署名できません:"
 
 msgid "Capacity"
 msgstr "容量"
 
 msgid "Capital Gains"
-msgstr "資本収益"
+msgstr "キャピタルゲイン"
 
 msgid "Capital gains"
-msgstr "資本収益"
+msgstr "キャピタルゲイン"
 
-#, python-brace-format
 msgid "Chain split detected at block {0}"
 msgstr "ブロック{0}でチェーン分割が感知されました"
 
@@ -579,12 +512,8 @@ msgstr "チャンネルは既に終了されました。"
 msgid "Channel closed"
 msgstr "チャンネル終了"
 
-#, python-brace-format
-msgid ""
-"Channel closed, you may need to wait at least {number} blocks, because of "
-"CSV delays"
-msgstr ""
-"チャンネルが終了されました。CSV遅延により、最小{number}ブロックが必要です"
+msgid "Channel closed, you may need to wait at least {number} blocks, because of CSV delays"
+msgstr "チャンネルが終了されました。CSV遅延により、少なくとも{number}ブロックを待つ必要があります"
 
 msgid "Channel details"
 msgstr "チャンネル詳細情報"
@@ -599,13 +528,10 @@ msgid "Channels"
 msgstr "チャンネル"
 
 msgid "Channels in database."
-msgstr "データベースのマイチャンネルが存在します。"
+msgstr "データベースにチャンネルが存在します。"
 
-msgid ""
-"Check this box to request a new secret. You will need to retype your seed."
-msgstr ""
-"新しいシークレット要請の為、該当ボックスをチェックしてください。シードの再入"
-"力が必要とされます。"
+msgid "Check this box to request a new secret. You will need to retype your seed."
+msgstr "新しいシークレットをリクエストするには、該当ボックスをチェックしてください。シードの再入力が必要になります。"
 
 msgid "Checking for updates..."
 msgstr "アップデート確認中..."
@@ -632,26 +558,24 @@ msgid "Choose a server"
 msgstr "サーバーを選択してください。"
 
 msgid ""
-"Choose coin (UTXO) selection method for alert transactions.  The following "
-"are available:\n"
+"Choose coin (UTXO) selection method for alert transactions.  The following are available:\n"
 "\n"
 msgstr ""
-"警報取引のためのコイン(UTXO)選択方法をお選びください。次を使用できます。:\n"
+"アラート取引のためのコイン(UTXO)選択方法をお選びください。次のものを使用できます。:\n"
 "\n"
 
 msgid ""
-"Choose coin (UTXO) selection method for non-alert transactions.  The "
-"following are available:\n"
+"Choose coin (UTXO) selection method for non-alert transactions.  The following are available:\n"
 "\n"
 msgstr ""
-"非警報のためのコイン(UTXO)選択方法をお選びください。次を使用できます。:\n"
+"非アラート取引のためのコイン(UTXO)選択方法をお選びください。次のものを使用できます。:\n"
 "\n"
 
 msgid "Choose from peers"
 msgstr "ピアから選択してください。"
 
 msgid "Choose the number of signatures needed to unlock funds in your wallet:"
-msgstr "ウォレットの資金に接近する為、必要な署名数を選択してください:"
+msgstr "ウォレットの資金のロックを解除するために、必要な署名数を選択してください:"
 
 msgid "Choose the type of addresses in your wallet."
 msgstr "ウォレットアドレスの種類を選択してください。"
@@ -662,12 +586,8 @@ msgstr "ウォレットの種類をお選びください"
 msgid "Choose transaction type."
 msgstr "取引タイプを選択してください。"
 
-msgid ""
-"Choose which online block explorer to use for functions that open a web "
-"browser"
-msgstr ""
-"ウェブブラウザオープン機能を使用する為、オンライン・ブロック探索機を選択して"
-"ください。"
+msgid "Choose which online block explorer to use for functions that open a web browser"
+msgstr "ウェブブラウザで開くオンラインブロックエクスプローラーをお選びください。"
 
 msgid "Choose your chain"
 msgstr "チェーンを選択してください"
@@ -679,10 +599,10 @@ msgid "Clear"
 msgstr "クリア"
 
 msgid "Click Send to proceed"
-msgstr "進行するの為、伝送するをクリックしてください"
+msgstr "送信をクリックして続行します"
 
 msgid "Click here to hide this message."
-msgstr "メッセージ表示を希望されない場合にはクリックしてください。"
+msgstr "このメッセージを表示したくない場合にはここをクリックしてください。"
 
 msgid "Clipboard is empty"
 msgstr "クリップボードが空です"
@@ -703,26 +623,25 @@ msgid "Code"
 msgstr "コード"
 
 msgid "Coin control active"
-msgstr "コインコントロールが活性化されました。"
+msgstr "コインコントロール有効"
 
 msgid "Coin is frozen"
 msgstr "コインが凍結しました"
 
 msgid "Coin selected to be spent"
-msgstr "選択したコインを伝送します"
+msgstr "使用するコインが選択されました"
 
 msgid "Coin selection"
 msgstr "コイン選択"
 
 msgid "Coin selection (alert)"
-msgstr "コイン選択(通知)"
+msgstr "コイン選択(アラート)"
 
 msgid "Coin selection (non-alert)"
-msgstr "コイン選択(未通知)"
+msgstr "コイン選択(非アラート)"
 
-#, python-brace-format
 msgid "Coin selection active ({num_utxos} UTXOs selected)"
-msgstr "コイン選択が活性化しました({num_utxos} UTXOが選択されました。"
+msgstr "コイン選択がアクティブになりました({num_utxos} UTXOが選択されました。"
 
 msgid "Color theme"
 msgstr "テーマカラー"
@@ -746,19 +665,19 @@ msgid "Confirm Seed"
 msgstr "シード確認"
 
 msgid "Confirm Seed Extension"
-msgstr "シード拡張確認"
+msgstr "シード拡張子確認"
 
 msgid "Confirm Transaction"
 msgstr "取引確認"
 
 msgid "Confirm Transaction on your Ledger device..."
-msgstr "レジャーデバイスの取引確認…"
+msgstr "Ledgerデバイスでの取引確認…"
 
 msgid "Confirm new PIN"
 msgstr "新しいPIN確認"
 
 msgid "Confirmation PIN from Gold Wallet:"
-msgstr "Gold WalletでのPINコード:"
+msgstr "Gold WalletからのPINコードの確認:"
 
 msgid "Confirmed"
 msgstr "確認完了"
@@ -767,33 +686,31 @@ msgid "Confirmed. Signing Transaction..."
 msgstr "確認完了。取引に署名します..."
 
 msgid "Connected node"
-msgstr "ノード連結完了"
+msgstr "ノード接続完了"
 
 msgid "Connected nodes are on the same chain"
-msgstr "連結されたノードが同一チェーンに存在します"
+msgstr "接続されたノードが同一チェーンに存在します"
 
-#, python-brace-format
 msgid "Connected to {0} nodes."
-msgstr "{0}ノードに連結されました。"
+msgstr "{0}ノードに接続されました。"
 
 msgid "Connecting..."
-msgstr "連結中..."
+msgstr "接続中..."
 
 msgid "Connection strings must be in <node_pubkey>@<host>:<port> format"
-msgstr ""
-"連結文字は必ず<node_pubkey>@<host>:<port>形式に構成されなければなりません"
+msgstr "接続文字列は必ず<node_pubkey>@<host>:<port>形式でなければなりません"
 
 msgid "Connections with Electrum servers"
-msgstr "Electrumサーバー連結"
+msgstr "Electrumサーバー接続"
 
 msgid "Connections with lightning nodes"
-msgstr "ライトニングノード連結"
+msgstr "ライトニングノード接続"
 
 msgid "Consider trying to connect to a different server, or updating Electrum."
-msgstr "他のサーバーへの連結、 Electrumをアップデートしてください。"
+msgstr "他のサーバーへの接続、またはElectrumをアップデートしてください。"
 
 msgid "Contacts"
-msgstr "連結"
+msgstr "連絡先"
 
 msgid "Copy"
 msgstr "コピー"
@@ -802,7 +719,7 @@ msgid "Copy Address"
 msgstr "アドレスコピー"
 
 msgid "Copy Request"
-msgstr "要請コピー"
+msgstr "リクエストコピー"
 
 msgid "Copy Transaction ID"
 msgstr "トランザクションIDコピー"
@@ -810,22 +727,17 @@ msgstr "トランザクションIDコピー"
 msgid "Copy and Close"
 msgstr "コピー後、終了"
 
-msgid ""
-"Copy and paste the recipient address using the Paste button, or use the "
-"camera to scan a QR code."
-msgstr ""
-"貼り付けボタンを利用し、受信者のウォレットアドレスをコピーして貼り付けるかも"
-"しくはカメラでQRコードをスキャンしてください"
+msgid "Copy and paste the recipient address using the Paste button, or use the camera to scan a QR code."
+msgstr "貼り付けボタンを利用し、受信者のウォレットアドレスをコピーして貼り付けるか、またはカメラでQRコードをスキャンしてください"
 
 msgid "Copy to clipboard"
 msgstr "クリップボードにコピーされました"
 
-#, python-brace-format
 msgid "Copy {column_title}"
 msgstr "コピー {column_title}"
 
 msgid "Cosign with hardware device"
-msgstr "ハードウェア機器に共同署名"
+msgstr "ハードウェアデバイスで共同署名"
 
 msgid "Cosigner Pool"
 msgstr "共同署名人プール"
@@ -836,33 +748,32 @@ msgstr "チャンネルを終了出来ません: "
 msgid "Could not force close channel: "
 msgstr "チャンネルを強制的に終了出来ません: "
 
-#, python-brace-format
 msgid "Could not open channel: {error_value}"
 msgstr "チャンネルを開けません: {error_value}"
 
 msgid "Could not retrieve Terms of Service:"
-msgstr "利用規約を読み込めません。:"
+msgstr "利用規約を取得できませんでした:"
 
 msgid "Crash report"
-msgstr "衝突報告"
+msgstr "クラッシュレポート"
 
 msgid "Create a new Revealer"
-msgstr "新しいRevealer生成"
+msgstr "新しいRevealerを作成する"
 
 msgid "Create a new seed"
-msgstr "新しいシード生成"
+msgstr "新しいシードを作成する"
 
 msgid "Create keystore from a master key"
-msgstr "マスターキーからキーのリポジトリ生成"
+msgstr "マスターキーからkeystoreを作成する"
 
 msgid "Create new wallet"
-msgstr "新しいウォレット生成"
+msgstr "新しいウォレットを作成する"
 
 msgid "Create or restore"
-msgstr "生成もしくは復旧"
+msgstr "作成または復元"
 
 msgid "Create transaction"
-msgstr "取引生成"
+msgstr "取引を作成する"
 
 msgid "Critical Error"
 msgstr "致命的エラー"
@@ -882,9 +793,8 @@ msgstr "現在の手数料比率"
 msgid "Current rate"
 msgstr "現在のレート"
 
-#, python-brace-format
 msgid "Current version: {version}"
-msgstr "現在バージョン: {version}"
+msgstr "現在のバージョン: {version}"
 
 msgid "Custom"
 msgstr "カスタム"
@@ -893,23 +803,19 @@ msgid "Custom secret"
 msgstr "カスタム非公開"
 
 msgid "Dark"
-msgstr "暗くする"
+msgstr "ダーク"
 
 msgid "Dark/Light"
-msgstr "暗くする／明るくする"
+msgstr "ダーク／ライト"
 
 msgid "Date"
 msgstr "日付"
 
-#, python-brace-format
 msgid "Date: {date}"
 msgstr "日付: {date}"
 
-msgid ""
-"Debug logs can be persisted to disk. These are useful for troubleshooting."
-msgstr ""
-"デバッグログがディスクに保存される場合がございます。デバッグログは問題解決に"
-"役立ちます。"
+msgid "Debug logs can be persisted to disk. These are useful for troubleshooting."
+msgstr "デバッグログをディスクに保存できます。デバッグログはトラブルシューティングに役立ちます。"
 
 msgid "Debug message"
 msgstr "デバッグメッセージ"
@@ -927,13 +833,13 @@ msgid "Delete"
 msgstr "削除"
 
 msgid "Delete expired requests?"
-msgstr "満了された要請を削除しますか？"
+msgstr "期限の過ぎたリクエストを削除しますか？"
 
 msgid "Delete invoice?"
 msgstr "インボイスを削除しますか？"
 
 msgid "Delete request?"
-msgstr "要請を削除しますか？"
+msgstr "リクエストを削除しますか？"
 
 msgid "Delete wallet file?"
 msgstr "ウォレットファイルを削除しますか？"
@@ -947,8 +853,11 @@ msgstr "デノミネーション"
 msgid "Description"
 msgstr "説明"
 
+msgid "Description is not supported for Secure Fast transaction"
+msgstr "保安・クイック取引では説明をサポートしておりません。"
+
 msgid "Description of the transaction (not mandatory)."
-msgstr "取引詳細(選択的)。"
+msgstr "取引の説明(必須ではありません)。"
 
 msgid "Details"
 msgstr "詳細"
@@ -962,64 +871,45 @@ msgstr "開発者"
 msgid "Device not in Bitcoin mode"
 msgstr "機器がビットコインモードにありません。"
 
-#, python-brace-format
 msgid "Digital Revealer ({version}_{code_id}) saved as PNG and PDF at:"
-msgstr ""
-"デジタルRevealer ({version}_{code_id})が PNGとPDFで次に保存されましたます:"
+msgstr "デジタルRevealer ({version}_{code_id})が PNGとPDFでこちらに保存されました:"
 
 msgid "Disable LN"
-msgstr "LN非活性化"
+msgstr "LN無効化"
 
 msgid "Disable Lightning?"
-msgstr "ライトニングを非活性化しますか？"
+msgstr "ライトニングを無効化しますか？"
 
 msgid "Disabled"
-msgstr "非活性化されました。"
+msgstr "無効化されました。"
 
 msgid "Disconnected"
-msgstr "連結が解除されました。"
+msgstr "切断されました。"
 
 msgid "Distributed by Electrum Technologies GmbH"
-msgstr "Electrum Technologies GmbH提供"
+msgstr "Electrum Technologies GmbHの提供です"
 
-msgid ""
-"Do not enter sensitive/private information here. The report will be visible "
-"on the public issue tracker."
-msgstr ""
-"敏感、個人的な情報は入力しないでください。該当報告書は公開されたイシュート"
-"ラッカーに公開されます。"
+msgid "Do not enter sensitive/private information here. The report will be visible on the public issue tracker."
+msgstr "機密情報／個人情報は入力しないでください。レポートは問題トラッカーに公開されます。"
 
-msgid ""
-"Do not paste code here that you don't understand. Executing the wrong code "
-"could lead to your coins being irreversibly lost."
-msgstr ""
-"誤ったコードを貼り付けないでください。 誤ったコードを施行するのは、不可逆的な"
-"コインの損失を引き起こす可能性があります。"
+msgid "Do not paste code here that you don't understand. Executing the wrong code could lead to your coins being irreversibly lost."
+msgstr "誤ったコードを貼り付けないでください。間違ったコードを実行すると、不可逆的にコインが失われる可能性があります。"
 
 msgid "Do not store it electronically."
-msgstr "パソコン上に保存しないでください。"
+msgstr "電子的に保存しないでください。"
 
 msgid "Do not use Gold Wallet"
-msgstr "ゴールドウォレットを利用しない"
+msgstr "Gold Walletを使用しないでください"
 
 msgid "Do you have something to hide ?"
 msgstr "隠すべきものがございますか?"
 
-msgid ""
-"Do you want to create a new seed or to restore a wallet using an existing "
-"seed?"
-msgstr ""
-"新しいシードを生成しますか、それとも既存シードを使用してウォレットを復元しま"
-"すか。"
+msgid "Do you want to create a new seed or to restore a wallet using an existing seed?"
+msgstr "新しいシードを作成しますか、それとも既存のシードを使用してウォレットを復元しますか。"
 
-msgid ""
-"Do you want to create a new seed, or to restore a wallet using an existing "
-"seed?"
-msgstr ""
-"新しいシード生成と既存のシードを利用したウォレット復元の中、どの作業をご希望"
-"しますか？"
+msgid "Do you want to create a new seed, or to restore a wallet using an existing seed?"
+msgstr "新しいシードを作成しますか、それとも既存のシードを使用してウォレットを復元しますか。"
 
-#, python-brace-format
 msgid "Do you want to delete '{path}'?"
 msgstr "'{path}'を削除しますか?"
 
@@ -1032,15 +922,14 @@ msgstr "ウィザードを施行しますか？"
 msgid "Do you want to open it now?"
 msgstr "今ファイルをオープンしますか？"
 
-#, python-brace-format
 msgid "Do you want to remove {address} from your wallet?"
 msgstr "ウォレットから {address}を削除しますか?"
 
 msgid "Do you want to send this report?"
-msgstr "該当報告を伝送しますか？"
+msgstr "このレポートを送信しますか？"
 
 msgid "Do you want to use Gold Wallet as a transaction authenticator?"
-msgstr "取引認証にゴールドウォレットを使用しますか?"
+msgstr "取引の認証にGold Walletを使用しますか?"
 
 msgid "Do you wish to continue?"
 msgstr "続けますか？"
@@ -1051,105 +940,71 @@ msgstr "ノードアドレスを確認できません。"
 msgid "Don't show this again."
 msgstr "再度表示しない"
 
-msgid ""
-"Due to a bug, old versions of Electrum will NOT be creating the same wallet "
-"as newer versions or other software."
-msgstr ""
-"バグにより最新バージョン又は他のソフトウェアが存在する場合、旧バージョンの"
-"Electrumは同一なアドレスを生成できません。"
+msgid "Due to a bug, old versions of Electrum will NOT be creating the same wallet as newer versions or other software."
+msgstr "バグのため、旧バージョンのElectrumは最新バージョン又は他のソフトウェアと同じアドレスを作成することができません。"
 
 msgid "Dynamic fee estimates not available"
-msgstr "請求される手数料の予測はできません"
+msgstr "Dynamic feeの見積もりはできません"
 
 msgid "ETA"
 msgstr "ETA"
 
 msgid "Each revealer should be used only once."
-msgstr "各revealerは一度のみ使用されなければなりません。"
+msgstr "各revealerは一度しか使用することはできません。"
 
-#, python-brace-format
 msgid "Edit {title}"
 msgstr "修正 {title}"
 
 msgid "Electrum Plugins"
 msgstr "Electrumプラグイン "
 
-#, python-brace-format
 msgid ""
 "Electrum cannot pair with your {device}.\n"
 "\n"
-"Before you request bitcoins to be sent to addresses in this wallet, ensure "
-"you can pair with your device, or that you have its seed (and passphrase, if "
-"any).  Otherwise all bitcoins you receive will be unspendable."
+"Before you request bitcoins to be sent to addresses in this wallet, ensure you can pair with your device, or that you have its seed (and passphrase, if any).  Otherwise all bitcoins you receive will be unspendable."
 msgstr ""
 "Electrumがお客様の {device}とペアリングできません。\n"
 "\n"
-"このウォレットアドレスにBTCの送金を要請する前に、デバイスとペアリング状態を確"
-"認するか、該当のシードを(passphrase, ある場合)持っているかを確認してくださ"
-"い。そうでなければ受取った全てのBTCは使用できません。"
+"このウォレットアドレスにBTCの送金をリクエストする前に、デバイスとペアリングできるか、該当のシード(あるいはパスフレーズ)を持っているかを確認してください。そうでなければ受取ったBTCは全て使用できません。"
 
-msgid ""
-"Electrum communicates with remote servers to get information about your "
-"transactions and addresses. The servers all fulfill the same purpose only "
-"differing in hardware. In most cases you simply want to let Electrum pick "
-"one at random.  However if you prefer feel free to select a server manually."
-msgstr ""
-"Electrumは遠隔サーバーからお客様の取引とアドレス情報を共有します。全てのサー"
-"バーはハードウェアのみ異なり、同じ目的を達成します。大体の場合、Electrumがラ"
-"ンダムで自動選択します。しかし、希望によっては手動でサーバーを選択することも"
-"できます。"
+msgid "Electrum communicates with remote servers to get information about your transactions and addresses. The servers all fulfill the same purpose only differing in hardware. In most cases you simply want to let Electrum pick one at random.  However if you prefer feel free to select a server manually."
+msgstr "Electrumは遠隔サーバーからお客様の取引とアドレス情報を共有します。全てのサーバーはハードウェアのみ異なり、同じ目的を達成します。大体の場合、Electrumがランダムで自動選択します。しかし、希望によっては手動でサーバーを選択することもできます。"
 
-msgid ""
-"Electrum connects to several nodes in order to download block headers and "
-"find out the longest blockchain."
-msgstr ""
-"Electrumはブロックヘッダをダウンロードするため、多数のノードと連結し、最も長"
-"いブロックチェーンを探し出します。"
+msgid "Electrum connects to several nodes in order to download block headers and find out the longest blockchain."
+msgstr "Electrumはブロックヘッダーをダウンロードし、最長のブロックチェーンを探し出すために複数のノードと接続します。"
 
 msgid "Electrum preferences"
-msgstr "Electrum選好度"
+msgstr "Electrum 環境設定"
 
-msgid ""
-"Electrum requests your transaction history from a single server. The "
-"returned history is checked against blockchain headers sent by other nodes, "
-"using Simple Payment Verification (SPV)."
-msgstr ""
-"Electrumは単一サーバーについて取引内訳を要請します。他のノードが送ったブロッ"
-"クチェーンヘッダについて単純支払検証(spv)を利用し、返還された内訳を確認しま"
-"す。"
+msgid "Electrum requests your transaction history from a single server. The returned history is checked against blockchain headers sent by other nodes, using Simple Payment Verification (SPV)."
+msgstr "Electrumは単一サーバーからあなたの取引履歴を要求します。返された履歴は、Simple Payment Verification (SPV) を利用し、他のノードから送信されたブロックチェーンヘッダーと照合されます。"
 
-msgid ""
-"Electrum sends your wallet addresses to a single server, in order to receive "
-"your transaction history."
-msgstr "Electrumはウォレットアドレスを単一サーバーに伝送し、取引内訳を得ます。"
+msgid "Electrum sends your wallet addresses to a single server, in order to receive your transaction history."
+msgstr "Electrumはあなたの取引履歴を受信するために、あなたのウォレットアドレスを単一サーバーに送信します。"
 
 msgid "Electrum wallet"
 msgstr "Electrumウォレット"
 
 msgid "Electrum was unable to copy your wallet file to the specified location."
-msgstr ""
-"Electrumが指定された位置に貴下のウォレットファイルをコピーできませんでした。"
+msgstr "Electrumがあなたのウォレットファイルを指定された場所にコピーできませんでした。"
 
 msgid "Electrum was unable to deserialize the transaction:"
-msgstr "Electrumが取引を解いてません。"
+msgstr "Electrumが取引をデシリアライズできませんでした。"
 
 msgid "Electrum was unable to open your transaction file"
 msgstr "Electrumが取引ファイルを開けません。"
 
 msgid "Electrum was unable to parse your transaction"
-msgstr "Electrumが取引を分析できません。"
+msgstr "Electrumが取引を解析できません。"
 
 msgid "Electrum was unable to produce a private key-export."
-msgstr "Electrumがプライベートキー-共有手続きを生成できません。"
+msgstr "Electrumが個人キーのエクスポートに失敗しました。"
 
 msgid "Electrum was unable to produce a transaction export."
-msgstr "Electrumが取引共有手続きを生成でき来ません。"
+msgstr "Electrumが取引のエクスポートの生成に失敗しました。。"
 
-msgid ""
-"Electrum's focus is speed, with low resource usage and simplifying Bitcoin "
-"Vault."
-msgstr ""
-"Electrumはスピードに集中して最小限のリソースを使用し、BTCVを単純化させます。"
+msgid "Electrum's focus is speed, with low resource usage and simplifying Bitcoin Vault."
+msgstr "Electrumの焦点は、スピードと、リソースを最小限に使用すること、そしてBTCVをシンプルにすることです。"
 
 msgid "Email"
 msgstr "メール"
@@ -1158,19 +1013,19 @@ msgid "Email settings"
 msgstr "メール設定"
 
 msgid "Enable LN"
-msgstr "LN活性化"
+msgstr "LNを有効にする"
 
 msgid "Enable Lightning?"
-msgstr "ライトニング活性化?"
+msgstr "ライトニングを有効にしますか?"
 
 msgid "Enable output value rounding"
-msgstr "出力値の四捨五入活性化"
+msgstr "出力値の四捨五入を有効にする"
 
 msgid "Enable update check"
-msgstr "アップデート確認の活性化"
+msgstr "アップデート確認を有効にする"
 
 msgid "Enabled"
-msgstr "活性化"
+msgstr "有効になりました"
 
 msgid "Encrypt"
 msgstr "暗号化"
@@ -1181,7 +1036,6 @@ msgstr "カスタム非公開暗号化"
 msgid "Encrypt wallet file"
 msgstr "ウォレットファイル暗号化"
 
-#, python-brace-format
 msgid "Encrypt {wallet_name}'s seed"
 msgstr "{wallet_name}のシード暗号化"
 
@@ -1194,7 +1048,6 @@ msgstr "メッセージ暗号化/復号化"
 msgid "Encrypted"
 msgstr "暗号化された"
 
-#, python-brace-format
 msgid "Encryption and decryption are currently not supported for {device}"
 msgstr "この{device}は暗号化/復号化機能を設定できません。"
 
@@ -1220,7 +1073,7 @@ msgid "Enter Password"
 msgstr "パスワード入力"
 
 msgid "Enter Remote Node ID or connection string or invoice"
-msgstr "リモートノードID、連結Stringもしくはインボイス入力"
+msgstr "リモートノードID、接続文字、またはインボイスを入力"
 
 msgid "Enter Seed"
 msgstr "シード入力"
@@ -1231,12 +1084,8 @@ msgstr "取引ラベル入力"
 msgid "Enter a filename for the copy of your wallet"
 msgstr "ウォレットコピーファイル名の入力"
 
-msgid ""
-"Enter a list of BTCV addresses (this will create a watching-only wallet) or "
-"a list of private keys."
-msgstr ""
-"BTCVアドレスリストを入力するか、(これは閲覧専用ウォレットを生成します)個人"
-"キーのリストを入力してください。"
+msgid "Enter a list of BTCV addresses (this will create a watching-only wallet) or a list of private keys."
+msgstr "BTCVアドレスリストを入力するか、(これはWatch-onlyウォレットを生成します)個人キーのリストを入力してください。"
 
 msgid "Enter a list of outputs in the 'Pay to' field."
 msgstr "に支払う' フィールドに出力値リスト入力"
@@ -1257,31 +1106,25 @@ msgid "Enter new PIN"
 msgstr "新しいPIN入力"
 
 msgid "Enter private keys"
-msgstr "プライベートキー入力"
+msgstr "個人キー入力"
 
 msgid "Enter private keys:"
-msgstr "プライベートキー入力:"
+msgstr "個人キー入力:"
 
-msgid ""
-"Enter the name of the new wallet or load an existing wallet by clicking "
-"\"Choose\"."
-msgstr ""
-"新しいウォレットの名前を入力するか、次をクリックし、既存ウォレットを共有して"
-"ください。\"選択\"."
+msgid "Enter the name of the new wallet or load an existing wallet by clicking \"Choose\"."
+msgstr "新しいウォレットの名前を入力するか、次をクリックし、既存ウォレットを共有してください。\"選択\"."
 
 msgid "Enter the seed for your 2-factor wallet:"
-msgstr "貴下の二重ウォレットシード入力:"
+msgstr "あなたの2FA (2段階認証) ウォレットのシードを入力:"
 
-msgid ""
-"Enter their master private key (xprv) if you want to be able to sign for "
-"them."
-msgstr "代わりに署名する場合は、マスタープライベートキー入力"
+msgid "Enter their master private key (xprv) if you want to be able to sign for them."
+msgstr "あなたが彼らの代わりに署名する場合は、彼らのマスター個人キー (xprv)を入力"
 
 msgid "Enter wallet name"
 msgstr "ウォレット名入力"
 
 msgid "Enter your PIN code in order to decrypt your private key"
-msgstr "プライベートキー復号化の為、PINコードを入力する"
+msgstr "個人キー復号化の為、PINコードを入力する"
 
 msgid "Enter your PIN code in order to decrypt your seed"
 msgstr "シード復号化の為、PINコードを入力する"
@@ -1289,7 +1132,6 @@ msgstr "シード復号化の為、PINコードを入力する"
 msgid "Enter your PIN code in order to sign this transaction"
 msgstr "取引署名の為、PINコードを入力する"
 
-#, python-brace-format
 msgid "Enter your PIN code to confirm deletion of {wallet}"
 msgstr "{wallet}削除確定の為、PINコードを入力する"
 
@@ -1312,7 +1154,7 @@ msgid "Error"
 msgstr "エラー"
 
 msgid "Error adding payment request"
-msgstr "支払要請追加エラー"
+msgstr "支払リクエストの追加エラー"
 
 msgid "Error combining partial transactions"
 msgstr "部分取引統合エラー"
@@ -1320,7 +1162,6 @@ msgstr "部分取引統合エラー"
 msgid "Error connecting to server"
 msgstr "サーバー接続エラー"
 
-#, python-brace-format
 msgid "Error connecting to {name} server"
 msgstr "{name} サーバー接続エラー"
 
@@ -1337,13 +1178,13 @@ msgid "Error joining partial transactions"
 msgstr "部分取引参加エラー"
 
 msgid "Error opening file"
-msgstr "ファイル開くエラー"
+msgstr "ファイルを開く際のエラー"
 
 msgid "Error parsing URI"
-msgstr "URI分析エラー"
+msgstr "URI解析エラー"
 
 msgid "Error scanning devices"
-msgstr "機器スキャンエラー"
+msgstr "デバイススキャンエラー"
 
 msgid "Error showing address"
 msgstr "アドレス表示エラー"
@@ -1352,7 +1193,7 @@ msgid "Error synchronising labels"
 msgstr "ラベル同期化エラー"
 
 msgid "Error: duplicate master public key"
-msgstr "エラー:複製されたマスター公開キー"
+msgstr "エラー:マスター公開キーの重複"
 
 msgid "Estimate"
 msgstr "見積もり"
@@ -1364,41 +1205,37 @@ msgid "Expenditures"
 msgstr "支出"
 
 msgid "Expiration date"
-msgstr "有効日"
+msgstr "有効期限日"
 
 msgid "Expiration date of your request."
-msgstr "要請した有効日。"
+msgstr "リクエストの有効期限日"
 
 msgid "Expired"
-msgstr "満了"
+msgstr "期限切れ"
 
-msgid ""
-"Expired requests have to be deleted manually from your list, in order to "
-"free the corresponding Bitcoin addresses."
-msgstr ""
-"該当ビットコインアドレスを解除するには満了された要請はリストで手動に削除しな"
-"ければなりません。"
+msgid "Expired requests have to be deleted manually from your list, in order to free the corresponding Bitcoin addresses."
+msgstr "期限切れのリクエストは、対応するビットコインアドレスを解放するために、リストから手動で削除する必要があります。"
 
 msgid "Expires"
-msgstr "満了する"
+msgstr "期限切れ"
 
 msgid "Export"
-msgstr "共有する"
+msgstr "エクスポート"
 
 msgid "Export History"
-msgstr "内訳を共有する"
+msgstr "エクスポートの履歴"
 
 msgid "Export file"
-msgstr "ファイルを共有する"
+msgstr "ファイルをエクスポートする"
 
 msgid "Export to file"
-msgstr "ファイルで共有する"
+msgstr "ファイルへのエクスポート"
 
 msgid "Exposing a single private key can compromise your entire wallet!"
-msgstr "単一プライベートキーが公開されると、ウォレット全体を危険にします。"
+msgstr "シングル個人キーが公開されると、ウォレット全体が危険にさらされます！"
 
 msgid "Extend this seed with custom words"
-msgstr "カスタム文句でシード延長"
+msgstr "カスタムワードでシードを拡張する"
 
 msgid "Failed"
 msgstr "失敗"
@@ -1407,19 +1244,19 @@ msgid "Failed HTLCs"
 msgstr "失敗したHTLCs"
 
 msgid "Failed to create a client for this device."
-msgstr "このデバイスにクライアント生成失敗"
+msgstr "このデバイスのクライアント作成に失敗しました"
 
 msgid "Failed to decrypt using this hardware device."
-msgstr "このハードウェア機器を使って復号化失敗"
+msgstr "このハードウェアデバイスを使った復号化に失敗しました"
 
 msgid "Failed to display QR code."
 msgstr "QRコードの表示に失敗しました。"
 
 msgid "Failed to export to file."
-msgstr "ファイル共有失敗"
+msgstr "ファイルへのエクスポートに失敗しました"
 
 msgid "Failed to import from file."
-msgstr "ファイル登録失敗"
+msgstr "ファイルからのインポートに失敗しました"
 
 msgid "Failed to send transaction to cosigning pool"
 msgstr "共同署名プールに取引送信失敗"
@@ -1430,11 +1267,14 @@ msgstr "パスワードアップデート失敗"
 msgid "False"
 msgstr "間違った"
 
+msgid "Fast Transaction Key"
+msgstr "クイック取引・キー"
+
 msgid "Fee"
 msgstr "手数料"
 
 msgid "Fee estimation"
-msgstr "手数料測定"
+msgstr "手数料見積もり"
 
 msgid "Fee for child"
 msgstr "child手数料"
@@ -1467,25 +1307,19 @@ msgid "Finalize"
 msgstr "最終化"
 
 msgid "Find"
-msgstr "探し"
+msgstr "探す"
 
-msgid ""
-"Firmware version (or \"Bitcoin\" app) too old for Segwit support. Please "
-"update at"
-msgstr ""
-"このファームウェアバージョン(又は\"ビットコイン\"アプリ) はSegwitをサポートし"
-"ません。ここでアップデートしてください。"
+msgid "Firmware version (or \"Bitcoin\" app) too old for Segwit support. Please update at"
+msgstr "このファームウェアバージョン(又は\"ビットコイン\"アプリ) はSegwitをサポートしません。ここでアップデートしてください。"
 
 msgid "Firmware version too old. Please update at"
-msgstr ""
-"こファームウェアバージョンは旧バージョンです。ここでアップデートしてくださ"
-"い。"
+msgstr "こファームウェアバージョンは旧バージョンです。ここでアップデートしてください。"
 
 msgid "Fixed rate"
 msgstr "固定率"
 
 msgid "Follow this branch"
-msgstr "このブランチをついて行ってください。"
+msgstr "このブランチをフォローする"
 
 msgid "For CoinJoin; strip privates"
 msgstr "Coinjoinの場合; strip privates"
@@ -1493,10 +1327,8 @@ msgstr "Coinjoinの場合; strip privates"
 msgid "For more information, visit"
 msgstr "追加情報はここで確認してください。"
 
-msgid ""
-"For security reasons we advise that you always use the latest version of "
-"Electrum."
-msgstr "セキュリティの観点から、Eleturumの最新バージョン使用をお勧め致します。"
+msgid "For security reasons we advise that you always use the latest version of Electrum."
+msgstr "セキュリティの観点から、Eleturumの最新バージョンの使用をおすすめ致します。"
 
 msgid "Force-close channel"
 msgstr "チャンネル強制終了"
@@ -1504,7 +1336,6 @@ msgstr "チャンネル強制終了"
 msgid "Force-close channel?"
 msgstr "チャンネルを強制的に終了しますか？"
 
-#, python-brace-format
 msgid "Fork detected at block {fork_point}"
 msgstr "ブロックでFork発見 {fork_point}"
 
@@ -1515,7 +1346,7 @@ msgid "Format: address, amount"
 msgstr "フォーマット:アドレス、金額"
 
 msgid "Forwarding"
-msgstr "伝達"
+msgstr "転送"
 
 msgid "Freeze"
 msgstr "停止"
@@ -1535,32 +1366,26 @@ msgstr "コイン停止"
 msgid "From"
 msgstr "より"
 
-#, python-brace-format
 msgid "From {0} cosigners"
 msgstr "共同署名人{0}より"
 
 msgid "Fulfilled HTLCs"
-msgstr "充足したHTLCｓ"
+msgstr "実行されたHTLCs"
 
 msgid "Funded"
-msgstr "支援された資金"
+msgstr "資金が供給されました"
 
 msgid "Funding Outpoint:"
-msgstr "支援された資金のOutpoint:"
+msgstr "ファンディングOutpoint:"
 
 msgid "Funding TXID"
-msgstr "支援資金のTXID"
+msgstr "ファンディングTXID"
 
 msgid "Funding Transaction"
-msgstr "支援資金取引"
+msgstr "ファンディングトランザクション"
 
-msgid ""
-"Funds stored in lightning channels are not recoverable from your seed. You "
-"must backup your wallet file everytime you create a new channel."
-msgstr ""
-"ライトニングチャンネルに保存された支援資金は、貴下のシードから取り戻すことは"
-"できません。新規チャンネルを生成するたびに、ウォレットファイルをバックアップ"
-"しなければなりません。"
+msgid "Funds stored in lightning channels are not recoverable from your seed. You must backup your wallet file everytime you create a new channel."
+msgstr "ライトニングチャンネルに保存された資金は、あなたのシードから回収することはできません。新規チャンネルを作成するたびに、ウォレットファイルをバックアップする必要があります。"
 
 msgid "General"
 msgstr "一般"
@@ -1568,17 +1393,14 @@ msgstr "一般"
 msgid "Generate"
 msgstr "生成"
 
-msgid ""
-"Generate an authenticator on Gold Wallet and scan the following QR code: "
-msgstr ""
-"Gold Walletにオーセンティケーターを生成するか、次のQRコードをスキャンしてくだ"
-"さい: "
+msgid "Generate an authenticator on Gold Wallet and scan the following QR code: "
+msgstr "Gold Walletに認証システムを生成するか、次のQRコードをスキャンしてください: "
 
 msgid "Gold Wallet authenticator public key"
-msgstr "Gold Walletオーセンティケーターの公開キー"
+msgstr "Gold Wallet認証システムの公開キー"
 
 msgid "Google Authenticator code:"
-msgstr "グーグル認証装置コード:"
+msgstr "Google認証システムコード:"
 
 msgid "Gossip"
 msgstr "ゴシップ"
@@ -1589,19 +1411,19 @@ msgid ""
 "Please enter your password to sign a\n"
 "verification request."
 msgstr ""
-"グーリンアドレスに貴下の署名が必要です。\n"
+"GreenAddressにあなたの署名が必要です。\n"
 "該当取引の検証は即時処理されます。 \n"
-"署名の為、パスワードを入力してくださいa\n"
-"検証要請"
+"a\n"
+" 検証要求に署名するため、パスワードを入力してください"
 
 msgid "HTLCs in current commitment transaction"
-msgstr "現在約束取引のHTLC"
+msgstr "現在コミットメント取引のHTLC"
 
 msgid "Handler not found for"
 msgstr "Handlerを探せません"
 
 msgid "Hardware Keystore"
-msgstr "ハードウェアキーストレージ"
+msgstr "ハードウェアkeystore"
 
 msgid "Height"
 msgstr "高さ"
@@ -1618,12 +1440,14 @@ msgstr "マスター公開キーです。"
 msgid "Hide"
 msgstr "隠す"
 
-#, python-brace-format
+msgid "Hide advanced"
+msgstr "詳細オプションを隠す"
+
 msgid "Hide {tab_description}"
 msgstr "隠す {tab_description}"
 
 msgid "History"
-msgstr "内訳"
+msgstr "履歴"
 
 msgid "Homepage"
 msgstr "ホームページ"
@@ -1640,18 +1464,20 @@ msgstr "ホスト名の未解決(getaddrinfo失敗)"
 msgid "How do you want to connect to a server? "
 msgstr "どのようにサーバーに 接続しますか？"
 
-msgid ""
-"However, hardware wallets do not support message decryption, which makes "
-"them not compatible with the current design of cosigner pool."
-msgstr ""
-"しかし、ハードウェアウォレットはメッセージ復号化を支援しないため、現在、共同"
-"署名プールのデザインとは互換できません。"
+msgid "However, hardware wallets do not support message decryption, which makes them not compatible with the current design of cosigner pool."
+msgstr "しかし、ハードウェアウォレットはメッセージ復号化をサポートしてしないため、現在、共同署名プールのデザインとは互換できません。"
+
+msgid "I agree"
+msgstr "同意する"
 
 msgid "I already have a seed"
 msgstr "シードをすでに持っています。"
 
+msgid "I disagree"
+msgstr "同意しない"
+
 msgid "I have lost my Google Authenticator account"
-msgstr "グーグル認証アカウントを忘れました"
+msgstr "Google認証アカウントを失いました"
 
 msgid ""
 "IP/port in format:\n"
@@ -1660,142 +1486,96 @@ msgstr ""
 "IP/port in format:\n"
 "[host]:[port]"
 
-msgid ""
-"If auto-connect is enabled, Electrum will always use a server that is on the "
-"longest blockchain."
-msgstr ""
-"自動接続が活性化すると、Electurmは常に最長ブロックチェーンのサーバーを使いま"
-"す。"
+msgid "If auto-connect is enabled, Electrum will always use a server that is on the longest blockchain."
+msgstr "自動接続が有効化されると、Electurmは常に最長のブロックチェーンのサーバーを使います。"
 
-msgid ""
-"If enabled, at most 100 satoshis might be lost due to this, per transaction."
-msgstr "活性化の際には取引当たり最大100サトシの損失の恐れがあります。"
+msgid "If enabled, at most 100 satoshis might be lost due to this, per transaction."
+msgstr "有効化されると、取引当たり最大100satoshiが失われる恐れがあります。"
 
-msgid ""
-"If it is disabled, you have to choose a server you want to use. Electrum "
-"will warn you if your server is lagging."
-msgstr ""
-"非活性化の際には希望するサーバーを選択しなければなりません。Electrumはサー"
-"バー遅延時、警告を通知します。"
+msgid "If it is disabled, you have to choose a server you want to use. Electrum will warn you if your server is lagging."
+msgstr "無効化されている場合には、使用したいサーバーを選択しなければなりません。Electrumはサーバー遅延時に警告を発します。"
 
 msgid "If you are not sure what this is, leave this field unchanged."
-msgstr "この部分が確実でなければ、そのままして置いてください。"
+msgstr "この部分に関してよくわからない場合は、このフィールドを変更しないでください。"
 
-#, python-brace-format
 msgid "If you are online, click on \"{button}\" to continue."
-msgstr "オンライン状態の場合、 \"{button}\" をクリックして続いてください。"
+msgstr "オンラインの場合、 \"{button}\" をクリックして続けてください。"
 
 msgid "If you check this box, your transactions will be marked as non-final,"
-msgstr "このボックスをチェックすると、未確認取引として表示されます。"
+msgstr "このボックスをチェックすると、取引はnon-finalとしてマークされます。"
 
-msgid ""
-"If you check this box, your unconfirmed transactions will be consolidated "
-"into a single transaction."
-msgstr "このボックスをチェックすると、未確認の取引が単一の取引に統合されます。"
+msgid "If you check this box, your unconfirmed transactions will be consolidated into a single transaction."
+msgstr "このボックスをチェックすると、未確定の取引が一つの取引に連結されます。"
 
 msgid "If you do not know what this is, leave this field empty."
-msgstr "この部分が確実でなければ、空欄にして置いてください。"
+msgstr "この部分がよくわからなければ、空欄のままにしてください。"
 
-msgid ""
-"If you forget your PIN or lose your device, your seed phrase will be the "
-"only way to recover your funds."
-msgstr ""
-"PINやデバイスを紛失した場合には貴下のシードフレーズが資金を回復する唯一な手段"
-"です。"
+msgid "If you forget your PIN or lose your device, your seed phrase will be the only way to recover your funds."
+msgstr "PINやデバイスを紛失した場合にはあなたのシードフレーズが資金を回復する唯一の手段となります。"
 
 msgid "If you have an old printer, or want optimal precision"
 msgstr "旧型プリントをお持ちか、最適な精密度をご希望であれば、"
 
-msgid ""
-"If you have lost your Google Authenticator account, you can request a new "
-"secret. You will need to retype your seed."
-msgstr ""
-"グーグル認証アカウントを紛失した場合、新たな非公開を要請できます。貴下はシー"
-"ドを再入力しなければなりません。"
+msgid "If you have lost your Google Authenticator account, you can request a new secret. You will need to retype your seed."
+msgstr "Google認証アカウントを紛失した場合、新たなシークレットをリクエストすることができます。シードを再入力する必要があります。"
 
-msgid ""
-"If you have lost your second factor, you need to restore your wallet from "
-"seed in order to request a new code."
-msgstr ""
-"2段階認証を紛失した場合には、新しいコード要請のため、シードを利用しウォレット"
-"を復旧しなければなりません。"
+msgid "If you have lost your second factor, you need to restore your wallet from seed in order to request a new code."
+msgstr "2段階認証を紛失した場合には、新しいコード要請のため、シードを利用しウォレットを復旧しなければなりません。"
 
 msgid "If you keep experiencing network problems, try using a Tor proxy."
-msgstr ""
-"ネットワークのトラブルが持続的に発生する場合、Torプロキシを使って見てくださ"
-"い。"
+msgstr "ネットワークのトラブルが持続的に発生する場合、Torプロキシを使って見てください。"
 
 msgid "If you lose your seed, your money will be permanently lost."
-msgstr "シードを紛失した場合、資金は永久に取り戻せません。"
+msgstr "シードを紛失した場合、資金を永久に失ってしまいます。"
 
 msgid "If you use a passphrase, make sure it is correct."
-msgstr "パスフレーズを使う際には正確な入力情報なのか確認してください。"
+msgstr "パスフレーズを使う際にはそれが正しいことを確認してください。"
 
-msgid ""
-"If you want to create new addresses, use a deterministic wallet instead."
-msgstr ""
-"新たなアドレス生成をご希望される場合、deterministicウォレットを代わりに使って"
-"ください。"
+msgid "If you want to create new addresses, use a deterministic wallet instead."
+msgstr "新しいアドレスを作成したいときは、deterministicウォレット (決定性ウォレット)を代わりに使ってください。"
 
-msgid ""
-"If your device is not detected on Windows, go to \"Settings\", \"Devices\", "
-"\"Connected devices\", and do \"Remove device\". Then, plug your device "
-"again."
-msgstr ""
-"ウインドウズでデバイスが認識されない場合には、\"設定\"タブで \"デバイス\"を選"
-"択、\"接続されたデバイス\" 選択、 \"デバイス解除\"を選択してください。その"
-"後、再びデバイスを接続してください。"
+msgid "If your device is not detected on Windows, go to \"Settings\", \"Devices\", \"Connected devices\", and do \"Remove device\". Then, plug your device again."
+msgstr "Windowsでデバイスが認識されない場合には、\"設定\"、\"デバイス\"、、\"接続されたデバイス\" 、\"デバイスの取り外し\"を選択してください。その後、再びデバイスを接続してください。"
 
 msgid "If your wallet contains funds, make sure you have saved its seed."
-msgstr "ウォレットに資金がある場合、該当シード保存を忘れないでください。"
+msgstr "ウォレットに資金がある場合、シードの保存を忘れないでください。"
 
 msgid "Ignore and continue?"
 msgstr "無視し、続けますか?"
 
 msgid "Import"
-msgstr "登録"
+msgstr "インポート"
 
 msgid "Import BTCV addresses"
 msgstr "BTCVウォレットを読み込む"
 
 msgid "Import addresses"
-msgstr "アドレスの登録"
+msgstr "アドレスをインポートする"
 
 msgid "Import external watch-only BTCV addresses or private keys"
-msgstr "外部確認専用のBTCVウォレット又はプライベートキーを読み込む"
+msgstr "外部閲覧用のBTCVアドレス、または個人キーをインポートする"
 
 msgid "Import file"
-msgstr "ファイルの登録"
+msgstr "ファイルをインポートする"
 
 msgid "Import private keys"
-msgstr "プライベートキーの登録"
+msgstr "個人キーをインポートする"
 
-msgid ""
-"In order to confirm the transaction, scan the QR codes in the "
-"\"Authenticators\" tab in the Gold Wallet app."
-msgstr ""
-"取引を承認するために、Gold Walletアプリの「認証システム」タブでQRコードをス"
-"キャンしてください。"
+msgid "In order to confirm the transaction, scan the QR codes in the \"Authenticators\" tab in the Gold Wallet app."
+msgstr "取引を承認するために、Gold Walletアプリの\"認証システム\"タブでQRコードをスキャンしてください。"
 
-msgid ""
-"In particular, DO NOT use 'redeem private key' services proposed by third "
-"parties."
-msgstr "特に第三者の提案で 'プライベートキーの引き換え'は使わないでください。"
+msgid "In particular, DO NOT use 'redeem private key' services proposed by third parties."
+msgstr "特に第三者が提案する '個人キーの再発行' サービスは絶対に利用しないでください。"
 
 msgid "In progress"
 msgstr "処理中"
 
-msgid ""
-"In some cases, use up to 3 change addresses in order to break up large coin "
-"amounts and obfuscate the recipient address."
-msgstr ""
-"場合によって、三つの変更したアドレスを使って大量のコインを分割して受信アドレ"
-"スを暗号化してください"
+msgid "In some cases, use up to 3 change addresses in order to break up large coin amounts and obfuscate the recipient address."
+msgstr "場合によって、三つの変更したアドレスを使って大量のコインを分割して受信アドレスを暗号化してください"
 
 msgid "In the next block"
 msgstr "次のブロックから"
 
-#, python-brace-format
 msgid "Included in block: {header_hash}"
 msgstr "ブロックに含まれる: {header_hash}"
 
@@ -1803,7 +1583,7 @@ msgid "Income"
 msgstr "収入"
 
 msgid "Incoming payments"
-msgstr "収入のお支払い"
+msgstr "入金"
 
 msgid "Incorrect password"
 msgstr "違うパスワード"
@@ -1815,7 +1595,7 @@ msgid "Increase fee"
 msgstr "手数料の増加"
 
 msgid "Increase your transaction's fee to improve its position in mempool."
-msgstr "mempoolからの位置を向上させるため、取引の手数料を増やしてください。"
+msgstr "mempoolでの地位を向上させるため、取引の手数料を増やします。"
 
 msgid "Indonesian"
 msgstr "インドネシア語"
@@ -1830,16 +1610,16 @@ msgid "Initial balance"
 msgstr "初期残高"
 
 msgid "Initialization of Ledger HW devices is currently disabled."
-msgstr "Ledger HW機械の初期化が現在非活性化になっている。"
+msgstr "Ledger HWデバイスの初期化が現在無効になっています。"
 
 msgid "Initiator"
-msgstr "スポンサー"
+msgstr "イニシエーター"
 
 msgid "Input amount"
 msgstr "金額入力"
 
 msgid "Input raw transaction"
-msgstr "元の取引入力"
+msgstr "raw transactionの入力"
 
 msgid "Inputs"
 msgstr "入力"
@@ -1848,7 +1628,7 @@ msgid "Install Wizard"
 msgstr "Wizard インストール"
 
 msgid "Install the zbar package to enable this."
-msgstr "zbar パッケージをインストールして活性化してください。"
+msgstr "zbar パッケージをインストールし、これを有効化して下さい。"
 
 msgid "Instructions:"
 msgstr "説明:"
@@ -1857,98 +1637,94 @@ msgid "Insufficient funds"
 msgstr "残高不足"
 
 msgid "Invalid Address"
-msgstr "正しくないアドレス"
+msgstr "無効なアドレス"
 
 msgid "Invalid Amount"
-msgstr "正しくない金額"
+msgstr "無効な金額"
 
 msgid "Invalid Bitcoin Address"
-msgstr "正しくないビットコインアドレス"
+msgstr "無効なBitcoinアドレス"
 
 msgid "Invalid Bitcoin address"
-msgstr "正しくないビットコインアドレス"
+msgstr "無効なBitcoinアドレス"
 
 msgid "Invalid Bitcoin address."
-msgstr "正しくないビットコインアドレス"
+msgstr "無効なBitcoinアドレス"
 
 msgid "Invalid Fee"
-msgstr "正しくない手数料"
+msgstr "無効な手数料"
 
 msgid "Invalid JSON code."
-msgstr "正しくないJSONコード"
+msgstr "無効なJSONコード"
 
 msgid "Invalid Lines found:"
-msgstr "正しくないLines発見:"
+msgstr "無効なLinesが発見されました:"
 
 msgid "Invalid PIN"
-msgstr "正しくない PIN"
+msgstr "無効なPIN"
 
 msgid "Invalid Public key"
-msgstr "正しくない 公開キー"
+msgstr "無効な公開キー"
 
 msgid "Invalid Secure Fast Tx seed"
-msgstr "無効なクイックセキュリティ取引スピード"
+msgstr "無効なクイック・保安Txシード"
 
 msgid "Invalid address"
-msgstr "正しくないアドレス"
+msgstr "無効なアドレス"
 
 msgid "Invalid amount"
-msgstr "正しくない金額"
+msgstr "無効な金額"
 
 msgid "Invalid cancel seedphrase"
-msgstr "正しくないキャンセルシードフレーズ"
+msgstr "無効なキャンセルシードフレーズ"
 
 msgid "Invalid cancelation address"
 msgstr "無効なキャンセルアドレス"
 
 msgid "Invalid node ID, must be 33 bytes and hexadecimal"
-msgstr "正しくないノード ID、 33 バイト、16進法でなければなりません。"
+msgstr "無効なノード IDです。 33 バイト、16進法でなければなりません。"
 
 msgid "Invalid one-time password."
-msgstr "正しくない 使い捨てパスワード"
+msgstr "無効な 使い捨てパスワード"
 
 msgid "Invalid seed"
-msgstr "正しくないシード"
+msgstr "無効なシード"
 
 msgid "Invoice has expired"
-msgstr "インボイス満了"
+msgstr "インボイスの有効期限が切れました"
 
 msgid "Invoice saved as "
 msgstr "名前を付けてインボイス保存 "
 
 msgid "Invoice wants us to risk locking funds for unreasonably long."
-msgstr "インボイスが長い間、資金をロックする危険を冒すことを希望する"
+msgstr "インボイスは長い期間資金をロックしてしまうリスクがあります。"
 
-msgid ""
-"It also contains your master public key that allows watching your addresses."
-msgstr "アドレスの閲覧を許可するマスター公開キーを含めています。"
+msgid "It also contains your master public key that allows watching your addresses."
+msgstr "あなたのアドレスの閲覧を許可するマスター公開キーが含まれます。"
 
 msgid "It cannot be \"backed up\" by simply exporting these private keys."
-msgstr "単純にこのプライベートキーを共有することでバックアップはできません。"
+msgstr "この個人キーをエクスポートするだけでは、バックアップはできません。"
 
 msgid "It conflicts with current history."
-msgstr "現在、内訳との衝突があります。"
+msgstr "現在の履歴と矛盾しています。"
 
-msgid ""
-"It sends and receives partially signed transactions from/to your cosigner "
-"wallet."
+msgid "It sends and receives partially signed transactions from/to your cosigner wallet."
 msgstr "共同署名のウォレットから/へ部分署名の取引を受けたり、送ります。"
 
 msgid "Japanese"
 msgstr "日本語"
 
 msgid "Join inputs/outputs"
-msgstr "入力値/出力値参加"
+msgstr "入力値/出力値を結合する"
 
 msgid "Keyboard shortcut: type \"!\" to send all your coins."
-msgstr ""
-"キーボードショートカット:  \"!\"を入力して全てのコインを送ってください。"
+msgstr "キーボードショートカット:  \"!\"を入力すると全てのコインを送金します。"
 
 msgid "Keystore"
-msgstr "キーストレージ"
+msgstr "Keystore"
 
 msgid "Keystore type"
-msgstr "キーストレージの種類"
+msgstr "Keystoreタイプ"
 
 msgid "Korean"
 msgstr "韓国語"
@@ -1962,39 +1738,33 @@ msgstr "ラベルの設定"
 msgid "LabelSync"
 msgstr "ラベルの同期化"
 
-msgid ""
-"Labels, transactions IDs and addresses are encrypted before they are sent to "
-"the remote server."
-msgstr ""
-"ラベル、トランザクションIDやアドレスはリモートサーバーに送られる前に暗号化さ"
-"れます。"
+msgid "Labels, transactions IDs and addresses are encrypted before they are sent to the remote server."
+msgstr "ラベル、トランザクションIDやアドレスはリモートサーバーに送られる前に暗号化されます。"
 
 msgid "Language"
 msgstr "言語"
 
-#, python-brace-format
 msgid "Latest version: {version}"
 msgstr "最新バージョン: {version}"
 
 msgid "Leave this field empty if you want to disable encryption."
-msgstr "暗号化を非活性化するには、このフィールドを空欄にして置いてください。"
+msgstr "暗号化を無効にするには、このフィールドを空欄のままにしてください。"
 
 msgid "Ledger Status"
-msgstr "レジャー状態"
+msgstr "Ledgerステータス"
 
 msgid "Ledger Wallet Authentication"
-msgstr "レジャーウォレット認証"
+msgstr "Ledgerウォレット認証システム"
 
 msgid "Ledger wallet"
-msgstr "レジャーウォレット"
+msgstr "Ledgerウォレット"
 
 msgid "Legacy"
-msgstr "レガシー"
+msgstr "Legacy"
 
 msgid "Legacy 2FA"
-msgstr "レガシー2FA"
+msgstr "Legacy 2FA"
 
-#, python-brace-format
 msgid "Library version for '{name}' is incompatible."
 msgstr "{name}'のライブラリーーバージョンは互換できません。"
 
@@ -2019,12 +1789,8 @@ msgstr "ライトニングキーが初期化されました。"
 msgid "Lightning keys have been removed."
 msgstr "ライトニングキーが除去されました。"
 
-msgid ""
-"Lightning support in Electrum is experimental. Do not put large amounts in "
-"lightning channels."
-msgstr ""
-"Electrumでのライトニング支援はテスト段階です。ライトニングチャネルに多くの金"
-"額を入れないでください。"
+msgid "Lightning support in Electrum is experimental. Do not put large amounts in lightning channels."
+msgstr "Electrumでのライトニングのサポートはテスト段階です。ライトニングチャンネルに多くの金額を入れないでください。"
 
 msgid "Lightning:"
 msgstr "ライトニング:"
@@ -2053,12 +1819,8 @@ msgstr "正しい状態なのか、確認してください。"
 msgid "Make sure you install it with python3"
 msgstr "python3をインストールしてください。"
 
-msgid ""
-"Make sure you own the seed phrase or the private keys, before you request "
-"Bitcoins to be sent to this wallet."
-msgstr ""
-"ウォレットにビットコイン送金要請の前、シードフレーズやプライベートキーがある"
-"のか、確認してください。"
+msgid "Make sure you own the seed phrase or the private keys, before you request Bitcoins to be sent to this wallet."
+msgstr "このウォレットへBitcoinを送金する前、シードフレーズや個人キーがあるのかを確認してください。"
 
 msgid "Master Public Key"
 msgstr "マスター公開キー"
@@ -2073,10 +1835,10 @@ msgid "Max fee exceeded"
 msgstr "最大手数料超過"
 
 msgid "Maximum number of concurrent HTLCs accepted by peer:"
-msgstr "ピアに許される同時 HTLC最大数:"
+msgstr "ピアが受け入れられる同時接続の HTLC最大数:"
 
 msgid "Maximum value of in-flight HTLCs accepted by peer:"
-msgstr "ピアに許されるインフライトHTLC最大数:"
+msgstr "ピアが受け入れられるインフライトHTLC最大数:"
 
 msgid "Memo"
 msgstr "メモ"
@@ -2085,7 +1847,7 @@ msgid "Mempool"
 msgstr "Mempool"
 
 msgid "Mempool based: fee rate is targeting a depth in the memory pool"
-msgstr "Mempool基盤: memory poolの深さを対象、手数料率 "
+msgstr "Mempoolのベース: 手数料率はmemory poolの深さを対象としています "
 
 msgid "Mempool depth"
 msgstr "Mempoolの深さ"
@@ -2100,33 +1862,31 @@ msgid "Method:"
 msgstr "方法:"
 
 msgid "Minimum HTLC value accepted by peer (mSAT):"
-msgstr "ピアに許される最小HTLC数(mSAT):"
+msgstr "ピアが受け入れられる最小HTLC数(mSAT):"
 
 msgid "Mining fee"
 msgstr "マイニング手数料"
 
 msgid "Missing amount"
-msgstr "落ち金額"
+msgstr "金額が見つかりません"
 
-#, python-brace-format
 msgid "Missing libraries for {library_name}."
-msgstr "{library_name}のライブラリーが漏れました。"
+msgstr "{library_name}のライブラリーが見つかりません。"
 
 msgid "Missing previous tx for legacy input."
-msgstr "レガシー入力に必要な以前の取引を見つかれません。"
+msgstr "legacy入力に必要な以前のtxが見つかりません。"
 
 msgid "Missing report URL."
-msgstr "レポートURLを見つかれません。"
+msgstr "レポートURLが見つかりません。"
 
-#, python-brace-format
 msgid "More info at: {link}"
-msgstr "もっと多くの情報は: {link}"
+msgstr "より詳しい情報はこちらから: {link}"
 
 msgid "Multi-Signature Standard"
 msgstr "Multi-Signature Standard"
 
 msgid "NOT DEVICE PIN - see above"
-msgstr "機械PINではない -上記の内容参考"
+msgstr "デバイスPINではありません -上記をご確認ください"
 
 msgid "Name"
 msgstr "名前"
@@ -2135,13 +1895,13 @@ msgid "Network"
 msgstr "ネットワーク"
 
 msgid "Network request timed out."
-msgstr "ネットワーク要請時間の超過"
+msgstr "ネットワークリクエストがタイムアウトしました"
 
 msgid "Never"
-msgstr "絶対"
+msgstr "決して"
 
 msgid "Never disclose your seed."
-msgstr "絶対シードを公開しないでください。"
+msgstr "決してシードを教えないでください。"
 
 msgid "Never enter it on any website."
 msgstr "どのウェブサイトにも入力しないでください。"
@@ -2158,7 +1918,6 @@ msgstr "新たなパスワード"
 msgid "New contact"
 msgstr "新たな連絡先"
 
-#, python-brace-format
 msgid "New transaction: {amount}"
 msgstr "新たな取引: {amount}"
 
@@ -2178,37 +1937,40 @@ msgid "No Wallet"
 msgstr "ウォレット無し"
 
 msgid "No address available. Please remove some of your pending requests."
-msgstr "アドレスを見つかれません。保留中の要請を除去してください。"
+msgstr "アドレスが見つかりません。保留中のリクエストを削除してください。"
 
 msgid "No data"
 msgstr "データ無し"
 
 msgid "No donation address for this server"
-msgstr "このサーバーの寄付(donation)アドレスはありません。"
+msgstr "このサーバーには寄付(donation)アドレスがありません。"
 
 msgid "No exceptions encountered."
-msgstr "例外無し"
+msgstr "例外は発生しませんでした"
 
 msgid "No fork detected"
-msgstr "フォークは感知されていない。"
+msgstr "フォークは検出されませんでした。"
 
 msgid "No hardware device detected."
-msgstr "ハードウェア機械は感知されていません。"
+msgstr "ハードウェアデバイスは検出されませんでした。"
 
 msgid "No inputs found. (Note that inputs need to be confirmed)"
-msgstr "入力直を探せません。（入力値が確認されなければなりません。）"
+msgstr "入力値がありません（入力値は確認されなければなりません。）"
 
 msgid "No keystore"
-msgstr "キーストレージ無し"
+msgstr "keystoreがありません"
 
 msgid "No more addresses in your wallet."
-msgstr "ウォレットにもはやアドレスがありません。"
+msgstr "ウォレットにアドレスがありません。"
 
 msgid "No outputs"
 msgstr "出力無し"
 
 msgid "No wallet loaded."
-msgstr "ウォレットは入っていない。"
+msgstr "ウォレットが読み込まれていません"
+
+msgid "No, I changed my mind"
+msgstr "いいえ、同意します"
 
 msgid "Node ID"
 msgstr "ノードID"
@@ -2232,10 +1994,10 @@ msgid "Not Now"
 msgstr "今はできません"
 
 msgid "Not Verified"
-msgstr "検証されていない"
+msgstr "検証されていません"
 
 msgid "Not connected"
-msgstr "繋がっていない"
+msgstr "接続されていません"
 
 msgid "Not enough funds"
 msgstr "金額が足りません。"
@@ -2249,60 +2011,38 @@ msgstr "検証されていない"
 msgid "Not yet available"
 msgstr "まだ有効ではない"
 
-msgid ""
-"Note that if you have frozen some of your addresses, the available funds "
-"will be lower than your total balance."
-msgstr ""
-"アドレスの凍結されましたら、残高を確認してください。ご利用可能な金額が総残高"
-"より少ないです。"
+msgid "Note that if you disagree to our Terms & Conditions you won't be able to use the Electrum Vault application."
+msgstr "利用規約に同意しない場合、Electrum Vaultアプリケーションを使用できないことに注意してください。"
 
-msgid ""
-"Note that some merchants do not accept non-final transactions until they are "
-"confirmed."
-msgstr ""
-"確認されていない最終ではない取引を取り扱いわない取引がある可能性があります。"
+msgid "Note that if you have frozen some of your addresses, the available funds will be lower than your total balance."
+msgstr "アドレスの一部を凍結すると、利用可能な残高が合計残高より少なくなります。"
+
+msgid "Note that some merchants do not accept non-final transactions until they are confirmed."
+msgstr "一部の業者では、最終確認されていない取引については、それが承認されるまで受け入れないことがありますことにご注意ください。"
 
 msgid "Note that this is NOT your encryption password."
 msgstr "これは暗号化のパスワードではありません。"
 
-msgid ""
-"Note that your coins are not locked in this service.  You may withdraw your "
-"funds at any time and at no cost, without the remote server, by using the "
-"'restore wallet' option with your wallet seed."
-msgstr ""
-"お客様のコインはこのサービスに制限されていません。ウォレットシードから'ウォ"
-"レット復元'オプションを使用し遠隔サーバーなくてもいつでも資金を引き出すことが"
-"できます。"
+msgid "Note that your coins are not locked in this service.  You may withdraw your funds at any time and at no cost, without the remote server, by using the 'restore wallet' option with your wallet seed."
+msgstr "あなたのコインはこのサービスではロックされていません。ウォレットシードを使ってウォレット復元オプションを使用することで、遠隔サーバーでなくても、いつでもコストなしで資金を引き出すことができます。"
 
-msgid ""
-"Note: If you enable this setting, you will need your hardware device to open "
-"your wallet."
-msgstr ""
-"参考:この設定を活性化するには、ウォレットを開くため、貴下のハードウェア機械が"
-"必要です。"
+msgid "Note: If you enable this setting, you will need your hardware device to open your wallet."
+msgstr "参考:この設定を有効にするには、ウォレットを開くためにあなたのハードウェアデバイスが必要になります。"
 
-msgid ""
-"Note: this is an offline transaction, if you want the network to see it, you "
-"need to broadcast it."
-msgstr ""
-"参考:こちらはオフラインの取引で、ネットワークにアップロードするには、送出しな"
-"ければなりません。"
+msgid "Note: this is an offline transaction, if you want the network to see it, you need to broadcast it."
+msgstr "参考:こちらはオフラインの取引です。ネットワークへ送るには、ブロードキャストする必要があります。"
 
 msgid "Nothing set !"
-msgstr "設定内容無し!"
+msgstr "設定するものがありません"
 
 msgid "Nothing to plot."
-msgstr "プロットする内容無し。"
+msgstr "プロットするものがありません。"
 
 msgid "Nothing to summarize."
-msgstr "要約する内容無し。"
+msgstr "要約するものがありません。"
 
-msgid ""
-"Number of zeros displayed after the decimal point. For example, if this is "
-"set to 2, \"1.\" will be displayed as \"1.00\""
-msgstr ""
-"小数点の後に表示される0の数。例えば、2に設定されると、\"1.\"が、\"1.00\"と表"
-"示される。"
+msgid "Number of zeros displayed after the decimal point. For example, if this is set to 2, \"1.\" will be displayed as \"1.00\""
+msgstr "小数点の後に表示される0の数。例えば、2に設定されると、\"1.\"が、\"1.00\"と表示される。"
 
 msgid "OK"
 msgstr "OK"
@@ -2314,12 +2054,10 @@ msgid "Offline"
 msgstr "オフライン"
 
 msgid "On Linux, you might have to add a new permission to your udev rules."
-msgstr ""
-"リナックスでは、udev ruleに新しい許可を追加しなければならない可能性がありま"
-"す。"
+msgstr "Linuxではudev ruleに新しい許可を追加しなければならない可能性があります。"
 
 msgid "One output per line."
-msgstr "ライン当一つの出力値。"
+msgstr "ラインごとに1つのアウトプット"
 
 msgid "One-server mode"
 msgstr "単一サーバーモード"
@@ -2328,7 +2066,7 @@ msgid "Online Block Explorer"
 msgstr "オンラインブロックエクスプローラー"
 
 msgid "Only OP_RETURN scripts, with one constant push, are supported."
-msgstr "一つの持続pushと一緒にOP_RETURNスクリプトだけ支援されます。"
+msgstr "1つのコンスタントpushでOP_RETURNスクリプトだけがサポートされています。"
 
 msgid "Only connect to a single server"
 msgstr "単一サーバのみ、接続します。"
@@ -2337,7 +2075,7 @@ msgid "Open Channel"
 msgstr "チャネルを開く"
 
 msgid "Open advanced transaction preview dialog when 'Pay' is clicked."
-msgstr "'お支払い' クリックの時、高級取引のプレビューダイアログを開く"
+msgstr "'お支払い' をクリックすると詳細取引のプレビューダイアログを開きます"
 
 msgid "Open calibration pdf"
 msgstr "調整PDFを開く"
@@ -2348,32 +2086,29 @@ msgstr "チャネルを開く"
 msgid "Open your cosigner wallet to retrieve it."
 msgstr "あなたの共同署名のウォレットを開いて検索してください。"
 
-#, python-brace-format
 msgid "Open {title} file"
 msgstr "{title} ファイルを開く"
 
 msgid "OpenAlias"
-msgstr "オープンエイリアス"
+msgstr "OpenAlias"
 
 msgid "OpenAlias record, used to receive coins and to sign payment requests."
-msgstr ""
-"オープンエイリアス内訳はコインを受けたり、お支払いの要請を署名するため、利用"
-"されます"
+msgstr "OpenAliasレコードは、コインを受け取ったり、支払いリクエストに署名するために使用されます"
 
 msgid "Opening channel..."
-msgstr "チャネルを開いている。"
+msgstr "チャネルを開いています…"
 
 msgid "Options"
 msgstr "オプション"
 
 msgid "Outdated device firmware"
-msgstr "既に過ぎたファームウェア"
+msgstr "古いデバイスファームウェア"
 
 msgid "Outgoing payments"
-msgstr "出納金"
+msgstr "出金"
 
 msgid "Output amount"
-msgstr "出金額数"
+msgstr "出金額"
 
 msgid "Output point"
 msgstr "出力ポイント"
@@ -2415,36 +2150,34 @@ msgid "Password Strength"
 msgstr "パスワードの強さ"
 
 msgid "Password is disabled, this wallet is not protected"
-msgstr ""
-"パスワードが非活性化になりました。ウォレットが保護されていない可能性がありま"
-"す。"
+msgstr "パスワードが無効です。このウォレットは保護されていません。"
 
 msgid "Password was updated successfully"
-msgstr "パスワードが成功的にアップデートされました。"
+msgstr "パスワードのアップデートに成功しました。"
 
 msgid "Password:"
-msgstr "パスワード。"
+msgstr "パスワード："
 
 msgid "Pay"
 msgstr "お支払い"
 
 msgid "Pay multiple invoices"
-msgstr "複合インボイスのお支払い"
+msgstr "複数のインボイスのお支払い"
 
 msgid "Pay to"
 msgstr "にお支払いする"
 
 msgid "Pay to many"
-msgstr "多くにお支払いする"
+msgstr "複数にお支払いする"
 
 msgid "Payment Received"
-msgstr "お支払いを受ける"
+msgstr "受取金額"
 
 msgid "Payment Request"
-msgstr "お支払いの要請"
+msgstr "お支払いのリクエスト"
 
 msgid "Payment failed"
-msgstr "お支払いの失敗"
+msgstr "お支払いに失敗しました"
 
 msgid "Payment hash"
 msgstr "お支払いのハッシュ"
@@ -2453,10 +2186,10 @@ msgid "Payment log"
 msgstr "お支払いのログ"
 
 msgid "Payment received"
-msgstr "お支払いを受ける"
+msgstr "受取金額"
 
 msgid "Payment request has expired"
-msgstr "お支払の要請満了"
+msgstr "お支払のリクエストの期限が切れました"
 
 msgid "Payment sent."
 msgstr "お支払い送信完了"
@@ -2465,7 +2198,7 @@ msgid "Payment succeeded"
 msgstr "お支払い成功"
 
 msgid "Payment was sent"
-msgstr "お支払いが送られたました。"
+msgstr "お支払いが送金されました。"
 
 msgid "Payments (HTLCs):"
 msgstr "お支払い (HTLCs):"
@@ -2477,7 +2210,7 @@ msgid "Perhaps some dependencies are missing..."
 msgstr "Dependenciesがない可能性があります。"
 
 msgid "Please briefly describe what led to the error (optional):"
-msgstr "エラーの原因は何かと簡単に説明してください。(選択):"
+msgstr "エラーの原因を簡単に説明してください(任意):"
 
 msgid "Please check your connection and credentials."
 msgstr "接続状態や認証を確認してください。"
@@ -2485,9 +2218,8 @@ msgstr "接続状態や認証を確認してください。"
 msgid "Please check your network connection."
 msgstr "ネットワーク接続を確認してください。"
 
-#, python-brace-format
 msgid "Please check your {device} device"
-msgstr "機械{device}を確認してください。"
+msgstr "デバイス{device}を確認してください。"
 
 msgid "Please confirm"
 msgstr "確認してください。"
@@ -2499,10 +2231,10 @@ msgid "Please enter the master public key (xpub) of your cosigner."
 msgstr "共同署名者のマスター公開キー(xpub)を入力してください。"
 
 msgid "Please enter your Google Authenticator code"
-msgstr "グーグル認証コードを入力してください。"
+msgstr "Google認証コードを入力してください。"
 
 msgid "Please enter your Google Authenticator code:"
-msgstr "グーグル認証コードを入力してください。"
+msgstr "Google認証コードを入力してください。"
 
 msgid "Please enter your e-mail address"
 msgstr "メールアドレスを入力してください。"
@@ -2516,60 +2248,41 @@ msgstr "復号化のため、パスワードを入力してください。"
 msgid "Please enter your seed phrase in order to restore your wallet."
 msgstr "ウォレットの復旧のため、シードフレーズを入力してください。"
 
-#, python-brace-format
 msgid "Please insert your {device}"
-msgstr " {device}を接続してください。"
+msgstr " {device}を挿入してください。"
 
-msgid ""
-"Please paste a Cancel Transaction Key. Use an existing one, if you "
-"are importing a wallet, or generate a new one at"
-msgstr ""
-"キャンセル取引のキーを貼付けてください。ウォレットを共有する場合、既存"
-"キーを使用するか、次で新しいキーを生成してください。"
+msgid "Please paste a Cancel Transaction Key. Use an existing one, if you are importing a wallet, or generate a new one at"
+msgstr "キャンセル取引・キーを貼付けてください。ウォレットをインポートする場合には既存キーを使用し、そうでなければこちらから新しいキーを生成してください。"
 
-msgid ""
-"Please paste a Fast Transaction Key. Use an existing one, if "
-"you are importing a wallet, or generate a new one at"
-msgstr ""
-"クイック取引キーを張り付けてください。ウォレットをロードする"
-"場合、既存キーを使用するか、次で新しいキーを生成してください。"
+msgid "Please paste a Fast Transaction Key. Use an existing one, if you are importing a wallet, or generate a new one at"
+msgstr "クイック取引・キーを張り付けてください。ウォレットをインポートする場合は既存のキーを使用し、そうでなければこちらから新しいキーを生成してください。"
 
-msgid ""
-"Please paste authenticator public key exported from your Gold Wallet "
-"application"
-msgstr ""
-"Gold Walletアプリでエクスポートしたオーセンティケーターの公開キーを貼付けてく"
-"ださい。"
+msgid "Please paste authenticator public key exported from your Gold Wallet application"
+msgstr "Gold Walletアプリでエクスポートした認証システムの公開キーを貼付けてください。"
 
-msgid ""
-"Please paste your cosigners master public key, or scan it using the camera "
-"button."
-msgstr ""
-"共同署名マスター公開キーを貼り付けたり、カメラボタンを利用してスキャンしてく"
-"ださい。"
+msgid "Please paste your cosigners master public key, or scan it using the camera button."
+msgstr "共同署名マスター公開キーを貼り付けるか、またはカメラボタンを利用してスキャンしてください。"
 
 msgid "Please report any bugs as issues on github:<br/>"
-msgstr "バグをイシューとしてgithubで報告してください。:<br>"
+msgstr "バグがあれば、問題としてgithubに報告してください。:<br>"
 
 msgid "Please report this issue manually"
-msgstr "直接該当のイシューを報告してください。"
+msgstr "この問題をマニュアルで報告してください。"
 
 msgid "Please restart Electrum to activate the new GUI settings"
-msgstr "新たなGUI設定を適用するため、エレクトラムを再起動してください。"
+msgstr "新しいGUI設定を有効にするため、Electrumを再起動してください。"
 
 msgid "Please retype your seed phrase, to confirm that you properly saved it"
 msgstr "正しく保存されたのか確認するため、シードフレーズを再入力してください。"
 
-#, python-brace-format
 msgid "Please save these {0} words on paper (the order is important). "
-msgstr "次の{0}言葉を紙に書いてください(順序が重要です)。 "
+msgstr "次の{0}言葉を紙に書いて保存してください(順序が重要です)。 "
 
 msgid "Please scan a Bitcoin address or a payment request"
-msgstr "ビットコインアドレスやお支払いの要請をスキャンしてください。"
+msgstr "Bitcoinアドレス、またはお支払いのリクエストをスキャンしてください。"
 
-#, python-brace-format
 msgid "Please select which {device} device to use:"
-msgstr "ご利用な機械 {device}を選んでください:"
+msgstr "ご利用になるデバイス {device}を選んでください:"
 
 msgid "Please share it with your cosigners."
 msgstr "共同署名者と共有してください。"
@@ -2590,7 +2303,7 @@ msgid "Please wait"
 msgstr "少々お待ちください。"
 
 msgid "Please wait while Electrum checks for available updates."
-msgstr "エレクトラムがアップデートを確認する間、お待ちください。"
+msgstr "Electrumがアップデートを確認する間、お待ちください。"
 
 msgid "Please wait..."
 msgstr "お待ちください。"
@@ -2599,28 +2312,25 @@ msgid "Port"
 msgstr "ポート"
 
 msgid "Port number must be decimal"
-msgstr "ポート数字は小数点でなければなりません。"
+msgstr "ポート数字は10進数でなければなりません。"
 
 msgid "Portuguese"
 msgstr "ポルトガル語"
 
-#, python-brace-format
 msgid "Position in mempool: {size} from tip"
-msgstr "mempoolに位置:チップから  {size}"
+msgstr "mempoolに設置する:チップから  {size}"
 
 msgid "Preferences"
-msgstr "好み設定"
+msgstr "環境設定"
 
 msgid "Press 'Next' to choose device to decrypt."
-msgstr "復号化する機会を選択するため、'次へ'をクリックしてください。"
+msgstr "デバイスを復号化するには '次へ'をクリックしてください。"
 
 msgid "Press 'Next' to create this wallet, or choose another file."
-msgstr ""
-"このウォレットを生成するため、 '次へ'をクリックしたり、他のファイルを選んでく"
-"ださい。"
+msgstr "このウォレットを作成するには '次へ'をクリックするか、他のファイルを選んでください。"
 
 msgid "Press 'Next' to create/focus window."
-msgstr "ウィンドウ生成/フォーカスするため、'次へ'をクリックしてください。"
+msgstr "ウィンドウを作成/フォーカスするため、'次へ'をクリックしてください。"
 
 msgid "Press 'Next' to open this wallet."
 msgstr "ウォレットを開くため、'次へ'をクリックしてください。"
@@ -2635,25 +2345,25 @@ msgid "Previous part"
 msgstr "前のパート"
 
 msgid "Printer Calibration"
-msgstr "Printer較正"
+msgstr "プリンターキャリブレーション"
 
 msgid "Private key"
-msgstr "プライベートキー"
+msgstr "個人キー"
 
 msgid "Private keys"
-msgstr "プライベートキー"
+msgstr "個人キー"
 
 msgid "Private keys exported."
-msgstr "プライベートキーが抽出されました。"
+msgstr "個人キーがエクスポートされました。"
 
 msgid "Problem opening channel: "
-msgstr "チャネルを開く際、問題発生: "
+msgstr "チャネルを開く際、問題が発生しました: "
 
 msgid "Proceed at your own risk."
-msgstr "危険を甘んじて進行してください。"
+msgstr "自己責任でお願いします。"
 
 msgid "Provides support for air-gapped transaction signing."
-msgstr "空売り署名に支援します。"
+msgstr "エアギャップ取引署名へのサポートを提供します"
 
 msgid "Proxy"
 msgstr "プロキシ"
@@ -2664,18 +2374,14 @@ msgstr "プロキシ設定"
 msgid "Proxy mode"
 msgstr "プロキシモード"
 
-msgid ""
-"Proxy settings apply to all connections: with Electrum servers, but also "
-"with third-party services."
-msgstr ""
-"プロキシ設定は全ての接続に適用されます。:エレクトラムサーバーだけではなく、第"
-"三者サービスにも適用。"
+msgid "Proxy settings apply to all connections: with Electrum servers, but also with third-party services."
+msgstr "プロキシ設定は全ての接続に適用されます。:Electrumサーバーだけではなく、サードパーティのサービスにも適用されます。"
 
 msgid "Proxy user"
-msgstr "プロキシ使用者"
+msgstr "プロキシユーザー"
 
 msgid "PubKey cropped because too long string passed"
-msgstr "長すぎるstringのため、 PubKey切られる。"
+msgstr "長すぎる文字列のため、 PubKeyが切られました。"
 
 msgid "Public key"
 msgstr "公開キー"
@@ -2693,7 +2399,7 @@ msgid "QR code copied to clipboard"
 msgstr "QRコードがクリップボードにコピーされました。"
 
 msgid "QR code saved to file"
-msgstr "QRコードがファイルに保存される。"
+msgstr "QRコードがファイルに保存されました。"
 
 msgid "Question"
 msgstr "質問"
@@ -2705,7 +2411,7 @@ msgid "R/W error accessing path"
 msgstr "R/W エラーアクセス経路"
 
 msgid "Raw Transaction"
-msgstr "元の取引"
+msgstr "Raw トランザクション"
 
 msgid "Read QR code"
 msgstr "QRコードを読み取る"
@@ -2716,7 +2422,6 @@ msgstr "ファイルを読み込む"
 msgid "Read from microphone"
 msgstr "マイクで読み込む"
 
-#, python-brace-format
 msgid "Ready to encrypt for revealer {version}"
 msgstr "revealer {version}に暗号化準備"
 
@@ -2724,23 +2429,22 @@ msgid "Receive"
 msgstr "受け取る"
 
 msgid "Received (mSAT):"
-msgstr "(mSAT) 受け取る:"
+msgstr "受け取った (mSAT) :"
 
-#, python-brace-format
 msgid "Received HTLC with ID {id}"
-msgstr "Received HTLC with ID {id}"
+msgstr "ID {id}で受け取ったHTLC"
 
 msgid "Receiving"
 msgstr "受信中"
 
 msgid "Recipient"
-msgstr "受信者"
+msgstr "受取人"
 
 msgid "Recipient not specified."
-msgstr "受信者未指定"
+msgstr "受取人が指定されていません"
 
 msgid "Recipient of the funds."
-msgstr "金額受信者"
+msgstr "資金の受取人"
 
 msgid "Redeem Script"
 msgstr "スクリプト償還"
@@ -2755,7 +2459,7 @@ msgid "Remote Node ID"
 msgstr "リモートノードID"
 
 msgid "Remote channel reserve:"
-msgstr "リモートチャネル予備:"
+msgstr "リモートチャネル予約:"
 
 msgid "Remote dust limit:"
 msgstr "リモートdust制限:"
@@ -2764,20 +2468,19 @@ msgid "Remote peer ID"
 msgstr "リモートピアID"
 
 msgid "Remove"
-msgstr "除去"
+msgstr "削除"
 
 msgid "Remove from wallet"
-msgstr "ウォレットから除去"
+msgstr "ウォレットから削除"
 
-#, python-brace-format
 msgid "Remove {labels} from your list of contacts?"
-msgstr "連絡先から{labels}を除去しますか。"
+msgstr "連絡先から{labels}を削除しますか。"
 
 msgid "Replace by fee"
-msgstr "手数料交代"
+msgstr "手数料で交換する"
 
 msgid "Report contents"
-msgstr "内容報告"
+msgstr "レポート内容"
 
 msgid "Report sent"
 msgstr "レポートを送る"
@@ -2786,36 +2489,35 @@ msgid "Reporting Bugs"
 msgstr "バグの報告中"
 
 msgid "Request"
-msgstr "要請"
+msgstr "リクエスト"
 
 msgid "Request copied to clipboard"
-msgstr "要請がクリップボードにコピーされました。"
+msgstr "リクエストがクリップボードにコピーされました。"
 
 msgid "Request expires"
-msgstr "要請満了"
+msgstr "リクエスト期限切れ"
 
 msgid "Request payment"
-msgstr "お支払いの要請"
+msgstr "お支払いのリクエスト"
 
 msgid "Request rejected by server"
-msgstr "要請がサーバーよって拒否される"
+msgstr "リクエストがサーバーよって拒否されました"
 
 msgid "Request saved successfully"
-msgstr "要請が成功的に保存されました。"
+msgstr "リクエストの保存に成功しました"
 
 msgid "Request sent."
-msgstr "要請完了。"
+msgstr "リクエストを送信しました"
 
 msgid "Requested amount"
-msgstr "要請金額"
+msgstr "リクエスト金額"
 
 msgid "Requesting account info from TrustedCoin server..."
-msgstr "サーバーからアカウント情報を要請中"
+msgstr "TrustedCoinサーバーからのアカウント情報をリクエスト中です"
 
 msgid "Requestor"
-msgstr "要請者"
+msgstr "リクエストした人"
 
-#, python-brace-format
 msgid "Require {0} signatures"
 msgstr "{0} 署名が必要です。"
 
@@ -2826,13 +2528,13 @@ msgid "Reset"
 msgstr "リセット"
 
 msgid "Restore 2FA wallet"
-msgstr "2FAウォレット復旧"
+msgstr "2FAウォレット復元"
 
 msgid "Restore two-factor Wallet"
-msgstr "2FAウォレット復旧"
+msgstr "2段階認証ウォレット復元"
 
 msgid "Revealer - Printer calibration settings"
-msgstr "Revealer - Printer較正設定"
+msgstr "Revealer - プリンターキャリブレーション設定"
 
 msgid "Revealer Backup Utility"
 msgstr "Revealerバックアップユーティリティー"
@@ -2871,14 +2573,10 @@ msgid "Save invoice to file"
 msgstr "ファイルにインボイス保存"
 
 msgid "Save transaction offline"
-msgstr "オフラインから取引保存"
+msgstr "オフラインで取引を保存"
 
-msgid ""
-"Save your wallet labels on a remote server, and synchronize them across "
-"multiple devices where you use Electrum."
-msgstr ""
-"ウォレットラベルをリモートサーバーに保存し、エレクトラムを利用している様々な"
-"機械から同期化してください。"
+msgid "Save your wallet labels on a remote server, and synchronize them across multiple devices where you use Electrum."
+msgstr "ウォレットラベルをリモートサーバーに保存し、Electrumを使用している複数のデバイスを同期します。"
 
 msgid "Script type"
 msgstr "スクリプトタイプ"
@@ -2887,40 +2585,31 @@ msgid "Script type and Derivation path"
 msgstr "スクリプトタイプや派生経路"
 
 msgid "Secure"
-msgstr "安全な"
+msgstr "保安"
 
 msgid "Secure - confirmed after 24 hours. Can be canceled within that time."
-msgstr "セキュリティ - 24時間後確認。この時間内のみキャンセルできます。"
+msgstr "保安 - 24時間後に承認されます。この時間内であればキャンセルできます。"
 
-msgid ""
-"Secure Fast - confirmed immediately. Cannot be canceled. Requires an "
-"additional seed phrase."
-msgstr ""
-"クイックセキュリティ- ただちに確認。キャンセルできません。追加シードフレーズ"
-"が必要です。"
+msgid "Secure Fast - confirmed immediately. Cannot be canceled. Requires an additional seed phrase."
+msgstr "保安・クイック - 直ちに承認されます。キャンセルできません。追加のシードフレーズが必要です。"
 
 msgid "Secure Fast Tx seed"
-msgstr "クイックセキュリティ取引スピード"
+msgstr "保安・クイックTxシード"
 
 msgid "Secure Fast Tx seed not matching any key in this wallet"
-msgstr ""
-"クイックセキュリティ取引スピードシードがこのウォレットのどのキーともマッチン"
-"グされていない。"
+msgstr "保安・クイックTxシードがこのウォレットのどのキーとも一致しません。"
 
 msgid "Secure Fast seedphrase"
-msgstr "クイックトセキュリティフレーズ"
-
-msgid "Fast Transaction Key"
-msgstr "クイック取引キー"
+msgstr "保安・クイックシードフレーズ"
 
 msgid "Secure fast"
-msgstr "クイック"
+msgstr "保安・クイック"
 
 msgid "Secure incoming"
-msgstr "セキュリティ受信"
+msgstr "安全な受信"
 
 msgid "Secure outgoing"
-msgstr "セキュリティ発信"
+msgstr "安全な発信"
 
 msgid "Security Card Challenge"
 msgstr "保安カードChallenge"
@@ -2944,35 +2633,34 @@ msgid "Segwit wallets use bech32 addresses, defined in BIP173."
 msgstr "Segwitウォレットはbech32アドレスを利用し、 BIP173に定義される。"
 
 msgid "Select a device"
-msgstr "機械を選ぶ"
+msgstr "デバイスを選ぶ"
 
 msgid "Select date"
 msgstr "日付を選ぶ"
 
 msgid "Select file to export your private keys to"
-msgstr "プライベートキーを共有するファイルを選んでください。"
+msgstr "個人キーをエクスポートするファイルを選んでください。"
 
 msgid "Select file to export your wallet transactions to"
-msgstr "ウォレットの取引を共有するファイルを選んでください。"
+msgstr "ウォレットの取引をエクスポートするファイルを選んでください。"
 
-#, python-brace-format
 msgid "Select file to save your {title}"
 msgstr "{title}を保存するファイルを選んでください。"
 
 msgid "Select installation language"
-msgstr "言語選択"
+msgstr "インストールする言語選択"
 
 msgid "Select server automatically"
 msgstr "サーバーを自動で選ぶ"
 
 msgid "Select server manually"
-msgstr "サーバーを受動で選ぶ"
+msgstr "サーバーを手動で選ぶ"
 
 msgid "Select where to save file"
-msgstr "保存するファイルを選ぶ"
+msgstr "ファイルを保存する場所を選ぶ"
 
 msgid "Select where to save your payment request"
-msgstr "お支払いの要請を保存する位置を選ぶ"
+msgstr "お支払いのリクエストを保存する場所を選ぶ"
 
 msgid "Select where to save your signed transaction"
 msgstr "署名した取引を保存する位置を選ぶ"
@@ -2993,19 +2681,19 @@ msgid "Send Bug Report"
 msgstr "バグレポートを送る"
 
 msgid "Send and receive payment request with an email account"
-msgstr "メールアカウントからお支払いの要請を送って、受け取る"
+msgstr "メールアカウントからお支払いリクエストを送受信する"
 
 msgid "Send and receive payment requests via email"
-msgstr "メールアカウントからお支払いの要請を送って、受け取る"
+msgstr "メールでお支払いリクエストを送受信する"
 
 msgid "Send cancel transaction"
-msgstr "取引キャンセル送信"
+msgstr "キャンセル取引を送信する"
 
 msgid "Send to cosigner"
 msgstr "共同署名者へ送る"
 
 msgid "Send to speaker"
-msgstr "スピーカーで送る"
+msgstr "スピーカーへ送る"
 
 msgid "Send via e-mail"
 msgstr "メールで送る"
@@ -3014,7 +2702,7 @@ msgid "Sending"
 msgstr "送信中"
 
 msgid "Sending crash report..."
-msgstr "衝突レポート送信中..."
+msgstr "クラッシュレポート送信中..."
 
 msgid "Sending transaction to cosigning pool..."
 msgstr "取引を共同署名プールへ送信中..."
@@ -3022,9 +2710,8 @@ msgstr "取引を共同署名プールへ送信中..."
 msgid "Sent (mSAT):"
 msgstr "(mSAT) 送信:"
 
-#, python-brace-format
 msgid "Sent HTLC with ID {id}"
-msgstr "ID {id}や HTLC 送信"
+msgstr "ID {id}で HTLC 送信しました"
 
 msgid "Server"
 msgstr "サーバー"
@@ -3032,9 +2719,8 @@ msgstr "サーバー"
 msgid "Server hosting your email account"
 msgstr "メールアカウントのホスティングサーバー"
 
-#, python-brace-format
 msgid "Server is lagging ({number} blocks)"
-msgstr "サーバーが ({number} blocks)を引き延ばしています。"
+msgstr "サーバーが ({number} blocks)の遅延を引き起こしています。"
 
 msgid "Server not reachable."
 msgstr "サーバーに接続ができません。"
@@ -3043,18 +2729,16 @@ msgid "Server peers"
 msgstr "サーバーピア"
 
 msgid "Server returned unexpected transaction ID."
-msgstr "サーバが予測されていない取引IDを変換しました。"
+msgstr "サーバが予期しない取引IDを返しました。"
 
 msgid "Server used to query your history."
-msgstr "内訳をqueryするのに利用されるサーバー。"
+msgstr "サーバーが履歴の照会に使用されました"
 
 msgid "Services"
 msgstr "サービス"
 
-msgid ""
-"Set the value of the change output so that it has similar precision to the "
-"other outputs."
-msgstr "他の出力値や類似の精密度を持つように変更出力値を設定。"
+msgid "Set the value of the change output so that it has similar precision to the other outputs."
+msgstr "変更出力の値を、他の出力と同じような精度になるように設定します。"
 
 msgid "Set wallet file encryption."
 msgstr "ウォレットファイルの暗号化設定。"
@@ -3063,22 +2747,22 @@ msgid "Settings"
 msgstr "設定"
 
 msgid "Share Bitcoin Request"
-msgstr "ビットコイン要請共有"
+msgstr "ビットコインリクエストの共有"
 
 msgid "Share Invoice"
 msgstr "インボイス共有"
 
 msgid "Short Chan ID"
-msgstr "Short チャネル ID"
+msgstr "ショートチャンID"
 
 msgid "Short Channel ID"
-msgstr "Short チャネル ID"
+msgstr "ショートチャンネルID"
 
 msgid "Short Channel ID:"
-msgstr "Short チャネル ID:"
+msgstr "ショートチャンネルID"
 
 msgid "Should this transaction be replaceable?"
-msgstr "この取引が交代することが可能でなければなりませんか？"
+msgstr "この取引は交換可能ですか？"
 
 msgid "Show"
 msgstr "表示"
@@ -3089,20 +2773,21 @@ msgstr "アドレスに対するフィアット残高表示"
 msgid "Show QR Code"
 msgstr "QRコード表示"
 
+msgid "Show advanced"
+msgstr "詳細オプションを表示する"
+
 msgid "Show as QR code"
 msgstr "QRコードで表示"
 
 msgid "Show on Ledger"
-msgstr "レジャーに表示"
+msgstr "Ledgerに表示"
 
-#, python-brace-format
 msgid "Show on {device}"
 msgstr "{device}に表示"
 
 msgid "Show report contents"
 msgstr "レポートの内容表示"
 
-#, python-brace-format
 msgid "Show {tab_description}"
 msgstr "{tab_description} 表示"
 
@@ -3136,29 +2821,20 @@ msgstr "署名中"
 msgid "Signing transaction..."
 msgstr "取引署名中..."
 
-msgid ""
-"Signing with an address actually means signing with the corresponding "
-"private key, and verifying with the corresponding public key. The address "
-"you have entered does not have a unique public key, so these operations "
-"cannot be performed."
-msgstr ""
-"アドレスに署名することは、当該プライベートキーで署名することを意味し、当該公"
-"開キーで検証することを意味します。入力したアドレスは固有の公開キーがないた"
-"め、この作業を実行することが不可能です。"
+msgid "Signing with an address actually means signing with the corresponding private key, and verifying with the corresponding public key. The address you have entered does not have a unique public key, so these operations cannot be performed."
+msgstr "アドレスに署名することは、実際には個人キーで署名し、それに対応する公開キーで検証することを意味します。入力されたアドレスは特定の公開キーを持っていないため、この作業を実行することができません。"
 
 msgid "Size:"
 msgstr "大きさ:"
 
 msgid "Something went wrong while executing Electrum."
-msgstr "エレクトラムを実行中、エラーが発生しました。"
+msgstr "Electrumを実行中、エラーが発生しました。"
 
 msgid "Sorry!"
 msgstr "申し訳ございません。"
 
 msgid "Sorry, but we were unable to check for updates. Please try again later."
-msgstr ""
-"申し訳ございません。アップデートの確認は不可能です。もう一度、試してみてくだ"
-"さい。"
+msgstr "申し訳ございません。アップデートを確認することができませんでした。後でもう一度お試しください。"
 
 msgid "Source"
 msgstr "ソース"
@@ -3173,10 +2849,10 @@ msgid "Spend from"
 msgstr "で消費"
 
 msgid "Spend only confirmed coins"
-msgstr "確認されたコインのみ、消費してください。"
+msgstr "承認済みのコインだけを使ってください"
 
 msgid "Spend only confirmed inputs."
-msgstr "確認された入力値のみ、消費してください。"
+msgstr "確認済みの入力値だけを使ってください"
 
 msgid "Standard"
 msgstr "Standard"
@@ -3184,13 +2860,8 @@ msgstr "Standard"
 msgid "Start"
 msgstr "スタート"
 
-msgid ""
-"Startup times are instant because it operates in conjunction with high-"
-"performance servers that handle the most complicated parts of the Bitcoin "
-"Vault system."
-msgstr ""
-"BTCVシステムの最も複雑な要素を処理する高性能サーバーで作動されるため開始時間"
-"が即刻的です。"
+msgid "Startup times are instant because it operates in conjunction with high-performance servers that handle the most complicated parts of the Bitcoin Vault system."
+msgstr "Bitcoin Vaultシステムの最も複雑な部分を処理する高性能サーバーと連携して作動するため、スタートアップの時間は一瞬です。"
 
 msgid "State"
 msgstr "状態"
@@ -3199,34 +2870,34 @@ msgid "Static"
 msgstr "静的"
 
 msgid "Status"
-msgstr "状態"
+msgstr "ステータス"
 
 msgid "Status:"
-msgstr "状態:"
+msgstr "ステータス:"
 
 msgid "Success"
 msgstr "成功"
 
 msgid "Summary"
-msgstr "まとめ"
+msgstr "サマリー"
 
 msgid "Summary Text PIN (requires dongle replugging)"
-msgstr "概要テキスト (ドングルの再接続が必要とされる)"
+msgstr "サマリーテキストPIN (ドングルの再接続が必要です)"
 
 msgid "Summary Text PIN is Disabled"
-msgstr "概要テキストPINの非活性化"
+msgstr "サマリーテキストPINが無効です"
 
 msgid "Sweep"
 msgstr "クリア"
 
 msgid "Sweep private keys"
-msgstr "プライベートキーをクリアする"
+msgstr "個人キーをクリアする"
 
 msgid "Synchronizing..."
 msgstr "同期中..."
 
 msgid "Tap to show"
-msgstr "タブし、表示"
+msgstr "タップして表示する"
 
 msgid "Target"
 msgstr "ターゲット"
@@ -3234,19 +2905,20 @@ msgstr "ターゲット"
 msgid "Target fee:"
 msgstr "ターゲット手数料:"
 
+msgid "Terms & Conditions"
+msgstr "利用規約"
+
 msgid "Terms of Service"
 msgstr "利用規約"
 
 msgid "Testnet"
-msgstr "Testnet"
+msgstr "Testnet (テストネット)"
 
 msgid "Testnet coins are worthless."
-msgstr "Testnetが価値がありません。"
+msgstr "テストネットコインは価値がありません。"
 
-msgid ""
-"Testnet is separate from the main Bitcoin Vault network. It is used for "
-"testing."
-msgstr "テストネットはBTCVメインネットワークとは別です。これはテスト用です。"
+msgid "Testnet is separate from the main Bitcoin Vault network. It is used for testing."
+msgstr "テストネットはBitcoin Vaultメインネットワークとは別です。これはテスト用です。"
 
 msgid "Text copied to clipboard"
 msgstr "クリップボードにテキストがコピーされました。"
@@ -3254,30 +2926,17 @@ msgstr "クリップボードにテキストがコピーされました。"
 msgid "Text copied to clipboard."
 msgstr "クリップボードにテキストがコピーされました。"
 
-msgid ""
-"The amount of fee can be decided freely by the sender. However, transactions "
-"with low fees take more time to be processed."
-msgstr ""
-"送信者が自由に手数料を決められます。しかし、手数料の低い取引は処理までより長"
-"い時間が所要されます。"
+msgid "The amount of fee can be decided freely by the sender. However, transactions with low fees take more time to be processed."
+msgstr "送信者が自由に手数料を決められます。しかし、手数料の低い取引は処理されるまでにより長い時間がかかります。"
 
-msgid ""
-"The amount will be displayed in red if you do not have enough funds in your "
-"wallet."
+msgid "The amount will be displayed in red if you do not have enough funds in your wallet."
 msgstr "残高不足の場合、金額は赤文字で表示されます。"
 
-msgid ""
-"The bitcoin address never expires and will always be part of this electrum "
-"wallet."
-msgstr ""
-"ビットコインのアドレスは満了せず、Electrumウォレットの一部として残存します。"
+msgid "The bitcoin address never expires and will always be part of this electrum wallet."
+msgstr "Bitcoinのアドレスには有効期限がなく、常にElectrumウォレットの一部となります。"
 
-msgid ""
-"The description is not sent to the recipient of the funds. It is stored in "
-"your wallet file, and displayed in the 'History' tab."
-msgstr ""
-"金額の受取人には詳細が転送されません。貴下のウォレットファイルに保存され、'内"
-"訳'タブに表示されます。"
+msgid "The description is not sent to the recipient of the funds. It is stored in your wallet file, and displayed in the 'History' tab."
+msgstr "詳細は資金の受取人には送信されません。あなたのウォレットファイルに保存され、'履歴' タブに表示されます。"
 
 msgid ""
 "The fee could not be verified. Signing non-segwit inputs is risky:\n"
@@ -3285,37 +2944,30 @@ msgid ""
 "you might end up paying a higher mining fee than displayed."
 msgstr ""
 "手数料を検証できません。segwitではない入力値を署名する行為は大変危険です。:\n"
-"この取引が署名以前、悪意的に修正された場合、\n"
-"表示された手数料よりも高い手数料を支払う場合ございます。"
+"この取引が署名する前に悪意的に修正されていた場合、\n"
+"表示されているよりも高いマイニング手数料を支払うことになるかもしれません。"
 
 msgid "The fee for this transaction seems unusually high."
-msgstr "この取引に対する手数料は異常に高います。"
+msgstr "この取引に対する手数料は異常に高いものです。"
 
-#, python-brace-format
 msgid ""
 "The file '{path}' contains an incompletely created wallet.\n"
 "Do you want to complete its creation now?"
 msgstr ""
-"'{path}'ファイルに不完全に生成されたウォレットが含まれています。\n"
-"このウォレットの生成を完了しますか？"
+"ファイル'{path}'に未完成のウォレットが含まれています。\n"
+"そのウォレットの作成を今完了させますか？"
 
 msgid "The file was removed"
 msgstr "ファイルが削除されました。"
 
-msgid ""
-"The firmware of your hardware device is too old. If possible, you should "
-"upgrade it. You can ignore this error and try to continue, however things "
-"are likely to break."
-msgstr ""
-"貴下のハードウェア機器のファームウェアは旧バージョンです。可能であれば、アッ"
-"プグレードを実施してください。このメッセージを無視してもよろしいですが、継続"
-"に使われるとエラーが発生する恐れがあります。"
+msgid "The firmware of your hardware device is too old. If possible, you should upgrade it. You can ignore this error and try to continue, however things are likely to break."
+msgstr "ハードウェアデバイスのファームウェアが古すぎます。可能であれば、アップグレードしてください。このメッセージを無視して続行できますが、エラーが発生する恐れがあります。"
 
 msgid "The following addresses were added"
 msgstr "次のアドレスが追加されました。"
 
 msgid "The following alias providers are available:"
-msgstr "次の匿名のプロバイダーが使用できます。:"
+msgstr "次のエイリアスプロバイダーが使用できます。:"
 
 msgid "The following inputs could not be imported"
 msgstr "次の入力値を読み込めません。"
@@ -3323,85 +2975,62 @@ msgstr "次の入力値を読み込めません。"
 msgid "The new fee rate needs to be higher than the old fee rate."
 msgstr "新しい手数料率は既存の手数料率より高くなければなりません。"
 
-msgid ""
-"The next step will generate the seed of your wallet.  This seed will NOT be "
-"saved in your computer, and it must be stored on paper.  To be safe from "
-"malware, you may want to do this on an offline computer, and move your "
-"wallet later to an online computer."
-msgstr ""
-"次の段階はウォレットのシードを生成することです。このシードはパソコンに保存さ"
-"れず、書面にて記録しなければなりません。悪性コードから守るためには、オフライ"
-"ンパソコンで作業を行い、その後、オンラインパソコンにウォレットを移動してくだ"
-"さい。"
+msgid "The next step will generate the seed of your wallet.  This seed will NOT be saved in your computer, and it must be stored on paper.  To be safe from malware, you may want to do this on an offline computer, and move your wallet later to an online computer."
+msgstr "次のステップではウォレットのシードを生成します。このシードはコンピューターに保存するのではなく、書面にて保存されなければなりません。マルウェアから安全に守るためには、オフラインのパソコンで作業を行い、後でオンラインのパソコンにウォレットを移動するというやり方がいいと思います。"
 
 msgid "The operation is undefined. Not just in Electrum, but in general."
-msgstr "Electrumだけでなく、一般的に確認できない活動です。"
+msgstr "そのオペレーションは、Electrumに限らず一般的に未定義です。"
 
 msgid "The server returned an error when broadcasting the transaction."
-msgstr "サーバーで取引発信時、発生したエラーを返送しました"
+msgstr "取引のブロードキャスト時にサーバーがエラーを返しました"
 
 msgid "The server returned an error."
-msgstr "サーバーでエラーを返送しました"
+msgstr "サーバーがエラーを返しました"
 
-msgid ""
-"The server returned an unexpected transaction ID when broadcasting the "
-"transaction."
-msgstr "取引発信時、予測されていない取引IDがサーバーから返されました。"
+msgid "The server returned an unexpected transaction ID when broadcasting the transaction."
+msgstr "取引のブロードキャスト時にサーバーが予期しない取引IDを返しました。"
 
-msgid ""
-"The transaction was rejected because it contains multiple OP_RETURN outputs."
-msgstr "多重のOP_RETURN出力値を持っているため、取引はキャンセルしました。"
+msgid "The transaction was rejected because it contains multiple OP_RETURN outputs."
+msgstr "複数のOP_RETURN出力が含まれるため、取引は拒否されました。"
 
 msgid "The transaction was rejected because it is too large (in bytes)."
-msgstr "(バイト)超過で取引は拒否されました"
+msgstr "取引が大きすぎる(バイト)ため、取引は拒否されました。"
 
 msgid "The type of addresses used by your wallet will depend on your seed."
 msgstr "ウォレットで使用されるウォレットタイプはシードにより変動します。"
 
-#, python-brace-format
 msgid ""
-"The wallet '{path}' contains multiple accounts, which are no longer "
-"supported since Electrum 2.7.\n"
+"The wallet '{path}' contains multiple accounts, which are no longer supported since Electrum 2.7.\n"
 "\n"
 "Do you want to split your wallet into multiple files?"
 msgstr ""
-"ウォレット'{path}'がElectrum 2.7以降サポートしない多重のアカウントを含めてい"
-"ます。\n"
+"ウォレット'{path}'がElectrum 2.7以降サポートされていない複数のアカウントを含んでいます。\n"
 "\n"
-"多重のファイルでウォレット分離しますか??"
+"ウォレットを複数のファイルへ分割しますか？"
 
 msgid "Then, enter your Google Authenticator code:"
-msgstr "その後、グーグル認証コードを入力してください:"
+msgstr "その後、Google認証コードを入力してください:"
 
 msgid "There is a new update available"
 msgstr "利用可能な新しいアップデートがあります"
 
 msgid "There was a problem with the automatic reporting:"
-msgstr "自動報告の際、エラーが発生しました:"
+msgstr "自動レポートの際、エラーが発生しました:"
 
 msgid "Therefore, two-factor authentication is disabled."
-msgstr "従って、2段階認証は非活性化されました。"
+msgstr "従って、2段階認証は無効となっています。"
 
-msgid ""
-"This address has already been used. For better privacy, do not reuse it for "
-"new payments."
-msgstr ""
-"アドレスがすでに使用されました。プライバシー保護のため新しい取引に使わないで"
-"ください。"
+msgid "This address has already been used. For better privacy, do not reuse it for new payments."
+msgstr "このアドレスはすでに使用されています。プライバシー保護のため、新しいお支払いに再度使用しないでください。"
 
-msgid ""
-"This blockchain is used to verify the transactions sent by your transaction "
-"server."
-msgstr ""
-"取引 サーバーに転送された取引を検証するため、該当ブロックチェーンが使われまし"
-"た。"
+msgid "This blockchain is used to verify the transactions sent by your transaction server."
+msgstr "このブロックチェーンは、取引 サーバーから転送された取引を検証するために使われます。"
 
-#, python-brace-format
 msgid "This channel will be usable after {number} confirmations"
-msgstr "{number}件の承認以降、チャンネルを使用できます"
+msgstr "このチャンネルは{number}承認後に使用可能になります"
 
 msgid "This feature is not available for watch-only wallets."
-msgstr "確認専用ウォレットではサポートしない機能です。"
+msgstr "この機能はWatch-onlyウォレットでは利用できません。"
 
 msgid "This file does not exist."
 msgstr "ファイルが存在しません。"
@@ -3410,35 +3039,31 @@ msgid "This file is already open in memory."
 msgstr "このファイルはすでにメモリ内で開かれました。"
 
 msgid "This file is encrypted using a hardware device."
-msgstr "ファイルがハードウェア機器で暗号化しています。"
+msgstr "このファイルはハードウェアデバイスを使用して暗号化されています。"
 
 msgid "This file is encrypted with a password."
-msgstr "ファイルがパスワードで暗号化しています。"
+msgstr "ファイルはパスワードで暗号化されています。"
 
-#, python-brace-format
-msgid ""
-"This function is only available for standard wallets when using {device}."
+msgid "This function is only available for standard wallets when using {device}."
 msgstr "該当機能は{device}を使用する場合、standard ウォレットでのみ使用可能です。"
 
-msgid ""
-"This information is seen by the recipient if you send them a signed payment "
-"request."
-msgstr "署名された支払い申込み転送時、受信者は情報を確認できます。"
+msgid "This information is seen by the recipient if you send them a signed payment request."
+msgstr "この情報は、署名された支払いリクエストを送った時に、受信者に表示されます。"
 
 msgid "This invoice has been paid already"
-msgstr "すでに支払いされたインボイスです"
+msgstr "このインボイスはすでに支払われています"
 
 msgid "This invoice has expired"
-msgstr "満了したインボイスです"
+msgstr "このインボイスは期限切れです"
 
 msgid "This is a watching-only wallet"
-msgstr "確認専用ウォレットです。"
+msgstr "Watch-onlyウォレットです"
 
 msgid "This is a watching-only wallet."
-msgstr "確認専用ウォレットです。"
+msgstr "Watch-onlyウォレットです"
 
 msgid "This is a watching-only wallet. It does not contain private keys."
-msgstr "確認専用ウォレットです。プライベートキーを含んでいません。"
+msgstr "Watch-onlyウォレットです。個人キーを含んでいません。"
 
 msgid "This is discouraged."
 msgstr "これはお勧めできません。"
@@ -3450,7 +3075,7 @@ msgid "This may result in higher transactions fees."
 msgstr "より高い手数料が発生する場合がございます。"
 
 msgid "This means you will not be able to spend Bitcoins with it."
-msgstr "ビットコインを転送できません。"
+msgstr "Bitcoinをそれに使うことができないということを意味しています。"
 
 msgid "This might improve your privacy somewhat."
 msgstr "プライバシーレベルを向上できます。"
@@ -3458,18 +3083,14 @@ msgstr "プライバシーレベルを向上できます。"
 msgid "This payment request will be signed."
 msgstr "署名が必要な支払いです。"
 
-msgid ""
-"This plug-in allows you to create a visually encrypted backup of your wallet "
-"seeds, or of custom alphanumeric secrets."
-msgstr ""
-"プラグインを通してウォレットシードもしくは文字で構成されたカスタム非公開の暗"
-"号化したバックアップが生成されます"
+msgid "This plug-in allows you to create a visually encrypted backup of your wallet seeds, or of custom alphanumeric secrets."
+msgstr "このプラグインによってウォレットシード、またはカスタム英数字シークレットの視覚的に暗号化されたバックアップを作成することができます。"
 
 msgid "This plugin adds two-factor authentication to your wallet."
-msgstr "プラグイン設置時、ウォレットに2段階認証が追加されます。"
+msgstr "このプラグインは、ウォレットに2段階認証を追加します。"
 
 msgid "This plugin facilitates the use of multi-signatures wallets."
-msgstr "プラグインを利用すると、多重署名のウォレット使用が便利になります。"
+msgstr "このプラグインはマルチシグウォレットの使用を容易にします。"
 
 msgid "This public key was already used. Please generate a new one."
 msgstr "すでに使われている公開キーです。新しいキーを生成してください。"
@@ -3477,114 +3098,78 @@ msgstr "すでに使われている公開キーです。新しいキーを生成
 msgid "This seed will allow you to recover your wallet."
 msgstr "このシードはウォレットを復元させてくれます。"
 
-msgid ""
-"This service uses a multi-signature wallet, where you own 2 of 3 keys.  The "
-"third key is stored on a remote server that signs transactions on your "
-"behalf. A small fee will be charged on each transaction that uses the remote "
-"server."
-msgstr ""
-"このサービスは3つのキーの中で2つのキーを所有した多重署名ウォレットを使用しま"
-"す。3つ目のキーは遠隔サーバーに保存され、お客様の代わり、取引に署名します。遠"
-"隔サーバーを使用する各取引には所定の手数料が 請求されます。"
+msgid "This service uses a multi-signature wallet, where you own 2 of 3 keys.  The third key is stored on a remote server that signs transactions on your behalf. A small fee will be charged on each transaction that uses the remote server."
+msgstr "本サービスでは3つのキーのうち2つを所有するマルチシグウォレットを使用しています。3つ目のキーは遠隔サーバーに保存され、お客様の代わりに取引に署名します。遠隔サーバーを使用する各取引には少額の手数料がかかります。"
 
 msgid "This setting affects the Send tab, and all balance related fields."
-msgstr "該当設定は転送タブとすべてのフィールド値に影響を与えます。"
+msgstr "この設定は、送金タブ、および全ての残高が関連する場所に影響を与えます。"
 
 msgid "This transaction is not saved. Close anyway?"
-msgstr "取引を保存していません。終了しますか?"
+msgstr "取引は保存されていません。終了しますか?"
 
-msgid ""
-"This transaction requires a higher fee, or it will not be propagated by your "
-"current server"
-msgstr ""
-"該当取引は高い手数料の発生もしくは現在のサーバーに発信できない可能性がありま"
-"す"
+msgid "This transaction requires a higher fee, or it will not be propagated by your current server"
+msgstr "この取引にはより高い手数料が必要です。さもなければ、現在のサーバーによって発信されない可能性があります"
 
-#, python-brace-format
 msgid "This type of script is not supported with {device}."
-msgstr "該当のスクリプトタイプは{device}をサポートしません。"
+msgstr "このタイプのスクリプトは {device}ではサポートされていません。"
 
-#, python-brace-format
 msgid "This version supports a maximum of {length} characters."
 msgstr "該当バージョンでは最大{length}文字までサポートします。"
 
 msgid "This wallet has no seed"
 msgstr "ウォレットにシードが存在しません"
 
-msgid ""
-"This wallet is already registered with TrustedCoin. To finalize wallet "
-"creation, please enter your Google Authenticator Code."
-msgstr ""
-"ウォレットがすでにTrustedCoinに登録されています。ウォレット生成を完了するには"
-"グーグルの2段階認証コードを入力してください。"
+msgid "This wallet is already registered with TrustedCoin. To finalize wallet creation, please enter your Google Authenticator Code."
+msgstr "ウォレットがすでにTrustedCoinに登録されています。ウォレット作成を完了するにはGoogleの認証コードを入力してください。"
 
 msgid "This wallet is protected by TrustedCoin's two-factor authentication."
 msgstr "TrustedCoinの2段階認証でウォレットは保護されています。"
 
 msgid "This wallet is watching-only"
-msgstr "このウォレットは確認専用ウォレットです。"
+msgstr "Watch-onlyウォレットです"
 
 msgid "This wallet is watching-only."
-msgstr "このウォレットは確認専用ウォレットです。"
+msgstr "Watch-onlyウォレットです"
 
-msgid ""
-"This wallet was restored from seed, and it contains two master private keys."
-msgstr ""
-"ウォレットがシードにて復旧し、2つのマスター・プライベートキーを含めています。"
+msgid "This wallet was restored from seed, and it contains two master private keys."
+msgstr "このウォレットはシードから復元し、2つのマスター・個人キーを含みます。"
 
 msgid "This will delete your lightning private keys"
-msgstr "ライトニング・プライベートキーを削除します"
+msgstr "ライトニング・個人キーを削除します"
 
 msgid "This will save fees."
 msgstr "手数料を節約できます。"
 
 msgid "Time based: fee rate is based on average confirmation time estimates"
-msgstr "時間ベース: 手数料は平均承認時間を基盤としています"
+msgstr "時間ベース: 手数料は平均的な承認時間に基づいています"
 
 msgid "To"
 msgstr "へ"
 
-msgid ""
-"To create a spending wallet, please enter a master private key (xprv/yprv/"
-"zprv)."
-msgstr ""
-"転送ウォレットの生成のため、マスター公開キーを入力してください(xprv/yprv/"
-"zprv)."
+msgid "To create a spending wallet, please enter a master private key (xprv/yprv/zprv)."
+msgstr "ウォレットを作成するには、マスター個人キーを入力してください(xprv/yprv/zprv)."
 
-msgid ""
-"To create a watching-only wallet, please enter your master public key (xpub/"
-"ypub/zpub)."
-msgstr ""
-"確認専用ウォレットを生成するにはマスター公開キーを入力してください(xpub/ypub/"
-"zpub)."
+msgid "To create a watching-only wallet, please enter your master public key (xpub/ypub/zpub)."
+msgstr "Watch-onlyウォレットを作成するに、マスター公開キーを入力してください(xpub/ypub/zpub)."
 
 msgid "To encrypt your backup, first we need to load some noise."
 msgstr "バックアップを暗号化するため、先にノイズをローディングします。"
 
-msgid ""
-"To help us diagnose and fix the problem, you can send us a bug report that "
-"contains useful debug information:"
-msgstr ""
-"トラブル判断及び解決のために有用なデバッグ情報が記載されたエラーを報告してく"
-"ださい:"
+msgid "To help us diagnose and fix the problem, you can send us a bug report that contains useful debug information:"
+msgstr "トラブルの判断及び解決のために、有用なデバッグ情報が記載されたバグレポートを送信してください:"
 
-msgid ""
-"To make sure that you have properly saved your seed, please retype it here."
-msgstr "シード保存を確認するため、再度入力してください。"
+msgid "To make sure that you have properly saved your seed, please retype it here."
+msgstr "シードが正しく保存されたことを確認するため、ここに再度入力してください。"
 
 msgid ""
 "To setup a local watchtower, you must run Electrum on a machine\n"
-"that is always connected to the internet. Configure a port if you want it to "
-"be public."
+"that is always connected to the internet. Configure a port if you want it to be public."
 msgstr ""
-"ローカルウォッチタワー設定のため、\n"
-"常にネット上に連結されているデバイスからElectrumを起動しなければなりません。"
-"公開を希望される場合にはポート環境を設定してください。"
+"ローカルウォッチタワーを設定するには、\n"
+"常にインターネットに接続されているデバイスからElectrumを起動しなければなりません。公開を希望される場合にはポート環境を設定してください。"
 
-msgid ""
-"To somewhat protect your privacy, Electrum tries to create change with "
-"similar precision to other outputs."
-msgstr "プライバシー保護のため、Electrumが他の出力値と類似な正確度に変更します"
+msgid "To somewhat protect your privacy, Electrum tries to create change with similar precision to other outputs."
+msgstr "プライバシー保護のため、Electrumが他の出力と同様の精度で変更を作成します"
 
 msgid "To trigger a rescan, press 'Next'."
 msgstr "もう一度スキャンする場合は'次へ'を押してください。"
@@ -3596,13 +3181,13 @@ msgid "Toggle Encryption"
 msgstr "トグル暗号化"
 
 msgid "Total fee"
-msgstr "全体の手数料"
+msgstr "手数料合計"
 
 msgid "Total feerate"
-msgstr "全体の手数料率"
+msgstr "手数料レート合計"
 
 msgid "Total size"
-msgstr "全体の大きさ"
+msgstr "合計サイズ"
 
 msgid "Transaction"
 msgstr "取引"
@@ -3614,22 +3199,22 @@ msgid "Transaction ID:"
 msgstr "取引 ID:"
 
 msgid "Transaction added to wallet history."
-msgstr "取引がウォレット内訳に追加されました。"
+msgstr "取引がウォレット履歴に追加されました。"
 
 msgid "Transaction could not be broadcast due to dust outputs."
-msgstr "ダスト出力値のため、取引が発信できない場合がございます。"
+msgstr "ダスト出力値のため、取引がブロードキャストできない場合がございます。"
 
 msgid "Transaction could not be saved."
 msgstr "取引が保存されない場合がございます。"
 
 msgid "Transaction exported successfully"
-msgstr "取引共有に成功しました"
+msgstr "取引のエクスポートに成功しました"
 
 msgid "Transaction is too large in size."
 msgstr "取引サイズが大きすぎます。"
 
 msgid "Transaction is unrelated to this wallet."
-msgstr "ウォレットとは関係のない取引です。"
+msgstr "このウォレットとは関係のない取引です。"
 
 msgid "Transaction part"
 msgstr "取引パート"
@@ -3638,13 +3223,13 @@ msgid "Transaction to join with"
 msgstr "取引参加"
 
 msgid "Transaction to merge signatures from"
-msgstr "統合署名取引"
+msgstr "からの署名を統合する取引"
 
 msgid "Transaction type"
 msgstr "取引タイプ"
 
 msgid "Transaction unrelated to your wallet"
-msgstr "ウォレットとは関係のない取引です。"
+msgstr "あなたのウォレットとは関係のない取引です。"
 
 msgid "Transaction uses non-standard version."
 msgstr "取引が非標準化したバージョンを使用しています。"
@@ -3668,28 +3253,21 @@ msgid "TrustedCoin"
 msgstr "TrustedCoin"
 
 msgid "TrustedCoin (2FA) fee for the next batch of transactions"
-msgstr "次の取引進行に対するTrustedCoin (2FA)手数料"
+msgstr "次の取引バッチに対するTrustedCoin (2FA)手数料"
 
 msgid "TrustedCoin Information"
 msgstr "TrustedCoin情報"
 
-msgid ""
-"TrustedCoin charges a small fee to co-sign transactions. The fee depends on "
-"how many prepaid transactions you buy. An extra output is added to your "
-"transaction every time you run out of prepaid transactions."
-msgstr ""
-"TrustedCoinは共同署名取引へ少ない手数料を請求します。手数料は購入された前払い"
-"取引数により変動します。前払い取引が消尽されるたびに追加出力値が 取引に追加さ"
-"れます。"
+msgid "TrustedCoin charges a small fee to co-sign transactions. The fee depends on how many prepaid transactions you buy. An extra output is added to your transaction every time you run out of prepaid transactions."
+msgstr "TrustedCoinは取引を共同署名するのに少額の手数料を請求します。手数料はお客様の購入するプリペイド取引の数によって異なります。プリペイド取引が終わるたびに追加の出力値が取引に追加されます。"
 
 msgid "Try to connect again?"
-msgstr "再び連結しますか?"
+msgstr "もう一度接続しますか?"
 
 msgid "Try to explain not only what the bug is, but how it occurs."
-msgstr "エラータイプだけでなく、発生経緯についても説明してください。"
+msgstr "どのようなバグかだけでなく、発生経緯についても説明してください。"
 
-msgid ""
-"Try to raise your transaction fee, or use a server with a lower relay fee."
+msgid "Try to raise your transaction fee, or use a server with a lower relay fee."
 msgstr "取引手数料を上げるか、もしくは手数料の低いサーバーを利用してください。"
 
 msgid "Turkish"
@@ -3698,24 +3276,11 @@ msgstr "トルコ語"
 msgid "Two Factor Authentication"
 msgstr "2段階認証"
 
-msgid ""
-"Two-factor authentication is a service provided by TrustedCoin.  It uses a "
-"multi-signature wallet, where you own 2 of 3 keys.  The third key is stored "
-"on a remote server that signs transactions on your behalf.  To use this "
-"service, you will need a smartphone with Google Authenticator installed."
-msgstr ""
-"二段階認証はTrustedCoinから提供するサービスです。これは3つのキーの中で2つの"
-"キーを所有した多重署名ウォレットを使用します。3つ目のキーは3つ目のキーは遠隔"
-"サーバーに保存され、お客様の代わり、取引に署名します。このサービスを 使用する"
-"ためにはグーグルOTP認証（Authenticator）がインストールされたスマートフォンが"
-"必要です。"
+msgid "Two-factor authentication is a service provided by TrustedCoin.  It uses a multi-signature wallet, where you own 2 of 3 keys.  The third key is stored on a remote server that signs transactions on your behalf.  To use this service, you will need a smartphone with Google Authenticator installed."
+msgstr "二段階認証はTrustedCoinが提供するサービスです。これは3つのキーの中で2つのキーを所有するマルチシグウォレットを使用します。3つ目のキーは遠隔サーバーに保存され、お客様の代わりに取引に署名します。このサービスを 使用するためにはGoogle認証システムがインストールされたスマートフォンが必要です。"
 
-msgid ""
-"Two-factor authentication is a service provided by TrustedCoin. To use it, "
-"you must have a separate device with Google Authenticator."
-msgstr ""
-"2段階認証はTrustedCoinで提供します。2段階認証使用のためにはグーグル認証と別途"
-"の機器を保有しなければなりません。"
+msgid "Two-factor authentication is a service provided by TrustedCoin. To use it, you must have a separate device with Google Authenticator."
+msgstr "2段階認証はTrustedCoinで提供します。2段階認証使用のためにはGoogle認証システムを備えた別途のデバイスを用意しなければなりません。"
 
 msgid "Tx"
 msgstr "Tx"
@@ -3723,31 +3288,30 @@ msgstr "Tx"
 msgid "Type"
 msgstr "タイプ"
 
-#, python-brace-format
 msgid ""
 "Unable to connect to mail server:\n"
 " {error}"
 msgstr ""
-"次のメールサーバーに接続できません:\n"
+"メールサーバーに接続できません:\n"
 " {error}"
 
 msgid "Unable to create backup"
-msgstr "バックアップを生成できません"
+msgstr "バックアップを作成できません"
 
 msgid "Unable to create csv"
 msgstr "csvを生成できません"
 
 msgid "Unable to export history"
-msgstr "内訳をローディングできません"
+msgstr "履歴をローディングできません"
 
 msgid "Unable to read file or no transaction found"
 msgstr "ファイルの読み込み失敗もしくは取引が存在しません"
 
 msgid "Unable to send report"
-msgstr "報告を提出できません"
+msgstr "レポートを提出できません"
 
 msgid "Unconfirmed"
-msgstr "未確認"
+msgstr "確認されていません"
 
 msgid "Unconfirmed Parent"
 msgstr "確認されていないParent"
@@ -3777,22 +3341,22 @@ msgid "Unknown error"
 msgstr "原因不明のエラー発生"
 
 msgid "Unknown error when broadcasting the transaction."
-msgstr "取引発信の際、原因不明のエラーが発生しました。"
+msgstr "取引のブロードキャストの際に原因不明のエラーが発生しました。"
 
 msgid "Unmatured"
 msgstr "未成熟"
 
 msgid "Unrealized gains"
-msgstr "実行されなかった利益"
+msgstr "含み益"
 
 msgid "Unsigned"
 msgstr "署名されていません"
 
 msgid "Unsupported password hash version"
-msgstr "利用できないパスワードハッシュバージョン"
+msgstr "サポートされていないパスワードハッシュバージョン"
 
 msgid "Unused"
-msgstr "使用できません"
+msgstr "未使用"
 
 msgid "Update Check"
 msgstr "アップデート確認"
@@ -3800,7 +3364,6 @@ msgstr "アップデート確認"
 msgid "Update check failed"
 msgstr "アップデート確認失敗"
 
-#, python-brace-format
 msgid "Update to Electrum {version} is available"
 msgstr "Electrum {version} アップグレードが可能です"
 
@@ -3808,31 +3371,31 @@ msgid "Upgrading wallet format..."
 msgstr "ウォレットのフォーマットをアップグレードしています..."
 
 msgid "Use Gold Wallet and create a new wallet"
-msgstr "ゴールドウォレット使用及び新しいウォレットを生成してください"
+msgstr "Gold Walletを使用し、新しいウォレットを作成してください"
 
 msgid "Use Gold Wallet and import an existing wallet"
-msgstr "Gold Walletを使用して既存ウォレットを共有する"
+msgstr "Gold Walletを使用して既存ウォレットをインポートする"
 
 msgid "Use Replace-By-Fee"
-msgstr "手数料大体機能使用"
+msgstr "Replace-By-Feeを使用する"
 
 msgid "Use Tor Proxy"
 msgstr "Torプロキシ使用"
 
 msgid "Use a hardware device"
-msgstr "ハードウェア機器使用"
+msgstr "ハードウェアデバイス使用"
 
 msgid "Use a master key"
 msgstr "マスターキー使用"
 
 msgid "Use as server"
-msgstr "サーバーで使用"
+msgstr "サーバーとして使用"
 
 msgid "Use change addresses"
 msgstr "変更アドレス使用"
 
 msgid "Use multiple change addresses"
-msgstr "多重変更アドレス使用"
+msgstr "複数の変更アドレス使用"
 
 msgid "Use proxy"
 msgstr "プロキシ使用"
@@ -3841,8 +3404,7 @@ msgid "Use the camera button to scan a QR code."
 msgstr "QRコードをスキャンするため、カメラのボタンを利用してください。"
 
 msgid "Use this dialog to add a password to your wallet."
-msgstr ""
-"ウォレットにパスワードを追加するため、このダイアログを使用してください。"
+msgstr "ウォレットにパスワードを追加するため、このダイアログを使用してください。"
 
 msgid "Use this dialog to change your password."
 msgstr "パスワード変更のため、このダイアログを使用してください。"
@@ -3851,7 +3413,7 @@ msgid "Use this dialog to toggle encryption."
 msgstr "暗号化トグルのため、このダイアログを使用してください。"
 
 msgid "Used"
-msgstr "使用"
+msgstr "使用されている"
 
 msgid "Username"
 msgstr "ユーザー名"
@@ -3859,10 +3421,8 @@ msgstr "ユーザー名"
 msgid "Uses icons from the Icons8 icon pack (icons8.com)."
 msgstr "Icons8アイコンパックのアイコンを使用します(icons8.com)."
 
-msgid ""
-"Using change addresses makes it more difficult for other people to track "
-"your transactions."
-msgstr "変更アドレスを使用し他人の取引追跡を防止できます。"
+msgid "Using change addresses makes it more difficult for other people to track your transactions."
+msgstr "アドレス変更を使用すると、他の人があなたの取引を追跡するのをより困難にすることができます。"
 
 msgid "Value"
 msgstr "価値"
@@ -3882,18 +3442,11 @@ msgstr "検証"
 msgid "Verify GA instant"
 msgstr "GA instantを検証する"
 
-msgid ""
-"Verify the address below.<br>Type the character from your security card "
-"corresponding to the <u><b>BOLD</b></u> character."
-msgstr ""
-"次のアドレスを確認してください。<br><u><b>太字</b></u>表示された文字と一致す"
-"る文字をセキュリティカードから確認し入力してください。"
+msgid "Verify the address below.<br>Type the character from your security card corresponding to the <u><b>BOLD</b></u> character."
+msgstr "以下のアドレスを確認してください。<br>セキュリティカードの<u><b>太字</b></u>に対応する文字を入力してください。"
 
-msgid ""
-"Verify the cable is connected and that no other application is using it."
-msgstr ""
-"ケーブルが連結されているか、他のアプリケーションを使用中なのかお確かめくださ"
-"い。"
+msgid "Verify the cable is connected and that no other application is using it."
+msgstr "ケーブルが接続されているか、他のアプリケーションを使用していないか確認してください。"
 
 msgid "Verifying..."
 msgstr "確認中..."
@@ -3911,7 +3464,7 @@ msgid "View in web browser"
 msgstr "ウェブブラウザで見る"
 
 msgid "View log"
-msgstr "ログ確認"
+msgstr "ログの表示"
 
 msgid "View on block explorer"
 msgstr "ブロック・エクスプローラー で見る"
@@ -3920,18 +3473,13 @@ msgid "WARNING"
 msgstr "警告"
 
 msgid "WARNING: ALL your private keys are secret."
-msgstr "警告：すべてのプライベートキーは機密です。"
+msgstr "警告：すべての個人キーは機密です。"
 
 msgid "WARNING: This is a multi-signature wallet."
-msgstr "警告：多重署名ウォレットでえす。"
+msgstr "警告：これはマルチシグウォレットです。"
 
-#, python-brace-format
-msgid ""
-"WARNING: the alias \"{alias}\" could not be validated via an additional "
-"security check, DNSSEC, and thus may not be correct."
-msgstr ""
-"警告：偽名\"{alias}\"は追加セキュリティ点検, DNSSECを通して認証できません。"
-"従って、正しくない場合があります。"
+msgid "WARNING: the alias \"{alias}\" could not be validated via an additional security check, DNSSEC, and thus may not be correct."
+msgstr "警告：エイリアス\"{alias}\"はDNSSECという追加セキュリティチェックで検証できなかったため、正しくない可能性があります。"
 
 msgid "WIF keys are typed in Electrum, based on script type."
 msgstr "スクリプトタイプに応じてWIFキーがElectrumに入力されます。"
@@ -3957,14 +3505,9 @@ msgstr "ウォレットのバックアップが生成されました"
 msgid "Wallet change address"
 msgstr "ウォレット変更アドレス"
 
-msgid ""
-"Wallet file corruption detected. Please restore your wallet from seed, and "
-"compare the addresses in both files"
-msgstr ""
-"ウォレットファイルにトラブルが確認されています。シードにてウォレットを復元"
-"し、二つのファイルのアドレスを比較してください"
+msgid "Wallet file corruption detected. Please restore your wallet from seed, and compare the addresses in both files"
+msgstr "ウォレットファイルの破損が検出されました。シードでウォレットを復元し、二つのファイルのアドレスを比較してください"
 
-#, python-brace-format
 msgid "Wallet file not found: {name}"
 msgstr "ウォレットファイルを確認できません: {name}"
 
@@ -3972,17 +3515,16 @@ msgid "Wallet name"
 msgstr "ウォレット名"
 
 msgid "Wallet receive address"
-msgstr "ウォレットにアドレスが転送されました"
+msgstr "ウォレット受信アドレス"
 
-#, python-brace-format
 msgid "Wallet removed: {name}"
 msgstr "削除されたウォレット: {name}"
 
 msgid "Wallet type"
-msgstr "ウォレット種類"
+msgstr "ウォレットタイプ"
 
 msgid "Wallet type:"
-msgstr "ウォレット種類"
+msgstr "ウォレットタイプ："
 
 msgid "Warning"
 msgstr "警告"
@@ -3990,67 +3532,45 @@ msgstr "警告"
 msgid "Warning!"
 msgstr "警告!"
 
-msgid ""
-"Warning: Please be aware that in the process of using the Secure Transaction "
-"feature, a part of the funds left in your wallet might be blocked. This is a "
-"normal procedure linked to UTXO and the blockchain parameters of the Bitcoin "
-"Vault wallet. Your funds will be unblocked once the transaction is verified "
-"(after approximately 24 hrs) or canceled (within 24 hrs)."
-msgstr ""
-"警告: セキュリティ取引機能の使用過程でウォレットの資金一部がブロックされてい"
-"る可能性があります。これはUTXOとBTCVウォレットブロックチェイン媒介変数に関連"
-"する通常的な過程です。取引が承認されたら資金のブロックは解除されるか(約24時間"
-"後)、キャンセルされます(24時間内)。"
+msgid "Warning: Please be aware that in the process of using the Secure Transaction feature, a part of the funds left in your wallet might be blocked. This is a normal procedure linked to UTXO and the blockchain parameters of the Bitcoin Vault wallet. Your funds will be unblocked once the transaction is verified (after approximately 24 hrs) or canceled (within 24 hrs)."
+msgstr "警告: 保安取引機能を使用する過程で、ウォレットの資金の一部がブロックされている可能性があります。これはUTXOとBitcoin Vaultウォレットのブロックチェーンパラメーターに関連する通常の手順です。取引が承認されたら資金のブロックは解除されるか(約24時間後)、またはキャンセルされます(24時間内)。"
 
 msgid ""
-"Warning: The next address will not be recovered automatically if you restore "
-"your wallet from seed; you may need to add it manually.\n"
+"Warning: The next address will not be recovered automatically if you restore your wallet from seed; you may need to add it manually.\n"
 "\n"
-"This occurs because you have too many unused addresses in your wallet. To "
-"avoid this situation, use the existing addresses first.\n"
+"This occurs because you have too many unused addresses in your wallet. To avoid this situation, use the existing addresses first.\n"
 "\n"
 "Create anyway?"
 msgstr ""
-"警告: シードにてウォレットを復旧する場合、以下のアドレスは自動的に復旧されな"
-"い場合があります; 手動で追加できます。\n"
+"警告: シードからウォレットを復元したい場合、次のアドレスは自動的に復元されません。手動で追加する必要があるかもしれません。\n"
 "\n"
-"これはウォレット内、多数の未使用アドレスは存在するためです。このような状況を"
-"防止するには、先に存在するアドレスを使用してください。\n"
+"これはあなたのウォレット内に使用されていない多数のアドレスが存在するためです。このような状況を回避するには、最初に既存のアドレスを使用してください。\n"
 "\n"
-"生成しましか？"
+"とにかく作成しますか？"
 
 msgid "Warning: do not use this if it makes you pick a weaker password."
-msgstr ""
-"警告: セキュリティ性の低いパスワードを生成する可能性がありますので使用しない"
-"でください。"
+msgstr "警告: より脆弱なパスワードを作成させようとするときは、それを使用しないでください。"
 
 msgid "Watch-only wallet"
-msgstr "確認専用ウォレット확인전용 지갑"
+msgstr "Watch-onlyウォレット"
 
-msgid ""
-"We do not guarantee that BIP39 imports will always be supported in Electrum."
-msgstr "BIP39共有はElectrumで実行できない場合がございます。"
+msgid "We do not guarantee that BIP39 imports will always be supported in Electrum."
+msgstr "BIP39インポートがElectrumで常にサポートされることを保証できません。"
 
 msgid "We encountered an error while connecting to your device:"
-msgstr "デバイス連結中にエラーが発生しています:"
+msgstr "デバイス接続中にエラーが発生しています:"
 
-msgid ""
-"While this is less than ideal, it might help if you run Electrum as "
-"Administrator."
-msgstr ""
-"最適なコンディションではない場合でも管理者としてElectrumを実行できます。"
+msgid "While this is less than ideal, it might help if you run Electrum as Administrator."
+msgstr "これは理想的な状況ではありませんが、AdministratorとしてElectrumを実行すると役に立つかもしれません。"
 
-#, python-brace-format
 msgid "Within {number} blocks"
-msgstr "{number} ブロック内に存在します"
+msgstr "{number} ブロック内"
 
 msgid "Witness Script"
-msgstr "スクリプト確認"
+msgstr "Witness Script"
 
-msgid ""
-"Would you like to be notified when there is a newer version of Electrum "
-"available?"
-msgstr "新しいElectrumバージョンが確認される場合通知を受けますか?"
+msgid "Would you like to be notified when there is a newer version of Electrum available?"
+msgstr "新しいElectrumバージョンが利用可能になったときに通知を希望しますか？"
 
 msgid "Write logs to file"
 msgstr "ファイルにログを作成します"
@@ -4070,70 +3590,50 @@ msgstr "間違った公開キー形式"
 msgid "Wrong signature"
 msgstr "間違った署名"
 
+msgid "Yes, I disagree"
+msgstr "はい、同意しません"
+
 msgid "You are already on the latest version of Electrum."
 msgstr "Electrumはすでに最新バージョンです。"
 
 msgid "You are following branch"
-msgstr "次のブランチです"
+msgstr "ブランチに従っています"
 
 msgid "You are in testnet mode."
 msgstr "テストネットモードです。"
 
-msgid ""
-"You are most likely using an outdated version of Electrum. Please update."
-msgstr ""
-"現在、旧バージョンのElectrumを使用しています。アップデートを実施してくださ"
-"い。"
+msgid "You are most likely using an outdated version of Electrum. Please update."
+msgstr "古いバージョンのElectrumを使用している可能性が高いです。アップデートしてください。"
 
 msgid "You are offline."
-msgstr "オフライン状態です。"
+msgstr "オフラインです。"
 
-msgid ""
-"You are using Electrum in offline mode; restart Electrum if you want to get "
-"connected"
-msgstr ""
-"Electrumをオフラインに使用しています; 連結のためにはElectrumを再起動してくだ"
-"さい"
+msgid "You are using Electrum in offline mode; restart Electrum if you want to get connected"
+msgstr "Electrumをオフラインで使用しています。接続するにはElectrumを再起動してください"
 
-msgid ""
-"You are using a non-deterministic wallet, which cannot create new addresses."
-msgstr ""
-"確定的ではないウォレットを使用するため、新しいアドレスを生成できません。"
+msgid "You are using a non-deterministic wallet, which cannot create new addresses."
+msgstr "あなたはnon-deterministic(非決定的) ウォレットを使用しており、新しいアドレスを作成できません。"
 
-#, python-brace-format
 msgid "You can disable this setting in '{setting_name}'."
-msgstr "'{setting_name}'にて設定を非活性化にできます。"
+msgstr "'{setting_name}'にて設定を無効にすることができます。"
 
-#, python-brace-format
 msgid "You can download the new version from {url}."
 msgstr "{url}で新しいバージョンをダウンロードできます。"
 
 msgid "You can override the suggested derivation path."
-msgstr "提示された派生経路で上書きできます。"
+msgstr "提案された派生パスで上書きできます。"
 
 msgid "You can't broadcast a transaction without a live network connection."
-msgstr "リアルタイムにネットワークへ繋がらない場合には、取引を発信できません。"
+msgstr "ライブネットワーク接続がないと、取引をブロードキャストできません。"
 
-msgid ""
-"You do not need to perform regular backups, because your wallet can be "
-"recovered from a secret phrase that you can memorize or write on paper."
-msgstr ""
-"ウォレットは書いて保管できるシークレットフレーズで復旧可能ですので、定期的な"
-"バックアップは要りません。"
+msgid "You do not need to perform regular backups, because your wallet can be recovered from a secret phrase that you can memorize or write on paper."
+msgstr "ウォレットは紙に書いたり覚えたりしたシークレットフレーズで復元が可能なので、定期的なバックアップを行う必要はありません。"
 
-msgid ""
-"You have multiple consecutive whitespaces or leading/trailing whitespaces in "
-"your passphrase."
-msgstr "パスフレーズには多重の連続空白もしくは前/後に空白を含められます。"
+msgid "You have multiple consecutive whitespaces or leading/trailing whitespaces in your passphrase."
+msgstr "パスフレーズに複数の連続した空白、または先頭／末尾の空白があります。"
 
-msgid ""
-"You may enter a Bitcoin address, a label from your list of contacts (a list "
-"of completions will be proposed), or an alias (email-like address that "
-"forwards to a Bitcoin address)"
-msgstr ""
-"連結リスト(完了したデータを確認できます)のラベルでビットコインアドレスを追"
-"加、もしくは匿名(ビットコインアドレスで転送されるメールアドレスのようなアドレ"
-"ス)で追加できます"
+msgid "You may enter a Bitcoin address, a label from your list of contacts (a list of completions will be proposed), or an alias (email-like address that forwards to a Bitcoin address)"
+msgstr "Bitcoinのアドレス、連絡リスト(完了リストが提示されます)のラベル、またはエイリアス(Bitcoinアドレスへ転送するメールアドレスのようなアドレス)を入力できます。"
 
 msgid "You may extend your seed with custom words."
 msgstr "単語のカスタムでシードを拡張できます。"
@@ -4144,34 +3644,14 @@ msgstr "ファイルアイコンをクリックし、CSVファイルをアップ
 msgid "You might have an incompatible library."
 msgstr "ライブラリーーが互換できない場合があります。"
 
-#, python-brace-format
-msgid ""
-"You need to be online in order to complete the creation of your wallet.  If "
-"you generated your seed on an offline computer, click on \"{button}\" to "
-"close this window, move your wallet file to an online computer, and reopen "
-"it with Electrum."
-msgstr ""
-"ウォレットの生成を完了させるためにはオンライン状態でなければなりません。もし"
-"シードをオフラインパソコンに生成した場合、\"{button}\"をクリックしこの画面を"
-"閉じてくださり、オンラインパソコンにウォレットを移動させてElectrumでもう一度"
-"開いてください。"
+msgid "You need to be online in order to complete the creation of your wallet.  If you generated your seed on an offline computer, click on \"{button}\" to close this window, move your wallet file to an online computer, and reopen it with Electrum."
+msgstr "ウォレットの作成を完了するにはオンラインになっている必要があります。オフラインのコンピューターでシードを生成した場合、\"{button}\"をクリックしこのウィンドウを閉じ、ウォレットをオンラインのコンピューターに移動して、Electrumでもう一度開いてください。"
 
-msgid ""
-"Your Ledger Wallet wants to tell you a one-time PIN code.<br><br>For best "
-"security you should unplug your device, open a text editor on another "
-"computer, put your cursor into it, and plug your device into that computer. "
-"It will output a summary of the transaction being signed and a one-time PIN."
-"<br><br>Verify the transaction summary and type the PIN code here."
-"<br><br>Before pressing enter, plug the device back into this computer.<br>"
-msgstr ""
-"レジャーウォレットでは使い捨てのPINコードが発行されます。<br><br>高いセキュリ"
-"ティ保護のため、デバイスを取り外して、他のパソコンでメモ帳を開き、カーソルを"
-"おいてからデバイスを再び繋げてください。署名中の取引情報と、使い捨てのPINを確"
-"認できます。<br><br>取引情報の確認後、PINコードをこちらに入力してください。"
-"<br><br>エンターを押す前、デバイスを本来のパソコンに繋げてください。<br>"
+msgid "Your Ledger Wallet wants to tell you a one-time PIN code.<br><br>For best security you should unplug your device, open a text editor on another computer, put your cursor into it, and plug your device into that computer. It will output a summary of the transaction being signed and a one-time PIN.<br><br>Verify the transaction summary and type the PIN code here.<br><br>Before pressing enter, plug the device back into this computer.<br>"
+msgstr "Ledgerウォレットでは使い捨てのPINコードが発行されます。<br><br>高いセキュリティ保護のためには、デバイスのプラグを抜き、別のコンピューターでテキストエディタを開き、そこにカーソルを入れてデバイスをそのコンピューターに接続してください。署名中の取引概要と使い捨てのPINが出力されます。<br><br>取引概要を確認したら、PINコードをここに入力してください。<br><br>エンターを押す前にデバイスをこのパソコンに接続してください。<br>"
 
 msgid "Your Ledger is locked. Please unlock it."
-msgstr "レジャーがロックされました。ロックを解除してください。"
+msgstr "Ledgerがロックされました。ロックを解除してください。"
 
 msgid "Your Node ID"
 msgstr "ノードID"
@@ -4182,12 +3662,8 @@ msgstr "PINコードがアップデートされました"
 msgid "Your accounts have been moved to"
 msgstr "アカウントが次の位置に移動しました"
 
-msgid ""
-"Your bitcoins are password protected. However, your wallet file is not "
-"encrypted."
-msgstr ""
-"ビットコインがパスワードで保護されています。しかし、ウォレットファイルは暗号"
-"化されていません。"
+msgid "Your bitcoins are password protected. However, your wallet file is not encrypted."
+msgstr "ビットコインがパスワードで保護されています。しかし、ウォレットファイルは暗号化されていません。"
 
 msgid "Your device might not have support for this functionality."
 msgstr "デバイスが該当機能をサポートしない場合がございます。"
@@ -4196,10 +3672,10 @@ msgid "Your labels have been synchronised."
 msgstr "ラベルが同期しました。"
 
 msgid "Your seed extension is"
-msgstr "シードの拡張は以下を参考にしてください"
+msgstr "あなたのシード拡張子"
 
 msgid "Your seed extension must be saved together with your seed."
-msgstr "シードの拡張は既存のシードと共に保存しなければなりません。"
+msgstr "シード拡張子は既存のシードと共に保存されなければなりません。"
 
 msgid "Your seed is important!"
 msgstr "シードはとても大事です!"
@@ -4211,9 +3687,7 @@ msgid "Your transaction was sent to the cosigning pool."
 msgstr "取引が共同署名プールに転送されました。"
 
 msgid "Your wallet file does not contain secrets, mostly just metadata. "
-msgstr ""
-"ウォレットファイルにシークレットは存在しません、データの大半はメタデータで"
-"す。"
+msgstr "ウォレットファイルにシークレットは存在しません、データの大半はメタデータです。"
 
 msgid "Your wallet file is NOT encrypted."
 msgstr "ウォレットファイルが暗号化されていません。"
@@ -4221,39 +3695,35 @@ msgstr "ウォレットファイルが暗号化されていません。"
 msgid "Your wallet file is encrypted."
 msgstr "ウォレットファイルが暗号化されました。"
 
-#, python-brace-format
 msgid "Your wallet file is: {path}."
-msgstr "貴下のウォレットファイル位置: {path}."
+msgstr "あなたののウォレットファイルはこちら: {path}."
 
 msgid "Your wallet generation seed is:"
-msgstr "貴下のウォレット生成シード:"
+msgstr "あなたのウォレット生成シード:"
 
-#, python-brace-format
 msgid "Your wallet has {number} prepaid transactions."
-msgstr "ウォレットに{number}件の前払い取引が存在します。"
+msgstr "ウォレットに{number}件のプリペイド取引が存在します。"
 
 msgid "Your wallet history has been successfully exported."
-msgstr "ウォレット内訳の共有が成功的に完了しました。"
+msgstr "ウォレット履歴が正常にエクスポートされました。"
 
 msgid "Your wallet is not protected."
 msgstr "ウォレットが保護されていません。"
 
 msgid "Your wallet is password protected and encrypted."
-msgstr "ウォレットはパスワードで保護され暗号化します。"
+msgstr "ウォレットはパスワードで保護され、暗号化されています。"
 
 msgid "Your wallet's generated seed is:"
-msgstr "お客様のウォレットの生成されたシードは:"
+msgstr "ウォレットの生成されたシード:"
 
-#, python-brace-format
 msgid "Your {0} were exported to '{1}'"
-msgstr "{0}から '{1}'に共有を完了しました"
+msgstr "{0}から '{1}'にエクスポートされました"
 
-#, python-brace-format
 msgid "Your {title} were successfully imported"
-msgstr "{title} 読み込みが成功的に完了しました"
+msgstr "{title} が無事インポートされました"
 
 msgid "Zeros after decimal point"
-msgstr "小数点以下0表記"
+msgstr "小数点以下0"
 
 msgid "[Clear]"
 msgstr "[クリア]"
@@ -4262,48 +3732,46 @@ msgid "[Send]"
 msgstr "[転送]"
 
 msgid "[b] - print server banner"
-msgstr "[b] - サーバーバナーを出力します"
+msgstr "[b] - サーバーバナーを印刷します"
 
 msgid "[c] - display contacts"
-msgstr "[c] - 連結を表示します"
+msgstr "[c] - 連絡先を表示します"
 
 msgid "[h] - displays this help text"
 msgstr "[h] - ヘルプを表示します"
 
 msgid "[i] - display transaction history"
-msgstr "[i] - 取引の内訳を表示します"
+msgstr "[i] - 取引の履歴を表示します"
 
 msgid "[o] - enter payment order"
-msgstr "[o] - 支払い要請を実施します"
+msgstr "[o] - 支払いの注文を入力します"
 
 msgid "[p] - print stored payment order"
-msgstr "[p] - 保存された支払い要請を出力します"
+msgstr "[p] - 保存した支払いの注文を印刷する"
 
 msgid "[q] - quit"
-msgstr "[q] - 閉じる"
+msgstr "[q] - 終了する"
 
 msgid "[r] - show own receipt addresses"
-msgstr "[r] - 固有なレシートのアドレスを確認できます"
+msgstr "[r] - 領収書のアドレスを表示する"
 
 msgid "[s] - send stored payment order"
-msgstr "[s] - 保存された支払い要請を転送します"
+msgstr "[s] - 保存した支払い注文を送信する"
 
 msgid "add inputs and outputs"
 msgstr "入出力追加"
 
 msgid "add invoice timed out"
-msgstr "インボイス追加時間が満了しました"
+msgstr "インボイス追加の時間がタイムアウトしました"
 
 msgid "address already in wallet"
 msgstr "ウォレットにアドレスが存在します"
 
-msgid ""
-"and you will have the possibility, while they are unconfirmed, to replace "
-"them with transactions that pay higher fees."
-msgstr "未確認の場合、より高い手数料を支払う取引に変更できます。"
+msgid "and you will have the possibility, while they are unconfirmed, to replace them with transactions that pay higher fees."
+msgstr "まだ承認されていない間に、より高い手数料を支払う取引に変更することができます。"
 
 msgid "are frozen"
-msgstr "凍結しました"
+msgstr "凍結されました"
 
 msgid "blocks"
 msgstr "ブロック"
@@ -4312,28 +3780,28 @@ msgid "change"
 msgstr "変更"
 
 msgid "contacts"
-msgstr "連結"
+msgstr "連絡先"
 
 msgid "cosigner"
 msgstr "共同の署名人"
 
 msgid "could not find suitable outputs"
-msgstr "適切な結果を見つかりません"
+msgstr "適切な出力が見つかりませんでした"
 
 msgid "current fee unknown"
-msgstr "現在、手数料は確認できません"
+msgstr "現在の手数料は不明です"
 
 msgid "high fee"
 msgstr "高い手数料"
 
 msgid "initialized"
-msgstr "施行されました"
+msgstr "初期化"
 
 msgid "invalid address"
 msgstr "無効なアドレス"
 
 msgid "invalid private key"
-msgstr "無効なプライベートキー"
+msgstr "無効な個人キー"
 
 msgid "invoices"
 msgstr "インボイス"
@@ -4342,36 +3810,31 @@ msgid "json"
 msgstr "json"
 
 msgid "keystore"
-msgstr "キーストレージ"
+msgstr "keystore"
 
 msgid "labels"
 msgstr "ラベル"
 
-msgid ""
-"more information at <a href=\"https://revealer.cc/faq\">https://revealer.cc/"
-"faq</a>"
-msgstr ""
-"詳細は次から確認してください<a href=\"https://revealer.cc/faq\">https://"
-"revealer.cc/faq</a>"
+msgid "more information at <a href=\"https://revealer.cc/faq\">https://revealer.cc/faq</a>"
+msgstr "詳細は次から確認してください<a href=\"https://revealer.cc/faq\">https://revealer.cc/faq</a>"
 
 msgid "not implemented type"
-msgstr "実行されないタイプ"
+msgstr "実装されていないタイプです"
 
 msgid "open_channel timed out"
-msgstr "チャンネル_オープン時間は満了しました"
+msgstr "オープン_チャンネルタイムアウト"
 
 msgid "or type an existing revealer code below and click 'next':"
-msgstr ""
-"または下記の既存のrevealerコードを入力した後、'次へ'をクリックしてください。:"
+msgstr "または下記の既存のrevealerコードを入力した後、'次へ'をクリックしてください。:"
 
 msgid "please wait..."
 msgstr "少々お待ちください。"
 
 msgid "print the calibration pdf and follow the instructions "
-msgstr "校正のPDFをダウンロードして、説明に従ってください"
+msgstr "キャリブレーションのPDFを印刷し、説明に従ってください"
 
 msgid "proxy enabled"
-msgstr "プロキシを活性化しました"
+msgstr "プロキシが有効になりました"
 
 msgid "receiving"
 msgstr "受信"
@@ -4383,13 +3846,13 @@ msgid "seed"
 msgstr "シード"
 
 msgid "transaction is final"
-msgstr "最終の取引です"
+msgstr "取引は最終段階です"
 
 msgid "type a custom alphanumerical secret below:"
-msgstr "文字や数字のカスタム非公開を入力してください:"
+msgstr "以下にカスタムした英数字のシークレットを入力してください:"
 
 msgid "unconfirmed"
-msgstr "確認されていない"
+msgstr "未承認"
 
 msgid "unknown"
 msgstr "不明"
@@ -4398,44 +3861,35 @@ msgid "unknown parser {name!r} (choices: {choices})"
 msgstr "不明なパーサー{name!r} (choices: {choices})"
 
 msgid "unmatured"
-msgstr "未熟性"
+msgstr "未熟"
 
 msgid "watching only"
-msgstr "確認専用"
+msgstr "watching only"
 
 msgid "watching-only"
-msgstr "確認専用"
+msgstr "watching-only"
 
 msgid "wiped"
 msgstr "クリア"
 
-msgid ""
-"your seed extension will <b>not</b> be included in the encrypted backup."
-msgstr " シードの拡張が暗号化された バックアップに含まれて<b>いません</b>。"
+msgid "your seed extension will <b>not</b> be included in the encrypted backup."
+msgstr " シードの拡張子は暗号化された バックアップに<b>含まれません</b>。"
 
-#, python-brace-format
 msgid "{coins_number} outputs available ({utxos_number} total)"
-msgstr "(総 {utxos_number}) の中 {coins_number} 使用可能"
+msgstr "{coins_number} 利用可能な出力 ({utxos_number} total)"
 
-#, python-brace-format
 msgid "{number} confirmations"
 msgstr "{number} 確認"
 
-#, python-brace-format
 msgid "{number} connections."
-msgstr "{number} 連結。"
+msgstr "{number} 接続"
 
-#, python-brace-format
-msgid ""
-"{number} new transactions: Total amount received in the new transactions "
-"{amount}"
-msgstr "{number} 件の新しい取引:新しい取引による受取量 {amount}"
+msgid "{number} new transactions: Total amount received in the new transactions {amount}"
+msgstr "{number} 件の新しい取引:新しい取引の合計額 {amount}"
 
-#, python-brace-format
 msgid "{size} from tip"
-msgstr "{size} from tip"
+msgstr " tipから{size}"
 
-#, python-brace-format
 msgid ""
 "{title} copied to clipboard:\n"
 "\n"
@@ -4445,18 +3899,11 @@ msgstr ""
 "\n"
 "{content}"
 
-#, python-brace-format
 msgid "{txid} is covered by GreenAddress instant confirmation"
-msgstr "グーリンウォレットから{txid}が直ちに確認されました。"
+msgstr "{txid}はGreenAddressの即時確認によってカバーされています"
 
-#, python-brace-format
 msgid "{txid} is not covered by GreenAddress instant confirmation"
-msgstr "グーリンウォレットから{txid}を直ちに確認できません。"
+msgstr "{txid}はGreenAddressの即時確認によってカバーされていません"
 
-#, python-brace-format
-msgid ""
-"{wallet_seed} encrypted for Revealer {version}_{checksum} saved as PNG and "
-"PDF at: "
-msgstr ""
-"Revealer {version}_{checksum}の暗号化された{wallet_seed}が次の位置にPNGとPDF"
-"で保存されました。:"
+msgid "{wallet_seed} encrypted for Revealer {version}_{checksum} saved as PNG and PDF at: "
+msgstr "Revealer {version}_{checksum}のために暗号化された{wallet_seed}が、こちらの場所にPNGおよびPDFとして保存されました:"

@@ -17,37 +17,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-msgid "Are you sure you want to disagree?"
-msgstr "Tem a certeza de que deseja discordar?"
-
-msgid "Are you sure?"
-msgstr "Tem a certeza?"
-
-msgid "Description is not supported for Secure Fast transaction"
-msgstr "A descrição não é compatível com a Transação de Segurança Rápida"
-
-msgid "I agree"
-msgstr "Eu concordo"
-
-msgid "I disagree"
-msgstr "Eu discordo"
-
-msgid "No, I changed my mind"
-msgstr "Não, eu mudei de ideias"
-
-msgid ""
-"Note that if you disagree to our Terms & Conditions you won't be able to use "
-"the Electrum Vault application."
-msgstr ""
-"Observe que se discordar com os nossos Termos e Condições, não poderá "
-"utilizar a aplicação Electrum Vault."
-
-msgid "Terms & Conditions"
-msgstr "Termos e Condições"
-
-msgid "Yes, I disagree"
-msgstr "Sim, eu discordo"
-
 msgid "  (No FX rate available)"
 msgstr "(Sem taxa de câmbio disponível)"
 
@@ -55,7 +24,7 @@ msgid " confirmation"
 msgstr "Confirmação"
 
 msgid " is not a valid Lightning invoice: "
-msgstr "Não é uma fatura válida do Lightning:"
+msgstr "Não é uma factura válida do Lightning:"
 
 msgid "&About"
 msgstr "&Sobre"
@@ -177,12 +146,8 @@ msgstr "&Visão"
 msgid "&Wallet"
 msgstr "&Carteira"
 
-msgid ""
-"'Legacy' is the original address type, while 'Segwit' is the newer address "
-"format with lower fees."
-msgstr ""
-"Legado' é o tipo de endereço original, enquanto 'Segwit' é o endereço mais "
-"recente formato com taxas mais baixas. "
+msgid "'Legacy' is the original address type, while 'Segwit' is the newer address format with lower fees."
+msgstr "Legado' é o tipo de endereço original, enquanto 'Segwit' é o endereço mais recente formato com taxas mais baixas. "
 
 msgid "+"
 msgstr "+"
@@ -205,21 +170,14 @@ msgstr "10 minutos"
 msgid "2-Key Vault"
 msgstr "2-Key Vault"
 
-msgid ""
-"2. Align your Revealer borderlines to the dashed lines on the top and left."
-msgstr ""
-"2. Alinhe os limites do Revealer com as linhas tracejadas na parte superior "
-"e esquerda"
+msgid "2. Align your Revealer borderlines to the dashed lines on the top and left."
+msgstr "2. Alinhe os limites do Revealer com as linhas tracejadas na parte superior e esquerda"
 
 msgid "3-Key Vault"
 msgstr "3-Key Vault"
 
-msgid ""
-"3. Press slightly the Revealer against the paper and read the numbers that "
-"best match on the opposite sides. "
-msgstr ""
-"3. Pressione levemente o Revealer contra o papel e leia os números que  são "
-"a melhor correspondência nos lados opostos."
+msgid "3. Press slightly the Revealer against the paper and read the numbers that best match on the opposite sides. "
+msgstr "3. Pressione levemente o Revealer contra o papel e leia os números que  são a melhor correspondência nos lados opostos."
 
 msgid "4. Type the numbers in the software"
 msgstr "4. Digite os números no software "
@@ -234,23 +192,13 @@ msgid "A library is probably missing."
 msgstr "Provavelmente está faltando uma biblioteca."
 
 msgid "A payment was already initiated for this invoice"
-msgstr "Já foi iniciado um pagamento para esta fatura"
+msgstr "Já foi iniciado um pagamento para esta factura"
 
-msgid ""
-"A small fee will be charged on each transaction that uses the remote "
-"server.  You may check and modify your billing preferences once the "
-"installation is complete."
-msgstr ""
-"Uma pequena taxa será cobrada em cada transação que usar o controle remoto "
-"servidor. Pode verificar e modificar as suas preferências de faturamento "
-"assim que a  instalação está concluída."
+msgid "A small fee will be charged on each transaction that uses the remote server.  You may check and modify your billing preferences once the installation is complete."
+msgstr "Uma pequena taxa será cobrada em cada transação que usar o controle remoto servidor. Pode verificar e modificar as suas preferências de faturamento assim que a  instalação está concluída."
 
-msgid ""
-"A suggested fee is automatically added to this field. You may override it. "
-"The suggested fee increases with the size of the transaction."
-msgstr ""
-"Uma taxa sugerida é adicionada automaticamente a este campo. Você poderá "
-"substituí-lo. A taxa sugerida aumenta com o tamanho da transação."
+msgid "A suggested fee is automatically added to this field. You may override it. The suggested fee increases with the size of the transaction."
+msgstr "Uma taxa sugerida é adicionada automaticamente a este campo. Você poderá substituí-lo. A taxa sugerida aumenta com o tamanho da transação."
 
 msgid "About"
 msgstr "Sobre"
@@ -271,7 +219,7 @@ msgid "Add a cosigner to your multi-sig wallet"
 msgstr "Adicione um fiador à sua carteira multi-assinatura"
 
 msgid "Add an optional virtual keyboard to the password dialog."
-msgstr "Adicione um teclado virtual opcional à caixa de diálogo de senha."
+msgstr "Adicione um teclado virtual opcional à caixa de diálogo da palavra-passe."
 
 msgid "Add cosigner"
 msgstr "Adicionar fiador"
@@ -279,7 +227,6 @@ msgstr "Adicionar fiador"
 msgid "Additional fees"
 msgstr "Taxas adicionais"
 
-#, python-brace-format
 msgid "Additional {num_satoshis_added} satoshis are going to be added."
 msgstr "Extras Satoshis {num_satoshis_added} serão adicionados."
 
@@ -319,12 +266,8 @@ msgstr "Tudo"
 msgid "All fields must be filled out"
 msgstr "Todos os campos devem ser preenchidos"
 
-msgid ""
-"Allows validating if your transactions have instant confirmations by "
-"GreenAddress"
-msgstr ""
-"Permite validar se suas transações têm confirmações instantâneas por  "
-"GreenAddress "
+msgid "Allows validating if your transactions have instant confirmations by GreenAddress"
+msgstr "Permite validar se suas transações têm confirmações instantâneas por  GreenAddress "
 
 msgid "Already up to date"
 msgstr "Já está atualizado"
@@ -332,15 +275,11 @@ msgstr "Já está atualizado"
 msgid "Also, dust is not kept as change, but added to the fee."
 msgstr "Além disso, a poeira não é mantida como troco, mas adicionada à taxa."
 
-msgid ""
-"Also, when batching RBF transactions, BIP 125 imposes a lower bound on the "
-"fee."
-msgstr ""
-"Além disso, ao agrupar transações RBF, o BIP 125 impõe um limite inferior na "
-"Taxa."
+msgid "Also, when batching RBF transactions, BIP 125 imposes a lower bound on the fee."
+msgstr "Além disso, ao agrupar transações RBF, o BIP 125 impõe um limite inferior na Taxa."
 
 msgid "Always check your backups."
-msgstr "Sempre verifique seus backups."
+msgstr "Verifique sempre os seus backups."
 
 msgid "Amount"
 msgstr "Montante"
@@ -366,38 +305,32 @@ msgstr "Ocorreu um erro"
 msgid "An encrypted transaction was retrieved from cosigning pool."
 msgstr "Uma transação criptografada foi recuperada do pool do fiador."
 
-#, python-brace-format
 msgid "An unnamed {device_name}"
 msgstr "Um {device_name} sem nome"
 
-msgid ""
-"Are you sure you want to delete this channel? This will purge associated "
-"transactions from your wallet history."
-msgstr ""
-" Tem certeza que deseja eliminar este canal? Isto irá excluir  transações "
-"associadas ao seu histórico de carteira."
+msgid "Are you sure you want to delete this channel? This will purge associated transactions from your wallet history."
+msgstr " Tem certeza que deseja eliminar este canal? Isto irá excluir transações associadas ao seu histórico de carteira."
 
-#, python-brace-format
-msgid ""
-"Are you sure you want to remove this transaction and {number} child "
-"transactions?"
-msgstr ""
-"Tem certeza que deseja remover esta transação e {number} filho  transações? "
+msgid "Are you sure you want to disagree?"
+msgstr "Tem a certeza de que deseja discordar?"
+
+msgid "Are you sure you want to remove this transaction and {number} child transactions?"
+msgstr "Tem certeza que deseja remover esta transação e {number} filho  transações? "
 
 msgid "Are you sure you want to remove this transaction?"
 msgstr "Tem certeza que deseja remover esta transação?"
 
-#, python-brace-format
+msgid "Are you sure?"
+msgstr "Tem a certeza?"
+
 msgid "At block height: {height}"
 msgstr "Na altura do bloco: {height}"
 
 msgid "At least a hostname must be supplied after the at symbol."
-msgstr ""
-"Pelo menos um nome de host deve ser fornecido após o símbolo de arroba."
+msgstr "Pelo menos um nome de host deve ser fornecido após o símbolo de arroba."
 
 msgid "At most 100 satoshis might be lost due to this rounding."
-msgstr ""
-"No máximo 100 satoshis podem ser perdidos devido a este arredondamento."
+msgstr "No máximo 100 satoshis podem ser perdidos devido a este arredondamento."
 
 msgid "Audio MODEM"
 msgstr "Modem de Áudio"
@@ -420,15 +353,11 @@ msgstr "Verificar automaticamente se há atualizações de software"
 msgid "BIP39 seed (Gold Wallet integration)"
 msgstr "Seed BIP39 (integração Gold Wallet)"
 
-msgid ""
-"BIP39 seeds can be imported in Electrum, so that users can access funds "
-"locked in other wallets."
-msgstr ""
-"As Sementes do BIP39 podem ser importadas para o Electrum, para que os "
-"usuários possam acessar aos seus fundosbloqueado noutras carteiras."
+msgid "BIP39 seeds can be imported in Electrum, so that users can access funds locked in other wallets."
+msgstr "As Sementes do BIP39 podem ser importadas para o Electrum, para que os usuários possam acessar aos seus fundosbloqueado noutras carteiras."
 
 msgid "BIP70 Invoice"
-msgstr "Fatura BIP70"
+msgstr "Factura BIP70"
 
 msgid "Back"
 msgstr "Voltar"
@@ -448,13 +377,8 @@ msgstr "Unidade base da sua carteira"
 msgid "Batch RBF transactions"
 msgstr "Transações RBF em lote"
 
-msgid ""
-"Before reporting a bug, upgrade to the most recent version of Electrum "
-"(latest release or git HEAD), and include the version number in your report."
-msgstr ""
-"Antes de relatar um bug, atualize para a versão mais recente do "
-"Electrum(versão mais recente ou git HEAD) e inclua o número da versão em seu "
-"relatório."
+msgid "Before reporting a bug, upgrade to the most recent version of Electrum (latest release or git HEAD), and include the version number in your report."
+msgstr "Antes de relatar um erro, atualize para a versão mais recente do Electrum(versão mais recente ou git HEAD) e inclua o número da versão em seu relatório."
 
 msgid "Bit rate [kbps]: "
 msgstr "Taxa de bits [kbps]:"
@@ -463,14 +387,10 @@ msgid "Bitcoin Address"
 msgstr "Endereço Bitcoin"
 
 msgid "Bitcoin Address is None"
-msgstr "Endereço Bitcoin é Nenhum"
+msgstr "Nenhum Endereço de Bitcoin"
 
-msgid ""
-"Bitcoin transactions are in general not free. A transaction fee is paid by "
-"the sender of the funds."
-msgstr ""
-"As transações de Bitcoin em geral não são gratuitas. Uma taxa de transação é "
-"paga peloremetente dos fundos."
+msgid "Bitcoin transactions are in general not free. A transaction fee is paid by the sender of the funds."
+msgstr "As transações de Bitcoin em geral não são gratuitas. Uma taxa de transação é paga por o remetente dos fundos."
 
 msgid "Blacklist"
 msgstr "Lista negra"
@@ -509,11 +429,10 @@ msgid "Can send"
 msgstr "Pode enviar"
 
 msgid "Can't CPFP: unknown fee for parent transaction."
-msgstr "Não é possível CPFP: taxa desconhecida para transação pai."
+msgstr "Não é possível CPFP: taxa desconhecida para transação parente."
 
 msgid "Can't bump fee: unknown fee for original transaction."
-msgstr ""
-"Não é possível aumentar a taxa: taxa desconhecida para a transação original."
+msgstr "Não é possível aumentar a taxa: taxa desconhecida para a transação original."
 
 msgid "Can't plot history."
 msgstr "Não posso traçar a história."
@@ -521,15 +440,14 @@ msgstr "Não posso traçar a história."
 msgid "Cancel"
 msgstr "Cancelar"
 
+msgid "Cancel Transaction Key"
+msgstr "Cancelar Chave da Transação"
+
 msgid "Cancel seedphrase"
 msgstr "Cancelar frase-semente"
 
 msgid "Cancel seedphrase not matching any key in this wallet"
-msgstr ""
-"Cancelar a frase-semente não corresponde a nenhuma chave nesta carteira"
-
-msgid "Cancel Transaction Key"
-msgstr "Cancelar Chave da Transação"
+msgstr "Cancelar a frase-semente não corresponde a nenhuma chave nesta carteira"
 
 msgid "Cancelation address"
 msgstr "Endereço de cancelamento"
@@ -567,7 +485,6 @@ msgstr "Ganhos de capital"
 msgid "Capital gains"
 msgstr "Ganhos de capital"
 
-#, python-brace-format
 msgid "Chain split detected at block {0}"
 msgstr "Divisão de cadeia detectada no bloco {0}"
 
@@ -575,7 +492,7 @@ msgid "Change"
 msgstr "Mudar"
 
 msgid "Change Password"
-msgstr "Alterar a senha"
+msgstr "Alterar a Palavra-passe"
 
 msgid "Changing PIN code."
 msgstr "Alterar o código PIN."
@@ -595,13 +512,8 @@ msgstr "Canal já se encontra fechado"
 msgid "Channel closed"
 msgstr "Canal fechado"
 
-#, python-brace-format
-msgid ""
-"Channel closed, you may need to wait at least {number} blocks, because of "
-"CSV delays"
-msgstr ""
-"Canal fechado, você pode precisar esperar pelo menos {number} blocos, por "
-"causa de Atrasos no CSV."
+msgid "Channel closed, you may need to wait at least {number} blocks, because of CSV delays"
+msgstr "Canal fechado, você pode precisar esperar pelo menos {number} blocos, por causa de Atrasos no CSV."
 
 msgid "Channel details"
 msgstr "Detalhes do canal"
@@ -616,22 +528,19 @@ msgid "Channels"
 msgstr "Canais"
 
 msgid "Channels in database."
-msgstr "Canais no banco de dados."
+msgstr "Canais na base de dados."
 
-msgid ""
-"Check this box to request a new secret. You will need to retype your seed."
-msgstr ""
-"Marque esta caixa para solicitar um novo segredo. Você precisará redigitar a "
-"sua semente. "
+msgid "Check this box to request a new secret. You will need to retype your seed."
+msgstr "Marque esta caixa para solicitar um novo segredo. Você vai precisar re-digitar a sua semente. "
 
 msgid "Checking for updates..."
 msgstr "Verificando atualizações ..."
 
 msgid "Child Pays for Parent"
-msgstr "Criança paga pelo pais"
+msgstr "Criança Paga pelo Parente"
 
 msgid "Child pays for parent"
-msgstr "Criança paga pelo pais"
+msgstr "Criança paga pelo parente"
 
 msgid "Chinese Simplified"
 msgstr "Chinês simplificado"
@@ -643,36 +552,30 @@ msgid "Choose Seed type"
 msgstr "Escolha o tipo de semente"
 
 msgid "Choose a password to encrypt your wallet keys."
-msgstr "Escolha uma senha para criptografar as chaves da carteira."
+msgstr "Escolha uma palavra-passe para criptografar as chaves da carteira."
 
 msgid "Choose a server"
 msgstr "Escolha um servidor"
 
 msgid ""
-"Choose coin (UTXO) selection method for alert transactions.  The following "
-"are available:\n"
+"Choose coin (UTXO) selection method for alert transactions.  The following are available:\n"
 "\n"
 msgstr ""
-"Escolha o método de seleção de moeda (UTXO) para transações de alerta. Os "
-"seguintes estão disponíveis:\n"
+"Escolha o método de seleção de moeda (UTXO) para transações de alerta. Os seguintes estão disponíveis:\n"
 "\n"
 
 msgid ""
-"Choose coin (UTXO) selection method for non-alert transactions.  The "
-"following are available:\n"
+"Choose coin (UTXO) selection method for non-alert transactions.  The following are available:\n"
 "\n"
 msgstr ""
-"Escolha o método de seleção de moeda (UTXO) para transações sem alerta. O os "
-"seguintes métodos estão disponíveis:\n"
+"Escolha o método de seleção de moeda (UTXO) para transações sem alerta. O os seguintes métodos estão disponíveis:\n"
 "\n"
 
 msgid "Choose from peers"
 msgstr "Escolha entre colegas"
 
 msgid "Choose the number of signatures needed to unlock funds in your wallet:"
-msgstr ""
-"Escolha o número de assinaturas necessárias para desbloquear os fundos da "
-"sua carteira:"
+msgstr "Escolha o número de assinaturas necessárias para desbloquear os fundos da sua carteira:"
 
 msgid "Choose the type of addresses in your wallet."
 msgstr "Escolha o tipo de endereços na sua carteira."
@@ -683,12 +586,8 @@ msgstr "Escolha o tipo de carteira"
 msgid "Choose transaction type."
 msgstr "Escolha o tipo de transação."
 
-msgid ""
-"Choose which online block explorer to use for functions that open a web "
-"browser"
-msgstr ""
-"Escolha qual explorador de blocos online pretende usar para funções que "
-"abrem uma webnavegador"
+msgid "Choose which online block explorer to use for functions that open a web browser"
+msgstr "Escolha qual explorador de blocos online pretende usar para funções que abrem uma webnavegador"
 
 msgid "Choose your chain"
 msgstr "Escolha a sua rede"
@@ -741,7 +640,6 @@ msgstr "Seleção de moeda (alerta)"
 msgid "Coin selection (non-alert)"
 msgstr "Seleção de moeda (sem alerta)"
 
-#, python-brace-format
 msgid "Coin selection active ({num_utxos} UTXOs selected)"
 msgstr "Seleção de moeda ativa ({num_utxos} UTXOs selecionados)"
 
@@ -758,10 +656,10 @@ msgid "Con&tacts"
 msgstr "Contatos"
 
 msgid "Confirm Passphrase:"
-msgstr "Confirme a frase de acesso:"
+msgstr "Confirme a Frase-passe:"
 
 msgid "Confirm Password:"
-msgstr "Confirme a Senha:"
+msgstr "Confirme a Palavra-passe:"
 
 msgid "Confirm Seed"
 msgstr "Confirmar Semente"
@@ -793,7 +691,6 @@ msgstr "Nó conectado"
 msgid "Connected nodes are on the same chain"
 msgstr "Nós conectados estão na mesma cadeia"
 
-#, python-brace-format
 msgid "Connected to {0} nodes."
 msgstr "Conectado a {0} nós."
 
@@ -801,8 +698,7 @@ msgid "Connecting..."
 msgstr "Conectando ..."
 
 msgid "Connection strings must be in <node_pubkey>@<host>:<port> format"
-msgstr ""
-"As strings de conexão devem estar no formato <node_pubkey> @ <host>: <port>"
+msgstr "As strings de conexão devem estar no formato <node_pubkey> @ <host>: <port>"
 
 msgid "Connections with Electrum servers"
 msgstr "Conexões com servidores Electrum"
@@ -811,8 +707,7 @@ msgid "Connections with lightning nodes"
 msgstr "Conexões com nós de lightning "
 
 msgid "Consider trying to connect to a different server, or updating Electrum."
-msgstr ""
-"Considere tentar se conectar a um servidor diferente ou atualizar Electrum."
+msgstr "Considere tentar se conectar a um servidor diferente ou atualizar Electrum."
 
 msgid "Contacts"
 msgstr "Contatos"
@@ -832,17 +727,12 @@ msgstr "Copiar ID de transação"
 msgid "Copy and Close"
 msgstr "Copiar e Fechar"
 
-msgid ""
-"Copy and paste the recipient address using the Paste button, or use the "
-"camera to scan a QR code."
-msgstr ""
-"Copie e cole o endereço do destinatário usando o botão Colar ou use acâmera "
-"para escanear um código QR. "
+msgid "Copy and paste the recipient address using the Paste button, or use the camera to scan a QR code."
+msgstr "Copie e cole o endereço do destinatário usando o botão Colar ou use a câmera para scanear um código QR. "
 
 msgid "Copy to clipboard"
 msgstr "Copiar para área de transferência"
 
-#, python-brace-format
 msgid "Copy {column_title}"
 msgstr "Copiar {column_title}"
 
@@ -856,9 +746,8 @@ msgid "Could not close channel: "
 msgstr "Não foi possível fechar o canal:"
 
 msgid "Could not force close channel: "
-msgstr "Não foi possível forçar o fechamento do canal:"
+msgstr "Não foi possível forçar o encerramento do canal:"
 
-#, python-brace-format
 msgid "Could not open channel: {error_value}"
 msgstr "Não foi possível abrir o canal: {error_value}"
 
@@ -866,7 +755,7 @@ msgid "Could not retrieve Terms of Service:"
 msgstr "Não foi possível recuperar os Termos de Serviço:"
 
 msgid "Crash report"
-msgstr "Relatório de falha"
+msgstr "Relatório da falha"
 
 msgid "Create a new Revealer"
 msgstr "Criar um novo Revealer"
@@ -893,10 +782,10 @@ msgid "Current Fee"
 msgstr "Taxa Atual"
 
 msgid "Current Fee rate"
-msgstr "Taxa de taxa atual"
+msgstr "Calculo da taxa atual"
 
 msgid "Current Password:"
-msgstr "Senha atual:"
+msgstr "Palavra-passe atual:"
 
 msgid "Current feerate"
 msgstr "Feerate atual"
@@ -904,12 +793,11 @@ msgstr "Feerate atual"
 msgid "Current rate"
 msgstr "Taxa atual"
 
-#, python-brace-format
 msgid "Current version: {version}"
 msgstr "Versão atual: {version}"
 
 msgid "Custom"
-msgstr "Personalizadas"
+msgstr "Personalizado"
 
 msgid "Custom secret"
 msgstr "Segredo personalizado"
@@ -923,15 +811,11 @@ msgstr "Escuro/Claro"
 msgid "Date"
 msgstr "Data"
 
-#, python-brace-format
 msgid "Date: {date}"
 msgstr "Data: {date}"
 
-msgid ""
-"Debug logs can be persisted to disk. These are useful for troubleshooting."
-msgstr ""
-"Os registros de depuração podem ser mantidos no disco. Eles são úteis para "
-"solucionar problemas."
+msgid "Debug logs can be persisted to disk. These are useful for troubleshooting."
+msgstr "Os registros de depuração podem ser mantidos no disco. Eles são úteis para solucionar problemas."
 
 msgid "Debug message"
 msgstr "Mensagem de depuração"
@@ -940,7 +824,7 @@ msgid "Decrypt"
 msgstr "Descriptografar"
 
 msgid "Default"
-msgstr "Pre-determinado"
+msgstr "Padrão"
 
 msgid "Default Servers"
 msgstr "Servidores Padrão"
@@ -952,7 +836,7 @@ msgid "Delete expired requests?"
 msgstr "Excluir solicitações expiradas?"
 
 msgid "Delete invoice?"
-msgstr "Excluir fatura?"
+msgstr "Excluir factura?"
 
 msgid "Delete request?"
 msgstr "Apagar Pedido?"
@@ -969,6 +853,9 @@ msgstr "Denominação"
 msgid "Description"
 msgstr "Descrição"
 
+msgid "Description is not supported for Secure Fast transaction"
+msgstr "A descrição não é compatível com a Transação de Segurança Rápida"
+
 msgid "Description of the transaction (not mandatory)."
 msgstr "Descrição da transação (não obrigatório)."
 
@@ -979,12 +866,11 @@ msgid "Details..."
 msgstr "Detalhes ..."
 
 msgid "Developers"
-msgstr "Desenvolvedores"
+msgstr "Criadores"
 
 msgid "Device not in Bitcoin mode"
 msgstr "Dispositivo não está no modo Bitcoin"
 
-#, python-brace-format
 msgid "Digital Revealer ({version}_{code_id}) saved as PNG and PDF at:"
 msgstr "Digital Revealer ({version}_{code_id}) guardado como PNG e PDF em:"
 
@@ -1003,19 +889,11 @@ msgstr "Desconectado"
 msgid "Distributed by Electrum Technologies GmbH"
 msgstr "Distribuído pela Electrum Technologies GmbH"
 
-msgid ""
-"Do not enter sensitive/private information here. The report will be visible "
-"on the public issue tracker."
-msgstr ""
-"Não insira informações confidenciais / privadas aqui. O relatório ficará "
-"visívelno rastreador de problemas públicos."
+msgid "Do not enter sensitive/private information here. The report will be visible on the public issue tracker."
+msgstr "Não insira informações confidenciais / privadas aqui. O relatório ficará visívelno rastreador de problemas públicos."
 
-msgid ""
-"Do not paste code here that you don't understand. Executing the wrong code "
-"could lead to your coins being irreversibly lost."
-msgstr ""
-"Não cole aqui código que você não entenda. Executando o código erradopode ​​"
-"fazer com que suas moedas sejam irreversivelmente perdidas."
+msgid "Do not paste code here that you don't understand. Executing the wrong code could lead to your coins being irreversibly lost."
+msgstr "Não cole aqui código que você não entenda. Executando o código errado pode ​​fazer com que suas moedas sejam irreversivelmente perdidas."
 
 msgid "Do not store it electronically."
 msgstr "Não armazene eletronicamente."
@@ -1026,21 +904,12 @@ msgstr "Não use Gold Wallet"
 msgid "Do you have something to hide ?"
 msgstr "Você tem algo a esconder?"
 
-msgid ""
-"Do you want to create a new seed or to restore a wallet using an existing "
-"seed?"
-msgstr ""
-"Deseja criar uma nova semente ou restaurar uma carteira usando um "
-"existentesemente?"
+msgid "Do you want to create a new seed or to restore a wallet using an existing seed?"
+msgstr "Deseja criar uma nova semente ou restaurar uma carteira usando uma semente existente?"
 
-msgid ""
-"Do you want to create a new seed, or to restore a wallet using an existing "
-"seed?"
-msgstr ""
-"Deseja criar uma nova semente ou restaurar uma carteira usando uma "
-"existentesemente?"
+msgid "Do you want to create a new seed, or to restore a wallet using an existing seed?"
+msgstr "Deseja criar uma nova semente ou restaurar uma carteira usando uma semente existente?"
 
-#, python-brace-format
 msgid "Do you want to delete '{path}'?"
 msgstr "Você deseja eliminar '{path}'?"
 
@@ -1053,7 +922,6 @@ msgstr "Você deseja iniciar o assistente (Wizard) novamente?"
 msgid "Do you want to open it now?"
 msgstr "Deseja abrir agora?"
 
-#, python-brace-format
 msgid "Do you want to remove {address} from your wallet?"
 msgstr "Deseja remover {address} da sua carteira?"
 
@@ -1072,12 +940,8 @@ msgstr "Não conheço nenhum endereço para o nó:"
 msgid "Don't show this again."
 msgstr "Não mostre isso de novo."
 
-msgid ""
-"Due to a bug, old versions of Electrum will NOT be creating the same wallet "
-"as newer versions or other software."
-msgstr ""
-"Devido a um bug, versões antigas do Electrum NÃO irão crear a mesma "
-"carteiracomo versões mais recentes ou outro software."
+msgid "Due to a bug, old versions of Electrum will NOT be creating the same wallet as newer versions or other software."
+msgstr "Devido a um erro, versões antigas do Electrum NÃO irão criar a mesma carteiracomo versões mais recentes ou outro software."
 
 msgid "Dynamic fee estimates not available"
 msgstr "Estimativas de taxas dinâmicas não disponíveis"
@@ -1088,73 +952,41 @@ msgstr "ETA"
 msgid "Each revealer should be used only once."
 msgstr "Cada revelador deve ser usado apenas uma vez."
 
-#, python-brace-format
 msgid "Edit {title}"
 msgstr "Editar {title}"
 
 msgid "Electrum Plugins"
 msgstr "Complementos de Electrum"
 
-#, python-brace-format
 msgid ""
 "Electrum cannot pair with your {device}.\n"
 "\n"
-"Before you request bitcoins to be sent to addresses in this wallet, ensure "
-"you can pair with your device, or that you have its seed (and passphrase, if "
-"any).  Otherwise all bitcoins you receive will be unspendable."
+"Before you request bitcoins to be sent to addresses in this wallet, ensure you can pair with your device, or that you have its seed (and passphrase, if any).  Otherwise all bitcoins you receive will be unspendable."
 msgstr ""
-"Electrum não pode emparelhar com seu {device}.\n"
+"Electrum não se pode emparelhar com seu {device}.\n"
 "\n"
-"Antes de solicitar que bitcoins sejam enviados para endereços nesta "
-"carteira, certifique-se de que pode emparelhar com o seu dispositivo, ou que "
-"tenha a sua semente (e senha, se qualquer). Caso contrário, todos os "
-"bitcoins que você receber não poderão ser gastos."
+"Antes de solicitar que bitcoins sejam enviados para endereços nesta carteira, certifique-sede que pode se emparelhar com o seu dispositivo, ou que tenha a sua semente (e frase-passe, sequalquer). Caso contrário, todos os bitcoins que você receber não poderão ser gastos."
 
-msgid ""
-"Electrum communicates with remote servers to get information about your "
-"transactions and addresses. The servers all fulfill the same purpose only "
-"differing in hardware. In most cases you simply want to let Electrum pick "
-"one at random.  However if you prefer feel free to select a server manually."
-msgstr ""
-"Electrum se comunica com servidores remotos para obter informações sobre o "
-"seutransações e endereços. Todos os servidores cumprem a mesma finalidade, "
-"apenasdiferindo no hardware. Na maioria dos casos, você simplesmente quer "
-"deixar Electrum escolher um ao acaso. No entanto, se preferir, fique à "
-"vontade para selecionar um servidor manualmente."
+msgid "Electrum communicates with remote servers to get information about your transactions and addresses. The servers all fulfill the same purpose only differing in hardware. In most cases you simply want to let Electrum pick one at random.  However if you prefer feel free to select a server manually."
+msgstr "Electrum comunica com servidores remotos para obter informações sobre as suas transações e endereços. Todos os servidores cumprem a mesma finalidade apenas diferindo no hardware. Na maioria dos casos, você simplesmente quer deixar Electrum escolherum ao acaso. No entanto, se preferir, fique à vontade para selecionar um servidor manualmente."
 
-msgid ""
-"Electrum connects to several nodes in order to download block headers and "
-"find out the longest blockchain."
-msgstr ""
-"Electrum conect-se a vários nós para descarregar cabeçalhos de bloco "
-"edescobrir o blockchain mais longo."
+msgid "Electrum connects to several nodes in order to download block headers and find out the longest blockchain."
+msgstr "Electrum conectasse a vários nós para descarregar cabeçalhos de bloco e descobrir o blockchain mais longo."
 
 msgid "Electrum preferences"
 msgstr "Preferências Electrum"
 
-msgid ""
-"Electrum requests your transaction history from a single server. The "
-"returned history is checked against blockchain headers sent by other nodes, "
-"using Simple Payment Verification (SPV)."
-msgstr ""
-"Electrum solicita o seu histórico de transações de um único servidor. Oo "
-"histórico retornado é verificado em relação aos cabeçalhos do blockchain "
-"enviados por outros nós,usando a Verificação de Pagamento Simples (SPV)."
+msgid "Electrum requests your transaction history from a single server. The returned history is checked against blockchain headers sent by other nodes, using Simple Payment Verification (SPV)."
+msgstr "Electrum solicita o seu histórico de transações de um único servidor. O histórico retornado é verificado em relação aos cabeçalhos do blockchain enviados por outros nós,usando a Verificação de Pagamento Simples (SPV)."
 
-msgid ""
-"Electrum sends your wallet addresses to a single server, in order to receive "
-"your transaction history."
-msgstr ""
-"Electrum envia endereços da sua carteira para um único servidor, a fim de "
-"receber oseu histórico de transações."
+msgid "Electrum sends your wallet addresses to a single server, in order to receive your transaction history."
+msgstr "Electrum envia endereços da sua carteira para um único servidor, a fim de receber o seu histórico de transações."
 
 msgid "Electrum wallet"
 msgstr "Carteira electrum"
 
 msgid "Electrum was unable to copy your wallet file to the specified location."
-msgstr ""
-"Electrum não conseguiu copiar o arquivo da carteira para o local "
-"especificado."
+msgstr "Electrum não conseguiu copiar o arquivo da carteira para o local especificado."
 
 msgid "Electrum was unable to deserialize the transaction:"
 msgstr "Electrum não conseguiu desserializar a transação:"
@@ -1171,12 +1003,8 @@ msgstr "Electrum não conseguiu produzir uma exportação de chave privada."
 msgid "Electrum was unable to produce a transaction export."
 msgstr "Electrum não conseguiu produzir uma exportação de transação."
 
-msgid ""
-"Electrum's focus is speed, with low resource usage and simplifying Bitcoin "
-"Vault."
-msgstr ""
-"O foco da Electrum é a velocidade, com baixo uso de recursos e simplificando "
-"BitcoinCofre."
+msgid "Electrum's focus is speed, with low resource usage and simplifying Bitcoin Vault."
+msgstr "O foco da Electrum é a velocidade, com baixo uso de recursos e simplificando BitcoinVault."
 
 msgid "Email"
 msgstr "O email"
@@ -1208,7 +1036,6 @@ msgstr "Criptografar segredo personalizado"
 msgid "Encrypt wallet file"
 msgstr "Criptografar arquivo de carteira"
 
-#, python-brace-format
 msgid "Encrypt {wallet_name}'s seed"
 msgstr "Criptografar a semente de {wallet_name}"
 
@@ -1221,11 +1048,8 @@ msgstr "Criptografar / descriptografar mensagem"
 msgid "Encrypted"
 msgstr "Criptografado"
 
-#, python-brace-format
 msgid "Encryption and decryption are currently not supported for {device}"
-msgstr ""
-"A criptografia e a descriptografia não são atualmente suportadas para "
-"{device}"
+msgstr "A criptografia e a descriptografia não são atualmente suportadas para {device}"
 
 msgid "End"
 msgstr "Fim"
@@ -1243,13 +1067,13 @@ msgid "Enter PIN:"
 msgstr "Insira o PIN"
 
 msgid "Enter Passphrase"
-msgstr "Digite a frase secreta"
+msgstr "Insira a Frase-passe"
 
 msgid "Enter Password"
-msgstr "Insira a senha"
+msgstr "Insira a Palavra-passe"
 
 msgid "Enter Remote Node ID or connection string or invoice"
-msgstr "Insira o ID do Nó Remoto ou string de conexão ou fatura"
+msgstr "Insira o ID do Nó Remoto ou string de conexão ou factura"
 
 msgid "Enter Seed"
 msgstr "Insira a Semente"
@@ -1260,12 +1084,8 @@ msgstr "Insira a etiqueta da transação"
 msgid "Enter a filename for the copy of your wallet"
 msgstr "Digite um nome de arquivo para a cópia de sua carteira"
 
-msgid ""
-"Enter a list of BTCV addresses (this will create a watching-only wallet) or "
-"a list of private keys."
-msgstr ""
-"Insira uma lista de endereços BTCV (isso criará uma carteira somente para "
-"observação) ou uma lista de chaves privadas."
+msgid "Enter a list of BTCV addresses (this will create a watching-only wallet) or a list of private keys."
+msgstr "Insira uma lista de endereços BTCV (isso criará uma carteira somente para observação) ou uma lista de chaves privadas."
 
 msgid "Enter a list of outputs in the 'Pay to' field."
 msgstr "Insira uma lista de resultados no campo 'Pagar para'."
@@ -1291,22 +1111,14 @@ msgstr "Digite as chaves privadas"
 msgid "Enter private keys:"
 msgstr "Digite as chaves privadas:"
 
-msgid ""
-"Enter the name of the new wallet or load an existing wallet by clicking "
-"\"Choose\"."
-msgstr ""
-"Insira o nome da nova carteira ou carregue uma carteira existente clicando "
-"em \"Escolher\"."
+msgid "Enter the name of the new wallet or load an existing wallet by clicking \"Choose\"."
+msgstr "Insira o nome da nova carteira ou carregue uma carteira existente clicando em \"Escolher\"."
 
 msgid "Enter the seed for your 2-factor wallet:"
 msgstr "Insira a semente para a sua carteira de 2 fatores:"
 
-msgid ""
-"Enter their master private key (xprv) if you want to be able to sign for "
-"them."
-msgstr ""
-"Digite a sua chave privada mestra (xprv) se quiser ser capaz de assinar "
-"poreles."
+msgid "Enter their master private key (xprv) if you want to be able to sign for them."
+msgstr "Digite a sua chave privada mestra (xprv) se quiser ser capaz de assinar por eles."
 
 msgid "Enter wallet name"
 msgstr "Insira o nome da carteira"
@@ -1320,7 +1132,6 @@ msgstr "Insira o seu código PIN para descriptografar sua semente"
 msgid "Enter your PIN code in order to sign this transaction"
 msgstr "Insira o seu código PIN para assinar esta transação"
 
-#, python-brace-format
 msgid "Enter your PIN code to confirm deletion of {wallet}"
 msgstr "Insira o seu código PIN para confirmar a exclusão de {wallet}"
 
@@ -1334,10 +1145,10 @@ msgid "Enter your email address:"
 msgstr "Insira o seu endereço de email:"
 
 msgid "Enter your password or choose another file."
-msgstr "Digite sua senha ou escolha outro arquivo."
+msgstr "Digite a sua palavra-passe ou escolha outro arquivo."
 
 msgid "Enter your password to proceed"
-msgstr "Digite sua senha para prosseguir"
+msgstr "Digite sua palavra-passe para prosseguir"
 
 msgid "Error"
 msgstr "Erro"
@@ -1351,7 +1162,6 @@ msgstr "Erro ao combinar transações parciais"
 msgid "Error connecting to server"
 msgstr "Erro ao conectar ao servidor"
 
-#, python-brace-format
 msgid "Error connecting to {name} server"
 msgstr "Erro ao conectar ao servidor {name}"
 
@@ -1374,7 +1184,7 @@ msgid "Error parsing URI"
 msgstr "Erro ao analisar URI"
 
 msgid "Error scanning devices"
-msgstr "Erro ao escanear dispositivos"
+msgstr "Erro ao scanear dispositivos"
 
 msgid "Error showing address"
 msgstr "Erro ao mostrar o endereço"
@@ -1389,7 +1199,7 @@ msgid "Estimate"
 msgstr "Estimativa"
 
 msgid "Exit Electrum"
-msgstr "Exit Electrum"
+msgstr "Sair Electrum"
 
 msgid "Expenditures"
 msgstr "Despesas"
@@ -1403,12 +1213,8 @@ msgstr "Data de expiração do seu pedido."
 msgid "Expired"
 msgstr "Expirado"
 
-msgid ""
-"Expired requests have to be deleted manually from your list, in order to "
-"free the corresponding Bitcoin addresses."
-msgstr ""
-"Solicitações expiradas devem ser excluídas manualmente da sua lista, para "
-"quelibere os endereços Bitcoin correspondentes."
+msgid "Expired requests have to be deleted manually from your list, in order to free the corresponding Bitcoin addresses."
+msgstr "Solicitações expiradas devem ser excluídas manualmente da sua lista, para que liberte os endereços Bitcoin correspondentes."
 
 msgid "Expires"
 msgstr "Expira"
@@ -1456,10 +1262,13 @@ msgid "Failed to send transaction to cosigning pool"
 msgstr "Falha ao enviar transação para o grupo de fiadores"
 
 msgid "Failed to update password"
-msgstr "Falha ao atualizar senha"
+msgstr "Falha ao atualizar palavra-passe"
 
 msgid "False"
 msgstr "Falso"
+
+msgid "Fast Transaction Key"
+msgstr "Chave de transação rápida"
 
 msgid "Fee"
 msgstr "Taxa"
@@ -1500,15 +1309,11 @@ msgstr "Finalizar"
 msgid "Find"
 msgstr "Encontrar"
 
-msgid ""
-"Firmware version (or \"Bitcoin\" app) too old for Segwit support. Please "
-"update at"
-msgstr ""
-"Versão do firmware (ou aplicação \"Bitcoin\") muito antiga para suporte ao "
-"Segwit. Por favor actualize em"
+msgid "Firmware version (or \"Bitcoin\" app) too old for Segwit support. Please update at"
+msgstr "Versão do firmware (ou aplicação \"Bitcoin\") muito antiga para suporte ao Segwit. Por favor actualize em"
 
 msgid "Firmware version too old. Please update at"
-msgstr "Versão do firmware muito antiga. Por favor, atualize em"
+msgstr "Versão do firmware muito antiga. Por favor, actualize em"
 
 msgid "Fixed rate"
 msgstr "Taxa fixa"
@@ -1520,22 +1325,17 @@ msgid "For CoinJoin; strip privates"
 msgstr "Para CoinJoin; retire os privados"
 
 msgid "For more information, visit"
-msgstr "Para mais informações visite"
+msgstr "Para mais informações, visite"
 
-msgid ""
-"For security reasons we advise that you always use the latest version of "
-"Electrum."
-msgstr ""
-"Por motivos de segurança, recomendamos que use sempre a versão mais recente "
-"deElectrum."
+msgid "For security reasons we advise that you always use the latest version of Electrum."
+msgstr "Por motivos de segurança, recomendamos que use sempre a versão mais recente da Electrum."
 
 msgid "Force-close channel"
-msgstr "Forçar fechamento do canal"
+msgstr "Forçar o encerramento do canal"
 
 msgid "Force-close channel?"
-msgstr "Forçar fechamento do canal?"
+msgstr "Forçar o encerramento do canal?"
 
-#, python-brace-format
 msgid "Fork detected at block {fork_point}"
 msgstr "Bifurcação detectada no bloco {fork_point}"
 
@@ -1566,7 +1366,6 @@ msgstr "Moedas Congeladas"
 msgid "From"
 msgstr "De"
 
-#, python-brace-format
 msgid "From {0} cosigners"
 msgstr "De {0} co-signatários"
 
@@ -1585,13 +1384,8 @@ msgstr "TXID de financiamento"
 msgid "Funding Transaction"
 msgstr "Transação de Financiamento"
 
-msgid ""
-"Funds stored in lightning channels are not recoverable from your seed. You "
-"must backup your wallet file everytime you create a new channel."
-msgstr ""
-"Os fundos armazenados em canais relâmpago não são recuperáveis ​​de sua "
-"semente. Vocêdeve fazer backup de seu arquivo de carteira toda vez que você "
-"criar um novo canal."
+msgid "Funds stored in lightning channels are not recoverable from your seed. You must backup your wallet file everytime you create a new channel."
+msgstr "Os fundos armazenados em canais relâmpago não são recuperáveis ​​da sua semente. Você deve fazer o backup de seu arquivo de carteira, sempre que você crie um novo canal."
 
 msgid "General"
 msgstr "Geral"
@@ -1599,8 +1393,7 @@ msgstr "Geral"
 msgid "Generate"
 msgstr "Gerar"
 
-msgid ""
-"Generate an authenticator on Gold Wallet and scan the following QR code: "
+msgid "Generate an authenticator on Gold Wallet and scan the following QR code: "
 msgstr "Gere um autenticador no Gold Wallet e digitalize o seguinte código QR:"
 
 msgid "Gold Wallet authenticator public key"
@@ -1620,7 +1413,7 @@ msgid ""
 msgstr ""
 "GreenAddress requer a sua assinatura \n"
 "para verificar se a transação é instantânea. \n"
-"Por favor, insira sua senha para assinar um \n"
+"Por favor, insira a sua palavra-passe para assinar um \n"
 "pedido de verificação."
 
 msgid "HTLCs in current commitment transaction"
@@ -1642,12 +1435,14 @@ msgid "Help"
 msgstr "Ajuda"
 
 msgid "Here is your master public key."
-msgstr "Aqui está sua chave pública mestra."
+msgstr "Aqui está a sua chave pública mestra."
 
 msgid "Hide"
 msgstr "Ocultar"
 
-#, python-brace-format
+msgid "Hide advanced"
+msgstr "Esconder avançado"
+
 msgid "Hide {tab_description}"
 msgstr "Ocultar {tab_description}"
 
@@ -1667,17 +1462,19 @@ msgid "Hostname does not resolve (getaddrinfo failed)"
 msgstr "O nome de host não resolve (getaddrinfo falhou)"
 
 msgid "How do you want to connect to a server? "
-msgstr "Como deseja se conectar a um servidor?"
+msgstr "Como se deseja conectar a um servidor?"
 
-msgid ""
-"However, hardware wallets do not support message decryption, which makes "
-"them not compatible with the current design of cosigner pool."
-msgstr ""
-"No entanto, as carteiras de hardware não suportam mensagens de descrição, o "
-"que tornaeles não são compatíveis com o projeto atual de pool de fiador."
+msgid "However, hardware wallets do not support message decryption, which makes them not compatible with the current design of cosigner pool."
+msgstr "No entanto, as carteiras de hardware não suportam mensagens de descrição, o queas torna não são compatíveis com o projeto atual de pool de fiador."
+
+msgid "I agree"
+msgstr "Eu concordo"
 
 msgid "I already have a seed"
 msgstr " Já tenho uma semente"
+
+msgid "I disagree"
+msgstr "Eu discordo"
 
 msgid "I have lost my Google Authenticator account"
 msgstr "Perdi minha conta do Google Authenticator"
@@ -1689,71 +1486,41 @@ msgstr ""
 "IP/port no formato:\n"
 "[host]:[port]"
 
-msgid ""
-"If auto-connect is enabled, Electrum will always use a server that is on the "
-"longest blockchain."
-msgstr ""
-"Se a conexão automática estiver ativada, o Electrum sempre usará um servidor "
-"que está no blockchain mais longo."
+msgid "If auto-connect is enabled, Electrum will always use a server that is on the longest blockchain."
+msgstr "Se a conexão automática estiver ativada, a Electrum sempre usará um servidor que está no blockchain mais longo."
 
-msgid ""
-"If enabled, at most 100 satoshis might be lost due to this, per transaction."
-msgstr ""
-"Se habilitado, no máximo 100 satoshis podem ser perdidos devido a isso, por "
-"transação."
+msgid "If enabled, at most 100 satoshis might be lost due to this, per transaction."
+msgstr "Se habilitado, no máximo 100 satoshis podem ser perdidos devido a isso, por transação."
 
-msgid ""
-"If it is disabled, you have to choose a server you want to use. Electrum "
-"will warn you if your server is lagging."
-msgstr ""
-"Se estiver desabilitado, terá de escolher um servidor que deseja usar. "
-"Electrumirá avisá-lo se o seu servidor estiver lento."
+msgid "If it is disabled, you have to choose a server you want to use. Electrum will warn you if your server is lagging."
+msgstr "Se estiver desabilitado, terá de escolher um servidor que deseja usar. Electrum irá avisá-lo se o seu servidor estiver lento."
 
 msgid "If you are not sure what this is, leave this field unchanged."
-msgstr ""
-"Se você não tem certeza a que isto se refere, deixe este campo inalterado."
+msgstr "Se você não tem certeza a que isto se refere, deixe este campo inalterado."
 
-#, python-brace-format
 msgid "If you are online, click on \"{button}\" to continue."
 msgstr "Se estiver online, clique em \" {button} \"para continuar."
 
 msgid "If you check this box, your transactions will be marked as non-final,"
-msgstr ""
-"Se marcar esta caixa, as suas transações serão marcadas como não finalizadas,"
+msgstr "Se marcar esta caixa, as suas transações serão marcadas como não finalizadas,"
 
-msgid ""
-"If you check this box, your unconfirmed transactions will be consolidated "
-"into a single transaction."
-msgstr ""
-"Se marcar esta caixa, as suas transações não confirmadas serão "
-"consolidadasem uma única transação."
+msgid "If you check this box, your unconfirmed transactions will be consolidated into a single transaction."
+msgstr "Se marcar esta caixa, as suas transações não confirmadas serão consolidadas em uma única transação."
 
 msgid "If you do not know what this is, leave this field empty."
 msgstr "Se não sabe o que é isto, deixe este campo vazio."
 
-msgid ""
-"If you forget your PIN or lose your device, your seed phrase will be the "
-"only way to recover your funds."
-msgstr ""
-"Se você se esquecer do seu PIN ou perder o seu dispositivo, a sua frase-"
-"semente será aúnica maneira de recuperar os seus fundos."
+msgid "If you forget your PIN or lose your device, your seed phrase will be the only way to recover your funds."
+msgstr "Se você se esquecer do seu PIN ou perder o seu dispositivo, a sua frase semente será a única maneira de recuperar os seus fundos."
 
 msgid "If you have an old printer, or want optimal precision"
 msgstr "Se tem uma impressora antiga ou deseja exactidão ideal"
 
-msgid ""
-"If you have lost your Google Authenticator account, you can request a new "
-"secret. You will need to retype your seed."
-msgstr ""
-"Se perdeu a sua conta do Google Authenticator, pode solicitar uma "
-"novasegredo. Você precisará redigitar a sua semente."
+msgid "If you have lost your Google Authenticator account, you can request a new secret. You will need to retype your seed."
+msgstr "Se perdeu a sua conta do Google Authenticator, pode solicitar um novo segredo. Você precisará re-digitar a sua semente."
 
-msgid ""
-"If you have lost your second factor, you need to restore your wallet from "
-"seed in order to request a new code."
-msgstr ""
-"Se perdeu o seu segundo fator, precisa de restaurar a sua carteira desemente "
-"para solicitar um novo código."
+msgid "If you have lost your second factor, you need to restore your wallet from seed in order to request a new code."
+msgstr "Se perdeu o seu segundo fator, precisa de restaurar a sua carteira da semente para solicitar um novo código."
 
 msgid "If you keep experiencing network problems, try using a Tor proxy."
 msgstr "Se continuar a ter problemas de rede, tente usar um proxy Tor."
@@ -1762,24 +1529,16 @@ msgid "If you lose your seed, your money will be permanently lost."
 msgstr "Se perder a sua semente, o seu dinheiro será perdido para sempre."
 
 msgid "If you use a passphrase, make sure it is correct."
-msgstr "Se usar uma senha longa, certifique-se de que está correta."
+msgstr "Se usar uma palavra-passe longa, certifique-se de que está correta."
 
-msgid ""
-"If you want to create new addresses, use a deterministic wallet instead."
+msgid "If you want to create new addresses, use a deterministic wallet instead."
 msgstr "Caso pretenda criar novos endereços, use uma carteira definida. "
 
-msgid ""
-"If your device is not detected on Windows, go to \"Settings\", \"Devices\", "
-"\"Connected devices\", and do \"Remove device\". Then, plug your device "
-"again."
-msgstr ""
-"Se o seu dispositivo não for detectado no Windows, vá para \" Configurações "
-"\", \" Dispositivos \",\" Dispositivos conectados \", e \" Remover "
-"dispositivo \". Em seguida, conecte seu dispositivonovamente."
+msgid "If your device is not detected on Windows, go to \"Settings\", \"Devices\", \"Connected devices\", and do \"Remove device\". Then, plug your device again."
+msgstr "Se o seu dispositivo não for detectado no Windows, vá para \" Configurações \", \" Dispositivos \",\" Dispositivos conectados \", e \" Remover dispositivo \". Em seguida, conecte o seu dispositivo novamente."
 
 msgid "If your wallet contains funds, make sure you have saved its seed."
-msgstr ""
-"Se a sua carteira contém fundos, certifique-se de que salvou a sua semente."
+msgstr "Se a sua carteira contém fundos, certifique-se de que salvou a sua semente."
 
 msgid "Ignore and continue?"
 msgstr "Ignorar e continuar?"
@@ -1794,8 +1553,7 @@ msgid "Import addresses"
 msgstr "Importar endereços"
 
 msgid "Import external watch-only BTCV addresses or private keys"
-msgstr ""
-"Importar endereços BTCV externos somente para observação ou chaves privadas"
+msgstr "Importar endereços BTCV externos somente para observação ou chaves privadas"
 
 msgid "Import file"
 msgstr "Importar arquivo"
@@ -1803,45 +1561,32 @@ msgstr "Importar arquivo"
 msgid "Import private keys"
 msgstr "Importar chaves privadas"
 
-msgid ""
-"In order to confirm the transaction, scan the QR codes in the "
-"\"Authenticators\" tab in the Gold Wallet app."
-msgstr ""
-"Para confirmar a transação, leia os códigos QR na guia \"Autenticadores\" no "
-"aplicativo Gold Wallet."
+msgid "In order to confirm the transaction, scan the QR codes in the \"Authenticators\" tab in the Gold Wallet app."
+msgstr "Para confirmar a transação, leia os códigos QR em \"Autenticadores\" no separador da aplicação Gold Wallet."
 
-msgid ""
-"In particular, DO NOT use 'redeem private key' services proposed by third "
-"parties."
-msgstr ""
-"Em particular, NÃO use serviços de 'resgate de chave privada' propostos por "
-"terceirosfestas."
+msgid "In particular, DO NOT use 'redeem private key' services proposed by third parties."
+msgstr "Em particular, NÃO use serviços para 'recuperação da chave privada' propostos por terceiros."
 
 msgid "In progress"
 msgstr "Em Progresso"
 
-msgid ""
-"In some cases, use up to 3 change addresses in order to break up large coin "
-"amounts and obfuscate the recipient address."
-msgstr ""
-" Em alguns casos, use até 3 endereços de mudança para quebrar moedas "
-"grandes  valores e ofuscar o endereço do destinatário. "
+msgid "In some cases, use up to 3 change addresses in order to break up large coin amounts and obfuscate the recipient address."
+msgstr " Em alguns casos, use até 3 endereços diferentes para dividir grandes quantidades de moedas e ocultar o endereço do destinatário. "
 
 msgid "In the next block"
 msgstr "No próximo bloco"
 
-#, python-brace-format
 msgid "Included in block: {header_hash}"
 msgstr "Incluído no bloco: {header_hash}"
 
 msgid "Income"
-msgstr "Renda"
+msgstr "Receita"
 
 msgid "Incoming payments"
 msgstr "Pagamentos recebidos"
 
 msgid "Incorrect password"
-msgstr "Senha incorreta"
+msgstr "Palavra-passe incorreta"
 
 msgid "Incorrect seed"
 msgstr "Semente incorreta"
@@ -1862,7 +1607,7 @@ msgid "Information"
 msgstr "Informação"
 
 msgid "Initial balance"
-msgstr "Balanço inicial"
+msgstr "Saldo inicial"
 
 msgid "Initialization of Ledger HW devices is currently disabled."
 msgstr "A inicialização de dispositivos Ledger HW está atualmente desativada."
@@ -1883,7 +1628,7 @@ msgid "Install Wizard"
 msgstr "Assistente de instalação"
 
 msgid "Install the zbar package to enable this."
-msgstr "Instale o pacote zbar para habilitar isso."
+msgstr "Instale o pacote zbar para habilitar isto."
 
 msgid "Instructions:"
 msgstr "Instruções:"
@@ -1922,7 +1667,7 @@ msgid "Invalid Public key"
 msgstr "Chave pública inválida"
 
 msgid "Invalid Secure Fast Tx seed"
-msgstr "Semente Secure Fast Tx inválido"
+msgstr "Semente Secure Fast Tx inválida"
 
 msgid "Invalid address"
 msgstr "Endereço inválido"
@@ -1931,50 +1676,40 @@ msgid "Invalid amount"
 msgstr "Montante inválido"
 
 msgid "Invalid cancel seedphrase"
-msgstr "Frase-semente de cancelamento inválida"
+msgstr "Frase semente de cancelamento inválida"
 
 msgid "Invalid cancelation address"
 msgstr "Endereço de cancelamento inválido"
 
 msgid "Invalid node ID, must be 33 bytes and hexadecimal"
-msgstr "ID de nó inválido, deve ser 33 bytes e hexadecimal"
+msgstr "Nó ID inválido, deve ser 33 bytes e hexadecimal"
 
 msgid "Invalid one-time password."
-msgstr "Senha de uso único inválida."
+msgstr "Palavra-passe de uso único inválida."
 
 msgid "Invalid seed"
 msgstr "Semente inválida"
 
 msgid "Invoice has expired"
-msgstr "A fatura expirou"
+msgstr "A factura expirou"
 
 msgid "Invoice saved as "
-msgstr "Fatura salva como"
+msgstr "Factura salva como"
 
 msgid "Invoice wants us to risk locking funds for unreasonably long."
-msgstr ""
-"A fatura quer que corramos o risco de bloquear fundos por um período "
-"excessivamente longo."
+msgstr "A factura quer que corramos o risco de bloquear fundos por um período excessivamente longo."
 
-msgid ""
-"It also contains your master public key that allows watching your addresses."
-msgstr ""
-" Ele também contém sua chave pública mestra que permite ver seus endereços. "
+msgid "It also contains your master public key that allows watching your addresses."
+msgstr " Também contém a sua chave pública mestra que permite ver seus endereços. "
 
 msgid "It cannot be \"backed up\" by simply exporting these private keys."
-msgstr ""
-"Não pode ser feito um \" backup \"simplesmente exportando essas chaves "
-"privadas."
+msgstr "Não pode ser feito um \" backup \"simplesmente exportando essas chaves privadas."
 
 msgid "It conflicts with current history."
 msgstr "Está em conflito com a história atual."
 
-msgid ""
-"It sends and receives partially signed transactions from/to your cosigner "
-"wallet."
-msgstr ""
-"Ele envia e recebe transações parcialmente assinadas de / para seu "
-"fiadorcarteira."
+msgid "It sends and receives partially signed transactions from/to your cosigner wallet."
+msgstr "Ele envia e recebe transações parcialmente assinadas de / para o seu fiador carteira."
 
 msgid "Japanese"
 msgstr "Japonês"
@@ -2003,17 +1738,12 @@ msgstr "Configurações de etiqueta"
 msgid "LabelSync"
 msgstr "LabelSync"
 
-msgid ""
-"Labels, transactions IDs and addresses are encrypted before they are sent to "
-"the remote server."
-msgstr ""
-"As etiquetas, os IDs de transações e endereços são criptografados antes de "
-"serem enviados parao servidor remoto."
+msgid "Labels, transactions IDs and addresses are encrypted before they are sent to the remote server."
+msgstr "As etiquetas, os IDs de transações e endereços são criptografados antes de serem enviados para o servidor remoto."
 
 msgid "Language"
 msgstr "Língua"
 
-#, python-brace-format
 msgid "Latest version: {version}"
 msgstr "Última versão: {version}"
 
@@ -2035,7 +1765,6 @@ msgstr "Legado"
 msgid "Legacy 2FA"
 msgstr "Legado 2FA"
 
-#, python-brace-format
 msgid "Library version for '{name}' is incompatible."
 msgstr "A versão da biblioteca para '{name}' é incompatível."
 
@@ -2046,7 +1775,7 @@ msgid "Light"
 msgstr "Luz"
 
 msgid "Lightning"
-msgstr "Iluminar"
+msgstr "Lightning"
 
 msgid "Lightning Network"
 msgstr "Lightning Network"
@@ -2055,17 +1784,13 @@ msgid "Lightning Network Statistics"
 msgstr "Estatísticas da rede Lightning"
 
 msgid "Lightning keys have been initialized."
-msgstr "Chaves de lighting foram inicializadas."
+msgstr "Chaves de Lighting foram inicializadas."
 
 msgid "Lightning keys have been removed."
 msgstr "Chaves de Lightning foram removidas."
 
-msgid ""
-"Lightning support in Electrum is experimental. Do not put large amounts in "
-"lightning channels."
-msgstr ""
-"O suporte do lightining no Electrum é experimental. Não coloque grandes "
-"quantidades emcanais lightning."
+msgid "Lightning support in Electrum is experimental. Do not put large amounts in lightning channels."
+msgstr "O suporte do lightining no Electrum é experimental. Não coloque grandes quantidades em canais lightning."
 
 msgid "Lightning:"
 msgstr "Lightning:"
@@ -2094,18 +1819,14 @@ msgstr "Certifique-se de que está no estado correto."
 msgid "Make sure you install it with python3"
 msgstr "Certifique-se de instalá-lo com python3"
 
-msgid ""
-"Make sure you own the seed phrase or the private keys, before you request "
-"Bitcoins to be sent to this wallet."
-msgstr ""
-"Certifique-se de que possui a frase-semente ou as chaves privadas antes de "
-"solicitar  Bitcoins a serem enviados para esta carteira. "
+msgid "Make sure you own the seed phrase or the private keys, before you request Bitcoins to be sent to this wallet."
+msgstr "Certifique-se de que possui a frase semente ou as chaves privadas antes de solicitar o envio de Bitcoins para esta carteira. "
 
 msgid "Master Public Key"
 msgstr "Chave Pública Mestra"
 
 msgid "Master Public Keys"
-msgstr "Chave Públicas Mestras"
+msgstr "Chaves Públicas Mestras"
 
 msgid "Max"
 msgstr "Max"
@@ -2114,10 +1835,10 @@ msgid "Max fee exceeded"
 msgstr "Taxa máxima excedida"
 
 msgid "Maximum number of concurrent HTLCs accepted by peer:"
-msgstr "Número máximo de HTLCs simultâneos aceitos pelo par:"
+msgstr "Número máximo de HTLCs simultâneos aceites pelo par:"
 
 msgid "Maximum value of in-flight HTLCs accepted by peer:"
-msgstr "Valor máximo de HTLCs em voo aceitos pelo par:"
+msgstr "Valor máximo de HTLCs em voo aceites pelo par:"
 
 msgid "Memo"
 msgstr "Memo"
@@ -2126,8 +1847,7 @@ msgid "Mempool"
 msgstr "Mempool"
 
 msgid "Mempool based: fee rate is targeting a depth in the memory pool"
-msgstr ""
-"Baseado em mempool: a taxa de taxa visa uma profundidade no pool de memória"
+msgstr "Baseado em mempool: a percentagem da taxa visa uma profundidade no pool de memória"
 
 msgid "Mempool depth"
 msgstr "Profundidade de mempool"
@@ -2150,7 +1870,6 @@ msgstr "Taxa de mineração"
 msgid "Missing amount"
 msgstr "Valor em falta"
 
-#, python-brace-format
 msgid "Missing libraries for {library_name}."
 msgstr "Bibliotecas ausentes para {library_name}."
 
@@ -2160,7 +1879,6 @@ msgstr "Tx anterior ausente para entrada legada."
 msgid "Missing report URL."
 msgstr "URL de relatório ausente."
 
-#, python-brace-format
 msgid "More info at: {link}"
 msgstr "Mais informações em: {link}"
 
@@ -2192,15 +1910,14 @@ msgid "New Contact"
 msgstr "Novo contato"
 
 msgid "New Fee rate"
-msgstr "Nova taxa de taxa"
+msgstr "Nova Percentagem da taxa"
 
 msgid "New Password:"
-msgstr "Nova senha:"
+msgstr "Nova Palavra-passe:"
 
 msgid "New contact"
 msgstr "Novo contato"
 
-#, python-brace-format
 msgid "New transaction: {amount}"
 msgstr "Nova transação: {amount}"
 
@@ -2238,9 +1955,7 @@ msgid "No hardware device detected."
 msgstr "Nenhum dispositivo de hardware detectado."
 
 msgid "No inputs found. (Note that inputs need to be confirmed)"
-msgstr ""
-"Nenhuma entrada encontrada. (Observe que as entradas precisam ser "
-"confirmadas)"
+msgstr "Nenhuma entrada encontrada. (Observe que as entradas precisam ser confirmadas)"
 
 msgid "No keystore"
 msgstr "Sem armazenamento de chaves"
@@ -2253,6 +1968,9 @@ msgstr "Sem saídas"
 
 msgid "No wallet loaded."
 msgstr "Nenhuma carteira carregada."
+
+msgid "No, I changed my mind"
+msgstr "Não, eu mudei de ideias"
 
 msgid "Node ID"
 msgstr "ID do nó"
@@ -2293,45 +2011,26 @@ msgstr "Não verificado"
 msgid "Not yet available"
 msgstr "Não disponível ainda"
 
-msgid ""
-"Note that if you have frozen some of your addresses, the available funds "
-"will be lower than your total balance."
-msgstr ""
-" Observe que se congelou alguns de seus endereços, os fundos disponíveis  "
-"será inferior ao seu saldo total. "
+msgid "Note that if you disagree to our Terms & Conditions you won't be able to use the Electrum Vault application."
+msgstr "Observe que se discordar com os nossos Termos e Condições, não poderá utilizar a aplicação Electrum Vault."
 
-msgid ""
-"Note that some merchants do not accept non-final transactions until they are "
-"confirmed."
-msgstr ""
-"Observe que alguns comerciantes não aceitam transações não finais até que "
-"estejamconfirmadas."
+msgid "Note that if you have frozen some of your addresses, the available funds will be lower than your total balance."
+msgstr " Observe que se congelou alguns de seus endereços, os fundos disponíveis  serão inferiores ao seu saldo total. "
+
+msgid "Note that some merchants do not accept non-final transactions until they are confirmed."
+msgstr "Observe que alguns comerciantes não aceitam transações não finalizadas até que estejam confirmadas."
 
 msgid "Note that this is NOT your encryption password."
-msgstr "Observe que esta NÃO é sua senha de criptografia."
+msgstr "Observe que esta NÃO é a sua palavra-passe de criptográfica."
 
-msgid ""
-"Note that your coins are not locked in this service.  You may withdraw your "
-"funds at any time and at no cost, without the remote server, by using the "
-"'restore wallet' option with your wallet seed."
-msgstr ""
-"Observe que suas moedas não estão bloqueadas neste serviço. Você pode "
-"retirar os seus fundos a qualquer momento e sem nenhum custo, sem o servidor "
-"remoto, usando a opção 'restaurar carteira' com a semente da carteira."
+msgid "Note that your coins are not locked in this service.  You may withdraw your funds at any time and at no cost, without the remote server, by using the 'restore wallet' option with your wallet seed."
+msgstr "Observe que suas moedas não estão bloqueadas neste serviço. Você pode retirar os seus fundos a qualquer momento e sem nenhum custo, sem o servidor remoto, usando a opção 'restaurar carteira' com a semente da sua carteira."
 
-msgid ""
-"Note: If you enable this setting, you will need your hardware device to open "
-"your wallet."
-msgstr ""
-"Nota: Se você habilitar esta configuração, você precisará que seu "
-"dispositivo de hardware abrasua carteira."
+msgid "Note: If you enable this setting, you will need your hardware device to open your wallet."
+msgstr "Nota: Se você habilitar esta configuração, você precisará que o seu dispositivo de hardware abra a sua carteira."
 
-msgid ""
-"Note: this is an offline transaction, if you want the network to see it, you "
-"need to broadcast it."
-msgstr ""
-"Nota: esta é uma transação offline, se você quiser que a rede veja, "
-"vocêprecisa transmiti-lo."
+msgid "Note: this is an offline transaction, if you want the network to see it, you need to broadcast it."
+msgstr "Nota: esta é uma transação offline, se você quiser que a rede a veja, você precisa transmiti-lo."
 
 msgid "Nothing set !"
 msgstr "Nada definido!"
@@ -2342,12 +2041,8 @@ msgstr "Nada para tramar."
 msgid "Nothing to summarize."
 msgstr "Nada para resumir."
 
-msgid ""
-"Number of zeros displayed after the decimal point. For example, if this is "
-"set to 2, \"1.\" will be displayed as \"1.00\""
-msgstr ""
-"Número de zeros exibidos após o ponto decimal. Por exemplo, se este "
-"fordefinido como 2, \" 1. \"será exibido como \" 1,00 \""
+msgid "Number of zeros displayed after the decimal point. For example, if this is set to 2, \"1.\" will be displayed as \"1.00\""
+msgstr "Número de zeros exibidos após o ponto decimal. Por exemplo, se este fordefinido como 2, \" 1. \"será exibido como \" 1,00 \""
 
 msgid "OK"
 msgstr "OK"
@@ -2359,8 +2054,7 @@ msgid "Offline"
 msgstr "Desconectado"
 
 msgid "On Linux, you might have to add a new permission to your udev rules."
-msgstr ""
-"No Linux, pode ser necessário adicionar uma nova permissão às regras do udev."
+msgstr "No Linux, pode ser necessário adicionar uma nova permissão às regras do udev."
 
 msgid "One output per line."
 msgstr "Uma saída por linha."
@@ -2381,20 +2075,17 @@ msgid "Open Channel"
 msgstr "Canal aberto"
 
 msgid "Open advanced transaction preview dialog when 'Pay' is clicked."
-msgstr ""
-"Abra a caixa de diálogo de visualização avançada da transação quando 'Pagar' "
-"for clicado."
+msgstr "Abra a caixa de diálogo de visualização avançada da transação quando 'Pagar' for clicado."
 
 msgid "Open calibration pdf"
 msgstr "Abrir o pdf de calibração"
 
 msgid "Open channel"
-msgstr "Canal aberto"
+msgstr "Abrir Canal"
 
 msgid "Open your cosigner wallet to retrieve it."
-msgstr "Abra sua carteira de fiador para recuperá-lo."
+msgstr "Abra sua carteira de fiador para a recuperar."
 
-#, python-brace-format
 msgid "Open {title} file"
 msgstr "Abrir arquivo {title}"
 
@@ -2402,9 +2093,7 @@ msgid "OpenAlias"
 msgstr "AbrirAlias"
 
 msgid "OpenAlias record, used to receive coins and to sign payment requests."
-msgstr ""
-"Registro AbrirAlias, usado para receber moedas e assinar pedidos de "
-"pagamento."
+msgstr "Registro AbrirAlias, usado para receber moedas e assinar pedidos de pagamento."
 
 msgid "Opening channel..."
 msgstr "Abrindo canal ..."
@@ -2419,7 +2108,7 @@ msgid "Outgoing payments"
 msgstr "Pagamentos de saída"
 
 msgid "Output amount"
-msgstr "Quantidade de produção"
+msgstr "Quantidade de saída "
 
 msgid "Output point"
 msgstr "Ponto de saída"
@@ -2440,10 +2129,10 @@ msgid "Paid"
 msgstr "Pago"
 
 msgid "Pair your 2-Key Vault wallet with Gold Wallet"
-msgstr "Emparelhe a sua carteira de 2-Key Vault com Gold a Wallet"
+msgstr "Emparelhe a sua carteira Vault de 2-Key com a Gold Wallet"
 
 msgid "Pair your 3-Key Vault wallet with Gold Wallet"
-msgstr "Emparelhe a sua carteira de 3-Key Vault com Gold a Wallet"
+msgstr "Emparelhe a sua carteira Vault de 3-Key com Gold a Wallet"
 
 msgid "Partially signed"
 msgstr "Parcialmente assinado"
@@ -2455,25 +2144,25 @@ msgid "Passphrase:"
 msgstr "Frase de acesso:"
 
 msgid "Password"
-msgstr "Senha"
+msgstr "Palavra-passe"
 
 msgid "Password Strength"
-msgstr "Segurança da palavra-passe"
+msgstr "Força da Palavra-passe"
 
 msgid "Password is disabled, this wallet is not protected"
-msgstr "A senha está desativada, esta carteira não está protegida"
+msgstr "A Palavra-passe está desativada, esta carteira não está protegida"
 
 msgid "Password was updated successfully"
-msgstr "A senha foi atualizada com sucesso"
+msgstr "A Palavra-passe foi atualizada com sucesso"
 
 msgid "Password:"
-msgstr "Senha:"
+msgstr "Palavra-passe:"
 
 msgid "Pay"
 msgstr "Pagamento"
 
 msgid "Pay multiple invoices"
-msgstr "Pague várias faturas"
+msgstr "Pague várias facturas"
 
 msgid "Pay to"
 msgstr "Pagar para"
@@ -2529,7 +2218,6 @@ msgstr "Verifique a sua conexão e as suas credenciais."
 msgid "Please check your network connection."
 msgstr "Verifique a sua conexão de rede."
 
-#, python-brace-format
 msgid "Please check your {device} device"
 msgstr "Por favor, verifique o seu dispositivo {device}"
 
@@ -2552,45 +2240,28 @@ msgid "Please enter your e-mail address"
 msgstr "Por favor, indique o seu endereço de e-mail"
 
 msgid "Please enter your password"
-msgstr "Por favor, insira sua senha"
+msgstr "Por favor, insira sua palavra-passe"
 
 msgid "Please enter your password to decrypt it."
-msgstr "Por favor, digite sua senha para descriptografá-la."
+msgstr "Por favor, digite sua palavra-passe para descriptografá-la."
 
 msgid "Please enter your seed phrase in order to restore your wallet."
-msgstr "Por favor, insira sua frase-semente para restaurar sua carteira."
+msgstr "Por favor, insira sua frase semente para restaurar sua carteira."
 
-#, python-brace-format
 msgid "Please insert your {device}"
 msgstr "Por favor, insira seu {device}"
 
-msgid ""
-"Please paste a Cancel Transaction Key. Use an existing one, if you "
-"are importing a wallet, or generate a new one at"
-msgstr ""
-"Por favor, cole uma Chave de Cancelamento de Transação. Use uma "
-"existente, se você estão a importar uma carteira ou geram uma nova em"
+msgid "Please paste a Cancel Transaction Key. Use an existing one, if you are importing a wallet, or generate a new one at"
+msgstr "Por favor, cole uma Chave de Cancelamento de Transação. Use uma existente, se você está a importar uma carteira ou a gerar uma nova em"
 
-msgid ""
-"Please paste a Fast Transaction Key. Use an existing one, if "
-"you are importing a wallet, or generate a new one at"
-msgstr ""
-"Por favor, cole uma Chave de Transação Rápida. Use uma "
-"existente, seestá a importar uma carteira ou gere uma nova em"
+msgid "Please paste a Fast Transaction Key. Use an existing one, if you are importing a wallet, or generate a new one at"
+msgstr "Por favor, cole uma Chave de Transação Rápida. Use uma existente, se está a importar uma carteira ou a gerar uma nova em"
 
-msgid ""
-"Please paste authenticator public key exported from your Gold Wallet "
-"application"
-msgstr ""
-"Por favor, cole a chave pública do autenticador exportada da sua carteira "
-"Goldinscrição"
+msgid "Please paste authenticator public key exported from your Gold Wallet application"
+msgstr "Por favor, cole a chave pública do autenticador exportada da sua aplicação Gold Wallet"
 
-msgid ""
-"Please paste your cosigners master public key, or scan it using the camera "
-"button."
-msgstr ""
-" Por favor, cole a chave pública mestra do fiador ou digitalize-a usando a "
-"câmera botão."
+msgid "Please paste your cosigners master public key, or scan it using the camera button."
+msgstr " Por favor, cole a chave pública mestra do fiador ou digitalize-a usando o botão da câmera."
 
 msgid "Please report any bugs as issues on github:<br/>"
 msgstr "Por favor, reporte quaisquer bugs como problemas no github: <br/>"
@@ -2602,21 +2273,16 @@ msgid "Please restart Electrum to activate the new GUI settings"
 msgstr "Reinicie Electrum para ativar as novas configurações da GUI"
 
 msgid "Please retype your seed phrase, to confirm that you properly saved it"
-msgstr ""
-"Por favor, redigite sua frase semente, para confirmar que você a salvou "
-"corretamente"
+msgstr "Por favor, redigite sua frase semente, para confirmar que você a salvou corretamente"
 
-#, python-brace-format
 msgid "Please save these {0} words on paper (the order is important). "
-msgstr "Guarde estas {0} palavras no papel (a ordem é importante)."
+msgstr "Guarde estas {0} palavras num papel (a ordem é importante)."
 
 msgid "Please scan a Bitcoin address or a payment request"
-msgstr ""
-"Por favor, digitalize um endereço Bitcoin ou uma solicitação de pagamento"
+msgstr "Por favor, digitalize um endereço Bitcoin ou uma solicitação de pagamento"
 
-#, python-brace-format
 msgid "Please select which {device} device to use:"
-msgstr "Por favor, selecione qual dispositivo {device} usar:"
+msgstr "Por favor, selecione qual é o dispositivo {device} usar:"
 
 msgid "Please share it with your cosigners."
 msgstr "Por favor, compartilhe com seus fiadores."
@@ -2631,14 +2297,13 @@ msgid "Please type it here."
 msgstr "Por favor, digite aqui."
 
 msgid "Please type your seed phrase using the virtual keyboard."
-msgstr "Por favor, digite sua frase-semente usando o teclado virtual."
+msgstr "Por favor, digite sua frase semente usando o teclado virtual."
 
 msgid "Please wait"
 msgstr "Por favor, aguarde"
 
 msgid "Please wait while Electrum checks for available updates."
-msgstr ""
-"Por favor aguarde enquanto Electrum verifica as atualizações disponíveis."
+msgstr "Por favor aguarde enquanto Electrum verifica as atualizações disponíveis."
 
 msgid "Please wait..."
 msgstr "Por favor, aguarde..."
@@ -2652,7 +2317,6 @@ msgstr "O número da porta deve ser decimal"
 msgid "Portuguese"
 msgstr "Português"
 
-#, python-brace-format
 msgid "Position in mempool: {size} from tip"
 msgstr "Posição no mempool: {size} da ponta"
 
@@ -2710,12 +2374,8 @@ msgstr "Configuração de proxy"
 msgid "Proxy mode"
 msgstr "Modo proxy"
 
-msgid ""
-"Proxy settings apply to all connections: with Electrum servers, but also "
-"with third-party services."
-msgstr ""
-"As configurações de proxy se aplicam a todas as conexões: com servidores "
-"Electrum, mas também  com serviços de terceiros. "
+msgid "Proxy settings apply to all connections: with Electrum servers, but also with third-party services."
+msgstr "As configurações de proxy se aplicam a todas as conexões: com servidores Electrum, mas também  com serviços de terceiros. "
 
 msgid "Proxy user"
 msgstr "Usuário proxy"
@@ -2762,7 +2422,6 @@ msgstr "Ler arquivo"
 msgid "Read from microphone"
 msgstr "Ler do microfone"
 
-#, python-brace-format
 msgid "Ready to encrypt for revealer {version}"
 msgstr "Pronto para criptografar para revelador {version}"
 
@@ -2772,7 +2431,6 @@ msgstr "Receber"
 msgid "Received (mSAT):"
 msgstr "Recebido (mSAT):"
 
-#, python-brace-format
 msgid "Received HTLC with ID {id}"
 msgstr "HTLC recebido com ID {id}"
 
@@ -2815,7 +2473,6 @@ msgstr "Remover"
 msgid "Remove from wallet"
 msgstr "Remover da carteira"
 
-#, python-brace-format
 msgid "Remove {labels} from your list of contacts?"
 msgstr "Remover {labels} da sua lista de contatos?"
 
@@ -2859,11 +2516,10 @@ msgid "Requesting account info from TrustedCoin server..."
 msgstr "Solicitando informações da conta do servidor TrustedCoin ..."
 
 msgid "Requestor"
-msgstr "Solicitante"
+msgstr "Requisitante"
 
-#, python-brace-format
 msgid "Require {0} signatures"
-msgstr "Requer {0} assinaturas"
+msgstr "Requerer {0} assinaturas"
 
 msgid "Requires"
 msgstr "Requer"
@@ -2887,8 +2543,7 @@ msgid "Revealer Secret Backup Plugin"
 msgstr "Complemento Revealer Secret Backup"
 
 msgid "Revealers starting with 0 are not secure due to a vulnerability."
-msgstr ""
-"Reveladores que começam com 0 não são seguros devido a uma vulnerabilidade."
+msgstr "Reveladores que começam com 0 não são seguros devido a uma vulnerabilidade."
 
 msgid "Right side"
 msgstr "Lado direito"
@@ -2915,17 +2570,13 @@ msgid "Save"
 msgstr "Salvar"
 
 msgid "Save invoice to file"
-msgstr "Salvar fatura em arquivo"
+msgstr "Salvar factura em arquivo"
 
 msgid "Save transaction offline"
 msgstr "Salvar transação offline"
 
-msgid ""
-"Save your wallet labels on a remote server, and synchronize them across "
-"multiple devices where you use Electrum."
-msgstr ""
-"Salve suas etiquetas de carteira em um servidor remoto e sincronize-asvários "
-"dispositivos onde você usa Electrum."
+msgid "Save your wallet labels on a remote server, and synchronize them across multiple devices where you use Electrum."
+msgstr "Salve suas etiquetas de carteira em um servidor remoto e sincronize com todos osdispositivos onde você usa Electrum."
 
 msgid "Script type"
 msgstr "Tipo de script"
@@ -2937,31 +2588,22 @@ msgid "Secure"
 msgstr "Seguro"
 
 msgid "Secure - confirmed after 24 hours. Can be canceled within that time."
-msgstr ""
-"Segura - confirmado após 24 horas. Pode ser cancelada dentro desse período."
+msgstr "Segura - confirmada após 24 horas. Pode ser cancelada dentro desse período."
 
-msgid ""
-"Secure Fast - confirmed immediately. Cannot be canceled. Requires an "
-"additional seed phrase."
-msgstr ""
-"Rápida Segura - confirmada imediatamente. Não pode ser cancelada. Requer "
-"umafrase de semente adicional."
+msgid "Secure Fast - confirmed immediately. Cannot be canceled. Requires an additional seed phrase."
+msgstr "Rápida Segura - confirmada imediatamente. Não pode ser cancelada. Requer uma frase de semente adicional."
 
 msgid "Secure Fast Tx seed"
 msgstr "A Semente Rápida e Segura Tx"
 
 msgid "Secure Fast Tx seed not matching any key in this wallet"
-msgstr ""
-"A Semente Rápida e Segura Tx não corresponde a nenhuma chave nesta carteira"
+msgstr "A Semente Rápida e Segura Tx não corresponde a nenhuma chave nesta carteira"
 
 msgid "Secure Fast seedphrase"
 msgstr "Frase de semente Rápida e Segura"
 
-msgid "Fast Transaction Key"
-msgstr "Chave de transação rápida"
-
 msgid "Secure fast"
-msgstr "Rápido"
+msgstr "Segurança Rápida"
 
 msgid "Secure incoming"
 msgstr "Entrada segura"
@@ -3002,7 +2644,6 @@ msgstr "Selecione o arquivo para o qual exportar as suas chaves privadas para"
 msgid "Select file to export your wallet transactions to"
 msgstr "Selecione o arquivo para exportar as suas transações de carteira para"
 
-#, python-brace-format
 msgid "Select file to save your {title}"
 msgstr "Selecione o arquivo para salvar seu {title}"
 
@@ -3069,7 +2710,6 @@ msgstr "Enviando transação para pool de co-signatário ..."
 msgid "Sent (mSAT):"
 msgstr "Enviado (mSAT):"
 
-#, python-brace-format
 msgid "Sent HTLC with ID {id}"
 msgstr "HTLC enviado com ID {id}"
 
@@ -3079,9 +2719,8 @@ msgstr "Servidor"
 msgid "Server hosting your email account"
 msgstr "Servidor que hospeda a sua conta de e-mail"
 
-#, python-brace-format
 msgid "Server is lagging ({number} blocks)"
-msgstr "Servidor está atrasado ({number} blocos)"
+msgstr "Servidor está lento ({number} blocos)"
 
 msgid "Server not reachable."
 msgstr "Servidor não acessível."
@@ -3093,17 +2732,13 @@ msgid "Server returned unexpected transaction ID."
 msgstr "O servidor retornou um ID de transação inesperado."
 
 msgid "Server used to query your history."
-msgstr "Servidor usado para consultar o  seu histórico."
+msgstr "Servidor usado para consultar o seu histórico."
 
 msgid "Services"
 msgstr "Serviços"
 
-msgid ""
-"Set the value of the change output so that it has similar precision to the "
-"other outputs."
-msgstr ""
-"Defina o valor da saída de mudança de modo que tenha uma precisão semelhante "
-"ao  outras saídas. "
+msgid "Set the value of the change output so that it has similar precision to the other outputs."
+msgstr "Defina o valor da saída de mudança de modo que tenha uma precisão semelhante às outras saídas. "
 
 msgid "Set wallet file encryption."
 msgstr "Definir criptografia de arquivo de carteira."
@@ -3115,7 +2750,7 @@ msgid "Share Bitcoin Request"
 msgstr "Solicitação de compartilhamento de bitcoin"
 
 msgid "Share Invoice"
-msgstr "Compartilhar fatura"
+msgstr "Compartilhar factura"
 
 msgid "Short Chan ID"
 msgstr "Short Chan ID"
@@ -3127,7 +2762,7 @@ msgid "Short Channel ID:"
 msgstr "ID de canal curto:"
 
 msgid "Should this transaction be replaceable?"
-msgstr "Deve esta  transação ser substituível?"
+msgstr "Deve esta transação ser substituível?"
 
 msgid "Show"
 msgstr "Mostrar"
@@ -3138,20 +2773,21 @@ msgstr "Mostrar saldo Fiat para endereços"
 msgid "Show QR Code"
 msgstr "Mostrar código QR"
 
+msgid "Show advanced"
+msgstr "Mostrar avançado"
+
 msgid "Show as QR code"
 msgstr "Mostrar como código QR"
 
 msgid "Show on Ledger"
 msgstr "Mostrar no livro Ledger"
 
-#, python-brace-format
 msgid "Show on {device}"
 msgstr "Mostrar no {device}"
 
 msgid "Show report contents"
 msgstr "Mostrar conteúdos do relatório"
 
-#, python-brace-format
 msgid "Show {tab_description}"
 msgstr "Mostrar {tab_description}"
 
@@ -3185,30 +2821,20 @@ msgstr "Assinando"
 msgid "Signing transaction..."
 msgstr "Assinando transação ..."
 
-msgid ""
-"Signing with an address actually means signing with the corresponding "
-"private key, and verifying with the corresponding public key. The address "
-"you have entered does not have a unique public key, so these operations "
-"cannot be performed."
-msgstr ""
-"Assinar com um endereço na verdade significa assinar com o "
-"correspondentechave privada e verificando com a chave pública "
-"correspondente. O endereçovocê digitou não tem uma chave pública única, "
-"então essas operaçõesnão podem ser executadas."
+msgid "Signing with an address actually means signing with the corresponding private key, and verifying with the corresponding public key. The address you have entered does not have a unique public key, so these operations cannot be performed."
+msgstr "Assinar com um endereço na verdade significa assinar com a correspondente chave privada e verificando com a chave pública correspondente. O endereço que você digitou não tem uma chave pública única, então essas operações não podem ser executadas."
 
 msgid "Size:"
 msgstr "Tamanho:"
 
 msgid "Something went wrong while executing Electrum."
-msgstr "Algo deu errado ao executar Electrum."
+msgstr "ocorreu um erro ao executar a Electrum."
 
 msgid "Sorry!"
 msgstr "Pedimos desculpa!"
 
 msgid "Sorry, but we were unable to check for updates. Please try again later."
-msgstr ""
-"Lamentamos mas foi possível verificar se há atualizações.Por favor, tente "
-"novamente mais tarde."
+msgstr "Lamentamos mas foi possível verificar se há atualizações.Por favor, tente novamente mais tarde."
 
 msgid "Source"
 msgstr "Fonte"
@@ -3234,14 +2860,8 @@ msgstr "Standard"
 msgid "Start"
 msgstr "Começar"
 
-msgid ""
-"Startup times are instant because it operates in conjunction with high-"
-"performance servers that handle the most complicated parts of the Bitcoin "
-"Vault system."
-msgstr ""
-"Os tempos de inicialização são instantâneos porque opera em conjunto com "
-"alta-servidores de desempenho que lidam com as partes mais complicadas do "
-"BitcoinSistema Vault."
+msgid "Startup times are instant because it operates in conjunction with high-performance servers that handle the most complicated parts of the Bitcoin Vault system."
+msgstr "Os tempos de inicialização são instantâneos porque opera em conjunto com servidores de alto desempenho que lidam com as partes mais complicadas do sistemaBitcoin Vault."
 
 msgid "State"
 msgstr "Estado"
@@ -3283,7 +2903,10 @@ msgid "Target"
 msgstr "Alvo"
 
 msgid "Target fee:"
-msgstr "Taxa de destino:"
+msgstr "Taxa pretendida:"
+
+msgid "Terms & Conditions"
+msgstr "Termos e Condições"
 
 msgid "Terms of Service"
 msgstr "Termos de serviço"
@@ -3294,12 +2917,8 @@ msgstr "Testnet"
 msgid "Testnet coins are worthless."
 msgstr "Moedas Testnet não valem nada."
 
-msgid ""
-"Testnet is separate from the main Bitcoin Vault network. It is used for "
-"testing."
-msgstr ""
-"O Testnet  está separado da principal rede de Bitcoin Vault. É usado paraa "
-"testar."
+msgid "Testnet is separate from the main Bitcoin Vault network. It is used for testing."
+msgstr "O Testnet  está separado da principal rede da Bitcoin Vault. É usado para a testes."
 
 msgid "Text copied to clipboard"
 msgstr "Texto copiado para a área de transferência"
@@ -3307,65 +2926,42 @@ msgstr "Texto copiado para a área de transferência"
 msgid "Text copied to clipboard."
 msgstr "Texto copiado para a área de transferência."
 
-msgid ""
-"The amount of fee can be decided freely by the sender. However, transactions "
-"with low fees take more time to be processed."
-msgstr ""
-"O valor da taxa pode ser decidido livremente pelo remetente. No entanto,"
-"para  transaçõescom taxas baixas leva mais tempo a ser processado."
+msgid "The amount of fee can be decided freely by the sender. However, transactions with low fees take more time to be processed."
+msgstr "O valor da taxa pode ser decidido livremente pelo remetente. No entanto,para transações com taxas baixas leva mais tempo a ser processado."
 
-msgid ""
-"The amount will be displayed in red if you do not have enough funds in your "
-"wallet."
-msgstr ""
-" O valor será exibido em vermelho se você não tiver fundos suficientes na "
-"suacarteira."
+msgid "The amount will be displayed in red if you do not have enough funds in your wallet."
+msgstr " O valor será exibido em vermelho se você não tiver fundos suficientes na sua carteira."
 
-msgid ""
-"The bitcoin address never expires and will always be part of this electrum "
-"wallet."
-msgstr ""
-"O endereço bitcoin nunca expira e sempre fará parte deste electrumcarteira."
+msgid "The bitcoin address never expires and will always be part of this electrum wallet."
+msgstr "O endereço bitcoin nunca expira e sempre fará parte desta carteira electum."
 
-msgid ""
-"The description is not sent to the recipient of the funds. It is stored in "
-"your wallet file, and displayed in the 'History' tab."
-msgstr ""
-"A descrição não é enviada ao destinatário dos fundos. Está armazenado em  "
-"seu arquivo de carteira e exibido na guia 'Histórico'. "
+msgid "The description is not sent to the recipient of the funds. It is stored in your wallet file, and displayed in the 'History' tab."
+msgstr "A descrição não é enviada ao destinatário dos fundos. Está armazenado no  seu arquivo de carteira e exibido no separador 'Histórico'. "
 
 msgid ""
 "The fee could not be verified. Signing non-segwit inputs is risky:\n"
 "if this transaction was maliciously modified before you sign,\n"
 "you might end up paying a higher mining fee than displayed."
 msgstr ""
-"Não foi possível verificar a taxa. A assinatura de entradas não segmentadas "
-"é arriscada: \n"
+"Não foi possível verificar a taxa. A assinatura de entradas não segmentadas é arriscada: \n"
 "se esta transação foi modificada maliciosamente antes de você assinar, \n"
 "você pode acabar pagando uma taxa de mineração maior do que a exibida."
 
 msgid "The fee for this transaction seems unusually high."
 msgstr "A taxa para essa transação parece excepcionalmente alta."
 
-#, python-brace-format
 msgid ""
 "The file '{path}' contains an incompletely created wallet.\n"
 "Do you want to complete its creation now?"
 msgstr ""
-"O arquivo '{path}' contém uma carteira criada incompletamente. \n"
+"O arquivo '{path}' contém uma carteira criada incompleta . \n"
 "Você quer completar sua criação agora?"
 
 msgid "The file was removed"
 msgstr "O arquivo foi removido"
 
-msgid ""
-"The firmware of your hardware device is too old. If possible, you should "
-"upgrade it. You can ignore this error and try to continue, however things "
-"are likely to break."
-msgstr ""
-"O firmware do seu dispositivo de hardware é muito antigo. Se possível, você "
-"deveatualiza-lo. Você pode ignorar este erro e tentar continuar, porém as "
-"coisassão susceptíveis de quebrar."
+msgid "The firmware of your hardware device is too old. If possible, you should upgrade it. You can ignore this error and try to continue, however things are likely to break."
+msgstr "O firmware do seu dispositivo de hardware é muito antigo. Se possível, você deve atualiza-lo. Você pode ignorar este erro e tentar continuar, porém as coisas são susceptíveis de quebrar."
 
 msgid "The following addresses were added"
 msgstr "Os seguintes endereços foram adicionados"
@@ -3379,17 +2975,8 @@ msgstr "As seguintes entradas não puderam ser importadas"
 msgid "The new fee rate needs to be higher than the old fee rate."
 msgstr "A nova taxa precisa ser maior do que a antiga."
 
-msgid ""
-"The next step will generate the seed of your wallet.  This seed will NOT be "
-"saved in your computer, and it must be stored on paper.  To be safe from "
-"malware, you may want to do this on an offline computer, and move your "
-"wallet later to an online computer."
-msgstr ""
-"A próxima etapa irá gerar a semente da sua carteira. Esta semente NÃO "
-"seráguardado no seu computador, e deve ser armazenado em papel. Para estar "
-"protegido contraOs perigos de software, pode querer fazer isso  num "
-"computador offline e mover o seucarteira mais tarde para um computador em "
-"linha."
+msgid "The next step will generate the seed of your wallet.  This seed will NOT be saved in your computer, and it must be stored on paper.  To be safe from malware, you may want to do this on an offline computer, and move your wallet later to an online computer."
+msgstr "A próxima etapa irá gerar a semente da sua carteira. Esta semente NÃO será guardada no seu computador, e deve ser armazenada em papel. Para estar protegido contra Os perigos de software, pode querer fazer isso num computador offline e mover a sua carteira mais tarde para um computador online. "
 
 msgid "The operation is undefined. Not just in Electrum, but in general."
 msgstr "A operação é indefinida. Não apenas no Electrum, mas em geral."
@@ -3400,34 +2987,26 @@ msgstr "O servidor retornou um erro ao transmitir a transação."
 msgid "The server returned an error."
 msgstr "O servidor retornou um erro."
 
-msgid ""
-"The server returned an unexpected transaction ID when broadcasting the "
-"transaction."
-msgstr ""
-"  O servidor retornou um ID de transação inesperado ao transmitir o "
-"transação."
+msgid "The server returned an unexpected transaction ID when broadcasting the transaction."
+msgstr "  O servidor retornou um ID de transação inesperado ao transmitir a transação."
 
-msgid ""
-"The transaction was rejected because it contains multiple OP_RETURN outputs."
+msgid "The transaction was rejected because it contains multiple OP_RETURN outputs."
 msgstr "A transação foi rejeitada porque contém várias saídas OP_RETURN."
 
 msgid "The transaction was rejected because it is too large (in bytes)."
 msgstr "A transação foi rejeitada porque é muito grande (em bytes)."
 
 msgid "The type of addresses used by your wallet will depend on your seed."
-msgstr "O tipo de endereço usado por sua carteira dependerá de sua semente."
+msgstr "O tipo de endereço usado pela sua carteira dependerá de sua semente."
 
-#, python-brace-format
 msgid ""
-"The wallet '{path}' contains multiple accounts, which are no longer "
-"supported since Electrum 2.7.\n"
+"The wallet '{path}' contains multiple accounts, which are no longer supported since Electrum 2.7.\n"
 "\n"
 "Do you want to split your wallet into multiple files?"
 msgstr ""
-"A carteira '{path}' contém várias contas, que não são maiscompatíveis desde "
-"Electrum 2.7. \n"
+"A carteira '{path}' contém várias contas, que não são mais compatíveis desde Electrum 2.7. \n"
 "\n"
-"Você quer dividir sua carteira em vários arquivos?"
+"Você quer dividir a sua carteira em vários arquivos?"
 
 msgid "Then, enter your Google Authenticator code:"
 msgstr "Em seguida, digite seu código do Google Authenticator:"
@@ -3441,27 +3020,17 @@ msgstr "Ocorreu um problema com o relatório automático:"
 msgid "Therefore, two-factor authentication is disabled."
 msgstr "Portanto, a autenticação de dois fatores está desabilitada."
 
-msgid ""
-"This address has already been used. For better privacy, do not reuse it for "
-"new payments."
-msgstr ""
-"Este endereço já foi usado. Para melhor privacidade, não o reutilize "
-"paranovos pagamentos."
+msgid "This address has already been used. For better privacy, do not reuse it for new payments."
+msgstr "Este endereço já foi usado. Para mais privacidade, não o reutilize para novos pagamentos."
 
-msgid ""
-"This blockchain is used to verify the transactions sent by your transaction "
-"server."
-msgstr ""
-"Este blockchain é usado para verificar as transações enviadas por sua "
-"transação servidor."
+msgid "This blockchain is used to verify the transactions sent by your transaction server."
+msgstr "Este blockchain é usado para verificar as transações enviadas pela sua transação servidor."
 
-#, python-brace-format
 msgid "This channel will be usable after {number} confirmations"
 msgstr "Este canal poderá ser usado após {number} confirmações"
 
 msgid "This feature is not available for watch-only wallets."
-msgstr ""
-"Este recurso não está disponível para carteiras exclusivas para relógio."
+msgstr "Este recurso não está disponível para carteiras que somente servem para fazer observação."
 
 msgid "This file does not exist."
 msgstr "Este arquivo não existe."
@@ -3473,36 +3042,28 @@ msgid "This file is encrypted using a hardware device."
 msgstr "Este arquivo é criptografado usando um dispositivo de hardware."
 
 msgid "This file is encrypted with a password."
-msgstr "Este arquivo está criptografado com uma senha."
+msgstr "Este arquivo está criptografado com uma palavra-passe."
 
-#, python-brace-format
-msgid ""
-"This function is only available for standard wallets when using {device}."
-msgstr ""
-"Esta função está disponível apenas para carteiras standard ao usar {device}."
+msgid "This function is only available for standard wallets when using {device}."
+msgstr "Esta função está disponível apenas para carteiras padrão ao usar {device}."
 
-msgid ""
-"This information is seen by the recipient if you send them a signed payment "
-"request."
-msgstr ""
-"Esta informação é vista pelo destinatário se você enviar a ele um pagamento "
-"assinadosolicitação."
+msgid "This information is seen by the recipient if you send them a signed payment request."
+msgstr "Esta informação é vista pelo destinatário se você enviar um pagamento assinado solicitação."
 
 msgid "This invoice has been paid already"
-msgstr "Esta fatura já foi paga"
+msgstr "Esta factura já foi paga"
 
 msgid "This invoice has expired"
-msgstr "Esta fatura expirou"
+msgstr "Esta factura expirou"
 
 msgid "This is a watching-only wallet"
-msgstr "Esta é uma carteira apenas para assistir"
+msgstr "Esta é uma carteira apenas para observação"
 
 msgid "This is a watching-only wallet."
 msgstr "Esta é uma carteira apenas para observação."
 
 msgid "This is a watching-only wallet. It does not contain private keys."
-msgstr ""
-"Esta é uma carteira somente para observação. Ela não contém chaves privadas."
+msgstr "Esta é uma carteira somente para observação. Ela não contém chaves privadas."
 
 msgid "This is discouraged."
 msgstr "Isso é desanimado."
@@ -3514,7 +3075,7 @@ msgid "This may result in higher transactions fees."
 msgstr "Isso pode resultar em taxas de transação mais altas."
 
 msgid "This means you will not be able to spend Bitcoins with it."
-msgstr "Isso significa que você não poderá gastar Bitcoins com ele."
+msgstr "Isso significa que você não poderá gastar Bitcoins com ela."
 
 msgid "This might improve your privacy somewhat."
 msgstr "Isso pode melhorar um pouco a sua privacidade."
@@ -3522,12 +3083,8 @@ msgstr "Isso pode melhorar um pouco a sua privacidade."
 msgid "This payment request will be signed."
 msgstr "Este pedido de pagamento será assinado."
 
-msgid ""
-"This plug-in allows you to create a visually encrypted backup of your wallet "
-"seeds, or of custom alphanumeric secrets."
-msgstr ""
-"Este complemento permite que você crie um backup criptografado visualmente "
-"de sua carteirasementes, ou de segredos alfanuméricos personalizados."
+msgid "This plug-in allows you to create a visually encrypted backup of your wallet seeds, or of custom alphanumeric secrets."
+msgstr "Este complemento permite que você crie um backup criptografado visualmente da sua carteira  sementes, ou de segredos alfanuméricos personalizados."
 
 msgid "This plugin adds two-factor authentication to your wallet."
 msgstr "Este complemento adiciona autenticação de dois fatores à sua carteira."
@@ -3536,58 +3093,37 @@ msgid "This plugin facilitates the use of multi-signatures wallets."
 msgstr "Este complemento facilita o uso de carteiras com várias assinaturas."
 
 msgid "This public key was already used. Please generate a new one."
-msgstr "Esta chave pública já foi usada. Por favor, gere uma nova."
+msgstr "Esta chave pública já foi usada. Por favor, crie uma nova."
 
 msgid "This seed will allow you to recover your wallet."
 msgstr "Esta semente permitirá recuperar a sua carteira."
 
-msgid ""
-"This service uses a multi-signature wallet, where you own 2 of 3 keys.  The "
-"third key is stored on a remote server that signs transactions on your "
-"behalf. A small fee will be charged on each transaction that uses the remote "
-"server."
-msgstr ""
-"Este serviço usa uma carteira com várias assinaturas, onde possui 2 de 3 "
-"chaves. Aa terceira chave é armazenada num servidor remoto que assina "
-"transações no seuem nome. Uma pequena taxa será cobrada em cada transação "
-"que usar o controle remotoservidor."
+msgid "This service uses a multi-signature wallet, where you own 2 of 3 keys.  The third key is stored on a remote server that signs transactions on your behalf. A small fee will be charged on each transaction that uses the remote server."
+msgstr "Este serviço usa uma carteira com várias assinaturas, onde possui 2 de 3 chaves. A terceira chave é armazenada num servidor remoto que assina transações em seu nome. Uma pequena taxa será cobrada em cada transação sempre que usa servidor remoto."
 
 msgid "This setting affects the Send tab, and all balance related fields."
-msgstr ""
-"Esta configuração afeta a guia Enviar e todos os campos relacionados ao "
-"saldo."
+msgstr "Esta configuração afeta Separador Enviar, e todos os campos relacionados ao saldo."
 
 msgid "This transaction is not saved. Close anyway?"
 msgstr "Esta transação não foi salva. Fechar mesmo assim?"
 
-msgid ""
-"This transaction requires a higher fee, or it will not be propagated by your "
-"current server"
-msgstr ""
-"Esta transação requer uma taxa mais alta, ou não será propagada pelo "
-"seuservidor atual"
+msgid "This transaction requires a higher fee, or it will not be propagated by your current server"
+msgstr "Esta transação requer uma taxa mais alta, ou não será propagada pelo servidor atual"
 
-#, python-brace-format
 msgid "This type of script is not supported with {device}."
 msgstr "Este tipo de sequência de comandos não é compatível com {device}."
 
-#, python-brace-format
 msgid "This version supports a maximum of {length} characters."
 msgstr "Esta versão suporta no máximo {length} caracteres."
 
 msgid "This wallet has no seed"
 msgstr "Esta carteira não possui sementes"
 
-msgid ""
-"This wallet is already registered with TrustedCoin. To finalize wallet "
-"creation, please enter your Google Authenticator Code."
-msgstr ""
-"Esta carteira já está registrada no TrustedCoin. Para finalizar a "
-"carteiracriação, digite o seu código do Google Authenticator."
+msgid "This wallet is already registered with TrustedCoin. To finalize wallet creation, please enter your Google Authenticator Code."
+msgstr "Esta carteira já está registrada no TrustedCoin. Para finalizar a criação da carteira , digite o seu código do Google Authenticator."
 
 msgid "This wallet is protected by TrustedCoin's two-factor authentication."
-msgstr ""
-"Esta carteira é protegida pela autenticação de dois fatores do TrustedCoin."
+msgstr "Esta carteira é protegida pela autenticação de dois fatores do TrustedCoin."
 
 msgid "This wallet is watching-only"
 msgstr "Esta carteira é apenas para observação."
@@ -3595,11 +3131,8 @@ msgstr "Esta carteira é apenas para observação."
 msgid "This wallet is watching-only."
 msgstr "Esta carteira é apenas para observação."
 
-msgid ""
-"This wallet was restored from seed, and it contains two master private keys."
-msgstr ""
-"Esta carteira foi restaurada a partir do seed e contém duas chaves privadas "
-"mestras."
+msgid "This wallet was restored from seed, and it contains two master private keys."
+msgstr "Esta carteira foi restaurada a partir do seed e contém duas chaves privadas mestras."
 
 msgid "This will delete your lightning private keys"
 msgstr "Isso excluirá suas chaves privadas lightning"
@@ -3608,68 +3141,41 @@ msgid "This will save fees."
 msgstr "Isso vai economizar taxas."
 
 msgid "Time based: fee rate is based on average confirmation time estimates"
-msgstr ""
-"Com base no tempo: a taxa de taxa é baseada em estimativas de tempo médio de "
-"confirmação"
+msgstr "Com base no tempo: A percentagem da taxa é baseada em estimativas do tempo médio de confirmação"
 
 msgid "To"
 msgstr "Para"
 
-msgid ""
-"To create a spending wallet, please enter a master private key (xprv/yprv/"
-"zprv)."
-msgstr ""
-"Para criar uma carteira de gastos, insira uma chave privada mestra (xprv / "
-"yprv /zprv)."
+msgid "To create a spending wallet, please enter a master private key (xprv/yprv/zprv)."
+msgstr "Para criar uma carteira de gastos, insira uma chave privada mestra (xprv / yprv /zprv)."
 
-msgid ""
-"To create a watching-only wallet, please enter your master public key (xpub/"
-"ypub/zpub)."
-msgstr ""
-"Para criar uma carteira apenas para assistir, digite sua chave pública "
-"mestra (xpub /ypub / zpub)."
+msgid "To create a watching-only wallet, please enter your master public key (xpub/ypub/zpub)."
+msgstr "Para criar uma carteira apenas de observação, digite sua chave pública mestra (xpub /ypub / zpub)."
 
 msgid "To encrypt your backup, first we need to load some noise."
-msgstr ""
-"Para criptografar a sua cópia de segurança, primeiro precisamos carregar "
-"algum ruído."
+msgstr "Para criptografar a sua cópia de segurança, primeiro precisamos carregar algum ruído."
 
-msgid ""
-"To help us diagnose and fix the problem, you can send us a bug report that "
-"contains useful debug information:"
-msgstr ""
-"Para nos ajudar a diagnosticar e corrigir o problema, poderia nos enviar um "
-"relatório de informação de erros quecontém informações úteis de depuração:"
+msgid "To help us diagnose and fix the problem, you can send us a bug report that contains useful debug information:"
+msgstr "Para nos ajudar a diagnosticar e corrigir o problema, poderia nos enviar um relatório de informação de erros que contém informações úteis de depuração:"
 
-msgid ""
-"To make sure that you have properly saved your seed, please retype it here."
-msgstr ""
-"Para ter certeza de que salvou a sua semente corretamente, digite-a "
-"novamente aqui."
+msgid "To make sure that you have properly saved your seed, please retype it here."
+msgstr "Para ter certeza de que salvou a sua semente corretamente, digite-a novamente aqui."
 
 msgid ""
 "To setup a local watchtower, you must run Electrum on a machine\n"
-"that is always connected to the internet. Configure a port if you want it to "
-"be public."
+"that is always connected to the internet. Configure a port if you want it to be public."
 msgstr ""
-"Para configurar uma torre de vigia local, você deve executar Electrum em uma "
-"máquina \n"
-"que está sempre conectado à internet. Configure uma porta se desejar ser "
-"público. "
+"Para configurar uma torre de vigia local, você deve executar Electrum em uma máquina \n"
+"que está sempre conectada à internet. Configure uma porta se desejar ser público. "
 
-msgid ""
-"To somewhat protect your privacy, Electrum tries to create change with "
-"similar precision to other outputs."
-msgstr ""
-"Para proteger um pouco a sua privacidade, a Electrum tenta criar mudanças "
-"comprecisão semelhante a outras saídas."
+msgid "To somewhat protect your privacy, Electrum tries to create change with similar precision to other outputs."
+msgstr "Para proteger um pouco a sua privacidade, a Electrum tenta criar mudanças precisão semelhante a outras saídas."
 
 msgid "To trigger a rescan, press 'Next'."
 msgstr "Para iniciar uma nova busca, pressione 'Avançar'."
 
 msgid "To try to fix this, we will now re-pair with your device."
-msgstr ""
-"Para tentar corrigir isso, iremos emparelhar novamente com o seu dispositivo."
+msgstr "Para tentar corrigir isso, iremos emparelhar novamente com o seu dispositivo."
 
 msgid "Toggle Encryption"
 msgstr "Alternar criptografia"
@@ -3752,14 +3258,8 @@ msgstr "Taxa TrustedCoin (2FA) para o próximo lote de transações"
 msgid "TrustedCoin Information"
 msgstr "Informações sobre TrustedCoin"
 
-msgid ""
-"TrustedCoin charges a small fee to co-sign transactions. The fee depends on "
-"how many prepaid transactions you buy. An extra output is added to your "
-"transaction every time you run out of prepaid transactions."
-msgstr ""
-"A TrustedCoin cobra uma pequena taxa para transações conjuntas. A taxa "
-"depende dequantas transações pré-pagas você compra. Uma saída extra é "
-"adicionada ao seutransação toda vez que você ficar sem transações pré-pagas."
+msgid "TrustedCoin charges a small fee to co-sign transactions. The fee depends on how many prepaid transactions you buy. An extra output is added to your transaction every time you run out of prepaid transactions."
+msgstr "A TrustedCoin cobra uma pequena taxa para transações conjuntas. A taxa depende de quantas transações pré-pagas você compra. Uma saída extra é adicionada à sua transação sempre que você ficar sem transações pré-pagas."
 
 msgid "Try to connect again?"
 msgstr "Tentar conectar novamente?"
@@ -3767,11 +3267,8 @@ msgstr "Tentar conectar novamente?"
 msgid "Try to explain not only what the bug is, but how it occurs."
 msgstr "Tente explicar não apenas qual é o erro, mas como ele ocorre."
 
-msgid ""
-"Try to raise your transaction fee, or use a server with a lower relay fee."
-msgstr ""
-"Tente aumentar a sua taxa de transação ou use um servidor com uma taxa de "
-"retransmissão mais baixa."
+msgid "Try to raise your transaction fee, or use a server with a lower relay fee."
+msgstr "Tente aumentar a sua taxa de transação ou use um servidor com uma taxa de retransmissão mais baixa."
 
 msgid "Turkish"
 msgstr "Turco"
@@ -3779,24 +3276,11 @@ msgstr "Turco"
 msgid "Two Factor Authentication"
 msgstr "Autenticação de dois fatores"
 
-msgid ""
-"Two-factor authentication is a service provided by TrustedCoin.  It uses a "
-"multi-signature wallet, where you own 2 of 3 keys.  The third key is stored "
-"on a remote server that signs transactions on your behalf.  To use this "
-"service, you will need a smartphone with Google Authenticator installed."
-msgstr ""
-"A autenticação de dois fatores é um serviço providenciado pelo TrustedCoin. "
-"Ele usa umacarteira com várias assinaturas, onde possui 2 de 3 chaves. A "
-"terceira chave é armazenadanum  servidor remoto que assina transações no seu "
-"nome. Para usar esteserviço, precisará de um smartphone com o Google "
-"Authenticator instalado."
+msgid "Two-factor authentication is a service provided by TrustedCoin.  It uses a multi-signature wallet, where you own 2 of 3 keys.  The third key is stored on a remote server that signs transactions on your behalf.  To use this service, you will need a smartphone with Google Authenticator installed."
+msgstr "A autenticação de dois fatores é um serviço providenciado pelo TrustedCoin. Que usa uma carteira com várias assinaturas, onde possui 2 de 3 chaves. A terceira chave é armazenadanum  servidor remoto que assina transações em seu nome. Para usar este serviço, precisará de um smartphone com o Google Authenticator instalado."
 
-msgid ""
-"Two-factor authentication is a service provided by TrustedCoin. To use it, "
-"you must have a separate device with Google Authenticator."
-msgstr ""
-"A autenticação de dois fatores é um serviço fornecido pela TrustedCoin. Para "
-"usá-lo,você deve ter um dispositivo separado com o Google Authenticator."
+msgid "Two-factor authentication is a service provided by TrustedCoin. To use it, you must have a separate device with Google Authenticator."
+msgstr "A autenticação de dois fatores é um serviço fornecido pela TrustedCoin. Para usá-lo,você deve ter um dispositivo separado com o Google Authenticator."
 
 msgid "Tx"
 msgstr "Tx"
@@ -3804,7 +3288,6 @@ msgstr "Tx"
 msgid "Type"
 msgstr "Tipo"
 
-#, python-brace-format
 msgid ""
 "Unable to connect to mail server:\n"
 " {error}"
@@ -3834,7 +3317,7 @@ msgid "Unconfirmed Parent"
 msgstr "Matriz não confirmada"
 
 msgid "Unexpected password hash version"
-msgstr "Versão inesperada do hash da senha"
+msgstr "Versão inesperada do hash da palavra-passe"
 
 msgid "Unfreeze"
 msgstr "Descongelar"
@@ -3861,7 +3344,7 @@ msgid "Unknown error when broadcasting the transaction."
 msgstr "Erro desconhecido ao transmitir a transação."
 
 msgid "Unmatured"
-msgstr "Não amadurecido"
+msgstr "Imaturo"
 
 msgid "Unrealized gains"
 msgstr "Ganhos não realizados"
@@ -3870,7 +3353,7 @@ msgid "Unsigned"
 msgstr "Sem sinal"
 
 msgid "Unsupported password hash version"
-msgstr "Versão hash de senha não suportada"
+msgstr "Versão hash de palavra-passe não suportada"
 
 msgid "Unused"
 msgstr "Não utilizado"
@@ -3881,12 +3364,11 @@ msgstr "Verificar atualização"
 msgid "Update check failed"
 msgstr "Falha na verificação de atualização"
 
-#, python-brace-format
 msgid "Update to Electrum {version} is available"
 msgstr "Electrum {version} está disponível"
 
 msgid "Upgrading wallet format..."
-msgstr "Atualizando formato de carteira ..."
+msgstr "Atualizando formato da carteira ..."
 
 msgid "Use Gold Wallet and create a new wallet"
 msgstr "Use a Gold Wallet e crie uma nova carteira"
@@ -3922,10 +3404,10 @@ msgid "Use the camera button to scan a QR code."
 msgstr "Use o botão da câmera para ler um código QR."
 
 msgid "Use this dialog to add a password to your wallet."
-msgstr "Use esta caixa de diálogo para adicionar uma senha à sua carteira."
+msgstr "Use esta caixa de diálogo para adicionar uma palavra-passe à sua carteira."
 
 msgid "Use this dialog to change your password."
-msgstr "Use esta caixa de diálogo para alterar sua senha."
+msgstr "Use esta caixa de diálogo para alterar sua palavra-passe."
 
 msgid "Use this dialog to toggle encryption."
 msgstr "Use esta caixa de diálogo para alternar a criptografia."
@@ -3939,12 +3421,8 @@ msgstr "Nome do usuário"
 msgid "Uses icons from the Icons8 icon pack (icons8.com)."
 msgstr "Usa ícones do pacote de ícones Icons8 (icons8.com)."
 
-msgid ""
-"Using change addresses makes it more difficult for other people to track "
-"your transactions."
-msgstr ""
-"Usar endereços de mudança torna mais difícil para outras pessoas "
-"rastrearemas suas transações."
+msgid "Using change addresses makes it more difficult for other people to track your transactions."
+msgstr "Usar endereços de mudança torna mais difícil para outras pessoas rastrearemas suas transações."
 
 msgid "Value"
 msgstr "Valor"
@@ -3964,21 +3442,14 @@ msgstr "Verificar"
 msgid "Verify GA instant"
 msgstr "Verificar GA instantâneo"
 
-msgid ""
-"Verify the address below.<br>Type the character from your security card "
-"corresponding to the <u><b>BOLD</b></u> character."
-msgstr ""
-"Verifique o endereço abaixo. <br> Digite o caractere do seu cartão de "
-"segurançacorrespondendo ao caractere <u><b>BOLD</b> </u>."
+msgid "Verify the address below.<br>Type the character from your security card corresponding to the <u><b>BOLD</b></u> character."
+msgstr "Verifique o endereço abaixo. <br> Digite o caractere do seu cartão de segurança correspondente ao caractere <u><b>BOLD</b> </u>."
 
-msgid ""
-"Verify the cable is connected and that no other application is using it."
-msgstr ""
-"Verifique se o cabo está conectado e se nenhum outro aplicativo o está "
-"usando."
+msgid "Verify the cable is connected and that no other application is using it."
+msgstr "Verifique se o cabo está conectado e se nenhuma outra aplicação o está a usar."
 
 msgid "Verifying..."
-msgstr "Verificando ..."
+msgstr "A Verificar..."
 
 msgid "Version"
 msgstr "Versão"
@@ -3990,7 +3461,7 @@ msgid "Vietnamese"
 msgstr "Vietnamita"
 
 msgid "View in web browser"
-msgstr "Ver no navegador da web"
+msgstr "Ver no navegador da internet"
 
 msgid "View log"
 msgstr "Ver log"
@@ -4007,13 +3478,8 @@ msgstr "AVISO: TODAS as suas chaves privadas são secretas."
 msgid "WARNING: This is a multi-signature wallet."
 msgstr "AVISO: esta é uma carteira com várias assinaturas."
 
-#, python-brace-format
-msgid ""
-"WARNING: the alias \"{alias}\" could not be validated via an additional "
-"security check, DNSSEC, and thus may not be correct."
-msgstr ""
-"AVISO: o alias \"{alias}\" não pôde ser validado por meio de umverificação "
-"de segurança, DNSSEC e, portanto, pode não estar correto."
+msgid "WARNING: the alias \"{alias}\" could not be validated via an additional security check, DNSSEC, and thus may not be correct."
+msgstr "AVISO: o alias \"{alias}\" não pôde ser validado por meio de umverificação de segurança, DNSSEC e, portanto, pode não estar correto."
 
 msgid "WIF keys are typed in Electrum, based on script type."
 msgstr "As chaves WIF são digitadas no Electrum, com base no tipo de script."
@@ -4034,19 +3500,14 @@ msgid "Wallet Name"
 msgstr "Nome da carteira"
 
 msgid "Wallet backup created"
-msgstr "Cópi de segurança estabelecida"
+msgstr "Cópia de segurança criada"
 
 msgid "Wallet change address"
 msgstr "Alterar endereço da carteira"
 
-msgid ""
-"Wallet file corruption detected. Please restore your wallet from seed, and "
-"compare the addresses in both files"
-msgstr ""
-"Arquivo de carteira estrago detectado. Por favor, restaure sua carteira do "
-"seed, ecompare os endereços em ambos os arquivos"
+msgid "Wallet file corruption detected. Please restore your wallet from seed, and compare the addresses in both files"
+msgstr "Arquivo de carteira danificado. Por favor, restaure sua carteira através  da semente, e compare os endereços em ambos os arquivos"
 
-#, python-brace-format
 msgid "Wallet file not found: {name}"
 msgstr "Arquivo da carteira não encontrado: {name}"
 
@@ -4056,7 +3517,6 @@ msgstr "Nome da carteira"
 msgid "Wallet receive address"
 msgstr "Endereço de recebimento da carteira"
 
-#, python-brace-format
 msgid "Wallet removed: {name}"
 msgstr "Carteira removida: {name}"
 
@@ -4072,74 +3532,45 @@ msgstr "Aviso"
 msgid "Warning!"
 msgstr "Aviso!"
 
-msgid ""
-"Warning: Please be aware that in the process of using the Secure Transaction "
-"feature, a part of the funds left in your wallet might be blocked. This is a "
-"normal procedure linked to UTXO and the blockchain parameters of the Bitcoin "
-"Vault wallet. Your funds will be unblocked once the transaction is verified "
-"(after approximately 24 hrs) or canceled (within 24 hrs)."
-msgstr ""
-"Aviso: Tenha em conta que no processo de uso da Transação Segurarecurso, uma "
-"parte dos fundos deixados na sua carteira pode ser bloqueada. Este é "
-"umprocedimento normal ligado ao UTXO e aos parâmetros do blockchain do "
-"BitcoinCarteira vault.  Os seus fundos serão desbloqueados assim que a "
-"transação for verificada(aproximadamente após 24 horas) ou cancelado (dentro "
-"de 24 horas)."
+msgid "Warning: Please be aware that in the process of using the Secure Transaction feature, a part of the funds left in your wallet might be blocked. This is a normal procedure linked to UTXO and the blockchain parameters of the Bitcoin Vault wallet. Your funds will be unblocked once the transaction is verified (after approximately 24 hrs) or canceled (within 24 hrs)."
+msgstr "Aviso: Tenha em conta que no processo de uso  do recurso Transação Segurar, parte dos fundos deixados na sua carteira podem ser bloqueados. Este é um procedimento normal ligado ao UTXO e aos parâmetros do blockchain da carteira Bitcoin Vault.  Os seus fundos serão desbloqueados assim que a transação for verificada(aproximadamente após 24 horas) ou canceladoa (dentro das 24 horas)."
 
 msgid ""
-"Warning: The next address will not be recovered automatically if you restore "
-"your wallet from seed; you may need to add it manually.\n"
+"Warning: The next address will not be recovered automatically if you restore your wallet from seed; you may need to add it manually.\n"
 "\n"
-"This occurs because you have too many unused addresses in your wallet. To "
-"avoid this situation, use the existing addresses first.\n"
+"This occurs because you have too many unused addresses in your wallet. To avoid this situation, use the existing addresses first.\n"
 "\n"
 "Create anyway?"
 msgstr ""
-"Aviso: O próximo endereço não será recuperado automaticamente se você "
-"restaurara sua carteira do seed; pode ser necessário adicioná-la "
-"manualmente. \n"
+"Aviso: O próximo endereço não será recuperado automaticamente se você restaurar a sua carteira da semente; pode ser necessário adicioná-la manualmente. \n"
 "\n"
-"Isso ocorre porque você tem muitos endereços não utilizados na sua carteira. "
-"Para queevite esta situação, use primeiro os endereços existentes. \n"
+"Isso ocorre porque você tem muitos endereços não utilizados na sua carteira. Para evitar esta situação, use primeiro os endereços existentes. \n"
 "\n"
 "Criar mesmo assim?"
 
 msgid "Warning: do not use this if it makes you pick a weaker password."
-msgstr ""
-"Aviso: não use isso se isso fizer com que você escolha uma senha mais fraca."
+msgstr "Aviso: não use isto, se isso fizer com que você escolha uma palavra-passe mais fraca."
 
 msgid "Watch-only wallet"
-msgstr "Carteira somente para observar"
+msgstr "Carteira somente para observação"
 
-msgid ""
-"We do not guarantee that BIP39 imports will always be supported in Electrum."
-msgstr ""
-"Não garantimos que as importações do BIP39 sempre serão apoiadas na "
-"Electrum. "
+msgid "We do not guarantee that BIP39 imports will always be supported in Electrum."
+msgstr "Não garantimos que as importações do BIP39 sempre serão apoiadas na Electrum. "
 
 msgid "We encountered an error while connecting to your device:"
 msgstr "Encontramos um erro ao conectar ao seu dispositivo:"
 
-msgid ""
-"While this is less than ideal, it might help if you run Electrum as "
-"Administrator."
-msgstr ""
-"Embora isso seja menos do que ideal, pode ajudar se você executar o Electrum "
-"comoAdministrador."
+msgid "While this is less than ideal, it might help if you run Electrum as Administrator."
+msgstr "Embora isso seja menos do que ideal, pode ajudar se você executar o Electrum como Administrador."
 
-#, python-brace-format
 msgid "Within {number} blocks"
 msgstr "Dentro de {number} blocos"
 
 msgid "Witness Script"
 msgstr "Script de Testemunha"
 
-msgid ""
-"Would you like to be notified when there is a newer version of Electrum "
-"available?"
-msgstr ""
-"Gostaria de ser notificado quando houver uma versão mais recente do Electrum "
-"acessível?"
+msgid "Would you like to be notified when there is a newer version of Electrum available?"
+msgstr "Gostaria de ser notificado quando houver uma versão mais recente do Electrum disponível?"
 
 msgid "Write logs to file"
 msgstr "Gravar logs no arquivo"
@@ -4159,6 +3590,9 @@ msgstr "Formato de pubkey errado"
 msgid "Wrong signature"
 msgstr "Assinatura errada"
 
+msgid "Yes, I disagree"
+msgstr "Sim, eu discordo"
+
 msgid "You are already on the latest version of Electrum."
 msgstr "Você já está a usar a versão mais recente do Electrum."
 
@@ -4168,33 +3602,21 @@ msgstr "Você está a seguir ramo"
 msgid "You are in testnet mode."
 msgstr "Você está no modo testnet."
 
-msgid ""
-"You are most likely using an outdated version of Electrum. Please update."
-msgstr ""
-"Você provavelmente está a usar uma versão desatualizada do Electrum. "
-"Atualize."
+msgid "You are most likely using an outdated version of Electrum. Please update."
+msgstr "Você provavelmente está a usar uma versão desatualizada do Electrum. Por favor actualize."
 
 msgid "You are offline."
 msgstr "Você está desconectado."
 
-msgid ""
-"You are using Electrum in offline mode; restart Electrum if you want to get "
-"connected"
-msgstr ""
-"Você está a usar o Electrum no modo offline; reinicie o Electrum para "
-"ficarconectado"
+msgid "You are using Electrum in offline mode; restart Electrum if you want to get connected"
+msgstr "Você está a usar o Electrum no modo offline; reinicie o Electrum para ficarconectado"
 
-msgid ""
-"You are using a non-deterministic wallet, which cannot create new addresses."
-msgstr ""
-"Você está a usar uma carteira não determinística, que não pode criar novos "
-"endereços."
+msgid "You are using a non-deterministic wallet, which cannot create new addresses."
+msgstr "Você está a usar uma carteira não determinística, que não pode criar novos endereços."
 
-#, python-brace-format
 msgid "You can disable this setting in '{setting_name}'."
 msgstr "Você pode desabilitar essa configuração em '{setting_name}'."
 
-#, python-brace-format
 msgid "You can download the new version from {url}."
 msgstr "Você pode baixar a nova versão em {url}."
 
@@ -4202,32 +3624,16 @@ msgid "You can override the suggested derivation path."
 msgstr "Você pode substituir o caminho de derivação sugerido."
 
 msgid "You can't broadcast a transaction without a live network connection."
-msgstr ""
-"Você não pode transmitir uma transação sem uma conexão de rede ao vivo."
+msgstr "Você não pode transmitir uma transação sem uma conexão de rede ao vivo."
 
-msgid ""
-"You do not need to perform regular backups, because your wallet can be "
-"recovered from a secret phrase that you can memorize or write on paper."
-msgstr ""
-"Você não precisa fazer cópias de segurança regulares, porque a sua carteira "
-"pode serrecuperada de uma frase secreta que você pode memorizar ou escrever "
-"no papel."
+msgid "You do not need to perform regular backups, because your wallet can be recovered from a secret phrase that you can memorize or write on paper."
+msgstr "Você não precisa fazer cópias de segurança regulares, porque a sua carteira pode serrecuperada de uma frase secreta que você pode memorizar ou escrever no papel."
 
-msgid ""
-"You have multiple consecutive whitespaces or leading/trailing whitespaces in "
-"your passphrase."
-msgstr ""
-"Você tem vários espaços em branco consecutivos ou à esquerda / à direita ema "
-"sua senha longa."
+msgid "You have multiple consecutive whitespaces or leading/trailing whitespaces in your passphrase."
+msgstr "Você tem vários espaços em branco consecutivos ou à esquerda / à direita na sua frase-passe."
 
-msgid ""
-"You may enter a Bitcoin address, a label from your list of contacts (a list "
-"of completions will be proposed), or an alias (email-like address that "
-"forwards to a Bitcoin address)"
-msgstr ""
-"Você pode inserir um endereço Bitcoin, um marcador de sua lista de contatos "
-"(uma listade conclusões serão propostas), ou um alias (endereço de e-mail "
-"queencaminha para um endereço Bitcoin)"
+msgid "You may enter a Bitcoin address, a label from your list of contacts (a list of completions will be proposed), or an alias (email-like address that forwards to a Bitcoin address)"
+msgstr "Você pode inserir um endereço Bitcoin, um marcador de sua lista de contatos (uma lista de conclusões serão propostas), ou um alias (endereço de e-mail que reencaminha para um endereço Bitcoin)"
 
 msgid "You may extend your seed with custom words."
 msgstr "Você pode estender a sua semente com palavras personalizadas."
@@ -4238,33 +3644,11 @@ msgstr "Você pode carregar um arquivo CSV usando o ícone do arquivo."
 msgid "You might have an incompatible library."
 msgstr "Você pode ter uma biblioteca incompatível."
 
-#, python-brace-format
-msgid ""
-"You need to be online in order to complete the creation of your wallet.  If "
-"you generated your seed on an offline computer, click on \"{button}\" to "
-"close this window, move your wallet file to an online computer, and reopen "
-"it with Electrum."
-msgstr ""
-" Precisa estar conectado para concluir a criação da sua carteira. Secriar a "
-"sua semente num computador offline, clique em \" {button} \" parafechar esta "
-"janela, mova o seu arquivo de carteira para um computador em linha e "
-"reabracom Electrum."
+msgid "You need to be online in order to complete the creation of your wallet.  If you generated your seed on an offline computer, click on \"{button}\" to close this window, move your wallet file to an online computer, and reopen it with Electrum."
+msgstr " Precisa estar conectado para concluir a criação da sua carteira. Se criar a sua semente num computador offline, clique em \" {button} \" para fechar esta janela, mova o seu arquivo de carteira para um computador online e reabra com Electrum."
 
-msgid ""
-"Your Ledger Wallet wants to tell you a one-time PIN code.<br><br>For best "
-"security you should unplug your device, open a text editor on another "
-"computer, put your cursor into it, and plug your device into that computer. "
-"It will output a summary of the transaction being signed and a one-time PIN."
-"<br><br>Verify the transaction summary and type the PIN code here."
-"<br><br>Before pressing enter, plug the device back into this computer.<br>"
-msgstr ""
-"A sua carteira de contabilidade deseja informar um código PIN único. <br> "
-"<br> Para o melhorsegurança você deve desligar o seu dispositivo, abrir um "
-"editor de texto em outrocomputador, coloque o cursor nele e conecte o "
-"dispositivo a esse computador.Ele irá gerar um resumo da transação sendo "
-"assinada e um PIN único.<br> <br> Verifique o resumo da transação e digite o "
-"código PIN aqui.<br> <br> Antes de pressionar Enter, conecte o dispositivo "
-"novamente a este computador. <br>"
+msgid "Your Ledger Wallet wants to tell you a one-time PIN code.<br><br>For best security you should unplug your device, open a text editor on another computer, put your cursor into it, and plug your device into that computer. It will output a summary of the transaction being signed and a one-time PIN.<br><br>Verify the transaction summary and type the PIN code here.<br><br>Before pressing enter, plug the device back into this computer.<br>"
+msgstr "A sua carteira de contabilidade deseja informar um código PIN único. <br> <br> Para o melhor segurança você deve desligar o seu dispositivo, abrir um editor de texto em outro computador, coloque o cursor nele e conecte o dispositivo a esse computador. Ele irá gerar um resumo da transação sendo assinada e um PIN único.<br> <br> Verifique o resumo da transação e digite o código PIN aqui.<br> <br> Antes de pressionar Enter, conecte o dispositivo novamente a este computador. <br>"
 
 msgid "Your Ledger is locked. Please unlock it."
 msgstr "O seu livro Ledger está bloqueado. Por favor, desbloqueie-o."
@@ -4273,17 +3657,13 @@ msgid "Your Node ID"
 msgstr "O seu Nó ID"
 
 msgid "Your PIN code was updated"
-msgstr "O seu código PIN foi atualizado"
+msgstr "O seu código PIN foi actualizado"
 
 msgid "Your accounts have been moved to"
 msgstr "As suas contas foram movidas para"
 
-msgid ""
-"Your bitcoins are password protected. However, your wallet file is not "
-"encrypted."
-msgstr ""
-"Os seus bitcoins são protegidos por senha. No entanto, o seu arquivo de "
-"carteira não écriptografado."
+msgid "Your bitcoins are password protected. However, your wallet file is not encrypted."
+msgstr "Os seus bitcoins são protegidos por palavra-passe. No entanto, o seu arquivo de carteira não écriptografado."
 
 msgid "Your device might not have support for this functionality."
 msgstr " O seu dispositivo pode não ter suporte para esta funcionalidade."
@@ -4307,8 +3687,7 @@ msgid "Your transaction was sent to the cosigning pool."
 msgstr "A sua transação foi enviada para o pool de fiador."
 
 msgid "Your wallet file does not contain secrets, mostly just metadata. "
-msgstr ""
-"O seu arquivo de carteira não contém segredos, principalmente metadados."
+msgstr "O seu arquivo de carteira não contém segredos, principalmente metadados."
 
 msgid "Your wallet file is NOT encrypted."
 msgstr "O seu arquivo de carteira NÃO está criptografado."
@@ -4316,14 +3695,12 @@ msgstr "O seu arquivo de carteira NÃO está criptografado."
 msgid "Your wallet file is encrypted."
 msgstr "O seu arquivo de carteira está criptografado."
 
-#, python-brace-format
 msgid "Your wallet file is: {path}."
 msgstr "O seu arquivo de carteira é: {path}."
 
 msgid "Your wallet generation seed is:"
-msgstr "A sua semente de geração de carteira é:"
+msgstr "A sua semente da geração da sua carteira é:"
 
-#, python-brace-format
 msgid "Your wallet has {number} prepaid transactions."
 msgstr "A sua carteira tem {number} transações pré-pagas."
 
@@ -4334,16 +3711,14 @@ msgid "Your wallet is not protected."
 msgstr "A sua carteira não está protegida."
 
 msgid "Your wallet is password protected and encrypted."
-msgstr "A sua carteira é protegida por senha e criptografada."
+msgstr "A sua carteira é protegida por uma palavra-passe e criptografada."
 
 msgid "Your wallet's generated seed is:"
 msgstr "A semente criada pela sua carteira é:"
 
-#, python-brace-format
 msgid "Your {0} were exported to '{1}'"
 msgstr "Os seus {0} foram exportados para '{1}'"
 
-#, python-brace-format
 msgid "Your {title} were successfully imported"
 msgstr "O seu {title} foi importado com sucesso"
 
@@ -4392,12 +3767,8 @@ msgstr "adicionar fatura expirada"
 msgid "address already in wallet"
 msgstr "endereço já na carteira"
 
-msgid ""
-"and you will have the possibility, while they are unconfirmed, to replace "
-"them with transactions that pay higher fees."
-msgstr ""
-"e você terá a possibilidade, enquanto eles não estiverem confirmados, de "
-"substituir-loscom transações que pagam taxas mais altas."
+msgid "and you will have the possibility, while they are unconfirmed, to replace them with transactions that pay higher fees."
+msgstr "e você terá a possibilidade, enquanto eles não estiverem confirmados, de substituir-los,com transações que pagam taxas mais altas."
 
 msgid "are frozen"
 msgstr "estão congelados"
@@ -4433,7 +3804,7 @@ msgid "invalid private key"
 msgstr "chave privada inválida"
 
 msgid "invoices"
-msgstr "faturas"
+msgstr "facturas"
 
 msgid "json"
 msgstr "json"
@@ -4444,12 +3815,8 @@ msgstr "Armazém de Chaves"
 msgid "labels"
 msgstr "Etiquetas"
 
-msgid ""
-"more information at <a href=\"https://revealer.cc/faq\">https://revealer.cc/"
-"faq</a>"
-msgstr ""
-"mais informações em <a href=\"https://revealer.cc/faq\"> https://revealer."
-"cc/ faq </a> "
+msgid "more information at <a href=\"https://revealer.cc/faq\">https://revealer.cc/faq</a>"
+msgstr "mais informações em <a href=\"https://revealer.cc/faq\"> https://revealer.cc/ faq </a> "
 
 msgid "not implemented type"
 msgstr "tipo não implementado"
@@ -4458,8 +3825,7 @@ msgid "open_channel timed out"
 msgstr "open_channel expirou"
 
 msgid "or type an existing revealer code below and click 'next':"
-msgstr ""
-"ou digite um código de revelador existente abaixo e clique em 'próximo':"
+msgstr "ou digite um código de revelador existente abaixo e clique em 'próximo':"
 
 msgid "please wait..."
 msgstr "por favor, aguarde..."
@@ -4495,7 +3861,7 @@ msgid "unknown parser {name!r} (choices: {choices})"
 msgstr "analisador desconhecido {name!r} (escolhas: {choices})"
 
 msgid "unmatured"
-msgstr "não amadurecido"
+msgstr "Imaturo"
 
 msgid "watching only"
 msgstr "apenas assistindo"
@@ -4506,35 +3872,24 @@ msgstr "apenas assistindo"
 msgid "wiped"
 msgstr "Eliminado"
 
-msgid ""
-"your seed extension will <b>not</b> be included in the encrypted backup."
-msgstr ""
-"A sua extensão de seed <b> não </b> será incluída no backup criptografado."
+msgid "your seed extension will <b>not</b> be included in the encrypted backup."
+msgstr "A sua extensão de semente <b> não </b> será incluída no backup criptografado."
 
-#, python-brace-format
 msgid "{coins_number} outputs available ({utxos_number} total)"
 msgstr "{coins_number} saídas disponíveis ({utxos_number} no total)"
 
-#, python-brace-format
 msgid "{number} confirmations"
 msgstr "{number} confirmações"
 
-#, python-brace-format
 msgid "{number} connections."
 msgstr "{number} conexões."
 
-#, python-brace-format
-msgid ""
-"{number} new transactions: Total amount received in the new transactions "
-"{amount}"
-msgstr ""
-"{number} novas transações: valor total recebido nas novas transações{amount}"
+msgid "{number} new transactions: Total amount received in the new transactions {amount}"
+msgstr "{number} novas transações: valor total recebido nas novas transações{amount}"
 
-#, python-brace-format
 msgid "{size} from tip"
-msgstr "{size} da dica"
+msgstr "{size} da ponta"
 
-#, python-brace-format
 msgid ""
 "{title} copied to clipboard:\n"
 "\n"
@@ -4544,18 +3899,11 @@ msgstr ""
 "\n"
 "{content}"
 
-#, python-brace-format
 msgid "{txid} is covered by GreenAddress instant confirmation"
-msgstr "{txid} esta protegido pela confirmação instantânea GreenAddress"
+msgstr "{txid} está, protegido pela confirmação instantânea GreenAddress"
 
-#, python-brace-format
 msgid "{txid} is not covered by GreenAddress instant confirmation"
 msgstr "{txid} não está protegido pela confirmação instantânea GreenAddress"
 
-#, python-brace-format
-msgid ""
-"{wallet_seed} encrypted for Revealer {version}_{checksum} saved as PNG and "
-"PDF at: "
-msgstr ""
-"{wallet_seed} criptografado para Revealer {version}_{checksum} salvo como "
-"PNG ePDF em:"
+msgid "{wallet_seed} encrypted for Revealer {version}_{checksum} saved as PNG and PDF at: "
+msgstr "{wallet_seed} criptografado para Revealer {version}_{checksum} salvo como PNG ePDF em:"
