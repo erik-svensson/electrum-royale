@@ -61,3 +61,7 @@ class LastChosenState:
     @classmethod
     def get_index(cls, id_):
         return cls.STATES.get(hash(id_), 0)
+
+    @classmethod
+    def clear(cls):
+        cls.STATES = {}
