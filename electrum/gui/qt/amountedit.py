@@ -3,7 +3,7 @@
 from decimal import Decimal
 
 from PyQt5.QtCore import pyqtSignal, Qt
-from PyQt5.QtGui import QPalette, QPainter, QFontMetrics
+from PyQt5.QtGui import QPalette, QPainter, QFontMetrics, QKeySequence
 from PyQt5.QtWidgets import (QLineEdit, QStyle, QStyleOptionFrame)
 
 from .util import char_width_in_lineedit
@@ -45,6 +45,7 @@ class AmountEdit(MyLineEdit):
         if text == '!':
             self.shortcut.emit()
             return
+
         pos = self.cursorPosition()
         chars = '0123456789'
         if not self.is_int: chars +='.'
@@ -54,6 +55,9 @@ class AmountEdit(MyLineEdit):
                 p = s.find('.')
                 s = s.replace('.','')
                 s = s[:p] + '.' + s[p:p+self.max_precision()]
+
+        if len(s) > 1 and s[0] == '0' and '.' not in s:
+            s = '0'
         self.setText(s)
         # setText sets Modified to False.  Instead we want to remember
         # if updates were because of user modification.
@@ -79,6 +83,16 @@ class AmountEdit(MyLineEdit):
 
     def setAmount(self, x):
         self.setText("%d"%x)
+
+    def contextMenuEvent(self, event):
+        """Suppress context menu"""
+        pass
+
+    def keyPressEvent(self, event):
+        """Suppress ctrl+c, ctrl+v ctrl+x"""
+        if event.matches(QKeySequence.Paste) or event.matches(QKeySequence.Copy) or event.matches(QKeySequence.Cut):
+            return
+        super().keyPressEvent(event)
 
 
 class BTCAmountEdit(AmountEdit):
