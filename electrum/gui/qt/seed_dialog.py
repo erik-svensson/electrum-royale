@@ -36,6 +36,7 @@ from .util import (Buttons, OkButton, WWLabel, ButtonsTextEdit, icon_path,
                    EnterButton, CloseButton, WindowModalDialog, ColorScheme)
 from .qrtextedit import ShowQRTextEdit, ScanQRTextEdit
 from .completion_text_edit import CompletionTextEdit
+from ...keystore import bip39_is_checksum_valid
 
 
 def seed_warning_msg(seed):
@@ -55,14 +56,18 @@ def seed_warning_msg(seed):
 
 class SeedLayout(QVBoxLayout):
 
-    def seed_options(self):
+    def seed_options(self, import_gw_option):
         vbox = QVBoxLayout()
         # order matters when we align checkboxes to right
+        if import_gw_option:
+            cb_gw = QCheckBox(_('Gold Wallet seed'))
+            cb_gw.toggled.connect(self.toggle_cb_gold_wallet)
+            cb_gw.setChecked(self.is_gold_wallet_import)
+            vbox.addWidget(cb_gw, alignment=Qt.AlignLeft)
+            self.checkboxes['gw'] = cb_gw
+            self.is_gold_wallet_import = cb_gw.isChecked()
         if 'bip39' in self.options:
             def f(b):
-                self.is_seed = (lambda x: bool(x)) if b else self.saved_is_seed
-                self.is_bip39 = b
-                self.on_edit()
                 if b:
                     msg = ' '.join([
                         '<b>' + _('Warning') + ':</b>  ',
@@ -72,15 +77,18 @@ class SeedLayout(QVBoxLayout):
                 else:
                     msg = ''
                 self.seed_warning.setText(msg)
-            cb_bip39 = QCheckBox(_('BIP39 seed (Gold Wallet integration)'))
+            cb_bip39 = QCheckBox(_('BIP39 seed'))
             cb_bip39.toggled.connect(f)
+            cb_bip39.toggled.connect(self.toggle_cb_bip39)
             cb_bip39.setChecked(self.is_bip39)
             vbox.addWidget(cb_bip39, alignment=Qt.AlignLeft)
+            self.checkboxes['bip39'] = cb_bip39
         if 'ext' in self.options:
             cb_ext = QCheckBox(_('Extend this seed with custom words'))
             cb_ext.toggled.connect(self.toggle_cb_ext)
             cb_ext.setChecked(self.is_ext)
             vbox.addWidget(cb_ext, alignment=Qt.AlignLeft)
+            self.checkboxes['ext'] = cb_ext
         self.addLayout(vbox)
         self.is_ext = cb_ext.isChecked() if 'ext' in self.options else False
         self.is_bip39 = cb_bip39.isChecked() if 'bip39' in self.options else False
@@ -88,8 +96,35 @@ class SeedLayout(QVBoxLayout):
     def toggle_cb_ext(self, flag: bool):
         self.is_ext = flag
 
+    def toggle_cb_gold_wallet(self, flag: bool):
+        self.is_gold_wallet_import = flag
+        bip39 = self.checkboxes.get('bip39', None)
+        if bip39 and bip39.isChecked() and flag:
+            bip39.setChecked(False)
+        self.on_edit()
+
+    def toggle_cb_bip39(self, flag: bool):
+        self.is_bip39 = flag
+        gw = self.checkboxes.get('gw', None)
+        if gw and gw.isChecked() and flag:
+            gw.setChecked(False)
+        self.on_edit()
+
+    def show_default_options(self):
+        for key, cb in self.checkboxes.items():
+            if key == 'gw':
+                cb.setVisible(True)
+                continue
+            cb.setVisible(False)
+        self.seed_warning.setVisible(False)
+
+    def show_advanced_options(self):
+        for cb in self.checkboxes.values():
+            cb.setVisible(True)
+        self.seed_warning.setVisible(True)
+
     def __init__(self, seed=None, title=None, icon=True, msg=None, options=None,
-                 is_seed=None, passphrase=None, parent=None, for_seed_words=True, import_gold_wallet=False):
+                 is_seed=None, passphrase=None, parent=None, for_seed_words=True, imported_wallet=None):
         QVBoxLayout.__init__(self)
         self.parent = parent
         self.options = options
@@ -128,11 +163,16 @@ class SeedLayout(QVBoxLayout):
         # options
         self.is_bip39 = False
         self.is_ext = False
-        if import_gold_wallet:
-            self.is_bip39 = True
-        self.import_gold_wallet = import_gold_wallet
+        self.is_gold_wallet_import = False
+        self.checkboxes = {}
+        import_gw = False
+        if imported_wallet in ['standard', '2-key', '3-key']:
+            self.is_gold_wallet_import = True
+            import_gw = True
+        if imported_wallet in ['2-key', '3-key']:
+            self.options = options = ['ext']
         if options:
-            self.seed_options()
+            self.seed_options(import_gw)
         if passphrase:
             hbox = QHBoxLayout()
             passphrase_e = QLineEdit()
@@ -177,7 +217,10 @@ class SeedLayout(QVBoxLayout):
 
     def on_edit(self):
         s = self.get_seed()
-        b = self.is_seed(s)
+        if self.is_bip39 or self.is_gold_wallet_import:
+            b = bip39_is_checksum_valid(s)[0]
+        else:
+            b = bool(seed_type(s))
         self.parent.next_button.setEnabled(b)
 
         # disable suggestions if user already typed an unknown word

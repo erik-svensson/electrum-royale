@@ -571,10 +571,17 @@ class BaseWizard(Logger, AdvancedOptionMixin):
         test = mnemonic.is_seed if self.wallet_type in ['standard', '2-key', '3-key'] else is_cosigning_seed
         self.restore_seed_dialog(run_next=self.on_restore_seed, test=test)
 
-    def on_restore_seed(self, seed, is_bip39, is_ext):
-        self.seed_type = 'bip39' if is_bip39 else mnemonic.seed_type(seed)
+    def on_restore_seed(self, seed, is_bip39, is_ext, is_gold_wallet_import=False):
+        self.seed_type = 'bip39' if is_bip39 or is_gold_wallet_import else mnemonic.seed_type(seed)
         if self.seed_type == 'bip39':
             f = lambda passphrase: self.on_restore_bip39(seed, passphrase)
+            if self.wallet_type in ['2-key', '3-key']:
+                f = lambda passphrase: self.on_bip43(seed=seed, passphrase=passphrase,
+                                                     derivation="m/0'", script_type='p2wpkh-p2sh')
+            elif self.wallet_type == 'standard' and is_gold_wallet_import:
+                f = lambda passphrase: self.on_bip43(seed=seed, passphrase=passphrase,
+                                                     derivation="m/49'/440'/0'", script_type='p2wpkh-p2sh')
+
             self.passphrase_dialog(run_next=f, is_restoring=True) if is_ext else f('')
         elif self.seed_type in ['standard', 'segwit']:
             f = lambda passphrase: self.run('create_keystore', seed, passphrase)
