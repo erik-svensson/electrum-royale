@@ -79,7 +79,7 @@ from .confirm_tx_dialog import ConfirmTxDialog
 from .exception_window import Exception_Hook
 from .fee_slider import FeeSlider
 from .history_list import HistoryList, HistoryModel
-from .installwizard import WIF_HELP_TEXT
+from .installwizard import get_wif_help_text
 from .qrcodewidget import QRCodeWidget, QRDialog
 from .qrtextedit import ShowQRTextEdit, ScanQRTextEdit
 from .three_keys_dialogs import PSBTDialog
@@ -2555,7 +2555,7 @@ in the "Authenticators" tab in the Gold Wallet app.')
         vbox = QVBoxLayout(d)
         hbox_top = QHBoxLayout()
         hbox_top.addWidget(QLabel(_("Enter private keys:")))
-        hbox_top.addWidget(InfoButton(WIF_HELP_TEXT), alignment=Qt.AlignRight)
+        hbox_top.addWidget(InfoButton(get_wif_help_text()), alignment=Qt.AlignRight)
         vbox.addLayout(hbox_top)
         keys_e = ScanQRTextEdit(allow_multi=True)
         keys_e.setTabChangesFocus(True)
@@ -2649,7 +2649,7 @@ in the "Authenticators" tab in the Gold Wallet app.')
         title = _('Import private keys')
         header_layout = QHBoxLayout()
         header_layout.addWidget(QLabel(_("Enter private keys")+':'))
-        header_layout.addWidget(InfoButton(WIF_HELP_TEXT), alignment=Qt.AlignRight)
+        header_layout.addWidget(InfoButton(get_wif_help_text()), alignment=Qt.AlignRight)
         self._do_import(title, header_layout, lambda x: self.wallet.import_private_keys(x, password))
 
     def update_fiat(self):

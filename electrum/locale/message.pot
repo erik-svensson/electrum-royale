@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-19 13:13+0100\n"
+"POT-Creation-Date: 2020-12-07 19:46+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -354,7 +354,7 @@ msgstr ""
 msgid "Automatically check for software updates"
 msgstr ""
 
-msgid "BIP39 seed (Gold Wallet integration)"
+msgid "BIP39 seed"
 msgstr ""
 
 msgid "BIP39 seeds can be imported in Electrum, so that users can access funds locked in other wallets."
@@ -444,13 +444,13 @@ msgstr ""
 msgid "Cancel"
 msgstr ""
 
+msgid "Cancel Transaction Key"
+msgstr ""
+
 msgid "Cancel seedphrase"
 msgstr ""
 
 msgid "Cancel seedphrase not matching any key in this wallet"
-msgstr ""
-
-msgid "Cancel transaction public key"
 msgstr ""
 
 msgid "Cancelation address"
@@ -1281,6 +1281,9 @@ msgstr ""
 msgid "False"
 msgstr ""
 
+msgid "Fast Transaction Key"
+msgstr ""
+
 msgid "Fee"
 msgstr ""
 
@@ -1412,6 +1415,9 @@ msgstr ""
 msgid "Gold Wallet authenticator public key"
 msgstr ""
 
+msgid "Gold Wallet seed"
+msgstr ""
+
 msgid "Google Authenticator code:"
 msgstr ""
 
@@ -1447,6 +1453,9 @@ msgid "Here is your master public key."
 msgstr ""
 
 msgid "Hide"
+msgstr ""
+
+msgid "Hide advanced"
 msgstr ""
 
 #, python-brace-format
@@ -2266,10 +2275,10 @@ msgstr ""
 msgid "Please insert your {device}"
 msgstr ""
 
-msgid "Please paste a Cancel transaction public key. Use an existing one, if you are importing a wallet, or generate a new one at"
+msgid "Please paste a Cancel Transaction Key. Use an existing one, if you are importing a wallet, or generate a new one at"
 msgstr ""
 
-msgid "Please paste a Secure Fast transaction public key. Use an existing one, if you are importing a wallet, or generate a new one at"
+msgid "Please paste a Fast Transaction Key. Use an existing one, if you are importing a wallet, or generate a new one at"
 msgstr ""
 
 msgid "Please paste authenticator public key exported from your Gold Wallet application"
@@ -2612,6 +2621,9 @@ msgstr ""
 msgid "Secure - confirmed after 24 hours. Can be canceled within that time."
 msgstr ""
 
+msgid "Secure Fast"
+msgstr ""
+
 msgid "Secure Fast - confirmed immediately. Cannot be canceled. Requires an additional seed phrase."
 msgstr ""
 
@@ -2622,12 +2634,6 @@ msgid "Secure Fast Tx seed not matching any key in this wallet"
 msgstr ""
 
 msgid "Secure Fast seedphrase"
-msgstr ""
-
-msgid "Secure Fast transaction public key"
-msgstr ""
-
-msgid "Secure fast"
 msgstr ""
 
 msgid "Secure incoming"
@@ -2799,6 +2805,9 @@ msgid "Show Fiat balance for addresses"
 msgstr ""
 
 msgid "Show QR Code"
+msgstr ""
+
+msgid "Show advanced"
 msgstr ""
 
 msgid "Show as QR code"
