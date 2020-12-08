@@ -1,6 +1,6 @@
 trezor[hidapi]>=0.11.5
 safet>=0.1.5
 keepkey>=6.0.3
-btchip-python>=0.1.26
+git+ssh://git@gitlab.minebest.com/r-and-d/ledger-integration/btchip-python.git@feature/btcv
 ckcc-protocol>=0.7.7
 hidapi
