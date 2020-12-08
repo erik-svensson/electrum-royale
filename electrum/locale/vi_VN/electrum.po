@@ -17,37 +17,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-msgid "Are you sure you want to disagree?"
-msgstr "Bạn có chắc chắn không đồng ý không?"
-
-msgid "Are you sure?"
-msgstr "Bạn có chắc chắn không?"
-
-msgid "Description is not supported for Secure Fast transaction"
-msgstr "Mô tả không được hỗ trợ cho giao dịch Nhanh An Toàn"
-
-msgid "I agree"
-msgstr "Tôi đồng ý"
-
-msgid "I disagree"
-msgstr "Tôi không đồng ý"
-
-msgid "No, I changed my mind"
-msgstr "Không, tôi đã đổi ý"
-
-msgid ""
-"Note that if you disagree to our Terms & Conditions you won't be able to use "
-"the Electrum Vault application."
-msgstr ""
-"Lưu ý rằng nếu bạn không đồng ý với Điều khoản & Điều kiện của chúng tôi, "
-"bạn sẽ không thể sử dụng ứng dụng Electrum Vault."
-
-msgid "Terms & Conditions"
-msgstr "Điều khoản và điều kiện"
-
-msgid "Yes, I disagree"
-msgstr "Vâng, tôi không đồng ý"
-
 msgid "  (No FX rate available)"
 msgstr "(Không có tỷ giá hối đoái)"
 
@@ -177,12 +146,8 @@ msgstr "&Xem"
 msgid "&Wallet"
 msgstr "&Ví"
 
-msgid ""
-"'Legacy' is the original address type, while 'Segwit' is the newer address "
-"format with lower fees."
-msgstr ""
-"'Kế thừa' là loại địa chỉ căn bản đầu tiên, trong khi 'Segwit' là địa chỉ "
-"mới hơn định dạng với phí thấp hơn. "
+msgid "'Legacy' is the original address type, while 'Segwit' is the newer address format with lower fees."
+msgstr "'Legacy' là loại địa chỉ căn bản đầu tiên, trong khi 'Segwit' là địa chỉ định dạng mới hơn với phí thấp hơn. "
 
 msgid "+"
 msgstr "+"
@@ -203,23 +168,16 @@ msgid "10 minutes"
 msgstr "10 phút"
 
 msgid "2-Key Vault"
-msgstr "Mã Vault 2 Khóa"
+msgstr "2-Key Vault"
 
-msgid ""
-"2. Align your Revealer borderlines to the dashed lines on the top and left."
-msgstr ""
-" 2. Căn chỉnh các đường viền của Revealer theo đường đứt nét ở trên cùng và "
-"bên trái. "
+msgid "2. Align your Revealer borderlines to the dashed lines on the top and left."
+msgstr " 2. Căn chỉnh các đường viền của Revealer theo đường đứt nét ở trên cùng và bên trái. "
 
 msgid "3-Key Vault"
-msgstr "Mã Vault 3 Khóa"
+msgstr "3-Key Vault"
 
-msgid ""
-"3. Press slightly the Revealer against the paper and read the numbers that "
-"best match on the opposite sides. "
-msgstr ""
-" 3. Nhấn nhẹ Revealer trên mặt giấy và đọc các số  phù hợp nhất ở các phía "
-"đối diện. "
+msgid "3. Press slightly the Revealer against the paper and read the numbers that best match on the opposite sides. "
+msgstr " 3. Nhấn nhẹ Revealer trên mặt giấy và đọc các số phù hợp nhất ở các phía đối diện. "
 
 msgid "4. Type the numbers in the software"
 msgstr "4. Nhập các số vào phần mềm"
@@ -236,21 +194,11 @@ msgstr "Thư viện có vẻ đang bị thiếu."
 msgid "A payment was already initiated for this invoice"
 msgstr "Thanh toán đã được thực hiện cho hóa đơn này"
 
-msgid ""
-"A small fee will be charged on each transaction that uses the remote "
-"server.  You may check and modify your billing preferences once the "
-"installation is complete."
-msgstr ""
-"Một khoản phí nhỏ sẽ được tính cho mỗi giao dịch từ xa Người phục vụ. Bạn có "
-"thể kiểm tra và sửa đổi tùy chọn thanh toán của mình sau khi cài đặt hoàn "
-"tất."
+msgid "A small fee will be charged on each transaction that uses the remote server.  You may check and modify your billing preferences once the installation is complete."
+msgstr "Một khoản phí nhỏ sẽ được tính cho mỗi giao dịch từ hệ thống từ xaBạn có thể kiểm tra và sửa đổi tùy chọn thanh toán của mình sau khi cài đặt hoàn tất."
 
-msgid ""
-"A suggested fee is automatically added to this field. You may override it. "
-"The suggested fee increases with the size of the transaction."
-msgstr ""
-" Phí đề xuất sẽ tự động được thêm vào trường này. Quý khách có thể ghi đè "
-"nó.  Phí đề xuất sẽ tăng theo quy mô của giao dịch. "
+msgid "A suggested fee is automatically added to this field. You may override it. The suggested fee increases with the size of the transaction."
+msgstr " Phí đề xuất sẽ tự động được thêm vào trường này. Quý khách có thể ghi đè lên nóPhí đề xuất sẽ tăng theo quy mô của giao dịch. "
 
 msgid "About"
 msgstr "Về"
@@ -279,7 +227,6 @@ msgstr "Thêm Cosigner"
 msgid "Additional fees"
 msgstr "Phí bổ sung"
 
-#, python-brace-format
 msgid "Additional {num_satoshis_added} satoshis are going to be added."
 msgstr "Thêm {num_satoshis_added} satoshi sẽ được thêm vào."
 
@@ -319,26 +266,17 @@ msgstr "Tất cả"
 msgid "All fields must be filled out"
 msgstr "Tất cả các mục phải được điền"
 
-msgid ""
-"Allows validating if your transactions have instant confirmations by "
-"GreenAddress"
-msgstr ""
-" Cho phép xác thực nếu giao dịch của quý khách có xác nhận ngay lập tức bằng "
-"GreenAddress "
+msgid "Allows validating if your transactions have instant confirmations by GreenAddress"
+msgstr " Cho phép xác thực nếu giao dịch của quý khách có xác nhận ngay lập tức bằng GreenAddress "
 
 msgid "Already up to date"
 msgstr "Đã cập nhật"
 
 msgid "Also, dust is not kept as change, but added to the fee."
-msgstr ""
-"Ngoài ra, bụi không được giữ dưới dạng thay đổi, nhưng được thêm vào phí"
+msgstr "Ngoài ra, bụi không được giữ dưới dạng thay đổi, nhưng được thêm vào phí"
 
-msgid ""
-"Also, when batching RBF transactions, BIP 125 imposes a lower bound on the "
-"fee."
-msgstr ""
-" Ngoài ra, khi phân chia các giao dịch RBF, BIP 125 áp đặt giới hạn thấp hơn "
-"đối với phí."
+msgid "Also, when batching RBF transactions, BIP 125 imposes a lower bound on the fee."
+msgstr " Ngoài ra, khi phân chia các giao dịch RBF, BIP 125 áp đặt giới hạn thấp hơn đối với phí."
 
 msgid "Always check your backups."
 msgstr "Luôn kiểm tra các bản sao lưu của quý khách."
@@ -367,28 +305,24 @@ msgstr "Đã xảy ra lỗi"
 msgid "An encrypted transaction was retrieved from cosigning pool."
 msgstr "Một giao dịch được mã hóa đã được truy xuất từ ​​cosigning pool."
 
-#, python-brace-format
 msgid "An unnamed {device_name}"
 msgstr "Không tên {device_name}"
 
-msgid ""
-"Are you sure you want to delete this channel? This will purge associated "
-"transactions from your wallet history."
-msgstr ""
-" Quý khách có chắc chắn rằng muốn xóa kênh này không? Điều này sẽ xóa liên "
-"kết  giao dịch từ lịch sử ví của quý khách."
+msgid "Are you sure you want to delete this channel? This will purge associated transactions from your wallet history."
+msgstr " Quý khách có chắc chắn rằng muốn xóa kênh này không? Điều này sẽ xóa liên kết  giao dịch từ lịch sử ví của quý khách."
 
-#, python-brace-format
-msgid ""
-"Are you sure you want to remove this transaction and {number} child "
-"transactions?"
-msgstr ""
-" Quý khách có chắc chắn muốn xóa giao dịch này và giao dịch con {number}?"
+msgid "Are you sure you want to disagree?"
+msgstr "Bạn có chắc chắn không đồng ý không?"
+
+msgid "Are you sure you want to remove this transaction and {number} child transactions?"
+msgstr " Quý khách có chắc chắn muốn xóa giao dịch này và giao dịch con {number}?"
 
 msgid "Are you sure you want to remove this transaction?"
 msgstr "Quý khách có chắc chắn muốn xóa giao dịch này không?"
 
-#, python-brace-format
+msgid "Are you sure?"
+msgstr "Bạn có chắc chắn không?"
+
 msgid "At block height: {height}"
 msgstr "Ở chiều cao khối: {height}"
 
@@ -419,12 +353,8 @@ msgstr "Tự động kiểm tra các bản cập nhật phần mềm"
 msgid "BIP39 seed (Gold Wallet integration)"
 msgstr "BIP39 seed (Gold Wallet hợp nhất)"
 
-msgid ""
-"BIP39 seeds can be imported in Electrum, so that users can access funds "
-"locked in other wallets."
-msgstr ""
-" Hạt giống BIP39 có thể được nhập vào Electrum, để người dùng có thể truy "
-"cập vào tiềnbị khóa trong các ví khác. "
+msgid "BIP39 seeds can be imported in Electrum, so that users can access funds locked in other wallets."
+msgstr " Hạt giống BIP39 có thể được nhập vào Electrum, để người dùng có thể truy cập vào tiềnbị khóa trong các ví khác. "
 
 msgid "BIP70 Invoice"
 msgstr "Hóa đơn BIP70"
@@ -447,13 +377,8 @@ msgstr "Đơn vị cơ sở của ví của quý khách."
 msgid "Batch RBF transactions"
 msgstr "Giao dịch RBF hàng loạt"
 
-msgid ""
-"Before reporting a bug, upgrade to the most recent version of Electrum "
-"(latest release or git HEAD), and include the version number in your report."
-msgstr ""
-" Trước khi báo cáo lỗi, hãy nâng cấp lên phiên bản Electrum mới nhất  (bản "
-"phát hành mới nhất hoặc git HEAD) và bao gồm số phiên bản trong báo cáo của "
-"quý khách. "
+msgid "Before reporting a bug, upgrade to the most recent version of Electrum (latest release or git HEAD), and include the version number in your report."
+msgstr "Trước khi báo cáo lỗi, hãy nâng cấp lên phiên bản Electrum mới nhất (bản phát hành mới nhất hoặc git HEAD) và bao gồm số phiên bản trong báo cáo của quý khách ."
 
 msgid "Bit rate [kbps]: "
 msgstr "Tốc độ bit [kbps]:"
@@ -464,12 +389,8 @@ msgstr "Địa chỉ Bitcoin"
 msgid "Bitcoin Address is None"
 msgstr "Địa chỉ Bitcoin là Không có"
 
-msgid ""
-"Bitcoin transactions are in general not free. A transaction fee is paid by "
-"the sender of the funds."
-msgstr ""
-"Các giao dịch bitcoin nói chung không miễn phí. Phí giao dịch được thanh "
-"toán qua   người gửi tiền. "
+msgid "Bitcoin transactions are in general not free. A transaction fee is paid by the sender of the funds."
+msgstr "Các giao dịch bitcoin nói chung không miễn phí. Phí giao dịch được thanh toán qua người gửi tiền. "
 
 msgid "Blacklist"
 msgstr "Danh sách đen"
@@ -519,14 +440,14 @@ msgstr "Không thể đưa ra lịch sử."
 msgid "Cancel"
 msgstr "Hủy"
 
+msgid "Cancel Transaction Key"
+msgstr "Hủy khóa giao dịch"
+
 msgid "Cancel seedphrase"
 msgstr "Hủy cụm từ hạt giống"
 
 msgid "Cancel seedphrase not matching any key in this wallet"
 msgstr "Hủy cụm từ hạt giống không khớp với bất kỳ khóa nào trong ví này"
-
-msgid "Cancel transaction public key"
-msgstr "Hủy khóa giao dịch công khai"
 
 msgid "Cancelation address"
 msgstr "Địa chỉ hủy"
@@ -564,7 +485,6 @@ msgstr "Lãi vốn"
 msgid "Capital gains"
 msgstr "Lãi vốn"
 
-#, python-brace-format
 msgid "Chain split detected at block {0}"
 msgstr "Đã phát hiện thấy sự phân chia chuỗi tại khối {0}"
 
@@ -581,10 +501,10 @@ msgid "Channel Details"
 msgstr "Chi tiết kênh"
 
 msgid "Channel ID"
-msgstr "Kênh ID"
+msgstr "ID Kênh"
 
 msgid "Channel ID:"
-msgstr "Kênh ID:"
+msgstr "ID Kênh:"
 
 msgid "Channel already closed"
 msgstr "Kênh đã bị đóng"
@@ -592,13 +512,8 @@ msgstr "Kênh đã bị đóng"
 msgid "Channel closed"
 msgstr "Kênh đã đóng"
 
-#, python-brace-format
-msgid ""
-"Channel closed, you may need to wait at least {number} blocks, because of "
-"CSV delays"
-msgstr ""
-"Kênh đã đóng, quý khách có thể cần đợi ít nhất {number} khối, vì  CSV chậm "
-"trễ "
+msgid "Channel closed, you may need to wait at least {number} blocks, because of CSV delays"
+msgstr "Kênh đã đóng, quý khách có thể cần đợi ít nhất {number} khối, vì  CSV chậm trễ "
 
 msgid "Channel details"
 msgstr "Chi tiết kênh"
@@ -615,20 +530,17 @@ msgstr "Kênh"
 msgid "Channels in database."
 msgstr "Các kênh trong cơ sở dữ liệu."
 
-msgid ""
-"Check this box to request a new secret. You will need to retype your seed."
-msgstr ""
-"Chọn hộp này để yêu cầu một bí mật mới. Quý khách sẽ cần phải nhập lại hạt "
-"giống của mình. "
+msgid "Check this box to request a new secret. You will need to retype your seed."
+msgstr "Chọn hộp này để yêu cầu một bí mật mới. Quý khách sẽ cần phải nhập lại hạt giống của mình. "
 
 msgid "Checking for updates..."
 msgstr "Đang kiểm tra các bản cập nhật ..."
 
 msgid "Child Pays for Parent"
-msgstr "Các khoản thanh toán của child cho parent"
+msgstr "Các khoản thanh toán của con cái cho cha mẹ"
 
 msgid "Child pays for parent"
-msgstr "Child trả tiền cho parent"
+msgstr "Con cái trả tiền cho cha mẹ"
 
 msgid "Chinese Simplified"
 msgstr "Tiếng Trung Quốc giản thể"
@@ -646,21 +558,17 @@ msgid "Choose a server"
 msgstr "Chọn máy chủ"
 
 msgid ""
-"Choose coin (UTXO) selection method for alert transactions.  The following "
-"are available:\n"
+"Choose coin (UTXO) selection method for alert transactions.  The following are available:\n"
 "\n"
 msgstr ""
-"Chọn phương pháp lựa chọn tiền xu (UTXO) cho các giao dịch cảnh báo. Phần "
-"tiếp theocó sẵn:\n"
+"Chọn phương pháp lựa chọn tiền xu (UTXO) cho các giao dịch cảnh báo. Phần tiếp theocó sẵn:\n"
 "\n"
 
 msgid ""
-"Choose coin (UTXO) selection method for non-alert transactions.  The "
-"following are available:\n"
+"Choose coin (UTXO) selection method for non-alert transactions.  The following are available:\n"
 "\n"
 msgstr ""
-"Chọn phương pháp chọn tiền xu (UTXO) cho các giao dịch không cảnh báo. "
-"Phầntiếp theo có tại:\n"
+"Chọn phương pháp chọn tiền xu (UTXO) cho các giao dịch không cảnh báo. Phần tiếp theo có tại:\n"
 "\n"
 
 msgid "Choose from peers"
@@ -678,12 +586,8 @@ msgstr "Vui lòng chọn loại ví"
 msgid "Choose transaction type."
 msgstr "Chọn loại giao dịch."
 
-msgid ""
-"Choose which online block explorer to use for functions that open a web "
-"browser"
-msgstr ""
-" Chọn trình khám phá block trực tuyến để sử dụng cho các chức năng mở web  "
-"trình duyệt "
+msgid "Choose which online block explorer to use for functions that open a web browser"
+msgstr " Chọn trình khám phá block trực tuyến để sử dụng cho các chức năng mở web  trình duyệt "
 
 msgid "Choose your chain"
 msgstr "Chọn chuỗi của quý khách"
@@ -736,7 +640,6 @@ msgstr "Lựa chọn coin (cảnh báo)"
 msgid "Coin selection (non-alert)"
 msgstr "Lựa chọn coin (không cảnh báo)"
 
-#, python-brace-format
 msgid "Coin selection active ({num_utxos} UTXOs selected)"
 msgstr "Lựa chọn coin đang hoạt động (đã chọn {num_utxos} UTXO)"
 
@@ -788,7 +691,6 @@ msgstr "Nút được kết nối"
 msgid "Connected nodes are on the same chain"
 msgstr "Các nút được kết nối nằm trên cùng một chuỗi"
 
-#, python-brace-format
 msgid "Connected to {0} nodes."
 msgstr "Đã kết nối với {0} nút."
 
@@ -805,8 +707,7 @@ msgid "Connections with lightning nodes"
 msgstr "Kết nối với các nút lightning"
 
 msgid "Consider trying to connect to a different server, or updating Electrum."
-msgstr ""
-"Xem xét việc cố gắng kết nối với một máy chủ khác hoặc cập nhật Electrum."
+msgstr "Xem xét việc cố gắng kết nối với một máy chủ khác hoặc cập nhật Electrum."
 
 msgid "Contacts"
 msgstr "Liên hệ"
@@ -826,17 +727,12 @@ msgstr "Sao chép ID giao dịch"
 msgid "Copy and Close"
 msgstr "Sao chép và đóng"
 
-msgid ""
-"Copy and paste the recipient address using the Paste button, or use the "
-"camera to scan a QR code."
-msgstr ""
-" Sao chép và dán địa chỉ người nhận bằng nút Dán hoặc sử dụng  máy ảnh để "
-"quét mã QR. "
+msgid "Copy and paste the recipient address using the Paste button, or use the camera to scan a QR code."
+msgstr " Sao chép và dán địa chỉ người nhận bằng nút Dán hoặc sử dụng  máy ảnh để quét mã QR. "
 
 msgid "Copy to clipboard"
 msgstr "Sao chép vào clipboard"
 
-#, python-brace-format
 msgid "Copy {column_title}"
 msgstr "Sao chép {column_title}"
 
@@ -852,7 +748,6 @@ msgstr "Không thể đóng kênh:"
 msgid "Could not force close channel: "
 msgstr "Không thể bắt buộc đóng kênh:"
 
-#, python-brace-format
 msgid "Could not open channel: {error_value}"
 msgstr "Không thể mở kênh: {error_value}"
 
@@ -898,7 +793,6 @@ msgstr "Phí hiện tại"
 msgid "Current rate"
 msgstr "Tỷ lệ hiện tại"
 
-#, python-brace-format
 msgid "Current version: {version}"
 msgstr "Phiên bản hiện tại: {version}"
 
@@ -917,14 +811,11 @@ msgstr "Tối/Sáng"
 msgid "Date"
 msgstr "Ngày"
 
-#, python-brace-format
 msgid "Date: {date}"
 msgstr "Ngày: {date}"
 
-msgid ""
-"Debug logs can be persisted to disk. These are useful for troubleshooting."
-msgstr ""
-"Nhật ký gỡ lỗi có thể được lưu vào đĩa. Chúng hữu ích để khắc phục sự cố. "
+msgid "Debug logs can be persisted to disk. These are useful for troubleshooting."
+msgstr "Nhật ký gỡ lỗi có thể được lưu vào đĩa. Chúng hữu ích để khắc phục sự cố. "
 
 msgid "Debug message"
 msgstr "Thông báo gỡ lỗi"
@@ -962,6 +853,9 @@ msgstr "Mệnh giá"
 msgid "Description"
 msgstr "Sự miêu tả"
 
+msgid "Description is not supported for Secure Fast transaction"
+msgstr "Mô tả không được hỗ trợ cho giao dịch Nhanh An Toàn"
+
 msgid "Description of the transaction (not mandatory)."
 msgstr "Mô tả giao dịch (không bắt buộc)."
 
@@ -977,10 +871,8 @@ msgstr "Nhà phát triển"
 msgid "Device not in Bitcoin mode"
 msgstr "Thiết bị không ở chế độ Bitcoin"
 
-#, python-brace-format
 msgid "Digital Revealer ({version}_{code_id}) saved as PNG and PDF at:"
-msgstr ""
-"Digital Revealer ({version} _ {code_id}) được lưu dưới dạng PNG và PDF tại:"
+msgstr "Digital Revealer ({version} _ {code_id}) được lưu dưới dạng PNG và PDF tại:"
 
 msgid "Disable LN"
 msgstr "Tắt LN"
@@ -997,19 +889,11 @@ msgstr "Đã ngắt kết nối"
 msgid "Distributed by Electrum Technologies GmbH"
 msgstr "Được phân phối bởi Electrum Technologies GmbH"
 
-msgid ""
-"Do not enter sensitive/private information here. The report will be visible "
-"on the public issue tracker."
-msgstr ""
-" Không nhập thông tin nhạy cảm / riêng tư ở đây. Báo cáo sẽ hiển thị  trên "
-"trình theo dõi vấn đề công khai. "
+msgid "Do not enter sensitive/private information here. The report will be visible on the public issue tracker."
+msgstr " Không nhập thông tin nhạy cảm / riêng tư ở đây. Báo cáo sẽ hiển thị  trên trình theo dõi vấn đề công khai. "
 
-msgid ""
-"Do not paste code here that you don't understand. Executing the wrong code "
-"could lead to your coins being irreversibly lost."
-msgstr ""
-"Đừng dán mã mà quý khách không hiểu ở đây. Thực thi sai mã  có thể khiến "
-"tiền của quý khách bị mất và không thể phục hồi. "
+msgid "Do not paste code here that you don't understand. Executing the wrong code could lead to your coins being irreversibly lost."
+msgstr "Đừng dán mã mà quý khách không hiểu ở đây. Thực thi sai mã  có thể khiến tiền của quý khách bị mất và không thể phục hồi. "
 
 msgid "Do not store it electronically."
 msgstr "Không lưu trữ nó dưới dạng điện tử."
@@ -1018,22 +902,14 @@ msgid "Do not use Gold Wallet"
 msgstr "Không sử dụng Gold Wallet"
 
 msgid "Do you have something to hide ?"
-msgstr "Quý khách cómuốn giấu điều gì không?"
+msgstr "Quý khách có muốn ẩn điều gì không?"
 
-msgid ""
-"Do you want to create a new seed or to restore a wallet using an existing "
-"seed?"
-msgstr ""
-"Bạn muốn tạo một hạt giống mới hay khôi phục ví bằng ví hiện có hạt giống?"
+msgid "Do you want to create a new seed or to restore a wallet using an existing seed?"
+msgstr "Bạn muốn tạo một hạt giống mới hay khôi phục ví bằng ví hiện có hạt giống?"
 
-msgid ""
-"Do you want to create a new seed, or to restore a wallet using an existing "
-"seed?"
-msgstr ""
-" Quý khách muốn tạo một hạt giống mới hay khôi phục ví bằng hạt giống hiện "
-"có?"
+msgid "Do you want to create a new seed, or to restore a wallet using an existing seed?"
+msgstr " Quý khách muốn tạo một hạt giống mới hay khôi phục ví bằng hạt giống hiện có?"
 
-#, python-brace-format
 msgid "Do you want to delete '{path}'?"
 msgstr "Quý khách có muốn xóa '{path}' không?"
 
@@ -1046,7 +922,6 @@ msgstr "Quý khách có muốn khởi chạy lại wizard không?"
 msgid "Do you want to open it now?"
 msgstr "Hiện tại quý khách có muốn mở nó không?"
 
-#, python-brace-format
 msgid "Do you want to remove {address} from your wallet?"
 msgstr "Quý khách có muốn xóa {address} khỏi ví của mình không?"
 
@@ -1054,9 +929,7 @@ msgid "Do you want to send this report?"
 msgstr "Quý khách có muốn gửi báo cáo này không?"
 
 msgid "Do you want to use Gold Wallet as a transaction authenticator?"
-msgstr ""
-"Quý khách có muốn sử dụng Gold Wallet làm công cụ xác nhận giao dịch hay "
-"không?"
+msgstr "Quý khách có muốn sử dụng Gold Wallet làm công cụ xác nhận giao dịch hay không?"
 
 msgid "Do you wish to continue?"
 msgstr "Quý khách còn muốn tiếp tục không?"
@@ -1067,12 +940,8 @@ msgstr "Không biết bất kỳ địa chỉ nào cho nút:"
 msgid "Don't show this again."
 msgstr "Không hiển thị cái này nữa."
 
-msgid ""
-"Due to a bug, old versions of Electrum will NOT be creating the same wallet "
-"as newer versions or other software."
-msgstr ""
-" Do lỗi, các phiên bản Electrum cũ sẽ KHÔNG tạo cùng một ví  dưới dạng phiên "
-"bản mới hơn hoặc phần mềm khác. "
+msgid "Due to a bug, old versions of Electrum will NOT be creating the same wallet as newer versions or other software."
+msgstr " Do lỗi, các phiên bản Electrum cũ sẽ KHÔNG tạo cùng một ví dưới dạng phiên bản mới hơn hoặc phần mềm khác. "
 
 msgid "Dynamic fee estimates not available"
 msgstr "Ước tính phí động không có sẵn"
@@ -1083,72 +952,41 @@ msgstr "ETA"
 msgid "Each revealer should be used only once."
 msgstr "Mỗi revealer chỉ nên được sử dụng một lần."
 
-#, python-brace-format
 msgid "Edit {title}"
 msgstr "Chỉnh sửa{title}"
 
 msgid "Electrum Plugins"
 msgstr "Electrum Plugins"
 
-#, python-brace-format
 msgid ""
 "Electrum cannot pair with your {device}.\n"
 "\n"
-"Before you request bitcoins to be sent to addresses in this wallet, ensure "
-"you can pair with your device, or that you have its seed (and passphrase, if "
-"any).  Otherwise all bitcoins you receive will be unspendable."
+"Before you request bitcoins to be sent to addresses in this wallet, ensure you can pair with your device, or that you have its seed (and passphrase, if any).  Otherwise all bitcoins you receive will be unspendable."
 msgstr ""
 "Electrum không thể kết nối với {device} của bạn.\n"
 "\n"
-"Trước khi bạn yêu cầu gửi bitcoin đến các địa chỉ trong ví này, hãy chắc "
-"chắnbạn có thể kết nối với thiết bị của mình hoặc bạn có hạt giống bảo mât "
-"của nó (và cụm mật khẩu, nếu có). Nếu không, tất cả bitcoin bạn nhận sẽ "
-"không thể sử dụng được."
+"Trước khi bạn yêu cầu gửi bitcoin đến các địa chỉ trong ví này, hãy chắc chắn bạn có thể kết nối với thiết bị của mình hoặc bạn có hạt giống bảo mât của nó (và cụm mật khẩu, nếu có). Nếu không, tất cả bitcoin bạn nhận sẽ không thể sử dụng được."
 
-msgid ""
-"Electrum communicates with remote servers to get information about your "
-"transactions and addresses. The servers all fulfill the same purpose only "
-"differing in hardware. In most cases you simply want to let Electrum pick "
-"one at random.  However if you prefer feel free to select a server manually."
-msgstr ""
-"Electrum kết nối với các máy chủ từ xa để nhận thông tin của bạn vềgiao dịch "
-"và địa chỉ. Tất cả các máy chủ đều chỉ thực hiện cùng một mục đích khác biệt "
-"về phần cứng. Trong hầu hết các trường hợp, bạn chỉ muốn để Electrum chọn "
-"một cách ngẫu nhiên. Tuy nhiên, nếu bạn muốn, hãy chọn máy chủ theo cách thủ "
-"công. "
+msgid "Electrum communicates with remote servers to get information about your transactions and addresses. The servers all fulfill the same purpose only differing in hardware. In most cases you simply want to let Electrum pick one at random.  However if you prefer feel free to select a server manually."
+msgstr "Electrum kết nối với các máy chủ từ xa để nhận thông tin của bạn về giao dịch và địa chỉ. Tất cả các máy chủ đều chỉ thực hiện cùng một mục đích khác biệt về phần cứng. Trong hầu hết các trường hợp, bạn chỉ muốn để Electrum chọn một cách ngẫu nhiên. Tuy nhiên, nếu bạn muốn, hãy chọn máy chủ theo cách thủ công. "
 
-msgid ""
-"Electrum connects to several nodes in order to download block headers and "
-"find out the longest blockchain."
-msgstr ""
-" Kết nối Electrum với một số nút để tải xuống block tiêu đề và  tìm ra chuỗi "
-"khối dài. "
+msgid "Electrum connects to several nodes in order to download block headers and find out the longest blockchain."
+msgstr " Kết nối Electrum với một số nút để tải xuống block tiêu đề và  tìm ra chuỗi khối dài. "
 
 msgid "Electrum preferences"
 msgstr "Tùy chọn Electrum"
 
-msgid ""
-"Electrum requests your transaction history from a single server. The "
-"returned history is checked against blockchain headers sent by other nodes, "
-"using Simple Payment Verification (SPV)."
-msgstr ""
-" Electrum yêu cầu lịch sử giao dịch của quý khách từ một máy chủ. Các  lịch "
-"sử trả về được kiểm tra dựa trên các tiêu đề blockchain được gửi bởi các nút "
-"khác,  bằng Xác minh Thanh toán Đơn giản (SPV). "
+msgid "Electrum requests your transaction history from a single server. The returned history is checked against blockchain headers sent by other nodes, using Simple Payment Verification (SPV)."
+msgstr " Electrum yêu cầu lịch sử giao dịch của quý khách từ một máy chủ. Các lịch sử trả về được kiểm tra dựa trên các tiêu đề blockchain được gửi bởi các nút khác, bằng Xác minh Thanh toán Đơn giản (SPV). "
 
-msgid ""
-"Electrum sends your wallet addresses to a single server, in order to receive "
-"your transaction history."
-msgstr ""
-" Electrum gửi địa chỉ ví của quý khách đến một máy chủ duy nhất, để nhận  "
-"lịch sử giao dịch của quý khách. "
+msgid "Electrum sends your wallet addresses to a single server, in order to receive your transaction history."
+msgstr " Electrum gửi địa chỉ ví của quý khách đến một máy chủ duy nhất, để nhận  lịch sử giao dịch của quý khách. "
 
 msgid "Electrum wallet"
 msgstr "Ví Electrum "
 
 msgid "Electrum was unable to copy your wallet file to the specified location."
-msgstr ""
-"Electrum không thể sao chép tệp ví của quý khách vào vị trí được chỉ định."
+msgstr "Electrum không thể sao chép tệp ví của quý khách vào vị trí được chỉ định."
 
 msgid "Electrum was unable to deserialize the transaction:"
 msgstr "Electrum không thể giải mã giao dịch:"
@@ -1165,12 +1003,8 @@ msgstr "Electrum không thể tạo ra một khóa riêng tư."
 msgid "Electrum was unable to produce a transaction export."
 msgstr "Electrum không thể tạo xuất giao dịch."
 
-msgid ""
-"Electrum's focus is speed, with low resource usage and simplifying Bitcoin "
-"Vault."
-msgstr ""
-"Trọng tâm của Electrum là tốc độ, cùng với việc sử dụng tài nguyên thấp và "
-"đơn giản hóa Bitcoin Vault"
+msgid "Electrum's focus is speed, with low resource usage and simplifying Bitcoin Vault."
+msgstr "Trọng tâm của Electrum là tốc độ, cùng với việc sử dụng tài nguyên thấp và đơn giản hóa Bitcoin Vault"
 
 msgid "Email"
 msgstr "Email"
@@ -1202,7 +1036,6 @@ msgstr "Mã hóa bí mật tùy chỉnh"
 msgid "Encrypt wallet file"
 msgstr "Mã hóa tệp ví"
 
-#, python-brace-format
 msgid "Encrypt {wallet_name}'s seed"
 msgstr "Mã hóa hạt giống của {wallet_name}"
 
@@ -1215,7 +1048,6 @@ msgstr "Mã hóa / giải mã tin nhắn"
 msgid "Encrypted"
 msgstr "Được mã hóa"
 
-#, python-brace-format
 msgid "Encryption and decryption are currently not supported for {device}"
 msgstr "Mã hóa và giải mã hiện không được hỗ trợ cho {device}"
 
@@ -1252,12 +1084,8 @@ msgstr "Nhập nhãn giao dịch"
 msgid "Enter a filename for the copy of your wallet"
 msgstr "Nhập tên tệp cho bản sao ví của quý khách"
 
-msgid ""
-"Enter a list of BTCV addresses (this will create a watching-only wallet) or "
-"a list of private keys."
-msgstr ""
-"Nhập danh sách địa chỉ BTCV (điều này sẽ tạo ví chỉ xem) hoặc danh sách các "
-"khóa riêng tư."
+msgid "Enter a list of BTCV addresses (this will create a watching-only wallet) or a list of private keys."
+msgstr "Nhập danh sách địa chỉ BTCV (điều này sẽ tạo ví chỉ xem) hoặc danh sách các khóa riêng tư."
 
 msgid "Enter a list of outputs in the 'Pay to' field."
 msgstr "Nhập danh sách kết quả đầu ra trong trường 'Trả cho'."
@@ -1283,20 +1111,14 @@ msgstr "Nhập khóa riêng tư"
 msgid "Enter private keys:"
 msgstr "Nhập khóa riêng tư:"
 
-msgid ""
-"Enter the name of the new wallet or load an existing wallet by clicking "
-"\"Choose\"."
+msgid "Enter the name of the new wallet or load an existing wallet by clicking \"Choose\"."
 msgstr "Nhập tên của ví mới hoặc tải ví hiện có bằng cách nhấp vào \"Chọn\"."
 
 msgid "Enter the seed for your 2-factor wallet:"
 msgstr "Nhập hạt giống cho ví xác thực 2 yếu tố của quý khách:"
 
-msgid ""
-"Enter their master private key (xprv) if you want to be able to sign for "
-"them."
-msgstr ""
-" Nhập khóa cá nhân chính của chúng (xprv) nếu quý khách muốn có thể đăng "
-"nhập  chúng. "
+msgid "Enter their master private key (xprv) if you want to be able to sign for them."
+msgstr " Nhập khóa cá nhân chính của chúng (xprv) nếu quý khách muốn có thể đăng nhập  chúng. "
 
 msgid "Enter wallet name"
 msgstr "Nhập tên ví"
@@ -1310,7 +1132,6 @@ msgstr "Nhập mã PIN của quý khách để giải mã hạt giống của qu
 msgid "Enter your PIN code in order to sign this transaction"
 msgstr "Nhập mã PIN của quý khách để ký giao dịch này"
 
-#, python-brace-format
 msgid "Enter your PIN code to confirm deletion of {wallet}"
 msgstr "Nhập mã PIN của quý khách để xác nhận xóa {wallet}"
 
@@ -1341,7 +1162,6 @@ msgstr "Lỗi khi kết hợp các giao dịch từng phần"
 msgid "Error connecting to server"
 msgstr "Lỗi kết nối với máy chủ"
 
-#, python-brace-format
 msgid "Error connecting to {name} server"
 msgstr "Lỗi kết nối với máy chủ {name}"
 
@@ -1393,12 +1213,8 @@ msgstr "Ngày hết hạn yêu cầu của quý khách."
 msgid "Expired"
 msgstr "Đã hết hạn"
 
-msgid ""
-"Expired requests have to be deleted manually from your list, in order to "
-"free the corresponding Bitcoin addresses."
-msgstr ""
-" Các yêu cầu đã hết hạn phải được xóa theo cách thủ công khỏi danh sách của "
-"quý khách, để  miễn phí các địa chỉ Bitcoin tương ứng.  "
+msgid "Expired requests have to be deleted manually from your list, in order to free the corresponding Bitcoin addresses."
+msgstr " Các yêu cầu đã hết hạn phải được xóa theo cách thủ công khỏi danh sách của quý khách, để  miễn phí các địa chỉ Bitcoin tương ứng.  "
 
 msgid "Expires"
 msgstr "Hết hạn"
@@ -1416,9 +1232,7 @@ msgid "Export to file"
 msgstr "Xuất đến tập tin"
 
 msgid "Exposing a single private key can compromise your entire wallet!"
-msgstr ""
-"Để lộ một khóa bảo mật duy nhất có thể ảnh hưởng đến toàn bộ ví của quý "
-"khách!"
+msgstr "Để lộ một khóa bảo mật duy nhất có thể ảnh hưởng đến toàn bộ ví của quý khách!"
 
 msgid "Extend this seed with custom words"
 msgstr "Mở rộng hạt giống này bằng các từ tùy chỉnh"
@@ -1452,6 +1266,9 @@ msgstr "Không cập nhật được mật khẩu"
 
 msgid "False"
 msgstr "Sai"
+
+msgid "Fast Transaction Key"
+msgstr "Khóa giao dịch nhanh"
 
 msgid "Fee"
 msgstr "Phí"
@@ -1492,12 +1309,8 @@ msgstr "Kết thúc"
 msgid "Find"
 msgstr "Tìm thấy"
 
-msgid ""
-"Firmware version (or \"Bitcoin\" app) too old for Segwit support. Please "
-"update at"
-msgstr ""
-" Phiên bản firmware (hoặc ứng dụng \"Bitcoin\") quá cũ để hỗ trợ Segwit. Xin "
-"vui lòng  cập nhật tại"
+msgid "Firmware version (or \"Bitcoin\" app) too old for Segwit support. Please update at"
+msgstr " Phiên bản firmware (hoặc ứng dụng \"Bitcoin\") quá cũ để hỗ trợ Segwit. Xin vui lòng  cập nhật tại"
 
 msgid "Firmware version too old. Please update at"
 msgstr "Phiên bản firmware quá cũ. Vui lòng cập nhật tại"
@@ -1514,12 +1327,8 @@ msgstr "Đối với CoinJoin; strip private"
 msgid "For more information, visit"
 msgstr "Để biết thêm thông tin, hãy truy cập"
 
-msgid ""
-"For security reasons we advise that you always use the latest version of "
-"Electrum."
-msgstr ""
-" Vì lý do bảo mật, chúng tôi khuyên quý khách nên sử dụng phiên bản mới nhất "
-"của Electrum. "
+msgid "For security reasons we advise that you always use the latest version of Electrum."
+msgstr " Vì lý do bảo mật, chúng tôi khuyên quý khách nên sử dụng phiên bản mới nhất của Electrum. "
 
 msgid "Force-close channel"
 msgstr "Buộc đóng kênh"
@@ -1527,7 +1336,6 @@ msgstr "Buộc đóng kênh"
 msgid "Force-close channel?"
 msgstr "Buộc đóng kênh?"
 
-#, python-brace-format
 msgid "Fork detected at block {fork_point}"
 msgstr "Đã phát hiện fork tại khối {fork_point}"
 
@@ -1558,7 +1366,6 @@ msgstr "Đóng băng Coin"
 msgid "From"
 msgstr "Từ"
 
-#, python-brace-format
 msgid "From {0} cosigners"
 msgstr "Từ {0} cosigners"
 
@@ -1577,13 +1384,8 @@ msgstr "TXID tài trợ"
 msgid "Funding Transaction"
 msgstr "Giao dịch tiền"
 
-msgid ""
-"Funds stored in lightning channels are not recoverable from your seed. You "
-"must backup your wallet file everytime you create a new channel."
-msgstr ""
-" Không thể thu hồi tiền được lưu trữ trong kênh lightning từ hạt giống của "
-"quý khách. Quý khách  phải sao lưu tệp wallet của quý khách mỗi khi quý "
-"khách tạo kênh mới. "
+msgid "Funds stored in lightning channels are not recoverable from your seed. You must backup your wallet file everytime you create a new channel."
+msgstr " Không thể thu hồi tiền được lưu trữ trong kênh lightning từ hạt giống của quý khách. Quý khách  phải sao lưu tệp wallet của quý khách mỗi khi quý khách tạo kênh mới. "
 
 msgid "General"
 msgstr "Chung"
@@ -1591,8 +1393,7 @@ msgstr "Chung"
 msgid "Generate"
 msgstr "Tạo"
 
-msgid ""
-"Generate an authenticator on Gold Wallet and scan the following QR code: "
+msgid "Generate an authenticator on Gold Wallet and scan the following QR code: "
 msgstr "Tạo trình xác thực trên Gold Wallet và quét mã QR sau: "
 
 msgid "Gold Wallet authenticator public key"
@@ -1639,7 +1440,9 @@ msgstr "Đây là khóa công khai chính của quý khách."
 msgid "Hide"
 msgstr "Ẩn"
 
-#, python-brace-format
+msgid "Hide advanced"
+msgstr "Ẩn nâng cao"
+
 msgid "Hide {tab_description}"
 msgstr "Ẩn {tab_description}"
 
@@ -1661,15 +1464,17 @@ msgstr "Tên máy chủ không giải quyết được (getaddrinfo không thàn
 msgid "How do you want to connect to a server? "
 msgstr "Quý khách muốn kết nối với máy chủ như thế nào?"
 
-msgid ""
-"However, hardware wallets do not support message decryption, which makes "
-"them not compatible with the current design of cosigner pool."
-msgstr ""
-" Tuy nhiên, ví phần cứng không hỗ trợ giải mã tin nhắn, điều này khiến  "
-"chúng không tương thích với thiết kế hiện tại của cosigner pool."
+msgid "However, hardware wallets do not support message decryption, which makes them not compatible with the current design of cosigner pool."
+msgstr " Tuy nhiên, ví phần cứng không hỗ trợ giải mã tin nhắn, điều này khiến  chúng không tương thích với thiết kế hiện tại của cosigner pool."
+
+msgid "I agree"
+msgstr "Tôi đồng ý"
 
 msgid "I already have a seed"
 msgstr "Tôi đã có một hạt giống"
+
+msgid "I disagree"
+msgstr "Tôi không đồng ý"
 
 msgid "I have lost my Google Authenticator account"
 msgstr "Tôi đã mất tài khoản Google Authenticator của mình"
@@ -1681,72 +1486,41 @@ msgstr ""
 "IP/port in format:\n"
 "[host]:[port]"
 
-msgid ""
-"If auto-connect is enabled, Electrum will always use a server that is on the "
-"longest blockchain."
-msgstr ""
-" Nếu kết nối tự động được bật, Electrum sẽ luôn sử dụng máy chủ trên  chuỗi "
-"khối dài nhất."
+msgid "If auto-connect is enabled, Electrum will always use a server that is on the longest blockchain."
+msgstr " Nếu kết nối tự động được bật, Electrum sẽ luôn sử dụng máy chủ trên  chuỗi khối dài nhất."
 
-msgid ""
-"If enabled, at most 100 satoshis might be lost due to this, per transaction."
-msgstr ""
-" Nếu được bật, tối đa 100 satoshi có thể bị mất do điều này, cho mỗi giao "
-"dịch. "
+msgid "If enabled, at most 100 satoshis might be lost due to this, per transaction."
+msgstr " Nếu được bật, tối đa 100 satoshi có thể bị mất do điều này, cho mỗi giao dịch. "
 
-msgid ""
-"If it is disabled, you have to choose a server you want to use. Electrum "
-"will warn you if your server is lagging."
-msgstr ""
-" Nếu nó bị tắt, quý khách phải chọn một máy chủ quý khách muốn sử dụng. "
-"Electrum  sẽ cảnh báo quý khách nếu máy chủ của quý khách bị chậm."
+msgid "If it is disabled, you have to choose a server you want to use. Electrum will warn you if your server is lagging."
+msgstr " Nếu nó bị tắt, quý khách phải chọn một máy chủ quý khách muốn sử dụng. Electrum  sẽ cảnh báo quý khách nếu máy chủ của quý khách bị chậm."
 
 msgid "If you are not sure what this is, leave this field unchanged."
 msgstr "Nếu quý khách không chắc chắn đây là gì, hãy giữ nguyên trường này."
 
-#, python-brace-format
 msgid "If you are online, click on \"{button}\" to continue."
 msgstr "Nếu quý khách đang trực tuyến, hãy nhấp vào \" {button} \"để tiếp tục."
 
 msgid "If you check this box, your transactions will be marked as non-final,"
-msgstr ""
-"Nếu quý khách chọn hộp này, các giao dịch của quý khách sẽ được đánh dấu là "
-"không cuối cùng,"
+msgstr "Nếu quý khách chọn hộp này, các giao dịch của quý khách sẽ được đánh dấu là không cuối cùng,"
 
-msgid ""
-"If you check this box, your unconfirmed transactions will be consolidated "
-"into a single transaction."
-msgstr ""
-" Nếu quý khách chọn hộp này, các giao dịch chưa được xác nhận của quý khách "
-"sẽ được hợp nhất  thành một giao dịch duy nhất. "
+msgid "If you check this box, your unconfirmed transactions will be consolidated into a single transaction."
+msgstr " Nếu quý khách chọn hộp này, các giao dịch chưa được xác nhận của quý khách sẽ được hợp nhất  thành một giao dịch duy nhất. "
 
 msgid "If you do not know what this is, leave this field empty."
 msgstr "Nếu quý khách không biết đây là gì, hãy để trống mục này."
 
-msgid ""
-"If you forget your PIN or lose your device, your seed phrase will be the "
-"only way to recover your funds."
-msgstr ""
-" Nếu quý khách quên mã PIN hoặc mất thiết bị, cụm từ gốc của quý khách sẽ là "
-"cách duy nhất để lấy lại tiền của quý khách. "
+msgid "If you forget your PIN or lose your device, your seed phrase will be the only way to recover your funds."
+msgstr " Nếu quý khách quên mã PIN hoặc mất thiết bị, cụm từ gốc của quý khách sẽ là cách duy nhất để lấy lại tiền của quý khách. "
 
 msgid "If you have an old printer, or want optimal precision"
 msgstr "Nếu quý khách có một máy in cũ hoặc muốn có độ chính xác tối ưu"
 
-msgid ""
-"If you have lost your Google Authenticator account, you can request a new "
-"secret. You will need to retype your seed."
-msgstr ""
-" Nếu quý khách bị mất tài khoản Google Authenticator, quý khách có thể yêu "
-"cầu một tài khoản mới  bí mật. Quý khách sẽ cần phải nhập lại hạt giống của "
-"mình. "
+msgid "If you have lost your Google Authenticator account, you can request a new secret. You will need to retype your seed."
+msgstr " Nếu quý khách bị mất tài khoản Google Authenticator, quý khách có thể yêu cầu một tài khoản mới bí mật. Quý khách sẽ cần phải nhập lại hạt giống của mình. "
 
-msgid ""
-"If you have lost your second factor, you need to restore your wallet from "
-"seed in order to request a new code."
-msgstr ""
-" Nếu quý khách đã mất yếu tố thứ hai, quý khách cần khôi phục ví của mình "
-"từ  hạt giống để yêu cầu mã mới. "
+msgid "If you have lost your second factor, you need to restore your wallet from seed in order to request a new code."
+msgstr " Nếu quý khách đã mất yếu tố thứ hai, quý khách cần khôi phục ví của mình từ hạt giống để yêu cầu mã mới. "
 
 msgid "If you keep experiencing network problems, try using a Tor proxy."
 msgstr "Nếu quý khách vẫn gặp sự cố mạng, hãy thử sử dụng Tor proxy ."
@@ -1757,24 +1531,14 @@ msgstr "Nếu quý khách mất hạt giống, tiền của quý khách sẽ m�
 msgid "If you use a passphrase, make sure it is correct."
 msgstr "Nếu quý khách sử dụng cụm mật khẩu, hãy đảm bảo rằng nó chính xác."
 
-msgid ""
-"If you want to create new addresses, use a deterministic wallet instead."
-msgstr ""
-" Nếu quý khách muốn tạo địa chỉ mới, hãy sử dụng ví xác định để thay thế.  "
+msgid "If you want to create new addresses, use a deterministic wallet instead."
+msgstr " Nếu quý khách muốn tạo địa chỉ mới, hãy sử dụng ví xác định để thay thế.  "
 
-msgid ""
-"If your device is not detected on Windows, go to \"Settings\", \"Devices\", "
-"\"Connected devices\", and do \"Remove device\". Then, plug your device "
-"again."
-msgstr ""
-" Nếu thiết bị của quý khách không được phát hiện trên Windows, hãy đi tới "
-"\"Cài đặt\", \"Thiết bị \",  \"Thiết bị đã kết nối\" và thực hiện \"Xóa "
-"thiết bị \". Sau đó, cắm thiết bị của quý khách lại lần nữa."
+msgid "If your device is not detected on Windows, go to \"Settings\", \"Devices\", \"Connected devices\", and do \"Remove device\". Then, plug your device again."
+msgstr " Nếu thiết bị của quý khách không được phát hiện trên Windows, hãy đi tới \"Cài đặt\", \"Thiết bị \",  \"Thiết bị đã kết nối\" và thực hiện \"Xóa thiết bị \". Sau đó, cắm thiết bị của quý khách lại lần nữa."
 
 msgid "If your wallet contains funds, make sure you have saved its seed."
-msgstr ""
-"Nếu ví của quý khách chứa tiền, hãy đảm bảo rằng quý khách đã lưu hạt giống "
-"của nó."
+msgstr "Nếu ví của quý khách chứa tiền, hãy đảm bảo rằng quý khách đã lưu hạt giống của nó."
 
 msgid "Ignore and continue?"
 msgstr "Bỏ qua và tiếp tục?"
@@ -1797,34 +1561,21 @@ msgstr "Nhập tệp"
 msgid "Import private keys"
 msgstr "Nhập khóa riêng tư"
 
-msgid ""
-"In order to confirm the transaction, scan the QR codes in the "
-"\"Authenticators\" tab in the Gold Wallet app."
-msgstr ""
-"Để xác nhận giao dịch, hãy quét mã QR trong tab \"Trình xác thực\" trong ứng "
-"dụng Ví vàng."
+msgid "In order to confirm the transaction, scan the QR codes in the \"Authenticators\" tab in the Gold Wallet app."
+msgstr "Để xác nhận giao dịch, hãy quét mã QR trong tab \"Trình xác thực\" trong ứng dụng Gold Wallet"
 
-msgid ""
-"In particular, DO NOT use 'redeem private key' services proposed by third "
-"parties."
-msgstr ""
-" Đặc biệt, KHÔNG sử dụng các dịch vụ 'lấy lại khóa riêng tư' do thứ ba thứ "
-"ba đề xuất ."
+msgid "In particular, DO NOT use 'redeem private key' services proposed by third parties."
+msgstr " Đặc biệt, KHÔNG sử dụng các dịch vụ 'lấy lại khóa riêng tư' do bên thứ ba đề xuất ."
 
 msgid "In progress"
 msgstr "Đang xử lý"
 
-msgid ""
-"In some cases, use up to 3 change addresses in order to break up large coin "
-"amounts and obfuscate the recipient address."
-msgstr ""
-" Trong một số trường hợp, sử dụng tối đa 3 địa chỉ thay đổi để chia số tiền "
-"lớn  số tiền và làm xáo trộn địa chỉ người nhận. "
+msgid "In some cases, use up to 3 change addresses in order to break up large coin amounts and obfuscate the recipient address."
+msgstr " Trong một số trường hợp, sử dụng tối đa 3 địa chỉ thay đổi để chia số tiền lớn và làm xáo trộn địa chỉ người nhận. "
 
 msgid "In the next block"
 msgstr "Trong block tiếp theo"
 
-#, python-brace-format
 msgid "Included in block: {header_hash}"
 msgstr "Được bao gồm trong block: {header_hash}"
 
@@ -1844,8 +1595,7 @@ msgid "Increase fee"
 msgstr "Tăng phí"
 
 msgid "Increase your transaction's fee to improve its position in mempool."
-msgstr ""
-"Tăng phí giao dịch của quý khách để cải thiện vị trí của nó trong mempool."
+msgstr "Tăng phí giao dịch của quý khách để cải thiện vị trí của nó trong mempool."
 
 msgid "Indonesian"
 msgstr "Tiếng Indonesia"
@@ -1949,25 +1699,17 @@ msgstr "Hóa đơn được lưu dưới dạng"
 msgid "Invoice wants us to risk locking funds for unreasonably long."
 msgstr "Invoice muốn chúng tôi khóa tiền trong thời gian dài một cách vô lý."
 
-msgid ""
-"It also contains your master public key that allows watching your addresses."
-msgstr ""
-" Nó cũng chứa khóa công khai chính của quý khách cho phép xem các địa chỉ "
-"của quý khách. "
+msgid "It also contains your master public key that allows watching your addresses."
+msgstr " Nó cũng chứa khóa công khai chính của quý khách cho phép xem các địa chỉ của quý khách. "
 
 msgid "It cannot be \"backed up\" by simply exporting these private keys."
-msgstr ""
-"Nó không thể được \" sao lưu \"chỉ bằng cách xuất các khóa riêng tư này."
+msgstr "Nó không thể được \" sao lưu \"chỉ bằng cách xuất các khóa riêng tư này."
 
 msgid "It conflicts with current history."
 msgstr "Nó đối lập với lịch sử hiện tại."
 
-msgid ""
-"It sends and receives partially signed transactions from/to your cosigner "
-"wallet."
-msgstr ""
-" Nó gửi và nhận các giao dịch đã ký một phần từ / tới cosigner của quý "
-"kháchví tiền."
+msgid "It sends and receives partially signed transactions from/to your cosigner wallet."
+msgstr " Nó gửi và nhận các giao dịch đã ký một phần từ / tới cosigner của ví tiền quý khách "
 
 msgid "Japanese"
 msgstr "Tiếng Nhật"
@@ -1996,17 +1738,12 @@ msgstr "Cài đặt nhãn"
 msgid "LabelSync"
 msgstr "LabelSync"
 
-msgid ""
-"Labels, transactions IDs and addresses are encrypted before they are sent to "
-"the remote server."
-msgstr ""
-" Nhãn, ID giao dịch và địa chỉ được mã hóa trước khi chúng được gửi đến máy "
-"chủ từ xa."
+msgid "Labels, transactions IDs and addresses are encrypted before they are sent to the remote server."
+msgstr " Nhãn, ID giao dịch và địa chỉ được mã hóa trước khi chúng được gửi đến máy chủ từ xa."
 
 msgid "Language"
 msgstr "Ngôn ngữ"
 
-#, python-brace-format
 msgid "Latest version: {version}"
 msgstr "Phiên bản mới nhất: {version}"
 
@@ -2028,7 +1765,6 @@ msgstr "Legacy"
 msgid "Legacy 2FA"
 msgstr "2FA của Legacy"
 
-#, python-brace-format
 msgid "Library version for '{name}' is incompatible."
 msgstr "Phiên bản thư viện cho '{name}' không tương thích."
 
@@ -2053,12 +1789,8 @@ msgstr "Các phím Lightning đã được khởi tạo."
 msgid "Lightning keys have been removed."
 msgstr "Các phím Lightning đã bị loại bỏ."
 
-msgid ""
-"Lightning support in Electrum is experimental. Do not put large amounts in "
-"lightning channels."
-msgstr ""
-" Hỗ trợ Lightning trong Electrum là thử nghiệm. Đừng đặt số lượng lớn vào   "
-"kênh lightning. "
+msgid "Lightning support in Electrum is experimental. Do not put large amounts in lightning channels."
+msgstr " Hỗ trợ Lightning trong Electrum là thử nghiệm. Đừng đặt số lượng lớn vào   kênh lightning. "
 
 msgid "Lightning:"
 msgstr "Lightning:"
@@ -2087,12 +1819,8 @@ msgstr "Hãy chắc chắn rằng nó ở trạng thái chính xác."
 msgid "Make sure you install it with python3"
 msgstr "Hãy chắc chắn rằng quý khách cài đặt nó bằng python3"
 
-msgid ""
-"Make sure you own the seed phrase or the private keys, before you request "
-"Bitcoins to be sent to this wallet."
-msgstr ""
-" Đảm bảo quý khách sở hữu cụm từ hạt giống hoặc các khóa riêng trước khi quý "
-"khách yêu cầu  Bitcoin sẽ được gửi đến ví này."
+msgid "Make sure you own the seed phrase or the private keys, before you request Bitcoins to be sent to this wallet."
+msgstr " Đảm bảo quý khách sở hữu cụm từ hạt giống hoặc các khóa riêng trước khi quý khách yêu cầu  Bitcoin sẽ được gửi đến ví này."
 
 msgid "Master Public Key"
 msgstr "Khóa công khai chính"
@@ -2119,8 +1847,7 @@ msgid "Mempool"
 msgstr "Mempool"
 
 msgid "Mempool based: fee rate is targeting a depth in the memory pool"
-msgstr ""
-"Dựa trên Mempool: tỷ lệ phí đang nhắm mục tiêu độ sâu trong pool bộ nhớ"
+msgstr "Dựa trên Mempool: tỷ lệ phí đang nhắm mục tiêu độ sâu trong pool bộ nhớ"
 
 msgid "Mempool depth"
 msgstr "Độ sâu của Mempool"
@@ -2143,7 +1870,6 @@ msgstr "Phí khai thác"
 msgid "Missing amount"
 msgstr "Số tiền còn thiếu"
 
-#, python-brace-format
 msgid "Missing libraries for {library_name}."
 msgstr "Thiếu thư viện cho {library_name}."
 
@@ -2153,12 +1879,11 @@ msgstr "Thiếu tx trước đó cho đầu vào legacy."
 msgid "Missing report URL."
 msgstr "Thiếu URL báo cáo."
 
-#, python-brace-format
 msgid "More info at: {link}"
 msgstr "Thông tin thêm tại: {link}"
 
 msgid "Multi-Signature Standard"
-msgstr "Tiêu chuẩn đa chữ ký"
+msgstr "Multi-Signature Standard"
 
 msgid "NOT DEVICE PIN - see above"
 msgstr "KHÔNG PHẢI PIN THIẾT BỊ - xem ở trên"
@@ -2193,7 +1918,6 @@ msgstr "Mật khẩu mới:"
 msgid "New contact"
 msgstr "Liên hệ mới"
 
-#, python-brace-format
 msgid "New transaction: {amount}"
 msgstr "Giao dịch mới: {amount}"
 
@@ -2213,9 +1937,7 @@ msgid "No Wallet"
 msgstr "Không Ví"
 
 msgid "No address available. Please remove some of your pending requests."
-msgstr ""
-"Không có sẵn địa chỉ. Vui lòng xóa một số yêu cầu đang chờ xử lý của quý "
-"khách."
+msgstr "Không có sẵn địa chỉ. Vui lòng xóa một số yêu cầu đang chờ xử lý của quý khách."
 
 msgid "No data"
 msgstr "Không dữ liệu"
@@ -2246,6 +1968,9 @@ msgstr "Không có đầu ra"
 
 msgid "No wallet loaded."
 msgstr "Không có ví nào được tải."
+
+msgid "No, I changed my mind"
+msgstr "Không, tôi đã đổi ý"
 
 msgid "Node ID"
 msgstr "Nút ID:"
@@ -2286,45 +2011,26 @@ msgstr "Chưa xác minh"
 msgid "Not yet available"
 msgstr "Chưa có sẵn"
 
-msgid ""
-"Note that if you have frozen some of your addresses, the available funds "
-"will be lower than your total balance."
-msgstr ""
-" Lưu ý rằng nếu quý khách đã đóng băng một số địa chỉ của mình, thì số tiền "
-"có sẵn  sẽ thấp hơn tổng số dư của quý khách. "
+msgid "Note that if you disagree to our Terms & Conditions you won't be able to use the Electrum Vault application."
+msgstr "Lưu ý rằng nếu bạn không đồng ý với Điều khoản & Điều kiện của chúng tôi, bạn sẽ không thể sử dụngứng dụng Electrum Vault."
 
-msgid ""
-"Note that some merchants do not accept non-final transactions until they are "
-"confirmed."
-msgstr ""
-" Lưu ý rằng một số người bán không chấp nhận các giao dịch không cuối cùng "
-"cho đến khi chúng được xác nhận."
+msgid "Note that if you have frozen some of your addresses, the available funds will be lower than your total balance."
+msgstr " Lưu ý rằng nếu quý khách đã đóng băng một số địa chỉ của mình, thì số tiền có sẵn sẽ thấp hơn tổng số dư của quý khách. "
+
+msgid "Note that some merchants do not accept non-final transactions until they are confirmed."
+msgstr " Lưu ý rằng một số người bán không chấp nhận các giao dịch không cuối cùng cho đến khi chúng được xác nhận."
 
 msgid "Note that this is NOT your encryption password."
 msgstr "Lưu ý rằng đây KHÔNG phải là mật khẩu mã hóa của quý khách."
 
-msgid ""
-"Note that your coins are not locked in this service.  You may withdraw your "
-"funds at any time and at no cost, without the remote server, by using the "
-"'restore wallet' option with your wallet seed."
-msgstr ""
-"Lưu ý rằng tiền của bạn không bị khóa trong dịch vụ này. Bạn có thể rút của "
-"mình chuyển tiền bất kỳ lúc nào và miễn phí, không cần máy chủ từ xa, bằng "
-"cách sử dụng Tùy chọn 'khôi phục ví' bằng hạt giống"
+msgid "Note that your coins are not locked in this service.  You may withdraw your funds at any time and at no cost, without the remote server, by using the 'restore wallet' option with your wallet seed."
+msgstr "Lưu ý rằng tiền của bạn không bị khóa trong dịch vụ này. Bạn có thể rút của mình chuyển tiền bất kỳ lúc nào và miễn phí, không cần máy chủ từ xa, bằng cách sử dụng Tùy chọn 'khôi phục ví' bằng hạt giống"
 
-msgid ""
-"Note: If you enable this setting, you will need your hardware device to open "
-"your wallet."
-msgstr ""
-" Lưu ý: Nếu quý khách bật cài đặt này, quý khách sẽ cần thiết bị phần cứng "
-"của mình để mở ví của quý khác."
+msgid "Note: If you enable this setting, you will need your hardware device to open your wallet."
+msgstr " Lưu ý: Nếu quý khách bật cài đặt này, quý khách sẽ cần thiết bị phần cứng của mình để mở ví của quý khác."
 
-msgid ""
-"Note: this is an offline transaction, if you want the network to see it, you "
-"need to broadcast it."
-msgstr ""
-" Lưu ý: đây là giao dịch offline, muốn nhà mạng xem được thì quý khách  cần "
-"phải phát nó. "
+msgid "Note: this is an offline transaction, if you want the network to see it, you need to broadcast it."
+msgstr " Lưu ý: đây là giao dịch offline, muốn nhà mạng xem được thì quý khách  cần phải phát nó. "
 
 msgid "Nothing set !"
 msgstr "Không có gì được thiết lập!"
@@ -2335,12 +2041,8 @@ msgstr "Không có gì để plot."
 msgid "Nothing to summarize."
 msgstr "Không có gì để tóm lược."
 
-msgid ""
-"Number of zeros displayed after the decimal point. For example, if this is "
-"set to 2, \"1.\" will be displayed as \"1.00\""
-msgstr ""
-" Số lượng số không hiển thị sau dấu thập phân. Ví dụ: nếu  được đặt thành 2, "
-"\" 1. \" sẽ được hiển thị là \"1.00 \""
+msgid "Number of zeros displayed after the decimal point. For example, if this is set to 2, \"1.\" will be displayed as \"1.00\""
+msgstr " Số lượng số không hiển thị sau dấu thập phân. Ví dụ: nếu  được đặt thành 2, \" 1. \" sẽ được hiển thị là \"1.00 \""
 
 msgid "OK"
 msgstr "OK"
@@ -2349,12 +2051,10 @@ msgid "OR"
 msgstr "HOẶC"
 
 msgid "Offline"
-msgstr "Offline"
+msgstr "Ngoại tuyến"
 
 msgid "On Linux, you might have to add a new permission to your udev rules."
-msgstr ""
-"Trên Linux, quý khách có thể phải thêm một quyền mới vào các quy tắc udev "
-"của mình."
+msgstr "Trên Linux, quý khách có thể phải thêm một quyền mới vào các quy tắc udev của mình."
 
 msgid "One output per line."
 msgstr "Một đầu ra trên mỗi dòng."
@@ -2386,7 +2086,6 @@ msgstr "Mở kênh"
 msgid "Open your cosigner wallet to retrieve it."
 msgstr "Mở ví cosigner của quý khách để lấy nó."
 
-#, python-brace-format
 msgid "Open {title} file"
 msgstr "Mở tệp {title}"
 
@@ -2430,10 +2129,10 @@ msgid "Paid"
 msgstr "Đã thanh toán"
 
 msgid "Pair your 2-Key Vault wallet with Gold Wallet"
-msgstr "Kết nối ví 2 mã khóa Vault của bạn với Gold Wallet."
+msgstr "Kết nối ví 2-Key Vault của bạn với Gold Wallet."
 
 msgid "Pair your 3-Key Vault wallet with Gold Wallet"
-msgstr "Kết nối ví 3 mã khóa Vault của bạn với Gold Wallet."
+msgstr "Kết nối ví 3-Key Vault của bạn với Gold Wallet."
 
 msgid "Partially signed"
 msgstr "Đã ký một phần"
@@ -2519,7 +2218,6 @@ msgstr "Vui lòng kiểm tra kết nối và thông tin đăng nhập của quý
 msgid "Please check your network connection."
 msgstr "Vui lòng kiểm tra kết nối mạng của quý khách."
 
-#, python-brace-format
 msgid "Please check your {device} device"
 msgstr "Vui lòng kiểm tra thiết bị {device} của quý khách"
 
@@ -2548,40 +2246,22 @@ msgid "Please enter your password to decrypt it."
 msgstr "Vui lòng nhập mật khẩu của quý khách để giải mã."
 
 msgid "Please enter your seed phrase in order to restore your wallet."
-msgstr ""
-"Vui lòng nhập cụm từ hạt giống của quý khách để khôi phục ví của quý khách."
+msgstr "Vui lòng nhập cụm từ hạt giống của quý khách để khôi phục ví của quý khách."
 
-#, python-brace-format
 msgid "Please insert your {device}"
 msgstr "Vui lòng chèn {device} của quý khách"
 
-msgid ""
-"Please paste a Cancel transaction public key. Use an existing one, if you "
-"are importing a wallet, or generate a new one at"
-msgstr ""
-"Vui lòng dán khóa công khai Hủy giao dịch. Sử dụng khóa hiện có, nếu bạn "
-"đang nhập ví hoặc tạo ví mới tại "
+msgid "Please paste a Cancel Transaction Key. Use an existing one, if you are importing a wallet, or generate a new one at"
+msgstr "Vui lòng dán Khóa giao dịch Hủy. Sử dụng khóa hiện có, nếu bạn đang nhập ví hoặc tạo ví mới tại "
 
-msgid ""
-"Please paste a Secure Fast transaction public key. Use an existing one, if "
-"you are importing a wallet, or generate a new one at"
-msgstr ""
-"Vui lòng dán khóa công khai giao dịch Nhanh An Toàn. Sử dụng một mã hiện có, "
-"nếubạn đang nhập ví hoặc tạo ví mới tại "
+msgid "Please paste a Fast Transaction Key. Use an existing one, if you are importing a wallet, or generate a new one at"
+msgstr "Vui lòng gắn Khóa giao dịch Nhanh. Sử dụng một mã hiện có, nếu bạn đang nhập ví hoặc tạo ví mới tại "
 
-msgid ""
-"Please paste authenticator public key exported from your Gold Wallet "
-"application"
-msgstr ""
-"Vui lòng dán khóa công khai của trình xác thực được xuất từ ​​Gold Wallet của "
-"bạnứng dụng"
+msgid "Please paste authenticator public key exported from your Gold Wallet application"
+msgstr "Vui lòng dán khóa công khai của trình xác thực được xuất từ ​​Gold Wallet của ứng dụng của bạn"
 
-msgid ""
-"Please paste your cosigners master public key, or scan it using the camera "
-"button."
-msgstr ""
-" Vui lòng dán khóa công khai chính cosigners của quý khách hoặc quét nó bằng "
-"nút máy ảnh."
+msgid "Please paste your cosigners master public key, or scan it using the camera button."
+msgstr " Vui lòng dán khóa công khai chính cosigners của quý khách hoặc quét nó bằng nút máy ảnh."
 
 msgid "Please report any bugs as issues on github:<br/>"
 msgstr "Vui lòng báo cáo bất kỳ lỗi nào dưới dạng sự cố trên github: <br/>"
@@ -2593,18 +2273,14 @@ msgid "Please restart Electrum to activate the new GUI settings"
 msgstr "Vui lòng khởi động lại Electrum để kích hoạt cài đặt GUI mới"
 
 msgid "Please retype your seed phrase, to confirm that you properly saved it"
-msgstr ""
-"Vui lòng nhập lại cụm từ hạt giống của quý khách, để xác nhận rằng quý khách "
-"đã lưu nó đúng cách"
+msgstr "Vui lòng nhập lại cụm từ hạt giống của quý khách, để xác nhận rằng quý khách đã lưu nó đúng cách"
 
-#, python-brace-format
 msgid "Please save these {0} words on paper (the order is important). "
 msgstr "Vui lòng lưu {0} từ này ra giấy (thứ tự các từ rất quan trọng)."
 
 msgid "Please scan a Bitcoin address or a payment request"
 msgstr "Vui lòng quét địa chỉ Bitcoin hoặc yêu cầu thanh toán"
 
-#, python-brace-format
 msgid "Please select which {device} device to use:"
 msgstr "Vui lòng chọn thiết bị {device} để sử dụng:"
 
@@ -2621,8 +2297,7 @@ msgid "Please type it here."
 msgstr "Vui lòng nhập tại đây."
 
 msgid "Please type your seed phrase using the virtual keyboard."
-msgstr ""
-"Vui lòng nhập cụm từ hạt giống của quý khách bằng cách sử dụng bàn phím ảo."
+msgstr "Vui lòng nhập cụm từ hạt giống của quý khách bằng cách sử dụng bàn phím ảo."
 
 msgid "Please wait"
 msgstr "Vui lòng đợi"
@@ -2642,7 +2317,6 @@ msgstr "Cổng số phải là số thập phân"
 msgid "Portuguese"
 msgstr "Tiếng Bồ Đào Nha"
 
-#, python-brace-format
 msgid "Position in mempool: {size} from tip"
 msgstr "Vị trí trong mempool: {size} từ đầu"
 
@@ -2700,12 +2374,8 @@ msgstr "Cấu hình proxy"
 msgid "Proxy mode"
 msgstr "Chế độ proxy"
 
-msgid ""
-"Proxy settings apply to all connections: with Electrum servers, but also "
-"with third-party services."
-msgstr ""
-" Cài đặt proxy áp dụng cho tất cả các kết nối: với máy chủ Electrum, nhưng "
-"cả  với các dịch vụ của bên thứ ba. "
+msgid "Proxy settings apply to all connections: with Electrum servers, but also with third-party services."
+msgstr " Cài đặt proxy áp dụng cho tất cả các kết nối: với máy chủ Electrum, nhưng cả  với các dịch vụ của bên thứ ba. "
 
 msgid "Proxy user"
 msgstr "Người dùng proxy"
@@ -2752,7 +2422,6 @@ msgstr "Đọc file"
 msgid "Read from microphone"
 msgstr "Đọc từ microphone"
 
-#, python-brace-format
 msgid "Ready to encrypt for revealer {version}"
 msgstr "Sẵn sàng mã hóa cho trình tiết lộ {version}"
 
@@ -2762,7 +2431,6 @@ msgstr "Nhận"
 msgid "Received (mSAT):"
 msgstr "Đã nhận (mSAT):"
 
-#, python-brace-format
 msgid "Received HTLC with ID {id}"
 msgstr "Đã nhận HTLC với ID {id}"
 
@@ -2805,7 +2473,6 @@ msgstr "Xóa"
 msgid "Remove from wallet"
 msgstr "Xóa khỏi ví"
 
-#, fuzzy, python-brace-format
 msgid "Remove {labels} from your list of contacts?"
 msgstr "Xóa {label} khỏi danh sách liên hệ của quý khách?"
 
@@ -2851,7 +2518,6 @@ msgstr "Yêu cầu thông tin tài khoản từ máy chủ TrustedCoin ..."
 msgid "Requestor"
 msgstr "Người yêu cầu"
 
-#, python-brace-format
 msgid "Require {0} signatures"
 msgstr "Yêu cầu {0} chữ ký"
 
@@ -2877,8 +2543,7 @@ msgid "Revealer Secret Backup Plugin"
 msgstr "Revealer Secret Backup Plugin"
 
 msgid "Revealers starting with 0 are not secure due to a vulnerability."
-msgstr ""
-"Những trình Revealers bắt đầu bằng 0 không an toàn do có lỗ hổng bảo mật."
+msgstr "Những trình Revealers bắt đầu bằng 0 không an toàn do có lỗ hổng bảo mật."
 
 msgid "Right side"
 msgstr "Bên phải"
@@ -2910,12 +2575,8 @@ msgstr "Lưu hóa đơn vào tệp"
 msgid "Save transaction offline"
 msgstr "Lưu giao dịch offline"
 
-msgid ""
-"Save your wallet labels on a remote server, and synchronize them across "
-"multiple devices where you use Electrum."
-msgstr ""
-" Lưu nhãn ví của quý khách trên máy chủ từ xa và đồng bộ hóa chúng trên  "
-"nhiều thiết bị mà quý khách sử dụng Electrum. "
+msgid "Save your wallet labels on a remote server, and synchronize them across multiple devices where you use Electrum."
+msgstr " Lưu nhãn ví của quý khách trên máy chủ từ xa và đồng bộ hóa chúng trên  nhiều thiết bị mà quý khách sử dụng Electrum. "
 
 msgid "Script type"
 msgstr "Loại tập lệnh"
@@ -2929,12 +2590,11 @@ msgstr "Bảo mật"
 msgid "Secure - confirmed after 24 hours. Can be canceled within that time."
 msgstr "Bảo mật - được xác nhận sau 24 giờ. Có thể hủy trong thời gian đó."
 
-msgid ""
-"Secure Fast - confirmed immediately. Cannot be canceled. Requires an "
-"additional seed phrase."
-msgstr ""
-"Nhanh An Toàn- được xác nhận ngay lập tức. Không thể bị hủy bỏ. Yêu cầu một "
-"cụm từ hạt giống bổ sung. "
+msgid "Secure Fast"
+msgstr "Nhanh"
+
+msgid "Secure Fast - confirmed immediately. Cannot be canceled. Requires an additional seed phrase."
+msgstr "Nhanh An Toàn- được xác nhận ngay lập tức. Không thể bị hủy bỏ. Yêu cầu một cụm từ hạt giống bổ sung. "
 
 msgid "Secure Fast Tx seed"
 msgstr "Hạt giống Tx nhanh an toàn"
@@ -2944,12 +2604,6 @@ msgstr "Hạt giống Tx nhanh an toàn không khớp với bất kỳ khóa nà
 
 msgid "Secure Fast seedphrase"
 msgstr "Cụm từ hạt giống nhanh an toàn"
-
-msgid "Secure Fast transaction public key"
-msgstr "Khóa công khai giao dịch nhanh an toàn"
-
-msgid "Secure fast"
-msgstr "Nhanh"
 
 msgid "Secure incoming"
 msgstr "Đến an toàn"
@@ -2990,7 +2644,6 @@ msgstr "Chọn tệp để xuất khóa cá nhân của quý khách sang"
 msgid "Select file to export your wallet transactions to"
 msgstr "Chọn tệp để xuất các giao dịch ví của quý khách sang"
 
-#, python-brace-format
 msgid "Select file to save your {title}"
 msgstr "Chọn tệp để lưu {title} của quý khách"
 
@@ -3057,7 +2710,6 @@ msgstr "Đang gửi giao dịch đến cosigning pool ..."
 msgid "Sent (mSAT):"
 msgstr "Đã gửi (mSAT):"
 
-#, python-brace-format
 msgid "Sent HTLC with ID {id}"
 msgstr "Đã gửi HTLC có ID {id}"
 
@@ -3067,7 +2719,6 @@ msgstr "Máy chủ"
 msgid "Server hosting your email account"
 msgstr "Máy chủ lưu trữ tài khoản email của quý khách"
 
-#, python-brace-format
 msgid "Server is lagging ({number} blocks)"
 msgstr "Máy chủ đang bị lag ({number} block)"
 
@@ -3086,12 +2737,8 @@ msgstr "Máy chủ được sử dụng để truy vấn lịch sử của quý 
 msgid "Services"
 msgstr "Dịch vụ"
 
-msgid ""
-"Set the value of the change output so that it has similar precision to the "
-"other outputs."
-msgstr ""
-" Đặt giá trị của đầu ra thay đổi để nó có độ chính xác tương tự như  các đầu "
-"ra khác. "
+msgid "Set the value of the change output so that it has similar precision to the other outputs."
+msgstr " Đặt giá trị của đầu ra thay đổi để nó có độ chính xác tương tự như các đầu ra khác. "
 
 msgid "Set wallet file encryption."
 msgstr "Đặt mã hóa tệp ví."
@@ -3126,20 +2773,21 @@ msgstr "Hiển thị số dư Fiat cho các địa chỉ"
 msgid "Show QR Code"
 msgstr "Hiển thị mã QR"
 
+msgid "Show advanced"
+msgstr "Hiển thị nâng cao"
+
 msgid "Show as QR code"
 msgstr "Hiển thị dưới dạng mã QR"
 
 msgid "Show on Ledger"
 msgstr "Hiển thị trên Ledger"
 
-#, python-brace-format
 msgid "Show on {device}"
 msgstr "Hiển thị trên {device}"
 
 msgid "Show report contents"
 msgstr "Hiển thị nội dung báo cáo"
 
-#, python-brace-format
 msgid "Show {tab_description}"
 msgstr "Hiển thị {tab_description}"
 
@@ -3173,15 +2821,8 @@ msgstr "Đang ký"
 msgid "Signing transaction..."
 msgstr "Đang ký kết giao dịch..."
 
-msgid ""
-"Signing with an address actually means signing with the corresponding "
-"private key, and verifying with the corresponding public key. The address "
-"you have entered does not have a unique public key, so these operations "
-"cannot be performed."
-msgstr ""
-" Ký bằng một địa chỉ thực sự có nghĩa là ký bằng  khóa riêng tư và xác minh "
-"bằng khóa công khai tương ứng. Địa chỉ  quý khách đã nhập không có khóa công "
-"khai duy nhất, vì vậy các thao tác này  không thể thực hiện được. "
+msgid "Signing with an address actually means signing with the corresponding private key, and verifying with the corresponding public key. The address you have entered does not have a unique public key, so these operations cannot be performed."
+msgstr " Ký bằng một địa chỉ thực sự có nghĩa là ký bằng  khóa riêng tư và xác minh bằng khóa công khai tương ứng. Địa chỉ  quý khách đã nhập không có khóa công khai duy nhất, vì vậy các thao tác này  không thể thực hiện được. "
 
 msgid "Size:"
 msgstr "Kích thước:"
@@ -3193,9 +2834,7 @@ msgid "Sorry!"
 msgstr "Xin lỗi!"
 
 msgid "Sorry, but we were unable to check for updates. Please try again later."
-msgstr ""
-"Xin lỗi, nhưng chúng tôi không thể kiểm tra các bản cập nhật. Vui lòng thử "
-"lại sau."
+msgstr "Xin lỗi, nhưng chúng tôi không thể kiểm tra các bản cập nhật. Vui lòng thử lại sau."
 
 msgid "Source"
 msgstr "Nguồn"
@@ -3216,18 +2855,13 @@ msgid "Spend only confirmed inputs."
 msgstr "Chỉ sử dụng các đầu vào đã xác nhận."
 
 msgid "Standard"
-msgstr "Tiêu chuẩn"
+msgstr "Standard"
 
 msgid "Start"
 msgstr "Bắt đầu"
 
-msgid ""
-"Startup times are instant because it operates in conjunction with high-"
-"performance servers that handle the most complicated parts of the Bitcoin "
-"Vault system."
-msgstr ""
-"Thời gian khởi động nhanh chóng vì nó hoạt động kết hợp với-máy chủ hiệu "
-"suất cao giúp xử lý các phần phức tạp nhất của Bitcoin Hệ thống Vault. "
+msgid "Startup times are instant because it operates in conjunction with high-performance servers that handle the most complicated parts of the Bitcoin Vault system."
+msgstr "Thời gian khởi động nhanh chóng vì nó hoạt động kết hợp với-máy chủ hiệu suất cao giúp xử lý các phần phức tạp nhất của Bitcoin Hệ thống Vault. "
 
 msgid "State"
 msgstr "Trạng thái"
@@ -3271,6 +2905,9 @@ msgstr "Mục tiêu"
 msgid "Target fee:"
 msgstr "Mục tiêu phí:"
 
+msgid "Terms & Conditions"
+msgstr "Điều khoản và điều kiện"
+
 msgid "Terms of Service"
 msgstr "Điều khoản dịch vụ"
 
@@ -3280,12 +2917,8 @@ msgstr "Testnet"
 msgid "Testnet coins are worthless."
 msgstr "Đồng tiền testnet là vô giá trị."
 
-msgid ""
-"Testnet is separate from the main Bitcoin Vault network. It is used for "
-"testing."
-msgstr ""
-"Testnet tách biệt với mạng Bitcoin Vault chính. Nó được sử dụng cho thử "
-"nghiệm. "
+msgid "Testnet is separate from the main Bitcoin Vault network. It is used for testing."
+msgstr "Testnet tách biệt với mạng Bitcoin Vault chính. Nó được sử dụng cho thử nghiệm. "
 
 msgid "Text copied to clipboard"
 msgstr "Đã sao chép văn bản vào clipboard"
@@ -3293,47 +2926,30 @@ msgstr "Đã sao chép văn bản vào clipboard"
 msgid "Text copied to clipboard."
 msgstr "Đã sao chép văn bản vào clipboard."
 
-msgid ""
-"The amount of fee can be decided freely by the sender. However, transactions "
-"with low fees take more time to be processed."
-msgstr ""
-" Số tiền phí có thể được quyết định bởi người gửi một cách tự do. Tuy nhiên, "
-"các giao dịch  với mức phí thấp cần nhiều thời gian hơn để xử lý. "
+msgid "The amount of fee can be decided freely by the sender. However, transactions with low fees take more time to be processed."
+msgstr " Số tiền phí có thể được quyết định bởi người gửi một cách tự do. Tuy nhiên, các giao dịch  với mức phí thấp cần nhiều thời gian hơn để xử lý. "
 
-msgid ""
-"The amount will be displayed in red if you do not have enough funds in your "
-"wallet."
-msgstr ""
-" Số tiền sẽ được hiển thị màu đỏ nếu quý khách không có đủ tiền trong ví."
+msgid "The amount will be displayed in red if you do not have enough funds in your wallet."
+msgstr " Số tiền sẽ được hiển thị màu đỏ nếu quý khách không có đủ tiền trong ví."
 
-msgid ""
-"The bitcoin address never expires and will always be part of this electrum "
-"wallet."
-msgstr ""
-" Địa chỉ bitcoin không bao giờ hết hạn và sẽ luôn là một phần của ví "
-"electrum này."
+msgid "The bitcoin address never expires and will always be part of this electrum wallet."
+msgstr " Địa chỉ bitcoin không bao giờ hết hạn và sẽ luôn là một phần của ví electrum này."
 
-msgid ""
-"The description is not sent to the recipient of the funds. It is stored in "
-"your wallet file, and displayed in the 'History' tab."
-msgstr ""
-" Mô tả không được gửi đến người nhận tiền. Nó được lưu trữ trong  tệp ví của "
-"quý khách và được hiển thị trong mục 'Lịch sử'."
+msgid "The description is not sent to the recipient of the funds. It is stored in your wallet file, and displayed in the 'History' tab."
+msgstr " Mô tả không được gửi đến người nhận tiền. Nó được lưu trữ trong  tệp ví của quý khách và được hiển thị trong mục 'Lịch sử'."
 
 msgid ""
 "The fee could not be verified. Signing non-segwit inputs is risky:\n"
 "if this transaction was maliciously modified before you sign,\n"
 "you might end up paying a higher mining fee than displayed."
 msgstr ""
-" Không thể xác minh khoản phí. Việc ký các đầu vào không phải segwit rất rủi "
-"ro: \n"
+" Không thể xác minh khoản phí. Việc ký các đầu vào không phải segwit rất rủi ro: \n"
 " nếu giao dịch này bị sửa đổi một cách cố ý trước khi quý khách ký, \n"
 " quý khách có thể phải trả một khoản phí khai thác cao hơn so với hiển thị. "
 
 msgid "The fee for this transaction seems unusually high."
 msgstr "Phí cho giao dịch này có vẻ cao bất thường."
 
-#, python-brace-format
 msgid ""
 "The file '{path}' contains an incompletely created wallet.\n"
 "Do you want to complete its creation now?"
@@ -3344,14 +2960,8 @@ msgstr ""
 msgid "The file was removed"
 msgstr "Tệp đã bị xóa"
 
-msgid ""
-"The firmware of your hardware device is too old. If possible, you should "
-"upgrade it. You can ignore this error and try to continue, however things "
-"are likely to break."
-msgstr ""
-" Phần mềm cơ sở của thiết bị phần cứng của quý khách quá cũ. Nếu có thể, quý "
-"khách nên  nâng cấp nó. Quý khách có thể bỏ qua lỗi này và cố gắng tiếp tục, "
-"tuy nhiên mọi thứ  có khả năng bị hỏng."
+msgid "The firmware of your hardware device is too old. If possible, you should upgrade it. You can ignore this error and try to continue, however things are likely to break."
+msgstr " Phần mềm cơ sở của thiết bị phần cứng của quý khách quá cũ. Nếu có thể, quý khách nên nâng cấp nó. Quý khách có thể bỏ qua lỗi này và cố gắng tiếp tục, tuy nhiên mọi thứ có khả năng bị hỏng."
 
 msgid "The following addresses were added"
 msgstr "Các địa chỉ sau đã được thêm"
@@ -3365,16 +2975,8 @@ msgstr "Không thể nhập các đầu vào sau"
 msgid "The new fee rate needs to be higher than the old fee rate."
 msgstr "Mức phí mới cần phải cao hơn mức phí cũ."
 
-msgid ""
-"The next step will generate the seed of your wallet.  This seed will NOT be "
-"saved in your computer, and it must be stored on paper.  To be safe from "
-"malware, you may want to do this on an offline computer, and move your "
-"wallet later to an online computer."
-msgstr ""
-"Bước tiếp theo sẽ tạo hạt giống cho ví của bạn. Hạt giống này sẽ KHÔNG được "
-"lưu trong máy tính của bạn và bạn phải được lưu nó trên giấy. Để được an "
-"toàn từ phần mềm độc hại, bạn có thể muốn thực hiện việc này trên máy tính "
-"ngoại tuyến và di chuyển của mình ví sau khi vào máy tính trực tuyến. "
+msgid "The next step will generate the seed of your wallet.  This seed will NOT be saved in your computer, and it must be stored on paper.  To be safe from malware, you may want to do this on an offline computer, and move your wallet later to an online computer."
+msgstr "Bước tiếp theo sẽ tạo hạt giống cho ví của bạn. Hạt giống này sẽ KHÔNG được lưu trong máy tính của bạn và bạn phải được lưu nó trên giấy. Để được an toàn từ phần mềm độc hại, bạn có thể muốn thực hiện việc này trên máy tính ngoại tuyến và di chuyển của mình ví sau khi vào máy tính trực tuyến. "
 
 msgid "The operation is undefined. Not just in Electrum, but in general."
 msgstr "Hoạt động không được xác định. Không chỉ trong Electrum, mà nói chung."
@@ -3385,32 +2987,24 @@ msgstr "Máy chủ trả về lỗi khi phát giao dịch."
 msgid "The server returned an error."
 msgstr "Máy chủ trả về lỗi."
 
-msgid ""
-"The server returned an unexpected transaction ID when broadcasting the "
-"transaction."
+msgid "The server returned an unexpected transaction ID when broadcasting the transaction."
 msgstr " Máy chủ trả về ID giao dịch không mong muốn khi phát giao dịch."
 
-msgid ""
-"The transaction was rejected because it contains multiple OP_RETURN outputs."
+msgid "The transaction was rejected because it contains multiple OP_RETURN outputs."
 msgstr " Giao dịch đã bị từ chối vì chứa nhiều đầu ra OP_RETURN. "
 
 msgid "The transaction was rejected because it is too large (in bytes)."
 msgstr "Giao dịch đã bị từ chối vì nó quá lớn (tính bằng byte)."
 
 msgid "The type of addresses used by your wallet will depend on your seed."
-msgstr ""
-"Loại địa chỉ mà ví của quý khách sử dụng sẽ phụ thuộc vào hạt giống của quý "
-"khách."
+msgstr "Loại địa chỉ mà ví của quý khách sử dụng sẽ phụ thuộc vào hạt giống của quý khách."
 
-#, python-brace-format
 msgid ""
-"The wallet '{path}' contains multiple accounts, which are no longer "
-"supported since Electrum 2.7.\n"
+"The wallet '{path}' contains multiple accounts, which are no longer supported since Electrum 2.7.\n"
 "\n"
 "Do you want to split your wallet into multiple files?"
 msgstr ""
-" Ví '{path}' chứa nhiều tài khoản, không còn  được hỗ trợ kể từ Electrum "
-"2.7. \n"
+" Ví '{path}' chứa nhiều tài khoản, không còn  được hỗ trợ kể từ Electrum 2.7. \n"
 "\n"
 " Quý khách có muốn chia ví của mình thành nhiều tệp không?"
 
@@ -3426,21 +3020,12 @@ msgstr "Đã xảy ra sự cố với báo cáo tự động:"
 msgid "Therefore, two-factor authentication is disabled."
 msgstr "Do đó, xác thực hai yếu tố bị vô hiệu hóa."
 
-msgid ""
-"This address has already been used. For better privacy, do not reuse it for "
-"new payments."
-msgstr ""
-" Địa chỉ này đã được sử dụng. Để bảo mật tốt hơn, không sử dụng lại nó cho  "
-"thanh toán mới. "
+msgid "This address has already been used. For better privacy, do not reuse it for new payments."
+msgstr " Địa chỉ này đã được sử dụng. Để bảo mật tốt hơn, không sử dụng lại nó cho  thanh toán mới. "
 
-msgid ""
-"This blockchain is used to verify the transactions sent by your transaction "
-"server."
-msgstr ""
-" Blockchain này được sử dụng để xác minh các giao dịch được gửi bởi giao "
-"dịch máy chủcủa quý khách "
+msgid "This blockchain is used to verify the transactions sent by your transaction server."
+msgstr " Blockchain này được sử dụng để xác minh các giao dịch được gửi bởi giao dịch máy chủcủa quý khách "
 
-#, python-brace-format
 msgid "This channel will be usable after {number} confirmations"
 msgstr "Kênh này sẽ có thể sử dụng được sau khi xác nhận {number}"
 
@@ -3459,18 +3044,11 @@ msgstr "Tệp này được mã hóa bằng thiết bị phần cứng."
 msgid "This file is encrypted with a password."
 msgstr "Tệp này được mã hóa bằng mật khẩu."
 
-#, python-brace-format
-msgid ""
-"This function is only available for standard wallets when using {device}."
-msgstr ""
-" Chức năng này chỉ khả dụng cho các ví tiêu chuẩn khi sử dụng {device}.  "
+msgid "This function is only available for standard wallets when using {device}."
+msgstr " Chức năng này chỉ khả dụng cho các ví standard khi sử dụng {device}.  "
 
-msgid ""
-"This information is seen by the recipient if you send them a signed payment "
-"request."
-msgstr ""
-" Người nhận sẽ nhìn thấy thông tin này nếu quý khách gửi cho họ một khoản "
-"yêu cầu thanh toán đã ký "
+msgid "This information is seen by the recipient if you send them a signed payment request."
+msgstr " Người nhận sẽ nhìn thấy thông tin này nếu quý khách gửi cho họ một khoản yêu cầu thanh toán đã ký "
 
 msgid "This invoice has been paid already"
 msgstr "Hóa đơn này đã được thanh toán"
@@ -3479,13 +3057,13 @@ msgid "This invoice has expired"
 msgstr "Hóa đơn này đã hết hạn"
 
 msgid "This is a watching-only wallet"
-msgstr "Đây là ví watch-only"
+msgstr "Đây là ví chỉ xem"
 
 msgid "This is a watching-only wallet."
-msgstr "Đây là ví watch-only."
+msgstr "Đây là ví chỉ xem."
 
 msgid "This is a watching-only wallet. It does not contain private keys."
-msgstr "Đây là ví watch - only. Nó không chứa khóa cá nhân."
+msgstr "Đây là ví chỉ xem. Nó không chứa khóa cá nhân."
 
 msgid "This is discouraged."
 msgstr "Điều này không được khuyến khích."
@@ -3505,12 +3083,8 @@ msgstr "Điều này có thể cải thiện phần nào quyền riêng tư củ
 msgid "This payment request will be signed."
 msgstr "Yêu cầu thanh toán này sẽ được ký."
 
-msgid ""
-"This plug-in allows you to create a visually encrypted backup of your wallet "
-"seeds, or of custom alphanumeric secrets."
-msgstr ""
-" Plug - in này cho phép quý khách tạo bản sao lưu được mã hóa trực quan cho "
-"hạt giống ví của quý khách, hoặc bí mật chữ và số tùy chỉnh."
+msgid "This plug-in allows you to create a visually encrypted backup of your wallet seeds, or of custom alphanumeric secrets."
+msgstr " Plug - in này cho phép quý khách tạo bản sao lưu được mã hóa trực quan cho hạt giống ví của quý khách, hoặc bí mật chữ và số tùy chỉnh."
 
 msgid "This plugin adds two-factor authentication to your wallet."
 msgstr "Plugin này thêm xác thực hai yếu tố vào ví của bạn."
@@ -3524,62 +3098,41 @@ msgstr "Khóa công khai này đã được sử dụng. Vui lòng tạo một k
 msgid "This seed will allow you to recover your wallet."
 msgstr "Hạt giống này sẽ cho phép bạn lấy lại ví của mình."
 
-msgid ""
-"This service uses a multi-signature wallet, where you own 2 of 3 keys.  The "
-"third key is stored on a remote server that signs transactions on your "
-"behalf. A small fee will be charged on each transaction that uses the remote "
-"server."
-msgstr ""
-"Dịch vụ này sử dụng ví có nhiều chữ ký, mà bạn có thể sở hữu 2 trong 3 mã "
-"khóa. khóa thứ ba được lưu trữ trên một máy chủ từ xa có chức năng ký các "
-"giao dịch trên của bạnthay mặt cho. Một khoản phí nhỏ sẽ được tính cho mỗi "
-"giao dịch thanh toán từ xa ."
+msgid "This service uses a multi-signature wallet, where you own 2 of 3 keys.  The third key is stored on a remote server that signs transactions on your behalf. A small fee will be charged on each transaction that uses the remote server."
+msgstr "Dịch vụ này sử dụng ví có nhiều chữ ký, mà bạn có thể sở hữu 2 trong 3 mã khóa. khóa thứ ba được lưu trữ trên một máy chủ từ xa có chức năng ký các giao dịch trên của bạn thay mặt cho. Một khoản phí nhỏ sẽ được tính cho mỗi giao dịch thanh toán từ xa ."
 
 msgid "This setting affects the Send tab, and all balance related fields."
-msgstr ""
-"Cài đặt này ảnh hưởng đến mục Gửi và tất cả các trường liên quan đến số dư."
+msgstr "Cài đặt này ảnh hưởng đến mục Gửi và tất cả các trường liên quan đến số dư."
 
 msgid "This transaction is not saved. Close anyway?"
 msgstr "Giao dịch này chưa được lưu. Đóng?"
 
-msgid ""
-"This transaction requires a higher fee, or it will not be propagated by your "
-"current server"
-msgstr ""
-" Giao dịch này yêu cầu một khoản phí cao hơn hoặc nó sẽ không được truyền "
-"tớimáy chủ hiện tại của quý khách"
+msgid "This transaction requires a higher fee, or it will not be propagated by your current server"
+msgstr " Giao dịch này yêu cầu một khoản phí cao hơn hoặc nó sẽ không được truyền tới máy chủ hiện tại của quý khách"
 
-#, python-brace-format
 msgid "This type of script is not supported with {device}."
 msgstr "Loại tập lệnh này không được hỗ trợ với {device}."
 
-#, python-brace-format
 msgid "This version supports a maximum of {length} characters."
 msgstr "Phiên bản này hỗ trợ tối đa {length} ký tự."
 
 msgid "This wallet has no seed"
 msgstr "Ví này không có hạt giống"
 
-msgid ""
-"This wallet is already registered with TrustedCoin. To finalize wallet "
-"creation, please enter your Google Authenticator Code."
-msgstr ""
-" Ví này đã được đăng ký với TrustedCoin. Để hoàn tất việc tạo ví  vui lòng "
-"nhập mã Google Authenticator của quý khách. "
+msgid "This wallet is already registered with TrustedCoin. To finalize wallet creation, please enter your Google Authenticator Code."
+msgstr " Ví này đã được đăng ký với TrustedCoin. Để hoàn tất việc tạo ví vui lòng nhập mã Google Authenticator của quý khách. "
 
 msgid "This wallet is protected by TrustedCoin's two-factor authentication."
 msgstr "Ví này được bảo vệ bởi xác thực hai yếu tố của TrustedCoin."
 
 msgid "This wallet is watching-only"
-msgstr "Ví này là ví watching-only"
+msgstr "Ví này là ví chỉ xem"
 
 msgid "This wallet is watching-only."
-msgstr "Ví này là ví watching-only."
+msgstr "Ví này là ví chỉ xem."
 
-msgid ""
-"This wallet was restored from seed, and it contains two master private keys."
-msgstr ""
-" Ví này đã được khôi phục từ hạt giống và nó chứa hai khóa cá nhân chính."
+msgid "This wallet was restored from seed, and it contains two master private keys."
+msgstr " Ví này đã được khôi phục từ hạt giống và nó chứa hai khóa cá nhân chính."
 
 msgid "This will delete your lightning private keys"
 msgstr "Thao tác này sẽ xóa các khóa riêng tư bằng lightning của quý khách"
@@ -3588,66 +3141,41 @@ msgid "This will save fees."
 msgstr "Điều này sẽ tiết kiệm phí."
 
 msgid "Time based: fee rate is based on average confirmation time estimates"
-msgstr ""
-"Dựa trên thời gian: mức phí dựa trên ước tính thời gian xác nhận trung bình"
+msgstr "Dựa trên thời gian: mức phí dựa trên ước tính thời gian xác nhận trung bình"
 
 msgid "To"
 msgstr "Đến"
 
-msgid ""
-"To create a spending wallet, please enter a master private key (xprv/yprv/"
-"zprv)."
-msgstr ""
-" Để tạo ví chi tiêu, vui lòng nhập khóa cá nhân chính (xprv / yprv /  zprv). "
+msgid "To create a spending wallet, please enter a master private key (xprv/yprv/zprv)."
+msgstr " Để tạo ví chi tiêu, vui lòng nhập khóa cá nhân chính (xprv / yprv /  zprv). "
 
-msgid ""
-"To create a watching-only wallet, please enter your master public key (xpub/"
-"ypub/zpub)."
-msgstr ""
-" Để tạo ví watching-only, vui lòng nhập khóa công khai chính của quý khách "
-"(xpub /  ypub / zpub)."
+msgid "To create a watching-only wallet, please enter your master public key (xpub/ypub/zpub)."
+msgstr " Để tạo ví chỉ xem, vui lòng nhập khóa công khai chính của quý khách (xpub /  ypub / zpub)."
 
 msgid "To encrypt your backup, first we need to load some noise."
-msgstr ""
-"Để mã hóa bản sao lưu của quý khách, trước tiên chúng tôi cần tải một số "
-"nhiễu."
+msgstr "Để mã hóa bản sao lưu của quý khách, trước tiên chúng tôi cần tải một số nhiễu."
 
-msgid ""
-"To help us diagnose and fix the problem, you can send us a bug report that "
-"contains useful debug information:"
-msgstr ""
-" Để giúp chúng tôi chẩn đoán và khắc phục sự cố, quý khách có thể gửi cho "
-"chúng tôi báo cáo lỗi  chứa thông tin gỡ lỗi hữu ích:  "
+msgid "To help us diagnose and fix the problem, you can send us a bug report that contains useful debug information:"
+msgstr " Để giúp chúng tôi chẩn đoán và khắc phục sự cố, quý khách có thể gửi cho chúng tôi báo cáo lỗi chứa thông tin gỡ lỗi hữu ích:  "
 
-msgid ""
-"To make sure that you have properly saved your seed, please retype it here."
-msgstr ""
-" Để đảm bảo rằng quý khách đã lưu hạt giống của mình đúng cách, vui lòng "
-"nhập lại vào đây. "
+msgid "To make sure that you have properly saved your seed, please retype it here."
+msgstr " Để đảm bảo rằng quý khách đã lưu hạt giống của mình đúng cách, vui lòng nhập lại vào đây. "
 
 msgid ""
 "To setup a local watchtower, you must run Electrum on a machine\n"
-"that is always connected to the internet. Configure a port if you want it to "
-"be public."
+"that is always connected to the internet. Configure a port if you want it to be public."
 msgstr ""
 " Để thiết lập một watchtower cục bộ, quý khách phải chạy Electrum trên máy \n"
-" luôn được kết nối với Internet. Định cấu hình một cổng nếu quý khách muốn  "
-"công khai. "
+" luôn được kết nối với Internet. Định cấu hình một cổng nếu quý khách muốn  công khai. "
 
-msgid ""
-"To somewhat protect your privacy, Electrum tries to create change with "
-"similar precision to other outputs."
-msgstr ""
-" Để phần nào bảo vệ quyền riêng tư của quý khách, Electrum cố gắng tạo ra sự "
-"thay đổi với  độ chính xác tương tự với các kết quả đầu ra khác. "
+msgid "To somewhat protect your privacy, Electrum tries to create change with similar precision to other outputs."
+msgstr " Để phần nào bảo vệ quyền riêng tư của quý khách, Electrum cố gắng tạo ra sự thay đổi với  độ chính xác tương tự với các kết quả đầu ra khác. "
 
 msgid "To trigger a rescan, press 'Next'."
 msgstr "Để kích hoạt quét lại, nhấn 'Tiếp theo'."
 
 msgid "To try to fix this, we will now re-pair with your device."
-msgstr ""
-"Để cố gắng khắc phục sự cố này, bây giờ chúng tôi sẽ ghép nối lại với thiết "
-"bị của quý khách."
+msgstr "Để cố gắng khắc phục sự cố này, bây giờ chúng tôi sẽ ghép nối lại với thiết bị của quý khách."
 
 msgid "Toggle Encryption"
 msgstr "Chuyển đổi mã hóa"
@@ -3730,15 +3258,8 @@ msgstr "Phí TrustedCoin (2FA) cho đợt giao dịch tiếp theo"
 msgid "TrustedCoin Information"
 msgstr "Thông tin TrustedCoin"
 
-msgid ""
-"TrustedCoin charges a small fee to co-sign transactions. The fee depends on "
-"how many prepaid transactions you buy. An extra output is added to your "
-"transaction every time you run out of prepaid transactions."
-msgstr ""
-" TrustedCoin tính một khoản phí nhỏ để đồng ký kết các giao dịch. Phí phụ "
-"thuộc vào  việc quý khách mua bao nhiêu giao dịch trả trước. Một đầu ra bổ "
-"sung được thêm vào  giao dịch của quý khách mỗi khi quý khách hết giao dịch "
-"trả trước."
+msgid "TrustedCoin charges a small fee to co-sign transactions. The fee depends on how many prepaid transactions you buy. An extra output is added to your transaction every time you run out of prepaid transactions."
+msgstr " TrustedCoin tính một khoản phí nhỏ để đồng ký kết các giao dịch. Phí phụ thuộcvào  việc quý khách mua bao nhiêu giao dịch trả trước. Một đầu ra bổ sung được thêm vào giao dịch của quý khách mỗi khi quý khách hết giao dịch trả trước."
 
 msgid "Try to connect again?"
 msgstr "Thử kết nối lại xem?"
@@ -3746,11 +3267,8 @@ msgstr "Thử kết nối lại xem?"
 msgid "Try to explain not only what the bug is, but how it occurs."
 msgstr "Cố gắng giải thích không chỉ lỗi là gì, mà còn cách nó xảy ra."
 
-msgid ""
-"Try to raise your transaction fee, or use a server with a lower relay fee."
-msgstr ""
-" Cố gắng tăng phí giao dịch của quý khách hoặc sử dụng máy chủ có phí chuyển "
-"tiếp thấp hơn."
+msgid "Try to raise your transaction fee, or use a server with a lower relay fee."
+msgstr " Cố gắng tăng phí giao dịch của quý khách hoặc sử dụng máy chủ có phí chuyển tiếp thấp hơn."
 
 msgid "Turkish"
 msgstr "Thổ Nhĩ Kỳ"
@@ -3758,23 +3276,11 @@ msgstr "Thổ Nhĩ Kỳ"
 msgid "Two Factor Authentication"
 msgstr "Xác thực hai yếu tố"
 
-msgid ""
-"Two-factor authentication is a service provided by TrustedCoin.  It uses a "
-"multi-signature wallet, where you own 2 of 3 keys.  The third key is stored "
-"on a remote server that signs transactions on your behalf.  To use this "
-"service, you will need a smartphone with Google Authenticator installed."
-msgstr ""
-"Xác thực hai yếu tố là một dịch vụ được cung cấp bởi TrustedCoin. Nó sử dụng "
-"một ví đa chữ ký, nơi bạn sở hữu 2 trong 3 mã khóa. Khóa thứ ba được lưu trữ "
-"trên máy chủ từ xa đại diện cho bạn ký các giao dịch. Để sử dụng dịch vụ, "
-"bạn sẽ cần một điện thoại thông minh có cài đặt Google Authenticator. "
+msgid "Two-factor authentication is a service provided by TrustedCoin.  It uses a multi-signature wallet, where you own 2 of 3 keys.  The third key is stored on a remote server that signs transactions on your behalf.  To use this service, you will need a smartphone with Google Authenticator installed."
+msgstr "Xác thực hai yếu tố là một dịch vụ được cung cấp bởi TrustedCoin. Nó sử dụng một ví đa chữ ký, nơi bạn sở hữu 2 trong 3 mã khóa. Khóa thứ ba được lưu trữ trên máy chủ từ xa đại diện cho bạn ký các giao dịch. Để sử dụng dịch vụ, bạn sẽ cần một điện thoại thông minh có cài đặt Google Authenticator. "
 
-msgid ""
-"Two-factor authentication is a service provided by TrustedCoin. To use it, "
-"you must have a separate device with Google Authenticator."
-msgstr ""
-"Xác thực hai yếu tố là một dịch vụ được cung cấp bởi TrustedCoin. Để dùng "
-"nó,  quý khách phải có một thiết bị riêng với xác thực Google."
+msgid "Two-factor authentication is a service provided by TrustedCoin. To use it, you must have a separate device with Google Authenticator."
+msgstr "Xác thực hai yếu tố là một dịch vụ được cung cấp bởi TrustedCoin. Để dùng nó,  quý khách phải có một thiết bị riêng với xác thực Google."
 
 msgid "Tx"
 msgstr "Tx"
@@ -3782,7 +3288,6 @@ msgstr "Tx"
 msgid "Type"
 msgstr "Thể loại"
 
-#, python-brace-format
 msgid ""
 "Unable to connect to mail server:\n"
 " {error}"
@@ -3859,7 +3364,6 @@ msgstr "Cập nhật kiểm tra"
 msgid "Update check failed"
 msgstr "Kiểm tra cập nhật không thành công"
 
-#, python-brace-format
 msgid "Update to Electrum {version} is available"
 msgstr "Đã có bản cập nhật lên Electrum {version}"
 
@@ -3917,12 +3421,8 @@ msgstr "Tên tài khoản"
 msgid "Uses icons from the Icons8 icon pack (icons8.com)."
 msgstr "Sử dụng các biểu tượng từ gói biểu tượng Icons8 (icon8.com)."
 
-msgid ""
-"Using change addresses makes it more difficult for other people to track "
-"your transactions."
-msgstr ""
-" Việc sử dụng địa chỉ thay đổi khiến người khác khó theo dõi hơn các giao "
-"dịch của quý khách. "
+msgid "Using change addresses makes it more difficult for other people to track your transactions."
+msgstr " Việc sử dụng địa chỉ thay đổi khiến người khác khó theo dõi hơn các giao dịch của quý khách. "
 
 msgid "Value"
 msgstr "Giá trị"
@@ -3942,18 +3442,11 @@ msgstr "Xác nhận"
 msgid "Verify GA instant"
 msgstr "Xác minh GA tức thì"
 
-msgid ""
-"Verify the address below.<br>Type the character from your security card "
-"corresponding to the <u><b>BOLD</b></u> character."
-msgstr ""
-" Xác minh địa chỉ bên dưới. <br> Nhập ký tự từ thẻ bảo mật của quý khách  "
-"tương ứng với ký tự <u><b>BOLD</b> </u>. "
+msgid "Verify the address below.<br>Type the character from your security card corresponding to the <u><b>BOLD</b></u> character."
+msgstr " Xác minh địa chỉ bên dưới. <br> Nhập ký tự từ thẻ bảo mật của quý khách  tương ứng với ký tự <u><b>BOLD</b> </u>. "
 
-msgid ""
-"Verify the cable is connected and that no other application is using it."
-msgstr ""
-" Xác minh rằng cáp được kết nối và không có ứng dụng nào khác đang sử dụng "
-"nó."
+msgid "Verify the cable is connected and that no other application is using it."
+msgstr " Xác minh rằng cáp được kết nối và không có ứng dụng nào khác đang sử dụng nó."
 
 msgid "Verifying..."
 msgstr "Đang xác nhận"
@@ -3985,13 +3478,8 @@ msgstr "CẢNH BÁO: TẤT CẢ các khóa riêng tư của quý khách đều l
 msgid "WARNING: This is a multi-signature wallet."
 msgstr "CẢNH BÁO: Đây là ví có nhiều chữ ký."
 
-#, python-brace-format
-msgid ""
-"WARNING: the alias \"{alias}\" could not be validated via an additional "
-"security check, DNSSEC, and thus may not be correct."
-msgstr ""
-" CẢNH BÁO: không thể xác thực bí danh \"{alias} \" thông qua bổ sung  kiểm "
-"tra bảo mật, DNSSEC, và do đó có thể không đúng. "
+msgid "WARNING: the alias \"{alias}\" could not be validated via an additional security check, DNSSEC, and thus may not be correct."
+msgstr " CẢNH BÁO: không thể xác thực bí danh \"{alias} \" thông qua bổ sung  kiểm tra bảo mật, DNSSEC, và do đó có thể không đúng. "
 
 msgid "WIF keys are typed in Electrum, based on script type."
 msgstr "Các khóa WIF được nhập bằng Electrum, dựa trên loại tập lệnh."
@@ -4017,14 +3505,9 @@ msgstr "Đã tạo bản sao lưu trên Wallet"
 msgid "Wallet change address"
 msgstr "Địa chỉ thay đổi ví"
 
-msgid ""
-"Wallet file corruption detected. Please restore your wallet from seed, and "
-"compare the addresses in both files"
-msgstr ""
-" Đã phát hiện thấy lỗi tệp Wallet. Vui lòng khôi phục ví của quý khách từ "
-"hạt giống và  so sánh địa chỉ trong cả hai tệp "
+msgid "Wallet file corruption detected. Please restore your wallet from seed, and compare the addresses in both files"
+msgstr " Đã phát hiện thấy lỗi tệp Wallet. Vui lòng khôi phục ví của quý khách từ hạt giống và  so sánh địa chỉ trong cả hai tệp "
 
-#, python-brace-format
 msgid "Wallet file not found: {name}"
 msgstr "Không tìm thấy tệp Wallet: {name}"
 
@@ -4034,7 +3517,6 @@ msgstr "Tên ví"
 msgid "Wallet receive address"
 msgstr "Địa chỉ nhận ví"
 
-#, python-brace-format
 msgid "Wallet removed: {name}"
 msgstr "Đã xóa ví: {name}"
 
@@ -4050,75 +3532,45 @@ msgstr "Cảnh báo"
 msgid "Warning!"
 msgstr "Cảnh báo!"
 
-msgid ""
-"Warning: Please be aware that in the process of using the Secure Transaction "
-"feature, a part of the funds left in your wallet might be blocked. This is a "
-"normal procedure linked to UTXO and the blockchain parameters of the Bitcoin "
-"Vault wallet. Your funds will be unblocked once the transaction is verified "
-"(after approximately 24 hrs) or canceled (within 24 hrs)."
-msgstr ""
-"Cảnh báo: Xin lưu ý rằng trong quá trình sử dụng Giao dịch an toàn một phần "
-"số tiền còn lại trong ví của bạn có thể bị chặn. Đây là một quy trình thông "
-"thường được liên kết với UTXO và các tham số blockchain của Bitcoin Ví "
-"Vault. Tiền của bạn sẽ được bỏ chặn sau khi giao dịch được xác minh (sau "
-"khoảng 24 giờ) hoặc bị hủy (trong vòng 24 giờ). "
+msgid "Warning: Please be aware that in the process of using the Secure Transaction feature, a part of the funds left in your wallet might be blocked. This is a normal procedure linked to UTXO and the blockchain parameters of the Bitcoin Vault wallet. Your funds will be unblocked once the transaction is verified (after approximately 24 hrs) or canceled (within 24 hrs)."
+msgstr "Cảnh báo: Xin lưu ý rằng trong quá trình sử dụng tính năng Giao dịch An Toànmột phần số tiền còn lại trong ví của bạn có thể bị chặn. Đây là một quy trình thông thường được liên kết với UTXO và các tham số blockchain của ví Bitcoin Vault Tiền của bạn sẽ được bỏ chặn sau khi giao dịch được xác minh (sau khoảng 24 giờ) hoặc bị hủy (trong vòng 24 giờ). "
 
 msgid ""
-"Warning: The next address will not be recovered automatically if you restore "
-"your wallet from seed; you may need to add it manually.\n"
+"Warning: The next address will not be recovered automatically if you restore your wallet from seed; you may need to add it manually.\n"
 "\n"
-"This occurs because you have too many unused addresses in your wallet. To "
-"avoid this situation, use the existing addresses first.\n"
+"This occurs because you have too many unused addresses in your wallet. To avoid this situation, use the existing addresses first.\n"
 "\n"
 "Create anyway?"
 msgstr ""
-" Cảnh báo: Địa chỉ tiếp theo sẽ không được phục hồi tự động nếu quý khách "
-"khôi phục  ví của quý khách từ hạt giống; quý khách có thể cần phải thêm nó "
-"theo cách thủ công. \n"
+" Cảnh báo: Địa chỉ tiếp theo sẽ không được phục hồi tự động nếu quý khách khôi phục ví của quý khách từ hạt giống; quý khách có thể cần phải thêm nó theo cách thủ công. \n"
 "\n"
-" Điều này xảy ra do quý khách có quá nhiều địa chỉ không sử dụng trong ví "
-"của mình. Để  tránh trường hợp này, trước tiên hãy sử dụng các địa chỉ hiện "
-"có. \n"
+" Điều này xảy ra do quý khách có quá nhiều địa chỉ không sử dụng trong ví của mình. Để tránh trường hợp này, trước tiên hãy sử dụng các địa chỉ hiện có.\n"
 "\n"
 " Vẫn tạo? "
 
 msgid "Warning: do not use this if it makes you pick a weaker password."
-msgstr ""
-"Cảnh báo: không sử dụng điều này nếu nó khiến quý khách chọn một mật khẩu "
-"yếu hơn."
+msgstr "Cảnh báo: không sử dụng điều này nếu nó khiến quý khách chọn một mật khẩu yếu hơn."
 
 msgid "Watch-only wallet"
-msgstr "Ví watch-only"
+msgstr "Ví chỉ xem."
 
-msgid ""
-"We do not guarantee that BIP39 imports will always be supported in Electrum."
-msgstr ""
-" Chúng tôi không đảm bảo rằng việc nhập BIP39 sẽ luôn được hỗ trợ trong "
-"Electrum. "
+msgid "We do not guarantee that BIP39 imports will always be supported in Electrum."
+msgstr " Chúng tôi không đảm bảo rằng việc nhập BIP39 sẽ luôn được hỗ trợ trong Electrum. "
 
 msgid "We encountered an error while connecting to your device:"
 msgstr "Chúng tôi đã gặp lỗi khi kết nối với thiết bị của quý khách:"
 
-msgid ""
-"While this is less than ideal, it might help if you run Electrum as "
-"Administrator."
-msgstr ""
-" Mặc dù điều này ít lý tưởng hơn, nhưng nó có thể hữu ích nếu quý khách chạy "
-"Electrum dưới dạng Administrator."
+msgid "While this is less than ideal, it might help if you run Electrum as Administrator."
+msgstr " Mặc dù điều này ít lý tưởng hơn, nhưng nó có thể hữu ích nếu quý khách chạy Electrum dưới dạng Administrator."
 
-#, python-brace-format
 msgid "Within {number} blocks"
 msgstr "Trong {number} block"
 
 msgid "Witness Script"
 msgstr "Nhân chứng kịch bản"
 
-msgid ""
-"Would you like to be notified when there is a newer version of Electrum "
-"available?"
-msgstr ""
-" Quý khách có muốn được thông báo khi có phiên bản Electrum mới hơn có sẵn "
-"không? "
+msgid "Would you like to be notified when there is a newer version of Electrum available?"
+msgstr " Quý khách có muốn được thông báo khi có phiên bản Electrum mới hơn có sẵn không? "
 
 msgid "Write logs to file"
 msgstr "Ghi nhật ký vào tệp"
@@ -4138,6 +3590,9 @@ msgstr "Định dạng pubkey sai"
 msgid "Wrong signature"
 msgstr "Chữ ký sai"
 
+msgid "Yes, I disagree"
+msgstr "Vâng, tôi không đồng ý"
+
 msgid "You are already on the latest version of Electrum."
 msgstr "Quý khách đã sử dụng phiên bản Electrum mới nhất."
 
@@ -4147,31 +3602,21 @@ msgstr "Quý khách đang theo dõi chi nhánh"
 msgid "You are in testnet mode."
 msgstr "Quý khách đang ở chế độ testnet."
 
-msgid ""
-"You are most likely using an outdated version of Electrum. Please update."
-msgstr ""
-" Rất có thể quý khách đang sử dụng phiên bản Electrum lỗi thời. Vui lòng cập "
-"nhật."
+msgid "You are most likely using an outdated version of Electrum. Please update."
+msgstr " Rất có thể quý khách đang sử dụng phiên bản Electrum lỗi thời. Vui lòng cập nhật."
 
 msgid "You are offline."
-msgstr "Quý khách đang offline."
+msgstr "Quý khách đang ngoại tuyến."
 
-msgid ""
-"You are using Electrum in offline mode; restart Electrum if you want to get "
-"connected"
-msgstr ""
-" Quý khách đang sử dụng Electrum ở chế độ ngoại tuyến; khởi động lại "
-"Electrum nếu quý khách muốn  được kết nối"
+msgid "You are using Electrum in offline mode; restart Electrum if you want to get connected"
+msgstr " Quý khách đang sử dụng Electrum ở chế độ ngoại tuyến; khởi động lại Electrum nếu quý khách muốn  được kết nối"
 
-msgid ""
-"You are using a non-deterministic wallet, which cannot create new addresses."
+msgid "You are using a non-deterministic wallet, which cannot create new addresses."
 msgstr " Quý khách đang sử dụng ví không xác định, không thể tạo địa chỉ mới."
 
-#, python-brace-format
 msgid "You can disable this setting in '{setting_name}'."
 msgstr "Quý khách có thể tắt cài đặt này trong '{setting_name}'."
 
-#, python-brace-format
 msgid "You can download the new version from {url}."
 msgstr "Quý khách có thể tải xuống phiên bản mới từ {url}."
 
@@ -4179,32 +3624,16 @@ msgid "You can override the suggested derivation path."
 msgstr "Quý khách có thể ghi đè đường dẫn xuất được đề xuất."
 
 msgid "You can't broadcast a transaction without a live network connection."
-msgstr ""
-"Quý khách không thể phát một giao dịch mà không có kết nối mạng trực tiếp."
+msgstr "Quý khách không thể phát một giao dịch mà không có kết nối mạng trực tiếp."
 
-msgid ""
-"You do not need to perform regular backups, because your wallet can be "
-"recovered from a secret phrase that you can memorize or write on paper."
-msgstr ""
-" Quý khách không cần phải thực hiện sao lưu thường xuyên, vì ví của quý "
-"khách có thể  được khôi phục từ một cụm từ bí mật mà quý khách có thể ghi "
-"nhớ hoặc viết ra giấy."
+msgid "You do not need to perform regular backups, because your wallet can be recovered from a secret phrase that you can memorize or write on paper."
+msgstr " Quý khách không cần phải thực hiện sao lưu thường xuyên, vì ví của quý kháchcó thể được khôi phục từ một cụm từ bí mật mà quý khách có thể ghi nhớ hoặc viết ra giấy."
 
-msgid ""
-"You have multiple consecutive whitespaces or leading/trailing whitespaces in "
-"your passphrase."
-msgstr ""
-" Quý khách có nhiều khoảng trắng liên tiếp hoặc khoảng trắng đầu / cuối "
-"trong cụm mật khẩu của quý khách. "
+msgid "You have multiple consecutive whitespaces or leading/trailing whitespaces in your passphrase."
+msgstr " Quý khách có nhiều khoảng trắng liên tiếp hoặc khoảng trắng đầu / cuối trong cụm mật khẩu của quý khách. "
 
-msgid ""
-"You may enter a Bitcoin address, a label from your list of contacts (a list "
-"of completions will be proposed), or an alias (email-like address that "
-"forwards to a Bitcoin address)"
-msgstr ""
-" Quý khách có thể nhập địa chỉ Bitcoin, một nhãn từ danh sách liên hệ của "
-"mình (danh sách  trong tổng số các hoàn thành sẽ được đề xuất) hoặc một bí "
-"danh (địa chỉ giống như email  chuyển tiếp đến địa chỉ Bitcoin) "
+msgid "You may enter a Bitcoin address, a label from your list of contacts (a list of completions will be proposed), or an alias (email-like address that forwards to a Bitcoin address)"
+msgstr " Quý khách có thể nhập địa chỉ Bitcoin, một nhãn từ danh sách liên hệ của mình (danh sách  trong tổng số các hoàn thành sẽ được đề xuất) hoặc một bí danh (địa chỉ giống như email  chuyển tiếp đến địa chỉ Bitcoin) "
 
 msgid "You may extend your seed with custom words."
 msgstr "Quý khách có thể mở rộng hạt giống của mình bằng các từ tùy chỉnh."
@@ -4215,33 +3644,11 @@ msgstr "Quý khách có thể tải tệp CSV bằng biểu tượng tệp."
 msgid "You might have an incompatible library."
 msgstr "Quý khách có thể có một thư viện không tương thích."
 
-#, python-brace-format
-msgid ""
-"You need to be online in order to complete the creation of your wallet.  If "
-"you generated your seed on an offline computer, click on \"{button}\" to "
-"close this window, move your wallet file to an online computer, and reopen "
-"it with Electrum."
-msgstr ""
-"Bạn cần phải kết nối trực tuyến để hoàn tất việc tạo ví của mình. Nếu bạn đã "
-"tạo hạt giống của mình trên một máy tính ngoại tuyến, hãy nhấp vào "
-"\"{button}\" để đóng cửa sổ này, di chuyển tệp ví của bạn sang máy tính trực "
-"tuyến và mở lại nó với Electrum. "
+msgid "You need to be online in order to complete the creation of your wallet.  If you generated your seed on an offline computer, click on \"{button}\" to close this window, move your wallet file to an online computer, and reopen it with Electrum."
+msgstr "Bạn cần phải kết nối trực tuyến để hoàn tất việc tạo ví của mình. Nếu bạn đã tạo hạt giống của mình trên một máy tính ngoại tuyến, hãy nhấp vào \"{button}\" để đóng cửa sổ này, di chuyển tệp ví của bạn sang máy tính trực tuyến và mở lại nó với Electrum. "
 
-msgid ""
-"Your Ledger Wallet wants to tell you a one-time PIN code.<br><br>For best "
-"security you should unplug your device, open a text editor on another "
-"computer, put your cursor into it, and plug your device into that computer. "
-"It will output a summary of the transaction being signed and a one-time PIN."
-"<br><br>Verify the transaction summary and type the PIN code here."
-"<br><br>Before pressing enter, plug the device back into this computer.<br>"
-msgstr ""
-" Ví Ledger của quý khách muốn cho quý khách biết mã PIN dùng một lần. <br> "
-"<br> Tốt nhất  để bảo mật, quý khách nên rút phích cắm thiết bị của mình, mở "
-"trình soạn thảo văn bản trên một  máy tính, đặt con trỏ của quý khách vào đó "
-"và cắm thiết bị của quý khách vào máy tính đó.  Nó sẽ xuất ra bản tóm tắt "
-"giao dịch đã được ký và mã PIN dùng một lần.  <br> <br> Xác minh tóm tắt "
-"giao dịch và nhập mã PIN tại đây.  <br> <br> Trước khi nhấn enter, hãy cắm "
-"lại thiết bị vào máy tính này. <br> "
+msgid "Your Ledger Wallet wants to tell you a one-time PIN code.<br><br>For best security you should unplug your device, open a text editor on another computer, put your cursor into it, and plug your device into that computer. It will output a summary of the transaction being signed and a one-time PIN.<br><br>Verify the transaction summary and type the PIN code here.<br><br>Before pressing enter, plug the device back into this computer.<br>"
+msgstr " Ví Ledger của quý khách muốn cho quý khách biết mã PIN dùng một lần. <br> <br> Tốt nhất  để bảo mật, quý khách nên rút phích cắm thiết bị của mình, mở trình soạn thảo văn bản trên một  máy tính, đặt con trỏ của quý khách vào đó và cắm thiết bị của quý khách vào máy tính đó.  Nó sẽ xuất ra bản tóm tắt giao dịch đã được ký và mã PIN dùng một lần.  <br> <br> Xác minh tóm tắt giao dịch và nhập mã PIN tại đây.  <br> <br> Trước khi nhấn enter, hãy cắm lại thiết bị vào máy tính này. <br> "
 
 msgid "Your Ledger is locked. Please unlock it."
 msgstr "Sổ cái của quý khách bị khóa. Vui lòng mở khóa."
@@ -4255,12 +3662,8 @@ msgstr "Mã PIN của quý khách đã được cập nhật"
 msgid "Your accounts have been moved to"
 msgstr "Tài khoản của quý khách đã được chuyển đến"
 
-msgid ""
-"Your bitcoins are password protected. However, your wallet file is not "
-"encrypted."
-msgstr ""
-" Bitcoin của quý khách được bảo vệ bằng mật khẩu. Tuy nhiên, tệp ví của quý "
-"khách không  được mã hóa. "
+msgid "Your bitcoins are password protected. However, your wallet file is not encrypted."
+msgstr " Bitcoin của quý khách được bảo vệ bằng mật khẩu. Tuy nhiên, tệp ví của quý khách không được mã hóa. "
 
 msgid "Your device might not have support for this functionality."
 msgstr "Thiết bị của quý khách có thể không được hỗ trợ cho chức năng này."
@@ -4272,12 +3675,10 @@ msgid "Your seed extension is"
 msgstr "Tiện ích mở rộng hạt giống của quý khách là"
 
 msgid "Your seed extension must be saved together with your seed."
-msgstr ""
-"Phần mở rộng hạt giống của quý khách phải được lưu cùng với hạt giống của "
-"quý khách."
+msgstr "Phần mở rộng hạt giống của quý khách phải được lưu cùng với hạt giống của quý khách."
 
 msgid "Your seed is important!"
-msgstr "Hạt giống của quý khách là quan trọng!"
+msgstr "Hạt giống của quý khách rất quan trọng!"
 
 msgid "Your server is on branch"
 msgstr "Máy chủ của quý khashc ở trên chi nhánh"
@@ -4294,14 +3695,12 @@ msgstr "Tệp ví của quý khách KHÔNG được mã hóa."
 msgid "Your wallet file is encrypted."
 msgstr "Tệp ví của quý khách đã được mã hóa."
 
-#, python-brace-format
 msgid "Your wallet file is: {path}."
 msgstr "Tệp ví của quý khách là: {path}."
 
 msgid "Your wallet generation seed is:"
 msgstr "Hạt giống tạo ví của quý khách là:"
 
-#, python-brace-format
 msgid "Your wallet has {number} prepaid transactions."
 msgstr "Ví của quý khách có {number} giao dịch trả trước."
 
@@ -4317,11 +3716,9 @@ msgstr "Ví của quý khách được bảo vệ bằng mật khẩu và đư�
 msgid "Your wallet's generated seed is:"
 msgstr "Hạt giống được tạo trong ví của bạn là:"
 
-#, python-brace-format
 msgid "Your {0} were exported to '{1}'"
 msgstr "{0} của quý khách đã được xuất sang '{1}'"
 
-#, python-brace-format
 msgid "Your {title} were successfully imported"
 msgstr "{title} của quý khách đã được nhập thành công"
 
@@ -4370,12 +3767,8 @@ msgstr "thêm hóa đơn đã hết thời gian chờ"
 msgid "address already in wallet"
 msgstr "địa chỉ đã có trong ví"
 
-msgid ""
-"and you will have the possibility, while they are unconfirmed, to replace "
-"them with transactions that pay higher fees."
-msgstr ""
-"và quý khách sẽ có khả năng, trong khi chúng chưa được xác nhận, để thay "
-"thế  chúng với các giao dịch trả phí cao hơn."
+msgid "and you will have the possibility, while they are unconfirmed, to replace them with transactions that pay higher fees."
+msgstr "và quý khách sẽ có khả năng, trong khi chúng chưa được xác nhận, để thay thế  chúng với các giao dịch trả phí cao hơn."
 
 msgid "are frozen"
 msgstr "bị đóng băng"
@@ -4422,12 +3815,8 @@ msgstr "kho khóa"
 msgid "labels"
 msgstr "nhãn"
 
-msgid ""
-"more information at <a href=\"https://revealer.cc/faq\">https://revealer.cc/"
-"faq</a>"
-msgstr ""
-" thêm thông tin tại <a href=\"https://revealer.cc/faq\">https://revealer.cc/"
-"faq</a>"
+msgid "more information at <a href=\"https://revealer.cc/faq\">https://revealer.cc/faq</a>"
+msgstr " thêm thông tin tại <a href=\"https://revealer.cc/faq\">https://revealer.cc/faq</a>"
 
 msgid "not implemented type"
 msgstr "loại không được triển khai"
@@ -4475,45 +3864,32 @@ msgid "unmatured"
 msgstr "không thể sánh được"
 
 msgid "watching only"
-msgstr "watching only"
+msgstr "chỉ xem"
 
 msgid "watching-only"
-msgstr "watching-only"
+msgstr "chỉ xem"
 
 msgid "wiped"
 msgstr "xóa"
 
-msgid ""
-"your seed extension will <b>not</b> be included in the encrypted backup."
-msgstr ""
-" tiện ích mở rộng hạt giống của quý khách  sẽ <b> không </b> được đưa vào "
-"bản sao lưu được mã hóa "
+msgid "your seed extension will <b>not</b> be included in the encrypted backup."
+msgstr " tiện ích mở rộng hạt giống của quý khách  sẽ <b> không </b> được đưa vào bản sao lưu được mã hóa "
 
-#, python-brace-format
 msgid "{coins_number} outputs available ({utxos_number} total)"
 msgstr "{coins_number} đầu ra có sẵn (tổng số {utxos_number})"
 
-#, python-brace-format
 msgid "{number} confirmations"
 msgstr "{number} xác nhận"
 
-#, python-brace-format
 msgid "{number} connections."
 msgstr "{number} kết nối."
 
-#, python-brace-format
-msgid ""
-"{number} new transactions: Total amount received in the new transactions "
-"{amount}"
-msgstr ""
-" {number} giao dịch mới: Tổng số tiền nhận được trong các giao dịch mới  "
-"{amount} "
+msgid "{number} new transactions: Total amount received in the new transactions {amount}"
+msgstr " {number} giao dịch mới: Tổng số tiền nhận được trong các giao dịch mới  {amount} "
 
-#, python-brace-format
 msgid "{size} from tip"
 msgstr "{size} từ mẹo"
 
-#, python-brace-format
 msgid ""
 "{title} copied to clipboard:\n"
 "\n"
@@ -4523,18 +3899,11 @@ msgstr ""
 "\n"
 "{content}"
 
-#, python-brace-format
 msgid "{txid} is covered by GreenAddress instant confirmation"
 msgstr "{txid} được nằm trong xác nhận tức thì của GreenAddress"
 
-#, python-brace-format
 msgid "{txid} is not covered by GreenAddress instant confirmation"
 msgstr "{txid} không nằm trong xác nhận tức thì của GreenAddress"
 
-#, python-brace-format
-msgid ""
-"{wallet_seed} encrypted for Revealer {version}_{checksum} saved as PNG and "
-"PDF at: "
-msgstr ""
-" {wallet_seed} được mã hóa cho Revealer {version} _ {checksum} được lưu dưới "
-"dạng PNG và  PDF tại:"
+msgid "{wallet_seed} encrypted for Revealer {version}_{checksum} saved as PNG and PDF at: "
+msgstr " {wallet_seed} được mã hóa cho Revealer {version} _ {checksum} được lưu dưới dạng PNG và PDF tại:"

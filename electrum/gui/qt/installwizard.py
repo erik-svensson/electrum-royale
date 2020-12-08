@@ -28,25 +28,17 @@ from .util import (MessageBoxMixin, Buttons, icon_path, ChoicesLayout, WWLabel,
 if TYPE_CHECKING:
     from electrum.simple_config import SimpleConfig
 
-MSG_ENTER_PASSWORD = _("Choose a password to encrypt your wallet keys.") + '\n' \
-                     + _("Leave this field empty if you want to disable encryption.")
-MSG_HW_STORAGE_ENCRYPTION = _("Set wallet file encryption.") + '\n' \
-                            + _("Your wallet file does not contain secrets, mostly just metadata. ") \
-                            + _("It also contains your master public key that allows watching your addresses.") + '\n\n' \
-                            + _(
-    "Note: If you enable this setting, you will need your hardware device to open your wallet.")
-WIF_HELP_TEXT = (_('WIF keys are typed in Electrum, based on script type.') + '\n\n' +
-                 _('A few examples') + ':\n' +
-                 'p2pkh:KxZcY47uGp9a...       \t-> 1DckmggQM...\n' +
-                 'p2wpkh-p2sh:KxZcY47uGp9a... \t-> 3NhNeZQXF...\n' +
-                 'p2wpkh:KxZcY47uGp9a...      \t-> bc1q3fjfk...')
-# note: full key is KxZcY47uGp9aVQAb6VVvuBs8SwHKgkSR2DbZUzjDzXf2N2GPhG9n
-MSG_PASSPHRASE_WARN_ISSUE4566 = _("Warning") + ": " \
-                                + _("You have multiple consecutive whitespaces or leading/trailing "
-                                    "whitespaces in your passphrase.") + " " \
-                                + _("This is discouraged.") + " " \
-                                + _("Due to a bug, old versions of Electrum will NOT be creating the "
-                                    "same wallet as newer versions or other software.")
+
+def get_wif_help_text():
+    # it is wrapped into function to run translation whenever we need the text
+    # note: full key is KxZcY47uGp9aVQAb6VVvuBs8SwHKgkSR2DbZUzjDzXf2N2GPhG9n
+    return (
+        _('WIF keys are typed in Electrum, based on script type.') + '\n\n' +
+        _('A few examples') + ':\n' +
+          'p2pkh:KxZcY47uGp9a...       \t-> 1DckmggQM...\n' +
+          'p2wpkh-p2sh:KxZcY47uGp9a... \t-> 3NhNeZQXF...\n' +
+          'p2wpkh:KxZcY47uGp9a...      \t-> bc1q3fjfk...'
+    )
 
 
 class CosignWidget(QWidget):
@@ -173,6 +165,7 @@ class InstallWizard(QDialog, MessageBoxMixin, BaseWizard, TermsAndConditionsMixi
         self.back_button.setText(_('Back') if self.can_go_back() else _('Cancel'))
         self.next_button.setText(_("Next"))
         self.please_wait.setText(_("Please wait..."))
+        self._translate_advanced_options()
 
     def select_and_save_language(self):
         """Method for selecting and saving language in config file as {'language': <language-abbreviation: str>}"""
@@ -457,7 +450,7 @@ class InstallWizard(QDialog, MessageBoxMixin, BaseWizard, TermsAndConditionsMixi
         label.setMinimumWidth(400)
         header_layout.addWidget(label)
         if show_wif_help:
-            header_layout.addWidget(InfoButton(WIF_HELP_TEXT), alignment=Qt.AlignRight)
+            header_layout.addWidget(InfoButton(get_wif_help_text()), alignment=Qt.AlignRight)
         return self.text_input(title, header_layout, is_valid, allow_multi)
 
     @wizard_dialog
@@ -510,11 +503,21 @@ class InstallWizard(QDialog, MessageBoxMixin, BaseWizard, TermsAndConditionsMixi
     def request_password(self, run_next, force_disable_encrypt_cb=False):
         """Request the user enter a new password and confirm it.  Return
         the password or None for no password."""
-        return self.pw_layout(MSG_ENTER_PASSWORD, PW_NEW, force_disable_encrypt_cb)
+        msg_enter_password = (
+            _("Choose a password to encrypt your wallet keys.") + '\n' +
+            _("Leave this field empty if you want to disable encryption.")
+        )
+        return self.pw_layout(msg_enter_password, PW_NEW, force_disable_encrypt_cb)
 
     @wizard_dialog
     def request_storage_encryption(self, run_next):
-        playout = PasswordLayoutForHW(MSG_HW_STORAGE_ENCRYPTION)
+        msg_hw_storage_encryption = (
+                _("Set wallet file encryption.") + '\n' +
+                _("Your wallet file does not contain secrets, mostly just metadata. ") +
+                _("It also contains your master public key that allows watching your addresses.") + '\n\n' +
+                _("Note: If you enable this setting, you will need your hardware device to open your wallet.")
+        )
+        playout = PasswordLayoutForHW(msg_hw_storage_encryption)
         playout.encrypt_cb.setChecked(True)
         self.exec_layout(playout.layout())
         return playout.encrypt_cb.isChecked()
@@ -602,7 +605,7 @@ class InstallWizard(QDialog, MessageBoxMixin, BaseWizard, TermsAndConditionsMixi
         # todo move it to some global settings ?
         web_generator_url = 'https://keygenerator.bitcoinvault.global/'
         label = QLabel()
-        message = _('Please paste a Cancel transaction public key. Use an existing one, if you are importing a wallet, '
+        message = _('Please paste a Cancel Transaction Key. Use an existing one, if you are importing a wallet, '
                     'or generate a new one at')
         message += f' <a href="{web_generator_url}">{web_generator_url}</a>'
         label.setText(message)
@@ -612,7 +615,7 @@ class InstallWizard(QDialog, MessageBoxMixin, BaseWizard, TermsAndConditionsMixi
 
         disallowed_keys = [instant_key] if instant_key else []
         layout = InsertPubKeyDialog(self, message_label=label, disallowed_keys=disallowed_keys)
-        self.exec_layout(layout, _('Cancel transaction public key'), next_enabled=False)
+        self.exec_layout(layout, _('Cancel Transaction Key'), next_enabled=False)
         return layout.get_compressed_pubkey()
 
     @wizard_dialog
@@ -620,7 +623,7 @@ class InstallWizard(QDialog, MessageBoxMixin, BaseWizard, TermsAndConditionsMixi
         # todo move it to some global settings ?
         web_generator_url = 'https://keygenerator.bitcoinvault.global/'
         label = QLabel()
-        message = _('Please paste a Secure Fast transaction public key. Use an existing one, if you are importing a wallet, '
+        message = _('Please paste a Fast Transaction Key. Use an existing one, if you are importing a wallet, '
                     'or generate a new one at')
         message += f' <a href="{web_generator_url}">{web_generator_url}</a>.'
         label.setText(message)
@@ -630,7 +633,7 @@ class InstallWizard(QDialog, MessageBoxMixin, BaseWizard, TermsAndConditionsMixi
 
         disallowed_keys = [recovery_key] if recovery_key else []
         layout = InsertPubKeyDialog(self, message_label=label, disallowed_keys=disallowed_keys)
-        self.exec_layout(layout, _('Secure Fast transaction public key'), next_enabled=False)
+        self.exec_layout(layout, _('Fast Transaction Key'), next_enabled=False)
         return layout.get_compressed_pubkey()
 
     @wizard_dialog
@@ -733,7 +736,14 @@ class InstallWizard(QDialog, MessageBoxMixin, BaseWizard, TermsAndConditionsMixi
         vbox.addWidget(line)
         vbox.addWidget(WWLabel(warning))
 
-        warn_issue4566_label = WWLabel(MSG_PASSPHRASE_WARN_ISSUE4566)
+        warn_issue4566_label = WWLabel(
+            _("Warning") + ": " +
+            _("You have multiple consecutive whitespaces or leading/trailing "
+              "whitespaces in your passphrase.") + " " +
+            _("This is discouraged.") + " " +
+            _("Due to a bug, old versions of Electrum will NOT be creating the "
+              "same wallet as newer versions or other software.")
+        )
         warn_issue4566_label.setVisible(False)
         vbox.addWidget(warn_issue4566_label)
 

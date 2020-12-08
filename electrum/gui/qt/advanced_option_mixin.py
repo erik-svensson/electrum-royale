@@ -5,10 +5,12 @@ from electrum.i18n import _
 
 
 class AdvancedOptionMixin:
-    _SHOW_ADVANCED_TEXT = _('Show advanced')
-    _HIDE_ADVANCED_TEXT = _('Hide advanced')
+    def _translate_advanced_options(self):
+        self._SHOW_ADVANCED_TEXT = _('Show advanced')
+        self._HIDE_ADVANCED_TEXT = _('Hide advanced')
 
     def _add_advanced_button(self):
+        self._translate_advanced_options()
         self.advanced_button = QPushButton(self._SHOW_ADVANCED_TEXT)
         self.advanced_button.clicked.connect(self._toggle_button)
         layout = self.layout()

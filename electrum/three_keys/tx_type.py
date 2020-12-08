@@ -26,6 +26,6 @@ TX_TYPES_DISPLAY_MAP = {
     TxType.ALERT_PENDING.name: _('Secure'),
     TxType.ALERT_RECOVERED.name: _('Secure'),
     TxType.RECOVERY.name: _('Cancel'),
-    TxType.INSTANT.name: _('Secure fast'),
+    TxType.INSTANT.name: _('Secure Fast'),
     TxType.ALERT_CONFIRMED.name: _('Secure'),
 }
