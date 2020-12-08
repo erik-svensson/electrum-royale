@@ -8,7 +8,7 @@ from typing import List
 
 def extract_all_msgid(file_path: str) -> List[str]:
     with open(file_path, 'r') as file:
-        finder = re.compile(r'msgid ((.+[\s])+)msgstr', re.MULTILINE)
+        finder = re.compile(r'msgid ((.+\n)+)msgstr', re.MULTILINE)
         # filter out empty msgids
         return list(filter(
             lambda item: item != '""',
@@ -61,7 +61,7 @@ def merge_incoming_data(data, path, pot_file='message.pot'):
     merge_po_into_old(path, pot_file)
     os.system(f'msgattrib --no-obsolete -o {path} {path}')
     os.system(f'msgcat --use-first -o {path} {temp_file} {path}')
-    os.system(f'msgattrib --translated -o {path} {path}')
+    os.system(f'msgattrib --translated --no-wrap --sort-output -o {path} {path}')
     os.system(f'rm {temp_file}')
     
 
@@ -105,7 +105,6 @@ def main():
     compile_po_parser = subparsers.add_parser('compile-po', help='Compile csv data into po files')
     compile_po_parser.add_argument('csv-file', help='Input csv file')
     compile_po_parser.add_argument('--locale-dir', default='../electrum/locale', help='directory where po and mo files will be written default is ../electrum/locale/')
-    compile_po_parser.add_argument('--pot-file-name', default='message.pot', help='name of pot file in LOCALE_DIR which will be taken into merging default is \'message.pot\'')
 
     args = vars(parser.parse_args())
 
