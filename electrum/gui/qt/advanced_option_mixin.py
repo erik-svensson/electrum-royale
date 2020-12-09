@@ -38,8 +38,10 @@ class AdvancedOptionMixin:
         self._default_show_function = default_show_function
         self._advanced_show_function = advanced_show_function
         self.advanced_button.setVisible(True)
-        result = self.exec_layout(layout, title, raise_on_cancel, next_enabled)
-        self.advanced_button.setVisible(False)
+        try:
+            result = self.exec_layout(layout, title, raise_on_cancel, next_enabled)
+        finally:
+            self.advanced_button.setVisible(False)
         return result
 
     def _show_advanced_text(self):
