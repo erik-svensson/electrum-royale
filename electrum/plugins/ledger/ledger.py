@@ -15,6 +15,8 @@ from electrum.wallet import Standard_Wallet
 from electrum.util import bfh, bh2u, versiontuple, UserFacingException
 from electrum.base_wizard import ScriptTypeNotSupported
 from electrum.logging import get_logger
+from electrum.plugin import Device
+from typing import Tuple, Optional
 
 from ..hw_wallet import HW_PluginBase, HardwareClientBase
 from ..hw_wallet.plugin import is_any_tx_output_on_change_branch
@@ -540,13 +542,21 @@ class LedgerPlugin(HW_PluginBase):
                    (0x2c97, 0x0009), # RFU
                    (0x2c97, 0x000a)  # RFU
                  ]
+    VENDOR_IDS = (0x2c97, )
+    LEDGER_MODEL_IDS = {
+        0x10: "Ledger Nano S",
+        0x40: "Ledger Nano X",
+    }
     SUPPORTED_XTYPES = ('standard', 'p2wpkh-p2sh', 'p2wpkh', 'p2wsh-p2sh', 'p2wsh')
 
     def __init__(self, parent, config, name):
         self.segwit = config.get("segwit")
         HW_PluginBase.__init__(self, parent, config, name)
         if self.libraries_available:
-            self.device_manager().register_devices(self.DEVICE_IDS)
+            # to support legacy devices and legacy firmwares
+            self.device_manager().register_devices(self.DEVICE_IDS, plugin=self)
+            # to support modern firmware
+            self.device_manager().register_vendor_ids(self.VENDOR_IDS, plugin=self)
 
     def get_btchip_device(self, device):
         ledger = False
@@ -617,3 +627,41 @@ class LedgerPlugin(HW_PluginBase):
         sequence = wallet.get_address_index(address)
         txin_type = wallet.get_txin_type(address)
         keystore.show_address(sequence, txin_type)
+
+    @classmethod
+    def _recognize_device(cls, product_key) -> Tuple[bool, Optional[str]]:
+        """Returns (can_recognize, model_name) tuple."""
+        # legacy product_keys
+        if product_key in cls.DEVICE_IDS:
+            if product_key[0] == 0x2581:
+                return True, "Ledger HW.1"
+            if product_key == (0x2c97, 0x0000):
+                return True, "Ledger Blue"
+            if product_key == (0x2c97, 0x0001):
+                return True, "Ledger Nano S"
+            if product_key == (0x2c97, 0x0004):
+                return True, "Ledger Nano X"
+            return True, None
+        # modern product_keys
+        if product_key[0] == 0x2c97:
+            product_id = product_key[1]
+            model_id = product_id >> 8
+            if model_id in cls.LEDGER_MODEL_IDS:
+                model_name = cls.LEDGER_MODEL_IDS[model_id]
+                return True, model_name
+        # give up
+        return False, None
+
+    def can_recognize_device(self, device: Device) -> bool:
+        return self._recognize_device(device.product_key)[0]
+
+    @classmethod
+    def device_name_from_product_key(cls, product_key) -> Optional[str]:
+        return cls._recognize_device(product_key)[1]
+
+    def create_device_from_hid_enumeration(self, d, *, product_key):
+        device = super().create_device_from_hid_enumeration(d, product_key=product_key)
+        if not self.can_recognize_device(device):
+            return None
+        return device
+

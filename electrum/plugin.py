@@ -356,9 +356,9 @@ class DeviceMgr(ThreadJob):
         # A list of clients.  The key is the client, the value is
         # a (path, id_) pair.
         self.clients = {}  # type: Dict[HardwareClientBase, Tuple[Union[str, bytes], str]]
-        # What we recognise.  Each entry is a (vendor_id, product_id)
-        # pair.
-        self.recognised_hardware = set()
+        # What we recognise.  (vendor_id, product_id) -> Plugin
+        self._recognised_hardware = {}  # type: Dict[Tuple[int, int], HW_PluginBase]
+        self._recognised_vendor = {}
         # Custom enumerate functions for devices we don't know about.
         self.enumerate_func = set()
         # For synchronization
@@ -379,9 +379,13 @@ class DeviceMgr(ThreadJob):
         for client in clients:
             client.timeout(cutoff)
 
-    def register_devices(self, device_pairs):
+    def register_devices(self, device_pairs, *, plugin: 'HW_PluginBase'):
         for pair in device_pairs:
-            self.recognised_hardware.add(pair)
+            self._recognised_hardware[pair] = plugin
+
+    def register_vendor_ids(self, vendor_ids: Iterable[int], *, plugin: 'HW_PluginBase'):
+        for vendor_id in vendor_ids:
+            self._recognised_vendor[vendor_id] = plugin
 
     def register_enumerate_func(self, func):
         self.enumerate_func.add(func)
@@ -522,7 +526,7 @@ class DeviceMgr(ThreadJob):
         devices = [dev for dev in devices if not self.xpub_by_id(dev.id_)]
         infos = []
         for device in devices:
-            if device.product_key not in plugin.DEVICE_IDS:
+            if not plugin.can_recognize_device(device):
                 continue
             try:
                 client = self.create_client(device, handler, plugin)
@@ -596,21 +600,17 @@ class DeviceMgr(ThreadJob):
 
         devices = []
         for d in hid_list:
-            product_key = (d['vendor_id'], d['product_id'])
-            if product_key in self.recognised_hardware:
-                # Older versions of hid don't provide interface_number
-                interface_number = d.get('interface_number', -1)
-                usage_page = d['usage_page']
-                id_ = d['serial_number']
-                if len(id_) == 0:
-                    id_ = str(d['path'])
-                id_ += str(interface_number) + str(usage_page)
-                devices.append(Device(path=d['path'],
-                                      interface_number=interface_number,
-                                      id_=id_,
-                                      product_key=product_key,
-                                      usage_page=usage_page,
-                                      transport_ui_string='hid'))
+            vendor_id = d['vendor_id']
+            product_key = (vendor_id, d['product_id'])
+            plugin = None
+            if product_key in self._recognised_hardware:
+                plugin = self._recognised_hardware[product_key]
+            elif vendor_id in self._recognised_vendor:
+                plugin = self._recognised_vendor[vendor_id]
+            if plugin:
+                device = plugin.create_device_from_hid_enumeration(d, product_key=product_key)
+                if device:
+                    devices.append(device)
         return devices
 
     def scan_devices(self) -> List['Device']:
@@ -646,3 +646,4 @@ class DeviceMgr(ThreadJob):
             self.unpair_id(id_)
 
         return devices
+

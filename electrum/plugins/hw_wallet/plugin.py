@@ -24,7 +24,7 @@
 # CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from typing import TYPE_CHECKING, Dict, List, Union, Tuple, Sequence, Optional, Type
+from typing import TYPE_CHECKING, Dict, List, Union, Tuple, Sequence, Optional, Type, Iterable, Any
 
 from electrum.plugin import BasePlugin, hook, Device, DeviceMgr
 from electrum.i18n import _
@@ -43,6 +43,8 @@ class HW_PluginBase(BasePlugin):
 
     minimum_library = (0, )
 
+    DEVICE_IDS: Iterable[Any]
+
     def __init__(self, parent, config, name):
         BasePlugin.__init__(self, parent, config, name)
         self.device = self.keystore_class.device
@@ -54,6 +56,22 @@ class HW_PluginBase(BasePlugin):
 
     def device_manager(self) -> 'DeviceMgr':
         return self.parent.device_manager
+
+    def create_device_from_hid_enumeration(self, d: dict, *, product_key) -> Optional['Device']:
+        # Older versions of hid don't provide interface_number
+        interface_number = d.get('interface_number', -1)
+        usage_page = d['usage_page']
+        id_ = d['serial_number']
+        if len(id_) == 0:
+            id_ = str(d['path'])
+        id_ += str(interface_number) + str(usage_page)
+        device = Device(path=d['path'],
+                        interface_number = interface_number,
+                        id_ = id_,
+                        product_key = product_key,
+                        usage_page = usage_page,
+                        transport_ui_string = 'hid')
+        return device
 
     @hook
     def close_wallet(self, wallet: 'Abstract_Wallet'):
@@ -142,6 +160,12 @@ class HW_PluginBase(BasePlugin):
 
     def get_xpub(self, device_id, derivation: str, xtype, wizard) -> str:
         raise NotImplementedError()
+
+    def can_recognize_device(self, device: Device) -> bool:
+        """Whether the plugin thinks it can handle the given device.
+        Used for filtering all connected hardware devices to only those by this vendor.
+        """
+        return device.product_key in self.DEVICE_IDS
 
 
 class HardwareClientBase:
