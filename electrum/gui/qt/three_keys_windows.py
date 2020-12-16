@@ -34,6 +34,14 @@ class ElectrumMultikeyWalletWindow(ElectrumWindow):
 
         self.READY_TO_UPDATE = True
 
+        if self.wallet.multikey_type == 'hw':
+            self.synchronize_wallet()
+
+    def synchronize_wallet(self):
+        if self.wallet.postponed_synchronization:
+            self.wallet.postponed_synchronization = False
+            self.gui_object.wait_for_task(self.wallet.synchronize(), _('Synchonizing wallet...'))
+
     def timer_actions(self):
         # synchronizing the timer thread with end of the __init__ call
         if self.READY_TO_UPDATE:

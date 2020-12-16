@@ -2306,70 +2306,10 @@ class MultikeyWallet(Simple_Deterministic_Wallet):
         self.multikey_type = storage.get('multikey_type')
         self.multisig_script_generator = scriptGenerator
         self.set_alert()
-        self.postponed_synchronization = False
-        if self.multikey_type == 'hw':
-            self.postponed_synchronization = True
+
         # super has to be at the end otherwise wallet breaks
         super().__init__(storage=storage, config=config)
         self.multiple_change = storage.get('multiple_change', True)
-
-    def create_new_hw_address(self, for_change=False):
-        assert type(for_change) is bool
-        with self.lock:
-            n = self.db.num_change_addresses() if for_change else self.db.num_receiving_addresses()
-            address = self.keystore.get_address((for_change, n), self.txin_type, True)
-            self.db.add_change_address(address) if for_change else self.db.add_receiving_address(address)
-            self.add_address(address)
-            if for_change:
-                # note: if it's actually used, it will get filtered later
-                self._unused_change_addresses.append(address)
-            return address
-
-    def create_new_hw_addresses(self, sequences, for_change=False):
-        assert type(for_change) is bool
-        with self.lock:
-            addresses = self.keystore.get_addresses_batch(sequences, self.txin_type, True)
-            for address in addresses:
-                self.db.add_change_address(address) if for_change else self.db.add_receiving_address(address)
-                self.add_address(address)
-                if for_change:
-                    # note: if it's actually used, it will get filtered later
-                    self._unused_change_addresses.append(address)
-
-            return addresses
-
-    def synchronize_sequence(self, for_change):
-        limit = self.gap_limit_for_change if for_change else self.gap_limit
-        num_addr = self.db.num_change_addresses() if for_change else self.db.num_receiving_addresses()
-
-        if self.multikey_type == 'hw':
-            if num_addr < limit:
-                sequences = [(for_change, num_addr + sequence) for sequence in range(limit-num_addr)]
-                self.create_new_hw_addresses(sequences, for_change)
-        else:
-            while num_addr < limit:
-                self.create_new_address(for_change)
-                num_addr = self.db.num_change_addresses() if for_change else self.db.num_receiving_addresses()
-
-        while True:
-            if for_change:
-                last_few_addresses = self.get_change_addresses(slice_start=-limit)
-            else:
-                last_few_addresses = self.get_receiving_addresses(slice_start=-limit)
-            if any(map(self.address_is_old, last_few_addresses)):
-                if self.multikey_type == 'hw':
-                    self.create_new_hw_address(for_change)
-                else:
-                    self.create_new_address(for_change)
-            else:
-                break
-
-    @AddressSynchronizer.with_local_height_cached
-    def synchronize(self):
-        if not self.postponed_synchronization:
-            with self.lock:
-                self.synchronize_sequence(False)
-                self.synchronize_sequence(True)
 
     def set_alert(self):
         self.multisig_script_generator.set_alert()
@@ -2569,7 +2509,7 @@ class TwoKeysWallet(MultikeyWallet):
             tx.finalize_psbt()
 
         return tx
-    
+
     def get_wallet_label(self):
         return '2-Key Vault'
 
@@ -2635,6 +2575,267 @@ class ThreeKeysWallet(MultikeyWallet):
         return '3-Key Vault'
 
 
+class MultikeyHWWallet(Simple_Deterministic_Wallet):
+
+    def __init__(self, storage: WalletStorage, *, config: SimpleConfig):
+        self.wallet_type = storage.get('wallet_type')
+        self.multikey_type = storage.get('multikey_type')
+        self.postponed_synchronization = True
+
+        # super has to be at the end otherwise wallet breaks
+        super().__init__(storage=storage, config=config)
+        self.multiple_change = storage.get('multiple_change', True)
+
+    def create_new_hw_address(self, for_change=False):
+        assert type(for_change) is bool
+        with self.lock:
+            n = self.db.num_change_addresses() if for_change else self.db.num_receiving_addresses()
+            address = self.keystore.get_address((for_change, n), self.txin_type, True)
+            self.db.add_change_address(address) if for_change else self.db.add_receiving_address(address)
+            self.add_address(address)
+            if for_change:
+                # note: if it's actually used, it will get filtered later
+                self._unused_change_addresses.append(address)
+            return address
+
+    def create_new_hw_addresses(self, sequences, for_change=False):
+        assert type(for_change) is bool
+        with self.lock:
+            addresses = self.keystore.get_addresses_batch(sequences, self.txin_type, True)
+            for address in addresses:
+                self.db.add_change_address(address) if for_change else self.db.add_receiving_address(address)
+                self.add_address(address)
+                if for_change:
+                    # note: if it's actually used, it will get filtered later
+                    self._unused_change_addresses.append(address)
+
+            return addresses
+
+    def synchronize_sequence(self, for_change):
+        limit = self.gap_limit_for_change if for_change else self.gap_limit
+        num_addr = self.db.num_change_addresses() if for_change else self.db.num_receiving_addresses()
+
+        if self.multikey_type == 'hw':
+            if num_addr < limit:
+                sequences = [(for_change, num_addr + sequence) for sequence in range(limit-num_addr)]
+                self.create_new_hw_addresses(sequences, for_change)
+        else:
+            while num_addr < limit:
+                self.create_new_address(for_change)
+                num_addr = self.db.num_change_addresses() if for_change else self.db.num_receiving_addresses()
+
+        while True:
+            if for_change:
+                last_few_addresses = self.get_change_addresses(slice_start=-limit)
+            else:
+                last_few_addresses = self.get_receiving_addresses(slice_start=-limit)
+            if any(map(self.address_is_old, last_few_addresses)):
+                if self.multikey_type == 'hw':
+                    self.create_new_hw_address(for_change)
+                else:
+                    self.create_new_address(for_change)
+            else:
+                break
+
+    @AddressSynchronizer.with_local_height_cached
+    def synchronize(self):
+        if not self.postponed_synchronization:
+            with self.lock:
+                self.synchronize_sequence(False)
+                self.synchronize_sequence(True)
+
+    def set_alert(self):
+        self.multisig_script_generator.set_alert()
+
+    def set_recovery(self):
+        self.multisig_script_generator.set_recovery()
+
+    def set_instant(self):
+        self.multisig_script_generator.set_instant()
+
+    def load_keystore(self):
+        self.keystore = load_keystore(self.storage, 'keystore')
+        self.txin_type = self.derive_txin_type_from_keystore(self.keystore)
+
+    @staticmethod
+    def derive_txin_type_from_keystore(keystore):
+        try:
+            txin_type = bip32.xpub_type(keystore.xpub)
+        except:
+            txin_type = 'standard'
+
+        if txin_type == 'standard':
+            return 'p2sh'
+        if 'p2wpkh' in txin_type or 'p2wsh-p2sh' == txin_type:
+            return 'p2wsh-p2sh'
+        raise UnknownTxinType(f'Cannot derive txin_type from {txin_type}')
+
+    def make_unsigned_transaction(self, *, coins: Sequence[PartialTxInput],
+                                  outputs: List[PartialTxOutput], fee=None,
+                                  change_addr: str = None, is_sweep=False) -> PartialTransaction:
+        self.update_tx_input_multisig_generator(coins)
+        tx = super().make_unsigned_transaction(
+            coins=coins,
+            outputs=outputs,
+            fee=fee,
+            change_addr=change_addr,
+            is_sweep=is_sweep,
+        )
+        self.update_transaction_multisig_generator(tx)
+        return tx
+
+    def get_atxs_to_recovery(self):
+        txi_list = self.db.list_txi()
+        recovery_mempool_transactions = {
+            history_item.txid: self.db.get_transaction(history_item.txid)
+            for history_item in self.get_history() if history_item.tx_mined_status.conf == 0 and history_item.tx_mined_status.txtype == TxType.RECOVERY.name
+        }
+        with self.transaction_lock:
+            conflicting_alert_inputs = set([
+                txin.prevout.txid.hex()
+                for tx in recovery_mempool_transactions.values() for txin in tx.inputs()
+            ])
+        for tx_hash, tx in self.db.transactions.items():
+            mined_info = self.get_tx_height(tx_hash)
+            # skip incoming alerts, mempool alerts and alerts conflicted with recovery mempool
+            if tx.tx_type == TxType.ALERT_PENDING and mined_info.conf > 0 and tx_hash in txi_list:
+                if not set([txin.prevout.txid.hex() for txin in tx.inputs()]).issubset(conflicting_alert_inputs):
+                    yield tx
+
+    def get_inputs_and_output_for_recovery(self, alert_transactions: ThreeKeysTransaction, destination_address: str):
+        inputs = [PartialTxInput.from_txin(txin) for atx in alert_transactions for txin in atx.inputs()]
+        scriptpubkey = bfh(bitcoin.address_to_script(destination_address))
+        # ! sign sets max value to output
+        output = PartialTxOutput(scriptpubkey=scriptpubkey, value='!')
+        return inputs, output
+
+    def prepare_inputs_for_recovery(self, inputs: list):
+        """Methods for modification tx inputs coming from alert transaction to work with recovery tx.
+        Method adds missing address, satoshi and height value from db storage"""
+        updated_inputs = copy.deepcopy(inputs)
+        # cache for not doubling fetching data for repeating address
+        db_address_satoshi_height_cache = {}
+        for input in updated_inputs:
+            tx_hash = input.prevout.txid.hex()
+            prevout_index = input.prevout.out_idx
+            key = (tx_hash, prevout_index)
+            if key not in db_address_satoshi_height_cache:
+                fetched_data = self.db.get_address_satoshi_height_for_tx(tx_hash)
+                db_address_satoshi_height_cache.update(fetched_data)
+                fetched_data = fetched_data[key]
+            else:
+                fetched_data = db_address_satoshi_height_cache[key]
+
+            input._trusted_address = fetched_data['address']
+            input._trusted_value_sats = fetched_data['satoshi']
+            input.block_height = fetched_data['height']
+        return updated_inputs
+
+    def sign_transaction(self, tx: PartialTransaction, password, external_keypairs=None, update_pubkeys_fn=None, skip_finalize=False) -> Optional[PartialTransaction]:
+        if self.is_watching_only():
+            return
+        if not isinstance(tx, PartialTransaction):
+            return
+        # add info to a temporary tx copy; including xpubs
+        # and full derivation paths as hw keystores might want them
+        tmp_tx = copy.deepcopy(tx)
+        # update tmp tx
+        self.update_transaction_multisig_generator(tmp_tx)
+        tmp_tx.add_info_from_wallet(self, include_xpubs_and_full_paths=True)
+        if update_pubkeys_fn:
+            update_pubkeys_fn(tx)
+            update_pubkeys_fn(tmp_tx)
+        # sign. start with ready keystores.
+        for k in sorted(self.get_keystores(), key=lambda ks: ks.ready_to_sign(), reverse=True):
+            try:
+                if k.can_sign(tmp_tx):
+                    k.sign_transaction(tmp_tx, password)
+            except UserCancelled:
+                continue
+
+        if external_keypairs:
+            tmp_tx.sign(external_keypairs)
+        # remove sensitive info; then copy back details from temporary tx
+        tmp_tx.remove_xpubs_and_bip32_paths()
+        # update tx
+        self.update_transaction_multisig_generator(tx)
+        tx.combine_with_other_psbt(tmp_tx, skip_finalize)
+        tx.add_info_from_wallet(self, include_xpubs_and_full_paths=False)
+
+        if update_pubkeys_fn:
+            update_pubkeys_fn(tx)
+
+        return tx
+
+
+class TwoKeysHWWallet(MultikeyHWWallet):
+
+    def _add_recovery_pubkey_to_transaction(self, tx):
+        for input in tx.inputs():
+            recovery_pubkey = bytes.fromhex(self.multisig_script_generator.recovery_pubkey)
+            if recovery_pubkey not in input.pubkeys:
+                input.pubkeys.append(recovery_pubkey)
+            input.num_sig = 2
+            assert len(input.pubkeys) == 2, 'Wrong number of pubkeys for performing recovery tx'
+        return tx
+
+    def sign_recovery_transaction(self, tx: PartialTransaction, password, recovery_keypairs) -> Optional[
+        PartialTransaction]:
+        if not isinstance(tx, PartialTransaction):
+            return
+
+        # Skip inputs finalization
+        skip_finalize = self.multikey_type == '2fa'
+        tx = self.sign_transaction(tx, password, recovery_keypairs, self._add_recovery_pubkey_to_transaction,
+                                   skip_finalize)
+
+        if not skip_finalize:
+            if not tx.is_complete():
+                _logger.error(f'Recovery transaction not completed')
+            tx.finalize_psbt()
+
+        return tx
+
+    def get_wallet_label(self):
+        return '2-Key Vault'
+
+
+class ThreeKeysHWWallet(MultikeyHWWallet):
+
+    def sign_instant_transaction(self, tx: PartialTransaction, password, instant_keypairs) -> Optional[PartialTransaction]:
+        if not isinstance(tx, PartialTransaction):
+            return
+
+        # Skip tx finalization when tx should be authenticated
+        skip_finalize = self.multikey_type == '2fa'
+        tx = self.sign_transaction(tx, password, instant_keypairs, self._add_instant_pubkey_to_transaction, skip_finalize)
+
+        if not skip_finalize:
+            if not tx.is_complete():
+                _logger.error(f'Instant transaction not completed')
+            tx.finalize_psbt()
+
+        return tx
+
+    def sign_recovery_transaction(self, tx: PartialTransaction, password, recovery_keypairs) -> Optional[PartialTransaction]:
+        if not isinstance(tx, PartialTransaction):
+            return
+
+        # Skip tx finalization when tx should be authenticated
+        skip_finalize = self.multikey_type == '2fa'
+        tx = self.sign_transaction(tx, password, recovery_keypairs, self._add_recovery_pubkey_to_transaction, skip_finalize)
+
+        if not skip_finalize:
+            if not tx.is_complete():
+                _logger.error(f'Recovery transaction not completed')
+            tx.finalize_psbt()
+
+        return tx
+
+    def get_wallet_label(self):
+        return '3-Key Vault'
+
+
 wallet_types = [
     '2-key',
     '3-key',
@@ -2654,11 +2855,15 @@ wallet_constructors = {
     'xpub': Standard_Wallet,
     'imported': Imported_Wallet,
     '2-key': TwoKeysWallet,
-    '3-key': ThreeKeysWallet
+    '3-key': ThreeKeysWallet,
+    '2-key-hw': TwoKeysHWWallet,
+    '3-key-hw': ThreeKeysHWWallet
 }
+
 
 def register_constructor(wallet_type, constructor):
     wallet_constructors[wallet_type] = constructor
+
 
 # former WalletFactory
 class Wallet(object):

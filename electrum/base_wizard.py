@@ -219,6 +219,7 @@ class BaseWizard(Logger, AdvancedOptionMixin):
                     raise Exception('Invalid multikey wallet type: ' + self.wallet_type)
             elif choice[:11] == 'multikey_hw':
                 self.data['multikey_type'] = 'hw'
+                self.data['wallet_type'] += '-hw'
                 sub_action = choice[-7:]
                 if self.wallet_type == '2-key':
                     action = 'two_keys_hw' + sub_action
@@ -303,7 +304,7 @@ class BaseWizard(Logger, AdvancedOptionMixin):
         self.run('restore_from_seed')
 
     def choose_keystore(self):
-        assert self.wallet_type in ['standard', 'multisig', '2-key', '3-key']
+        assert self.wallet_type in ['standard', 'multisig', '2-key', '3-key', '2-key-hw', '3-key-hw']
         i = len(self.keystores)
         title = _('Add cosigner') + ' (%d of %d)' % (i + 1, self.n) if self.wallet_type == 'multisig' else _('Keystore')
         if self.wallet_type == 'multisig' and i > 0:
@@ -327,7 +328,7 @@ class BaseWizard(Logger, AdvancedOptionMixin):
             advanced_choices = [
                 ('restore_from_key', _('Use a master key')),
             ]
-            if not self.is_kivy and self.wallet_type not in ['2-key', '3-key']:
+            if not self.is_kivy and self.wallet_type not in ['2-key', '3-key', '2-key-hw', '3-key-hw']:
                 advanced_choices.append(('choose_hw_device', _('Use a hardware device')))
         if self.wallet_type == 'multisig':
             self.choice_dialog(title=title, message=message, choices=base_choices + advanced_choices, run_next=self.run)
@@ -646,7 +647,7 @@ class BaseWizard(Logger, AdvancedOptionMixin):
         has_xpub = isinstance(k, keystore.Xpub)
         if has_xpub:
             t1 = xpub_type(k.xpub)
-        if self.wallet_type in ['standard', '2-key', '3-key']:
+        if self.wallet_type in ['standard', '2-key', '3-key', '2-key-hw', '3-key-hw']:
             if has_xpub and t1 not in ['standard', 'p2wpkh', 'p2wpkh-p2sh', 'p2wsh-p2sh']:
                 self.show_error(_('Wrong key type') + ' %s' % t1)
                 self.run('choose_keystore')
@@ -723,7 +724,7 @@ class BaseWizard(Logger, AdvancedOptionMixin):
         for k in self.keystores:
             if k.may_have_password():
                 k.update_password(None, password)
-        if self.wallet_type in ['standard', '2-key', '3-key']:
+        if self.wallet_type in ['standard', '2-key', '3-key', '2-key-hw', '3-key-hw']:
             self.data['seed_type'] = self.seed_type
             keys = self.keystores[0].dump()
             self.data['keystore'] = keys
