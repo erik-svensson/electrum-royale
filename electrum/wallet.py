@@ -2306,9 +2306,70 @@ class MultikeyWallet(Simple_Deterministic_Wallet):
         self.multikey_type = storage.get('multikey_type')
         self.multisig_script_generator = scriptGenerator
         self.set_alert()
+        self.postponed_synchronization = False
+        if self.multikey_type == 'hw':
+            self.postponed_synchronization = True
         # super has to be at the end otherwise wallet breaks
         super().__init__(storage=storage, config=config)
         self.multiple_change = storage.get('multiple_change', True)
+
+    def create_new_hw_address(self, for_change=False):
+        assert type(for_change) is bool
+        with self.lock:
+            n = self.db.num_change_addresses() if for_change else self.db.num_receiving_addresses()
+            address = self.keystore.get_address((for_change, n), self.txin_type, True)
+            self.db.add_change_address(address) if for_change else self.db.add_receiving_address(address)
+            self.add_address(address)
+            if for_change:
+                # note: if it's actually used, it will get filtered later
+                self._unused_change_addresses.append(address)
+            return address
+
+    def create_new_hw_addresses(self, sequences, for_change=False):
+        assert type(for_change) is bool
+        with self.lock:
+            addresses = self.keystore.get_addresses_batch(sequences, self.txin_type, True)
+            for address in addresses:
+                self.db.add_change_address(address) if for_change else self.db.add_receiving_address(address)
+                self.add_address(address)
+                if for_change:
+                    # note: if it's actually used, it will get filtered later
+                    self._unused_change_addresses.append(address)
+
+            return addresses
+
+    def synchronize_sequence(self, for_change):
+        limit = self.gap_limit_for_change if for_change else self.gap_limit
+        num_addr = self.db.num_change_addresses() if for_change else self.db.num_receiving_addresses()
+
+        if self.multikey_type == 'hw':
+            if num_addr < limit:
+                sequences = [(for_change, num_addr + sequence) for sequence in range(limit-num_addr)]
+                self.create_new_hw_addresses(sequences, for_change)
+        else:
+            while num_addr < limit:
+                self.create_new_address(for_change)
+                num_addr = self.db.num_change_addresses() if for_change else self.db.num_receiving_addresses()
+
+        while True:
+            if for_change:
+                last_few_addresses = self.get_change_addresses(slice_start=-limit)
+            else:
+                last_few_addresses = self.get_receiving_addresses(slice_start=-limit)
+            if any(map(self.address_is_old, last_few_addresses)):
+                if self.multikey_type == 'hw':
+                    self.create_new_hw_address(for_change)
+                else:
+                    self.create_new_address(for_change)
+            else:
+                break
+
+    @AddressSynchronizer.with_local_height_cached
+    def synchronize(self):
+        if not self.postponed_synchronization:
+            with self.lock:
+                self.synchronize_sequence(False)
+                self.synchronize_sequence(True)
 
     def set_alert(self):
         self.multisig_script_generator.set_alert()
@@ -2341,7 +2402,7 @@ class MultikeyWallet(Simple_Deterministic_Wallet):
 
         if txin_type == 'standard':
             return 'p2sh'
-        if 'p2wpkh' in txin_type:
+        if 'p2wpkh' in txin_type or 'p2wsh-p2sh' == txin_type:
             return 'p2wsh-p2sh'
         raise UnknownTxinType(f'Cannot derive txin_type from {txin_type}')
 
