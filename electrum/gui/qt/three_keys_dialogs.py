@@ -138,6 +138,31 @@ class InsertPubKeyDialog(QVBoxLayout):
         return pubkey.get_public_key_hex(compressed=True)
 
 
+class InsertHWPasswordDialog(QVBoxLayout):
+    def __init__(self, parent, message_label):
+        super().__init__()
+        self.parent = parent
+        label = message_label
+        edit = QLineEdit()
+        edit.setEchoMode(QLineEdit.Password)
+        error_label = ErrorLabel()
+
+        edit.textChanged.connect(self._on_change)
+        self.addWidget(label)
+        self.addWidget(edit)
+        self.addWidget(error_label)
+        self.edit = edit
+
+    def _on_change(self):
+        self.parent.next_button.setEnabled(self._get_str().strip() != '')
+
+    def _get_str(self) -> str:
+        return self.edit.text().replace('\n', '')
+
+    def get_password(self):
+        return self._get_str()
+
+
 class Qr2FaDialog(QVBoxLayout):
 
     def __init__(self, parent, title_label: str, pin_label: str, qr_data: dict):

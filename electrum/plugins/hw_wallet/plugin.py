@@ -167,6 +167,12 @@ class HW_PluginBase(BasePlugin):
         """
         return device.product_key in self.DEVICE_IDS
 
+    def set_instant_password(self, device_id, password: str, wizard) -> bool:
+        raise NotImplementedError()
+
+    def set_recovery_password(self, device_id, password: str, wizard) -> bool:
+        raise NotImplementedError()
+
 
 class HardwareClientBase:
 

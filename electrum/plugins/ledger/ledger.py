@@ -124,6 +124,14 @@ class Ledger_Client(HardwareClientBase):
                          fingerprint=fingerprint_bytes,
                          child_number=childnum_bytes).to_xpub()
 
+    @test_pin_unlocked
+    def set_instant_password(self, password):
+        self.dongleObject.setBTCVPassword(password, btchip.BTCV_PASSWORD_INSTANT)
+
+    @test_pin_unlocked
+    def set_recovery_password(self, password):
+        self.dongleObject.setBTCVPassword(password, btchip.BTCV_PASSWORD_RECOVERY)
+
     def has_detached_pin_support(self, client):
         try:
             client.getVerifyPinRemainingAttempts()
@@ -496,6 +504,38 @@ class Ledger_KeyStore(Hardware_KeyStore):
 
     @test_pin_unlocked
     @set_and_unset_signing
+    def get_address(self, sequence, txin_type, btcvAddr=False):
+        client = self.get_client()
+        address_path = self.get_derivation_prefix()[2:] + "/%d/%d"%sequence
+        segwit = is_segwit_script_type(txin_type)
+        segwitNative = txin_type == 'p2wpkh'
+
+        result = None
+        try:
+            result = client.getWalletPublicKey(address_path, showOnScreen=False, segwit=segwit, segwitNative=segwitNative, btcvAddr=btcvAddr)
+        except Exception as e:
+            self.logger.exception(e)
+
+        return result['address'].decode("utf-8")
+
+    @test_pin_unlocked
+    @set_and_unset_signing
+    def get_addresses_batch(self, sequences, txin_type, btcvAddr=False):
+        client = self.get_client()
+        address_paths = [self.get_derivation_prefix()[2:] + "/%d/%d"%sequence for sequence in sequences]
+        segwit = is_segwit_script_type(txin_type)
+        segwitNative = txin_type == 'p2wpkh'
+
+        resultBatch = None
+        try:
+            resultBatch = client.getWalletPublicKeyBatch(address_paths, segwit=segwit, segwitNative=segwitNative, btcvAddr=btcvAddr)
+        except Exception as e:
+            self.logger.exception(e)
+
+        return [result['address'].decode("utf-8") for result in resultBatch]
+
+    @test_pin_unlocked
+    @set_and_unset_signing
     def show_address(self, sequence, txin_type):
         client = self.get_client()
         address_path = self.get_derivation_prefix()[2:] + "/%d/%d"%sequence
@@ -592,6 +632,17 @@ class LedgerPlugin(HW_PluginBase):
                                       _('Make sure it is in the correct state.'))
         client.handler = self.create_handler(wizard)
         client.get_xpub("m/44'/0'", 'standard') # TODO replace by direct derivation once Nano S > 1.1
+
+    def set_recovery_password(self, device_id, password, wizard):
+        devmgr = self.device_manager()
+        client = devmgr.client_by_id(device_id)
+        client.handler = self.create_handler(wizard)
+        client.checkDevice()
+        try:
+            client.set_recovery_password(password)
+            return True
+        except:
+            return False
 
     def get_xpub(self, device_id, derivation, xtype, wizard):
         if xtype not in self.SUPPORTED_XTYPES:

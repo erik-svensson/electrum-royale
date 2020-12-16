@@ -21,7 +21,7 @@ from .network_dialog import NetworkChoiceLayout
 from .password_dialog import PasswordLayout, PasswordLayoutForHW, PW_NEW
 from .seed_dialog import SeedLayout, KeysLayout
 from .terms_and_conditions_mixin import TermsAndConditionsMixin, PushedButton
-from .three_keys_dialogs import InsertPubKeyDialog, Qr2FaDialog
+from .three_keys_dialogs import InsertPubKeyDialog, InsertHWPasswordDialog, Qr2FaDialog
 from .util import (MessageBoxMixin, Buttons, icon_path, ChoicesLayout, WWLabel,
                    InfoButton, char_width_in_lineedit, get_default_language)
 
@@ -650,6 +650,19 @@ class InstallWizard(QDialog, MessageBoxMixin, BaseWizard, TermsAndConditionsMixi
         layout = InsertPubKeyDialog(self, message_label=label, disallowed_keys=disallowed_keys)
         self.exec_layout(layout, _('Gold Wallet authenticator public key'), next_enabled=False)
         return layout.get_compressed_pubkey()
+
+    @wizard_dialog
+    def get_hw_password(self, run_next, title):
+        label = QLabel()
+        message = _('Please provide password related to your Ledger device')
+        label.setText(message)
+        label.setOpenExternalLinks(True)
+        label.setTextInteractionFlags(Qt.TextBrowserInteraction)
+        label.setWordWrap(True)
+
+        layout = InsertHWPasswordDialog(self, message_label=label)
+        self.exec_layout(layout, title, next_enabled=False)
+        return layout.get_password()
 
     @wizard_dialog
     def display_2fa_pairing_qr(self, run_next, entropy: bytes):
