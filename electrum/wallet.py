@@ -59,7 +59,7 @@ from .mnemonic import Mnemonic
 from .plugin import run_hook
 from .simple_config import SimpleConfig
 from .storage import StorageEncryptionVersion, WalletStorage
-from .three_keys.script import TwoKeysScriptGenerator, ThreeKeysScriptGenerator
+from .three_keys.script import TwoKeysScriptGenerator, ThreeKeysScriptGenerator, ThreeKeysError
 from .three_keys.transaction import TxType, ThreeKeysTransaction
 from .three_keys.utils import filter_spendable_coins, update_tx_status
 from .transaction import (Transaction, TxInput, UnknownTxinType, TxOutput,
@@ -2575,100 +2575,24 @@ class ThreeKeysWallet(MultikeyWallet):
         return '3-Key Vault'
 
 
-class MultikeyHWWallet(Simple_Deterministic_Wallet):
+class MultikeyHWWallet(Multisig_Wallet):
 
     def __init__(self, storage: WalletStorage, *, config: SimpleConfig):
         self.wallet_type = storage.get('wallet_type')
         self.multikey_type = storage.get('multikey_type')
-        self.postponed_synchronization = True
-
+        # self.postponed_synchronization = True
+        self.n = 2
+        Deterministic_Wallet.__init__(self, storage, config=config)
         # super has to be at the end otherwise wallet breaks
-        super().__init__(storage=storage, config=config)
         self.multiple_change = storage.get('multiple_change', True)
 
-    def create_new_hw_address(self, for_change=False):
-        assert type(for_change) is bool
-        with self.lock:
-            n = self.db.num_change_addresses() if for_change else self.db.num_receiving_addresses()
-            address = self.keystore.get_address((for_change, n), self.txin_type, True)
-            self.db.add_change_address(address) if for_change else self.db.add_receiving_address(address)
-            self.add_address(address)
-            if for_change:
-                # note: if it's actually used, it will get filtered later
-                self._unused_change_addresses.append(address)
-            return address
-
-    def create_new_hw_addresses(self, sequences, for_change=False):
-        assert type(for_change) is bool
-        with self.lock:
-            addresses = self.keystore.get_addresses_batch(sequences, self.txin_type, True)
-            for address in addresses:
-                self.db.add_change_address(address) if for_change else self.db.add_receiving_address(address)
-                self.add_address(address)
-                if for_change:
-                    # note: if it's actually used, it will get filtered later
-                    self._unused_change_addresses.append(address)
-
-            return addresses
-
-    def synchronize_sequence(self, for_change):
-        limit = self.gap_limit_for_change if for_change else self.gap_limit
-        num_addr = self.db.num_change_addresses() if for_change else self.db.num_receiving_addresses()
-
-        if self.multikey_type == 'hw':
-            if num_addr < limit:
-                sequences = [(for_change, num_addr + sequence) for sequence in range(limit-num_addr)]
-                self.create_new_hw_addresses(sequences, for_change)
-        else:
-            while num_addr < limit:
-                self.create_new_address(for_change)
-                num_addr = self.db.num_change_addresses() if for_change else self.db.num_receiving_addresses()
-
-        while True:
-            if for_change:
-                last_few_addresses = self.get_change_addresses(slice_start=-limit)
-            else:
-                last_few_addresses = self.get_receiving_addresses(slice_start=-limit)
-            if any(map(self.address_is_old, last_few_addresses)):
-                if self.multikey_type == 'hw':
-                    self.create_new_hw_address(for_change)
-                else:
-                    self.create_new_address(for_change)
-            else:
-                break
-
-    @AddressSynchronizer.with_local_height_cached
-    def synchronize(self):
-        if not self.postponed_synchronization:
-            with self.lock:
-                self.synchronize_sequence(False)
-                self.synchronize_sequence(True)
-
-    def set_alert(self):
-        self.multisig_script_generator.set_alert()
-
-    def set_recovery(self):
-        self.multisig_script_generator.set_recovery()
-
-    def set_instant(self):
-        self.multisig_script_generator.set_instant()
-
     def load_keystore(self):
-        self.keystore = load_keystore(self.storage, 'keystore')
-        self.txin_type = self.derive_txin_type_from_keystore(self.keystore)
-
-    @staticmethod
-    def derive_txin_type_from_keystore(keystore):
-        try:
-            txin_type = bip32.xpub_type(keystore.xpub)
-        except:
-            txin_type = 'standard'
-
-        if txin_type == 'standard':
-            return 'p2sh'
-        if 'p2wpkh' in txin_type or 'p2wsh-p2sh' == txin_type:
-            return 'p2wsh-p2sh'
-        raise UnknownTxinType(f'Cannot derive txin_type from {txin_type}')
+        self.keystores = {}
+        for i in range(self.n):
+            name = 'x%d/'%(i+1)
+            self.keystores[name] = load_keystore(self.storage, name)
+        self.keystore = self.keystores['x1/']
+        self.txin_type = 'p2wsh-p2sh'
 
     def make_unsigned_transaction(self, *, coins: Sequence[PartialTxInput],
                                   outputs: List[PartialTxOutput], fee=None,
@@ -2769,6 +2693,12 @@ class MultikeyHWWallet(Simple_Deterministic_Wallet):
 
 
 class TwoKeysHWWallet(MultikeyHWWallet):
+
+    def pubkeys_to_scriptcode(self, pubkeys: Sequence[str]) -> str:
+        if not isinstance(pubkeys, list) or len(pubkeys) != 2:
+            raise ThreeKeysError(f"Wrong input type! Expected list not '{pubkeys}'")
+
+        return TwoKeysScriptGenerator.create_redeem_script(pubkeys[0], pubkeys[1])
 
     def _add_recovery_pubkey_to_transaction(self, tx):
         for input in tx.inputs():

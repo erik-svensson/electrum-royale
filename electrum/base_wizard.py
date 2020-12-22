@@ -220,10 +220,11 @@ class BaseWizard(Logger, AdvancedOptionMixin):
             elif choice[:11] == 'multikey_hw':
                 self.data['multikey_type'] = 'hw'
                 self.data['wallet_type'] += '-hw'
+                self.wallet_type += '-hw'
                 sub_action = choice[-7:]
-                if self.wallet_type == '2-key':
+                if self.wallet_type == '2-key-hw':
                     action = 'two_keys_hw' + sub_action
-                elif self.wallet_type == '3-key':
+                elif self.wallet_type == '3-key-hw':
                     action = 'three_keys_hw' + sub_action
                 else:
                     raise Exception('Invalid multikey wallet type: ' + self.wallet_type)
@@ -518,6 +519,8 @@ class BaseWizard(Logger, AdvancedOptionMixin):
                 raise Exception('Recovery password not set')
 
             self.plugin.set_recovery_password(device_info.device.id_, self.data['recovery_password'], self)
+            if 'instant_password' in self.data:
+                self.plugin.set_instant_password(device_info.device.id_, self.data['instant_password'], self)
 
             script_type = 'p2wsh-p2sh'
             derivation = normalize_bip32_derivation(purpose48_derivation(0, xtype=script_type))
@@ -560,7 +563,7 @@ class BaseWizard(Logger, AdvancedOptionMixin):
                 self.show_error(e)
                 # let the user choose again
 
-    def on_hw_derivation(self, name, device_info, derivation, xtype):
+    def on_hw_derivation(self, name, device_info, derivation, xtype, xpub_keystore=False):
         from .keystore import hardware_keystore
         try:
             xpub = self.plugin.get_xpub(device_info.device.id_, derivation, xtype, self)
@@ -572,16 +575,19 @@ class BaseWizard(Logger, AdvancedOptionMixin):
             self.show_error(e)
             return
         xfp = BIP32Node.from_xkey(root_xpub).calc_fingerprint_of_this_node().hex().lower()
-        d = {
-            'type': 'hardware',
-            'hw_type': name,
-            'derivation': derivation,
-            'root_fingerprint': xfp,
-            'xpub': xpub,
-            'label': device_info.label,
-        }
-        k = hardware_keystore(d)
-        self.on_keystore(k)
+        if xpub_keystore:
+            k = keystore.from_master_key(xpub)
+        else:
+            d = {
+                'type': 'hardware',
+                'hw_type': name,
+                'derivation': derivation,
+                'root_fingerprint': xfp,
+                'xpub': xpub,
+                'label': device_info.label,
+            }
+            k = hardware_keystore(d)
+        self.on_keystore(k, name, device_info)
 
     def passphrase_dialog(self, run_next, is_restoring=False):
         title = _('Seed extension')
@@ -643,17 +649,35 @@ class BaseWizard(Logger, AdvancedOptionMixin):
         k = keystore.from_bip39_seed(seed, passphrase, derivation, xtype=script_type)
         self.on_keystore(k)
 
-    def on_keystore(self, k):
+    def on_keystore(self, k, name=None, device_info=None):
         has_xpub = isinstance(k, keystore.Xpub)
         if has_xpub:
             t1 = xpub_type(k.xpub)
-        if self.wallet_type in ['standard', '2-key', '3-key', '2-key-hw', '3-key-hw']:
-            if has_xpub and t1 not in ['standard', 'p2wpkh', 'p2wpkh-p2sh', 'p2wsh-p2sh']:
+        if self.wallet_type in ['standard', '2-key', '3-key']:
+            if has_xpub and t1 not in ['standard', 'p2wpkh', 'p2wpkh-p2sh']:
                 self.show_error(_('Wrong key type') + ' %s' % t1)
                 self.run('choose_keystore')
                 return
             self.keystores.append(k)
             self.run('create_wallet')
+        elif self.wallet_type in ['2-key-hw', '3-key-hw']:
+            if has_xpub and t1 != 'p2wsh-p2sh':
+                self.show_error(_('Wrong key type') + ' %s' % t1)
+                self.run('choose_keystore')
+                return
+            self.keystores.append(k)
+
+            keystores_needed = 2 if self.wallet_type == '2-key-hw' else 3
+            if len(self.keystores) < keystores_needed:
+                if not name or not device_info:
+                    self.show_error(_('Missing device info'))
+                    self.run('choose_keystore')
+                    return
+                script_type = 'p2wsh-p2sh'
+                derivation = normalize_bip32_derivation(purpose48_derivation(len(self.keystores), xtype=script_type))
+                self.run('on_hw_derivation', name, device_info, derivation, script_type, True)
+            else:
+                self.run('create_wallet')
         elif self.wallet_type == 'multisig':
             assert has_xpub
             if t1 not in ['standard', 'p2wsh', 'p2wsh-p2sh']:
@@ -724,11 +748,11 @@ class BaseWizard(Logger, AdvancedOptionMixin):
         for k in self.keystores:
             if k.may_have_password():
                 k.update_password(None, password)
-        if self.wallet_type in ['standard', '2-key', '3-key', '2-key-hw', '3-key-hw']:
+        if self.wallet_type in ['standard', '2-key', '3-key']:
             self.data['seed_type'] = self.seed_type
             keys = self.keystores[0].dump()
             self.data['keystore'] = keys
-        elif self.wallet_type == 'multisig':
+        elif self.wallet_type in ['multisig', '2-key-hw', '3-key-hw']:
             for i, k in enumerate(self.keystores):
                 self.data['x%d/' % (i + 1)] = k.dump()
         elif self.wallet_type == 'imported':

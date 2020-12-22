@@ -14,6 +14,29 @@ class TwoKeysScriptGenerator(MultiKeyScriptGenerator):
         self._recovery_alert_flag = None
         self.witness_flags = []
 
+    @staticmethod
+    def create_redeem_script(alert_pubkey, recovery_pubkey):
+        return (
+                opcodes.OP_IF.hex() +
+                opcodes.OP_1.hex() +
+                opcodes.OP_ELSE.hex() +
+                opcodes.OP_2.hex() +
+                opcodes.OP_ENDIF.hex() +
+                push_script(alert_pubkey) +
+                push_script(recovery_pubkey) +
+                opcodes.OP_2.hex() +
+                opcodes.OP_CHECKMULTISIG.hex()
+        )
+
+    @staticmethod
+    def _create_script_sig(signatures, flag, redeem_script):
+        return (
+                opcodes.OP_0.hex() +
+                signatures +
+                flag +
+                push_script(redeem_script)
+        )
+
     def get_redeem_script(self, public_keys: List[str]) -> str:
         if not isinstance(public_keys, list) or len(public_keys) not in [1, 2]:
             raise ThreeKeysError(f"Wrong input type! Expected 1 or 2 elements list not '{public_keys}'")
@@ -23,30 +46,13 @@ class TwoKeysScriptGenerator(MultiKeyScriptGenerator):
             raise ThreeKeysError(f'Cannot deduce pubkey from {public_keys}')
 
         pub_key = filtered_keys[0]
-        return (
-                opcodes.OP_IF.hex() +
-                opcodes.OP_1.hex() +
-                opcodes.OP_ELSE.hex() +
-                opcodes.OP_2.hex() +
-                opcodes.OP_ENDIF.hex() +
-
-                push_script(pub_key) +
-                push_script(self.recovery_pubkey) +
-
-                opcodes.OP_2.hex() +
-                opcodes.OP_CHECKMULTISIG.hex()
-        )
+        return self.create_redeem_script(pub_key, self.recovery_pubkey)
 
     def get_script_sig(self, signatures: List[str], public_keys: List[str]) -> str:
         if self._recovery_alert_flag is None:
             raise ThreeKeysError('Recovery/alert flag not set!')
         sigs = ''.join(push_script(sig) for sig in signatures)
-        return (
-                opcodes.OP_0.hex() +
-                sigs +
-                self._recovery_alert_flag +
-                push_script(self.get_redeem_script(public_keys))
-        )
+        return self._create_script_sig(sigs, self._recovery_alert_flag, self.get_redeem_script(public_keys))
 
     def set_alert(self):
         # 1 of 2
@@ -72,11 +78,8 @@ class ThreeKeysScriptGenerator(MultiKeyScriptGenerator):
         self._instant_recovery_alert_flag = None
         self.witness_flags = []
 
-    def get_redeem_script(self, public_keys: List[str]) -> str:
-        if not isinstance(public_keys, list) or len(public_keys) > 3:
-            raise ThreeKeysError(f"Wrong input type! Expected list not '{public_keys}'")
-
-        pub_key = public_keys[0]
+    @staticmethod
+    def create_redeem_script(alert_pubkey, instant_pubkey, recovery_pubkey):
         return (
                 opcodes.OP_IF.hex() +
                 opcodes.OP_1.hex() +
@@ -87,25 +90,34 @@ class ThreeKeysScriptGenerator(MultiKeyScriptGenerator):
                 opcodes.OP_3.hex() +
                 opcodes.OP_ENDIF.hex() +
                 opcodes.OP_ENDIF.hex() +
-
-                push_script(pub_key) +
-                push_script(self.instant_pubkey) +
-                push_script(self.recovery_pubkey) +
-
+                push_script(alert_pubkey) +
+                push_script(instant_pubkey) +
+                push_script(recovery_pubkey) +
                 opcodes.OP_3.hex() +
                 opcodes.OP_CHECKMULTISIG.hex()
         )
+
+    @staticmethod
+    def _create_script_sig(signatures, flags, redeem_script):
+        return (
+                opcodes.OP_0.hex() +
+                signatures +
+                flags +
+                push_script(redeem_script)
+        )
+
+    def get_redeem_script(self, public_keys: List[str]) -> str:
+        if not isinstance(public_keys, list) or len(public_keys) > 3:
+            raise ThreeKeysError(f"Wrong input type! Expected list not '{public_keys}'")
+
+        pub_key = public_keys[0]
+        return self.create_redeem_script(pub_key, self.instant_pubkey, self.recovery_pubkey)
 
     def get_script_sig(self, signatures: List[str], public_keys: List[str]) -> str:
         if self._instant_recovery_alert_flag is None:
             raise ThreeKeysError('Recovery/alert/instant flag not set!')
         sigs = ''.join(push_script(sig) for sig in signatures)
-        return (
-                opcodes.OP_0.hex() +
-                sigs +
-                self._instant_recovery_alert_flag +
-                push_script(self.get_redeem_script(public_keys))
-        )
+        return self._create_script_sig(sigs, self._instant_recovery_alert_flag, self.get_redeem_script(public_keys))
 
     def set_alert(self):
         # 1 of 3

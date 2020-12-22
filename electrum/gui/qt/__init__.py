@@ -344,14 +344,6 @@ class ElectrumGui(Logger):
                 self.stop()
                 raise TermsNotAccepted
 
-    def wait_for_task(self, task, msg):
-        wizard = InstallWizard(self.config, self.app, self.plugins)
-
-        def on_finished():
-            wizard.terminate()
-
-        wizard.waiting_dialog(task, msg, on_finished)
-
     def choose_language(self):
         if self.config.get('language', None) is None:
             wizard = InstallWizard(self.config, self.app, self.plugins)
