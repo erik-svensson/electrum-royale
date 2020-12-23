@@ -30,6 +30,7 @@ import traceback
 import threading
 from typing import Optional, TYPE_CHECKING
 
+from .email_notification_dialogs import EmailNotificationWizard
 from .terms_and_conditions_mixin import TermsNotAccepted
 from .three_keys_windows import ElectrumARWindow, ElectrumAIRWindow
 
@@ -232,6 +233,16 @@ class ElectrumGui(Logger):
                     self._num_wizards_in_progress -= 1
         return wrapper
 
+    def add_email_notification(self, wallet):
+        config_key = EmailNotificationWizard.CONFIG_KEY
+        notifications = self.config.get(config_key, False)
+        if not notifications:
+            self.config.set_key(config_key, {})
+        if not EmailNotificationWizard.check_if_wallet_in_config(self.config, wallet):
+            email_wizard = EmailNotificationWizard(wallet, self.config, self.app, self.plugins)
+            email_wizard.run_notification()
+            email_wizard.terminate()
+
     @count_wizards_in_progress
     def start_new_window(self, path, uri, *, app_is_starting=False):
         '''Raises the window for the wallet if it is open.  Otherwise
@@ -259,6 +270,7 @@ class ElectrumGui(Logger):
                                    text=_('Cannot load wallet') + ' (2):\n' + repr(e))
         if not wallet:
             return
+        self.add_email_notification(wallet)
         # create or raise window
         try:
             for window in self.windows:
