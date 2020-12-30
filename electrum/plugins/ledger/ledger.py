@@ -16,6 +16,7 @@ from electrum.util import bfh, bh2u, versiontuple, UserFacingException
 from electrum.base_wizard import ScriptTypeNotSupported
 from electrum.logging import get_logger
 from electrum.plugin import Device
+from electrum.three_keys.pubkey_type import PubkeyType
 from typing import Tuple, Optional
 
 from ..hw_wallet import HW_PluginBase, HardwareClientBase
@@ -90,7 +91,7 @@ class Ledger_Client(HardwareClientBase):
         return True
 
     @test_pin_unlocked
-    def get_xpub(self, bip32_path, xtype):
+    def get_xpub(self, bip32_path, xtype, pubkey_type=PubkeyType.PUBKEY_ALERT):
         self.checkDevice()
         # bip32_path is of the form 44'/0'/1'
         # S-L-O-W - we don't handle the fingerprint directly, so compute
@@ -114,7 +115,7 @@ class Ledger_Client(HardwareClientBase):
         else:
             fingerprint_bytes = bytes(4)
             childnum_bytes = bytes(4)
-        nodeData = self.dongleObject.getWalletPublicKey(bip32_path)
+        nodeData = self.dongleObject.getWalletPublicKey(bip32_path, btcvPubkeyTree=pubkey_type)
         publicKey = compress_public_key(nodeData['publicKey'])
         depth = len(bip32_intpath)
         return BIP32Node(xtype=xtype,
@@ -644,14 +645,14 @@ class LedgerPlugin(HW_PluginBase):
         except:
             return False
 
-    def get_xpub(self, device_id, derivation, xtype, wizard):
+    def get_xpub(self, device_id, derivation, xtype, wizard, pubkey_type=PubkeyType.PUBKEY_ALERT):
         if xtype not in self.SUPPORTED_XTYPES:
             raise ScriptTypeNotSupported(_('This type of script is not supported with {device}.').format(device=self.device))
         devmgr = self.device_manager()
         client = devmgr.client_by_id(device_id)
         client.handler = self.create_handler(wizard)
         client.checkDevice()
-        xpub = client.get_xpub(derivation, xtype)
+        xpub = client.get_xpub(derivation, xtype, pubkey_type)
         return xpub
 
     def get_client(self, keystore, force_pair=True):

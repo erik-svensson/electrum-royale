@@ -41,7 +41,7 @@ from .plugins.hw_wallet.plugin import OutdatedHwFirmwareException, HW_PluginBase
 from .simple_config import SimpleConfig
 from .storage import (WalletStorage, StorageEncryptionVersion,
                       get_derivation_used_for_hw_device_encryption)
-from .three_keys import short_mnemonic
+from .three_keys.pubkey_type import PubkeyType
 from .util import UserCancelled, InvalidPassword
 from .wallet import (wallet_types)
 
@@ -563,10 +563,10 @@ class BaseWizard(Logger, AdvancedOptionMixin):
                 self.show_error(e)
                 # let the user choose again
 
-    def on_hw_derivation(self, name, device_info, derivation, xtype, xpub_keystore=False):
+    def on_hw_derivation(self, name, device_info, derivation, xtype, xpub_keystore=False, pubkey_type=PubkeyType.PUBKEY_ALERT):
         from .keystore import hardware_keystore
         try:
-            xpub = self.plugin.get_xpub(device_info.device.id_, derivation, xtype, self)
+            xpub = self.plugin.get_xpub(device_info.device.id_, derivation, xtype, self, pubkey_type)
             root_xpub = self.plugin.get_xpub(device_info.device.id_, 'm', 'standard', self)
         except ScriptTypeNotSupported:
             raise  # this is handled in derivation_dialog
@@ -674,8 +674,12 @@ class BaseWizard(Logger, AdvancedOptionMixin):
                     self.run('choose_keystore')
                     return
                 script_type = 'p2wsh-p2sh'
-                derivation = normalize_bip32_derivation(purpose48_derivation(len(self.keystores), xtype=script_type))
-                self.run('on_hw_derivation', name, device_info, derivation, script_type, True)
+                derivation = purpose48_derivation(0, xtype=script_type)
+                if keystores_needed == 3:
+                    pubkey_type = len(self.keystores)
+                elif keystores_needed == 2:
+                    pubkey_type = 2 * len(self.keystores)
+                self.run('on_hw_derivation', name, device_info, derivation, script_type, True, pubkey_type)
             else:
                 self.run('create_wallet')
         elif self.wallet_type == 'multisig':
