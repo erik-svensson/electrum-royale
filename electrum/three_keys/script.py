@@ -142,3 +142,14 @@ class ThreeKeysScriptGenerator(MultiKeyScriptGenerator):
 
     def is_alert_mode(self):
         return self.witness_flags == [1]
+
+
+class TwoKeysHWScriptGenerator(TwoKeysScriptGenerator):
+    def __init__(self):
+        self._recovery_alert_flag = None
+        self.witness_flags = []
+
+    def get_redeem_script(self, public_keys: List[str]) -> str:
+        if not isinstance(public_keys, list) or len(public_keys) != 2:
+            raise ThreeKeysError(f"Wrong input type! Expected 2 elements list not '{public_keys}'")
+        return self.create_redeem_script(public_keys[0], public_keys[1])

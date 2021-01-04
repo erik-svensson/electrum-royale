@@ -1,3 +1,4 @@
+import enum
 from struct import pack, unpack
 import hashlib
 import sys
@@ -5,7 +6,7 @@ import traceback
 
 from electrum import ecc
 from electrum import bip32
-from electrum.crypto import hash_160
+from electrum.crypto import hash_160, sha256
 from electrum.bitcoin import int_to_hex, var_int, is_segwit_script_type
 from electrum.bip32 import BIP32Node, convert_bip32_intpath_to_strpath
 from electrum.i18n import _
@@ -61,6 +62,12 @@ def test_pin_unlocked(func):
             else:
                 raise
     return catch_exception
+
+
+class LedgerBtcvTxType(enum.IntEnum):
+    ALERT = 0x00
+    INSTANT = 0x01
+    RECOVERY = 0x02
 
 
 class Ledger_Client(HardwareClientBase):
@@ -315,6 +322,15 @@ class Ledger_KeyStore(Hardware_KeyStore):
             s = s[1:]
         # And convert it
         return bytes([27 + 4 + (signature[0] & 0x01)]) + r + s
+
+    @test_pin_unlocked
+    def set_btcv_password_use(self, tx_type=LedgerBtcvTxType.ALERT, password=None):
+        client = self.get_client()
+        passwordHash = sha256(bytearray(password.encode('utf-8')).hex().ljust(64, '0')) if password else bytearray(32)
+        try:
+            client.setBTCVPasswordUse(passwordHash, tx_type)
+        except Exception as e:
+            self.logger.exception(e)
 
     @test_pin_unlocked
     @set_and_unset_signing

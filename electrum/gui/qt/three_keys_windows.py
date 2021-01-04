@@ -46,8 +46,9 @@ class ElectrumMultikeyWalletWindow(ElectrumWindow):
 
     def update_tabs(self, wallet=None):
         super().update_tabs(wallet=wallet)
-        self.recovery_tab.update_view()
-        self.recovery_tab.update_recovery_button()
+        if hasattr(self, 'recovery_tab'):
+            self.recovery_tab.update_view()
+            self.recovery_tab.update_recovery_button()
 
 
 class ElectrumARWindow(ElectrumMultikeyWalletWindow):
@@ -538,3 +539,55 @@ and the blockchain parameters of the Bitcoin Vault wallet. Your funds will be un
             else PreviewTxDialog
         d = dialog_class(make_tx, outputs, external_keypairs, window=self, invoice=invoice)
         d.show()
+
+
+class ElectrumARHWWindow(ElectrumARWindow):
+
+    def __init__(self, gui_object: 'ElectrumGui', wallet: 'Abstract_Wallet'):
+        super().__init__(gui_object=gui_object, wallet=wallet)
+
+    def do_pay(self):
+        invoice = self.read_invoice()
+        if not invoice:
+            return
+        invoice['txtype'] = TxType.ALERT_PENDING.name
+        self.wallet.save_invoice(invoice)
+        self.invoice_list.update()
+        self.do_clear()
+        self.do_pay_invoice(invoice)
+
+    def pay_onchain_dialog(self, inputs, outputs, invoice=None, external_keypairs=None):
+        # trustedcoin requires this
+        if run_hook('abort_send', self):
+            return
+        is_sweep = False # Was bool(external_keypairs). Should be good to keep it false, since we do not use trustedcoin
+        make_tx = lambda fee_est: self.wallet.make_unsigned_transaction(
+            coins=inputs,
+            outputs=outputs,
+            fee=fee_est,
+            is_sweep=is_sweep)
+        if self.config.get('advanced_preview'):
+            self.preview_tx_dialog(make_tx, outputs, external_keypairs=external_keypairs, invoice=invoice)
+            return
+
+        output_values = [x.value for x in outputs]
+        output_value = '!' if '!' in output_values else sum(output_values)
+        d = ConfirmTxDialog(self, make_tx, output_value, is_sweep)
+        d.update_tx()
+        if d.not_enough_funds:
+            self.show_message(_('Not Enough Funds'))
+            return
+        cancelled, is_send, password, tx = d.run()
+        if cancelled:
+            return
+
+        if invoice['txtype'] == TxType.ALERT_PENDING.name:
+            self.wallet.set_alert()
+
+        if is_send:
+            def sign_done(success):
+                if success:
+                    self.broadcast_or_show(tx, invoice=invoice)
+            self.sign_tx_with_password(tx, sign_done, password, external_keypairs)
+        else:
+            self.preview_tx_dialog(make_tx, outputs, external_keypairs=external_keypairs, invoice=invoice)

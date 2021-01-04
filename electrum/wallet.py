@@ -59,7 +59,8 @@ from .mnemonic import Mnemonic
 from .plugin import run_hook
 from .simple_config import SimpleConfig
 from .storage import StorageEncryptionVersion, WalletStorage
-from .three_keys.script import TwoKeysScriptGenerator, ThreeKeysScriptGenerator, ThreeKeysError
+from .three_keys.script import TwoKeysScriptGenerator, ThreeKeysScriptGenerator, ThreeKeysError, \
+    TwoKeysHWScriptGenerator
 from .three_keys.transaction import TxType, ThreeKeysTransaction
 from .three_keys.utils import filter_spendable_coins, update_tx_status
 from .transaction import (Transaction, TxInput, UnknownTxinType, TxOutput,
@@ -2577,11 +2578,12 @@ class ThreeKeysWallet(MultikeyWallet):
 
 class MultikeyHWWallet(Multisig_Wallet):
 
-    def __init__(self, storage: WalletStorage, *, config: SimpleConfig):
+    def __init__(self, storage: WalletStorage, *, config: SimpleConfig, scriptGenerator: MultiKeyScriptGenerator):
         self.wallet_type = storage.get('wallet_type')
         self.multikey_type = storage.get('multikey_type')
-        # self.postponed_synchronization = True
+        self.multisig_script_generator = scriptGenerator
         self.n = 2
+        self.m = 1
         Deterministic_Wallet.__init__(self, storage, config=config)
         # super has to be at the end otherwise wallet breaks
         self.multiple_change = storage.get('multiple_change', True)
@@ -2607,6 +2609,14 @@ class MultikeyHWWallet(Multisig_Wallet):
         )
         self.update_transaction_multisig_generator(tx)
         return tx
+
+    def update_transaction_multisig_generator(self, tx: Transaction):
+        tx.multisig_script_generator = self.multisig_script_generator
+        tx.update_inputs()
+
+    def update_tx_input_multisig_generator(self, inputs: Sequence[PartialTxInput]):
+        for txin in inputs:
+            txin.multisig_script_generator = self.multisig_script_generator
 
     def get_atxs_to_recovery(self):
         txi_list = self.db.list_txi()
@@ -2655,7 +2665,22 @@ class MultikeyHWWallet(Multisig_Wallet):
             input.block_height = fetched_data['height']
         return updated_inputs
 
-    def sign_transaction(self, tx: PartialTransaction, password, external_keypairs=None, update_pubkeys_fn=None, skip_finalize=False) -> Optional[PartialTransaction]:
+    def set_alert(self):
+        from .plugins.ledger.ledger import LedgerBtcvTxType
+        self.multisig_script_generator.set_alert()
+        self._get_hw_keystore().set_btcv_password_use(LedgerBtcvTxType.ALERT)
+
+    def set_recovery(self):
+        from .plugins.ledger.ledger import LedgerBtcvTxType
+        self.multisig_script_generator.set_recovery()
+        self._get_hw_keystore().set_btcv_password_use(LedgerBtcvTxType.RECOVERY)
+
+    def set_instant(self):
+        from .plugins.ledger.ledger import LedgerBtcvTxType
+        self.multisig_script_generator.set_instant()
+        self._get_hw_keystore().set_btcv_password_use(LedgerBtcvTxType.INSTANT)
+
+    def sign_transaction(self, tx: Transaction, password) -> Optional[PartialTransaction]:
         if self.is_watching_only():
             return
         if not isinstance(tx, PartialTransaction):
@@ -2663,36 +2688,39 @@ class MultikeyHWWallet(Multisig_Wallet):
         # add info to a temporary tx copy; including xpubs
         # and full derivation paths as hw keystores might want them
         tmp_tx = copy.deepcopy(tx)
-        # update tmp tx
-        self.update_transaction_multisig_generator(tmp_tx)
         tmp_tx.add_info_from_wallet(self, include_xpubs_and_full_paths=True)
-        if update_pubkeys_fn:
-            update_pubkeys_fn(tx)
-            update_pubkeys_fn(tmp_tx)
         # sign. start with ready keystores.
-        for k in sorted(self.get_keystores(), key=lambda ks: ks.ready_to_sign(), reverse=True):
-            try:
-                if k.can_sign(tmp_tx):
-                    k.sign_transaction(tmp_tx, password)
-            except UserCancelled:
-                continue
+        keystore = self._get_hw_keystore()
 
-        if external_keypairs:
-            tmp_tx.sign(external_keypairs)
+        if keystore.can_sign(tmp_tx):
+            keystore.sign_transaction(tmp_tx, password)
+        else:
+            # todo: ledger keystore needs to be ready for signing
+            pass
         # remove sensitive info; then copy back details from temporary tx
         tmp_tx.remove_xpubs_and_bip32_paths()
-        # update tx
-        self.update_transaction_multisig_generator(tx)
-        tx.combine_with_other_psbt(tmp_tx, skip_finalize)
+        tx.combine_with_other_psbt(tmp_tx)
         tx.add_info_from_wallet(self, include_xpubs_and_full_paths=False)
-
-        if update_pubkeys_fn:
-            update_pubkeys_fn(tx)
-
         return tx
+
+    def get_coin_chooser(self):
+        if self.multisig_script_generator.is_alert_mode():
+            return coinchooser.get_coin_chooser_alert(self.config)
+        else:
+            return coinchooser.get_coin_chooser(self.config)
+
+    def _get_hw_keystore(self):
+        for k in self.get_keystores():
+            if isinstance(k, Hardware_KeyStore):
+                return k
+        assert False
 
 
 class TwoKeysHWWallet(MultikeyHWWallet):
+
+    def __init__(self, storage: WalletStorage, *, config: SimpleConfig):
+        script_generator = TwoKeysHWScriptGenerator()
+        super().__init__(storage, config=config, scriptGenerator=script_generator)
 
     def pubkeys_to_scriptcode(self, pubkeys: Sequence[str]) -> str:
         if not isinstance(pubkeys, list) or len(pubkeys) != 2:
