@@ -142,25 +142,35 @@ class InsertHWPasswordDialog(QVBoxLayout):
     def __init__(self, parent, message_label):
         super().__init__()
         self.parent = parent
-        label = message_label
-        edit = QLineEdit()
-        edit.setEchoMode(QLineEdit.Password)
-        error_label = ErrorLabel()
+        label1 = message_label
+        self.edit1 = QLineEdit()
+        self.edit1.setEchoMode(QLineEdit.Password)
+        label2 = QLabel("Repeat password: ")
+        self.edit2 = QLineEdit()
+        self.edit2.setEchoMode(QLineEdit.Password)
+        self.error_label = ErrorLabel()
 
-        edit.textChanged.connect(self._on_change)
-        self.addWidget(label)
-        self.addWidget(edit)
-        self.addWidget(error_label)
-        self.edit = edit
+        self.edit1.textChanged.connect(self._on_change)
+        self.edit2.textChanged.connect(self._on_change)
+        self.addWidget(label1)
+        self.addWidget(self.edit1)
+        self.addWidget(label2)
+        self.addWidget(self.edit2)
+        self.addWidget(self.error_label)
 
     def _on_change(self):
-        self.parent.next_button.setEnabled(self._get_str().strip() != '')
+        if(self._get_str(self.edit1) != self._get_str(self.edit2)):
+            self.error_label.setText("Password confirmation does not match")
+            self.parent.next_button.setEnabled(False)
+        else:
+            self.error_label.setText("")
+            self.parent.next_button.setEnabled(self._get_str(self.edit1).strip() != '')
 
-    def _get_str(self) -> str:
-        return self.edit.text().replace('\n', '')
+    def _get_str(self, line) -> str:
+        return line.text().replace('\n', '')
 
     def get_password(self):
-        return self._get_str()
+        return self._get_str(self.edit1)
 
 
 class Qr2FaDialog(QVBoxLayout):
