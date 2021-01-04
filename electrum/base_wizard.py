@@ -661,7 +661,7 @@ class BaseWizard(Logger, AdvancedOptionMixin):
             self.keystores.append(k)
             self.run('create_wallet')
         elif self.wallet_type in ['2-key-hw', '3-key-hw']:
-            if has_xpub and t1 != 'p2wsh-p2sh':
+            if has_xpub and t1 not in ['p2sh', 'p2wsh-p2sh']:
                 self.show_error(_('Wrong key type') + ' %s' % t1)
                 self.run('choose_keystore')
                 return
@@ -673,7 +673,7 @@ class BaseWizard(Logger, AdvancedOptionMixin):
                     self.show_error(_('Missing device info'))
                     self.run('choose_keystore')
                     return
-                script_type = 'p2wsh-p2sh'
+                script_type = 'p2sh'
                 derivation = purpose48_derivation(0, xtype=script_type)
                 if keystores_needed == 3:
                     pubkey_type = len(self.keystores)
