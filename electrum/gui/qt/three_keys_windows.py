@@ -583,10 +583,15 @@ class ElectrumARHWWindow(ElectrumARWindow):
 
         if invoice['txtype'] == TxType.ALERT_PENDING.name:
             self.wallet.set_alert()
+        elif invoice['txtype'] == TxType.INSTANT.name:
+            self.wallet.set_recovery()
+        elif invoice['txtype'] == TxType.RECOVERY.name:
+            self.wallet.set_instant()
 
         if is_send:
             def sign_done(success):
                 if success:
+                    self.wallet.multisig_script_generator.set_alert()
                     self.broadcast_or_show(tx, invoice=invoice)
             self.sign_tx_with_password(tx, sign_done, password, external_keypairs)
         else:

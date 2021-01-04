@@ -2668,17 +2668,17 @@ class MultikeyHWWallet(Multisig_Wallet):
     def set_alert(self):
         from .plugins.ledger.ledger import LedgerBtcvTxType
         self.multisig_script_generator.set_alert()
-        self._get_hw_keystore().set_btcv_password_use(LedgerBtcvTxType.ALERT)
+        self._get_hw_keystore().set_btcv_password_use(tx_type=LedgerBtcvTxType.ALERT)
 
     def set_recovery(self):
         from .plugins.ledger.ledger import LedgerBtcvTxType
         self.multisig_script_generator.set_recovery()
-        self._get_hw_keystore().set_btcv_password_use(LedgerBtcvTxType.RECOVERY)
+        self._get_hw_keystore().set_btcv_password_use(tx_type=LedgerBtcvTxType.RECOVERY)
 
     def set_instant(self):
         from .plugins.ledger.ledger import LedgerBtcvTxType
         self.multisig_script_generator.set_instant()
-        self._get_hw_keystore().set_btcv_password_use(LedgerBtcvTxType.INSTANT)
+        self._get_hw_keystore().set_btcv_password_use(tx_type=LedgerBtcvTxType.INSTANT)
 
     def sign_transaction(self, tx: Transaction, password) -> Optional[PartialTransaction]:
         if self.is_watching_only():

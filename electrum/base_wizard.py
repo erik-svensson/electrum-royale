@@ -522,8 +522,8 @@ class BaseWizard(Logger, AdvancedOptionMixin):
             if 'instant_password' in self.data:
                 self.plugin.set_instant_password(device_info.device.id_, self.data['instant_password'], self)
 
+            derivation = bip44_derivation(0)
             script_type = 'p2wsh-p2sh'
-            derivation = normalize_bip32_derivation(purpose48_derivation(0, xtype=script_type))
             self.run('on_hw_derivation', name, device_info, derivation, script_type)
 
         else:
@@ -674,7 +674,7 @@ class BaseWizard(Logger, AdvancedOptionMixin):
                     self.run('choose_keystore')
                     return
                 script_type = 'p2wsh-p2sh'
-                derivation = purpose48_derivation(0, xtype=script_type)
+                derivation = bip44_derivation(0)
                 if keystores_needed == 3:
                     pubkey_type = len(self.keystores)
                 elif keystores_needed == 2:
