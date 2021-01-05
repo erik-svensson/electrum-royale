@@ -296,6 +296,9 @@ class BaseWizard(Logger, AdvancedOptionMixin):
 
         self.get_authenticator_pubkey(run_next=collect_instant_pubkey)
 
+    def three_keys_hw_create(self):
+        self.get_hw_passwords(run_next=self.on_three_keys_hw_create, title=_('Instant and cancel passwords'))
+
     def on_three_keys_create(self, recovery_pubkey: str):
         self.data['recovery_pubkey'] = recovery_pubkey
         self.run('choose_keystore')
@@ -303,6 +306,11 @@ class BaseWizard(Logger, AdvancedOptionMixin):
     def on_three_keys_import(self, recovery_pubkey: str):
         self.data['recovery_pubkey'] = recovery_pubkey
         self.run('restore_from_seed')
+
+    def on_three_keys_hw_create(self, *passwords):
+        self.data['instant_password'] = passwords[0]
+        self.data['recovery_password'] = passwords[1]
+        self.run('choose_hw_device', HWD_SETUP_NEW_BTCV_WALLET)
 
     def choose_keystore(self):
         assert self.wallet_type in ['standard', 'multisig', '2-key', '3-key', '2-key-hw', '3-key-hw']

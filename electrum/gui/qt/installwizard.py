@@ -665,6 +665,32 @@ class InstallWizard(QDialog, MessageBoxMixin, BaseWizard, TermsAndConditionsMixi
         return layout.get_password()
 
     @wizard_dialog
+    def get_hw_passwords(self, run_next, title):
+        label1 = QLabel()
+        message1 = _('Please provide <b>instant</b> password related to your Ledger device')
+        label1.setText(message1)
+        label1.setOpenExternalLinks(True)
+        label1.setTextInteractionFlags(Qt.TextBrowserInteraction)
+        label1.setWordWrap(True)
+
+        layout1 = InsertHWPasswordDialog(self, message_label=label1)
+        self.exec_layout(layout1, title, next_enabled=False)
+        instant_password = layout1.get_password()
+
+        label2 = QLabel()
+        message2 = _('Please provide <b>cancel</b> password related to your Ledger device')
+        label2.setText(message2)
+        label2.setOpenExternalLinks(True)
+        label2.setTextInteractionFlags(Qt.TextBrowserInteraction)
+        label2.setWordWrap(True)
+
+        layout2 = InsertHWPasswordDialog(self, message_label=label2)
+        self.exec_layout(layout2, title, next_enabled=False)
+        recovery_password = layout2.get_password()
+
+        return (instant_password, recovery_password)
+
+    @wizard_dialog
     def display_2fa_pairing_qr(self, run_next, entropy: bytes):
         title_label = QLabel()
         title_message = _('Generate an authenticator on Gold Wallet and scan the following QR code: ')

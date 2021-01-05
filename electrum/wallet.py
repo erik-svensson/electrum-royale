@@ -60,7 +60,7 @@ from .plugin import run_hook
 from .simple_config import SimpleConfig
 from .storage import StorageEncryptionVersion, WalletStorage
 from .three_keys.script import TwoKeysScriptGenerator, ThreeKeysScriptGenerator, ThreeKeysError, \
-    TwoKeysHWScriptGenerator
+    TwoKeysHWScriptGenerator, ThreeKeysHWScriptGenerator
 from .three_keys.transaction import TxType, ThreeKeysTransaction
 from .three_keys.utils import filter_spendable_coins, update_tx_status
 from .transaction import (Transaction, TxInput, UnknownTxinType, TxOutput,
@@ -2759,6 +2759,10 @@ class TwoKeysHWWallet(MultikeyHWWallet):
 
 
 class ThreeKeysHWWallet(MultikeyHWWallet):
+
+    def __init__(self, storage: WalletStorage, *, config: SimpleConfig):
+        script_generator = ThreeKeysHWScriptGenerator()
+        super().__init__(storage, config=config, scriptGenerator=script_generator)
 
     def sign_instant_transaction(self, tx: PartialTransaction, password, instant_keypairs) -> Optional[PartialTransaction]:
         if not isinstance(tx, PartialTransaction):

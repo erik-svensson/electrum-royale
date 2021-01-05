@@ -661,6 +661,17 @@ class LedgerPlugin(HW_PluginBase):
         except:
             return False
 
+    def set_instant_password(self, device_id, password, wizard):
+        devmgr = self.device_manager()
+        client = devmgr.client_by_id(device_id)
+        client.handler = self.create_handler(wizard)
+        client.checkDevice()
+        try:
+            client.set_instant_password(password)
+            return True
+        except:
+            return False
+
     def get_xpub(self, device_id, derivation, xtype, wizard, pubkey_type=PubkeyType.PUBKEY_ALERT):
         if xtype not in self.SUPPORTED_XTYPES:
             raise ScriptTypeNotSupported(_('This type of script is not supported with {device}.').format(device=self.device))
