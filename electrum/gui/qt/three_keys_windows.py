@@ -561,6 +561,14 @@ class ElectrumARHWWindow(ElectrumARWindow):
         if run_hook('abort_send', self):
             return
         is_sweep = False # Was bool(external_keypairs). Should be good to keep it false, since we do not use trustedcoin
+
+        if invoice['txtype'] == TxType.ALERT_PENDING.name:
+            self.wallet.set_alert()
+        elif invoice['txtype'] == TxType.INSTANT.name:
+            self.wallet.set_recovery()
+        elif invoice['txtype'] == TxType.RECOVERY.name:
+            self.wallet.set_instant()
+
         make_tx = lambda fee_est: self.wallet.make_unsigned_transaction(
             coins=inputs,
             outputs=outputs,
@@ -580,13 +588,6 @@ class ElectrumARHWWindow(ElectrumARWindow):
         cancelled, is_send, password, tx = d.run()
         if cancelled:
             return
-
-        if invoice['txtype'] == TxType.ALERT_PENDING.name:
-            self.wallet.set_alert()
-        elif invoice['txtype'] == TxType.INSTANT.name:
-            self.wallet.set_recovery()
-        elif invoice['txtype'] == TxType.RECOVERY.name:
-            self.wallet.set_instant()
 
         if is_send:
             def sign_done(success):

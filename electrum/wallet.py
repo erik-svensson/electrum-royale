@@ -2079,14 +2079,16 @@ class Deterministic_Wallet(Abstract_Wallet):
         return {k.derive_pubkey(*der_suffix): (k, der_suffix)
                 for k in self.get_keystores()}
 
-    def _add_input_sig_info(self, txin, address, *, only_der_suffix=True):
-        self._add_txinout_derivation_info(txin, address, only_der_suffix=only_der_suffix)
+    def _add_input_sig_info(self, txin, address, *, only_der_suffix=True, sort_pubkeys=True):
+        self._add_txinout_derivation_info(txin, address, only_der_suffix=only_der_suffix, sort_pubkeys=sort_pubkeys)
 
-    def _add_txinout_derivation_info(self, txinout, address, *, only_der_suffix=True):
+    def _add_txinout_derivation_info(self, txinout, address, *, only_der_suffix=True, sort_pubkeys=True):
         if not self.is_mine(address):
             return
         pubkey_deriv_info = self.get_public_keys_with_deriv_info(address)
-        txinout.pubkeys = sorted([bfh(pk) for pk in list(pubkey_deriv_info)])
+        txinout.pubkeys = [bfh(pk) for pk in list(pubkey_deriv_info)]
+        if sort_pubkeys:
+            txinout.pubkeys = sorted(txinout.pubkeys)
         for pubkey_hex in pubkey_deriv_info:
             ks, der_suffix = pubkey_deriv_info[pubkey_hex]
             fp_bytes, der_full = ks.get_fp_and_derivation_to_be_used_in_partial_tx(der_suffix,
@@ -2708,6 +2710,30 @@ class MultikeyHWWallet(Multisig_Wallet):
             return coinchooser.get_coin_chooser_alert(self.config)
         else:
             return coinchooser.get_coin_chooser(self.config)
+
+    def add_input_info(self, txin: PartialTxInput, *, only_der_suffix: bool = True) -> None:
+        address = self.get_txin_address(txin)
+        if not self.is_mine(address):
+            is_mine = self._learn_derivation_path_for_address_from_txinout(txin, address)
+            if not is_mine:
+                return
+        # set script_type first, as later checks might rely on it:
+        txin.script_type = self.get_txin_type(address)
+        self._add_input_utxo_info(txin, address)
+        txin.num_sig = self.m if isinstance(self, Multisig_Wallet) else 1
+        if txin.redeem_script is None:
+            try:
+                redeem_script_hex = self.get_redeem_script(address)
+                txin.redeem_script = bfh(redeem_script_hex) if redeem_script_hex else None
+            except UnknownTxinType:
+                pass
+        if txin.witness_script is None:
+            try:
+                witness_script_hex = self.get_witness_script(address)
+                txin.witness_script = bfh(witness_script_hex) if witness_script_hex else None
+            except UnknownTxinType:
+                pass
+        self._add_input_sig_info(txin, address, only_der_suffix=only_der_suffix, sort_pubkeys=False)
 
     def _get_hw_keystore(self):
         for k in self.get_keystores():
