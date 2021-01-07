@@ -2695,7 +2695,8 @@ class MultikeyHWWallet(Multisig_Wallet):
         keystore = self._get_hw_keystore()
 
         if keystore.can_sign(tmp_tx):
-            keystore.sign_transaction(tmp_tx, password)
+            pubkey_index = 0
+            keystore.sign_transaction(tmp_tx, password, pubkey_index)
         else:
             # todo: ledger keystore needs to be ready for signing
             pass
@@ -2789,6 +2790,8 @@ class ThreeKeysHWWallet(MultikeyHWWallet):
     def __init__(self, storage: WalletStorage, *, config: SimpleConfig):
         script_generator = ThreeKeysHWScriptGenerator()
         super().__init__(storage, config=config, scriptGenerator=script_generator)
+        self.n = 3
+        self.m = 1
 
     def sign_instant_transaction(self, tx: PartialTransaction, password, instant_keypairs) -> Optional[PartialTransaction]:
         if not isinstance(tx, PartialTransaction):

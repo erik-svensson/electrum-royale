@@ -6,7 +6,7 @@ import traceback
 
 from electrum import ecc
 from electrum import bip32
-from electrum.crypto import hash_160, sha256
+from electrum.crypto import hash_160
 from electrum.bitcoin import int_to_hex, var_int, is_segwit_script_type
 from electrum.bip32 import BIP32Node, convert_bip32_intpath_to_strpath
 from electrum.i18n import _
@@ -326,15 +326,19 @@ class Ledger_KeyStore(Hardware_KeyStore):
     @test_pin_unlocked
     def set_btcv_password_use(self, tx_type=LedgerBtcvTxType.ALERT, password=None):
         client = self.get_client()
-        passwordHash = sha256(bytearray(password.encode('utf-8')).hex().ljust(64, '0')) if password else bytearray(32)
+        password_hash = bytearray(32)
+        if password:
+            m = hashlib.sha256()
+            m.update(bytearray.fromhex(bytearray(password.encode('utf-8')).hex().ljust(64, '0')))
+            password_hash = m.digest()
         try:
-            client.setBTCVPasswordUse(passwordHash, tx_type)
+            client.setBTCVPasswordUse(password_hash, tx_type)
         except Exception as e:
             self.logger.exception(e)
 
     @test_pin_unlocked
     @set_and_unset_signing
-    def sign_transaction(self, tx, password):
+    def sign_transaction(self, tx, password, pubkey_index=None):
         if tx.is_complete():
             return
         inputs = []
@@ -366,7 +370,11 @@ class Ledger_KeyStore(Hardware_KeyStore):
                     self.give_error(MSG_NEEDS_FW_UPDATE_SEGWIT)
                 segwitTransaction = True
 
-            my_pubkey, full_path = self.find_my_pubkey_in_txinout(txin)
+            if pubkey_index:
+                my_pubkey, = txin.bip32_paths.keys()[pubkey_index]
+                full_path = self.get_pubkey_derivation(my_pubkey, txin, only_der_suffix=False)
+            else:
+                my_pubkey, full_path = self.find_my_pubkey_in_txinout(txin)
             if not full_path:
                 self.give_error("No matching pubkey for sign_transaction")  # should never happen
             full_path = convert_bip32_intpath_to_strpath(full_path)[2:]
