@@ -173,6 +173,29 @@ class InsertHWPasswordDialog(QVBoxLayout):
         return self._get_str(self.edit1)
 
 
+class CheckHWPasswordDialog(QVBoxLayout):
+    def __init__(self, parent, message_label):
+        super().__init__()
+        # self.parent.next_button.setEnabled(False)
+        self.parent = parent
+        label = message_label
+        self.edit = QLineEdit()
+        self.edit.setEchoMode(QLineEdit.Password)
+
+        self.edit.textChanged.connect(self._on_change)
+        self.addWidget(label)
+        self.addWidget(self.edit)
+
+    def _on_change(self):
+        self.parent.next_button.setEnabled(self._get_str(self.edit).strip() != '')
+
+    def _get_str(self, line) -> str:
+        return line.text().replace('\n', '')
+
+    def get_password(self):
+        return self._get_str(self.edit)
+
+
 class Qr2FaDialog(QVBoxLayout):
 
     def __init__(self, parent, title_label: str, pin_label: str, qr_data: dict):

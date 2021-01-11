@@ -52,6 +52,7 @@ if TYPE_CHECKING:
 HWD_SETUP_NEW_WALLET = 0
 HWD_SETUP_DECRYPT_WALLET = 1
 HWD_SETUP_NEW_BTCV_WALLET = 2
+HWD_SETUP_DECRYPT_BTCV_WALLET = 3
 
 
 class ScriptTypeNotSupported(Exception): pass
@@ -261,7 +262,8 @@ class BaseWizard(Logger, AdvancedOptionMixin):
         self.get_hw_password(run_next=self.on_two_keys_hw_create, title=_('Cancel password'))
 
     def two_keys_hw_import(self):
-        self.run('restore_from_seed')
+        self.check_hw_password(run_next=self.on_two_keys_hw_import, title=_('Cancel password'))
+
 
     def on_two_keys_create(self, recovery_pubkey: str):
         self.data['recovery_pubkey'] = recovery_pubkey
@@ -274,6 +276,10 @@ class BaseWizard(Logger, AdvancedOptionMixin):
     def on_two_keys_hw_create(self, recovery_password: str):
         self.data['recovery_password'] = recovery_password
         self.run('choose_hw_device', HWD_SETUP_NEW_BTCV_WALLET)
+
+    def on_two_keys_hw_import(self, recovery_password: str):
+        self.data['recovery_password'] = recovery_password
+        self.run('choose_hw_device', HWD_SETUP_DECRYPT_BTCV_WALLET)
 
     def three_keys_standalone(self):
         def collect_instant_pubkey(instant_pubkey: str):
@@ -299,6 +305,9 @@ class BaseWizard(Logger, AdvancedOptionMixin):
     def three_keys_hw_create(self):
         self.get_hw_passwords(run_next=self.on_three_keys_hw_create, title=_('Instant and cancel passwords'))
 
+    def three_keys_hw_import(self):
+        self.check_hw_passwords(run_next=self.on_three_keys_hw_import, title=_('Instant and cancel passwords'))
+
     def on_three_keys_create(self, recovery_pubkey: str):
         self.data['recovery_pubkey'] = recovery_pubkey
         self.run('choose_keystore')
@@ -311,6 +320,11 @@ class BaseWizard(Logger, AdvancedOptionMixin):
         self.data['instant_password'] = passwords[0]
         self.data['recovery_password'] = passwords[1]
         self.run('choose_hw_device', HWD_SETUP_NEW_BTCV_WALLET)
+
+    def on_three_keys_hw_import(self, *passwords):
+        self.data['instant_password'] = passwords[0]
+        self.data['recovery_password'] = passwords[1]
+        self.run('choose_hw_device', HWD_SETUP_DECRYPT_BTCV_WALLET)
 
     def choose_keystore(self):
         assert self.wallet_type in ['standard', 'multisig', '2-key', '3-key', '2-key-hw', '3-key-hw']
@@ -533,7 +547,13 @@ class BaseWizard(Logger, AdvancedOptionMixin):
             derivation = bip44_derivation(0)
             script_type = 'p2wsh-p2sh'
             self.run('on_hw_derivation', name, device_info, derivation, script_type)
-
+        elif purpose == HWD_SETUP_DECRYPT_BTCV_WALLET:
+            if 'recovery_password' not in self.data:
+                raise Exception('Invalid recovery password')
+            if 'instant_password' in self.data:
+                raise Exception('MG1 3-key wallet import not implemented yet')
+            else:
+                raise Exception('MG1 2-key wallet import not implemented yet')
         else:
             raise Exception('unknown purpose: %s' % purpose)
 
