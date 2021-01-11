@@ -214,6 +214,15 @@ def hook(func):
     hook_names.add(func.__name__)
     return func
 
+
+def plugin_hook_mock(func):
+    plugins_mock = type('PluginsMock', (object,), {'is_enabled': lambda *args, **kwargs: True})
+    name = func.__name__
+    hook_names.add(name)
+    hooks[name] = [(plugins_mock(), func,)]
+    return func
+
+
 def run_hook(name, *args):
     results = []
     f_list = hooks.get(name, [])

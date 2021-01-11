@@ -33,7 +33,7 @@ class EmailApiWallet:
             'derivation_path': self.derivation_path,
             'recovery_public_key': self.recovery_public_key,
             'instant_public_key': self.instant_public_key,
-        }).encode('utf-8')).hexdigest()
+        }, separators=(',', ':')).encode('utf-8')).hexdigest()
 
     @classmethod
     def from_wallet(cls, wallet):
@@ -112,3 +112,15 @@ class Connector:
 
     def set_token(self, response_json: dict):
         self.token = response_json['session_token']
+
+    @request_error_handler
+    def check_subscription(self, hashes: List[str], email: str):
+        return requests.get(
+            f'{self.connection_string}/check_subscription',
+            json={
+                'hashes': hashes,
+                'email': email,
+            },
+            timeout=self.timeout,
+            verify=self.VERIFY,
+        )

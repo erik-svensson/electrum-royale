@@ -76,7 +76,6 @@ from electrum.wallet import (Multisig_Wallet, CannotBumpFee, Abstract_Wallet,
 from .amountedit import AmountEdit, BTCAmountEdit, MyLineEdit, FeerateEdit
 from .channels_list import ChannelsList
 from .confirm_tx_dialog import ConfirmTxDialog
-from .email_notification_dialogs import WalletInfoMixin
 from .exception_window import Exception_Hook
 from .fee_slider import FeeSlider
 from .history_list import HistoryList, HistoryModel
@@ -121,7 +120,7 @@ class StatusBarButton(QPushButton):
             self.func()
 
 
-class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger, WalletInfoMixin):
+class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
 
     payment_request_ok_signal = pyqtSignal()
     payment_request_error_signal = pyqtSignal()
@@ -2120,10 +2119,7 @@ in the "Authenticators" tab in the Gold Wallet app.')
             vbox.addWidget(mpk_text)
 
         vbox.addStretch(1)
-        # todo: add logic to sub/unsub button
-        self.sub_unsub_button = QPushButton('Sub/Unsub')
-        self._init_sub_unsub(dialog)
-        btns = run_hook('wallet_info_buttons', self, dialog) or Buttons(self.sub_unsub_button, CloseButton(dialog))
+        btns = run_hook('wallet_info_buttons', self, dialog) or Buttons(CloseButton(dialog))
         vbox.addLayout(btns)
         dialog.setLayout(vbox)
         dialog.exec_()

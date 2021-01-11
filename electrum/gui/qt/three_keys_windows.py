@@ -3,19 +3,20 @@ import enum
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QVBoxLayout, QLabel, QWidget, QHBoxLayout, \
     QGridLayout, QCompleter, QComboBox, \
-    QStyledItemDelegate
+    QStyledItemDelegate, QPushButton
 
 from electrum.i18n import _
 from .amountedit import BTCAmountEdit, MyLineEdit, AmountEdit
 from .completion_text_edit import CompletionTextEdit
 from .confirm_tx_dialog import ConfirmTxDialog
+from .email_notification_dialogs import WalletInfoNotifications
 from .main_window import ElectrumWindow
 from .recovery_list import RecoveryTabAR, RecoveryTabAIR
 from .three_keys_dialogs import PreviewPsbtTxDialog
 from .transaction_dialog import PreviewTxDialog
-from .util import read_QIcon, HelpLabel, EnterButton, ColorScheme
+from .util import read_QIcon, HelpLabel, EnterButton, ColorScheme, Buttons, CloseButton
 from ...mnemonic import load_wordlist
-from ...plugin import run_hook
+from ...plugin import run_hook, hook, plugin_hook_mock
 from ...three_keys import short_mnemonic
 from ...three_keys.tx_type import TxType
 from ...util import PR_TYPE_ONCHAIN
@@ -31,8 +32,8 @@ class ElectrumMultikeyWalletWindow(ElectrumWindow):
         self.tabs.addTab(self.recovery_tab, read_QIcon('recovery.png'), _('Cancel'))
         # update recovery tab when description changed in history tab
         self.history_model.dataChanged.connect(self.update_tabs)
-
         self.READY_TO_UPDATE = True
+        self._wallet_info_notification = WalletInfoNotifications(self, self.config, self.wallet, self.app)
 
     def timer_actions(self):
         # synchronizing the timer thread with end of the __init__ call
@@ -53,6 +54,14 @@ class ElectrumMultikeyWalletWindow(ElectrumWindow):
         super().update_tabs(wallet=wallet)
         self.recovery_tab.update_view()
         self.recovery_tab.update_recovery_button()
+
+    @plugin_hook_mock
+    def wallet_info_buttons(self, dialog):
+        button = QPushButton()
+        self._wallet_info_notification.dialog = dialog
+        self._wallet_info_notification.sub_unsub_button = button
+        self._wallet_info_notification.sync_sub_unsub_button()
+        return Buttons(button, CloseButton(dialog))
 
 
 class ElectrumARWindow(ElectrumMultikeyWalletWindow):
