@@ -27,12 +27,10 @@ import os
 import sys
 import warnings
 import asyncio
-
-MIN_PYTHON_VERSION = "3.6.1"  # FIXME duplicated from setup.py
-_min_python_version_tuple = tuple(map(int, (MIN_PYTHON_VERSION.split("."))))
+from setup import MIN_PYTHON_VERSION, MIN_PYTHON_VERSION_TUPLE
 
 
-if sys.version_info[:3] < _min_python_version_tuple:
+if sys.version_info[:3] < MIN_PYTHON_VERSION_TUPLE:
     sys.exit("Error: Electrum requires Python version >= %s..." % MIN_PYTHON_VERSION)
 
 
