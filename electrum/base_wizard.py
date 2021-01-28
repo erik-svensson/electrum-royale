@@ -283,14 +283,16 @@ class BaseWizard(Logger, AdvancedOptionMixin):
         assert self.wallet_type in ['standard', 'multisig', '2-key', '3-key']
         i = len(self.keystores)
         title = _('Add cosigner') + ' (%d of %d)' % (i + 1, self.n) if self.wallet_type == 'multisig' else _('Keystore')
+        base_choices = []
+        advanced_choices = []
         if self.wallet_type == 'multisig' and i > 0:
             message = _('Add a cosigner to your multi-sig wallet')
-            choices = [
+            base_choices = [
                 ('restore_from_key', _('Enter cosigner key')),
                 ('restore_from_seed', _('Enter cosigner seed')),
             ]
             if not self.is_kivy:
-                choices.append(('choose_hw_device', _('Cosign with hardware device')))
+                base_choices.append(('choose_hw_device', _('Cosign with hardware device')))
         else:
             message = _('Do you want to create a new seed or to restore a wallet using an existing seed?')
             run_next_method = 'choose_seed_type'
