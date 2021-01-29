@@ -324,17 +324,16 @@ class Ledger_KeyStore(Hardware_KeyStore):
         return bytes([27 + 4 + (signature[0] & 0x01)]) + r + s
 
     @test_pin_unlocked
-    def set_btcv_password_use(self, tx_type=LedgerBtcvTxType.ALERT, password=None):
+    def set_btcv_password_use(self, tx_type=LedgerBtcvTxType.ALERT, password=None, wizard=None):
+        if self.handler == None:
+            self.handler = self.plugin.create_handler(wizard)
         client = self.get_client()
         password_hash = bytearray(32)
         if password:
             m = hashlib.sha256()
             m.update(bytearray.fromhex(bytearray(password.encode('utf-8')).hex().ljust(64, '0')))
             password_hash = m.digest()
-        try:
-            client.setBTCVPasswordUse(password_hash, tx_type)
-        except Exception as e:
-            self.logger.exception(e)
+        client.setBTCVPasswordUse(password_hash, tx_type)
 
     @test_pin_unlocked
     @set_and_unset_signing
