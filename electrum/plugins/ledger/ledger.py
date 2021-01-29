@@ -335,6 +335,21 @@ class Ledger_KeyStore(Hardware_KeyStore):
             password_hash = m.digest()
         client.setBTCVPasswordUse(password_hash, tx_type)
 
+    def are_3keys_ledger_passwords_correct(self, wizard, btcv_instant_password_check=None, btcv_recovery_password_check=None):
+        try:
+            if btcv_recovery_password_check:
+                self.set_btcv_password_use(tx_type=LedgerBtcvTxType.RECOVERY, password=btcv_recovery_password_check, wizard=wizard)
+            if btcv_instant_password_check:
+                self.set_btcv_password_use(tx_type=LedgerBtcvTxType.INSTANT, password=btcv_instant_password_check, wizard=wizard)
+            self.set_btcv_password_use(tx_type=LedgerBtcvTxType.ALERT, wizard=self)
+        except BTChipException as e:
+            msg = _('Hardware wallet import fail') + "\n" + str(e)
+            if e.sw == 0x6a80:
+                msg = msg + "\n" + ('Invalid password(s)')
+            wizard.show_error(msg)
+            return False
+        return True
+
     @test_pin_unlocked
     @set_and_unset_signing
     def sign_transaction(self, tx, password, pubkey_index=None):

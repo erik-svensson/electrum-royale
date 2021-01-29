@@ -553,7 +553,11 @@ class BaseWizard(Logger, AdvancedOptionMixin):
             if 'recovery_password' not in self.data:
                 raise Exception('Invalid recovery password')
             if 'instant_password' in self.data:
-                raise Exception('MG1 3-key wallet import not implemented yet')
+                derivation = bip44_derivation(0)
+                script_type = 'p2wsh-p2sh'
+                self.run('on_hw_derivation', name, device_info, derivation, script_type,
+                         btcv_instant_password_check=self.data['instant_password'],
+                         btcv_recovery_password_check=self.data['recovery_password'])
             else:
                 derivation = bip44_derivation(0)
                 script_type = 'p2wsh-p2sh'
@@ -596,7 +600,7 @@ class BaseWizard(Logger, AdvancedOptionMixin):
                 # let the user choose again
 
     def on_hw_derivation(self, name, device_info, derivation, xtype, xpub_keystore=False, pubkey_type=PubkeyType.PUBKEY_ALERT,
-                         btcv_recovery_password_check = None):
+                         btcv_instant_password_check=None, btcv_recovery_password_check=None):
         from .keystore import hardware_keystore
         try:
             xpub = self.plugin.get_xpub(device_info.device.id_, derivation, xtype, self, pubkey_type)
@@ -620,19 +624,10 @@ class BaseWizard(Logger, AdvancedOptionMixin):
                 'label': device_info.label,
             }
             k = hardware_keystore(d)
-            from electrum.plugins.ledger.ledger import Ledger_KeyStore, LedgerBtcvTxType
-            if(btcv_recovery_password_check and isinstance(k, Ledger_KeyStore)):
-                try:
-                    k.set_btcv_password_use(tx_type=LedgerBtcvTxType.RECOVERY, password=btcv_recovery_password_check, wizard=self)
-                    k.set_btcv_password_use(tx_type=LedgerBtcvTxType.ALERT, wizard=self)
-                except BTChipException as e:
-                    title = _('Hardware wallet import fail')
-                    if e.sw == 0x6a80:  # cancelled by user
-                        msg = title + "\n" + str(e) + "\n" + ('Password invalid')
-                    else:
-                        msg = title + "\n" + str(e)
-                    self.show_error(msg)
-                    self.terminate()
+            from electrum.plugins.ledger.ledger import Ledger_KeyStore
+            if isinstance(k, Ledger_KeyStore) \
+                and not k.are_3keys_ledger_passwords_correct(self, btcv_instant_password_check, btcv_recovery_password_check):
+                return self.terminate()
         self.on_keystore(k, name, device_info)
 
     def passphrase_dialog(self, run_next, is_restoring=False):
