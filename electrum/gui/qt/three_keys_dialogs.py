@@ -23,6 +23,7 @@ class ValidationState(IntEnum):
     INTERMEDIATE = 2
     CROPPED = 3
 
+MAX_3KEYS_PASSWD_LEN = 32
 
 class PubKeyValidator:
     COMPRESSED_PREFIXES = ('02', '03')
@@ -145,9 +146,11 @@ class InsertHWPasswordDialog(QVBoxLayout):
         label1 = message_label
         self.edit1 = QLineEdit()
         self.edit1.setEchoMode(QLineEdit.Password)
+        self.edit1.setMaxLength(MAX_3KEYS_PASSWD_LEN)
         label2 = QLabel("Repeat password: ")
         self.edit2 = QLineEdit()
         self.edit2.setEchoMode(QLineEdit.Password)
+        self.edit2.setMaxLength(MAX_3KEYS_PASSWD_LEN)
         self.error_label = ErrorLabel()
 
         self.edit1.textChanged.connect(self._on_change)
@@ -181,6 +184,7 @@ class CheckHWPasswordDialog(QVBoxLayout):
         label = message_label
         self.edit = QLineEdit()
         self.edit.setEchoMode(QLineEdit.Password)
+        self.edit.setMaxLength(MAX_3KEYS_PASSWD_LEN)
 
         self.edit.textChanged.connect(self._on_change)
         self.addWidget(label)

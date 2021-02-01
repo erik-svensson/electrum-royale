@@ -545,6 +545,8 @@ class BaseWizard(Logger, AdvancedOptionMixin):
             self.plugin.set_recovery_password(device_info.device.id_, self.data['recovery_password'], self)
             if 'instant_password' in self.data:
                 self.plugin.set_instant_password(device_info.device.id_, self.data['instant_password'], self)
+            else:
+                self.plugin.set_instant_password(device_info.device.id_, str(0x00), self)
 
             derivation = bip44_derivation(0)
             script_type = 'p2wsh-p2sh'
@@ -561,7 +563,9 @@ class BaseWizard(Logger, AdvancedOptionMixin):
             else:
                 derivation = bip44_derivation(0)
                 script_type = 'p2wsh-p2sh'
-                self.run('on_hw_derivation', name, device_info, derivation, script_type, btcv_recovery_password_check=self.data['recovery_password'])
+                self.run('on_hw_derivation', name, device_info, derivation, script_type,
+                         btcv_recovery_password_check=self.data['recovery_password'],
+                         btcv_instant_password_check=str(0x00))
         else:
             raise Exception('unknown purpose: %s' % purpose)
 
