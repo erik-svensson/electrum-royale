@@ -597,3 +597,14 @@ class ElectrumARHWWindow(ElectrumARWindow):
             self.sign_tx_with_password(tx, sign_done, password, external_keypairs)
         else:
             self.preview_tx_dialog(make_tx, outputs, external_keypairs=external_keypairs, invoice=invoice)
+
+
+class ElectrumAIRHWWindow(ElectrumAIRWindow):
+    def __init__(self, gui_object: 'ElectrumGui', wallet: 'Abstract_Wallet'):
+        super().__init__(gui_object=gui_object, wallet=wallet)
+
+    def do_pay(self):
+        self.show_message(_('do_pay'))
+
+    def pay_onchain_dialog(self, inputs, outputs, invoice=None, external_keypairs=None):
+        self.show_message(_('pay_onchain_dialog'))

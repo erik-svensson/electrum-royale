@@ -2584,7 +2584,10 @@ class MultikeyHWWallet(Multisig_Wallet):
         self.wallet_type = storage.get('wallet_type')
         self.multikey_type = storage.get('multikey_type')
         self.multisig_script_generator = scriptGenerator
-        self.n = 2
+        if isinstance(self.multisig_script_generator, ThreeKeysHWScriptGenerator):
+            self.n = 3
+        else:
+            self.n = 2
         self.m = 1
         Deterministic_Wallet.__init__(self, storage, config=config)
         # super has to be at the end otherwise wallet breaks
@@ -2792,6 +2795,12 @@ class ThreeKeysHWWallet(MultikeyHWWallet):
         super().__init__(storage, config=config, scriptGenerator=script_generator)
         self.n = 3
         self.m = 1
+
+    def pubkeys_to_scriptcode(self, pubkeys: Sequence[str]) -> str:
+        if not isinstance(pubkeys, list) or len(pubkeys) != 3:
+            raise ThreeKeysError(f"Wrong input type! Expected list not '{pubkeys}'")
+
+        return ThreeKeysScriptGenerator.create_redeem_script(pubkeys[0], pubkeys[1], pubkeys[2])
 
     def sign_instant_transaction(self, tx: PartialTransaction, password, instant_keypairs) -> Optional[PartialTransaction]:
         if not isinstance(tx, PartialTransaction):
