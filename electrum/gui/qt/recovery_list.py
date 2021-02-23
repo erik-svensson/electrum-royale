@@ -183,6 +183,7 @@ class RecoveryTab(QWidget):
         self.config = config
         self.wallet = wallet
         self.is_2fa = self.wallet.storage.get('multikey_type', '') == '2fa'
+        self.is_hw = self.wallet.storage.get('multikey_type', '') == 'hw'
         QWidget.__init__(self)
 
         self.invoice_list = RecoveryView(self.electrum_main_window, self)
@@ -352,7 +353,7 @@ class RecoveryTab(QWidget):
             atxs = self.invoice_list.selected()
             address = self.recovery_address_line.currentText()
             recovery_keypair = None
-            if not self.is_2fa:
+            if not (self.is_2fa or self.is_hw):
                 recovery_keypair = self._get_recovery_keypair()
 
             if not is_address_valid(address):
@@ -371,7 +372,8 @@ class RecoveryTab(QWidget):
             recovery_keypairs=recovery_keypair,
         )
 
-        if not self.is_2fa:
+        # if not (self.is_2fa or self.is_hw):
+        if not (self.is_2fa):
             self.recovery_privkey_line.setText('')
 
     def _create_privkey_line(self, on_edit):
@@ -416,7 +418,7 @@ class RecoveryTabAR(RecoveryTab):
         grid_layout.addWidget(self.recovery_address_line, 0, 1)
 
         # Row 2
-        if not self.is_2fa:
+        if not (self.is_2fa or self.is_hw):
             grid_layout.addWidget(QLabel(_('Cancel seedphrase')), 1, 0)
             # complete line edit with suggestions
             self.recovery_privkey_line = self._create_privkey_line(self.on_recovery_seed_line_edit)
@@ -434,7 +436,7 @@ class RecoveryTabAR(RecoveryTab):
         self.setLayout(self.main_layout)
 
     def update_recovery_button(self):
-        if self.is_2fa:
+        if self.is_2fa or self.is_hw:
             enabled = self.is_address_valid and len(self.invoice_list.selected())
         else:
             enabled = self.is_address_valid \

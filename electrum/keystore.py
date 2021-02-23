@@ -745,6 +745,9 @@ class Hardware_KeyStore(KeyStore, Xpub):
             self.label = client.label()
             self.is_requesting_to_be_rewritten_to_wallet_file = True
 
+    def set_btcv_password_use(self, tx_type, password=None):
+        raise NotImplementedError
+
 
 def bip39_normalize_passphrase(passphrase):
     return normalize('NFKD', passphrase or '')

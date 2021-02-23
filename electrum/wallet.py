@@ -2678,34 +2678,45 @@ class MultikeyHWWallet(Multisig_Wallet):
     def set_recovery(self):
         from .plugins.ledger.ledger import LedgerBtcvTxType
         self.multisig_script_generator.set_recovery()
-        self._get_hw_keystore().set_btcv_password_use(tx_type=LedgerBtcvTxType.RECOVERY)
 
     def set_instant(self):
         from .plugins.ledger.ledger import LedgerBtcvTxType
         self.multisig_script_generator.set_instant()
-        self._get_hw_keystore().set_btcv_password_use(tx_type=LedgerBtcvTxType.INSTANT)
 
-    def sign_transaction(self, tx: Transaction, password) -> Optional[PartialTransaction]:
+    def sign_transaction(self, tx: Transaction, password, update_pubkeys_fn=None) -> Optional[PartialTransaction]:
         if self.is_watching_only():
             return
         if not isinstance(tx, PartialTransaction):
             return
-        # add info to a temporary tx copy; including xpubs
-        # and full derivation paths as hw keystores might want them
         tmp_tx = copy.deepcopy(tx)
-        tmp_tx.add_info_from_wallet(self, include_xpubs_and_full_paths=True)
-        # sign. start with ready keystores.
-        keystore = self._get_hw_keystore()
+        for input in tmp_tx.inputs():
+            tmp_pubkeys = self.get_public_keys_with_deriv_info(input.address)
+            self.multisig_script_generator.recovery_pubkey = list(tmp_pubkeys)[1]
+            tmp_tx.multisig_script_generator = self.multisig_script_generator
+            tmp_tx.update_input_multisig_generator(input, copy.deepcopy(self.multisig_script_generator))
 
-        if keystore.can_sign(tmp_tx):
-            pubkey_index = 0
-            keystore.sign_transaction(tmp_tx, password, pubkey_index)
-        else:
-            # todo: ledger keystore needs to be ready for signing
-            pass
-        # remove sensitive info; then copy back details from temporary tx
+        tmp_tx.add_info_from_wallet(self, include_xpubs_and_full_paths=True)
+        if update_pubkeys_fn:
+            update_pubkeys_fn(tmp_tx)
+
+        for k in sorted(self.get_keystores(), key=lambda ks: ks.ready_to_sign(), reverse=True):
+            try:
+                if k.can_sign(tmp_tx):
+                    from electrum.plugins.ledger.ledger import Ledger_KeyStore
+                    if isinstance(k, Ledger_KeyStore):
+                        from electrum.plugins.ledger.ledger import LedgerBtcvTxType
+                        self._get_hw_keystore().set_btcv_password_use(tx_type=LedgerBtcvTxType.ALERT)
+                        if update_pubkeys_fn:
+                            k.sign_transaction(tmp_tx, password, None, True)
+                        else:
+                            k.sign_transaction(tmp_tx, password)
+                    else:
+                        raise NotImplementedError
+            except UserCancelled:
+                continue
+
         tmp_tx.remove_xpubs_and_bip32_paths()
-        tx.combine_with_other_psbt(tmp_tx)
+        tx.combine_with_other_psbt(tmp_tx, True)
         tx.add_info_from_wallet(self, include_xpubs_and_full_paths=False)
         return tx
 
@@ -2745,11 +2756,13 @@ class MultikeyHWWallet(Multisig_Wallet):
                 return k
         assert False
 
+    def is_recovery_mode(self):
+        return self.multisig_script_generator.is_recovery_mode()
 
 class TwoKeysHWWallet(MultikeyHWWallet):
 
     def __init__(self, storage: WalletStorage, *, config: SimpleConfig):
-        script_generator = TwoKeysHWScriptGenerator()
+        script_generator = TwoKeysHWScriptGenerator(recovery_pubkey=storage.get('recovery_pubkey'))
         super().__init__(storage, config=config, scriptGenerator=script_generator)
 
     def pubkeys_to_scriptcode(self, pubkeys: Sequence[str]) -> str:
@@ -2760,27 +2773,24 @@ class TwoKeysHWWallet(MultikeyHWWallet):
 
     def _add_recovery_pubkey_to_transaction(self, tx):
         for input in tx.inputs():
-            recovery_pubkey = bytes.fromhex(self.multisig_script_generator.recovery_pubkey)
+            recovery_pubkey = bytes.fromhex(input.multisig_script_generator.recovery_pubkey)
             if recovery_pubkey not in input.pubkeys:
                 input.pubkeys.append(recovery_pubkey)
             input.num_sig = 2
             assert len(input.pubkeys) == 2, 'Wrong number of pubkeys for performing recovery tx'
         return tx
 
-    def sign_recovery_transaction(self, tx: PartialTransaction, password, recovery_keypairs) -> Optional[
+    def sign_recovery_transaction(self, tx: PartialTransaction, password, recovery_keypairs)-> Optional[
         PartialTransaction]:
+
         if not isinstance(tx, PartialTransaction):
             return
 
-        # Skip inputs finalization
-        skip_finalize = self.multikey_type == '2fa'
-        tx = self.sign_transaction(tx, password, recovery_keypairs, self._add_recovery_pubkey_to_transaction,
-                                   skip_finalize)
+        tx = self.sign_transaction(tx, password, self._add_recovery_pubkey_to_transaction)
 
-        if not skip_finalize:
-            if not tx.is_complete():
-                _logger.error(f'Recovery transaction not completed')
-            tx.finalize_psbt()
+        if not tx.is_complete():
+            _logger.error(f'Recovery transaction not completed')
+        tx.finalize_psbt()
 
         return tx
 

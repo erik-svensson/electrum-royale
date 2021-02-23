@@ -521,6 +521,9 @@ class Transaction:
         for input in self._inputs:
             input.multisig_script_generator = self.multisig_script_generator
 
+    def update_input_multisig_generator(self, input, multisig_script_generator):
+        input.multisig_script_generator = multisig_script_generator
+
     def to_json(self) -> dict:
         d = {
             'version': self.version,

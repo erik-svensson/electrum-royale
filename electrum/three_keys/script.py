@@ -145,8 +145,9 @@ class ThreeKeysScriptGenerator(MultiKeyScriptGenerator):
 
 
 class TwoKeysHWScriptGenerator(TwoKeysScriptGenerator):
-    def __init__(self):
+    def __init__(self, recovery_pubkey: str):
         self._recovery_alert_flag = None
+        self.recovery_pubkey = recovery_pubkey
         self.witness_flags = []
 
     def get_redeem_script(self, public_keys: List[str]) -> str:
