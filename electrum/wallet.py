@@ -2683,7 +2683,7 @@ class MultikeyHWWallet(Multisig_Wallet):
         from .plugins.ledger.ledger import LedgerBtcvTxType
         self.multisig_script_generator.set_instant()
 
-    def sign_transaction(self, tx: Transaction, password, update_pubkeys_fn=None) -> Optional[PartialTransaction]:
+    def sign_transaction(self, tx: Transaction, password, update_pubkeys_fn=None, recovery_password=None) -> Optional[PartialTransaction]:
         if self.is_watching_only():
             return
         if not isinstance(tx, PartialTransaction):
@@ -2707,7 +2707,7 @@ class MultikeyHWWallet(Multisig_Wallet):
                         from electrum.plugins.ledger.ledger import LedgerBtcvTxType
                         self._get_hw_keystore().set_btcv_password_use(tx_type=LedgerBtcvTxType.ALERT)
                         if update_pubkeys_fn:
-                            k.sign_transaction(tmp_tx, password, None, True)
+                            k.sign_transaction(tmp_tx, password, None, True, recovery_password)
                         else:
                             k.sign_transaction(tmp_tx, password)
                     else:
@@ -2780,13 +2780,13 @@ class TwoKeysHWWallet(MultikeyHWWallet):
             assert len(input.pubkeys) == 2, 'Wrong number of pubkeys for performing recovery tx'
         return tx
 
-    def sign_recovery_transaction(self, tx: PartialTransaction, password, recovery_keypairs)-> Optional[
+    def sign_recovery_transaction(self, tx: PartialTransaction, password, recovery_keypairs, recovery_password=None)-> Optional[
         PartialTransaction]:
 
         if not isinstance(tx, PartialTransaction):
             return
 
-        tx = self.sign_transaction(tx, password, self._add_recovery_pubkey_to_transaction)
+        tx = self.sign_transaction(tx, password, self._add_recovery_pubkey_to_transaction, recovery_password)
 
         if not tx.is_complete():
             _logger.error(f'Recovery transaction not completed')

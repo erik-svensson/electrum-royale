@@ -7,16 +7,17 @@ from typing import Union, List, Dict
 
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QStandardItemModel, QStandardItem, QMouseEvent, QValidator, QKeySequence
-from PyQt5.QtWidgets import QPushButton, QLabel, QWidget, QComboBox,\
-    QTreeView, QHeaderView, QStyledItemDelegate,\
-    QVBoxLayout, QGridLayout,\
-    QCompleter, QShortcut
+from PyQt5.QtWidgets import QPushButton, QLabel, QWidget, QComboBox, \
+    QTreeView, QHeaderView, QStyledItemDelegate, \
+    QVBoxLayout, QGridLayout, \
+    QCompleter, QShortcut, QLineEdit
 
 from electrum.i18n import _
 from electrum.logging import get_logger
 from electrum.wallet import Abstract_Wallet
 from electrum.util import get_request_status, PR_TYPE_ONCHAIN, PR_TYPE_LN
 from electrum import bitcoin
+from .three_keys_dialogs import MAX_3KEYS_PASSWD_LEN
 
 from .util import read_QIcon, pr_icons, WaitingDialog, filter_non_printable, ColorScheme
 from .confirm_tx_dialog import ConfirmTxDialog
@@ -82,6 +83,7 @@ class RecoveryView(QTreeView):
     def onItemChecked(self):
         self.selected()
         self.tab.update_recovery_button()
+        self.tab.on_recovery_password_line_edit()
 
     def onSelectAll(self):
         model = self.model()
@@ -273,11 +275,22 @@ class RecoveryTab(QWidget):
         validity_fn(is_valid and len(seed) == 12)
         self.update_recovery_button()
 
+    def on_recovery_password_line_edit(self):
+        password = self._get_recovery_password()
+        is_valid = (len(password) > 0) or len(self.invoice_list.selected()) == 0
+        if is_valid:
+            self.recovery_password_line.setStyleSheet(ColorScheme.DEFAULT.as_stylesheet(True))
+        else:
+            self.recovery_password_line.setStyleSheet(ColorScheme.RED.as_stylesheet(True))
+
     def get_recovery_seed(self):
         text = self.recovery_privkey_line.text()
         words = text.split()
         del text
         return words
+
+    def _get_recovery_password(self):
+        return self.recovery_password_line.text()
 
     def _get_recovery_keypair(self):
         stored_recovery_pubkey = self.wallet.storage.get('recovery_pubkey')
@@ -342,7 +355,10 @@ class RecoveryTab(QWidget):
         on_success = run_hook('tc_sign_wrapper', self.wallet, tx, on_success, on_failure) or on_success
 
         if self.wallet.is_recovery_mode():
-            task = partial(self.wallet.sign_recovery_transaction, tx, password, external_keypairs)
+            if not self.is_hw:
+                task = partial(self.wallet.sign_recovery_transaction, tx, password, external_keypairs)
+            else:
+                task = partial(self.wallet.sign_recovery_transaction, tx, password, external_keypairs, self._get_recovery_password())
         else:
             task = partial(self.wallet.sign_transaction, tx, password, external_keypairs)
         msg = _('Signing transaction...')
@@ -353,8 +369,11 @@ class RecoveryTab(QWidget):
             atxs = self.invoice_list.selected()
             address = self.recovery_address_line.currentText()
             recovery_keypair = None
+            recovery_password = None
             if not (self.is_2fa or self.is_hw):
                 recovery_keypair = self._get_recovery_keypair()
+            if self.is_hw:
+                recovery_password = self._get_recovery_password()
 
             if not is_address_valid(address):
                 raise Exception(_('Invalid cancelation address'))
@@ -372,9 +391,11 @@ class RecoveryTab(QWidget):
             recovery_keypairs=recovery_keypair,
         )
 
-        # if not (self.is_2fa or self.is_hw):
-        if not (self.is_2fa):
+        if not (self.is_2fa or self.is_hw):
             self.recovery_privkey_line.setText('')
+
+        if self.is_hw:
+            self.recovery_password_line.setText('')
 
     def _create_privkey_line(self, on_edit):
         class CompleterDelegate(QStyledItemDelegate):
@@ -423,6 +444,13 @@ class RecoveryTabAR(RecoveryTab):
             # complete line edit with suggestions
             self.recovery_privkey_line = self._create_privkey_line(self.on_recovery_seed_line_edit)
             grid_layout.addWidget(self.recovery_privkey_line, 1, 1)
+        if self.is_hw:
+            grid_layout.addWidget(QLabel(_('Cancel password')), 1, 0)
+            self.recovery_password_line = QLineEdit()
+            self.recovery_password_line.setEchoMode(QLineEdit.Password)
+            self.recovery_password_line.setMaxLength(MAX_3KEYS_PASSWD_LEN)
+            self.recovery_password_line.textChanged.connect(self.on_recovery_password_line_edit)
+            grid_layout.addWidget(self.recovery_password_line, 1, 1)
 
         # Row 3
         button = self.recover_button

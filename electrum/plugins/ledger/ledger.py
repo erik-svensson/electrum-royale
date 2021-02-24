@@ -4,6 +4,8 @@ import hashlib
 import sys
 import traceback
 
+from PyQt5.QtWidgets import QMessageBox
+
 from electrum import ecc
 from electrum import bip32
 from electrum.crypto import hash_160
@@ -333,7 +335,11 @@ class Ledger_KeyStore(Hardware_KeyStore):
             m = hashlib.sha256()
             m.update(bytearray.fromhex(bytearray(password.encode('utf-8')).hex().ljust(64, '0')))
             password_hash = m.digest()
-        client.setBTCVPasswordUse(password_hash, tx_type)
+        try:
+            client.setBTCVPasswordUse(password_hash, tx_type)
+        except BTChipException as e:
+            if e.sw == 0x6a80:
+                raise BTChipException(e.message + "\n(Password may be incorrect)")
 
     def are_3keys_ledger_passwords_correct(self, wizard, btcv_instant_password_check=None, btcv_recovery_password_check=None):
         try:
@@ -341,20 +347,26 @@ class Ledger_KeyStore(Hardware_KeyStore):
                 self.set_btcv_password_use(tx_type=LedgerBtcvTxType.RECOVERY, password=btcv_recovery_password_check, wizard=wizard)
             if btcv_instant_password_check:
                 self.set_btcv_password_use(tx_type=LedgerBtcvTxType.INSTANT, password=btcv_instant_password_check, wizard=wizard)
-            self.set_btcv_password_use(tx_type=LedgerBtcvTxType.ALERT, wizard=self)
         except BTChipException as e:
             msg = _('Hardware wallet import fail') + "\n" + str(e)
             if e.sw == 0x6a80:
                 msg = msg + "\n" + ('Invalid password(s)')
-            wizard.show_error(msg)
+            if wizard:
+                wizard.show_error(msg)
             return False
+        finally:
+            self.set_btcv_password_use(tx_type=LedgerBtcvTxType.ALERT, wizard=self)
         return True
 
     @test_pin_unlocked
     @set_and_unset_signing
-    def sign_transaction(self, tx, password, pubkey_index=None, is_recovery=False):
+    def sign_transaction(self, tx, password, pubkey_index=None, is_recovery=False, recovery_password=None):
         if tx.is_complete():
             return
+        if is_recovery and recovery_password == None:
+            raise RuntimeError("No recovery_password for recovery transaction provided")
+        if recovery_password and not self.are_3keys_ledger_passwords_correct(None, btcv_recovery_password_check=recovery_password):
+            raise RuntimeError("Invalid recovery password provided")
         inputs = []
         inputsPaths = []
         chipInputs = []
@@ -502,7 +514,7 @@ class Ledger_KeyStore(Hardware_KeyStore):
 
                 inputIndex = 0
                 if is_recovery:
-                    # self.set_btcv_password_use(tx_type=LedgerBtcvTxType.RECOVERY, password="aaa")
+                    #TODO: check recovery_password corectness
                     self.get_client().startUntrustedTransaction(True, inputIndex,
                                                             chipInputs, redeemScripts[inputIndex], version=tx.version)
                     # we don't set meaningful outputAddress, amount and fees
@@ -520,7 +532,8 @@ class Ledger_KeyStore(Hardware_KeyStore):
                         singleInput = [ chipInputs[inputIndex] ]
                         self.get_client().startUntrustedTransaction(False, 0,
                                                                 singleInput, redeemScripts[inputIndex], version=tx.version)
-                        self.set_btcv_password_use(tx_type=LedgerBtcvTxType.RECOVERY, password="aaa")
+                        self.set_btcv_password_use(tx_type=LedgerBtcvTxType.RECOVERY, password=recovery_password)
+
                         inputSignature = self.get_client().untrustedHashSign(inputsPaths[inputIndex], pin, lockTime=tx.locktime)
                         inputSignature[0] = 0x30 # force for 1.4.9+
 
