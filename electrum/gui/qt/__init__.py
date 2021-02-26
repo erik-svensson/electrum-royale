@@ -214,7 +214,7 @@ class ElectrumGui(Logger):
         elif wallet_type == '2-key-hw':
             w = ElectrumARHWWindow(self, wallet)
         elif wallet_type == '3-key-hw':
-            w = ElectrumARHWWindow(self, wallet)
+            w = ElectrumAIRHWWindow(self, wallet)
         else:
             w = ElectrumWindow(self, wallet)
         self.windows.append(w)

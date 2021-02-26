@@ -14,7 +14,7 @@ from PyQt5.QtWidgets import QPushButton, QLabel, QWidget, QComboBox, \
 
 from electrum.i18n import _
 from electrum.logging import get_logger
-from electrum.wallet import Abstract_Wallet
+from electrum.wallet import Abstract_Wallet, TwoKeysHWWallet, ThreeKeysHWWallet
 from electrum.util import get_request_status, PR_TYPE_ONCHAIN, PR_TYPE_LN
 from electrum import bitcoin
 from .three_keys_dialogs import MAX_3KEYS_PASSWD_LEN
@@ -83,7 +83,10 @@ class RecoveryView(QTreeView):
     def onItemChecked(self):
         self.selected()
         self.tab.update_recovery_button()
-        self.tab.on_recovery_password_line_edit()
+        if (isinstance(self.tab, RecoveryTabAIR) and self.tab.is_hw):
+            self.tab.on_3k_password_line_edit()
+        elif self.tab.is_hw:
+            self.tab.on_recovery_password_line_edit()
 
     def onSelectAll(self):
         model = self.model()
@@ -357,8 +360,10 @@ class RecoveryTab(QWidget):
         if self.wallet.is_recovery_mode():
             if not self.is_hw:
                 task = partial(self.wallet.sign_recovery_transaction, tx, password, external_keypairs)
-            else:
+            elif isinstance(self.wallet, TwoKeysHWWallet):
                 task = partial(self.wallet.sign_recovery_transaction, tx, password, external_keypairs, self._get_recovery_password())
+            elif isinstance(self.wallet, ThreeKeysHWWallet):
+                task = partial(self.wallet.sign_recovery_transaction, tx, password, external_keypairs, self._get_recovery_password(), self._get_instant_password())
         else:
             task = partial(self.wallet.sign_transaction, tx, password, external_keypairs)
         msg = _('Signing transaction...')
@@ -369,11 +374,8 @@ class RecoveryTab(QWidget):
             atxs = self.invoice_list.selected()
             address = self.recovery_address_line.currentText()
             recovery_keypair = None
-            recovery_password = None
             if not (self.is_2fa or self.is_hw):
                 recovery_keypair = self._get_recovery_keypair()
-            if self.is_hw:
-                recovery_password = self._get_recovery_password()
 
             if not is_address_valid(address):
                 raise Exception(_('Invalid cancelation address'))
@@ -395,7 +397,7 @@ class RecoveryTab(QWidget):
             self.recovery_privkey_line.setText('')
 
         if self.is_hw:
-            self.recovery_password_line.setText('')
+            self._clean_password_lines()
 
     def _create_privkey_line(self, on_edit):
         class CompleterDelegate(QStyledItemDelegate):
@@ -422,6 +424,8 @@ class RecoveryTab(QWidget):
     def update_view(self):
         self.invoice_list.update_data()
 
+    def _clean_password_lines(self):
+        pass
 
 class RecoveryTabAR(RecoveryTab):
 
@@ -477,6 +481,9 @@ class RecoveryTabAR(RecoveryTab):
         else:
             self.recover_button.setText('Send cancel transaction')
 
+    def _clean_password_lines(self):
+            self.recovery_password_line.setText('')
+
 
 class RecoveryTabAIR(RecoveryTab):
 
@@ -497,19 +504,34 @@ class RecoveryTabAIR(RecoveryTab):
         grid_layout.addWidget(self.recovery_address_line, 0, 1)
 
         # Row 2
-        if not self.is_2fa:
+        if not (self.is_2fa or self.is_hw):
             grid_layout.addWidget(QLabel(_('Secure Fast seedphrase')), 1, 0)
             # complete line edit with suggestions
             self.instant_privkey_line = self._create_privkey_line(self.on_instant_seed_line_edit)
             self.instant_privkey_line.setContextMenuPolicy(Qt.PreventContextMenu)
             grid_layout.addWidget(self.instant_privkey_line, 1, 1)
+        elif self.is_hw:
+            grid_layout.addWidget(QLabel(_('Instant password')), 1, 0)
+            self.instant_password_line = QLineEdit()
+            self.instant_password_line.setEchoMode(QLineEdit.Password)
+            self.instant_password_line.setMaxLength(MAX_3KEYS_PASSWD_LEN)
+            self.instant_password_line.textChanged.connect(self.on_3k_password_line_edit)
+            grid_layout.addWidget(self.instant_password_line, 1, 1)
 
         # Row 3
-        grid_layout.addWidget(QLabel(_('Cancel seedphrase')), 2, 0)
         # complete line edit with suggestions
-        self.recovery_privkey_line = self._create_privkey_line(self.on_recovery_seed_line_edit)
-        self.recovery_privkey_line.setContextMenuPolicy(Qt.PreventContextMenu)
-        grid_layout.addWidget(self.recovery_privkey_line, 2, 1)
+        if self.is_hw:
+            grid_layout.addWidget(QLabel(_('Cancel password')), 2, 0)
+            self.recovery_password_line = QLineEdit()
+            self.recovery_password_line.setEchoMode(QLineEdit.Password)
+            self.recovery_password_line.setMaxLength(MAX_3KEYS_PASSWD_LEN)
+            self.recovery_password_line.textChanged.connect(self.on_3k_password_line_edit)
+            grid_layout.addWidget(self.recovery_password_line, 2, 1)
+        else:
+            grid_layout.addWidget(QLabel(_('Cancel seedphrase')), 2, 0)
+            self.recovery_privkey_line = self._create_privkey_line(self.on_recovery_seed_line_edit)
+            self.recovery_privkey_line.setContextMenuPolicy(Qt.PreventContextMenu)
+            grid_layout.addWidget(self.recovery_privkey_line, 2, 1)
 
         # Row 4
         button = self.recover_button
@@ -538,6 +560,10 @@ class RecoveryTabAIR(RecoveryTab):
         return {pubkey: (privkey, True)}
 
     def recover_action(self):
+        if self.is_hw:
+            RecoveryTab.recover_action(self)
+            return
+        #TODO: design pattern for this(!)
         try:
             address = self.recovery_address_line.currentText()
             instant_keypair = None
@@ -576,6 +602,11 @@ class RecoveryTabAIR(RecoveryTab):
             enabled = self.is_address_valid \
                       and self.is_recovery_seed_valid \
                       and len(self.invoice_list.selected())
+        elif self.is_hw:
+            enabled = self.is_address_valid \
+                      and len(self.invoice_list.selected()) \
+                      and len(self.instant_password_line.text()) \
+                      and len(self.recovery_password_line.text())
         else:
             enabled = self.is_address_valid \
                       and self.is_instant_seed_valid \
@@ -592,3 +623,27 @@ class RecoveryTabAIR(RecoveryTab):
         return self.on_seed_line_edit(self.instant_privkey_line,
                                       self.get_instant_seed(),
                                       self.set_instant_seed_validity)
+
+    def _get_instant_password(self):
+        return self.instant_password_line.text()
+
+    def set_password_line_style(self, password, password_line):
+        is_valid = (len(password) > 0) or len(self.invoice_list.selected()) == 0
+        if is_valid:
+            password_line.setStyleSheet(ColorScheme.DEFAULT.as_stylesheet(True))
+        else:
+            password_line.setStyleSheet(ColorScheme.RED.as_stylesheet(True))
+
+    def on_3k_password_line_edit(self):
+        password = self._get_recovery_password()
+        self.set_password_line_style(password, self.recovery_password_line)
+        password = self._get_instant_password()
+        self.set_password_line_style(password, self.instant_password_line)
+        self.update_recovery_button()
+
+    def _get_instant_password(self):
+        return self.instant_password_line.text()
+
+    def _clean_password_lines(self):
+            self.recovery_password_line.setText('')
+            self.instant_password_line.setText('')

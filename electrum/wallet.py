@@ -2683,7 +2683,7 @@ class MultikeyHWWallet(Multisig_Wallet):
         from .plugins.ledger.ledger import LedgerBtcvTxType
         self.multisig_script_generator.set_instant()
 
-    def sign_transaction(self, tx: Transaction, password, update_pubkeys_fn=None, recovery_password=None) -> Optional[PartialTransaction]:
+    def sign_transaction(self, tx: Transaction, password, update_pubkeys_fn=None, recovery_password=None, instant_password=None) -> Optional[PartialTransaction]:
         if self.is_watching_only():
             return
         if not isinstance(tx, PartialTransaction):
@@ -2692,6 +2692,8 @@ class MultikeyHWWallet(Multisig_Wallet):
         for input in tmp_tx.inputs():
             tmp_pubkeys = self.get_public_keys_with_deriv_info(input.address)
             self.multisig_script_generator.recovery_pubkey = list(tmp_pubkeys)[1]
+            if isinstance(self.multisig_script_generator, ThreeKeysHWScriptGenerator):
+                self.multisig_script_generator.instant_pubkey = list(tmp_pubkeys)[2]
             tmp_tx.multisig_script_generator = self.multisig_script_generator
             tmp_tx.update_input_multisig_generator(input, copy.deepcopy(self.multisig_script_generator))
 
@@ -2706,8 +2708,10 @@ class MultikeyHWWallet(Multisig_Wallet):
                     if isinstance(k, Ledger_KeyStore):
                         from electrum.plugins.ledger.ledger import LedgerBtcvTxType
                         self._get_hw_keystore().set_btcv_password_use(tx_type=LedgerBtcvTxType.ALERT)
-                        if update_pubkeys_fn:
-                            k.sign_transaction(tmp_tx, password, None, True, recovery_password)
+                        if recovery_password and instant_password:
+                            k.sign_transaction(tmp_tx, password, None, recovery_password, instant_password)
+                        elif recovery_password:
+                            k.sign_transaction(tmp_tx, password, None, recovery_password)
                         else:
                             k.sign_transaction(tmp_tx, password)
                     else:
@@ -2801,7 +2805,9 @@ class TwoKeysHWWallet(MultikeyHWWallet):
 class ThreeKeysHWWallet(MultikeyHWWallet):
 
     def __init__(self, storage: WalletStorage, *, config: SimpleConfig):
-        script_generator = ThreeKeysHWScriptGenerator()
+
+        script_generator = ThreeKeysHWScriptGenerator(instant_pubkey=storage.get('instant_pubkey'),
+                                                      recovery_pubkey=storage.get('recovery_pubkey'))
         super().__init__(storage, config=config, scriptGenerator=script_generator)
         self.n = 3
         self.m = 1
@@ -2827,18 +2833,30 @@ class ThreeKeysHWWallet(MultikeyHWWallet):
 
         return tx
 
-    def sign_recovery_transaction(self, tx: PartialTransaction, password, recovery_keypairs) -> Optional[PartialTransaction]:
+    def _add_recovery_pubkey_to_transaction(self, tx):
+        for input in tx.inputs():
+            instant_pubkey = bytes.fromhex(input.multisig_script_generator.instant_pubkey)
+            if instant_pubkey not in input.pubkeys:
+                input.pubkeys.append(instant_pubkey)
+            recovery_pubkey = bytes.fromhex(input.multisig_script_generator.recovery_pubkey)
+            if recovery_pubkey not in input.pubkeys:
+                input.pubkeys.append(recovery_pubkey)
+            input.num_sig = 3
+            assert len(input.pubkeys) == 3, 'Wrong number of pubkeys for performing recovery tx'
+        return tx
+
+
+    def sign_recovery_transaction(self, tx: PartialTransaction, password, recovery_keypairs, recovery_password, instant_password)-> Optional[
+        PartialTransaction]:
+
         if not isinstance(tx, PartialTransaction):
             return
 
-        # Skip tx finalization when tx should be authenticated
-        skip_finalize = self.multikey_type == '2fa'
-        tx = self.sign_transaction(tx, password, recovery_keypairs, self._add_recovery_pubkey_to_transaction, skip_finalize)
+        tx = self.sign_transaction(tx, password, self._add_recovery_pubkey_to_transaction, recovery_password, instant_password)
 
-        if not skip_finalize:
-            if not tx.is_complete():
-                _logger.error(f'Recovery transaction not completed')
-            tx.finalize_psbt()
+        if not tx.is_complete():
+            _logger.error(f'Recovery transaction not completed')
+        tx.finalize_psbt()
 
         return tx
 

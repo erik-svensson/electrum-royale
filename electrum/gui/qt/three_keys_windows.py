@@ -603,8 +603,15 @@ class ElectrumAIRHWWindow(ElectrumAIRWindow):
     def __init__(self, gui_object: 'ElectrumGui', wallet: 'Abstract_Wallet'):
         super().__init__(gui_object=gui_object, wallet=wallet)
 
-    def do_pay(self):
-        self.show_message(_('do_pay'))
-
-    def pay_onchain_dialog(self, inputs, outputs, invoice=None, external_keypairs=None):
-        self.show_message(_('pay_onchain_dialog'))
+    # def do_pay(self):
+    #     invoice = self.read_invoice()
+    #     if not invoice:
+    #         return
+    #     invoice['txtype'] = TxType.ALERT_PENDING.name
+    #     self.wallet.save_invoice(invoice)
+    #     self.invoice_list.update()
+    #     self.do_clear()
+    #     self.do_pay_invoice(invoice)
+    #
+    # def pay_onchain_dialog(self, inputs, outputs, invoice=None, external_keypairs=None):
+    #     self.show_message(_('pay_onchain_dialog'))

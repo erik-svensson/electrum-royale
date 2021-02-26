@@ -360,13 +360,14 @@ class Ledger_KeyStore(Hardware_KeyStore):
 
     @test_pin_unlocked
     @set_and_unset_signing
-    def sign_transaction(self, tx, password, pubkey_index=None, is_recovery=False, recovery_password=None):
+    def sign_transaction(self, tx, password, pubkey_index=None, recovery_password=None, instant_password=False):
+
         if tx.is_complete():
             return
-        if is_recovery and recovery_password == None:
-            raise RuntimeError("No recovery_password for recovery transaction provided")
         if recovery_password and not self.are_3keys_ledger_passwords_correct(None, btcv_recovery_password_check=recovery_password):
             raise RuntimeError("Invalid recovery password provided")
+        if instant_password and not self.are_3keys_ledger_passwords_correct(None, btcv_instant_password_check=instant_password):
+            raise RuntimeError("Invalid instant password provided")
         inputs = []
         inputsPaths = []
         chipInputs = []
@@ -503,7 +504,7 @@ class Ledger_KeyStore(Hardware_KeyStore):
                 while inputIndex < len(inputs):
                     singleInput = [ chipInputs[inputIndex] ]
                     self.get_client().startUntrustedTransaction(False, 0,
-                                                            singleInput, redeemScripts[inputIndex], version=tx.version)
+                                                                singleInput, redeemScripts[inputIndex], version=tx.version)
                     inputSignature = self.get_client().untrustedHashSign(inputsPaths[inputIndex], pin, lockTime=tx.locktime)
                     inputSignature[0] = 0x30 # force for 1.4.9+
                     my_pubkey = inputs[inputIndex][4]
@@ -512,11 +513,12 @@ class Ledger_KeyStore(Hardware_KeyStore):
                                              sig=inputSignature.hex())
                     inputIndex = inputIndex + 1
 
-                inputIndex = 0
-                if is_recovery:
-                    #TODO: check recovery_password corectness
+
+                #TODO: strategy design pattern?
+                if recovery_password:
+                    inputIndex = 0
                     self.get_client().startUntrustedTransaction(True, inputIndex,
-                                                            chipInputs, redeemScripts[inputIndex], version=tx.version)
+                                                                chipInputs, redeemScripts[inputIndex], version=tx.version)
                     # we don't set meaningful outputAddress, amount and fees
                     # as we only care about the alternateEncoding==True branch
                     outputData = self.get_client().finalizeInput(b'', 0, 0, changePath, bfh(rawTx))
@@ -531,8 +533,41 @@ class Ledger_KeyStore(Hardware_KeyStore):
                     while inputIndex < len(inputs):
                         singleInput = [ chipInputs[inputIndex] ]
                         self.get_client().startUntrustedTransaction(False, 0,
-                                                                singleInput, redeemScripts[inputIndex], version=tx.version)
+                                                                    singleInput, redeemScripts[inputIndex], version=tx.version)
                         self.set_btcv_password_use(tx_type=LedgerBtcvTxType.RECOVERY, password=recovery_password)
+
+                        inputSignature = self.get_client().untrustedHashSign(inputsPaths[inputIndex], pin, lockTime=tx.locktime)
+                        inputSignature[0] = 0x30 # force for 1.4.9+
+
+                        if instant_password:
+                            my_pubkey = list(tx.inputs()[inputIndex].bip32_paths.keys())[2]
+                        else:
+                            my_pubkey = list(tx.inputs()[inputIndex].bip32_paths.keys())[1]
+
+                        tx.add_signature_to_txin(txin_idx=inputIndex,
+                                                 signing_pubkey=my_pubkey.hex(),
+                                                 sig=inputSignature.hex())
+                        inputIndex = inputIndex + 1
+                if instant_password:
+                    inputIndex = 0
+                    self.get_client().startUntrustedTransaction(True, inputIndex,
+                                                                chipInputs, redeemScripts[inputIndex], version=tx.version)
+                    # we don't set meaningful outputAddress, amount and fees
+                    # as we only care about the alternateEncoding==True branch
+                    outputData = self.get_client().finalizeInput(b'', 0, 0, changePath, bfh(rawTx))
+                    outputData['outputData'] = txOutput
+                    if outputData['confirmationNeeded']:
+                        outputData['address'] = output
+                        self.handler.finished()
+                        pin = self.handler.get_auth( outputData ) # does the authenticate dialog and returns pin
+                        if not pin:
+                            raise UserWarning()
+                        self.handler.show_message(_("Confirmed. Signing Transaction..."))
+                    while inputIndex < len(inputs):
+                        singleInput = [ chipInputs[inputIndex] ]
+                        self.get_client().startUntrustedTransaction(False, 0,
+                                                                    singleInput, redeemScripts[inputIndex], version=tx.version)
+                        self.set_btcv_password_use(tx_type=LedgerBtcvTxType.INSTANT, password=instant_password)
 
                         inputSignature = self.get_client().untrustedHashSign(inputsPaths[inputIndex], pin, lockTime=tx.locktime)
                         inputSignature[0] = 0x30 # force for 1.4.9+
