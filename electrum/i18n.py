@@ -53,3 +53,7 @@ languages = {
     'vi_VN': _('Vietnamese'),
     'zh_CN': _('Chinese Simplified'),
 }
+
+
+def get_iso_639_1(language: str):
+    return language[:2].lower()
