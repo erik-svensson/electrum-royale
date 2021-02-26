@@ -11,6 +11,7 @@ import requests
 
 from electrum.logging import get_logger
 
+# todo remove it and load from config
 HOST = os.environ.get('EMAIL_API_HOST', 'https://localhost')
 PORT = os.environ.get('EMAIL_API_PORT', '4000')
 TIMEOUT = os.environ.get('EMAIL_API_TIMEOUT', '4')
@@ -62,7 +63,7 @@ def request_error_handler(fun):
             response = fun(*args, **kwargs)
             if response.status_code != 200:
                 data = response.json()
-                if data.get('result', None) == 'error':
+                if data.get('result', '') == 'error':
                     raise ApiError(f"<b>ERROR</b> {data.get('msg')}")
                 raise ApiError('Something went wrong')
             return response.json()

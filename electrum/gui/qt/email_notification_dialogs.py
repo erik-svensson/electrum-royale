@@ -244,10 +244,10 @@ class EmailNotificationWizard(InstallWizard):
         while what_next == self.State.BACK:
             what_next = self.run_single_view(self._choose_email)
             if what_next == self.State.NEXT:
+                EmailNotificationConfig.save_email_to_config(self.config, self.wallet, self._email)
                 what_next = self.run_single_view(self.confirm_pin, _('Back'))
             else:
                 break
-        EmailNotificationConfig.save_email_to_config(self.config, self.wallet, self._email)
 
     @staticmethod
     def run_single_view(method, *args, max_attempts=None):
@@ -315,7 +315,7 @@ class EmailNotificationDialog(EmailNotificationWizard):
         self.show_skip_checkbox = False
         self.setWindowTitle(_('Notifications'))
 
-    def confirm_pin(self):
+    def only_confirm_pin(self):
         EmailNotificationWizard.run_single_view(
             super().confirm_pin, None
         )
@@ -373,7 +373,7 @@ class WalletInfoNotifications:
 
         def confirm(*args):
             email_dialog.show()
-            email_dialog.confirm_pin()
+            email_dialog.only_confirm_pin()
             EmailNotificationConfig.save_email_to_config(self.config, self.wallet, self.email)
 
         def on_error(*args):
