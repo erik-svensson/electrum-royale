@@ -9,6 +9,7 @@ from typing import List
 
 import requests
 
+from electrum.interface import deserialize_server
 from electrum.logging import get_logger
 
 # todo remove it and load from config
@@ -17,6 +18,11 @@ PORT = os.environ.get('EMAIL_API_PORT', '4000')
 TIMEOUT = os.environ.get('EMAIL_API_TIMEOUT', '4')
 
 _logger = get_logger(__name__)
+
+
+def extract_server(server: str):
+    host, port, _ = deserialize_server(str(server) + ':s')
+    return host, port
 
 
 @dataclass

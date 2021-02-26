@@ -10,7 +10,7 @@ from electrum.base_wizard import GoBack
 from electrum.gui.qt.installwizard import InstallWizard
 from electrum.gui.qt.util import TaskThread, WaitingDialog
 from electrum.i18n import _
-from electrum.notification_connector import EmailApiWallet, ApiError, Connector
+from electrum.notification_connector import EmailApiWallet, ApiError, Connector, extract_server
 from electrum.util import UserCancelled
 from electrum.wallet import Abstract_Wallet
 
@@ -220,7 +220,16 @@ class EmailNotificationWizard(InstallWizard):
     def __init__(self, wallet, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.wallet = EmailApiWallet.from_wallet(wallet)
-        self.connector = Connector()
+        connector_kwargs = {}
+        if self.config.get('email_server', ''):
+            host, port = extract_server(self.config.get('email_server'))
+            connector_kwargs = {
+                'host': host,
+                'port': port,
+            }
+        if self.config.get('email_server_timeout', 0):
+            connector_kwargs['timeout'] = self.config.get('email_server_timeout')
+        self.connector = Connector(**connector_kwargs)
         self._email = ''
         self._error_message = ''
         self._payload = {}
