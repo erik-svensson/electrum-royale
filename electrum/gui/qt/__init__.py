@@ -262,8 +262,7 @@ class ElectrumGui(Logger):
         if not wallet:
             try:
                 wallet = self._start_wizard_to_select_or_create_wallet(path)
-                # todo it has to be there !!!! uncomment
-                # self.add_email_notification(wallet)
+                self.add_email_notification(wallet)
             except (WalletFileException, BitcoinException) as e:
                 self.logger.exception('')
                 custom_message_box(icon=QMessageBox.Warning,
@@ -272,8 +271,6 @@ class ElectrumGui(Logger):
                                    text=_('Cannot load wallet') + ' (2):\n' + repr(e))
         if not wallet:
             return
-        # it is set only for easier development
-        self.add_email_notification(wallet)
         # create or raise window
         try:
             for window in self.windows:
