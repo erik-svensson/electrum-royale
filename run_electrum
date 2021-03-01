@@ -27,7 +27,9 @@ import os
 import sys
 import warnings
 import asyncio
-from setup import MIN_PYTHON_VERSION, MIN_PYTHON_VERSION_TUPLE
+
+MIN_PYTHON_VERSION = "3.7.9"
+MIN_PYTHON_VERSION_TUPLE = tuple(map(int, (MIN_PYTHON_VERSION.split("."))))
 
 
 if sys.version_info[:3] < MIN_PYTHON_VERSION_TUPLE:
