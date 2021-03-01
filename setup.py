@@ -10,7 +10,7 @@ import argparse
 
 from setuptools import setup, find_packages
 
-MIN_PYTHON_VERSION = "3.7.7"
+MIN_PYTHON_VERSION = "3.7.9"
 MIN_PYTHON_VERSION_TUPLE = tuple(map(int, (MIN_PYTHON_VERSION.split("."))))
 
 if __name__ == '__main__':

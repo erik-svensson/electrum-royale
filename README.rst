@@ -4,7 +4,7 @@ Electrum Vault - Lightweight Bitcoin Vault wallet
 ::
 
   Licence: MIT Licence
-  Language: Python (>= 3.7.7)
+  Language: Python (>= 3.7)
   Homepage: https://bitcoinvault.global
 
 
