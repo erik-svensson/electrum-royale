@@ -641,9 +641,6 @@ class RecoveryTabAIR(RecoveryTab):
         self.set_password_line_style(password, self.instant_password_line)
         self.update_recovery_button()
 
-    def _get_instant_password(self):
-        return self.instant_password_line.text()
-
     def _clean_password_lines(self):
             self.recovery_password_line.setText('')
             self.instant_password_line.setText('')

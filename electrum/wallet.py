@@ -2708,12 +2708,9 @@ class MultikeyHWWallet(Multisig_Wallet):
                     if isinstance(k, Ledger_KeyStore):
                         from electrum.plugins.ledger.ledger import LedgerBtcvTxType
                         self._get_hw_keystore().set_btcv_password_use(tx_type=LedgerBtcvTxType.ALERT)
-                        if recovery_password and instant_password:
-                            k.sign_transaction(tmp_tx, password, None, recovery_password, instant_password)
-                        elif recovery_password:
-                            k.sign_transaction(tmp_tx, password, None, recovery_password)
-                        else:
-                            k.sign_transaction(tmp_tx, password)
+
+                        k.sign_transaction(tmp_tx, password, None, recovery_password, instant_password)
+
                     else:
                         raise NotImplementedError
             except UserCancelled:
@@ -2818,19 +2815,26 @@ class ThreeKeysHWWallet(MultikeyHWWallet):
 
         return ThreeKeysScriptGenerator.create_redeem_script(pubkeys[0], pubkeys[1], pubkeys[2])
 
-    def sign_instant_transaction(self, tx: PartialTransaction, password, instant_keypairs) -> Optional[PartialTransaction]:
+    def sign_instant_transaction(self, tx: PartialTransaction, password, instant_keypairs, instant_password) -> Optional[PartialTransaction]:
         if not isinstance(tx, PartialTransaction):
             return
 
-        # Skip tx finalization when tx should be authenticated
-        skip_finalize = self.multikey_type == '2fa'
-        tx = self.sign_transaction(tx, password, instant_keypairs, self._add_instant_pubkey_to_transaction, skip_finalize)
+        tx = self.sign_transaction(tx, password, self._add_instant_pubkey_to_transaction, None, instant_password)
 
-        if not skip_finalize:
-            if not tx.is_complete():
-                _logger.error(f'Instant transaction not completed')
-            tx.finalize_psbt()
+        if not tx.is_complete():
+            _logger.error(f'Recovery transaction not completed')
+        tx.finalize_psbt()
 
+        return tx
+
+    def _add_instant_pubkey_to_transaction(self, tx):
+        for input in tx.inputs():
+            # instant_pubkey = bytes.fromhex(input.multisig_script_generator.instant_pubkey)
+            instant_pubkey = bytes.fromhex(self.multisig_script_generator.instant_pubkey)
+            if instant_pubkey not in input.pubkeys:
+                input.pubkeys.append(instant_pubkey)
+            input.num_sig = 2
+            assert len(input.pubkeys) == 3, 'Wrong number of pubkeys for performing recovery tx'
         return tx
 
     def _add_recovery_pubkey_to_transaction(self, tx):
@@ -2862,6 +2866,9 @@ class ThreeKeysHWWallet(MultikeyHWWallet):
 
     def get_wallet_label(self):
         return '3-Key Vault'
+
+    def is_instant_mode(self):
+        return self.multisig_script_generator.is_instant_mode()
 
 
 wallet_types = [
