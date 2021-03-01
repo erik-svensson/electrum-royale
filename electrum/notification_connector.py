@@ -1,7 +1,5 @@
 import dataclasses
 import functools
-import json
-import os
 from dataclasses import dataclass
 from hashlib import sha256
 from json.decoder import JSONDecodeError
@@ -12,10 +10,10 @@ import requests
 from electrum.interface import deserialize_server
 from electrum.logging import get_logger
 
-# todo remove it and load from config
-HOST = os.environ.get('EMAIL_API_HOST', 'https://localhost')
-PORT = os.environ.get('EMAIL_API_PORT', '4000')
-TIMEOUT = os.environ.get('EMAIL_API_TIMEOUT', '4')
+
+HOST = 'https://btcv-notifcations-email.rnd.land/api'
+PORT = 443
+TIMEOUT = 20
 
 _logger = get_logger(__name__)
 
@@ -31,30 +29,30 @@ class EmailApiWallet:
     xpub: str
     derivation_path: List[str]
     gap_limit: int
-    recovery_public_key: str
-    instant_public_key: str or None
+    address_range: str
+    address_type: str
+    recovery_public_key: str or None
+    instant_public_key: str or None = None
 
     def hash(self) -> str:
-        return sha256(json.dumps({
-            'xpub': self.xpub,
-            'derivation_path': self.derivation_path,
-            'recovery_public_key': self.recovery_public_key,
-            'instant_public_key': self.instant_public_key,
-        }, separators=(',', ':')).encode('utf-8')).hexdigest()
+        hashing_string = self.address_type + self.xpub
+        hashing_string += self.recovery_public_key if self.recovery_public_key else ''
+        hashing_string += self.instant_public_key if self.instant_public_key else ''
+        return sha256(hashing_string.encode('utf-8')).hexdigest()
 
     @classmethod
     def from_wallet(cls, wallet):
         recovery_public_key = wallet.storage.get('recovery_pubkey', None)
-        instant_public_key = wallet.storage.get('instant_pubkey', '')
+        instant_public_key = wallet.storage.get('instant_pubkey', None)
         return cls(
             name=str(wallet),
             xpub=wallet.keystore.xpub,
-            # todo: find derivation path for change address
-            derivation_path=[wallet.keystore._derivation_prefix, 'change addresses derivation prefix'],
+            derivation_path=wallet.keystore._derivation_prefix,
             gap_limit=wallet.gap_limit,
-            # sometimes we get keys in tuple, need for refactoring
-            recovery_public_key=recovery_public_key[0] if isinstance(recovery_public_key, tuple) else recovery_public_key,
-            instant_public_key=instant_public_key[0] if isinstance(instant_public_key, tuple) else instant_public_key,
+            address_range=f'{wallet.db.num_receiving_addresses()}/{wallet.db.num_change_addresses()}',
+            address_type=wallet.txin_type,
+            recovery_public_key=recovery_public_key,
+            instant_public_key=instant_public_key,
         )
 
 
@@ -87,7 +85,7 @@ class Connector:
     # todo: This is mock for self-signed certificate verification
     VERIFY = False
 
-    def __init__(self, host=HOST, port=int(PORT), timeout=int(TIMEOUT)):
+    def __init__(self, host=HOST, port=PORT, timeout=TIMEOUT):
         self.connection_string = f'{host}:{port}'
         self.timeout = timeout
         self.token = ''
@@ -97,7 +95,7 @@ class Connector:
         return requests.post(
             f'{self.connection_string}/subscribe',
             json={
-                'wallets': [dataclasses.asdict(wallet) for wallet in wallets],
+                'wallets': [dict(filter(lambda item: item[1] is not None, dataclasses.asdict(wallet).items())) for wallet in wallets],
                 'email': email,
                 'lang': language,
             },

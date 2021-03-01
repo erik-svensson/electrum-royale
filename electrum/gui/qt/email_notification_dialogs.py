@@ -9,7 +9,7 @@ from PyQt5.QtWidgets import QVBoxLayout, QLineEdit, QHBoxLayout, QLabel, QCheckB
 from electrum.base_wizard import GoBack
 from electrum.gui.qt.installwizard import InstallWizard
 from electrum.gui.qt.util import TaskThread, WaitingDialog
-from electrum.i18n import _
+from electrum.i18n import _, get_iso_639_1
 from electrum.notification_connector import EmailApiWallet, ApiError, Connector, extract_server
 from electrum.util import UserCancelled
 from electrum.wallet import Abstract_Wallet
@@ -33,7 +33,8 @@ class AbstractLineEdit(QLineEdit):
 class PinInputFiled(AbstractLineEdit):
     def __init__(self):
         super().__init__(
-            regex_exp=QRegExp('\\b[0-9]{4}\\b')
+            # todo add ignore on '1lo0' signs
+            regex_exp=QRegExp('\\b[0-9a-z]{4}\\b')
         )
 
 
@@ -177,7 +178,7 @@ class PinConfirmation(QVBoxLayout, ErrorMessageMixin, InputFieldMixin):
         self.resend_button.setEnabled(False)
 
     def pin(self):
-        return int(self.input_edit.text())
+        return self.input_edit.text()
 
 
 class EmailNotificationConfig:
@@ -273,7 +274,7 @@ class EmailNotificationWizard(InstallWizard):
         payload = {
             'wallets': [self.wallet],
             'email': self._email,
-            'language': self.config.get('language')
+            'language': get_iso_639_1(self.config.get('language'))
         }
         self._payload = payload
         response = self.connector.subscribe_email(**payload)
