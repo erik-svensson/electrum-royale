@@ -42,17 +42,15 @@ class EmailApiWallet:
 
     @classmethod
     def from_wallet(cls, wallet):
-        recovery_public_key = wallet.storage.get('recovery_pubkey', None)
-        instant_public_key = wallet.storage.get('instant_pubkey', None)
         return cls(
             name=str(wallet),
             xpub=wallet.keystore.xpub,
-            derivation_path=wallet.keystore._derivation_prefix,
+            derivation_path=wallet.keystore._derivation_prefix if wallet.keystore._derivation_prefix else 'm',
             gap_limit=wallet.gap_limit,
             address_range=f'{wallet.db.num_receiving_addresses()}/{wallet.db.num_change_addresses()}',
             address_type=wallet.txin_type,
-            recovery_public_key=recovery_public_key,
-            instant_public_key=instant_public_key,
+            recovery_public_key=wallet.storage.get('recovery_pubkey', None),
+            instant_public_key=wallet.storage.get('instant_pubkey', None),
         )
 
 
