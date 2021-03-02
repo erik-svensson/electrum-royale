@@ -2591,7 +2591,7 @@ class MultikeyHWWallet(Multisig_Wallet):
         self.m = 1
         Deterministic_Wallet.__init__(self, storage, config=config)
         # super has to be at the end otherwise wallet breaks
-        self.multiple_change = storage.get('multiple_change', True)
+        self.multiple_change = storage.get('multiple_change', False)
 
     def load_keystore(self):
         self.keystores = {}
