@@ -311,6 +311,18 @@ class WaitingDialog(WindowModalDialog):
         self.message_label.setText(msg)
 
 
+class WaitingDialogWithCancel(WaitingDialog):
+    def __init__(self, parent, message, task, on_success=None, on_error=None):
+        super().__init__(parent, message, task, on_success, on_error)
+        cancel_button = CancelButton(self)
+        cancel_button.clicked.connect(lambda *args: self.thread.terminate())
+        self.layout().addWidget(cancel_button)
+
+    def closeEvent(self, event):
+        self.thread.terminate()
+        super().closeEvent(event)
+
+
 def line_dialog(parent, title, label, ok_label, default=None):
     dialog = WindowModalDialog(parent, title)
     dialog.setMinimumWidth(500)

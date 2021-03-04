@@ -8,9 +8,9 @@ from PyQt5.QtWidgets import QVBoxLayout, QLineEdit, QHBoxLayout, QLabel, QCheckB
 
 from electrum.base_wizard import GoBack
 from electrum.gui.qt.installwizard import InstallWizard
-from electrum.gui.qt.util import TaskThread, WaitingDialog
+from electrum.gui.qt.util import TaskThread, WaitingDialogWithCancel
 from electrum.i18n import _, get_iso_639_1
-from electrum.notification_connector import EmailApiWallet, ApiError, Connector, extract_server
+from electrum.notification_connector import EmailApiWallet, ApiError, Connector, EmailAlreadySubscribedError
 from electrum.util import UserCancelled
 from electrum.wallet import Abstract_Wallet
 
@@ -167,7 +167,7 @@ class PinConfirmation(QVBoxLayout, ErrorMessageMixin, InputFieldMixin):
         self.resend_button.setEnabled(True)
 
     def on_error(self, error):
-        self.set_error(f'<b>ERROR</b> {error}')
+        self.set_error(f'{error}')
         self.resend_button.setEnabled(True)
 
     def resend_request(self):
@@ -221,22 +221,11 @@ class EmailNotificationWizard(InstallWizard):
     def __init__(self, wallet, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.wallet = EmailApiWallet.from_wallet(wallet)
-        connector_kwargs = {}
-        if self.config.get('email_server', ''):
-            host, port = extract_server(self.config.get('email_server'))
-            connector_kwargs = {
-                'host': host,
-                'port': port,
-            }
-        if self.config.get('email_server_timeout', 0):
-            connector_kwargs['timeout'] = self.config.get('email_server_timeout')
-        self.connector = Connector(**connector_kwargs)
+        self.connector = Connector.from_config(self.config)
         self._email = ''
         self._error_message = ''
         self._payload = {}
         self.show_skip_checkbox = True
-        if not EmailNotificationConfig.check_if_wallet_in_config(self.config, wallet):
-            EmailNotificationConfig.save_email_to_config(self.config, self.wallet, None)
 
     def exec_layout(self, layout, title=None, back_button_name=None,
                     next_enabled=True):
@@ -299,6 +288,8 @@ class EmailNotificationWizard(InstallWizard):
                 return self.State.NEXT
             except ApiError as e:
                 self._error_message = str(e)
+                if isinstance(e, EmailAlreadySubscribedError):
+                    EmailNotificationConfig.save_email_to_config(self.config, self.wallet, self._email)
                 return self.State.CONTINUE
         else:
             return self.State.ERROR
@@ -389,7 +380,7 @@ class WalletInfoNotifications:
         def on_error(*args):
             email_dialog.show_error(str(args[0][1]))
 
-        WaitingDialog(
+        WaitingDialogWithCancel(
             self.parent,
             _('Connecting with server...'),
             task, confirm, on_error)
@@ -429,9 +420,10 @@ class WalletInfoNotifications:
             self.sub_unsub_button.setEnabled(True)
 
         def task():
-            connector = Connector()
+            connector = Connector.from_config(self.config)
             wallet = EmailApiWallet.from_wallet(self.wallet)
-            return connector.check_subscription([wallet.hash()], self.email)[0]
+            response = connector.check_subscription([wallet.hash()], self.email)
+            return response['result'][0]
 
         self.thread.add(
             task=task,
