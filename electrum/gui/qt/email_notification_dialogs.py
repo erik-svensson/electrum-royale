@@ -186,6 +186,7 @@ class EmailNotificationWizard(InstallWizard):
         NEXT = 2
         CONTINUE = 3
         ERROR = 4
+        SHOW_EMAIL_SUBED = 5
 
     def __init__(self, wallet, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -214,8 +215,12 @@ class EmailNotificationWizard(InstallWizard):
             if what_next == self.State.NEXT:
                 EmailNotificationConfig.save_email_to_config(self.config, self.wallet, self._email)
                 what_next = self.run_single_view(self.confirm_pin, _('Back'))
+            elif what_next == self.State.SHOW_EMAIL_SUBED:
+                self.show_message(self._error_message)
+                break
             else:
                 break
+        self.show_message('<b>Success</b> <br><br> You have successfully subscribed wallet', rich_text=True)
 
     @staticmethod
     def run_single_view(method, *args, max_attempts=None):
@@ -259,6 +264,7 @@ class EmailNotificationWizard(InstallWizard):
                 self._error_message = str(e)
                 if isinstance(e, EmailAlreadySubscribedError):
                     EmailNotificationConfig.save_email_to_config(self.config, self.wallet, self._email)
+                    return self.State.SHOW_EMAIL_SUBED
                 return self.State.CONTINUE
         else:
             return self.State.ERROR
@@ -289,6 +295,7 @@ class EmailNotificationDialog(EmailNotificationWizard):
         EmailNotificationWizard.run_single_view(
             super().confirm_pin, None
         )
+        self.show_message('<b>Success</b> <br><br> You have successfully subscribed wallet', rich_text=True)
         self.terminate()
 
 
