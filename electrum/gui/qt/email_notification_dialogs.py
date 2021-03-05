@@ -255,7 +255,7 @@ class EmailNotificationWizard(InstallWizard):
         while what_next == EmailNotificationWizard.State.CONTINUE:
             what_next = method(*args)
             if max_attempts and counter > max_attempts:
-                what_next == EmailNotificationWizard.State.ERROR
+                what_next = EmailNotificationWizard.State.ERROR
             counter += 1
         return what_next
 
