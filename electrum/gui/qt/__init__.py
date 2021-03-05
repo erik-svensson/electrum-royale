@@ -237,7 +237,7 @@ class ElectrumGui(Logger):
     def add_email_notification(self, wallet):
         config_key = EmailNotificationConfig.CONFIG_KEY
         notifications = self.config.get(config_key, False)
-        if not wallet.keystore.xprv:
+        if not wallet or not wallet.keystore.xprv:
             return
         if not notifications:
             self.config.set_key(config_key, {})
