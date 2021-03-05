@@ -7,12 +7,12 @@ from PyQt5.QtGui import QRegExpValidator
 from PyQt5.QtWidgets import QVBoxLayout, QLineEdit, QHBoxLayout, QLabel, QCheckBox, QPushButton
 
 from electrum.base_wizard import GoBack
+from electrum.email_notification_config import EmailNotificationConfig
 from electrum.gui.qt.installwizard import InstallWizard
 from electrum.gui.qt.util import TaskThread, WaitingDialogWithCancel
 from electrum.i18n import _, get_iso_639_1
-from electrum.notification_connector import EmailApiWallet, ApiError, Connector, EmailAlreadySubscribedError
+from electrum.notification_connector import EmailNotificationWallet, EmailNotificationApiError, Connector, EmailAlreadySubscribedError
 from electrum.util import UserCancelled
-from electrum.wallet import Abstract_Wallet
 
 
 class AbstractLineEdit(QLineEdit):
@@ -68,7 +68,7 @@ class InputFieldMixin:
             self.input_edit.set_normal()
 
 
-class EmailNotification(QVBoxLayout, ErrorMessageMixin, InputFieldMixin):
+class EmailNotificationLayout(QVBoxLayout, ErrorMessageMixin, InputFieldMixin):
     def __init__(self, parent, email='', error_msg='', show_skip_checkbox=True):
         super(). __init__()
         self.parent = parent
@@ -116,7 +116,7 @@ class EmailNotification(QVBoxLayout, ErrorMessageMixin, InputFieldMixin):
         return self.input_edit.text()
 
 
-class PinConfirmation(QVBoxLayout, ErrorMessageMixin, InputFieldMixin):
+class PinConfirmationLayout(QVBoxLayout, ErrorMessageMixin, InputFieldMixin):
     RESEND_COOL_DOWN_TIME = 30
 
     def __init__(self, parent, payload: dict, error_msg=''):
@@ -181,36 +181,6 @@ class PinConfirmation(QVBoxLayout, ErrorMessageMixin, InputFieldMixin):
         return self.input_edit.text()
 
 
-class EmailNotificationConfig:
-    CONFIG_KEY = 'email_notifications'
-
-    @staticmethod
-    def _to_email_api_wallet(wallet):
-        if isinstance(wallet, Abstract_Wallet):
-            wallet = EmailApiWallet.from_wallet(wallet)
-        return wallet
-
-    @staticmethod
-    def check_if_wallet_in_config(config, wallet):
-        wallet = EmailNotificationConfig._to_email_api_wallet(wallet)
-        data = config.get(EmailNotificationConfig.CONFIG_KEY, {})
-        return wallet.hash() in data
-
-    @staticmethod
-    def get_wallet_email(config, wallet):
-        if not EmailNotificationConfig.check_if_wallet_in_config(config, wallet):
-            return ''
-        wallet = EmailNotificationConfig._to_email_api_wallet(wallet)
-        return config.get(EmailNotificationConfig.CONFIG_KEY)[wallet.hash()]
-
-    @staticmethod
-    def save_email_to_config(config, wallet, email):
-        wallet = EmailNotificationConfig._to_email_api_wallet(wallet)
-        data = config.get(EmailNotificationConfig.CONFIG_KEY, {})
-        data[wallet.hash()] = email
-        config.set_key(EmailNotificationConfig.CONFIG_KEY, data)
-
-
 class EmailNotificationWizard(InstallWizard):
     class State(IntEnum):
         BACK = 1
@@ -220,7 +190,7 @@ class EmailNotificationWizard(InstallWizard):
 
     def __init__(self, wallet, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.wallet = EmailApiWallet.from_wallet(wallet)
+        self.wallet = EmailNotificationWallet.from_wallet(wallet)
         self.connector = Connector.from_config(self.config)
         self._email = ''
         self._error_message = ''
@@ -271,7 +241,7 @@ class EmailNotificationWizard(InstallWizard):
         self._error_message = ''
 
     def _choose_email(self):
-        layout = EmailNotification(
+        layout = EmailNotificationLayout(
             self,
             email=self._email,
             error_msg=self._error_message,
@@ -286,7 +256,7 @@ class EmailNotificationWizard(InstallWizard):
             try:
                 self._subscribe()
                 return self.State.NEXT
-            except ApiError as e:
+            except EmailNotificationApiError as e:
                 self._error_message = str(e)
                 if isinstance(e, EmailAlreadySubscribedError):
                     EmailNotificationConfig.save_email_to_config(self.config, self.wallet, self._email)
@@ -295,7 +265,7 @@ class EmailNotificationWizard(InstallWizard):
             return self.State.ERROR
 
     def confirm_pin(self, back_button_name=None):
-        layout = PinConfirmation(self, payload=self._payload, error_msg=self._error_message)
+        layout = PinConfirmationLayout(self, payload=self._payload, error_msg=self._error_message)
         result = self.exec_layout(layout, _('Confirm your email address'), next_enabled=False, back_button_name=back_button_name)
         layout.thread.terminate()
         if result:
@@ -304,7 +274,7 @@ class EmailNotificationWizard(InstallWizard):
         try:
             self.connector.authenticate(layout.pin())
             return self.State.NEXT
-        except ApiError as e:
+        except EmailNotificationApiError as e:
             self._error_message = str(e)
             return self.State.CONTINUE
 
@@ -421,7 +391,7 @@ class WalletInfoNotifications:
 
         def task():
             connector = Connector.from_config(self.config)
-            wallet = EmailApiWallet.from_wallet(self.wallet)
+            wallet = EmailNotificationWallet.from_wallet(self.wallet)
             response = connector.check_subscription([wallet.hash()], self.email)
             return response['result'][0]
 

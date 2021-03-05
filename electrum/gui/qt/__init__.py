@@ -30,7 +30,8 @@ import traceback
 import threading
 from typing import Optional, TYPE_CHECKING
 
-from .email_notification_dialogs import EmailNotificationWizard, EmailNotificationConfig
+from .email_notification_dialogs import EmailNotificationWizard
+from ...email_notification_config import EmailNotificationConfig
 from .terms_and_conditions_mixin import TermsNotAccepted
 from .three_keys_windows import ElectrumARWindow, ElectrumAIRWindow
 

@@ -17,7 +17,7 @@ _logger = get_logger(__name__)
 
 
 @dataclass
-class EmailApiWallet:
+class EmailNotificationWallet:
     name: str
     xpub: str
     derivation_path: str
@@ -47,13 +47,13 @@ class EmailApiWallet:
         )
 
 
-class ApiError(Exception):
+class EmailNotificationApiError(Exception):
     def __init__(self, message: str,  http_status_code: int=0):
         super().__init__(message)
         self.http_status_code = http_status_code
 
 
-class EmailAlreadySubscribedError(ApiError):
+class EmailAlreadySubscribedError(EmailNotificationApiError):
     pass
 
 
@@ -69,16 +69,16 @@ def request_error_handler(fun):
                 _logger.info(f'Email api response error {response.text}')
                 data = response.json()
                 if data.get('result', '') == 'error':
-                    raise ApiError(f"{data.get('msg')}", response.status_code)
-                raise ApiError('Something went wrong', response.status_code)
+                    raise EmailNotificationApiError(f"{data.get('msg')}", response.status_code)
+                raise EmailNotificationApiError('Something went wrong', response.status_code)
             return response.json()
         except (requests.exceptions.ConnectTimeout, requests.exceptions.ReadTimeout) as e:
-            raise ApiError(f'Reached connection timeout')
+            raise EmailNotificationApiError(f'Reached connection timeout')
         except requests.exceptions.ConnectionError as e:
             _logger.info(f'Email api connection error {str(e)}')
-            raise ApiError(f'Something went wrong when connecting with server')
+            raise EmailNotificationApiError(f'Something went wrong when connecting with server')
         except JSONDecodeError:
-            raise ApiError('Something went wrong')
+            raise EmailNotificationApiError('Something went wrong')
     return wrapper
 
 
@@ -87,7 +87,7 @@ def handle_email_already_exist_error_on_subscribe(fun):
     def wrapper(*args, **kwargs):
         try:
             return fun(*args, **kwargs)
-        except ApiError as e:
+        except EmailNotificationApiError as e:
             email = kwargs.get('email', '')
             email = email if email else args[2]
             # todo change depending on language of response message
@@ -119,7 +119,7 @@ class Connector:
 
     @handle_email_already_exist_error_on_subscribe
     @request_error_handler
-    def subscribe_email(self, wallets: List[EmailApiWallet], email: str, language: str):
+    def subscribe_email(self, wallets: List[EmailNotificationWallet], email: str, language: str):
         # todo remove logger and payload, only for debug purposes
         payload_ = {
             'wallets': [dict(filter(lambda item: item[1] is not None, dataclasses.asdict(wallet).items())) for wallet in wallets],
