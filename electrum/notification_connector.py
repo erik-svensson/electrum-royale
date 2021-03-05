@@ -91,7 +91,7 @@ def handle_email_already_exist_error_on_subscribe(fun):
             email = kwargs.get('email', '')
             email = email if email else args[2]
             # todo change depending on language of response message
-            if e.http_status_code == 400 and str(e).startswith(f'{email} is already subscribed'):
+            if e.http_status_code == 400 and str(e).startswith(f'Invalid wallet data: {email} is already subscribed'):
                 e.__class__ = EmailAlreadySubscribedError
             raise e
     return wrapper
