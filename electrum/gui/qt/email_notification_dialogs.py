@@ -220,7 +220,9 @@ class EmailNotificationWizard(InstallWizard):
                 break
             else:
                 break
-        self.show_message('<b>Success</b> <br><br> You have successfully subscribed wallet', rich_text=True)
+
+        if what_next in [self.State.NEXT, self.State.SHOW_EMAIL_SUBED]:
+            self.show_message('<b>Success</b> <br><br> You have successfully subscribed wallet', rich_text=True)
 
     @staticmethod
     def run_single_view(method, *args, max_attempts=None):
@@ -292,10 +294,11 @@ class EmailNotificationDialog(EmailNotificationWizard):
         self.setWindowTitle(_('Notifications'))
 
     def only_confirm_pin(self):
-        EmailNotificationWizard.run_single_view(
+        response = EmailNotificationWizard.run_single_view(
             super().confirm_pin, None
         )
-        self.show_message('<b>Success</b> <br><br> You have successfully subscribed wallet', rich_text=True)
+        if response == self.State.NEXT:
+            self.show_message('<b>Success</b> <br><br> You have successfully subscribed wallet', rich_text=True)
         self.terminate()
 
 
