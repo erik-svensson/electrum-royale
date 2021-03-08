@@ -95,6 +95,7 @@ from .util import (read_QIcon, ColorScheme, text_dialog, icon_path, WaitingDialo
                    import_meta_gui, export_meta_gui,
                    filename_field, address_field, char_width_in_lineedit, webopen,
                    TRANSACTION_FILE_EXTENSION_FILTER)
+from ...notification_connector import EmailNotificationWallet
 
 if TYPE_CHECKING:
     from . import ElectrumGui
@@ -271,7 +272,7 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
             self._update_check_thread.start()
 
         self.wallet_info_notification_buttons = None
-        if self.wallet.keystore.xprv:
+        if EmailNotificationWallet.is_subscribable(self.wallet):
             self._wallet_info_notification = WalletInfoNotifications(self, self.config, self.wallet, self.app)
 
             def wallet_info_notification_buttons(dialog):

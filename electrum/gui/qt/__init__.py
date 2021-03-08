@@ -34,6 +34,7 @@ from .email_notification_dialogs import EmailNotificationWizard
 from ...email_notification_config import EmailNotificationConfig
 from .terms_and_conditions_mixin import TermsNotAccepted
 from .three_keys_windows import ElectrumARWindow, ElectrumAIRWindow
+from ...notification_connector import EmailNotificationWallet
 
 try:
     import PyQt5
@@ -235,10 +236,10 @@ class ElectrumGui(Logger):
         return wrapper
 
     def add_email_notification(self, wallet):
+        if not EmailNotificationWallet.is_subscribable(wallet):
+            return
         config_key = EmailNotificationConfig.CONFIG_KEY
         notifications = self.config.get(config_key, False)
-        if not wallet or not wallet.keystore.xprv:
-            return
         if not notifications:
             self.config.set_key(config_key, {})
         if not EmailNotificationConfig.check_if_wallet_in_config(self.config, wallet):

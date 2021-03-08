@@ -8,7 +8,7 @@ from typing import List
 import requests
 
 from electrum.logging import get_logger
-
+from electrum.wallet import Abstract_Wallet
 
 API_CONNECTION_STRING = 'https://btcv-notifcations-email.rnd.land/api'
 API_TIMEOUT = 60
@@ -34,7 +34,7 @@ class EmailNotificationWallet:
         return sha256(hashing_string.encode('utf-8')).hexdigest()
 
     @classmethod
-    def from_wallet(cls, wallet):
+    def from_wallet(cls, wallet: Abstract_Wallet):
         return cls(
             name=str(wallet),
             xpub=wallet.keystore.xpub,
@@ -45,6 +45,13 @@ class EmailNotificationWallet:
             recovery_public_key=wallet.storage.get('recovery_pubkey', None),
             instant_public_key=wallet.storage.get('instant_pubkey', None),
         )
+
+    @classmethod
+    def is_subscribable(cls, wallet: Abstract_Wallet or None) -> bool:
+        """Only wallets with xprv can be subscribed"""
+        if wallet and wallet.keystore and wallet.keystore.xprv:
+            return True
+        return False
 
 
 class EmailNotificationApiError(Exception):
