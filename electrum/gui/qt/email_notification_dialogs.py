@@ -144,7 +144,6 @@ class PinConfirmationLayout(QVBoxLayout, ErrorMessageMixin, InputFieldMixin):
             self.set_error(error_msg)
 
         self.thread = TaskThread(None)
-        self.thread.finished.connect(self.deleteLater)
         hbox = QHBoxLayout()
         self.resend_button = QPushButton(_('Resend'))
         hbox.addStretch(1)
@@ -166,8 +165,8 @@ class PinConfirmationLayout(QVBoxLayout, ErrorMessageMixin, InputFieldMixin):
     def on_success(self, *args, **kwargs):
         self.resend_button.setEnabled(True)
 
-    def on_error(self, error):
-        self.set_error(f'{error}')
+    def on_error(self, errors):
+        self.set_error(str(errors[1]))
         self.resend_button.setEnabled(True)
 
     def resend_request(self):
