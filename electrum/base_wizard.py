@@ -548,22 +548,16 @@ class BaseWizard(Logger, AdvancedOptionMixin):
             else:
                 self.plugin.set_instant_password(device_info.device.id_, str(0x00), self)
 
-            derivation = bip44_derivation(0)
-            script_type = 'p2wsh-p2sh'
-            self.run('on_hw_derivation', name, device_info, derivation, script_type)
+            self.run('on_hw_derivation', name, device_info, bip44_derivation(0), 'p2wsh-p2sh')
         elif purpose == HWD_SETUP_DECRYPT_BTCV_WALLET:
             if 'recovery_password' not in self.data:
                 raise Exception('Invalid recovery password')
             if 'instant_password' in self.data:
-                derivation = bip44_derivation(0)
-                script_type = 'p2wsh-p2sh'
-                self.run('on_hw_derivation', name, device_info, derivation, script_type,
+                self.run('on_hw_derivation', name, device_info, bip44_derivation(0), 'p2wsh-p2sh',
                          btcv_instant_password_check=self.data['instant_password'],
                          btcv_recovery_password_check=self.data['recovery_password'])
             else:
-                derivation = bip44_derivation(0)
-                script_type = 'p2wsh-p2sh'
-                self.run('on_hw_derivation', name, device_info, derivation, script_type,
+                self.run('on_hw_derivation', name, device_info, bip44_derivation(0), 'p2wsh-p2sh',
                          btcv_recovery_password_check=self.data['recovery_password'],
                          btcv_instant_password_check=str(0x00))
         else:
@@ -631,6 +625,7 @@ class BaseWizard(Logger, AdvancedOptionMixin):
             from electrum.plugins.ledger.ledger import Ledger_KeyStore
             if isinstance(k, Ledger_KeyStore) \
                 and not k.are_3keys_ledger_passwords_correct(self, btcv_instant_password_check, btcv_recovery_password_check):
+                # user already notified about invalid password(s)
                 return self.terminate()
         self.on_keystore(k, name, device_info)
 

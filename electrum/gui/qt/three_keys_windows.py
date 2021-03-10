@@ -302,7 +302,7 @@ and the blockchain parameters of the Bitcoin Vault wallet. Your funds will be un
         grid.addWidget(self.max_button, 3, 3)
 
         def on_tx_type(index):
-            if not (self.is_2fa or self.is_hw):
+            if not self.is_2fa and not self.is_hw:
                 if self.tx_type_combo.currentIndex() == self.TX_TYPES.Secure:
                     self.instant_privkey_line.setEnabled(False)
                     self.instant_privkey_line.clear()
@@ -351,7 +351,7 @@ and the blockchain parameters of the Bitcoin Vault wallet. Your funds will be un
         grid.addWidget(tx_type_label, 4, 0)
         grid.addWidget(self.tx_type_combo, 4, 1, 1, -1)
 
-        if not (self.is_2fa or self.is_hw):
+        if not self.is_2fa and not self.is_hw:
             instant_privkey_label = HelpLabel(_('Secure Fast Tx seed'), msg)
             self.instant_privkey_line = CompletionTextEdit()
             self.instant_privkey_line.setTabChangesFocus(False)
@@ -483,7 +483,7 @@ and the blockchain parameters of the Bitcoin Vault wallet. Your funds will be un
             self.wallet.set_alert()
             if invoice['txtype'] == TxType.INSTANT.name:
                 try:
-                    if not (self.is_2fa or self.is_hw) and external_keypairs == None:
+                    if not self.is_2fa and not self.is_hw and external_keypairs == None:
                         external_keypairs = self.get_instant_keypair()
                     self.wallet.set_instant()
                 except Exception as e:
@@ -517,7 +517,7 @@ and the blockchain parameters of the Bitcoin Vault wallet. Your funds will be un
         for e in [self.payto_e, self.message_e, self.amount_e]:
             e.setText('')
             e.setFrozen(False)
-        if not (self.is_2fa or self.is_hw):
+        if not self.is_2fa and not self.is_hw:
             self.instant_privkey_line.clear()
         self.tx_type_combo.setCurrentIndex(self.TX_TYPES.Secure)
         self.update_status()
@@ -634,15 +634,18 @@ class ElectrumAIRHWWindow(ElectrumAIRWindow):
         if not invoice:
             return
 
-        # keypair = None
-        if self.tx_type_combo.currentIndex() == self.TX_TYPES.Secure_Fast:
-            invoice['txtype'] = TxType.INSTANT.name
-            password = self.instant_password_line.text()
-            self.wallet.set_instant()
-            # TODO: try-catch?
-        else:
-            invoice['txtype'] = TxType.ALERT_PENDING.name
-            self.wallet.set_alert()
+        try:
+            if self.tx_type_combo.currentIndex() == self.TX_TYPES.Secure_Fast:
+                invoice['txtype'] = TxType.INSTANT.name
+                self.instant_password_line.text()
+                self.wallet.set_instant()
+            else:
+                invoice['txtype'] = TxType.ALERT_PENDING.name
+                self.wallet.set_alert()
+        except Exception as e:
+            self.on_error([0, str(e)])
+            return
+
         self.wallet.save_invoice(invoice)
         self.invoice_list.update()
         self.do_pay_invoice(invoice)

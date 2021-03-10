@@ -513,71 +513,19 @@ class Ledger_KeyStore(Hardware_KeyStore):
                                              sig=inputSignature.hex())
                     inputIndex = inputIndex + 1
 
-
-                #TODO: strategy design pattern?
                 if recovery_password:
-                    inputIndex = 0
-                    self.get_client().startUntrustedTransaction(True, inputIndex,
-                                                                chipInputs, redeemScripts[inputIndex], version=tx.version)
-                    # we don't set meaningful outputAddress, amount and fees
-                    # as we only care about the alternateEncoding==True branch
-                    outputData = self.get_client().finalizeInput(b'', 0, 0, changePath, bfh(rawTx))
-                    outputData['outputData'] = txOutput
-                    if outputData['confirmationNeeded']:
-                        outputData['address'] = output
-                        self.handler.finished()
-                        pin = self.handler.get_auth( outputData ) # does the authenticate dialog and returns pin
-                        if not pin:
-                            raise UserWarning()
-                        self.handler.show_message(_("Confirmed. Signing Transaction..."))
-                    while inputIndex < len(inputs):
-                        singleInput = [ chipInputs[inputIndex] ]
-                        self.get_client().startUntrustedTransaction(False, 0,
-                                                                    singleInput, redeemScripts[inputIndex], version=tx.version)
-                        self.set_btcv_password_use(tx_type=LedgerBtcvTxType.RECOVERY, password=recovery_password)
-
-                        inputSignature = self.get_client().untrustedHashSign(inputsPaths[inputIndex], pin, lockTime=tx.locktime)
-                        inputSignature[0] = 0x30 # force for 1.4.9+
-
-                        if instant_password:
-                            my_pubkey = list(tx.inputs()[inputIndex].bip32_paths.keys())[2]
-                        else:
-                            my_pubkey = list(tx.inputs()[inputIndex].bip32_paths.keys())[1]
-
-                        tx.add_signature_to_txin(txin_idx=inputIndex,
-                                                 signing_pubkey=my_pubkey.hex(),
-                                                 sig=inputSignature.hex())
-                        inputIndex = inputIndex + 1
+                    three_keys_pubkey_index = 1
+                    if instant_password:
+                        three_keys_pubkey_index = 2
+                    self.add_3k_signatures_to_tx(changePath, chipInputs, inputs, inputsPaths,
+                                                       LedgerBtcvTxType.RECOVERY, output, pin, rawTx, recovery_password,
+                                                       redeemScripts, tx, txOutput, three_keys_pubkey_index)
                 if instant_password:
-                    inputIndex = 0
-                    self.get_client().startUntrustedTransaction(True, inputIndex,
-                                                                chipInputs, redeemScripts[inputIndex], version=tx.version)
-                    # we don't set meaningful outputAddress, amount and fees
-                    # as we only care about the alternateEncoding==True branch
-                    outputData = self.get_client().finalizeInput(b'', 0, 0, changePath, bfh(rawTx))
-                    outputData['outputData'] = txOutput
-                    if outputData['confirmationNeeded']:
-                        outputData['address'] = output
-                        self.handler.finished()
-                        pin = self.handler.get_auth( outputData ) # does the authenticate dialog and returns pin
-                        if not pin:
-                            raise UserWarning()
-                        self.handler.show_message(_("Confirmed. Signing Transaction..."))
-                    while inputIndex < len(inputs):
-                        singleInput = [ chipInputs[inputIndex] ]
-                        self.get_client().startUntrustedTransaction(False, 0,
-                                                                    singleInput, redeemScripts[inputIndex], version=tx.version)
-                        self.set_btcv_password_use(tx_type=LedgerBtcvTxType.INSTANT, password=instant_password)
+                    three_keys_pubkey_index = 1
+                    self.add_3k_signatures_to_tx(changePath, chipInputs, inputs, inputsPaths,
+                                                       LedgerBtcvTxType.INSTANT, output, pin, rawTx, instant_password,
+                                                       redeemScripts, tx, txOutput, three_keys_pubkey_index)
 
-                        inputSignature = self.get_client().untrustedHashSign(inputsPaths[inputIndex], pin, lockTime=tx.locktime)
-                        inputSignature[0] = 0x30 # force for 1.4.9+
-
-                        my_pubkey = list(tx.inputs()[inputIndex].bip32_paths.keys())[1]
-
-                        tx.add_signature_to_txin(txin_idx=inputIndex,
-                                                 signing_pubkey=my_pubkey.hex(),
-                                                 sig=inputSignature.hex())
-                        inputIndex = inputIndex + 1
             else:
                 while inputIndex < len(inputs):
                     self.get_client().startUntrustedTransaction(firstTransaction, inputIndex,
@@ -620,6 +568,38 @@ class Ledger_KeyStore(Hardware_KeyStore):
         finally:
             self.handler.finished()
 
+    def add_3k_signatures_to_tx(self, changePath, chipInputs, inputs, inputsPaths, tx_type, output,
+                                pin, rawTx, three_keys_password, redeemScripts, tx, txOutput, three_keys_pubkey_index):
+        inputIndex = 0
+        self.get_client().startUntrustedTransaction(True, inputIndex,
+                                                    chipInputs, redeemScripts[inputIndex], version=tx.version)
+        # we don't set meaningful outputAddress, amount and fees
+        # as we only care about the alternateEncoding==True branch
+        outputData = self.get_client().finalizeInput(b'', 0, 0, changePath, bfh(rawTx))
+        outputData['outputData'] = txOutput
+        if outputData['confirmationNeeded']:
+            outputData['address'] = output
+            self.handler.finished()
+            pin = self.handler.get_auth(outputData)  # does the authenticate dialog and returns pin
+            if not pin:
+                raise UserWarning()
+            self.handler.show_message(_("Confirmed. Signing Transaction..."))
+        while inputIndex < len(inputs):
+            singleInput = [chipInputs[inputIndex]]
+            self.get_client().startUntrustedTransaction(False, 0,
+                                                        singleInput, redeemScripts[inputIndex], version=tx.version)
+            self.set_btcv_password_use(tx_type=tx_type, password=three_keys_password)
+
+            inputSignature = self.get_client().untrustedHashSign(inputsPaths[inputIndex], pin, lockTime=tx.locktime)
+            inputSignature[0] = 0x30  # force for 1.4.9+
+
+            my_pubkey = list(tx.inputs()[inputIndex].bip32_paths.keys())[three_keys_pubkey_index]
+
+            tx.add_signature_to_txin(txin_idx=inputIndex,
+                                     signing_pubkey=my_pubkey.hex(),
+                                     sig=inputSignature.hex())
+            inputIndex = inputIndex + 1
+
     @test_pin_unlocked
     @set_and_unset_signing
     def get_address(self, sequence, txin_type, btcvAddr=False):
@@ -635,22 +615,6 @@ class Ledger_KeyStore(Hardware_KeyStore):
             self.logger.exception(e)
 
         return result['address'].decode("utf-8")
-
-    @test_pin_unlocked
-    @set_and_unset_signing
-    def get_addresses_batch(self, sequences, txin_type, btcvAddr=False):
-        client = self.get_client()
-        address_paths = [self.get_derivation_prefix()[2:] + "/%d/%d"%sequence for sequence in sequences]
-        segwit = is_segwit_script_type(txin_type)
-        segwitNative = txin_type == 'p2wpkh'
-
-        resultBatch = None
-        try:
-            resultBatch = client.getWalletPublicKeyBatch(address_paths, segwit=segwit, segwitNative=segwitNative, btcvAddr=btcvAddr)
-        except Exception as e:
-            self.logger.exception(e)
-
-        return [result['address'].decode("utf-8") for result in resultBatch]
 
     @test_pin_unlocked
     @set_and_unset_signing
