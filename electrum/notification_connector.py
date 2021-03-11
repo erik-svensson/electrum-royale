@@ -146,7 +146,7 @@ class Connector:
         )
 
     @request_error_handler
-    def authenticate(self, pin: int):
+    def authenticate(self, pin: str):
         return requests.post(
             f'{self.connection_string}/authenticate/',
             json={
