@@ -156,7 +156,7 @@ class PinConfirmationLayout(QVBoxLayout, ErrorMessageMixin, InputFieldMixin):
 
     def resend_task(self):
         t0 = datetime.datetime.now()
-        response = self.parent.connector.subscribe_email(**self.payload)
+        response = self.parent.connector.subscribe_wallet(**self.payload)
         t1 = datetime.datetime.now()
         elapsed_time = (t1 - t0).total_seconds()
         self.parent.connector.set_token(response)
@@ -242,7 +242,7 @@ class EmailNotificationWizard(InstallWizard):
             'language': get_iso_639_1(self.config.get('language'))
         }
         self._payload = payload
-        response = self.connector.subscribe_email(**payload)
+        response = self.connector.subscribe_wallet(**payload)
         self.connector.set_token(response)
         self._error_message = ''
 

@@ -126,7 +126,7 @@ class Connector:
 
     @handle_email_already_exist_error_on_subscribe
     @request_error_handler
-    def subscribe_email(self, wallets: List[EmailNotificationWallet], email: str, language: str):
+    def subscribe_wallet(self, wallets: List[EmailNotificationWallet], email: str, language: str):
         # todo remove logger and payload, only for debug purposes
         payload_ = {
             'wallets': [dict(filter(lambda item: item[1] is not None, dataclasses.asdict(wallet).items())) for wallet in wallets],
