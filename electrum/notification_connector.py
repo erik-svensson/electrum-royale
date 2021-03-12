@@ -49,9 +49,7 @@ class EmailNotificationWallet:
     @classmethod
     def is_subscribable(cls, wallet: Abstract_Wallet or None) -> bool:
         """Only wallets with xprv can be subscribed"""
-        if wallet and wallet.keystore and wallet.keystore.xprv:
-            return True
-        return False
+        return bool(wallet and wallet.keystore and wallet.keystore.xprv)
 
 
 class EmailNotificationApiError(Exception):
