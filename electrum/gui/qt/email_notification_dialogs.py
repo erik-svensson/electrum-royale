@@ -10,7 +10,7 @@ from electrum.base_wizard import GoBack
 from electrum.email_notification_config import EmailNotificationConfig
 from electrum.gui.qt.installwizard import InstallWizard
 from electrum.gui.qt.util import TaskThread, WaitingDialogWithCancel
-from electrum.i18n import _, get_iso_639_1
+from electrum.i18n import _, convert_to_iso_639_1
 from electrum.notification_connector import EmailNotificationWallet, EmailNotificationApiError, Connector, EmailAlreadySubscribedError
 from electrum.util import UserCancelled
 
@@ -239,7 +239,7 @@ class EmailNotificationWizard(InstallWizard):
         payload = {
             'wallets': [self.wallet],
             'email': self._email,
-            'language': get_iso_639_1(self.config.get('language'))
+            'language': convert_to_iso_639_1(self.config.get('language'))
         }
         self._payload = payload
         response = self.connector.subscribe_wallet(**payload)

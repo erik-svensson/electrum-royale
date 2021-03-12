@@ -55,5 +55,7 @@ languages = {
 }
 
 
-def get_iso_639_1(language: str):
+def convert_to_iso_639_1(language: str):
+    if len(language) < 2:
+        raise ValueError(f'Cannot convert {language}')
     return language[:2].lower()
