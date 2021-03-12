@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Parameterize
-PYTHON_VERSION=3.7.7
+PYTHON_VERSION=3.7.9
 BUILDDIR=/tmp/electrum-build
 PACKAGE=ElectrumVault
 GIT_REPO=https://github.com/bitcoinvault/electrum-vault
@@ -39,7 +39,7 @@ else
 fi
 
 info "Installing Python $PYTHON_VERSION"
-export PATH="~/.pyenv/bin:~/.pyenv/shims:~/Library/Python/3.6/bin:$PATH"
+export PATH="~/.pyenv/bin:~/.pyenv/shims:~/Library/Python/3.7/bin:$PATH"
 if [ -d "~/.pyenv" ]; then
   pyenv update
 else
