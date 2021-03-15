@@ -76,6 +76,7 @@ from electrum.wallet import (Multisig_Wallet, CannotBumpFee, Abstract_Wallet,
 from .amountedit import AmountEdit, BTCAmountEdit, MyLineEdit, FeerateEdit
 from .channels_list import ChannelsList
 from .confirm_tx_dialog import ConfirmTxDialog
+from .email_notification_dialogs import WalletInfoNotifications
 from .exception_window import Exception_Hook
 from .fee_slider import FeeSlider
 from .history_list import HistoryList, HistoryModel
@@ -94,6 +95,7 @@ from .util import (read_QIcon, ColorScheme, text_dialog, icon_path, WaitingDialo
                    import_meta_gui, export_meta_gui,
                    filename_field, address_field, char_width_in_lineedit, webopen,
                    TRANSACTION_FILE_EXTENSION_FILTER)
+from ...notification_connector import EmailNotificationWallet
 
 if TYPE_CHECKING:
     from . import ElectrumGui
@@ -268,6 +270,19 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
             self._update_check_thread = UpdateCheckThread(self)
             self._update_check_thread.checked.connect(on_version_received)
             self._update_check_thread.start()
+
+        self.wallet_info_notification_buttons = None
+        if EmailNotificationWallet.is_subscribable(self.wallet):
+            self._wallet_info_notification = WalletInfoNotifications(self, self.config, self.wallet, self.app)
+
+            def wallet_info_notification_buttons(dialog):
+                button = QPushButton()
+                self._wallet_info_notification.dialog = dialog
+                self._wallet_info_notification.sub_unsub_button = button
+                self._wallet_info_notification.sync_sub_unsub_button()
+                return Buttons(button, CloseButton(dialog))
+
+            self.wallet_info_notification_buttons = wallet_info_notification_buttons
 
     def setup_exception_hook(self):
         Exception_Hook(self)
@@ -2119,7 +2134,10 @@ in the "Authenticators" tab in the Gold Wallet app.')
             vbox.addWidget(mpk_text)
 
         vbox.addStretch(1)
-        btns = run_hook('wallet_info_buttons', self, dialog) or Buttons(CloseButton(dialog))
+        buttons = Buttons(CloseButton(dialog))
+        if self.wallet_info_notification_buttons:
+            buttons = self.wallet_info_notification_buttons(dialog)
+        btns = run_hook('wallet_info_buttons', self, dialog) or buttons
         vbox.addLayout(btns)
         dialog.setLayout(vbox)
         dialog.exec_()

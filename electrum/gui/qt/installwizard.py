@@ -5,6 +5,7 @@ import os
 import threading
 from typing import Tuple, List, Callable, Optional, TYPE_CHECKING
 
+from PyQt5 import QtCore
 from PyQt5.QtCore import QRect, QEventLoop, Qt, pyqtSignal
 from PyQt5.QtGui import QPalette, QPen, QPainter, QPixmap
 from PyQt5.QtWidgets import (QWidget, QDialog, QLabel, QHBoxLayout, QVBoxLayout, QLineEdit, QFileDialog, QPushButton,
@@ -108,8 +109,10 @@ class WalletAlreadyOpenInMemory(Exception):
 class InstallWizard(QDialog, MessageBoxMixin, BaseWizard, TermsAndConditionsMixin):
     accept_signal = pyqtSignal()
 
-    def __init__(self, config: 'SimpleConfig', app: QApplication, plugins: 'Plugins'):
-        QDialog.__init__(self, None)
+    def __init__(self, config: 'SimpleConfig', app: QApplication, plugins: 'Plugins', **kwargs):
+        QDialog.__init__(self, parent=kwargs.get('parent', None))
+        if kwargs.get('parent', None):
+            self.setWindowModality(QtCore.Qt.ApplicationModal)
         BaseWizard.__init__(self, config, plugins)
         self.app = app
         self.config = config
@@ -137,7 +140,8 @@ class InstallWizard(QDialog, MessageBoxMixin, BaseWizard, TermsAndConditionsMixi
         inner_vbox.addWidget(self.please_wait)
         inner_vbox.addStretch(1)
         scroll_widget = QWidget()
-        scroll_widget.setLayout(inner_vbox)
+        if not kwargs.get('turn_off_icon', None):
+            scroll_widget.setLayout(inner_vbox)
         scroll = QScrollArea()
         scroll.setWidget(scroll_widget)
         scroll.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
@@ -150,7 +154,10 @@ class InstallWizard(QDialog, MessageBoxMixin, BaseWizard, TermsAndConditionsMixi
         hbox.addSpacing(5)
         hbox.addWidget(scroll)
         hbox.setStretchFactor(scroll, 1)
-        outer_vbox.addLayout(hbox)
+        if kwargs.get('turn_off_icon', None):
+            outer_vbox.addLayout(inner_vbox)
+        else:
+            outer_vbox.addLayout(hbox)
         outer_vbox.addLayout(Buttons(self.back_button, self.next_button))
         self._add_advanced_button()
         self.set_icon('electrum.png')
