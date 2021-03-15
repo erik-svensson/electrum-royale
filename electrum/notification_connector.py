@@ -10,7 +10,8 @@ import requests
 from electrum.logging import get_logger
 from electrum.wallet import Abstract_Wallet
 
-API_CONNECTION_STRING = 'https://btcv-notifcations-email.rnd.land/api'
+# todo set production address when it will be ready
+API_CONNECTION_STRING = 'https://email-notifications.testnet.btcv.stage.rnd.land/api'
 API_TIMEOUT = 60
 
 _logger = get_logger(__name__)
