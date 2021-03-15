@@ -35,6 +35,11 @@ class ElectrumMultikeyWalletWindow(ElectrumWindow):
 
         self.READY_TO_UPDATE = True
 
+    def timer_actions(self):
+    # synchronizing the timer thread with end of the __init__ call
+        if self.READY_TO_UPDATE:
+            super().timer_actions()
+
     def create_recovery_tab(self, wallet: 'Abstract_Wallet', config):
         raise NotImplementedError()
 

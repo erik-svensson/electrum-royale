@@ -598,7 +598,7 @@ class Ledger_KeyStore(Hardware_KeyStore):
             tx.add_signature_to_txin(txin_idx=inputIndex,
                                      signing_pubkey=my_pubkey.hex(),
                                      sig=inputSignature.hex())
-            inputIndex = inputIndex + 1
+            inputIndex += 1
 
     @test_pin_unlocked
     @set_and_unset_signing
@@ -608,13 +608,12 @@ class Ledger_KeyStore(Hardware_KeyStore):
         segwit = is_segwit_script_type(txin_type)
         segwitNative = txin_type == 'p2wpkh'
 
-        result = None
         try:
             result = client.getWalletPublicKey(address_path, showOnScreen=False, segwit=segwit, segwitNative=segwitNative, btcvAddr=btcvAddr)
+            return result['address'].decode("utf-8")
         except Exception as e:
             self.logger.exception(e)
 
-        return result['address'].decode("utf-8")
 
     @test_pin_unlocked
     @set_and_unset_signing

@@ -2676,11 +2676,9 @@ class MultikeyHWWallet(Multisig_Wallet):
         self._get_hw_keystore().set_btcv_password_use(tx_type=LedgerBtcvTxType.ALERT)
 
     def set_recovery(self):
-        from .plugins.ledger.ledger import LedgerBtcvTxType
         self.multisig_script_generator.set_recovery()
 
     def set_instant(self):
-        from .plugins.ledger.ledger import LedgerBtcvTxType
         self.multisig_script_generator.set_instant()
 
     def sign_transaction(self, tx: Transaction, password, update_pubkeys_fn=None, recovery_password=None, instant_password=None) -> Optional[PartialTransaction]:
@@ -2755,7 +2753,7 @@ class MultikeyHWWallet(Multisig_Wallet):
         for k in self.get_keystores():
             if isinstance(k, Hardware_KeyStore):
                 return k
-        assert False
+        raise AssertionError("Hardware keystore not found")
 
     def is_recovery_mode(self):
         return self.multisig_script_generator.is_recovery_mode()
@@ -2829,7 +2827,6 @@ class ThreeKeysHWWallet(MultikeyHWWallet):
 
     def _add_instant_pubkey_to_transaction(self, tx):
         for input in tx.inputs():
-            # instant_pubkey = bytes.fromhex(input.multisig_script_generator.instant_pubkey)
             instant_pubkey = bytes.fromhex(self.multisig_script_generator.instant_pubkey)
             if instant_pubkey not in input.pubkeys:
                 input.pubkeys.append(instant_pubkey)

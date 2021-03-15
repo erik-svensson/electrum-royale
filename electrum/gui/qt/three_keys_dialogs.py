@@ -179,7 +179,6 @@ class InsertHWPasswordDialog(QVBoxLayout):
 class CheckHWPasswordDialog(QVBoxLayout):
     def __init__(self, parent, message_label):
         super().__init__()
-        # self.parent.next_button.setEnabled(False)
         self.parent = parent
         label = message_label
         self.edit = QLineEdit()
