@@ -170,3 +170,15 @@ class Connector:
             timeout=self.timeout,
             verify=self.VERIFY,
         )
+
+    @request_error_handler
+    def unsubscribe_wallet(self, wallet_hashes: List[str], email: str):
+        return requests.post(
+            f'{self.connection_string}/unsubscribe/',
+            json={
+                'hashes': wallet_hashes,
+                'email': email,
+            },
+            timeout=self.timeout,
+            verify=self.VERIFY,
+        )
