@@ -276,11 +276,17 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
             self._wallet_info_notification = WalletInfoNotifications(self, self.config, self.wallet, self.app)
 
             def wallet_info_notification_buttons(dialog):
-                button = QPushButton()
+                sub_unsub_button = QPushButton()
+                update_button = QPushButton(_('Update'))
                 self._wallet_info_notification.dialog = dialog
-                self._wallet_info_notification.sub_unsub_button = button
+                self._wallet_info_notification.sub_unsub_button = sub_unsub_button
+                self._wallet_info_notification.update_button = update_button
                 self._wallet_info_notification.sync_sub_unsub_button()
-                return Buttons(button, CloseButton(dialog))
+                return Buttons(
+                    update_button,
+                    sub_unsub_button,
+                    CloseButton(dialog)
+                )
 
             self.wallet_info_notification_buttons = wallet_info_notification_buttons
 
