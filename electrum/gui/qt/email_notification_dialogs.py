@@ -77,8 +77,7 @@ class EmailNotificationLayout(QVBoxLayout, ErrorMessageMixin, InputFieldMixin):
         self.parent = parent
         label = QLabel(_(
             'If you want to receive email notifications, please enter your email address. We will send you information '
-            'about your transaction statuses. You can always change or add it later in Tools. It will be saved in the '
-            'Electrum Vault and used within the app.'
+            'about your transaction statuses.'
         ))
         label.setWordWrap(True)
         box = QHBoxLayout()
@@ -124,7 +123,9 @@ class ChangeEmailLayout(QVBoxLayout, ErrorMessageMixin, InputFieldMixin):
         super().__init__()
         self.parent = parent
         self.current_email = current_email
-        label = QLabel(_('Enter new email address'))
+        label = QLabel(
+            _('You can change your email. It is used to send you transaction notifications from chosen wallet.')
+        )
         label.setWordWrap(True)
         box = QHBoxLayout()
         current_email_label = QLabel(_('Current email') + f':<b>{current_email}</b>')
@@ -165,8 +166,7 @@ class ResendStrategy(ABC):
 
     def on_error(self, error: EmailNotificationApiError):
         if self.apply_error_logic(error):
-            # todo adjust message in pop-up
-            self.parent.show_error('error in thread return BACK\n\n' + str(error))
+            self.parent.show_error(str(error))
             self.parent.loop.exit(1)
 
     @abstractmethod
@@ -218,7 +218,7 @@ class PinConfirmationLayout(QVBoxLayout, ErrorMessageMixin, InputFieldMixin):
         self.parent = parent
         self.resend_strategy = parent.resend_strategy
 
-        label = QLabel(_('Please enter the code we sent to: ') + f"<br><b>{email}</b>")
+        label = QLabel(_('To confirm the request, please enter the code we sent to') + f"<br><b>{email}</b>")
         label.setWordWrap(True)
         box = QHBoxLayout()
         code_label = QLabel(_('Code:'))
@@ -308,29 +308,26 @@ class EmailNotificationWizard(InstallWizard):
             what_next = self.run_single_view(self._choose_email)
             if what_next == self.State.NEXT:
                 EmailNotificationConfig.save_email_to_config(self.config, self.wallet, self._email)
-                what_next = self.run_single_view(self.confirm_pin, _('Back'))
-            elif what_next == self.State.SHOW_EMAIL_SUBSCRIBED:
-                self.show_message(self._error_message)
-                break
+                what_next = self.run_single_view(self.confirm_pin, back_button_name=_('Back'))
             else:
                 break
 
         if what_next in [self.State.NEXT, self.State.SHOW_EMAIL_SUBSCRIBED]:
+            message = (
+                    self._error_message + '\n' +
+                    _('You have successfully added your email address.')
+            ) if what_next == self.State.SHOW_EMAIL_SUBSCRIBED else _('You have successfully subscribed wallet')
             self.show_message(
                 title=_('Success'),
-                msg=_('You have successfully subscribed wallet'),
+                msg=message,
                 rich_text=True,
             )
 
     @staticmethod
-    def run_single_view(method, *args, max_attempts=None):
+    def run_single_view(method, *args, **kwargs):
         what_next = EmailNotificationWizard.State.CONTINUE
-        counter = 0
         while what_next == EmailNotificationWizard.State.CONTINUE:
-            what_next = method(*args)
-            if max_attempts and counter > max_attempts:
-                what_next = EmailNotificationWizard.State.ERROR
-            counter += 1
+            what_next = method(*args, **kwargs)
         return what_next
 
     def _subscribe(self):
@@ -367,10 +364,15 @@ class EmailNotificationWizard(InstallWizard):
         else:
             return self.State.ERROR
 
-    def confirm_pin(self, back_button_name=None, email=''):
+    def confirm_pin(self, back_button_name=None, email='', layout_title=''):
         layout = PinConfirmationLayout(self, email=email if email else self._email, error_msg=self._error_message)
         self.auto_resend_logic(layout=layout)
-        result = self.exec_layout(layout, _('Confirm your email address'), next_enabled=False, back_button_name=back_button_name)
+        result = self.exec_layout(
+            layout,
+            _('Confirm your email address') if not layout_title else layout_title,
+            next_enabled=False,
+            back_button_name=back_button_name
+        )
         layout.thread.terminate()
         if result:
             self._error_message = ''
@@ -389,8 +391,7 @@ class EmailNotificationWizard(InstallWizard):
     def apply_pin_error_logic(self, error: EmailNotificationApiError):
         self._error_message = str(error)
         if isinstance(error, (NoMorePINAttemptsError, TokenError)):
-            message = str(error) + '\n\n' + _('Resend will be automatically performed')
-            self.show_error(msg=message, parent=self)
+            self.show_error(msg=str(error), parent=self, rich_text=True)
             self._auto_resend_request = True
         return self.State.CONTINUE
 
@@ -414,7 +415,9 @@ class UnsubscribeEmailNotificationDialog(EmailNotificationDialog):
 
     def confirm_pin(self, back_button_name=None, email=''):
         response = EmailNotificationWizard.run_single_view(
-            super().confirm_pin, back_button_name, email
+            super().confirm_pin,
+            back_button_name=back_button_name,
+            email=email,
         )
         if response == self.State.NEXT:
             EmailNotificationConfig.save_email_to_config(self.config, self.wallet, "")
@@ -452,10 +455,19 @@ class UpdateEmailNotificationDialog(EmailNotificationDialog):
             if what_next != self.State.SKIP_EMAIL_VIEW:
                 what_next = self.run_single_view(self._change_email)
             if what_next in [self.State.NEXT, self.State.SKIP_EMAIL_VIEW]:
-                what_next = self.run_single_view(self.confirm_pin, _('Back'))
+                what_next = self.run_single_view(
+                    self.confirm_pin,
+                    back_button_name=_('Back'),
+                    layout_title=_('Confirm your current email address'),
+                )
                 if what_next == self.State.NEXT:
                     self._error_message = ''
-                    what_next = self.run_single_view(self.confirm_pin, _('Back'), self._new_email)
+                    what_next = self.run_single_view(
+                        self.confirm_pin,
+                        back_button_name=_('Back'),
+                        email=self._new_email,
+                        layout_title=_('Confirm your new email address'),
+                    )
             else:
                 break
 
@@ -613,3 +625,7 @@ class WalletNotificationsMainDialog(WindowModalDialog, ErrorMessageMixin):
             self.update_button.setEnabled(True)
         else:
             self.sub_unsub_button.clicked.connect(self._subscribe)
+
+    def set_error(self, message):
+        message = _('Error message: ') + message
+        super().set_error(message)
