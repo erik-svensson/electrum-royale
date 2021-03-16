@@ -426,6 +426,59 @@ class UpdateEmailNotificationDialog(EmailNotificationDialog):
             return self.State.CONTINUE
 
 
+class UpdateEmailNotificationDialog(EmailNotificationDialog):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self._new_email = ''
+
+    def run_update(self):
+        print('++ running')
+        what_next = self.State.BACK
+        while what_next == self.State.BACK:
+            what_next = self.run_single_view(self._change_email)
+            if what_next == self.State.NEXT:
+                what_next = self.run_single_view(self.confirm_pin, _('Back'))
+                if what_next == self.State.NEXT:
+                    what_next = self.run_single_view(self.confirm_pin, _('Back'))
+            else:
+                break
+
+        if what_next == self.State.NEXT:
+            EmailNotificationConfig.save_email_to_config(self.config, self.wallet, self._new_email)
+            self.show_message(
+                title=_('Success'),
+                msg=_('You have successfully subscribed wallet'),
+                rich_text=True,
+            )
+
+    def _change_email(self):
+        layout = ChangeEmailLayout(
+            self,
+            current_email=self._email,
+            new_email=self._new_email,
+            error_msg=self._error_message
+        )
+        layout.input_edited()
+        result = self.exec_layout(layout, _('Change your email'), next_enabled=self.next_button.isEnabled())
+        print('+++ result ', result)
+
+        if result:
+            return result
+        self._new_email = layout.email()
+        # if not layout.is_skipped():
+        #     try:
+        #         self._subscribe()
+        #         return self.State.NEXT
+        #     except EmailNotificationApiError as e:
+        #         self._error_message = str(e)
+        #         if isinstance(e, EmailAlreadySubscribedError):
+        #             EmailNotificationConfig.save_email_to_config(self.config, self.wallet, self._email)
+        #             return self.State.SHOW_EMAIL_SUBSCRIBED
+        #         return self.State.CONTINUE
+        # else:
+        #     return self.State.ERROR
+
+
 class WalletInfoNotifications:
     def __init__(self, parent, config, wallet, app):
         self.parent = parent
@@ -553,6 +606,7 @@ class WalletInfoNotifications:
             self.email = email
             self.sub_unsub_button.setText(_('Loading...'))
             self.sub_unsub_button.setEnabled(False)
+            self.update_button.setEnabled(False)
             self._check_subscription()
         else:
             self.sub_unsub_button.setText(_('Subscribe'))
