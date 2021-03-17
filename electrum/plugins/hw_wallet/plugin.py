@@ -32,6 +32,7 @@ from electrum.bitcoin import is_address, TYPE_SCRIPT, opcodes
 from electrum.util import bfh, versiontuple, UserFacingException
 from electrum.transaction import TxOutput, Transaction, PartialTransaction, PartialTxInput, PartialTxOutput
 from electrum.bip32 import BIP32Node
+from electrum.three_keys.pubkey_type import PubkeyType
 
 if TYPE_CHECKING:
     from electrum.wallet import Abstract_Wallet
@@ -167,6 +168,12 @@ class HW_PluginBase(BasePlugin):
         """
         return device.product_key in self.DEVICE_IDS
 
+    def set_instant_password(self, device_id, password: str, wizard) -> bool:
+        raise NotImplementedError()
+
+    def set_recovery_password(self, device_id, password: str, wizard) -> bool:
+        raise NotImplementedError()
+
 
 class HardwareClientBase:
 
@@ -195,7 +202,7 @@ class HardwareClientBase:
     def has_usable_connection_with_device(self) -> bool:
         raise NotImplementedError()
 
-    def get_xpub(self, bip32_path: str, xtype) -> str:
+    def get_xpub(self, bip32_path: str, xtype, pubkey_type=PubkeyType.PUBKEY_ALERT) -> str:
         raise NotImplementedError()
 
 

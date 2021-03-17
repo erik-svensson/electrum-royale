@@ -21,7 +21,7 @@ from .network_dialog import NetworkChoiceLayout
 from .password_dialog import PasswordLayout, PasswordLayoutForHW, PW_NEW
 from .seed_dialog import SeedLayout, KeysLayout
 from .terms_and_conditions_mixin import TermsAndConditionsMixin, PushedButton
-from .three_keys_dialogs import InsertPubKeyDialog, Qr2FaDialog
+from .three_keys_dialogs import InsertPubKeyDialog, InsertHWPasswordDialog, Qr2FaDialog, CheckHWPasswordDialog
 from .util import (MessageBoxMixin, Buttons, icon_path, ChoicesLayout, WWLabel,
                    InfoButton, char_width_in_lineedit, get_default_language)
 
@@ -650,6 +650,84 @@ class InstallWizard(QDialog, MessageBoxMixin, BaseWizard, TermsAndConditionsMixi
         layout = InsertPubKeyDialog(self, message_label=label, disallowed_keys=disallowed_keys)
         self.exec_layout(layout, _('Gold Wallet authenticator public key'), next_enabled=False)
         return layout.get_compressed_pubkey()
+
+    @wizard_dialog
+    def get_hw_password(self, run_next, title):
+        label = QLabel()
+        message = _('Please provide password related to your Ledger device')
+        label.setText(message)
+        label.setOpenExternalLinks(True)
+        label.setTextInteractionFlags(Qt.TextBrowserInteraction)
+        label.setWordWrap(True)
+
+        layout = InsertHWPasswordDialog(self, message_label=label)
+        self.exec_layout(layout, title, next_enabled=False)
+        return layout.get_password()
+
+    @wizard_dialog
+    def get_hw_passwords(self, run_next, title):
+        label1 = QLabel()
+        message1 = _('Please provide <b>instant</b> password related to your Ledger device')
+        label1.setText(message1)
+        label1.setOpenExternalLinks(True)
+        label1.setTextInteractionFlags(Qt.TextBrowserInteraction)
+        label1.setWordWrap(True)
+
+        layout1 = InsertHWPasswordDialog(self, message_label=label1)
+        self.exec_layout(layout1, title, next_enabled=False)
+        instant_password = layout1.get_password()
+
+        label2 = QLabel()
+        message2 = _('Please provide <b>cancel</b> password related to your Ledger device')
+        label2.setText(message2)
+        label2.setOpenExternalLinks(True)
+        label2.setTextInteractionFlags(Qt.TextBrowserInteraction)
+        label2.setWordWrap(True)
+
+        layout2 = InsertHWPasswordDialog(self, message_label=label2)
+        self.exec_layout(layout2, title, next_enabled=False)
+        recovery_password = layout2.get_password()
+
+        return (instant_password, recovery_password)
+
+    @wizard_dialog
+    def check_hw_password(self, run_next, title):
+        label = QLabel()
+        message = _('Please provide password related to your Ledger device')
+        label.setText(message)
+        label.setOpenExternalLinks(True)
+        label.setTextInteractionFlags(Qt.TextBrowserInteraction)
+        label.setWordWrap(True)
+
+        layout = CheckHWPasswordDialog(self, message_label=label)
+        self.exec_layout(layout, title, next_enabled=False)
+        return layout.get_password()
+
+    @wizard_dialog
+    def check_hw_passwords(self, run_next, title):
+        label1 = QLabel()
+        message1 = _('Please provide <b>instant</b> password related to your Ledger device')
+        label1.setText(message1)
+        label1.setOpenExternalLinks(True)
+        label1.setTextInteractionFlags(Qt.TextBrowserInteraction)
+        label1.setWordWrap(True)
+
+        layout1 = CheckHWPasswordDialog(self, message_label=label1)
+        self.exec_layout(layout1, title, next_enabled=False)
+        instant_password = layout1.get_password()
+
+        label2 = QLabel()
+        message2 = _('Please provide <b>cancel</b> password related to your Ledger device')
+        label2.setText(message2)
+        label2.setOpenExternalLinks(True)
+        label2.setTextInteractionFlags(Qt.TextBrowserInteraction)
+        label2.setWordWrap(True)
+
+        layout2 = CheckHWPasswordDialog(self, message_label=label2)
+        self.exec_layout(layout2, title, next_enabled=False)
+        recovery_password = layout2.get_password()
+
+        return (instant_password, recovery_password)
 
     @wizard_dialog
     def display_2fa_pairing_qr(self, run_next, entropy: bytes):

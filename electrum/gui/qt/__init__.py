@@ -31,7 +31,7 @@ import threading
 from typing import Optional, TYPE_CHECKING
 
 from .terms_and_conditions_mixin import TermsNotAccepted
-from .three_keys_windows import ElectrumARWindow, ElectrumAIRWindow
+from .three_keys_windows import ElectrumARWindow, ElectrumAIRWindow, ElectrumARHWWindow, ElectrumAIRHWWindow
 
 try:
     import PyQt5
@@ -211,6 +211,10 @@ class ElectrumGui(Logger):
             w = ElectrumARWindow(self, wallet)
         elif wallet_type == '3-key':
             w = ElectrumAIRWindow(self, wallet)
+        elif wallet_type == '2-key-hw':
+            w = ElectrumARHWWindow(self, wallet)
+        elif wallet_type == '3-key-hw':
+            w = ElectrumAIRHWWindow(self, wallet)
         else:
             w = ElectrumWindow(self, wallet)
         self.windows.append(w)

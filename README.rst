@@ -52,6 +52,9 @@ Run install (this should install dependencies)::
 
     python3 -m pip install .[fast]
 
+In case of problems with btchip library::
+
+    pip install git+https://git@github.com/bitcoinvault/btchip-python.git@v0.1.31-btcv
 
 Compile the protobuf description file::
 

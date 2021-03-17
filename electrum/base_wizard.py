@@ -28,6 +28,8 @@ import os
 import sys
 from typing import List, TYPE_CHECKING, Tuple, NamedTuple, Any, Dict, Optional
 
+from btchip.btchipException import BTChipException
+
 from . import bitcoin
 from . import keystore
 from . import mnemonic
@@ -41,7 +43,7 @@ from .plugins.hw_wallet.plugin import OutdatedHwFirmwareException, HW_PluginBase
 from .simple_config import SimpleConfig
 from .storage import (WalletStorage, StorageEncryptionVersion,
                       get_derivation_used_for_hw_device_encryption)
-from .three_keys import short_mnemonic
+from .three_keys.pubkey_type import PubkeyType
 from .util import UserCancelled, InvalidPassword
 from .wallet import (wallet_types)
 
@@ -49,7 +51,10 @@ if TYPE_CHECKING:
     from .plugin import DeviceInfo
 
 # hardware device setup purpose
-HWD_SETUP_NEW_WALLET, HWD_SETUP_DECRYPT_WALLET = range(0, 2)
+HWD_SETUP_NEW_WALLET = 0
+HWD_SETUP_DECRYPT_WALLET = 1
+HWD_SETUP_NEW_BTCV_WALLET = 2
+HWD_SETUP_DECRYPT_BTCV_WALLET = 3
 
 
 class ScriptTypeNotSupported(Exception): pass
@@ -215,6 +220,17 @@ class BaseWizard(Logger, AdvancedOptionMixin):
                     action = 'three_keys_2fa' + sub_action
                 else:
                     raise Exception('Invalid multikey wallet type: ' + self.wallet_type)
+            elif choice[:11] == 'multikey_hw':
+                self.data['multikey_type'] = 'hw'
+                self.data['wallet_type'] += '-hw'
+                self.wallet_type += '-hw'
+                sub_action = choice[-7:]
+                if self.wallet_type == '2-key-hw':
+                    action = 'two_keys_hw' + sub_action
+                elif self.wallet_type == '3-key-hw':
+                    action = 'three_keys_hw' + sub_action
+                else:
+                    raise Exception('Invalid multikey wallet type: ' + self.wallet_type)
             else:
                 raise Exception('Invalid choice: ' + choice)
             self.run(action)
@@ -228,7 +244,9 @@ class BaseWizard(Logger, AdvancedOptionMixin):
         choices = [
             ('multikey_2fa_create', _('Use Gold Wallet and create a new wallet')),
             ('multikey_2fa_import', _('Use Gold Wallet and import an existing wallet')),
-            ('multikey_standalone', _('Do not use Gold Wallet')),
+            ('multikey_hw_create', _('Use Ledger device and create a new wallet')),
+            ('multikey_hw_import', _('Use Ledger device and import an existing wallet')),
+            ('multikey_standalone', _('Do not use Gold Wallet nor Ledger device')),
         ]
 
         self.choice_dialog(title=title, message=message, choices=choices, run_next=process_choice)
@@ -242,6 +260,13 @@ class BaseWizard(Logger, AdvancedOptionMixin):
     def two_keys_2fa_import(self):
         self.get_authenticator_pubkey(run_next=self.on_two_keys_import)
 
+    def two_keys_hw_create(self):
+        self.get_hw_password(run_next=self.on_two_keys_hw_create, title=_('Cancel password'))
+
+    def two_keys_hw_import(self):
+        self.check_hw_password(run_next=self.on_two_keys_hw_import, title=_('Cancel password'))
+
+
     def on_two_keys_create(self, recovery_pubkey: str):
         self.data['recovery_pubkey'] = recovery_pubkey
         self.run('choose_keystore')
@@ -249,6 +274,14 @@ class BaseWizard(Logger, AdvancedOptionMixin):
     def on_two_keys_import(self, recovery_pubkey: str):
         self.data['recovery_pubkey'] = recovery_pubkey
         self.run('restore_from_seed')
+
+    def on_two_keys_hw_create(self, recovery_password: str):
+        self.data['recovery_password'] = recovery_password
+        self.run('choose_hw_device', HWD_SETUP_NEW_BTCV_WALLET)
+
+    def on_two_keys_hw_import(self, recovery_password: str):
+        self.data['recovery_password'] = recovery_password
+        self.run('choose_hw_device', HWD_SETUP_DECRYPT_BTCV_WALLET)
 
     def three_keys_standalone(self):
         def collect_instant_pubkey(instant_pubkey: str):
@@ -271,6 +304,12 @@ class BaseWizard(Logger, AdvancedOptionMixin):
 
         self.get_authenticator_pubkey(run_next=collect_instant_pubkey)
 
+    def three_keys_hw_create(self):
+        self.get_hw_passwords(run_next=self.on_three_keys_hw_create, title=_('Instant and cancel passwords'))
+
+    def three_keys_hw_import(self):
+        self.check_hw_passwords(run_next=self.on_three_keys_hw_import, title=_('Instant and cancel passwords'))
+
     def on_three_keys_create(self, recovery_pubkey: str):
         self.data['recovery_pubkey'] = recovery_pubkey
         self.run('choose_keystore')
@@ -279,8 +318,18 @@ class BaseWizard(Logger, AdvancedOptionMixin):
         self.data['recovery_pubkey'] = recovery_pubkey
         self.run('restore_from_seed')
 
+    def on_three_keys_hw_create(self, *passwords):
+        self.data['instant_password'] = passwords[0]
+        self.data['recovery_password'] = passwords[1]
+        self.run('choose_hw_device', HWD_SETUP_NEW_BTCV_WALLET)
+
+    def on_three_keys_hw_import(self, *passwords):
+        self.data['instant_password'] = passwords[0]
+        self.data['recovery_password'] = passwords[1]
+        self.run('choose_hw_device', HWD_SETUP_DECRYPT_BTCV_WALLET)
+
     def choose_keystore(self):
-        assert self.wallet_type in ['standard', 'multisig', '2-key', '3-key']
+        assert self.wallet_type in ['standard', 'multisig', '2-key', '3-key', '2-key-hw', '3-key-hw']
         i = len(self.keystores)
         title = _('Add cosigner') + ' (%d of %d)' % (i + 1, self.n) if self.wallet_type == 'multisig' else _('Keystore')
         base_choices = []
@@ -306,7 +355,7 @@ class BaseWizard(Logger, AdvancedOptionMixin):
             advanced_choices = [
                 ('restore_from_key', _('Use a master key')),
             ]
-            if not self.is_kivy and self.wallet_type not in ['2-key', '3-key']:
+            if not self.is_kivy and self.wallet_type not in ['2-key', '3-key', '2-key-hw', '3-key-hw']:
                 advanced_choices.append(('choose_hw_device', _('Use a hardware device')))
         if self.wallet_type == 'multisig':
             self.choice_dialog(title=title, message=message, choices=base_choices + advanced_choices, run_next=self.run)
@@ -491,6 +540,28 @@ class BaseWizard(Logger, AdvancedOptionMixin):
                 if hasattr(client, 'clear_session'):  # FIXME not all hw wallet plugins have this
                     client.clear_session()
                 raise
+        elif purpose == HWD_SETUP_NEW_BTCV_WALLET:
+            if 'recovery_password' not in self.data:
+                raise Exception('Recovery password not set')
+
+            self.plugin.set_recovery_password(device_info.device.id_, self.data['recovery_password'], self)
+            if 'instant_password' in self.data:
+                self.plugin.set_instant_password(device_info.device.id_, self.data['instant_password'], self)
+            else:
+                self.plugin.set_instant_password(device_info.device.id_, str(0x00), self)
+
+            self.run('on_hw_derivation', name, device_info, bip44_derivation(0), 'p2wsh-p2sh')
+        elif purpose == HWD_SETUP_DECRYPT_BTCV_WALLET:
+            if 'recovery_password' not in self.data:
+                raise Exception('Invalid recovery password')
+            if 'instant_password' in self.data:
+                self.run('on_hw_derivation', name, device_info, bip44_derivation(0), 'p2wsh-p2sh',
+                         btcv_instant_password_check=self.data['instant_password'],
+                         btcv_recovery_password_check=self.data['recovery_password'])
+            else:
+                self.run('on_hw_derivation', name, device_info, bip44_derivation(0), 'p2wsh-p2sh',
+                         btcv_recovery_password_check=self.data['recovery_password'],
+                         btcv_instant_password_check=str(0x00))
         else:
             raise Exception('unknown purpose: %s' % purpose)
 
@@ -528,10 +599,11 @@ class BaseWizard(Logger, AdvancedOptionMixin):
                 self.show_error(e)
                 # let the user choose again
 
-    def on_hw_derivation(self, name, device_info, derivation, xtype):
+    def on_hw_derivation(self, name, device_info, derivation, xtype, xpub_keystore=False, pubkey_type=PubkeyType.PUBKEY_ALERT,
+                         btcv_instant_password_check=None, btcv_recovery_password_check=None):
         from .keystore import hardware_keystore
         try:
-            xpub = self.plugin.get_xpub(device_info.device.id_, derivation, xtype, self)
+            xpub = self.plugin.get_xpub(device_info.device.id_, derivation, xtype, self, pubkey_type)
             root_xpub = self.plugin.get_xpub(device_info.device.id_, 'm', 'standard', self)
         except ScriptTypeNotSupported:
             raise  # this is handled in derivation_dialog
@@ -540,16 +612,24 @@ class BaseWizard(Logger, AdvancedOptionMixin):
             self.show_error(e)
             return
         xfp = BIP32Node.from_xkey(root_xpub).calc_fingerprint_of_this_node().hex().lower()
-        d = {
-            'type': 'hardware',
-            'hw_type': name,
-            'derivation': derivation,
-            'root_fingerprint': xfp,
-            'xpub': xpub,
-            'label': device_info.label,
-        }
-        k = hardware_keystore(d)
-        self.on_keystore(k)
+        if xpub_keystore:
+            k = keystore.from_master_key(xpub)
+        else:
+            d = {
+                'type': 'hardware',
+                'hw_type': name,
+                'derivation': derivation,
+                'root_fingerprint': xfp,
+                'xpub': xpub,
+                'label': device_info.label,
+            }
+            k = hardware_keystore(d)
+            from electrum.plugins.ledger.ledger import Ledger_KeyStore
+            if isinstance(k, Ledger_KeyStore) \
+                and not k.are_3keys_ledger_passwords_correct(self, btcv_instant_password_check, btcv_recovery_password_check):
+                # user already notified about invalid password(s)
+                return self.terminate()
+        self.on_keystore(k, name, device_info)
 
     def passphrase_dialog(self, run_next, is_restoring=False):
         title = _('Seed extension')
@@ -611,7 +691,7 @@ class BaseWizard(Logger, AdvancedOptionMixin):
         k = keystore.from_bip39_seed(seed, passphrase, derivation, xtype=script_type)
         self.on_keystore(k)
 
-    def on_keystore(self, k):
+    def on_keystore(self, k, name=None, device_info=None):
         has_xpub = isinstance(k, keystore.Xpub)
         if has_xpub:
             t1 = xpub_type(k.xpub)
@@ -622,6 +702,28 @@ class BaseWizard(Logger, AdvancedOptionMixin):
                 return
             self.keystores.append(k)
             self.run('create_wallet')
+        elif self.wallet_type in ['2-key-hw', '3-key-hw']:
+            if has_xpub and t1 != 'p2wsh-p2sh':
+                self.show_error(_('Wrong key type') + ' %s' % t1)
+                self.run('choose_keystore')
+                return
+            self.keystores.append(k)
+
+            keystores_needed = 2 if self.wallet_type == '2-key-hw' else 3
+            if len(self.keystores) < keystores_needed:
+                if not name or not device_info:
+                    self.show_error(_('Missing device info'))
+                    self.run('choose_keystore')
+                    return
+                script_type = 'p2wsh-p2sh'
+                derivation = bip44_derivation(0)
+                if keystores_needed == 3:
+                    pubkey_type = len(self.keystores)
+                elif keystores_needed == 2:
+                    pubkey_type = 2 * len(self.keystores)
+                self.run('on_hw_derivation', name, device_info, derivation, script_type, True, pubkey_type)
+            else:
+                self.run('create_wallet')
         elif self.wallet_type == 'multisig':
             assert has_xpub
             if t1 not in ['standard', 'p2wsh', 'p2wsh-p2sh']:
@@ -696,7 +798,7 @@ class BaseWizard(Logger, AdvancedOptionMixin):
             self.data['seed_type'] = self.seed_type
             keys = self.keystores[0].dump()
             self.data['keystore'] = keys
-        elif self.wallet_type == 'multisig':
+        elif self.wallet_type in ['multisig', '2-key-hw', '3-key-hw']:
             for i, k in enumerate(self.keystores):
                 self.data['x%d/' % (i + 1)] = k.dump()
         elif self.wallet_type == 'imported':

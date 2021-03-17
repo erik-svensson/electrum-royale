@@ -23,6 +23,7 @@ class ValidationState(IntEnum):
     INTERMEDIATE = 2
     CROPPED = 3
 
+MAX_3KEYS_PASSWD_LEN = 32
 
 class PubKeyValidator:
     COMPRESSED_PREFIXES = ('02', '03')
@@ -136,6 +137,66 @@ class InsertPubKeyDialog(QVBoxLayout):
         bytes_ = bytes.fromhex(self._get_str())
         pubkey = ECPubkey(bytes_)
         return pubkey.get_public_key_hex(compressed=True)
+
+
+class InsertHWPasswordDialog(QVBoxLayout):
+    def __init__(self, parent, message_label):
+        super().__init__()
+        self.parent = parent
+        label1 = message_label
+        self.edit1 = QLineEdit()
+        self.edit1.setEchoMode(QLineEdit.Password)
+        self.edit1.setMaxLength(MAX_3KEYS_PASSWD_LEN)
+        label2 = QLabel("Repeat password: ")
+        self.edit2 = QLineEdit()
+        self.edit2.setEchoMode(QLineEdit.Password)
+        self.edit2.setMaxLength(MAX_3KEYS_PASSWD_LEN)
+        self.error_label = ErrorLabel()
+
+        self.edit1.textChanged.connect(self._on_change)
+        self.edit2.textChanged.connect(self._on_change)
+        self.addWidget(label1)
+        self.addWidget(self.edit1)
+        self.addWidget(label2)
+        self.addWidget(self.edit2)
+        self.addWidget(self.error_label)
+
+    def _on_change(self):
+        if(self._get_str(self.edit1) != self._get_str(self.edit2)):
+            self.error_label.setText("Password confirmation does not match")
+            self.parent.next_button.setEnabled(False)
+        else:
+            self.error_label.setText("")
+            self.parent.next_button.setEnabled(self._get_str(self.edit1).strip() != '')
+
+    def _get_str(self, line) -> str:
+        return line.text().replace('\n', '')
+
+    def get_password(self):
+        return self._get_str(self.edit1)
+
+
+class CheckHWPasswordDialog(QVBoxLayout):
+    def __init__(self, parent, message_label):
+        super().__init__()
+        self.parent = parent
+        label = message_label
+        self.edit = QLineEdit()
+        self.edit.setEchoMode(QLineEdit.Password)
+        self.edit.setMaxLength(MAX_3KEYS_PASSWD_LEN)
+
+        self.edit.textChanged.connect(self._on_change)
+        self.addWidget(label)
+        self.addWidget(self.edit)
+
+    def _on_change(self):
+        self.parent.next_button.setEnabled(self._get_str(self.edit).strip() != '')
+
+    def _get_str(self, line) -> str:
+        return line.text().replace('\n', '')
+
+    def get_password(self):
+        return self._get_str(self.edit)
 
 
 class Qr2FaDialog(QVBoxLayout):

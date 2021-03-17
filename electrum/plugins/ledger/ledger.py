@@ -1,7 +1,10 @@
+import enum
 from struct import pack, unpack
 import hashlib
 import sys
 import traceback
+
+from PyQt5.QtWidgets import QMessageBox
 
 from electrum import ecc
 from electrum import bip32
@@ -16,6 +19,7 @@ from electrum.util import bfh, bh2u, versiontuple, UserFacingException
 from electrum.base_wizard import ScriptTypeNotSupported
 from electrum.logging import get_logger
 from electrum.plugin import Device
+from electrum.three_keys.pubkey_type import PubkeyType
 from typing import Tuple, Optional
 
 from ..hw_wallet import HW_PluginBase, HardwareClientBase
@@ -62,6 +66,12 @@ def test_pin_unlocked(func):
     return catch_exception
 
 
+class LedgerBtcvTxType(enum.IntEnum):
+    ALERT = 0x00
+    INSTANT = 0x01
+    RECOVERY = 0x02
+
+
 class Ledger_Client(HardwareClientBase):
     def __init__(self, hidDevice):
         self.dongleObject = btchip(hidDevice)
@@ -90,7 +100,7 @@ class Ledger_Client(HardwareClientBase):
         return True
 
     @test_pin_unlocked
-    def get_xpub(self, bip32_path, xtype):
+    def get_xpub(self, bip32_path, xtype, pubkey_type=PubkeyType.PUBKEY_ALERT):
         self.checkDevice()
         # bip32_path is of the form 44'/0'/1'
         # S-L-O-W - we don't handle the fingerprint directly, so compute
@@ -107,14 +117,17 @@ class Ledger_Client(HardwareClientBase):
         bip32_path = bip32_path[2:]  # cut off "m/"
         if len(bip32_intpath) >= 1:
             prevPath = bip32.convert_bip32_intpath_to_strpath(bip32_intpath[:-1])[2:]
-            nodeData = self.dongleObject.getWalletPublicKey(prevPath)
+            nodeData = self.dongleObject.getWalletPublicKey(prevPath, btcvAddr=False)
             publicKey = compress_public_key(nodeData['publicKey'])
             fingerprint_bytes = hash_160(publicKey)[0:4]
             childnum_bytes = bip32_intpath[-1].to_bytes(length=4, byteorder="big")
         else:
             fingerprint_bytes = bytes(4)
             childnum_bytes = bytes(4)
-        nodeData = self.dongleObject.getWalletPublicKey(bip32_path)
+        if(pubkey_type == LedgerBtcvTxType.ALERT):
+            nodeData = self.dongleObject.getWalletPublicKey(bip32_path, btcvAddr=False)
+        else:
+            nodeData = self.dongleObject.getWalletPublicKey(bip32_path, btcvPubkeyTree=pubkey_type)
         publicKey = compress_public_key(nodeData['publicKey'])
         depth = len(bip32_intpath)
         return BIP32Node(xtype=xtype,
@@ -123,6 +136,14 @@ class Ledger_Client(HardwareClientBase):
                          depth=depth,
                          fingerprint=fingerprint_bytes,
                          child_number=childnum_bytes).to_xpub()
+
+    @test_pin_unlocked
+    def set_instant_password(self, password):
+        self.dongleObject.setBTCVPassword(password, btchip.BTCV_PASSWORD_INSTANT)
+
+    @test_pin_unlocked
+    def set_recovery_password(self, password):
+        self.dongleObject.setBTCVPassword(password, btchip.BTCV_PASSWORD_RECOVERY)
 
     def has_detached_pin_support(self, client):
         try:
@@ -308,10 +329,48 @@ class Ledger_KeyStore(Hardware_KeyStore):
         return bytes([27 + 4 + (signature[0] & 0x01)]) + r + s
 
     @test_pin_unlocked
+    def set_btcv_password_use(self, tx_type=LedgerBtcvTxType.ALERT, password=None, wizard=None):
+        if self.handler == None:
+            self.handler = self.plugin.create_handler(wizard)
+        client = self.get_client()
+        password_hash = bytearray(32)
+        if password:
+            m = hashlib.sha256()
+            m.update(bytearray.fromhex(bytearray(password.encode('utf-8')).hex().ljust(64, '0')))
+            password_hash = m.digest()
+        try:
+            client.setBTCVPasswordUse(password_hash, tx_type)
+        except BTChipException as e:
+            if e.sw == 0x6a80:
+                raise BTChipException(e.message + "\n(Password may be incorrect)")
+
+    def are_3keys_ledger_passwords_correct(self, wizard, btcv_instant_password_check=None, btcv_recovery_password_check=None):
+        try:
+            if btcv_recovery_password_check:
+                self.set_btcv_password_use(tx_type=LedgerBtcvTxType.RECOVERY, password=btcv_recovery_password_check, wizard=wizard)
+            if btcv_instant_password_check:
+                self.set_btcv_password_use(tx_type=LedgerBtcvTxType.INSTANT, password=btcv_instant_password_check, wizard=wizard)
+        except BTChipException as e:
+            msg = _('Hardware wallet import fail') + "\n" + str(e)
+            if e.sw == 0x6a80:
+                msg = msg + "\n" + ('Invalid password(s)')
+            if wizard:
+                wizard.show_error(msg)
+            return False
+        finally:
+            self.set_btcv_password_use(tx_type=LedgerBtcvTxType.ALERT, wizard=self)
+        return True
+
+    @test_pin_unlocked
     @set_and_unset_signing
-    def sign_transaction(self, tx, password):
+    def sign_transaction(self, tx, password, pubkey_index=None, recovery_password=None, instant_password=False):
+
         if tx.is_complete():
             return
+        if recovery_password and not self.are_3keys_ledger_passwords_correct(None, btcv_recovery_password_check=recovery_password):
+            raise RuntimeError("Invalid recovery password provided")
+        if instant_password and not self.are_3keys_ledger_passwords_correct(None, btcv_instant_password_check=instant_password):
+            raise RuntimeError("Invalid instant password provided")
         inputs = []
         inputsPaths = []
         chipInputs = []
@@ -341,7 +400,11 @@ class Ledger_KeyStore(Hardware_KeyStore):
                     self.give_error(MSG_NEEDS_FW_UPDATE_SEGWIT)
                 segwitTransaction = True
 
-            my_pubkey, full_path = self.find_my_pubkey_in_txinout(txin)
+            if pubkey_index:
+                my_pubkey, = txin.bip32_paths.keys()[pubkey_index]
+                full_path = self.get_pubkey_derivation(my_pubkey, txin, only_der_suffix=False)
+            else:
+                my_pubkey, full_path = self.find_my_pubkey_in_txinout(txin)
             if not full_path:
                 self.give_error("No matching pubkey for sign_transaction")  # should never happen
             full_path = convert_bip32_intpath_to_strpath(full_path)[2:]
@@ -444,7 +507,7 @@ class Ledger_KeyStore(Hardware_KeyStore):
                 while inputIndex < len(inputs):
                     singleInput = [ chipInputs[inputIndex] ]
                     self.get_client().startUntrustedTransaction(False, 0,
-                                                            singleInput, redeemScripts[inputIndex], version=tx.version)
+                                                                singleInput, redeemScripts[inputIndex], version=tx.version)
                     inputSignature = self.get_client().untrustedHashSign(inputsPaths[inputIndex], pin, lockTime=tx.locktime)
                     inputSignature[0] = 0x30 # force for 1.4.9+
                     my_pubkey = inputs[inputIndex][4]
@@ -452,6 +515,20 @@ class Ledger_KeyStore(Hardware_KeyStore):
                                              signing_pubkey=my_pubkey.hex(),
                                              sig=inputSignature.hex())
                     inputIndex = inputIndex + 1
+
+                if recovery_password:
+                    three_keys_pubkey_index = 1
+                    if instant_password:
+                        three_keys_pubkey_index = 2
+                    self.add_3k_signatures_to_tx(changePath, chipInputs, inputs, inputsPaths,
+                                                       LedgerBtcvTxType.RECOVERY, output, pin, rawTx, recovery_password,
+                                                       redeemScripts, tx, txOutput, three_keys_pubkey_index)
+                if instant_password:
+                    three_keys_pubkey_index = 1
+                    self.add_3k_signatures_to_tx(changePath, chipInputs, inputs, inputsPaths,
+                                                       LedgerBtcvTxType.INSTANT, output, pin, rawTx, instant_password,
+                                                       redeemScripts, tx, txOutput, three_keys_pubkey_index)
+
             else:
                 while inputIndex < len(inputs):
                     self.get_client().startUntrustedTransaction(firstTransaction, inputIndex,
@@ -493,6 +570,53 @@ class Ledger_KeyStore(Hardware_KeyStore):
             self.give_error(e, True)
         finally:
             self.handler.finished()
+
+    def add_3k_signatures_to_tx(self, changePath, chipInputs, inputs, inputsPaths, tx_type, output,
+                                pin, rawTx, three_keys_password, redeemScripts, tx, txOutput, three_keys_pubkey_index):
+        inputIndex = 0
+        self.get_client().startUntrustedTransaction(True, inputIndex,
+                                                    chipInputs, redeemScripts[inputIndex], version=tx.version)
+        # we don't set meaningful outputAddress, amount and fees
+        # as we only care about the alternateEncoding==True branch
+        outputData = self.get_client().finalizeInput(b'', 0, 0, changePath, bfh(rawTx))
+        outputData['outputData'] = txOutput
+        if outputData['confirmationNeeded']:
+            outputData['address'] = output
+            self.handler.finished()
+            pin = self.handler.get_auth(outputData)  # does the authenticate dialog and returns pin
+            if not pin:
+                raise UserWarning()
+            self.handler.show_message(_("Confirmed. Signing Transaction..."))
+        while inputIndex < len(inputs):
+            singleInput = [chipInputs[inputIndex]]
+            self.get_client().startUntrustedTransaction(False, 0,
+                                                        singleInput, redeemScripts[inputIndex], version=tx.version)
+            self.set_btcv_password_use(tx_type=tx_type, password=three_keys_password)
+
+            inputSignature = self.get_client().untrustedHashSign(inputsPaths[inputIndex], pin, lockTime=tx.locktime)
+            inputSignature[0] = 0x30  # force for 1.4.9+
+
+            my_pubkey = list(tx.inputs()[inputIndex].bip32_paths.keys())[three_keys_pubkey_index]
+
+            tx.add_signature_to_txin(txin_idx=inputIndex,
+                                     signing_pubkey=my_pubkey.hex(),
+                                     sig=inputSignature.hex())
+            inputIndex += 1
+
+    @test_pin_unlocked
+    @set_and_unset_signing
+    def get_address(self, sequence, txin_type, btcvAddr=False):
+        client = self.get_client()
+        address_path = self.get_derivation_prefix()[2:] + "/%d/%d"%sequence
+        segwit = is_segwit_script_type(txin_type)
+        segwitNative = txin_type == 'p2wpkh'
+
+        try:
+            result = client.getWalletPublicKey(address_path, showOnScreen=False, segwit=segwit, segwitNative=segwitNative, btcvAddr=btcvAddr)
+            return result['address'].decode("utf-8")
+        except Exception as e:
+            self.logger.exception(e)
+
 
     @test_pin_unlocked
     @set_and_unset_signing
@@ -593,14 +717,36 @@ class LedgerPlugin(HW_PluginBase):
         client.handler = self.create_handler(wizard)
         client.get_xpub("m/44'/0'", 'standard') # TODO replace by direct derivation once Nano S > 1.1
 
-    def get_xpub(self, device_id, derivation, xtype, wizard):
+    def set_recovery_password(self, device_id, password, wizard):
+        devmgr = self.device_manager()
+        client = devmgr.client_by_id(device_id)
+        client.handler = self.create_handler(wizard)
+        client.checkDevice()
+        try:
+            client.set_recovery_password(password)
+            return True
+        except:
+            return False
+
+    def set_instant_password(self, device_id, password, wizard):
+        devmgr = self.device_manager()
+        client = devmgr.client_by_id(device_id)
+        client.handler = self.create_handler(wizard)
+        client.checkDevice()
+        try:
+            client.set_instant_password(password)
+            return True
+        except:
+            return False
+
+    def get_xpub(self, device_id, derivation, xtype, wizard, pubkey_type=PubkeyType.PUBKEY_ALERT):
         if xtype not in self.SUPPORTED_XTYPES:
             raise ScriptTypeNotSupported(_('This type of script is not supported with {device}.').format(device=self.device))
         devmgr = self.device_manager()
         client = devmgr.client_by_id(device_id)
         client.handler = self.create_handler(wizard)
         client.checkDevice()
-        xpub = client.get_xpub(derivation, xtype)
+        xpub = client.get_xpub(derivation, xtype, pubkey_type)
         return xpub
 
     def get_client(self, keystore, force_pair=True):

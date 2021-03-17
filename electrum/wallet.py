@@ -59,7 +59,8 @@ from .mnemonic import Mnemonic
 from .plugin import run_hook
 from .simple_config import SimpleConfig
 from .storage import StorageEncryptionVersion, WalletStorage
-from .three_keys.script import TwoKeysScriptGenerator, ThreeKeysScriptGenerator
+from .three_keys.script import TwoKeysScriptGenerator, ThreeKeysScriptGenerator, ThreeKeysError, \
+    TwoKeysHWScriptGenerator, ThreeKeysHWScriptGenerator
 from .three_keys.transaction import TxType, ThreeKeysTransaction
 from .three_keys.utils import filter_spendable_coins, update_tx_status
 from .transaction import (Transaction, TxInput, UnknownTxinType, TxOutput,
@@ -2078,14 +2079,16 @@ class Deterministic_Wallet(Abstract_Wallet):
         return {k.derive_pubkey(*der_suffix): (k, der_suffix)
                 for k in self.get_keystores()}
 
-    def _add_input_sig_info(self, txin, address, *, only_der_suffix=True):
-        self._add_txinout_derivation_info(txin, address, only_der_suffix=only_der_suffix)
+    def _add_input_sig_info(self, txin, address, *, only_der_suffix=True, sort_pubkeys=True):
+        self._add_txinout_derivation_info(txin, address, only_der_suffix=only_der_suffix, sort_pubkeys=sort_pubkeys)
 
-    def _add_txinout_derivation_info(self, txinout, address, *, only_der_suffix=True):
+    def _add_txinout_derivation_info(self, txinout, address, *, only_der_suffix=True, sort_pubkeys=True):
         if not self.is_mine(address):
             return
         pubkey_deriv_info = self.get_public_keys_with_deriv_info(address)
-        txinout.pubkeys = sorted([bfh(pk) for pk in list(pubkey_deriv_info)])
+        txinout.pubkeys = [bfh(pk) for pk in list(pubkey_deriv_info)]
+        if sort_pubkeys:
+            txinout.pubkeys = sorted(txinout.pubkeys)
         for pubkey_hex in pubkey_deriv_info:
             ks, der_suffix = pubkey_deriv_info[pubkey_hex]
             fp_bytes, der_full = ks.get_fp_and_derivation_to_be_used_in_partial_tx(der_suffix,
@@ -2306,6 +2309,7 @@ class MultikeyWallet(Simple_Deterministic_Wallet):
         self.multikey_type = storage.get('multikey_type')
         self.multisig_script_generator = scriptGenerator
         self.set_alert()
+
         # super has to be at the end otherwise wallet breaks
         super().__init__(storage=storage, config=config)
         self.multiple_change = storage.get('multiple_change', True)
@@ -2341,7 +2345,7 @@ class MultikeyWallet(Simple_Deterministic_Wallet):
 
         if txin_type == 'standard':
             return 'p2sh'
-        if 'p2wpkh' in txin_type:
+        if 'p2wpkh' in txin_type or 'p2wsh-p2sh' == txin_type:
             return 'p2wsh-p2sh'
         raise UnknownTxinType(f'Cannot derive txin_type from {txin_type}')
 
@@ -2508,7 +2512,7 @@ class TwoKeysWallet(MultikeyWallet):
             tx.finalize_psbt()
 
         return tx
-    
+
     def get_wallet_label(self):
         return '2-Key Vault'
 
@@ -2574,6 +2578,296 @@ class ThreeKeysWallet(MultikeyWallet):
         return '3-Key Vault'
 
 
+class MultikeyHWWallet(Multisig_Wallet):
+
+    def __init__(self, storage: WalletStorage, *, config: SimpleConfig, scriptGenerator: MultiKeyScriptGenerator):
+        self.wallet_type = storage.get('wallet_type')
+        self.multikey_type = storage.get('multikey_type')
+        self.multisig_script_generator = scriptGenerator
+        if isinstance(self.multisig_script_generator, ThreeKeysHWScriptGenerator):
+            self.n = 3
+        else:
+            self.n = 2
+        self.m = 1
+        Deterministic_Wallet.__init__(self, storage, config=config)
+        # super has to be at the end otherwise wallet breaks
+        self.multiple_change = storage.get('multiple_change', False)
+
+    def load_keystore(self):
+        self.keystores = {}
+        for i in range(self.n):
+            name = 'x%d/'%(i+1)
+            self.keystores[name] = load_keystore(self.storage, name)
+        self.keystore = self.keystores['x1/']
+        self.txin_type = 'p2wsh-p2sh'
+
+    def make_unsigned_transaction(self, *, coins: Sequence[PartialTxInput],
+                                  outputs: List[PartialTxOutput], fee=None,
+                                  change_addr: str = None, is_sweep=False) -> PartialTransaction:
+        self.update_tx_input_multisig_generator(coins)
+        tx = super().make_unsigned_transaction(
+            coins=coins,
+            outputs=outputs,
+            fee=fee,
+            change_addr=change_addr,
+            is_sweep=is_sweep,
+        )
+        self.update_transaction_multisig_generator(tx)
+        return tx
+
+    def update_transaction_multisig_generator(self, tx: Transaction):
+        tx.multisig_script_generator = self.multisig_script_generator
+        tx.update_inputs()
+
+    def update_tx_input_multisig_generator(self, inputs: Sequence[PartialTxInput]):
+        for txin in inputs:
+            txin.multisig_script_generator = self.multisig_script_generator
+
+    def get_atxs_to_recovery(self):
+        txi_list = self.db.list_txi()
+        recovery_mempool_transactions = {
+            history_item.txid: self.db.get_transaction(history_item.txid)
+            for history_item in self.get_history() if history_item.tx_mined_status.conf == 0 and history_item.tx_mined_status.txtype == TxType.RECOVERY.name
+        }
+        with self.transaction_lock:
+            conflicting_alert_inputs = set([
+                txin.prevout.txid.hex()
+                for tx in recovery_mempool_transactions.values() for txin in tx.inputs()
+            ])
+        for tx_hash, tx in self.db.transactions.items():
+            mined_info = self.get_tx_height(tx_hash)
+            # skip incoming alerts, mempool alerts and alerts conflicted with recovery mempool
+            if tx.tx_type == TxType.ALERT_PENDING and mined_info.conf > 0 and tx_hash in txi_list:
+                if not set([txin.prevout.txid.hex() for txin in tx.inputs()]).issubset(conflicting_alert_inputs):
+                    yield tx
+
+    def get_inputs_and_output_for_recovery(self, alert_transactions: ThreeKeysTransaction, destination_address: str):
+        inputs = [PartialTxInput.from_txin(txin) for atx in alert_transactions for txin in atx.inputs()]
+        scriptpubkey = bfh(bitcoin.address_to_script(destination_address))
+        # ! sign sets max value to output
+        output = PartialTxOutput(scriptpubkey=scriptpubkey, value='!')
+        return inputs, output
+
+    def prepare_inputs_for_recovery(self, inputs: list):
+        """Methods for modification tx inputs coming from alert transaction to work with recovery tx.
+        Method adds missing address, satoshi and height value from db storage"""
+        updated_inputs = copy.deepcopy(inputs)
+        # cache for not doubling fetching data for repeating address
+        db_address_satoshi_height_cache = {}
+        for input in updated_inputs:
+            tx_hash = input.prevout.txid.hex()
+            prevout_index = input.prevout.out_idx
+            key = (tx_hash, prevout_index)
+            if key not in db_address_satoshi_height_cache:
+                fetched_data = self.db.get_address_satoshi_height_for_tx(tx_hash)
+                db_address_satoshi_height_cache.update(fetched_data)
+                fetched_data = fetched_data[key]
+            else:
+                fetched_data = db_address_satoshi_height_cache[key]
+
+            input._trusted_address = fetched_data['address']
+            input._trusted_value_sats = fetched_data['satoshi']
+            input.block_height = fetched_data['height']
+        return updated_inputs
+
+    def set_alert(self):
+        from .plugins.ledger.ledger import LedgerBtcvTxType
+        self.multisig_script_generator.set_alert()
+        self._get_hw_keystore().set_btcv_password_use(tx_type=LedgerBtcvTxType.ALERT)
+
+    def set_recovery(self):
+        self.multisig_script_generator.set_recovery()
+
+    def set_instant(self):
+        self.multisig_script_generator.set_instant()
+
+    def sign_transaction(self, tx: Transaction, password, update_pubkeys_fn=None, recovery_password=None, instant_password=None) -> Optional[PartialTransaction]:
+        if self.is_watching_only():
+            return
+        if not isinstance(tx, PartialTransaction):
+            return
+        tmp_tx = copy.deepcopy(tx)
+        for input in tmp_tx.inputs():
+            tmp_pubkeys = self.get_public_keys_with_deriv_info(input.address)
+            self.multisig_script_generator.recovery_pubkey = list(tmp_pubkeys)[1]
+            if isinstance(self.multisig_script_generator, ThreeKeysHWScriptGenerator):
+                self.multisig_script_generator.instant_pubkey = list(tmp_pubkeys)[2]
+            tmp_tx.multisig_script_generator = self.multisig_script_generator
+            tmp_tx.update_input_multisig_generator(input, copy.deepcopy(self.multisig_script_generator))
+
+        tmp_tx.add_info_from_wallet(self, include_xpubs_and_full_paths=True)
+        if update_pubkeys_fn:
+            update_pubkeys_fn(tmp_tx)
+
+        for k in sorted(self.get_keystores(), key=lambda ks: ks.ready_to_sign(), reverse=True):
+            try:
+                if k.can_sign(tmp_tx):
+                    from electrum.plugins.ledger.ledger import Ledger_KeyStore
+                    if isinstance(k, Ledger_KeyStore):
+                        from electrum.plugins.ledger.ledger import LedgerBtcvTxType
+                        self._get_hw_keystore().set_btcv_password_use(tx_type=LedgerBtcvTxType.ALERT)
+
+                        k.sign_transaction(tmp_tx, password, None, recovery_password, instant_password)
+
+                    else:
+                        raise NotImplementedError
+            except UserCancelled:
+                continue
+
+        tmp_tx.remove_xpubs_and_bip32_paths()
+        tx.combine_with_other_psbt(tmp_tx, True)
+        tx.add_info_from_wallet(self, include_xpubs_and_full_paths=False)
+        return tx
+
+    def get_coin_chooser(self):
+        if self.multisig_script_generator.is_alert_mode():
+            return coinchooser.get_coin_chooser_alert(self.config)
+        else:
+            return coinchooser.get_coin_chooser(self.config)
+
+    def add_input_info(self, txin: PartialTxInput, *, only_der_suffix: bool = True) -> None:
+        address = self.get_txin_address(txin)
+        if not self.is_mine(address):
+            is_mine = self._learn_derivation_path_for_address_from_txinout(txin, address)
+            if not is_mine:
+                return
+        # set script_type first, as later checks might rely on it:
+        txin.script_type = self.get_txin_type(address)
+        self._add_input_utxo_info(txin, address)
+        txin.num_sig = self.m if isinstance(self, Multisig_Wallet) else 1
+        if txin.redeem_script is None:
+            try:
+                redeem_script_hex = self.get_redeem_script(address)
+                txin.redeem_script = bfh(redeem_script_hex) if redeem_script_hex else None
+            except UnknownTxinType:
+                pass
+        if txin.witness_script is None:
+            try:
+                witness_script_hex = self.get_witness_script(address)
+                txin.witness_script = bfh(witness_script_hex) if witness_script_hex else None
+            except UnknownTxinType:
+                pass
+        self._add_input_sig_info(txin, address, only_der_suffix=only_der_suffix, sort_pubkeys=False)
+
+    def _get_hw_keystore(self):
+        for k in self.get_keystores():
+            if isinstance(k, Hardware_KeyStore):
+                return k
+        raise AssertionError("Hardware keystore not found")
+
+    def is_recovery_mode(self):
+        return self.multisig_script_generator.is_recovery_mode()
+
+class TwoKeysHWWallet(MultikeyHWWallet):
+
+    def __init__(self, storage: WalletStorage, *, config: SimpleConfig):
+        script_generator = TwoKeysHWScriptGenerator(recovery_pubkey=storage.get('recovery_pubkey'))
+        super().__init__(storage, config=config, scriptGenerator=script_generator)
+
+    def pubkeys_to_scriptcode(self, pubkeys: Sequence[str]) -> str:
+        if not isinstance(pubkeys, list) or len(pubkeys) != 2:
+            raise ThreeKeysError(f"Wrong input type! Expected list not '{pubkeys}'")
+
+        return TwoKeysScriptGenerator.create_redeem_script(pubkeys[0], pubkeys[1])
+
+    def _add_recovery_pubkey_to_transaction(self, tx):
+        for input in tx.inputs():
+            recovery_pubkey = bytes.fromhex(input.multisig_script_generator.recovery_pubkey)
+            if recovery_pubkey not in input.pubkeys:
+                input.pubkeys.append(recovery_pubkey)
+            input.num_sig = 2
+            assert len(input.pubkeys) == 2, 'Wrong number of pubkeys for performing recovery tx'
+        return tx
+
+    def sign_recovery_transaction(self, tx: PartialTransaction, password, recovery_keypairs, recovery_password=None)-> Optional[
+        PartialTransaction]:
+
+        if not isinstance(tx, PartialTransaction):
+            return
+
+        tx = self.sign_transaction(tx, password, self._add_recovery_pubkey_to_transaction, recovery_password)
+
+        if not tx.is_complete():
+            _logger.error(f'Recovery transaction not completed')
+        tx.finalize_psbt()
+
+        return tx
+
+    def get_wallet_label(self):
+        return '2-Key Vault'
+
+
+class ThreeKeysHWWallet(MultikeyHWWallet):
+
+    def __init__(self, storage: WalletStorage, *, config: SimpleConfig):
+
+        script_generator = ThreeKeysHWScriptGenerator(instant_pubkey=storage.get('instant_pubkey'),
+                                                      recovery_pubkey=storage.get('recovery_pubkey'))
+        super().__init__(storage, config=config, scriptGenerator=script_generator)
+        self.n = 3
+        self.m = 1
+
+    def pubkeys_to_scriptcode(self, pubkeys: Sequence[str]) -> str:
+        if not isinstance(pubkeys, list) or len(pubkeys) != 3:
+            raise ThreeKeysError(f"Wrong input type! Expected list not '{pubkeys}'")
+
+        return ThreeKeysScriptGenerator.create_redeem_script(pubkeys[0], pubkeys[1], pubkeys[2])
+
+    def sign_instant_transaction(self, tx: PartialTransaction, password, instant_keypairs, instant_password) -> Optional[PartialTransaction]:
+        if not isinstance(tx, PartialTransaction):
+            return
+
+        tx = self.sign_transaction(tx, password, self._add_instant_pubkey_to_transaction, None, instant_password)
+
+        if not tx.is_complete():
+            _logger.error(f'Recovery transaction not completed')
+        tx.finalize_psbt()
+
+        return tx
+
+    def _add_instant_pubkey_to_transaction(self, tx):
+        for input in tx.inputs():
+            instant_pubkey = bytes.fromhex(self.multisig_script_generator.instant_pubkey)
+            if instant_pubkey not in input.pubkeys:
+                input.pubkeys.append(instant_pubkey)
+            input.num_sig = 2
+            assert len(input.pubkeys) == 3, 'Wrong number of pubkeys for performing recovery tx'
+        return tx
+
+    def _add_recovery_pubkey_to_transaction(self, tx):
+        for input in tx.inputs():
+            instant_pubkey = bytes.fromhex(input.multisig_script_generator.instant_pubkey)
+            if instant_pubkey not in input.pubkeys:
+                input.pubkeys.append(instant_pubkey)
+            recovery_pubkey = bytes.fromhex(input.multisig_script_generator.recovery_pubkey)
+            if recovery_pubkey not in input.pubkeys:
+                input.pubkeys.append(recovery_pubkey)
+            input.num_sig = 3
+            assert len(input.pubkeys) == 3, 'Wrong number of pubkeys for performing recovery tx'
+        return tx
+
+
+    def sign_recovery_transaction(self, tx: PartialTransaction, password, recovery_keypairs, recovery_password, instant_password)-> Optional[
+        PartialTransaction]:
+
+        if not isinstance(tx, PartialTransaction):
+            return
+
+        tx = self.sign_transaction(tx, password, self._add_recovery_pubkey_to_transaction, recovery_password, instant_password)
+
+        if not tx.is_complete():
+            _logger.error(f'Recovery transaction not completed')
+        tx.finalize_psbt()
+
+        return tx
+
+    def get_wallet_label(self):
+        return '3-Key Vault'
+
+    def is_instant_mode(self):
+        return self.multisig_script_generator.is_instant_mode()
+
+
 wallet_types = [
     '2-key',
     '3-key',
@@ -2593,11 +2887,15 @@ wallet_constructors = {
     'xpub': Standard_Wallet,
     'imported': Imported_Wallet,
     '2-key': TwoKeysWallet,
-    '3-key': ThreeKeysWallet
+    '3-key': ThreeKeysWallet,
+    '2-key-hw': TwoKeysHWWallet,
+    '3-key-hw': ThreeKeysHWWallet
 }
+
 
 def register_constructor(wallet_type, constructor):
     wallet_constructors[wallet_type] = constructor
+
 
 # former WalletFactory
 class Wallet(object):

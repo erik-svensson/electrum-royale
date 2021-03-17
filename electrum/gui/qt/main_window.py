@@ -72,7 +72,7 @@ from electrum.util import pr_expiration_values
 from electrum.version import ELECTRUM_VERSION
 from electrum.wallet import (Multisig_Wallet, CannotBumpFee, Abstract_Wallet,
                              sweep_preparations, InternalAddressCorruption,
-                             ThreeKeysWallet)
+                             ThreeKeysWallet, ThreeKeysHWWallet)
 from .amountedit import AmountEdit, BTCAmountEdit, MyLineEdit, FeerateEdit
 from .channels_list import ChannelsList
 from .confirm_tx_dialog import ConfirmTxDialog
@@ -1541,6 +1541,9 @@ in the "Authenticators" tab in the Gold Wallet app.')
         elif external_keypairs:
             # can sign directly
             task = partial(tx.sign, external_keypairs)
+        elif isinstance(self.wallet, ThreeKeysHWWallet) and self.wallet.is_instant_mode():
+            instant_password = self._get_instant_password()
+            task = partial(self.wallet.sign_instant_transaction, tx, password, None, instant_password)
         else:
             task = partial(self.wallet.sign_transaction, tx, password)
         msg = _('Signing transaction...')

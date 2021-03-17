@@ -3,7 +3,7 @@ import enum
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QVBoxLayout, QLabel, QWidget, QHBoxLayout, \
     QGridLayout, QCompleter, QComboBox, \
-    QStyledItemDelegate
+    QStyledItemDelegate, QLineEdit
 
 from electrum.i18n import _
 from .amountedit import BTCAmountEdit, MyLineEdit, AmountEdit
@@ -11,7 +11,7 @@ from .completion_text_edit import CompletionTextEdit
 from .confirm_tx_dialog import ConfirmTxDialog
 from .main_window import ElectrumWindow
 from .recovery_list import RecoveryTabAR, RecoveryTabAIR
-from .three_keys_dialogs import PreviewPsbtTxDialog
+from .three_keys_dialogs import PreviewPsbtTxDialog, MAX_3KEYS_PASSWD_LEN
 from .transaction_dialog import PreviewTxDialog
 from .util import read_QIcon, HelpLabel, EnterButton, ColorScheme
 from ...mnemonic import load_wordlist
@@ -26,6 +26,7 @@ class ElectrumMultikeyWalletWindow(ElectrumWindow):
 
     def __init__(self, gui_object: 'ElectrumGui', wallet: 'Abstract_Wallet'):
         self.is_2fa = wallet.storage.get('multikey_type', '') == '2fa'
+        self.is_hw = wallet.storage.get('multikey_type', '') == 'hw'
         super().__init__(gui_object=gui_object, wallet=wallet)
         self.recovery_tab = self.create_recovery_tab(wallet, self.config)
         self.tabs.addTab(self.recovery_tab, read_QIcon('recovery.png'), _('Cancel'))
@@ -35,7 +36,7 @@ class ElectrumMultikeyWalletWindow(ElectrumWindow):
         self.READY_TO_UPDATE = True
 
     def timer_actions(self):
-        # synchronizing the timer thread with end of the __init__ call
+    # synchronizing the timer thread with end of the __init__ call
         if self.READY_TO_UPDATE:
             super().timer_actions()
 
@@ -51,8 +52,9 @@ class ElectrumMultikeyWalletWindow(ElectrumWindow):
 
     def update_tabs(self, wallet=None):
         super().update_tabs(wallet=wallet)
-        self.recovery_tab.update_view()
-        self.recovery_tab.update_recovery_button()
+        if hasattr(self, 'recovery_tab'):
+            self.recovery_tab.update_view()
+            self.recovery_tab.update_recovery_button()
 
 
 class ElectrumARWindow(ElectrumMultikeyWalletWindow):
@@ -305,7 +307,7 @@ and the blockchain parameters of the Bitcoin Vault wallet. Your funds will be un
         grid.addWidget(self.max_button, 3, 3)
 
         def on_tx_type(index):
-            if not self.is_2fa:
+            if not self.is_2fa and not self.is_hw:
                 if self.tx_type_combo.currentIndex() == self.TX_TYPES.Secure:
                     self.instant_privkey_line.setEnabled(False)
                     self.instant_privkey_line.clear()
@@ -313,6 +315,21 @@ and the blockchain parameters of the Bitcoin Vault wallet. Your funds will be un
                 elif self.tx_type_combo.currentIndex() == self.TX_TYPES.Secure_Fast:
                     self.instant_privkey_line.setEnabled(True)
                     self.label_transaction_limitations.hide()
+            elif self.is_hw:
+                if self.tx_type_combo.currentIndex() == self.TX_TYPES.Secure:
+                    self.instant_password_line.setEnabled(False)
+                    self.instant_password_line.clear()
+                    self.label_transaction_limitations.show()
+                elif self.tx_type_combo.currentIndex() == self.TX_TYPES.Secure_Fast:
+                    self.instant_password_line.setEnabled(True)
+                    self.label_transaction_limitations.hide()
+                password = self.instant_password_line.text()
+                is_valid = (len(password) > 0) or not self.instant_password_line.isEnabled()
+                if is_valid:
+                    self.instant_password_line.setStyleSheet(ColorScheme.DEFAULT.as_stylesheet(True))
+                else:
+                    self.instant_password_line.setStyleSheet(ColorScheme.RED.as_stylesheet(True))
+                self.instant_password_line.textChanged.connect(on_tx_type)
             else:
                 if self.tx_type_combo.currentIndex() == self.TX_TYPES.Secure:
                     description_label.setEnabled(True)
@@ -339,7 +356,7 @@ and the blockchain parameters of the Bitcoin Vault wallet. Your funds will be un
         grid.addWidget(tx_type_label, 4, 0)
         grid.addWidget(self.tx_type_combo, 4, 1, 1, -1)
 
-        if not self.is_2fa:
+        if not self.is_2fa and not self.is_hw:
             instant_privkey_label = HelpLabel(_('Secure Fast Tx seed'), msg)
             self.instant_privkey_line = CompletionTextEdit()
             self.instant_privkey_line.setTabChangesFocus(False)
@@ -361,6 +378,16 @@ and the blockchain parameters of the Bitcoin Vault wallet. Your funds will be un
             self.instant_privkey_line.setMaximumHeight(2 * height)
             grid.addWidget(instant_privkey_label, 5, 0)
             grid.addWidget(self.instant_privkey_line, 5, 1, 1, -1)
+
+        elif self.is_hw:
+            instant_password_label = HelpLabel(_('Secure Fast Tx password'), msg)
+            self.instant_password_line = QLineEdit()
+            self.instant_password_line.setEchoMode(QLineEdit.Password)
+            self.instant_password_line.setMaxLength(MAX_3KEYS_PASSWD_LEN)
+            self.instant_password_line.setEnabled(False)
+            grid.addWidget(instant_password_label, 5, 0)
+            grid.addWidget(self.instant_password_line, 5, 1, 1, -1)
+
 
         self.save_button = EnterButton(_("Save"), self.do_save_invoice)
         self.send_button = EnterButton(_("Pay"), self.do_pay)
@@ -461,7 +488,7 @@ and the blockchain parameters of the Bitcoin Vault wallet. Your funds will be un
             self.wallet.set_alert()
             if invoice['txtype'] == TxType.INSTANT.name:
                 try:
-                    if not self.is_2fa and external_keypairs == None:
+                    if not self.is_2fa and not self.is_hw and external_keypairs == None:
                         external_keypairs = self.get_instant_keypair()
                     self.wallet.set_instant()
                 except Exception as e:
@@ -495,7 +522,7 @@ and the blockchain parameters of the Bitcoin Vault wallet. Your funds will be un
         for e in [self.payto_e, self.message_e, self.amount_e]:
             e.setText('')
             e.setFrozen(False)
-        if not self.is_2fa:
+        if not self.is_2fa and not self.is_hw:
             self.instant_privkey_line.clear()
         self.tx_type_combo.setCurrentIndex(self.TX_TYPES.Secure)
         self.update_status()
@@ -543,3 +570,90 @@ and the blockchain parameters of the Bitcoin Vault wallet. Your funds will be un
             else PreviewTxDialog
         d = dialog_class(make_tx, outputs, external_keypairs, window=self, invoice=invoice)
         d.show()
+
+
+class ElectrumARHWWindow(ElectrumARWindow):
+
+    def __init__(self, gui_object: 'ElectrumGui', wallet: 'Abstract_Wallet'):
+        super().__init__(gui_object=gui_object, wallet=wallet)
+
+    def do_pay(self):
+        invoice = self.read_invoice()
+        if not invoice:
+            return
+        invoice['txtype'] = TxType.ALERT_PENDING.name
+        self.wallet.save_invoice(invoice)
+        self.invoice_list.update()
+        self.do_clear()
+        self.do_pay_invoice(invoice)
+
+    def pay_onchain_dialog(self, inputs, outputs, invoice=None, external_keypairs=None):
+        # trustedcoin requires this
+        if run_hook('abort_send', self):
+            return
+        is_sweep = False # Was bool(external_keypairs). Should be good to keep it false, since we do not use trustedcoin
+
+        if invoice['txtype'] == TxType.ALERT_PENDING.name:
+            self.wallet.set_alert()
+        elif invoice['txtype'] == TxType.INSTANT.name:
+            self.wallet.set_recovery()
+        elif invoice['txtype'] == TxType.RECOVERY.name:
+            self.wallet.set_instant()
+
+        make_tx = lambda fee_est: self.wallet.make_unsigned_transaction(
+            coins=inputs,
+            outputs=outputs,
+            fee=fee_est,
+            is_sweep=is_sweep)
+        if self.config.get('advanced_preview'):
+            self.preview_tx_dialog(make_tx, outputs, external_keypairs=external_keypairs, invoice=invoice)
+            return
+
+        output_values = [x.value for x in outputs]
+        output_value = '!' if '!' in output_values else sum(output_values)
+        d = ConfirmTxDialog(self, make_tx, output_value, is_sweep)
+        d.update_tx()
+        if d.not_enough_funds:
+            self.show_message(_('Not Enough Funds'))
+            return
+        cancelled, is_send, password, tx = d.run()
+        if cancelled:
+            return
+
+        if is_send:
+            def sign_done(success):
+                if success:
+                    self.wallet.multisig_script_generator.set_alert()
+                    self.broadcast_or_show(tx, invoice=invoice)
+            self.sign_tx_with_password(tx, sign_done, password, external_keypairs)
+        else:
+            self.preview_tx_dialog(make_tx, outputs, external_keypairs=external_keypairs, invoice=invoice)
+
+
+class ElectrumAIRHWWindow(ElectrumAIRWindow):
+    def __init__(self, gui_object: 'ElectrumGui', wallet: 'Abstract_Wallet'):
+        super().__init__(gui_object=gui_object, wallet=wallet)
+
+    def do_pay(self):
+        invoice = self.read_invoice()
+        if not invoice:
+            return
+
+        try:
+            if self.tx_type_combo.currentIndex() == self.TX_TYPES.Secure_Fast:
+                invoice['txtype'] = TxType.INSTANT.name
+                self.instant_password_line.text()
+                self.wallet.set_instant()
+            else:
+                invoice['txtype'] = TxType.ALERT_PENDING.name
+                self.wallet.set_alert()
+        except Exception as e:
+            self.on_error([0, str(e)])
+            return
+
+        self.wallet.save_invoice(invoice)
+        self.invoice_list.update()
+        self.do_pay_invoice(invoice)
+
+    def _get_instant_password(self):
+        return self.instant_password_line.text()
