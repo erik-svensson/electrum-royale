@@ -117,14 +117,17 @@ class Ledger_Client(HardwareClientBase):
         bip32_path = bip32_path[2:]  # cut off "m/"
         if len(bip32_intpath) >= 1:
             prevPath = bip32.convert_bip32_intpath_to_strpath(bip32_intpath[:-1])[2:]
-            nodeData = self.dongleObject.getWalletPublicKey(prevPath)
+            nodeData = self.dongleObject.getWalletPublicKey(prevPath, btcvAddr=False)
             publicKey = compress_public_key(nodeData['publicKey'])
             fingerprint_bytes = hash_160(publicKey)[0:4]
             childnum_bytes = bip32_intpath[-1].to_bytes(length=4, byteorder="big")
         else:
             fingerprint_bytes = bytes(4)
             childnum_bytes = bytes(4)
-        nodeData = self.dongleObject.getWalletPublicKey(bip32_path, btcvPubkeyTree=pubkey_type)
+        if(pubkey_type == LedgerBtcvTxType.ALERT):
+            nodeData = self.dongleObject.getWalletPublicKey(bip32_path, btcvAddr=False)
+        else:
+            nodeData = self.dongleObject.getWalletPublicKey(bip32_path, btcvPubkeyTree=pubkey_type)
         publicKey = compress_public_key(nodeData['publicKey'])
         depth = len(bip32_intpath)
         return BIP32Node(xtype=xtype,
