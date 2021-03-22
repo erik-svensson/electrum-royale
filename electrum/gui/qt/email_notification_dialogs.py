@@ -613,7 +613,6 @@ class WalletInfoNotifications:
             self.email = email
             self.sub_unsub_button.setText(_('Loading...'))
             self.sub_unsub_button.setEnabled(False)
-            self.update_button.setEnabled(False)
             self._check_subscription()
         else:
             self.sub_unsub_button.setText(_('Subscribe'))
