@@ -453,6 +453,7 @@ class WalletInfoNotifications:
     def update_button(self, button: QPushButton):
         self._update_button = button
         self.update_button.clicked.connect(self._update)
+        self.update_button.setEnabled(False)
 
     def _subscribe(self):
         self.dialog.close()
@@ -552,7 +553,6 @@ class WalletInfoNotifications:
             self.email = email
             self.sub_unsub_button.setText(_('Loading...'))
             self.sub_unsub_button.setEnabled(False)
-            self.update_button.setEnabled(False)
             self._check_subscription()
         else:
             self.sub_unsub_button.setText(_('Subscribe'))
