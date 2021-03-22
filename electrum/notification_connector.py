@@ -182,3 +182,24 @@ class Connector:
             timeout=self.timeout,
             verify=self.VERIFY,
         )
+
+    @request_error_handler
+    def modify_email(self, wallet_hashes: List[str], old_email: str, new_email: str):
+        return requests.put(
+            f'{self.connection_string}/modify/',
+            json={
+                'hashes': wallet_hashes,
+                'old_email': old_email,
+                'new_email': new_email,
+            },
+            timeout=self.timeout,
+            verify=self.VERIFY,
+        )
+
+    @request_error_handler
+    def resend(self):
+        return requests.get(
+            f'{self.connection_string}/resend/{self.token}/',
+            timeout=self.timeout,
+            verify=self.VERIFY,
+        )
