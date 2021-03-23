@@ -226,6 +226,7 @@ class EmailNotificationWizard(InstallWizard):
         self._email = ''
         self._error_message = ''
         self.resend_method = None
+        self._resend_request = False
         self.show_skip_checkbox = True
 
     def exec_layout(self, layout, title=None, back_button_name=None,
@@ -310,7 +311,11 @@ class EmailNotificationWizard(InstallWizard):
 
     def confirm_pin(self, back_button_name=None, email=''):
         layout = PinConfirmationLayout(self, resend_method=self.resend_method, email=email if email else self._email, error_msg=self._error_message)
+        if self._resend_request:
+            self._resend_request = False
+            layout.resend_request()
         result = self.exec_layout(layout, _('Confirm your email address'), next_enabled=False, back_button_name=back_button_name)
+        print('+++ result')
         layout.thread.terminate()
         if result:
             self._error_message = ''
@@ -320,7 +325,16 @@ class EmailNotificationWizard(InstallWizard):
             return self.State.NEXT
         except EmailNotificationApiError as e:
             self._error_message = str(e)
+            if str(e).startswith('No more trials left'):
+                return self._too_many_pin_attempt(str(e))
             return self.State.CONTINUE
+
+    def _too_many_pin_attempt(self, message):
+        print('+++ too many attempts')
+        message += '\n\n' + _('Resend will be automatically performed')
+        self.show_error(msg=message, parent=self)
+        self._resend_request = True
+        return self.State.CONTINUE
 
 
 class EmailNotificationDialog(EmailNotificationWizard):
