@@ -1,5 +1,6 @@
 import datetime
 import time
+from abc import ABC, abstractmethod
 from enum import IntEnum
 
 from PyQt5.QtCore import QRegExp
@@ -148,13 +149,41 @@ class ChangeEmailLayout(QVBoxLayout, ErrorMessageMixin, InputFieldMixin):
         return self.input_edit.text()
 
 
+class ResendStrategy(ABC):
+    def __init__(self, parent: InstallWizard, connector: Connector):
+        self.parent = parent
+        self.connector = connector
+
+    def on_error(self, error: EmailNotificationApiError):
+        if self.apply_error_logic(error):
+            self.parent.show_error('error in thread return BACK\n\n' + str(error))
+            self.parent.loop.exit(1)
+
+    @abstractmethod
+    def apply_error_logic(self, error: EmailNotificationApiError) -> bool:
+        raise NotImplementedError()
+
+    @abstractmethod
+    def resend(self):
+        raise NotImplementedError()
+
+
+class SubscribeResendStrategy(ResendStrategy):
+
+    def apply_error_logic(self, error: EmailNotificationApiError) -> bool:
+        return str(error).startswith('SUB attempts overflow')
+
+    def resend(self):
+        self.connector.resend()
+
+
 class PinConfirmationLayout(QVBoxLayout, ErrorMessageMixin, InputFieldMixin):
     RESEND_COOL_DOWN_TIME = 30
 
-    def __init__(self, parent, resend_method, email, error_msg=''):
+    def __init__(self, parent, email, error_msg=''):
         super(). __init__()
         self.parent = parent
-        self.resend_method = resend_method
+        self.resend_strategy = parent.resend_strategy
 
         label = QLabel(_('Please enter the code we sent to: ') + f"<br><b>{email}</b>")
         label.setWordWrap(True)
@@ -188,7 +217,7 @@ class PinConfirmationLayout(QVBoxLayout, ErrorMessageMixin, InputFieldMixin):
 
     def resend_task(self):
         t0 = datetime.datetime.now()
-        self.resend_method()
+        self.resend_strategy.resend()
         t1 = datetime.datetime.now()
         elapsed_time = (t1 - t0).total_seconds()
         time.sleep(int(self.RESEND_COOL_DOWN_TIME - elapsed_time))
@@ -196,8 +225,9 @@ class PinConfirmationLayout(QVBoxLayout, ErrorMessageMixin, InputFieldMixin):
     def on_success(self, *args, **kwargs):
         self.resend_button.setEnabled(True)
 
-    def on_error(self, errors):
-        self.set_error(str(errors[1]))
+    def on_error(self, *args):
+        self.resend_strategy.on_error(args[1])
+        self.set_error(str(args[1]))
         self.resend_button.setEnabled(True)
 
     def resend_request(self):
@@ -225,7 +255,7 @@ class EmailNotificationWizard(InstallWizard):
         self.connector = Connector.from_config(self.config)
         self._email = ''
         self._error_message = ''
-        self.resend_method = None
+        self.resend_strategy = SubscribeResendStrategy(parent=self, connector=self.connector)
         self._resend_request = False
         self.show_skip_checkbox = True
 
@@ -272,16 +302,12 @@ class EmailNotificationWizard(InstallWizard):
         return what_next
 
     def _subscribe(self):
-        def send_request():
-            response = self.connector.subscribe_wallet(
-                wallets=[self.wallet],
-                email=self._email,
-                language=convert_to_iso_639_1(self.config.get('language'))
-            )
-            self.connector.set_token(response)
-
-        self.resend_method = send_request
-        send_request()
+        response = self.connector.subscribe_wallet(
+            wallets=[self.wallet],
+            email=self._email,
+            language=convert_to_iso_639_1(self.config.get('language'))
+        )
+        self.connector.set_token(response)
         self._error_message = ''
 
     def _choose_email(self):
@@ -310,7 +336,7 @@ class EmailNotificationWizard(InstallWizard):
             return self.State.ERROR
 
     def confirm_pin(self, back_button_name=None, email=''):
-        layout = PinConfirmationLayout(self, resend_method=self.resend_method, email=email if email else self._email, error_msg=self._error_message)
+        layout = PinConfirmationLayout(self, email=email if email else self._email, error_msg=self._error_message)
         if self._resend_request:
             self._resend_request = False
             layout.resend_request()
@@ -323,17 +349,18 @@ class EmailNotificationWizard(InstallWizard):
         try:
             self.connector.authenticate(layout.pin())
             return self.State.NEXT
-        except EmailNotificationApiError as e:
-            self._error_message = str(e)
-            if str(e).startswith('No more trials left'):
-                return self._too_many_pin_attempt(str(e))
-            return self.State.CONTINUE
+        except EmailNotificationApiError as error:
+            return self.apply_pin_error_logic(error)
 
-    def _too_many_pin_attempt(self, message):
-        print('+++ too many attempts')
-        message += '\n\n' + _('Resend will be automatically performed')
-        self.show_error(msg=message, parent=self)
-        self._resend_request = True
+    def apply_pin_error_logic(self, error: EmailNotificationApiError):
+        message = str(error)
+        self._error_message = message
+        if message.startswith('No more trials left'):
+            print('+++ too many attempts')
+            message += '\n\n' + _('Resend will be automatically performed')
+            self.show_error(msg=message, parent=self)
+            self._resend_request = True
+            return self.State.CONTINUE
         return self.State.CONTINUE
 
 
