@@ -12,7 +12,8 @@ from electrum.email_notification_config import EmailNotificationConfig
 from electrum.gui.qt.installwizard import InstallWizard
 from electrum.gui.qt.util import TaskThread, WaitingDialogWithCancel
 from electrum.i18n import _, convert_to_iso_639_1
-from electrum.notification_connector import EmailNotificationWallet, EmailNotificationApiError, Connector, EmailAlreadySubscribedError
+from electrum.notification_connector import EmailNotificationWallet, EmailNotificationApiError, Connector, \
+    EmailAlreadySubscribedError, NoMorePINAttemptsError, TokenError
 from electrum.util import UserCancelled
 
 
@@ -156,6 +157,7 @@ class ResendStrategy(ABC):
 
     def on_error(self, error: EmailNotificationApiError):
         if self.apply_error_logic(error):
+            # todo adjust message in pop-up
             self.parent.show_error('error in thread return BACK\n\n' + str(error))
             self.parent.loop.exit(1)
 
@@ -171,7 +173,7 @@ class ResendStrategy(ABC):
 class SubscribeResendStrategy(ResendStrategy):
 
     def apply_error_logic(self, error: EmailNotificationApiError) -> bool:
-        return str(error).startswith('SUB attempts overflow')
+        return isinstance(error, TokenError)
 
     def resend(self):
         self.connector.resend()
@@ -225,9 +227,9 @@ class PinConfirmationLayout(QVBoxLayout, ErrorMessageMixin, InputFieldMixin):
     def on_success(self, *args, **kwargs):
         self.resend_button.setEnabled(True)
 
-    def on_error(self, *args):
-        self.resend_strategy.on_error(args[1])
-        self.set_error(str(args[1]))
+    def on_error(self, errors):
+        self.resend_strategy.on_error(errors[1])
+        self.set_error(str(errors[1]))
         self.resend_button.setEnabled(True)
 
     def resend_request(self):
@@ -261,8 +263,7 @@ class EmailNotificationWizard(InstallWizard):
 
     def exec_layout(self, layout, title=None, back_button_name=None,
                     next_enabled=True):
-        if back_button_name:
-            self.back_button.setText(back_button_name)
+        self.back_button.setText(back_button_name if back_button_name else _('Cancel'))
         try:
             super().exec_layout(layout, title, raise_on_cancel=True, next_enabled=next_enabled)
         except UserCancelled:
@@ -341,7 +342,6 @@ class EmailNotificationWizard(InstallWizard):
             self._resend_request = False
             layout.resend_request()
         result = self.exec_layout(layout, _('Confirm your email address'), next_enabled=False, back_button_name=back_button_name)
-        print('+++ result')
         layout.thread.terminate()
         if result:
             self._error_message = ''
@@ -353,14 +353,17 @@ class EmailNotificationWizard(InstallWizard):
             return self.apply_pin_error_logic(error)
 
     def apply_pin_error_logic(self, error: EmailNotificationApiError):
-        message = str(error)
-        self._error_message = message
-        if message.startswith('No more trials left'):
-            print('+++ too many attempts')
-            message += '\n\n' + _('Resend will be automatically performed')
+        self._error_message = str(error)
+        if isinstance(error, TokenError):
+            message = str(error) + '\n\n' + _('Send request again')
             self.show_error(msg=message, parent=self)
             self._resend_request = True
-            return self.State.CONTINUE
+            self._error_message = ''
+            return self.State.BACK
+        elif isinstance(error, NoMorePINAttemptsError):
+            message = str(error) + '\n\n' + _('Resend will be automatically performed')
+            self.show_error(msg=message, parent=self)
+            self._resend_request = True
         return self.State.CONTINUE
 
 

@@ -63,6 +63,14 @@ class EmailAlreadySubscribedError(EmailNotificationApiError):
     pass
 
 
+class TokenError(EmailNotificationApiError):
+    pass
+
+
+class NoMorePINAttemptsError(EmailNotificationApiError):
+    pass
+
+
 # todo add user friendly error mapping
 def request_error_handler(fun):
     @functools.wraps(fun)
@@ -100,6 +108,21 @@ def handle_email_already_exist_error_on_subscribe(fun):
             if e.http_status_code == 400 and str(e).startswith(f'Invalid wallet data: {email} is already subscribed'):
                 e.__class__ = EmailAlreadySubscribedError
             raise e
+    return wrapper
+
+
+def handle_token_error(fun):
+    @functools.wraps(fun)
+    def wrapper(*args, **kwargs):
+        try:
+            res = fun(*args, **kwargs)
+            return res
+        except EmailNotificationApiError as error:
+            if error.http_status_code == 429:
+                error.__class__ = NoMorePINAttemptsError
+            elif error.http_status_code == 408:
+                error.__class__ = TokenError
+            raise error
     return wrapper
 
 
@@ -144,6 +167,7 @@ class Connector:
             verify=self.VERIFY,
         )
 
+    @handle_token_error
     @request_error_handler
     def authenticate(self, pin: str):
         return requests.post(
@@ -196,6 +220,7 @@ class Connector:
             verify=self.VERIFY,
         )
 
+    @handle_token_error
     @request_error_handler
     def resend(self):
         return requests.get(
