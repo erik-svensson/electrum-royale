@@ -613,33 +613,6 @@ class WalletInfoNotifications:
             _('Connecting with server...'),
             task, confirm, on_error)
 
-    def _subscribe_with_predefined_email(self):
-        self.dialog.close()
-        email_dialog = EmailNotificationDialog(
-            self.wallet,
-            parent=self.parent,
-            config=self.config,
-            app=self.app,
-            plugins=None,
-        )
-        email_dialog._email = self.email
-        email_dialog.close()
-
-        def task():
-            email_dialog._subscribe()
-
-        def confirm(*args):
-            email_dialog.show()
-            email_dialog.confirm_pin_on_subscribe()
-
-        def on_error(*args):
-            email_dialog.show_error(str(args[0][1]))
-
-        WaitingDialogWithCancel(
-            self.parent,
-            _('Connecting with server...'),
-            task, confirm, on_error)
-
     def _update(self):
         self.dialog.close()
         update_dialog = UpdateEmailNotificationDialog(
@@ -685,7 +658,7 @@ class WalletInfoNotifications:
             else:
                 self.sub_unsub_button.setText(_('Subscribe'))
                 self._disconnect()
-                self.sub_unsub_button.clicked.connect(self._subscribe_with_predefined_email)
+                self.sub_unsub_button.clicked.connect(self._subscribe)
             self.sub_unsub_button.setEnabled(True)
 
         def task():
