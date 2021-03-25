@@ -122,6 +122,7 @@ class ChangeEmailLayout(QVBoxLayout, ErrorMessageMixin, InputFieldMixin):
     def __init__(self, parent, current_email='', new_email='', error_msg=''):
         super().__init__()
         self.parent = parent
+        self.current_email = current_email
         label = QLabel(_('Enter new email address'))
         label.setWordWrap(True)
         box = QHBoxLayout()
@@ -148,6 +149,13 @@ class ChangeEmailLayout(QVBoxLayout, ErrorMessageMixin, InputFieldMixin):
 
     def email(self):
         return self.input_edit.text()
+
+    def input_edited(self):
+        super().input_edited()
+        if self.email() == self.current_email:
+            self.parent.next_button.setEnabled(False)
+            self.input_edit.set_red()
+
 
 
 class ResendStrategy(ABC):
