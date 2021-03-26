@@ -1,6 +1,7 @@
 import datetime
 import time
 from abc import ABC, abstractmethod
+from collections import Callable
 from enum import IntEnum
 
 from PyQt5.QtCore import QRegExp
@@ -157,7 +158,6 @@ class ChangeEmailLayout(QVBoxLayout, ErrorMessageMixin, InputFieldMixin):
             self.input_edit.set_red()
 
 
-
 class ResendStrategy(ABC):
     def __init__(self, parent: InstallWizard, connector: Connector):
         self.parent = parent
@@ -178,13 +178,38 @@ class ResendStrategy(ABC):
         raise NotImplementedError()
 
 
-class SubscribeResendStrategy(ResendStrategy):
+class SingleMethodResendStrategy(ResendStrategy):
+    def __init__(self, parent: InstallWizard, connector: Connector, api_request_method: Callable):
+        super().__init__(parent=parent, connector=connector)
+        self._api_request_method = api_request_method
 
     def apply_error_logic(self, error: EmailNotificationApiError) -> bool:
         return isinstance(error, TokenError)
 
     def resend(self):
-        self.connector.resend()
+        self._api_request_method()
+
+
+class SwitchableResendStrategy(ResendStrategy):
+    def __init__(self, parent: InstallWizard, connector: Connector, api_request_method: Callable):
+        super().__init__(parent=parent, connector=connector)
+        self._api_request_method = api_request_method
+        self._run_main_flow_api_request = False
+
+    def apply_error_logic(self, error: EmailNotificationApiError) -> bool:
+        return isinstance(error, TokenError)
+
+    def resend(self):
+        if self._run_main_flow_api_request:
+            print('++++ SUB is performing')
+            self._api_request_method()
+            self._run_main_flow_api_request = False
+        else:
+            print('++++ Email resend request')
+            self.connector.resend()
+
+    def switch_to_main_flow_endpoint_request(self):
+        self._run_main_flow_api_request = True
 
 
 class PinConfirmationLayout(QVBoxLayout, ErrorMessageMixin, InputFieldMixin):
@@ -265,8 +290,8 @@ class EmailNotificationWizard(InstallWizard):
         self.connector = Connector.from_config(self.config)
         self._email = ''
         self._error_message = ''
-        self.resend_strategy = SubscribeResendStrategy(parent=self, connector=self.connector)
-        self._resend_request = False
+        self.resend_strategy = SingleMethodResendStrategy(parent=self, connector=self.connector, api_request_method=self._subscribe)
+        self._auto_resend_request = False
         self.show_skip_checkbox = True
 
     def exec_layout(self, layout, title=None, back_button_name=None,
@@ -346,9 +371,7 @@ class EmailNotificationWizard(InstallWizard):
 
     def confirm_pin(self, back_button_name=None, email=''):
         layout = PinConfirmationLayout(self, email=email if email else self._email, error_msg=self._error_message)
-        if self._resend_request:
-            self._resend_request = False
-            layout.resend_request()
+        self.auto_resend_logic(layout=layout)
         result = self.exec_layout(layout, _('Confirm your email address'), next_enabled=False, back_button_name=back_button_name)
         layout.thread.terminate()
         if result:
@@ -360,21 +383,23 @@ class EmailNotificationWizard(InstallWizard):
         except EmailNotificationApiError as error:
             return self.apply_pin_error_logic(error)
 
+    def auto_resend_logic(self, layout):
+        if self._auto_resend_request:
+            self._auto_resend_request = False
+            # todo add below line in update class
+            # self.resend_strategy.switch_to_main_flow_endpoint_request()
+            layout.resend_request()
+
     def apply_pin_error_logic(self, error: EmailNotificationApiError):
         self._error_message = str(error)
-        if isinstance(error, TokenError):
-            message = str(error) + '\n\n' + _('Send request again')
-            self.show_error(msg=message, parent=self)
-            self._resend_request = True
-            self._error_message = ''
-            return self.State.BACK
-        elif isinstance(error, NoMorePINAttemptsError):
+        if isinstance(error, (NoMorePINAttemptsError, TokenError)):
             message = str(error) + '\n\n' + _('Resend will be automatically performed')
             self.show_error(msg=message, parent=self)
-            self._resend_request = True
+            self._auto_resend_request = True
         return self.State.CONTINUE
 
 
+# todo refactor - perform only update
 class EmailNotificationDialog(EmailNotificationWizard):
     def __init__(self, wallet, *args, **kwargs):
         kwargs['turn_off_icon'] = True
@@ -418,6 +443,7 @@ class EmailNotificationDialog(EmailNotificationWizard):
         self._error_message = ''
 
 
+# todo extend States inside class
 class UpdateEmailNotificationDialog(EmailNotificationDialog):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
