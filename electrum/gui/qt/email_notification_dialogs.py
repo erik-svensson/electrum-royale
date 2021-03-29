@@ -116,6 +116,38 @@ class EmailNotificationLayout(QVBoxLayout, ErrorMessageMixin, InputFieldMixin):
         return self.input_edit.text()
 
 
+class ChangeEmailLayout(QVBoxLayout, ErrorMessageMixin, InputFieldMixin):
+    def __init__(self, parent, current_email='', new_email='', error_msg=''):
+        super().__init__()
+        self.parent = parent
+        label = QLabel(_('Enter new email address'))
+        label.setWordWrap(True)
+        box = QHBoxLayout()
+        current_email_label = QLabel(_('Current email') + f':<b>{current_email}</b>')
+        email_label = QLabel(_('New email:'))
+        email_edit = EmailInputFiled()
+        box.addWidget(email_label)
+        box.addWidget(email_edit)
+        email_edit.textChanged.connect(self.input_edited)
+        self.input_edit = email_edit
+        self.input_edit.setText(new_email)
+
+        self.addWidget(label)
+        self.addSpacing(10)
+        self.addWidget(current_email_label)
+        self.addLayout(box)
+        self.addSpacing(5)
+        self.error_label = QLabel()
+        self.error_label.setWordWrap(True)
+        self.error_label.setVisible(False)
+        if error_msg:
+            self.set_error(error_msg)
+        self.addWidget(self.error_label)
+
+    def email(self):
+        return self.input_edit.text()
+
+
 class PinConfirmationLayout(QVBoxLayout, ErrorMessageMixin, InputFieldMixin):
     RESEND_COOL_DOWN_TIME = 30
 
@@ -156,10 +188,9 @@ class PinConfirmationLayout(QVBoxLayout, ErrorMessageMixin, InputFieldMixin):
 
     def resend_task(self):
         t0 = datetime.datetime.now()
-        response = self.resend_method()
+        self.resend_method()
         t1 = datetime.datetime.now()
         elapsed_time = (t1 - t0).total_seconds()
-        self.parent.connector.set_token(response)
         time.sleep(int(self.RESEND_COOL_DOWN_TIME - elapsed_time))
 
     def on_success(self, *args, **kwargs):
@@ -241,15 +272,15 @@ class EmailNotificationWizard(InstallWizard):
 
     def _subscribe(self):
         def send_request():
-            return self.connector.subscribe_wallet(
+            response = self.connector.subscribe_wallet(
                 wallets=[self.wallet],
                 email=self._email,
                 language=convert_to_iso_639_1(self.config.get('language'))
             )
+            self.connector.set_token(response)
 
         self.resend_method = send_request
-        response = send_request()
-        self.connector.set_token(response)
+        send_request()
         self._error_message = ''
 
     def _choose_email(self):
@@ -277,8 +308,8 @@ class EmailNotificationWizard(InstallWizard):
         else:
             return self.State.ERROR
 
-    def confirm_pin(self, back_button_name=None):
-        layout = PinConfirmationLayout(self, resend_method=self.resend_method, email=self._email, error_msg=self._error_message)
+    def confirm_pin(self, back_button_name=None, email=''):
+        layout = PinConfirmationLayout(self, resend_method=self.resend_method, email=email if email else self._email, error_msg=self._error_message)
         result = self.exec_layout(layout, _('Confirm your email address'), next_enabled=False, back_button_name=back_button_name)
         layout.thread.terminate()
         if result:
@@ -324,15 +355,75 @@ class EmailNotificationDialog(EmailNotificationWizard):
 
     def _unsubscribe(self):
         def send_request():
-            return self.connector.unsubscribe_wallet(
+            response = self.connector.unsubscribe_wallet(
                 wallet_hashes=[self.wallet.hash()],
                 email=self._email,
             )
+            self.connector.set_token(response)
 
         self.resend_method = send_request
-        response = send_request()
+        send_request()
+        self._error_message = ''
+
+
+class UpdateEmailNotificationDialog(EmailNotificationDialog):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self._new_email = ''
+
+    def run_update(self):
+        what_next = self.State.BACK
+        while what_next == self.State.BACK:
+            what_next = self.run_single_view(self._change_email)
+            if what_next == self.State.NEXT:
+                what_next = self.run_single_view(self.confirm_pin, _('Back'))
+                if what_next == self.State.NEXT:
+                    self._error_message = ''
+                    what_next = self.run_single_view(self.confirm_pin, _('Back'), self._new_email)
+            else:
+                break
+
+        if what_next == self.State.NEXT:
+            EmailNotificationConfig.save_email_to_config(self.config, self.wallet, self._new_email)
+            self.show_message(
+                title=_('Success'),
+                msg=_('You have successfully updated email'),
+                rich_text=True,
+            )
+
+    def _modify(self):
+        def resend():
+            return self.connector.resend()
+
+        self.resend_method = resend
+        response = self.connector.modify_email(
+            wallet_hashes=[self.wallet.hash()],
+            old_email=self._email,
+            new_email=self._new_email,
+        )
         self.connector.set_token(response)
         self._error_message = ''
+
+    def _change_email(self):
+        layout = ChangeEmailLayout(
+            self,
+            current_email=self._email,
+            new_email=self._new_email,
+            error_msg=self._error_message
+        )
+        layout.input_edited()
+        result = self.exec_layout(layout, _('Change your email'), next_enabled=self.next_button.isEnabled())
+
+        if result:
+            return result
+        self._new_email = layout.email()
+        try:
+            self._modify()
+            return self.State.NEXT
+        except EmailNotificationApiError as e:
+            print(e)
+            self._error_message = str(e)
+            return self.State.CONTINUE
 
 
 class WalletInfoNotifications:
@@ -342,6 +433,7 @@ class WalletInfoNotifications:
         self.config = config
         self.app = app
         self.sub_unsub_button = QPushButton()
+        self.update_button = QPushButton()
         self.thread = TaskThread(None)
         self.email = ''
 
@@ -352,6 +444,16 @@ class WalletInfoNotifications:
     @dialog.setter
     def dialog(self, dialog):
         self._dialog = dialog
+
+    @property
+    def update_button(self):
+        return self._update_button
+
+    @update_button.setter
+    def update_button(self, button: QPushButton):
+        self._update_button = button
+        self.update_button.clicked.connect(self._update)
+        self.update_button.setEnabled(False)
 
     def _subscribe(self):
         self.dialog.close()
@@ -368,7 +470,7 @@ class WalletInfoNotifications:
     def _unsubscribe(self):
         self.dialog.close()
         email_dialog = EmailNotificationDialog(
-            self.wallet,
+            wallet=self.wallet,
             parent=self.parent,
             config=self.config,
             app=self.app,
@@ -426,6 +528,19 @@ class WalletInfoNotifications:
             _('Connecting with server...'),
             task, confirm, on_error)
 
+    def _update(self):
+        self.dialog.close()
+        update_dialog = UpdateEmailNotificationDialog(
+            self.wallet,
+            parent=self.parent,
+            config=self.config,
+            app=self.app,
+            plugins=None,
+        )
+        update_dialog._email = self.email
+        update_dialog.run_update()
+        update_dialog.terminate()
+
     def _disconnect(self):
         try:
             self.sub_unsub_button.clicked.disconnect()
@@ -448,6 +563,7 @@ class WalletInfoNotifications:
         def on_error(*args, **kwargs):
             self.sub_unsub_button.setText(_('Error'))
             self.sub_unsub_button.setEnabled(False)
+            self.update_button.setEnabled(False)
 
         def on_success(subscribed):
             if subscribed:
@@ -464,7 +580,10 @@ class WalletInfoNotifications:
             connector = Connector.from_config(self.config)
             wallet = EmailNotificationWallet.from_wallet(self.wallet)
             response = connector.check_subscription([wallet.hash()], self.email)
-            return response['result'][0]
+            is_subscribed = response['result'][0]
+            if is_subscribed:
+                self.update_button.setEnabled(True)
+            return is_subscribed
 
         self.thread.add(
             task=task,
