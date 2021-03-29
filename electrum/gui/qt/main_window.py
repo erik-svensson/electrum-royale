@@ -76,7 +76,7 @@ from electrum.wallet import (Multisig_Wallet, CannotBumpFee, Abstract_Wallet,
 from .amountedit import AmountEdit, BTCAmountEdit, MyLineEdit, FeerateEdit
 from .channels_list import ChannelsList
 from .confirm_tx_dialog import ConfirmTxDialog
-from .email_notification_dialogs import WalletInfoNotifications
+from .email_notification_dialogs import WalletInfoNotifications, WalletNotificationsMainDialog
 from .exception_window import Exception_Hook
 from .fee_slider import FeeSlider
 from .history_list import HistoryList, HistoryModel
@@ -87,7 +87,7 @@ from .three_keys_dialogs import PSBTDialog
 from .transaction_dialog import PreviewTxDialog
 from .transaction_dialog import show_transaction
 from .update_checker import UpdateCheck, UpdateCheckThread
-from .util import ButtonsTextEdit
+from .util import ButtonsTextEdit, WaitingDialogWithCancel
 from .util import (read_QIcon, ColorScheme, text_dialog, icon_path, WaitingDialog,
                    WindowModalDialog, ChoicesLayout, HelpLabel, Buttons,
                    OkButton, InfoButton, WWLabel, TaskThread, CancelButton,
@@ -607,6 +607,8 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
 
         wallet_menu = menubar.addMenu(_("&Wallet"))
         wallet_menu.addAction(_("&Information"), self.show_wallet_info)
+        if EmailNotificationWallet.is_subscribable(self.wallet):
+            wallet_menu.addAction(_("&Notification"), self.show_notifications)
         wallet_menu.addSeparator()
         self.password_menu = wallet_menu.addAction(_("&Password"), self.change_password_dialog)
         self.seed_menu = wallet_menu.addAction(_("&Seed"), self.show_seed_dialog)
@@ -2147,6 +2149,17 @@ in the "Authenticators" tab in the Gold Wallet app.')
         vbox.addLayout(btns)
         dialog.setLayout(vbox)
         dialog.exec_()
+
+    def show_notifications(self):
+        dialog = WalletNotificationsMainDialog(self, self.config, self.wallet, self.app)
+
+        WaitingDialogWithCancel(
+            self,
+            _('Connecting with server...'),
+            task=dialog.check_subscription,
+            on_success=lambda *args: dialog.exec_(),
+            on_error=lambda *args: self.show_error(str(args[0][1])),
+        )
 
     def remove_wallet(self):
         if self.question('\n'.join([

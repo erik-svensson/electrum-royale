@@ -11,7 +11,7 @@ from PyQt5.QtWidgets import QVBoxLayout, QLineEdit, QHBoxLayout, QLabel, QCheckB
 from electrum.base_wizard import GoBack
 from electrum.email_notification_config import EmailNotificationConfig
 from electrum.gui.qt.installwizard import InstallWizard
-from electrum.gui.qt.util import TaskThread, WaitingDialogWithCancel
+from electrum.gui.qt.util import TaskThread, WaitingDialogWithCancel, WindowModalDialog
 from electrum.i18n import _, convert_to_iso_639_1
 from electrum.notification_connector import EmailNotificationWallet, EmailNotificationApiError, Connector, \
     EmailAlreadySubscribedError, NoMorePINAttemptsError, TokenError
@@ -701,3 +701,108 @@ class WalletInfoNotifications:
             on_success=on_success,
             on_error=on_error
         )
+
+
+class WalletNotificationsMainDialog(WindowModalDialog, ErrorMessageMixin):
+    def __init__(self, parent, config, wallet, app):
+        super().__init__(parent, _('Email Notifications'))
+        self.parent = parent
+        self.setMinimumSize(500, 100)
+        self.wallet = wallet
+        self.config = config
+        self.app = app
+        vbox = QVBoxLayout()
+        self.error_label = QLabel()
+        self.error_label.setWordWrap(True)
+        vbox.addWidget(self.error_label)
+        vbox.addWidget(QLabel(_('It is used to send your transaction notifications from chosen wallet')))
+        hbox = QHBoxLayout()
+        self.subscribe_button = QPushButton(_('Subscribe'))
+        self.subscribe_button.clicked.connect(self._subscribe)
+        self.subscribe_button.setEnabled(False)
+        self.unsubscribe_button = QPushButton(_('Unsubscribe'))
+        self.unsubscribe_button.clicked.connect(self._unsubscribe)
+        self.unsubscribe_button.setEnabled(False)
+        self.update_button = QPushButton(_('Update'))
+        self.update_button.clicked.connect(self._update)
+        self.update_button.setEnabled(False)
+        hbox.addStretch()
+        hbox.addWidget(self.update_button)
+        hbox.addWidget(self.unsubscribe_button)
+        hbox.addWidget(self.subscribe_button)
+        vbox.addLayout(hbox)
+        self.setLayout(vbox)
+        self.email = EmailNotificationConfig.get_wallet_email(self.config, self.wallet)
+
+        self.set_error('example error message')
+
+    def _subscribe(self):
+        self.close()
+        email_dialog = EmailNotificationDialog(
+            self.wallet,
+            parent=self.parent,
+            config=self.config,
+            app=self.app,
+            plugins=None,
+        )
+        email_dialog.run_notification()
+        email_dialog.terminate()
+
+    def _unsubscribe(self):
+        self.dialog.close()
+        email_dialog = EmailNotificationDialog(
+            wallet=self.wallet,
+            parent=self.parent,
+            config=self.config,
+            app=self.app,
+            plugins=None,
+        )
+        email_dialog._email = self.email
+        email_dialog.close()
+
+        if_unsub = email_dialog.question(
+            title=_('Unsubscribe from notifications'),
+            msg=_('Do you want to unsubscribe this wallet from email notifications?')
+        )
+        if not if_unsub:
+            return
+
+        def task():
+            email_dialog._unsubscribe()
+
+        def confirm(*args):
+            email_dialog.show()
+            email_dialog.confirm_pin_on_unsubscribe()
+
+        def on_error(*args):
+            email_dialog.show_error(str(args[0][1]))
+
+        WaitingDialogWithCancel(
+            self.parent,
+            _('Connecting with server...'),
+            task, confirm, on_error)
+
+    def _update(self):
+        self.dialog.close()
+        update_dialog = UpdateEmailNotificationDialog(
+            self.wallet,
+            parent=self.parent,
+            config=self.config,
+            app=self.app,
+            plugins=None,
+        )
+        update_dialog._email = self.email
+        update_dialog.run_update()
+        update_dialog.terminate()
+
+    def check_subscription(self):
+        connector = Connector.from_config(self.config)
+        wallet = EmailNotificationWallet.from_wallet(self.wallet)
+        print('++ 0', wallet.hash(), self.email)
+        response = connector.check_subscription([wallet.hash()], self.email)
+        is_subscribed = response['result'][0]
+        self.subscribe_button.setEnabled(True)
+        if is_subscribed:
+            self.update_button.setEnabled(True)
+            self.unsubscribe_button.setEnabled(True)
+            self.subscribe_button.setEnabled(False)
