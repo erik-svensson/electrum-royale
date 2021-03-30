@@ -399,7 +399,6 @@ class EmailNotificationWizard(InstallWizard):
         return self.State.CONTINUE
 
 
-# todo refactor - perform only update
 class EmailNotificationDialog(EmailNotificationWizard):
     def __init__(self, wallet, *args, **kwargs):
         kwargs['turn_off_icon'] = True
@@ -407,39 +406,36 @@ class EmailNotificationDialog(EmailNotificationWizard):
         self.show_skip_checkbox = False
         self.setWindowTitle(_('Notifications'))
 
-    def _only_confirm_pin(self, success_message):
+
+class UnsubscribeEmailNotificationDialog(EmailNotificationDialog):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.resend_strategy = SingleMethodResendStrategy(
+            parent=self,
+            connector=self.connector,
+            api_request_method=self._unsubscribe
+        )
+
+    def confirm_pin(self, back_button_name=None, email=''):
         response = EmailNotificationWizard.run_single_view(
-            super().confirm_pin, None
+            super().confirm_pin, back_button_name, email
         )
         if response == self.State.NEXT:
+            EmailNotificationConfig.save_email_to_config(self.config, self.wallet, "")
             self.show_message(
                 title=_('Success'),
-                msg=success_message,
+                msg=_('You have successfully unsubscribed wallet'),
                 rich_text=True
             )
         self.terminate()
         return response
 
-    def confirm_pin_on_subscribe(self):
-        response = self._only_confirm_pin(_('You have successfully subscribed wallet'))
-        if response == self.State.NEXT:
-            EmailNotificationConfig.save_email_to_config(self.config, self.wallet, self._email)
-
-    def confirm_pin_on_unsubscribe(self):
-        response = self._only_confirm_pin(_('You have successfully unsubscribed wallet'))
-        if response == self.State.NEXT:
-            EmailNotificationConfig.save_email_to_config(self.config, self.wallet, "")
-
     def _unsubscribe(self):
-        def send_request():
-            response = self.connector.unsubscribe_wallet(
-                wallet_hashes=[self.wallet.hash()],
-                email=self._email,
-            )
-            self.connector.set_token(response)
-
-        self.resend_method = send_request
-        send_request()
+        response = self.connector.unsubscribe_wallet(
+            wallet_hashes=[self.wallet.hash()],
+            email=self._email,
+        )
+        self.connector.set_token(response)
         self._error_message = ''
 
 
@@ -715,26 +711,23 @@ class WalletNotificationsMainDialog(WindowModalDialog, ErrorMessageMixin):
         self.error_label = QLabel()
         self.error_label.setWordWrap(True)
         vbox.addWidget(self.error_label)
-        vbox.addWidget(QLabel(_('It is used to send your transaction notifications from chosen wallet')))
+        self.email = EmailNotificationConfig.get_wallet_email(self.config, self.wallet)
+        vbox.addWidget(QLabel(
+            _('It is used to send your transaction notifications from chosen wallet') + '\n' +
+             (_('Email address: ') + self.email if self.email else _("Notification address hasn't been set yet"))
+        ))
         hbox = QHBoxLayout()
-        self.subscribe_button = QPushButton(_('Subscribe'))
-        self.subscribe_button.clicked.connect(self._subscribe)
-        self.subscribe_button.setEnabled(False)
-        self.unsubscribe_button = QPushButton(_('Unsubscribe'))
-        self.unsubscribe_button.clicked.connect(self._unsubscribe)
-        self.unsubscribe_button.setEnabled(False)
+        self.sub_unsub_button = QPushButton(_('Subscribe'))
+        self.sub_unsub_button.setEnabled(False)
         self.update_button = QPushButton(_('Update'))
         self.update_button.clicked.connect(self._update)
         self.update_button.setEnabled(False)
         hbox.addStretch()
         hbox.addWidget(self.update_button)
-        hbox.addWidget(self.unsubscribe_button)
-        hbox.addWidget(self.subscribe_button)
+        hbox.addWidget(self.sub_unsub_button)
         vbox.addLayout(hbox)
         self.setLayout(vbox)
-        self.email = EmailNotificationConfig.get_wallet_email(self.config, self.wallet)
-
-        self.set_error('example error message')
+        self.clear_error()
 
     def _subscribe(self):
         self.close()
@@ -749,18 +742,18 @@ class WalletNotificationsMainDialog(WindowModalDialog, ErrorMessageMixin):
         email_dialog.terminate()
 
     def _unsubscribe(self):
-        self.dialog.close()
-        email_dialog = EmailNotificationDialog(
+        self.close()
+        unsubscribe_dialog = UnsubscribeEmailNotificationDialog(
             wallet=self.wallet,
             parent=self.parent,
             config=self.config,
             app=self.app,
             plugins=None,
         )
-        email_dialog._email = self.email
-        email_dialog.close()
+        unsubscribe_dialog._email = self.email
+        unsubscribe_dialog.close()
 
-        if_unsub = email_dialog.question(
+        if_unsub = unsubscribe_dialog.question(
             title=_('Unsubscribe from notifications'),
             msg=_('Do you want to unsubscribe this wallet from email notifications?')
         )
@@ -768,14 +761,15 @@ class WalletNotificationsMainDialog(WindowModalDialog, ErrorMessageMixin):
             return
 
         def task():
-            email_dialog._unsubscribe()
+            unsubscribe_dialog._unsubscribe()
 
         def confirm(*args):
-            email_dialog.show()
-            email_dialog.confirm_pin_on_unsubscribe()
+            unsubscribe_dialog.show()
+            unsubscribe_dialog.confirm_pin()
 
         def on_error(*args):
-            email_dialog.show_error(str(args[0][1]))
+            unsubscribe_dialog.show_error(str(args[0][1]))
+            self.exec_()
 
         WaitingDialogWithCancel(
             self.parent,
@@ -783,7 +777,7 @@ class WalletNotificationsMainDialog(WindowModalDialog, ErrorMessageMixin):
             task, confirm, on_error)
 
     def _update(self):
-        self.dialog.close()
+        self.close()
         update_dialog = UpdateEmailNotificationDialog(
             self.wallet,
             parent=self.parent,
@@ -798,11 +792,12 @@ class WalletNotificationsMainDialog(WindowModalDialog, ErrorMessageMixin):
     def check_subscription(self):
         connector = Connector.from_config(self.config)
         wallet = EmailNotificationWallet.from_wallet(self.wallet)
-        print('++ 0', wallet.hash(), self.email)
         response = connector.check_subscription([wallet.hash()], self.email)
         is_subscribed = response['result'][0]
-        self.subscribe_button.setEnabled(True)
+        self.sub_unsub_button.setEnabled(True)
         if is_subscribed:
+            self.sub_unsub_button.setText(_('Unsubscribe'))
+            self.sub_unsub_button.clicked.connect(self._unsubscribe)
             self.update_button.setEnabled(True)
-            self.unsubscribe_button.setEnabled(True)
-            self.subscribe_button.setEnabled(False)
+        else:
+            self.sub_unsub_button.clicked.connect(self._subscribe)

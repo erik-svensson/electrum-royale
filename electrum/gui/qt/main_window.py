@@ -2153,12 +2153,17 @@ in the "Authenticators" tab in the Gold Wallet app.')
     def show_notifications(self):
         dialog = WalletNotificationsMainDialog(self, self.config, self.wallet, self.app)
 
+        def on_error(*args):
+            self.logger.error(str(args[0][1]))
+            dialog.set_error(_('Cannot fetch data from server'))
+            dialog.exec_()
+
         WaitingDialogWithCancel(
             self,
             _('Connecting with server...'),
             task=dialog.check_subscription,
             on_success=lambda *args: dialog.exec_(),
-            on_error=lambda *args: self.show_error(str(args[0][1])),
+            on_error=on_error,
         )
 
     def remove_wallet(self):
