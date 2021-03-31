@@ -792,8 +792,10 @@ class WalletNotificationsMainDialog(WindowModalDialog, ErrorMessageMixin):
     def check_subscription(self):
         connector = Connector.from_config(self.config)
         wallet = EmailNotificationWallet.from_wallet(self.wallet)
-        response = connector.check_subscription([wallet.hash()], self.email)
-        is_subscribed = response['result'][0]
+        is_subscribed = False
+        if self.email:
+            response = connector.check_subscription([wallet.hash()], self.email)
+            is_subscribed = response['result'][0]
         self.sub_unsub_button.setEnabled(True)
         if is_subscribed:
             self.sub_unsub_button.setText(_('Unsubscribe'))
