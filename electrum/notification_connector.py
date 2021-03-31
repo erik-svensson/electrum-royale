@@ -12,7 +12,8 @@ from electrum.wallet import Abstract_Wallet
 
 # todo set production address when it will be ready
 API_CONNECTION_STRING = 'https://email-notifications.testnet.btcv.stage.rnd.land/api'
-API_TIMEOUT = 60
+# timeout has to be smaller than resend cool down time
+API_TIMEOUT = 25
 
 _logger = get_logger(__name__)
 
