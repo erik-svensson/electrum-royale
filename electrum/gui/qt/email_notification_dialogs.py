@@ -201,11 +201,9 @@ class SwitchableResendStrategy(ResendStrategy):
 
     def resend(self):
         if self._run_main_flow_api_request:
-            print('++++ SUB is performing')
             self._api_request_method()
             self._run_main_flow_api_request = False
         else:
-            print('++++ Email resend request')
             self.connector.resend()
 
     def switch_to_main_flow_endpoint_request(self):
@@ -386,8 +384,6 @@ class EmailNotificationWizard(InstallWizard):
     def auto_resend_logic(self, layout):
         if self._auto_resend_request:
             self._auto_resend_request = False
-            # todo add below line in update class
-            # self.resend_strategy.switch_to_main_flow_endpoint_request()
             layout.resend_request()
 
     def apply_pin_error_logic(self, error: EmailNotificationApiError):
@@ -439,17 +435,23 @@ class UnsubscribeEmailNotificationDialog(EmailNotificationDialog):
         self._error_message = ''
 
 
-# todo extend States inside class
 class UpdateEmailNotificationDialog(EmailNotificationDialog):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self._new_email = ''
+        self.resend_strategy = SwitchableResendStrategy(
+            parent=self,
+            connector=self.connector,
+            api_request_method=self._modify,
+        )
+        self.State.SKIP_EMAIL_VIEW = 6
 
     def run_update(self):
         what_next = self.State.BACK
-        while what_next == self.State.BACK:
-            what_next = self.run_single_view(self._change_email)
-            if what_next == self.State.NEXT:
+        while what_next in [self.State.BACK, self.State.SKIP_EMAIL_VIEW]:
+            if what_next != self.State.SKIP_EMAIL_VIEW:
+                what_next = self.run_single_view(self._change_email)
+            if what_next in [self.State.NEXT, self.State.SKIP_EMAIL_VIEW]:
                 what_next = self.run_single_view(self.confirm_pin, _('Back'))
                 if what_next == self.State.NEXT:
                     self._error_message = ''
@@ -466,10 +468,6 @@ class UpdateEmailNotificationDialog(EmailNotificationDialog):
             )
 
     def _modify(self):
-        def resend():
-            return self.connector.resend()
-
-        self.resend_method = resend
         response = self.connector.modify_email(
             wallet_hashes=[self.wallet.hash()],
             old_email=self._email,
@@ -495,69 +493,20 @@ class UpdateEmailNotificationDialog(EmailNotificationDialog):
             self._modify()
             return self.State.NEXT
         except EmailNotificationApiError as e:
-            print(e)
             self._error_message = str(e)
             return self.State.CONTINUE
 
+    def auto_resend_logic(self, layout):
+        if self._auto_resend_request:
+            self._auto_resend_request = False
+            self.resend_strategy.switch_to_main_flow_endpoint_request()
+            layout.resend_request()
 
-class UpdateEmailNotificationDialog(EmailNotificationDialog):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self._new_email = ''
-
-    def run_update(self):
-        what_next = self.State.BACK
-        while what_next == self.State.BACK:
-            what_next = self.run_single_view(self._change_email)
-            if what_next == self.State.NEXT:
-                what_next = self.run_single_view(self.confirm_pin, _('Back'))
-                if what_next == self.State.NEXT:
-                    self._error_message = ''
-                    what_next = self.run_single_view(self.confirm_pin, _('Back'), self._new_email)
-            else:
-                break
-
-        if what_next == self.State.NEXT:
-            EmailNotificationConfig.save_email_to_config(self.config, self.wallet, self._new_email)
-            self.show_message(
-                title=_('Success'),
-                msg=_('You have successfully updated email'),
-                rich_text=True,
-            )
-
-    def _modify(self):
-        def resend():
-            return self.connector.resend()
-
-        self.resend_method = resend
-        response = self.connector.modify_email(
-            wallet_hashes=[self.wallet.hash()],
-            old_email=self._email,
-            new_email=self._new_email,
-        )
-        self.connector.set_token(response)
-        self._error_message = ''
-
-    def _change_email(self):
-        layout = ChangeEmailLayout(
-            self,
-            current_email=self._email,
-            new_email=self._new_email,
-            error_msg=self._error_message
-        )
-        layout.input_edited()
-        result = self.exec_layout(layout, _('Change your email'), next_enabled=self.next_button.isEnabled())
-
-        if result:
-            return result
-        self._new_email = layout.email()
-        try:
-            self._modify()
-            return self.State.NEXT
-        except EmailNotificationApiError as e:
-            print(e)
-            self._error_message = str(e)
-            return self.State.CONTINUE
+    def apply_pin_error_logic(self, error: EmailNotificationApiError):
+        state = super().apply_pin_error_logic(error)
+        if self._auto_resend_request:
+            return self.State.SKIP_EMAIL_VIEW
+        return state
 
 
 class WalletInfoNotifications:
