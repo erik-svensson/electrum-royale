@@ -127,8 +127,7 @@ def handle_token_error(fun):
 
 
 class Connector:
-    # todo: This is mock for self-signed certificate verification
-    VERIFY = False
+    VERIFY = True
 
     def __init__(self, connection_string=API_CONNECTION_STRING, timeout=API_TIMEOUT):
         self.connection_string = connection_string
