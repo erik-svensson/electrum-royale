@@ -1,5 +1,6 @@
 import dataclasses
 import functools
+import re
 from dataclasses import dataclass
 from hashlib import sha256
 from json.decoder import JSONDecodeError
@@ -7,6 +8,7 @@ from typing import List
 
 import requests
 
+from electrum.i18n import _
 from electrum.logging import get_logger
 from electrum.wallet import Abstract_Wallet
 
@@ -72,7 +74,39 @@ class NoMorePINAttemptsError(EmailNotificationApiError):
     pass
 
 
-# todo add user friendly error mapping
+def mapping_errors(message: str, http_status_code: int) -> EmailNotificationApiError:
+    email_already_subscribed_pattern = re.compile('Invalid wallet data: (.+) is already subscribed to (.+)')
+    if http_status_code == 401 and message.startswith('Trials left'):
+        n = re.findall('[0-9]+', message)[0]
+        return EmailNotificationApiError(
+            _('Please enter a valid code.') + '\n' +
+            _('You have {number} more attempts.').format(number=n),
+            http_status_code,
+        )
+    elif http_status_code == 429 and message.startswith('No more trials left'):
+        return NoMorePINAttemptsError(
+            _('You have entered an invalid code 3 times.') + '\n' +
+            _('We have sent new code to your email address.'),
+            http_status_code,
+        )
+    elif http_status_code == 408 and message.startswith('Request timeout'):
+        return TokenError(
+            _('This code is no longer active.') + '\n' +
+            _('We have sent new code to your email address.'),
+            http_status_code,
+        )
+    elif http_status_code == 400 and email_already_subscribed_pattern.match(message):
+        email, wallet_name = email_already_subscribed_pattern.findall(message)[0]
+        return EmailAlreadySubscribedError(
+            _('{email} is already subscribed to {wallet_name}.').format(email=email, wallet_name=wallet_name),
+            http_status_code,
+        )
+    return EmailNotificationApiError(
+        _('Something went wrong.'),
+        http_status_code,
+    )
+
+
 def request_error_handler(fun):
     @functools.wraps(fun)
     def wrapper(*args, **kwargs):
@@ -83,47 +117,18 @@ def request_error_handler(fun):
             if response.status_code >= 400:
                 _logger.info(f'Email api response error {response.text}')
                 data = response.json()
-                if data.get('result', '') == 'error':
-                    raise EmailNotificationApiError(f"{data.get('msg')}", response.status_code)
-                raise EmailNotificationApiError('Something went wrong', response.status_code)
+                raise mapping_errors(
+                    message=data.get('msg', '') if data.get('result', '') == 'error' else '',
+                    http_status_code=response.status_code,
+                )
             return response.json()
         except (requests.exceptions.ConnectTimeout, requests.exceptions.ReadTimeout) as e:
-            raise EmailNotificationApiError(f'Reached connection timeout')
+            raise EmailNotificationApiError(_('Reached connection timeout.'))
         except requests.exceptions.ConnectionError as e:
             _logger.info(f'Email api connection error {str(e)}')
-            raise EmailNotificationApiError(f'Something went wrong when connecting with server')
+            raise EmailNotificationApiError(_('Something went wrong when connecting with server.'))
         except JSONDecodeError:
-            raise EmailNotificationApiError('Something went wrong')
-    return wrapper
-
-
-def handle_email_already_exist_error_on_subscribe(fun):
-    @functools.wraps(fun)
-    def wrapper(*args, **kwargs):
-        try:
-            return fun(*args, **kwargs)
-        except EmailNotificationApiError as e:
-            email = kwargs.get('email', '')
-            email = email if email else args[2]
-            # todo change depending on language of response message
-            if e.http_status_code == 400 and str(e).startswith(f'Invalid wallet data: {email} is already subscribed'):
-                e.__class__ = EmailAlreadySubscribedError
-            raise e
-    return wrapper
-
-
-def handle_token_error(fun):
-    @functools.wraps(fun)
-    def wrapper(*args, **kwargs):
-        try:
-            res = fun(*args, **kwargs)
-            return res
-        except EmailNotificationApiError as error:
-            if error.http_status_code == 429:
-                error.__class__ = NoMorePINAttemptsError
-            elif error.http_status_code == 408:
-                error.__class__ = TokenError
-            raise error
+            raise EmailNotificationApiError(_('Something went wrong.'))
     return wrapper
 
 
@@ -146,7 +151,6 @@ class Connector:
             kwargs['timeout'] = config.get('email_server_timeout')
         return cls(**kwargs)
 
-    @handle_email_already_exist_error_on_subscribe
     @request_error_handler
     def subscribe_wallet(self, wallets: List[EmailNotificationWallet], email: str, language: str):
         # todo remove logger and payload, only for debug purposes
@@ -167,7 +171,6 @@ class Connector:
             verify=self.VERIFY,
         )
 
-    @handle_token_error
     @request_error_handler
     def authenticate(self, pin: str):
         return requests.post(
@@ -220,7 +223,6 @@ class Connector:
             verify=self.VERIFY,
         )
 
-    @handle_token_error
     @request_error_handler
     def resend(self):
         return requests.get(
