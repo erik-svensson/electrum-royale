@@ -312,14 +312,16 @@ class EmailNotificationWizard(InstallWizard):
             else:
                 break
 
-        if what_next in [self.State.NEXT, self.State.SHOW_EMAIL_SUBSCRIBED]:
-            message = (
-                    self._error_message + '\n' +
-                    _('You have successfully added your email address.')
-            ) if what_next == self.State.SHOW_EMAIL_SUBSCRIBED else _('You have successfully subscribed wallet')
+        if what_next == self.State.NEXT:
             self.show_message(
                 title=_('Success'),
-                msg=message,
+                msg=_('You have successfully subscribed wallet'),
+                rich_text=True,
+            )
+        elif what_next == self.State.SHOW_EMAIL_SUBSCRIBED:
+            self.show_message(
+                title=_('Success'),
+                msg=self._error_message + '\n' + _('You have successfully added your email address.'),
                 rich_text=True,
             )
 
