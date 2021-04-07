@@ -266,7 +266,6 @@ class ElectrumGui(Logger):
         if not wallet:
             try:
                 wallet = self._start_wizard_to_select_or_create_wallet(path)
-                self.add_email_notification(wallet)
             except (WalletFileException, BitcoinException) as e:
                 self.logger.exception('')
                 custom_message_box(icon=QMessageBox.Warning,
@@ -303,6 +302,7 @@ class ElectrumGui(Logger):
 
     def _start_wizard_to_select_or_create_wallet(self, path) -> Optional[Abstract_Wallet]:
         wizard = InstallWizard(self.config, self.app, self.plugins)
+        if_run_notification = False
         try:
             path, storage = wizard.select_storage(path, self.daemon.get_wallet)
             # storage is None if file does not exist
@@ -310,6 +310,7 @@ class ElectrumGui(Logger):
                 wizard.path = path  # needed by trustedcoin plugin
                 wizard.run('new')
                 storage = wizard.create_storage(path)
+                if_run_notification = True
             else:
                 wizard.run_upgrades(storage)
         except (UserCancelled, GoBack):
@@ -322,6 +323,8 @@ class ElectrumGui(Logger):
         if storage is None or storage.get_action():
             return
         wallet = Wallet(storage, config=self.config)
+        if if_run_notification:
+            self.add_email_notification(wallet)
         wallet.start_network(self.daemon.network)
         self.daemon.add_wallet(wallet)
         return wallet
