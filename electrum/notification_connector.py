@@ -12,7 +12,8 @@ from electrum.wallet import Abstract_Wallet
 
 # todo set production address when it will be ready
 API_CONNECTION_STRING = 'https://email-notifications.testnet.btcv.stage.rnd.land/api'
-API_TIMEOUT = 60
+# timeout has to be smaller than resend cool down time
+API_TIMEOUT = 25
 
 _logger = get_logger(__name__)
 
@@ -63,6 +64,14 @@ class EmailAlreadySubscribedError(EmailNotificationApiError):
     pass
 
 
+class TokenError(EmailNotificationApiError):
+    pass
+
+
+class NoMorePINAttemptsError(EmailNotificationApiError):
+    pass
+
+
 # todo add user friendly error mapping
 def request_error_handler(fun):
     @functools.wraps(fun)
@@ -103,9 +112,23 @@ def handle_email_already_exist_error_on_subscribe(fun):
     return wrapper
 
 
+def handle_token_error(fun):
+    @functools.wraps(fun)
+    def wrapper(*args, **kwargs):
+        try:
+            res = fun(*args, **kwargs)
+            return res
+        except EmailNotificationApiError as error:
+            if error.http_status_code == 429:
+                error.__class__ = NoMorePINAttemptsError
+            elif error.http_status_code == 408:
+                error.__class__ = TokenError
+            raise error
+    return wrapper
+
+
 class Connector:
-    # todo: This is mock for self-signed certificate verification
-    VERIFY = False
+    VERIFY = True
 
     def __init__(self, connection_string=API_CONNECTION_STRING, timeout=API_TIMEOUT):
         self.connection_string = connection_string
@@ -144,6 +167,7 @@ class Connector:
             verify=self.VERIFY,
         )
 
+    @handle_token_error
     @request_error_handler
     def authenticate(self, pin: str):
         return requests.post(
@@ -196,6 +220,7 @@ class Connector:
             verify=self.VERIFY,
         )
 
+    @handle_token_error
     @request_error_handler
     def resend(self):
         return requests.get(
