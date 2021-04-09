@@ -31,7 +31,6 @@ import threading
 from typing import Optional, TYPE_CHECKING
 
 from .email_notification_dialogs import EmailNotificationWizard
-from ...email_notification_config import EmailNotificationConfig
 from .terms_and_conditions_mixin import TermsNotAccepted
 from .three_keys_windows import ElectrumARWindow, ElectrumAIRWindow
 from ...notification_connector import EmailNotificationWallet
@@ -238,11 +237,7 @@ class ElectrumGui(Logger):
     def add_email_notification(self, wallet):
         if not EmailNotificationWallet.is_subscribable(wallet):
             return
-        config_key = EmailNotificationConfig.CONFIG_KEY
-        notifications = self.config.get(config_key, False)
-        if not notifications:
-            self.config.set_key(config_key, {})
-        if not EmailNotificationConfig.check_if_wallet_in_config(self.config, wallet):
+        if not wallet.db.get('notification_email', ''):
             email_wizard = EmailNotificationWizard(wallet, self.config, self.app, self.plugins)
             email_wizard.run_notification()
             email_wizard.terminate()
