@@ -28,7 +28,7 @@ binaries = [(PYHOME+"/libusb-1.0.dll", ".")]
 # Workaround for "Retro Look":
 binaries += [b for b in collect_dynamic_libs('PyQt5') if 'qwindowsvista' in b[0]]
 
-binaries += [('C:/tmp/libsecp256k1.dll', '.')]
+binaries += [('C:/tmp/libsecp256k1-0.dll', '.')]
 
 datas = [
     (home+'electrum/*.json', 'electrum'),

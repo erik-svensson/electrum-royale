@@ -13,7 +13,6 @@ CACHEDIR="$CONTRIB_APPIMAGE/.cache/appimage"
 # pinned versions
 PYTHON_VERSION=3.7.9
 PKG2APPIMAGE_COMMIT="eb8f3acdd9f11ab19b78f5cb15daa772367daf15"
-LIBSECP_VERSION="b408c6a8b287003d1ade5709e6f7bc3c7f1d5be7"
 SQUASHFSKIT_COMMIT="ae0d656efa2d0df2fcac795b6823b44462f19386"
 
 
@@ -77,27 +76,10 @@ git clone "https://github.com/squashfskit/squashfskit.git" "$BUILDDIR/squashfski
 )
 MKSQUASHFS="$BUILDDIR/squashfskit/squashfs-tools/mksquashfs"
 
+chmod +x "$CONTRIB"/make_libsecp256k1.sh
 
-info "building libsecp256k1."
-(
-    git clone https://github.com/bitcoin-core/secp256k1 "$CACHEDIR"/secp256k1 \
-        || (cd "$CACHEDIR"/secp256k1 && git reset --hard && git pull)
-    cd "$CACHEDIR"/secp256k1
-    git reset --hard "$LIBSECP_VERSION"
-    git clean -f -x -q
-    export SOURCE_DATE_EPOCH=1530212462
-    echo "LDFLAGS = -no-undefined" >> Makefile.am
-    ./autogen.sh
-    ./configure \
-      --prefix="$APPDIR/usr" \
-      --enable-module-recovery \
-      --enable-experimental \
-      --enable-module-ecdh \
-      --disable-jni \
-      -q
-    make -j4 -s || fail "Could not build libsecp"
-    make -s install > /dev/null || fail "Could not install libsecp"
-)
+"$CONTRIB"/make_libsecp256k1.sh || fail "Could not build libsecp"
+cp -f "$PROJECT_ROOT/electrum/libsecp256k1.so.0" "$APPDIR/usr/lib/libsecp256k1.so.0" || fail "Could not copy libsecp to its destination"
 
 
 appdir_python() {
@@ -113,6 +95,7 @@ python='appdir_python'
 info "installing pip."
 "$python" -m ensurepip
 
+break_legacy_easy_install
 
 info "preparing electrum-locale."
 (
@@ -133,13 +116,28 @@ info "preparing electrum-locale."
 )
 
 
-info "installing electrum and its dependencies."
+info "Installing build dependencies."
 mkdir -p "$CACHEDIR/pip_cache"
-"$python" -m pip install --no-warn-script-location --cache-dir "$CACHEDIR/pip_cache" -r "$CONTRIB/deterministic-build/requirements.txt"
-"$python" -m pip install --no-warn-script-location --cache-dir "$CACHEDIR/pip_cache" -r "$CONTRIB/deterministic-build/requirements-binaries.txt"
-"$python" -m pip install --no-warn-script-location --cache-dir "$CACHEDIR/pip_cache" -r "$CONTRIB/deterministic-build/requirements-hw.txt"
-"$python" -m pip install --no-warn-script-location --cache-dir "$CACHEDIR/pip_cache" "$PROJECT_ROOT"
+"$python" -m pip install --no-dependencies --no-binary :all: --no-warn-script-location \
+    --cache-dir "$CACHEDIR/pip_cache" -r "$CONTRIB/deterministic-build/requirements-build-appimage.txt"
 
+info "installing electrum and its dependencies."
+# note: we prefer compiling C extensions ourselves, instead of using binary wheels,
+#       hence "--no-binary :all:" flags. However, we specifically allow
+#       - PyQt5, as it's harder to build from source
+#       - cryptography, as building it would need openssl 1.1, not available on ubuntu 16.04
+"$python" -m pip install --no-dependencies --no-binary :all: --no-warn-script-location \
+    --cache-dir "$CACHEDIR/pip_cache" -r "$CONTRIB/deterministic-build/requirements.txt"
+"$python" -m pip install --no-dependencies --no-binary :all: --only-binary pyqt5,cryptography --no-warn-script-location \
+    --cache-dir "$CACHEDIR/pip_cache" -r "$CONTRIB/deterministic-build/requirements-binaries.txt"
+"$python" -m pip install --no-dependencies --no-binary :all: --no-warn-script-location \
+    --cache-dir "$CACHEDIR/pip_cache" -r "$CONTRIB/deterministic-build/requirements-hw.txt"
+
+"$python" -m pip install --no-dependencies --no-warn-script-location \
+    --cache-dir "$CACHEDIR/pip_cache" "$PROJECT_ROOT"
+
+# was only needed during build time, not runtime
+"$python" -m pip uninstall -y Cython
 
 info "copying zbar"
 cp "/usr/lib/x86_64-linux-gnu/libzbar.so.0" "$APPDIR/usr/lib/libzbar.so.0"
