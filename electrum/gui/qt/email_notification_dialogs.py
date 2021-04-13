@@ -210,12 +210,12 @@ class SwitchableResendStrategy(ResendStrategy):
 
 
 class PinConfirmationLayout(QVBoxLayout, ErrorMessageMixin, InputFieldMixin):
-    RESEND_COOL_DOWN_TIME = 30
 
     def __init__(self, parent, email, error_msg=''):
         super(). __init__()
         self.parent = parent
         self.resend_strategy = parent.resend_strategy
+        self.cool_down_thread = parent.cool_down_thread
 
         label = QLabel(_('To confirm the request, please enter the code we sent to') + f"<br><b>{email}</b>")
         label.setWordWrap(True)
@@ -236,9 +236,13 @@ class PinConfirmationLayout(QVBoxLayout, ErrorMessageMixin, InputFieldMixin):
         if error_msg:
             self.set_error(error_msg)
 
-        self.thread = TaskThread(None)
+        self.send_request_thread = TaskThread(None)
         hbox = QHBoxLayout()
-        self.resend_button = QPushButton(_('Resend'))
+        if self.cool_down_thread.is_running():
+            self.resend_button = QPushButton(self.cool_down_thread.get_formatted_left_time())
+            self.resend_button.setEnabled(False)
+        else:
+            self.resend_button = QPushButton(_('Resend'))
         hbox.addStretch(1)
         hbox.addWidget(self.resend_button)
         self.resend_button.clicked.connect(self.resend_request)
@@ -247,30 +251,80 @@ class PinConfirmationLayout(QVBoxLayout, ErrorMessageMixin, InputFieldMixin):
         self.addSpacing(5)
         self.addWidget(self.error_label)
 
-    def resend_task(self):
-        t0 = datetime.datetime.now()
-        self.resend_strategy.resend()
-        t1 = datetime.datetime.now()
-        elapsed_time = (t1 - t0).total_seconds()
-        time.sleep(int(self.RESEND_COOL_DOWN_TIME - elapsed_time))
-
-    def on_success(self, *args, **kwargs):
-        self.resend_button.setEnabled(True)
-
     def on_error(self, errors):
         self.resend_strategy.on_error(errors[1])
         self.set_error(str(errors[1]))
-        self.resend_button.setEnabled(True)
 
     def resend_request(self):
         self.clear_error()
-        self.thread.add(task=self.resend_task,
-                        on_success=self.on_success,
-                        on_error=self.on_error)
-        self.resend_button.setEnabled(False)
+        self.cool_down_thread.run()
+        self.send_request_thread.add(
+            task=lambda: self.resend_strategy.resend(),
+            on_success=lambda *args, **kwargs: None,
+            on_error=self.on_error
+        )
 
     def pin(self):
         return self.input_edit.text()
+
+    def terminate_thread(self):
+        self.send_request_thread.terminate()
+
+
+class CoolDownThread:
+    RESEND_COOL_DOWN_TIME = 30
+
+    def __init__(self):
+        self.elapsed_time = 0
+        self.pin_layout = None
+        self.thread = None
+
+    def register_layout(self, layout: PinConfirmationLayout):
+        self.pin_layout = layout
+
+    def unregister_layout(self):
+        self.pin_layout = None
+
+    def _set_resend_button_status(self, text: str, enabled: bool):
+        if self.pin_layout:
+            self.pin_layout.resend_button.setText(text)
+            self.pin_layout.resend_button.setEnabled(enabled)
+
+    def get_left_time(self) -> int:
+        return int(self.RESEND_COOL_DOWN_TIME - self.elapsed_time)
+
+    def get_formatted_left_time(self) -> str:
+        return f'{self.get_left_time():>2}s'
+
+    def cool_down_task(self):
+        t0 = datetime.datetime.now()
+        while True:
+            self.elapsed_time = (datetime.datetime.now() - t0).total_seconds()
+            left_time = self.get_left_time()
+            self._set_resend_button_status(self.get_formatted_left_time(), False)
+            if left_time < 1:
+                break
+            time.sleep(1)
+        self.on_success()
+
+    def on_success(self, *args, **kwargs):
+        self._set_resend_button_status(_('Resend'), True)
+
+    def run(self):
+        self.thread = TaskThread(None)
+        self.thread.add(
+            task=self.cool_down_task,
+            on_success=self.on_success,
+            on_error=lambda *args, **kwargs: None,
+        )
+
+    def is_running(self) -> bool:
+        return bool(self.elapsed_time)
+
+    def terminate(self):
+        self.elapsed_time = 0
+        if self.thread:
+            self.thread.terminate()
 
 
 class EmailNotificationWizard(InstallWizard):
@@ -289,6 +343,7 @@ class EmailNotificationWizard(InstallWizard):
         self._email = ''
         self._error_message = ''
         self.resend_strategy = SingleMethodResendStrategy(parent=self, connector=self.connector, api_request_method=self._subscribe)
+        self.cool_down_thread = CoolDownThread()
         self._auto_resend_request = False
         self.show_skip_checkbox = True
 
@@ -377,6 +432,7 @@ class EmailNotificationWizard(InstallWizard):
 
     def confirm_pin(self, back_button_name=None, email='', layout_title=''):
         layout = PinConfirmationLayout(self, email=email if email else self._email, error_msg=self._error_message)
+        self.cool_down_thread.register_layout(layout)
         self.auto_resend_logic(layout=layout)
         result = self.exec_layout(
             layout,
@@ -384,12 +440,15 @@ class EmailNotificationWizard(InstallWizard):
             next_enabled=False,
             back_button_name=back_button_name
         )
-        layout.thread.terminate()
+        layout.terminate_thread()
+        self.cool_down_thread.unregister_layout()
         if result:
             self._error_message = ''
+            self.cool_down_thread.terminate()
             return result
         try:
             self.connector.authenticate(layout.pin())
+            self.cool_down_thread.terminate()
             return self.State.NEXT
         except EmailNotificationApiError as error:
             return self.apply_pin_error_logic(error)
@@ -397,6 +456,7 @@ class EmailNotificationWizard(InstallWizard):
     def auto_resend_logic(self, layout):
         if self._auto_resend_request:
             self._auto_resend_request = False
+            self.cool_down_thread.terminate()
             layout.resend_request()
 
     def apply_pin_error_logic(self, error: EmailNotificationApiError):
