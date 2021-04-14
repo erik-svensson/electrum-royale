@@ -30,30 +30,36 @@ class EmailNotificationWallet:
     address_type: str
     recovery_public_key: str or None
     instant_public_key: str or None = None
+    multisig_pubkeys: str or None = None
 
     def hash(self) -> str:
         hashing_string = self.address_type + self.xpub
         hashing_string += self.recovery_public_key if self.recovery_public_key else ''
         hashing_string += self.instant_public_key if self.instant_public_key else ''
+        hashing_string += self.multisig_pubkeys if self.multisig_pubkeys else ''
         return sha256(hashing_string.encode('utf-8')).hexdigest()
 
     @classmethod
     def from_wallet(cls, wallet: Abstract_Wallet):
+        multisig_pubkeys = None
+        if re.match('[1-9]{1,2}of[1-9]{1,2}', wallet.wallet_type):
+            multisig_pubkeys = f'{wallet.m},' + ','.join(k.xpub for k in wallet.get_keystores()[1:])
         return cls(
             name=str(wallet),
-            xpub=wallet.keystore.xpub,
-            derivation_path=wallet.keystore._derivation_prefix if wallet.keystore._derivation_prefix else 'm',
+            xpub=wallet.get_keystore().xpub,
+            derivation_path=wallet.keystore.get_derivation_prefix() if wallet.keystore.get_derivation_prefix() else 'm',
             gap_limit=wallet.gap_limit,
             address_range=f'{wallet.db.num_receiving_addresses()}/{wallet.db.num_change_addresses()}',
             address_type=wallet.txin_type,
             recovery_public_key=wallet.storage.get('recovery_pubkey', None),
             instant_public_key=wallet.storage.get('instant_pubkey', None),
+            multisig_pubkeys=multisig_pubkeys,
         )
 
     @classmethod
     def is_subscribable(cls, wallet: Abstract_Wallet or None) -> bool:
         """Only wallets with xprv can be subscribed"""
-        return bool(wallet and wallet.keystore and wallet.keystore.xprv)
+        return bool(wallet and not wallet.is_watching_only())
 
 
 class EmailNotificationApiError(Exception):
