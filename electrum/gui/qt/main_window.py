@@ -44,7 +44,7 @@ from PyQt5.QtWidgets import (QMessageBox, QComboBox, QSystemTrayIcon, QTabWidget
                              QMenuBar, QFileDialog, QCheckBox, QLabel,
                              QVBoxLayout, QGridLayout, QLineEdit, QHBoxLayout, QPushButton, QScrollArea, QTextEdit,
                              QShortcut, QMainWindow, QCompleter, QInputDialog,
-                             QWidget, QSizePolicy, QStatusBar)
+                             QWidget, QSizePolicy, QStatusBar, QTextBrowser)
 
 import electrum
 from electrum import (keystore, ecc, constants, util, bitcoin, commands,
@@ -60,7 +60,7 @@ from electrum.plugin import run_hook
 from electrum.simple_config import SimpleConfig
 from electrum.transaction import (Transaction, PartialTxInput,
                                   PartialTransaction, PartialTxOutput)
-from electrum.util import PR_PAID, PR_FAILED
+from electrum.util import PR_PAID, PR_FAILED, resource_path
 from electrum.util import PR_TYPE_ONCHAIN
 from electrum.util import (format_time, format_satoshis, format_fee_satoshis,
                            format_satoshis_plain, UserCancelled, profiler,
@@ -659,8 +659,31 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
         help_menu.addAction(_("&Report Bug"), self.show_report_bug)
         help_menu.addSeparator()
         help_menu.addAction(_("&Donate to server"), self.donate_to_server)
+        help_menu.addAction(_("&Terms and conditions"), self.terms_and_conditions_view)
 
         self.setMenuBar(menubar)
+
+    def terms_and_conditions_view(self):
+        base_dir = 'terms_and_conditions'
+        language = self.config.get('language', 'en_UK')
+        path = resource_path(base_dir, f'{language}.html')
+        if not os.path.exists(path):
+            path = resource_path(base_dir, 'en_UK.html')
+            if not os.path.exists(path):
+                raise FileNotFoundError(f'Cannot open {path}')
+        with open(path, 'r', encoding='utf-8') as file:
+            data = file.read()
+
+        dialog = WindowModalDialog(self, _('Terms and conditions'))
+        dialog.setMinimumSize(500, 300)
+        vbox = QVBoxLayout(dialog)
+        text_browser = QTextBrowser()
+        text_browser.setReadOnly(True)
+        text_browser.setOpenExternalLinks(True)
+        text_browser.setHtml(data)
+        vbox.addWidget(text_browser)
+        vbox.addLayout(Buttons(CloseButton(dialog)))
+        dialog.exec_()
 
     def donate_to_server(self):
         d = self.network.get_donation_address()
