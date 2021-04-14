@@ -658,8 +658,7 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
         help_menu.addAction(_("&Documentation"), lambda: webopen("http://docs.electrum.org/")).setShortcut(QKeySequence.HelpContents)
         help_menu.addAction(_("&Report Bug"), self.show_report_bug)
         help_menu.addSeparator()
-        help_menu.addAction(_("&Donate to server"), self.donate_to_server)
-        help_menu.addAction(_("&Terms and conditions"), self.terms_and_conditions_view)
+        help_menu.addAction(_("&Terms & Conditions"), self.terms_and_conditions_view)
 
         self.setMenuBar(menubar)
 
@@ -674,24 +673,28 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
         with open(path, 'r', encoding='utf-8') as file:
             data = file.read()
 
-        dialog = WindowModalDialog(self, _('Terms and conditions'))
-        dialog.setMinimumSize(500, 300)
-        vbox = QVBoxLayout(dialog)
+        dialog = WindowModalDialog(self, _('Terms & Conditions'))
+        # size and icon position the same like in install wizard
+        dialog.setMinimumSize(600, 400)
+        main_vbox = QVBoxLayout(dialog)
+        logo_vbox = QVBoxLayout()
+        logo = QLabel()
+        logo.setPixmap(self.windowIcon().pixmap(QSize(60, 60)))
+        logo_vbox.addWidget(logo)
+        logo_vbox.addStretch(1)
+        logo_hbox = QHBoxLayout()
+        logo_hbox.addLayout(logo_vbox)
+        logo_hbox.addSpacing(5)
+        text_vbox = QVBoxLayout()
         text_browser = QTextBrowser()
         text_browser.setReadOnly(True)
         text_browser.setOpenExternalLinks(True)
         text_browser.setHtml(data)
-        vbox.addWidget(text_browser)
-        vbox.addLayout(Buttons(CloseButton(dialog)))
+        text_vbox.addWidget(text_browser)
+        logo_hbox.addLayout(text_vbox)
+        main_vbox.addLayout(logo_hbox)
+        main_vbox.addLayout(Buttons(OkButton(dialog)))
         dialog.exec_()
-
-    def donate_to_server(self):
-        d = self.network.get_donation_address()
-        if d:
-            host = self.network.get_parameters().host
-            self.pay_to_URI('bitcoin:%s?message=donation for %s'%(d, host))
-        else:
-            self.show_error(_('No donation address for this server'))
 
     def show_about(self):
         QMessageBox.about(self, "Electrum Vault",
