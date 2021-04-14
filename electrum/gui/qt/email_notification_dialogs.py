@@ -300,12 +300,10 @@ class CoolDownThread:
         t0 = datetime.datetime.now()
         while True:
             self.elapsed_time = (datetime.datetime.now() - t0).total_seconds()
-            left_time = self.get_left_time()
-            self._set_resend_button_status(self.get_formatted_left_time(), False)
-            if left_time < 1:
+            if self.get_left_time() < 1:
                 break
+            self._set_resend_button_status(self.get_formatted_left_time(), False)
             time.sleep(1)
-        self.on_success()
 
     def on_success(self, *args, **kwargs):
         self._set_resend_button_status(_('Resend'), True)
@@ -582,6 +580,7 @@ class UpdateEmailNotificationDialog(EmailNotificationDialog):
     def auto_resend_logic(self, layout):
         if self._auto_resend_request:
             self._auto_resend_request = False
+            self.cool_down_thread.terminate()
             self.resend_strategy.switch_to_main_flow_endpoint_request()
             layout.resend_request()
 
