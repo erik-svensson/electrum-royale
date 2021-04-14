@@ -9,7 +9,6 @@ from PyQt5.QtGui import QRegExpValidator
 from PyQt5.QtWidgets import QVBoxLayout, QLineEdit, QHBoxLayout, QLabel, QCheckBox, QPushButton
 
 from electrum.base_wizard import GoBack
-from electrum.email_notification_config import EmailNotificationConfig
 from electrum.gui.qt.installwizard import InstallWizard
 from electrum.gui.qt.util import TaskThread, WaitingDialogWithCancel, WindowModalDialog
 from electrum.i18n import _, convert_to_iso_639_1
@@ -284,13 +283,22 @@ class EmailNotificationWizard(InstallWizard):
 
     def __init__(self, wallet, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.wallet = EmailNotificationWallet.from_wallet(wallet)
+        self.email_notification_wallet = EmailNotificationWallet.from_wallet(wallet)
+        self.wallet = wallet
         self.connector = Connector.from_config(self.config)
         self._email = ''
         self._error_message = ''
         self.resend_strategy = SingleMethodResendStrategy(parent=self, connector=self.connector, api_request_method=self._subscribe)
         self._auto_resend_request = False
         self.show_skip_checkbox = True
+
+    def load_notification_email(self) -> str:
+        return self.wallet.db.get('notification_email', '')
+
+    def save_notification_email(self, email=None):
+        if email is None:
+            email = self._email
+        self.wallet.db.put('notification_email', email)
 
     def exec_layout(self, layout, title=None, back_button_name=None,
                     next_enabled=True):
@@ -307,18 +315,19 @@ class EmailNotificationWizard(InstallWizard):
         while what_next == self.State.BACK:
             what_next = self.run_single_view(self._choose_email)
             if what_next == self.State.NEXT:
-                EmailNotificationConfig.save_email_to_config(self.config, self.wallet, self._email)
                 what_next = self.run_single_view(self.confirm_pin, back_button_name=_('Back'))
             else:
                 break
 
         if what_next == self.State.NEXT:
+            self.save_notification_email()
             self.show_message(
                 title=_('Success'),
                 msg=_('You have successfully subscribed wallet'),
                 rich_text=True,
             )
         elif what_next == self.State.SHOW_EMAIL_SUBSCRIBED:
+            self.save_notification_email()
             self.show_message(
                 title=_('Success'),
                 msg=self._error_message + '\n' + _('You have successfully added your email address.'),
@@ -334,7 +343,7 @@ class EmailNotificationWizard(InstallWizard):
 
     def _subscribe(self):
         response = self.connector.subscribe_wallet(
-            wallets=[self.wallet],
+            wallets=[self.email_notification_wallet],
             email=self._email,
             language=convert_to_iso_639_1(self.config.get('language'))
         )
@@ -360,7 +369,7 @@ class EmailNotificationWizard(InstallWizard):
             except EmailNotificationApiError as e:
                 self._error_message = str(e)
                 if isinstance(e, EmailAlreadySubscribedError):
-                    EmailNotificationConfig.save_email_to_config(self.config, self.wallet, self._email)
+                    self.save_notification_email()
                     return self.State.SHOW_EMAIL_SUBSCRIBED
                 return self.State.CONTINUE
         else:
@@ -422,7 +431,7 @@ class UnsubscribeEmailNotificationDialog(EmailNotificationDialog):
             email=email,
         )
         if response == self.State.NEXT:
-            EmailNotificationConfig.save_email_to_config(self.config, self.wallet, "")
+            self.save_notification_email('')
             self.show_message(
                 title=_('Success'),
                 msg=_('You have successfully unsubscribed wallet'),
@@ -433,7 +442,7 @@ class UnsubscribeEmailNotificationDialog(EmailNotificationDialog):
 
     def _unsubscribe(self):
         response = self.connector.unsubscribe_wallet(
-            wallet_hashes=[self.wallet.hash()],
+            wallet_hashes=[self.email_notification_wallet.hash()],
             email=self._email,
         )
         self.connector.set_token(response)
@@ -474,7 +483,7 @@ class UpdateEmailNotificationDialog(EmailNotificationDialog):
                 break
 
         if what_next == self.State.NEXT:
-            EmailNotificationConfig.save_email_to_config(self.config, self.wallet, self._new_email)
+            self.save_notification_email(self._new_email)
             self.show_message(
                 title=_('Success'),
                 msg=_('You have successfully updated email'),
@@ -483,7 +492,7 @@ class UpdateEmailNotificationDialog(EmailNotificationDialog):
 
     def _modify(self):
         response = self.connector.modify_email(
-            wallet_hashes=[self.wallet.hash()],
+            wallet_hashes=[self.email_notification_wallet.hash()],
             old_email=self._email,
             new_email=self._new_email,
         )
@@ -535,7 +544,7 @@ class WalletNotificationsMainDialog(WindowModalDialog, ErrorMessageMixin):
         self.error_label = QLabel()
         self.error_label.setWordWrap(True)
         vbox.addWidget(self.error_label)
-        self.email = EmailNotificationConfig.get_wallet_email(self.config, self.wallet)
+        self.email = self.wallet.db.get('notification_email', '')
         vbox.addWidget(QLabel(
             _('It is used to send your transaction notifications from chosen wallet') + '\n' +
              (_('Email address: ') + self.email if self.email else _("Notification address hasn't been set yet"))
