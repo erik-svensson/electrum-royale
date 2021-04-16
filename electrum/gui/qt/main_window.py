@@ -659,7 +659,7 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
         help_menu.addAction(_("&Documentation"), lambda: webopen("http://docs.electrum.org/")).setShortcut(QKeySequence.HelpContents)
         help_menu.addAction(_("&Report Bug"), self.show_report_bug)
         help_menu.addSeparator()
-        help_menu.addAction(_("&Terms & Conditions"), self.terms_and_conditions_view)
+        help_menu.addAction(_("&Terms && Conditions"), self.terms_and_conditions_view)
 
         self.setMenuBar(menubar)
 
