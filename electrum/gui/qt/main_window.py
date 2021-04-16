@@ -83,6 +83,7 @@ from .history_list import HistoryList, HistoryModel
 from .installwizard import get_wif_help_text
 from .qrcodewidget import QRCodeWidget, QRDialog
 from .qrtextedit import ShowQRTextEdit, ScanQRTextEdit
+from .terms_and_conditions_mixin import load_terms_and_conditions
 from .three_keys_dialogs import PSBTDialog
 from .transaction_dialog import PreviewTxDialog
 from .transaction_dialog import show_transaction
@@ -663,16 +664,7 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
         self.setMenuBar(menubar)
 
     def terms_and_conditions_view(self):
-        base_dir = 'terms_and_conditions'
-        language = self.config.get('language', 'en_UK')
-        path = resource_path(base_dir, f'{language}.html')
-        if not os.path.exists(path):
-            path = resource_path(base_dir, 'en_UK.html')
-            if not os.path.exists(path):
-                raise FileNotFoundError(f'Cannot open {path}')
-        with open(path, 'r', encoding='utf-8') as file:
-            data = file.read()
-
+        terms = load_terms_and_conditions(self.config)
         dialog = WindowModalDialog(self, _('Terms & Conditions'))
         # size and icon position the same like in install wizard
         dialog.setMinimumSize(600, 400)
@@ -689,7 +681,7 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
         text_browser = QTextBrowser()
         text_browser.setReadOnly(True)
         text_browser.setOpenExternalLinks(True)
-        text_browser.setHtml(data)
+        text_browser.setHtml(terms)
         text_vbox.addWidget(text_browser)
         logo_hbox.addLayout(text_vbox)
         main_vbox.addLayout(logo_hbox)
