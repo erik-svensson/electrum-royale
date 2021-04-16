@@ -7,7 +7,7 @@ from electrum.base_wizard import GoBack
 from electrum.gui.qt.util import WindowModalDialog
 from electrum.i18n import _
 from electrum.util import resource_path
-from electrum.version import TERMS_AND_CONDITION_LAST_UPDATE
+from electrum.version import TERMS_AND_CONDITION_LAST_UPDATE, TERMS_AND_CONDITION_VERSION
 
 
 class TermsNotAccepted(BaseException):
@@ -112,7 +112,10 @@ class TermsAndConditionsMixin:
             # pushing 'I disagree` raises GoBack exception
             pushed_button = self.exec_layout(
                 vbox,
-                title=_('Terms & Conditions (Last updated: {date})').format(date=TERMS_AND_CONDITION_LAST_UPDATE),
+                title=_('Terms & Conditions {version} (Last updated: {date})').format(
+                    date=TERMS_AND_CONDITION_LAST_UPDATE,
+                    version=f'v.{TERMS_AND_CONDITION_VERSION:.1f}'
+                ),
                 next_enabled=True
             )
             if pushed_button == PushedButton.NEXT:
