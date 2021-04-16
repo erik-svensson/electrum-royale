@@ -69,7 +69,7 @@ from electrum.util import (format_time, format_satoshis, format_fee_satoshis,
                            get_new_wallet_name, send_exception_to_crash_reporter,
                            InvalidBitcoinURI)
 from electrum.util import pr_expiration_values
-from electrum.version import ELECTRUM_VERSION
+from electrum.version import ELECTRUM_VERSION, TERMS_AND_CONDITION_LAST_UPDATE
 from electrum.wallet import (Multisig_Wallet, CannotBumpFee, Abstract_Wallet,
                              sweep_preparations, InternalAddressCorruption,
                              ThreeKeysWallet)
@@ -677,15 +677,19 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
         logo_hbox = QHBoxLayout()
         logo_hbox.addLayout(logo_vbox)
         logo_hbox.addSpacing(5)
-        text_vbox = QVBoxLayout()
+        vbox = QVBoxLayout()
         text_browser = QTextBrowser()
         text_browser.setReadOnly(True)
         text_browser.setOpenExternalLinks(True)
         text_browser.setHtml(terms)
-        text_vbox.addWidget(text_browser)
-        logo_hbox.addLayout(text_vbox)
+        vbox.addWidget(text_browser)
+        footer = QHBoxLayout()
+        footer.addWidget(QLabel(_('Last updated: {date}').format(date=TERMS_AND_CONDITION_LAST_UPDATE)))
+        footer.addStretch(1)
+        footer.addWidget(OkButton(dialog))
+        vbox.addLayout(footer)
+        logo_hbox.addLayout(vbox)
         main_vbox.addLayout(logo_hbox)
-        main_vbox.addLayout(Buttons(OkButton(dialog)))
         dialog.exec_()
 
     def show_about(self):

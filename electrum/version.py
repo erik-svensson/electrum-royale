@@ -1,6 +1,7 @@
 ELECTRUM_VERSION = '5.0.4' # version of the client package
 APK_VERSION = '5.0.4'      # read by buildozer.spec
-TERMS_AND_CONDITION_VERSION = 1.1
+TERMS_AND_CONDITION_VERSION = 2.0
+TERMS_AND_CONDITION_LAST_UPDATE = '16.04.2021'  # used in T&C view
 
 PROTOCOL_VERSION = '2.0'     # protocol version requested
 
