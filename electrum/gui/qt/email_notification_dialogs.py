@@ -4,13 +4,13 @@ from abc import ABC, abstractmethod
 from collections import Callable
 from enum import IntEnum
 
-from PyQt5.QtCore import QRegExp
+from PyQt5.QtCore import QRegExp, Qt
 from PyQt5.QtGui import QRegExpValidator
-from PyQt5.QtWidgets import QVBoxLayout, QLineEdit, QHBoxLayout, QLabel, QCheckBox, QPushButton
+from PyQt5.QtWidgets import QVBoxLayout, QLineEdit, QHBoxLayout, QLabel, QCheckBox, QPushButton, QGridLayout
 
 from electrum.base_wizard import GoBack
 from electrum.gui.qt.installwizard import InstallWizard
-from electrum.gui.qt.util import TaskThread, WaitingDialogWithCancel, WindowModalDialog
+from electrum.gui.qt.util import TaskThread, WaitingDialogWithCancel, WindowModalDialog, char_width_in_lineedit
 from electrum.i18n import _, convert_to_iso_639_1
 from electrum.notification_connector import EmailNotificationWallet, EmailNotificationApiError, Connector, \
     EmailAlreadySubscribedError, NoMorePINAttemptsError, TokenError
@@ -35,9 +35,9 @@ class AbstractLineEdit(QLineEdit):
 class PinInputFiled(AbstractLineEdit):
     def __init__(self):
         super().__init__(
-            # todo add ignore on '1lo0' signs
             regex_exp=QRegExp('\\b[0-9a-z]{4}\\b')
         )
+        self.setMaximumWidth(4 * char_width_in_lineedit())
 
 
 class EmailInputFiled(AbstractLineEdit):
@@ -126,20 +126,19 @@ class ChangeEmailLayout(QVBoxLayout, ErrorMessageMixin, InputFieldMixin):
             _('You can change your email. It is used to send you transaction notifications from chosen wallet.')
         )
         label.setWordWrap(True)
-        box = QHBoxLayout()
-        current_email_label = QLabel(_('Current email') + f':<b>{current_email}</b>')
-        email_label = QLabel(_('New email:'))
-        email_edit = EmailInputFiled()
-        box.addWidget(email_label)
-        box.addWidget(email_edit)
-        email_edit.textChanged.connect(self.input_edited)
-        self.input_edit = email_edit
+        grid_box = QGridLayout()
+        grid_box.setSpacing(8)
+        grid_box.addWidget(QLabel(_('Current email:')), 0, 0)
+        grid_box.addWidget(QLabel(f'<b>{current_email}</b>'), 0, 1)
+        grid_box.addWidget(QLabel(_('New email:')), 1, 0)
+        self.input_edit = EmailInputFiled()
+        grid_box.addWidget(self.input_edit, 1, 1)
+        self.input_edit.textChanged.connect(self.input_edited)
         self.input_edit.setText(new_email)
 
         self.addWidget(label)
         self.addSpacing(10)
-        self.addWidget(current_email_label)
-        self.addLayout(box)
+        self.addLayout(grid_box)
         self.addSpacing(5)
         self.error_label = QLabel()
         self.error_label.setWordWrap(True)
@@ -219,17 +218,17 @@ class PinConfirmationLayout(QVBoxLayout, ErrorMessageMixin, InputFieldMixin):
 
         label = QLabel(_('To confirm the request, please enter the code we sent to') + f"<br><b>{email}</b>")
         label.setWordWrap(True)
-        box = QHBoxLayout()
+        hbox = QHBoxLayout()
         code_label = QLabel(_('Code:'))
         pin_edit = PinInputFiled()
-        box.addWidget(code_label)
-        box.addWidget(pin_edit)
+        hbox.addWidget(code_label)
+        hbox.addWidget(pin_edit)
         pin_edit.textChanged.connect(self.input_edited)
         self.input_edit = pin_edit
 
         self.addWidget(label)
         self.addSpacing(10)
-        self.addLayout(box)
+        self.addLayout(hbox)
         self.error_label = QLabel()
         self.error_label.setWordWrap(True)
         self.error_label.setVisible(False)
@@ -237,7 +236,6 @@ class PinConfirmationLayout(QVBoxLayout, ErrorMessageMixin, InputFieldMixin):
             self.set_error(error_msg)
 
         self.send_request_thread = TaskThread(None)
-        hbox = QHBoxLayout()
         if self.cool_down_thread.is_running():
             self.resend_button = QPushButton(self.cool_down_thread.get_formatted_left_time())
             self.resend_button.setEnabled(False)
@@ -468,6 +466,7 @@ class EmailNotificationWizard(InstallWizard):
 class EmailNotificationDialog(EmailNotificationWizard):
     def __init__(self, wallet, *args, **kwargs):
         kwargs['turn_off_icon'] = True
+        kwargs['minimum_size'] = (600, 230)
         EmailNotificationWizard.__init__(self, wallet, *args, **kwargs)
         self.show_skip_checkbox = False
         self.setWindowTitle(_('Notifications'))
@@ -604,10 +603,13 @@ class WalletNotificationsMainDialog(WindowModalDialog, ErrorMessageMixin):
         self.error_label.setWordWrap(True)
         vbox.addWidget(self.error_label)
         self.email = self.wallet.db.get('notification_email', '')
-        vbox.addWidget(QLabel(
-            _('It is used to send your transaction notifications from chosen wallet') + '\n' +
-             (_('Email address: ') + self.email if self.email else _("Notification address hasn't been set yet"))
-        ))
+        label = QLabel(
+            _('It is used to send your transaction notifications from chosen wallet') + '<br>' +
+            (_('Email address: ') + f'<b>{self.email}</b>' if self.email else _(
+                "Notification address hasn't been set yet"))
+        )
+        label.setTextFormat(Qt.RichText)
+        vbox.addWidget(label)
         hbox = QHBoxLayout()
         self.sub_unsub_button = QPushButton(_('Subscribe'))
         self.sub_unsub_button.setEnabled(False)
