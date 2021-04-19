@@ -6,11 +6,12 @@ from enum import IntEnum
 
 from PyQt5.QtCore import QRegExp, Qt
 from PyQt5.QtGui import QRegExpValidator
-from PyQt5.QtWidgets import QVBoxLayout, QLineEdit, QHBoxLayout, QLabel, QCheckBox, QPushButton, QGridLayout
+from PyQt5.QtWidgets import QVBoxLayout, QLineEdit, QHBoxLayout, QLabel, QCheckBox, QPushButton, QMessageBox
 
 from electrum.base_wizard import GoBack
 from electrum.gui.qt.installwizard import InstallWizard
-from electrum.gui.qt.util import TaskThread, WaitingDialogWithCancel, WindowModalDialog, char_width_in_lineedit
+from electrum.gui.qt.util import TaskThread, WaitingDialogWithCancel, WindowModalDialog, custom_message_box, \
+    char_width_in_lineedit
 from electrum.i18n import _, convert_to_iso_639_1
 from electrum.notification_connector import EmailNotificationWallet, EmailNotificationApiError, Connector, \
     EmailAlreadySubscribedError, NoMorePINAttemptsError, TokenError
@@ -638,6 +639,17 @@ class WalletNotificationsMainDialog(WindowModalDialog, ErrorMessageMixin):
 
     def _unsubscribe(self):
         self.close()
+        is_unsub = custom_message_box(
+            icon=QMessageBox.Question,
+            parent=self.parent,
+            title=_('Unsubscribe from notifications'),
+            text=_('Do you want to unsubscribe this wallet from email notifications?'),
+            buttons=QMessageBox.Yes|QMessageBox.No,
+            defaultButton=QMessageBox.No,
+        )
+        if is_unsub == QMessageBox.No:
+            return
+
         unsubscribe_dialog = UnsubscribeEmailNotificationDialog(
             wallet=self.wallet,
             parent=self.parent,
@@ -647,13 +659,6 @@ class WalletNotificationsMainDialog(WindowModalDialog, ErrorMessageMixin):
         )
         unsubscribe_dialog._email = self.email
         unsubscribe_dialog.close()
-
-        if_unsub = unsubscribe_dialog.question(
-            title=_('Unsubscribe from notifications'),
-            msg=_('Do you want to unsubscribe this wallet from email notifications?')
-        )
-        if not if_unsub:
-            return
 
         def task():
             unsubscribe_dialog._unsubscribe()
