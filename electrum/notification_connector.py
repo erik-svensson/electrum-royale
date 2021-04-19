@@ -85,20 +85,17 @@ def mapping_errors(message: str, http_status_code: int) -> EmailNotificationApiE
     if http_status_code == 401 and message.startswith('Trials left'):
         n = re.findall('[0-9]+', message)[0]
         return EmailNotificationApiError(
-            _('Please enter a valid code.') + '\n' +
-            _('You have {number} more attempts.').format(number=n),
+            _('Please enter a valid code. You have {number} more attempts.').format(number=n),
             http_status_code,
         )
     elif http_status_code == 429 and message.startswith('No more trials left'):
         return NoMorePINAttemptsError(
-            _('You have entered an invalid code 3 times.') + '\n' +
-            _('We have sent new code to your email address.'),
+            _('You have entered an invalid code 3 times. We have sent new code to your email address.'),
             http_status_code,
         )
     elif http_status_code == 408 and message.startswith('Request timeout'):
         return TokenError(
-            _('This code is no longer active.') + '\n' +
-            _('We have sent new code to your email address.'),
+            _('This code is no longer active. We have sent new code to your email address.'),
             http_status_code,
         )
     elif http_status_code == 400 and email_already_subscribed_pattern.match(message):
