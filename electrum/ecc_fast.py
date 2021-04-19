@@ -38,15 +38,26 @@ SECP256K1_EC_UNCOMPRESSED = (SECP256K1_FLAGS_TYPE_COMPRESSION)
 
 def load_library():
     if sys.platform == 'darwin':
-        library_path = 'libsecp256k1.0.dylib'
+        library_paths = (os.path.join(os.path.dirname(__file__), 'libsecp256k1.0.dylib'),
+                         'libsecp256k1.0.dylib')
     elif sys.platform in ('windows', 'win32'):
-        library_path = 'libsecp256k1.dll'
+        library_paths = (os.path.join(os.path.dirname(__file__), 'libsecp256k1-0.dll'),
+                         'libsecp256k1-0.dll')
     elif 'ANDROID_DATA' in os.environ:
-        library_path = 'libsecp256k1.so'
-    else:
-        library_path = 'libsecp256k1.so.0'
+        library_paths = ('libsecp256k1.so',)
+    else:  # desktop Linux and similar
+        library_paths = (os.path.join(os.path.dirname(__file__), 'libsecp256k1.so.0'),
+                         'libsecp256k1.so.0')
 
-    secp256k1 = ctypes.cdll.LoadLibrary(library_path)
+    exceptions = []
+    secp256k1 = None
+    for libpath in library_paths:
+        try:
+            secp256k1 = ctypes.cdll.LoadLibrary(libpath)
+        except BaseException as e:
+            exceptions.append(e)
+        else:
+            break
     if not secp256k1:
         _logger.warning('libsecp256k1 library failed to load')
         return None
