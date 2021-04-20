@@ -317,7 +317,7 @@ class CoolDownThread:
         )
 
     def is_running(self) -> bool:
-        return bool(self.elapsed_time)
+        return bool(self.thread and self.get_left_time())
 
     def terminate(self):
         self.elapsed_time = 0
