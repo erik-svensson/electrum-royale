@@ -35,16 +35,17 @@ class AbstractLineEdit(QLineEdit):
 class PinInputFiled(AbstractLineEdit):
     def __init__(self):
         super().__init__(
-            regex_exp=QRegExp('\\b[0-9a-z]{4}\\b')
+            regex_exp=QRegExp(r'[0-9a-z]{4}')
         )
         self.setMaximumWidth(4 * char_width_in_lineedit())
 
 
 class EmailInputFiled(AbstractLineEdit):
     def __init__(self):
-        # todo check regex email validation
         super().__init__(
-            regex_exp=QRegExp('\\b[A-Za-z0-9_.+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}\\b')
+            regex_exp=QRegExp(
+                r"((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\x00A0-\xD7FF\xF900-\xFDCF\xFDF0-\xFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\x00A0-\xD7FF\xF900-\xFDCF\xFDF0-\xFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\x00A0-\xD7FF\xF900-\xFDCF\xFDF0-\xFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\x00A0-\xD7FF\xF900-\xFDCF\xFDF0-\xFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\x00A0-\xD7FF\xF900-\xFDCF\xFDF0-\xFFEF])|(([a-z]|\d|[\x00A0-\xD7FF\xF900-\xFDCF\xFDF0-\xFFEF])([a-z]|\d|-|\.|_|~|[\x00A0-\xD7FF\xF900-\xFDCF\xFDF0-\xFFEF])*([a-z]|\d|[\x00A0-\xD7FF\xF900-\xFDCF\xFDF0-\xFFEF])))\.)+(([a-z]|[\x00A0-\xD7FF\xF900-\xFDCF\xFDF0-\xFFEF])|(([a-z]|[\x00A0-\xD7FF\xF900-\xFDCF\xFDF0-\xFFEF])([a-z]|\d|-|\.|_|~|[\x00A0-\xD7FF\xF900-\xFDCF\xFDF0-\xFFEF])*([a-z]|[\x00A0-\xD7FF\xF900-\xFDCF\xFDF0-\xFFEF])))"
+            )
         )
 
 
