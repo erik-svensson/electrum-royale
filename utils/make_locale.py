@@ -6,6 +6,9 @@ from pathlib import Path
 from typing import List
 
 
+DEBUG_MODE = False
+
+
 def extract_all_msgid(file_path: str) -> List[str]:
     with open(file_path, 'r') as file:
         finder = re.compile(r'msgid ((.+\n)+)msgstr', re.MULTILINE)
@@ -21,7 +24,7 @@ def generate_template(template_name):
 
 
 def merge_po_into_old(old_file, new_file):
-    os.system(f'msgmerge -N -o {old_file} {old_file} {new_file}')
+    os.system(f"msgmerge {'-q' if not DEBUG_MODE else ''} -N -o {old_file} {old_file} {new_file}")
 
 
 def generate_msgid_diff(reference_file):
@@ -62,7 +65,8 @@ def merge_incoming_data(data, path, pot_file='message.pot'):
     os.system(f'msgattrib --no-obsolete -o {path} {path}')
     os.system(f'msgcat --use-first -o {path} {temp_file} {path}')
     os.system(f'msgattrib --translated --no-wrap --sort-output -o {path} {path}')
-    os.system(f'rm {temp_file}')
+    if not DEBUG_MODE:
+        os.system(f'rm {temp_file}')
     
 
 def compile_po_files_from_csv(csv_file, po_dir):
@@ -104,6 +108,7 @@ def main():
 
     compile_po_parser = subparsers.add_parser('compile-po', help='Compile csv data into po files')
     compile_po_parser.add_argument('csv-file', help='Input csv file')
+    compile_po_parser.add_argument('-d', '--debug', action='store_true', help='Run compilation with debug mode, the temp.po files are not deleted')
     compile_po_parser.add_argument('--locale-dir', default='../electrum/locale', help='directory where po and mo files will be written default is ../electrum/locale/')
 
     args = vars(parser.parse_args())
@@ -115,6 +120,8 @@ def main():
             data = generate_msgid_diff(args['diff'])
         save_into_csv(data, args['csv-file'])
     elif args['which'] == 'compile-po':
+        global DEBUG_MODE
+        DEBUG_MODE = args['debug']
         compile_po_files_from_csv(args['csv-file'], args['locale_dir'])
 
 
