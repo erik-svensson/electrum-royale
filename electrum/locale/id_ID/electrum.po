@@ -970,7 +970,7 @@ msgid "Do you want to send this report?"
 msgstr "Apakah Anda ingin mengirimkan laporan ini?"
 
 msgid "Do you want to unsubscribe this wallet from email notifications?"
-msgstr "Batalkan"
+msgstr "Apakah Anda ingin berhenti berlangganan dompet ini dari pemberitahuan email? "
 
 msgid "Do you want to use Gold Wallet as a transaction authenticator?"
 msgstr "Apakah Anda ingin menggunakan Gold Wallet sebagai autentikator transaksi?"
@@ -1820,6 +1820,7 @@ msgstr "Label, ID dan alamat transaksi telah diekripsi sebelum dikirim ke remote
 msgid "Language"
 msgstr "Bahasa"
 
+#, python-brace-format
 msgid "Last updated: {date}"
 msgstr "Terakhir diperbarui: {date}"
 
@@ -2316,7 +2317,6 @@ msgstr "Mohon periksa perangkat {device} Anda."
 msgid "Please confirm"
 msgstr "Mohon konfirmasi"
 
-#, python-brace-format
 msgid "Please enter a valid code. You have {number} more attempts."
 msgstr "Mohon masukkan kode yang valid. Anda memiliki {number} kesempatan tersisa."
 
@@ -3035,6 +3035,7 @@ msgstr "Biaya Target:"
 msgid "Terms & Conditions"
 msgstr "Syarat & Ketentuan"
 
+#, python-brace-format
 msgid "Terms & Conditions {version} (Last updated: {date})"
 msgstr "Syarat dan Ketentuan {version} (Terakhir diperbarui: {date})"
 
@@ -3499,7 +3500,7 @@ msgid "Unsubscribe"
 msgstr "Berhenti  Berlangganan"
 
 msgid "Unsubscribe from notifications"
-msgstr "Berhenti berlangganan ke notifikasi email"
+msgstr "Berhenti berlangganan ke notifikasi"
 
 msgid "Unsupported password hash version"
 msgstr "Versi kata sandi hash tidak didukung"
@@ -3809,6 +3810,9 @@ msgstr "Anda telah berhenti berlangganan ke dompet"
 msgid "You have successfully updated your notification preferences"
 msgstr "Anda telah berhasil memperbarui alamat email Anda."
 
+msgid "You have {number} more attempts."
+msgstr "Anda memiliki {number} kesempatan tersisa."
+
 msgid "You may enter a Bitcoin address, a label from your list of contacts (a list of completions will be proposed), or an alias (email-like address that forwards to a Bitcoin address)"
 msgstr "Anda dapat memasukkan sebuah alamat Bitcoin, sebuah label dari daftar kontak (daftar penyelesaian akan dianjurkan), atau sebuah alias (alamat seperti email yang meneruskan berbagai hal ke alama Bitcoin.)"
 
@@ -4061,6 +4065,7 @@ msgstr "ekstensi seed Anda <b>tidak</b> akan ditambahkan ke bakup terenkripsi An
 msgid "{coins_number} outputs available ({utxos_number} total)"
 msgstr "{coins_number} output tersedia ({utxos_number} total)"
 
+#, python-brace-format
 msgid "{email} is already subscribed to {wallet_name}."
 msgstr "{email} telah berlangganan ke dompet {wallet_name}."
 

@@ -971,7 +971,7 @@ msgid "Do you want to send this report?"
 msgstr "Bu raporu göndermek istiyor musunuz?"
 
 msgid "Do you want to unsubscribe this wallet from email notifications?"
-msgstr "İptal"
+msgstr "Bu cüzdanı e-posta bildirimlerinden çıkarmak istiyor musunuz? "
 
 msgid "Do you want to use Gold Wallet as a transaction authenticator?"
 msgstr "İşlem kimlik doğrulayıcı olarak Gold Wallet’i kullanmak istiyor musunuz?"
@@ -1821,6 +1821,7 @@ msgstr "Etiketler, işlem Kimlikleri ve adresler uzak sunucuya gönderilmeden ö
 msgid "Language"
 msgstr "Dil"
 
+#, python-brace-format
 msgid "Last updated: {date}"
 msgstr "Son güncelleme: {date}"
 
@@ -2317,7 +2318,6 @@ msgstr "Lütfen {device} cihazınızı kontrol edin"
 msgid "Please confirm"
 msgstr "Lütfen onaylayın"
 
-#, python-brace-format
 msgid "Please enter a valid code. You have {number} more attempts."
 msgstr "Lütfen geçerli bir kod girin. {number} hakkınız kaldı."
 
@@ -3036,6 +3036,7 @@ msgstr "Hedef ücreti:"
 msgid "Terms & Conditions"
 msgstr "Hüküm ve Şartlar"
 
+#, python-brace-format
 msgid "Terms & Conditions {version} (Last updated: {date})"
 msgstr "Hüküm & Koşullar {version} (Son güncelleme: {date})"
 
@@ -3810,6 +3811,9 @@ msgstr "Cüzdan aboneliğinden başarılı bir şekilde çıktınız"
 msgid "You have successfully updated your notification preferences"
 msgstr "Email adresinizi başarılı bir şekilde güncellediniz."
 
+msgid "You have {number} more attempts."
+msgstr "{number} hakkınız kaldı."
+
 msgid "You may enter a Bitcoin address, a label from your list of contacts (a list of completions will be proposed), or an alias (email-like address that forwards to a Bitcoin address)"
 msgstr "Bir Bitcoin adresi girebilirsiniz, bağlantılar listenizden bir etiket (önerilecek bitirmelerin bir listesi), veya bir takma ad (bir Bitcoin adresine yönlendiren e-posta benzeri bir adres) girebilirsiniz"
 
@@ -4062,6 +4066,7 @@ msgstr "çekirdek uzantınız şifrelenmiş yedeğe dahil <b>edilmeyecek</b>."
 msgid "{coins_number} outputs available ({utxos_number} total)"
 msgstr "{coins_number} çıktı kullanılabilir ({utxos_number} total)"
 
+#, python-brace-format
 msgid "{email} is already subscribed to {wallet_name}."
 msgstr "{email} zaten {wallet_name} için zaten abone."
 

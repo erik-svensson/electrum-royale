@@ -971,7 +971,7 @@ msgid "Do you want to send this report?"
 msgstr "해당 보고를 전송하시겠습니까?"
 
 msgid "Do you want to unsubscribe this wallet from email notifications?"
-msgstr "취소"
+msgstr "이 지갑을 이메일 알림에서 수신 거부 하시겠습니까?"
 
 msgid "Do you want to use Gold Wallet as a transaction authenticator?"
 msgstr "Gold Wallet을 거래 인증기로 사용하시겠습니까?"
@@ -1821,6 +1821,7 @@ msgstr "라벨, 거래 ID와 주소는 원격 서버로 보내지기 전 암호�
 msgid "Language"
 msgstr "언어"
 
+#, python-brace-format
 msgid "Last updated: {date}"
 msgstr "마지막 업데이트: {date}"
 
@@ -2317,7 +2318,6 @@ msgstr "기기{device}를 확인해주세요"
 msgid "Please confirm"
 msgstr "확인해주세요"
 
-#, python-brace-format
 msgid "Please enter a valid code. You have {number} more attempts."
 msgstr "유효한 코드를 입력하십시오. 이제 {number}번 더 시도할 수 있습니다."
 
@@ -3036,6 +3036,7 @@ msgstr "대상 수수료:"
 msgid "Terms & Conditions"
 msgstr "이용 약관"
 
+#, python-brace-format
 msgid "Terms & Conditions {version} (Last updated: {date})"
 msgstr "이용약관 {version} (마지막 업데이트: {date})"
 
@@ -3810,6 +3811,9 @@ msgstr "지갑 알림을 성공적으로 해제했습니다"
 msgid "You have successfully updated your notification preferences"
 msgstr "사용자 이메일 주소가 성공적으로 업데이트되었습니다."
 
+msgid "You have {number} more attempts."
+msgstr "이제 {number}번 더 시도할 수 있습니다."
+
 msgid "You may enter a Bitcoin address, a label from your list of contacts (a list of completions will be proposed), or an alias (email-like address that forwards to a Bitcoin address)"
 msgstr "연결 목록(완료된 건이 나타납니다)의 라벨로 Bitcoin 주소를 추가하거나, 또는 가명(Bitcoin 주소로 전송되는 이메일과 같은 주소)로 추가할 수 있습니다"
 
@@ -4062,6 +4066,7 @@ msgstr "시드 확장이 암호화된 백업에 포함되지 <b>않습니다</b>
 msgid "{coins_number} outputs available ({utxos_number} total)"
 msgstr "(총 {utxos_number}) 중 {coins_number} 사용 가능"
 
+#, python-brace-format
 msgid "{email} is already subscribed to {wallet_name}."
 msgstr "{email}(은)는 이미 {wallet_name}에 알림이 설정되어 있습니다."
 

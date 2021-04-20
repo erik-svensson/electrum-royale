@@ -971,7 +971,7 @@ msgid "Do you want to send this report?"
 msgstr "Quer enviar este relatório?"
 
 msgid "Do you want to unsubscribe this wallet from email notifications?"
-msgstr "Cancelar"
+msgstr "Quer cancelar a assinatura desta carteira para notificações por e-mail? "
 
 msgid "Do you want to use Gold Wallet as a transaction authenticator?"
 msgstr "Deseja usar a Gold Wallet como um autenticador de transacção?"
@@ -1821,6 +1821,7 @@ msgstr "As etiquetas, os IDs de transações e endereços são criptografados an
 msgid "Language"
 msgstr "Língua"
 
+#, python-brace-format
 msgid "Last updated: {date}"
 msgstr "Ultima atualização: {date}"
 
@@ -2317,7 +2318,6 @@ msgstr "Por favor, verifique o seu dispositivo {device}"
 msgid "Please confirm"
 msgstr "Por favor confirme"
 
-#, python-brace-format
 msgid "Please enter a valid code. You have {number} more attempts."
 msgstr "Por favor introduza um código válido. Tem mais {number} tentativas."
 
@@ -3036,6 +3036,7 @@ msgstr "Taxa pretendida:"
 msgid "Terms & Conditions"
 msgstr "Termos e Condições"
 
+#, python-brace-format
 msgid "Terms & Conditions {version} (Last updated: {date})"
 msgstr "Termos e Condições {version} (Ultima atualização: {date})"
 
@@ -3500,7 +3501,7 @@ msgid "Unsubscribe"
 msgstr "Cancelar a subscrição"
 
 msgid "Unsubscribe from notifications"
-msgstr "Anular a subscrição de notificações por e-mail"
+msgstr "Anular a subscrição de notificações"
 
 msgid "Unsupported password hash version"
 msgstr "Versão hash de palavra-passe não suportada"
@@ -3810,6 +3811,9 @@ msgstr "Você conseguiu anular a subscrição da carteira."
 msgid "You have successfully updated your notification preferences"
 msgstr "Atualizou com sucesso o seu endereço de e-mail."
 
+msgid "You have {number} more attempts."
+msgstr "Tem mais {number} tentativas."
+
 msgid "You may enter a Bitcoin address, a label from your list of contacts (a list of completions will be proposed), or an alias (email-like address that forwards to a Bitcoin address)"
 msgstr "Você pode inserir um endereço Bitcoin, um marcador de sua lista de contatos (uma lista de conclusões serão propostas), ou um alias (endereço de e-mail que reencaminha para um endereço Bitcoin)"
 
@@ -4062,6 +4066,7 @@ msgstr "A sua extensão de semente <b> não </b> será incluída no backup cript
 msgid "{coins_number} outputs available ({utxos_number} total)"
 msgstr "{coins_number} saídas disponíveis ({utxos_number} no total)"
 
+#, python-brace-format
 msgid "{email} is already subscribed to {wallet_name}."
 msgstr "{email} já está subscrito à {wallet_name}."
 

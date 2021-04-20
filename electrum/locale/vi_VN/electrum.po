@@ -822,7 +822,7 @@ msgid "Current Password:"
 msgstr "Mật khẩu hiện tại:"
 
 msgid "Current email:"
-msgstr "email hiện tại của bạn:"
+msgstr "Email hiện tại của bạn:"
 
 msgid "Current feerate"
 msgstr "Phí hiện tại"
@@ -971,7 +971,7 @@ msgid "Do you want to send this report?"
 msgstr "Quý khách có muốn gửi báo cáo này không?"
 
 msgid "Do you want to unsubscribe this wallet from email notifications?"
-msgstr "Hủy bỏ"
+msgstr "Bạn có muốn hủy đăng ký ví này để nhận thông báo qua email không? "
 
 msgid "Do you want to use Gold Wallet as a transaction authenticator?"
 msgstr "Quý khách có muốn sử dụng Gold Wallet làm công cụ xác nhận giao dịch hay không?"
@@ -1821,6 +1821,7 @@ msgstr " Nhãn, ID giao dịch và địa chỉ được mã hóa trước khi c
 msgid "Language"
 msgstr "Ngôn ngữ"
 
+#, python-brace-format
 msgid "Last updated: {date}"
 msgstr "Cập nhật mới nhất: {date}"
 
@@ -2317,7 +2318,6 @@ msgstr "Vui lòng kiểm tra thiết bị {device} của quý khách"
 msgid "Please confirm"
 msgstr "Vui lòng xác nhận"
 
-#, python-brace-format
 msgid "Please enter a valid code. You have {number} more attempts."
 msgstr "Vui lòng nhập mã hợp lệ. Bạn còn lại {number} lần thử."
 
@@ -3036,6 +3036,7 @@ msgstr "Mục tiêu phí:"
 msgid "Terms & Conditions"
 msgstr "Điều khoản và điều kiện"
 
+#, python-brace-format
 msgid "Terms & Conditions {version} (Last updated: {date})"
 msgstr "Điều khoản và điều kiện {version} (Cập nhật mới nhất: {date})"
 
@@ -3810,6 +3811,9 @@ msgstr "Bạn đã hủy đăng ký ví thành công"
 msgid "You have successfully updated your notification preferences"
 msgstr "Bạn đã cập nhật thành công địa chỉ email của bạn."
 
+msgid "You have {number} more attempts."
+msgstr "Bạn còn lại {number} lần thử."
+
 msgid "You may enter a Bitcoin address, a label from your list of contacts (a list of completions will be proposed), or an alias (email-like address that forwards to a Bitcoin address)"
 msgstr " Quý khách có thể nhập địa chỉ Bitcoin, một nhãn từ danh sách liên hệ của mình (danh sách  trong tổng số các hoàn thành sẽ được đề xuất) hoặc một bí danh (địa chỉ giống như email  chuyển tiếp đến địa chỉ Bitcoin) "
 
@@ -4062,6 +4066,7 @@ msgstr " tiện ích mở rộng hạt giống của quý khách  sẽ <b> khôn
 msgid "{coins_number} outputs available ({utxos_number} total)"
 msgstr "{coins_number} đầu ra có sẵn (tổng số {utxos_number})"
 
+#, python-brace-format
 msgid "{email} is already subscribed to {wallet_name}."
 msgstr "{email} đã được đăng ký với {wallet_name}."
 
