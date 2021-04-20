@@ -12,8 +12,7 @@ from electrum.i18n import _
 from electrum.logging import get_logger
 from electrum.wallet import Abstract_Wallet
 
-# todo set production address when it will be ready
-API_CONNECTION_STRING = 'https://email-notifications.testnet.btcv.stage.rnd.land/api'
+API_CONNECTION_STRING = 'https://email-notifications.bitcoinvault.global/api'
 # timeout has to be smaller than resend cool down time
 API_TIMEOUT = 25
 
@@ -115,8 +114,6 @@ def request_error_handler(fun):
     def wrapper(*args, **kwargs):
         try:
             response = fun(*args, **kwargs)
-            # todo remove logger, only for debug purposes
-            _logger.debug(f'Response from server {response.text} {response.status_code}')
             if response.status_code >= 400:
                 _logger.info(f'Email api response error {response.text}')
                 data = response.json()
@@ -142,8 +139,6 @@ class Connector:
         self.connection_string = connection_string
         self.timeout = timeout
         self.token = ''
-        # todo remove it, only for debug purposes
-        _logger.debug(f' Connection string {connection_string}')
 
     @classmethod
     def from_config(cls, config):
@@ -156,13 +151,6 @@ class Connector:
 
     @request_error_handler
     def subscribe_wallet(self, wallets: List[EmailNotificationWallet], email: str, language: str):
-        # todo remove logger and payload, only for debug purposes
-        payload_ = {
-            'wallets': [dict(filter(lambda item: item[1] is not None, dataclasses.asdict(wallet).items())) for wallet in wallets],
-            'email': email,
-            'lang': language,
-        }
-        _logger.debug(f'SUB payload {payload_}')
         return requests.post(
             f'{self.connection_string}/subscribe/',
             json={
