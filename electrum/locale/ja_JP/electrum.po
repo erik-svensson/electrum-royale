@@ -137,6 +137,9 @@ msgstr "&概要"
 msgid "&Sweep"
 msgstr "&取消"
 
+msgid "&Terms && Conditions"
+msgstr "&利用規約"
+
 msgid "&Tools"
 msgstr "&ツール"
 
@@ -1818,6 +1821,9 @@ msgstr "ラベル、トランザクションIDやアドレスはリモートサ�
 msgid "Language"
 msgstr "言語"
 
+msgid "Last updated: {date}"
+msgstr "最終更新：{date}"
+
 #, python-brace-format
 msgid "Latest version: {version}"
 msgstr "最新バージョン: {version}"
@@ -2311,6 +2317,7 @@ msgstr "デバイス{device}を確認してください。"
 msgid "Please confirm"
 msgstr "確認してください。"
 
+#, python-brace-format
 msgid "Please enter a valid code. You have {number} more attempts."
 msgstr "有効なコードを入力してください。 あと{number}回試せます。"
 
@@ -3029,6 +3036,9 @@ msgstr "ターゲット手数料:"
 msgid "Terms & Conditions"
 msgstr "利用規約"
 
+msgid "Terms & Conditions {version} (Last updated: {date})"
+msgstr "利用規約 {version} (最終更新：{date})"
+
 msgid "Terms of Service"
 msgstr "利用規約"
 
@@ -3707,9 +3717,6 @@ msgstr "BIP39インポートがElectrumで常にサポートされることを�
 msgid "We encountered an error while connecting to your device:"
 msgstr "デバイス接続中にエラーが発生しています:"
 
-msgid "We will send you information about your transaction statuses."
-msgstr "取引状況に関する情報をお知らせします。"
-
 msgid "While this is less than ideal, it might help if you run Electrum as Administrator."
 msgstr "これは理想的な状況ではありませんが、AdministratorとしてElectrumを実行すると役に立つかもしれません。"
 
@@ -3802,9 +3809,6 @@ msgstr "ウォレットの登録を解除しました"
 
 msgid "You have successfully updated your notification preferences"
 msgstr "メールアドレスの更新が完了しました。"
-
-msgid "You have {number} more attempts."
-msgstr "あと{number}回試せます。"
 
 msgid "You may enter a Bitcoin address, a label from your list of contacts (a list of completions will be proposed), or an alias (email-like address that forwards to a Bitcoin address)"
 msgstr "Bitcoinのアドレス、連絡リスト(完了リストが提示されます)のラベル、またはエイリアス(Bitcoinアドレスへ転送するメールアドレスのようなアドレス)を入力できます。"
@@ -4057,6 +4061,9 @@ msgstr " シードの拡張子は暗号化された バックアップに<b>含�
 #, python-brace-format
 msgid "{coins_number} outputs available ({utxos_number} total)"
 msgstr "{coins_number} 利用可能な出力 ({utxos_number} total)"
+
+msgid "{email} is already subscribed to {wallet_name}."
+msgstr "{email} はすでに {wallet_name}に登録されています"
 
 #, python-brace-format
 msgid "{number} confirmations"

@@ -136,6 +136,9 @@ msgstr "&总结"
 msgid "&Sweep"
 msgstr "&清除"
 
+msgid "&Terms && Conditions"
+msgstr "&条款和条件"
+
 msgid "&Tools"
 msgstr "&工具"
 
@@ -1817,6 +1820,9 @@ msgstr "标签, 交易 ID和地址加密后才发送至远程服务器"
 msgid "Language"
 msgstr "语言"
 
+msgid "Last updated: {date}"
+msgstr "最近更新时间：{date}"
+
 #, python-brace-format
 msgid "Latest version: {version}"
 msgstr "最新版本: {version}"
@@ -2310,6 +2316,7 @@ msgstr "请检查您的{device}设备"
 msgid "Please confirm"
 msgstr "请确认"
 
+#, python-brace-format
 msgid "Please enter a valid code. You have {number} more attempts."
 msgstr "请输入有效的代码。 您还有{number}次尝试机会。"
 
@@ -3028,6 +3035,9 @@ msgstr "目标手续费："
 msgid "Terms & Conditions"
 msgstr "服务条款"
 
+msgid "Terms & Conditions {version} (Last updated: {date})"
+msgstr "条款和条件 {version} (最近更新时间：{date}) "
+
 msgid "Terms of Service"
 msgstr "服务条款"
 
@@ -3706,9 +3716,6 @@ msgstr "无法保证Electrum将始终支持BIP39进口"
 msgid "We encountered an error while connecting to your device:"
 msgstr "连接到您的设备时遇到错误："
 
-msgid "We will send you information about your transaction statuses."
-msgstr "我们将向您发送有关您的交易状态的信息。 "
-
 msgid "While this is less than ideal, it might help if you run Electrum as Administrator."
 msgstr "虽然不是理想状态，但是如果您以管理员身份运行Electrum可能会有所帮助。"
 
@@ -3801,9 +3808,6 @@ msgstr "您已成功取消订阅钱包"
 
 msgid "You have successfully updated your notification preferences"
 msgstr "您已成功更新您的电子邮件地址。"
-
-msgid "You have {number} more attempts."
-msgstr "您还有{number}次尝试机会。"
 
 msgid "You may enter a Bitcoin address, a label from your list of contacts (a list of completions will be proposed), or an alias (email-like address that forwards to a Bitcoin address)"
 msgstr "您可以输入一个比特币地址，从您的联系人列表中输入一个标签(一个完成列表 将被提出), 或输入一个别名 (类似于可转发到比特币地址的电子邮件的地址)"
@@ -4056,6 +4060,9 @@ msgstr "您的种子扩展名将<b>不</b>包含在加密的备份中"
 #, python-brace-format
 msgid "{coins_number} outputs available ({utxos_number} total)"
 msgstr "{coins_number}可用产出({utxos_number}总数)"
+
+msgid "{email} is already subscribed to {wallet_name}."
+msgstr "{email}已经订阅了{wallet_name}。"
 
 #, python-brace-format
 msgid "{number} confirmations"

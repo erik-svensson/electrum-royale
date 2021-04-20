@@ -137,6 +137,9 @@ msgstr "&Tóm tắt"
 msgid "&Sweep"
 msgstr "& Quét"
 
+msgid "&Terms && Conditions"
+msgstr "&Điều khoản và điều kiện"
+
 msgid "&Tools"
 msgstr "&Công cụ"
 
@@ -1818,6 +1821,9 @@ msgstr " Nhãn, ID giao dịch và địa chỉ được mã hóa trước khi c
 msgid "Language"
 msgstr "Ngôn ngữ"
 
+msgid "Last updated: {date}"
+msgstr "Cập nhật mới nhất: {date}"
+
 #, python-brace-format
 msgid "Latest version: {version}"
 msgstr "Phiên bản mới nhất: {version}"
@@ -2311,6 +2317,7 @@ msgstr "Vui lòng kiểm tra thiết bị {device} của quý khách"
 msgid "Please confirm"
 msgstr "Vui lòng xác nhận"
 
+#, python-brace-format
 msgid "Please enter a valid code. You have {number} more attempts."
 msgstr "Vui lòng nhập mã hợp lệ. Bạn còn lại {number} lần thử."
 
@@ -3029,6 +3036,9 @@ msgstr "Mục tiêu phí:"
 msgid "Terms & Conditions"
 msgstr "Điều khoản và điều kiện"
 
+msgid "Terms & Conditions {version} (Last updated: {date})"
+msgstr "Điều khoản và điều kiện {version} (Cập nhật mới nhất: {date})"
+
 msgid "Terms of Service"
 msgstr "Điều khoản dịch vụ"
 
@@ -3707,9 +3717,6 @@ msgstr " Chúng tôi không đảm bảo rằng việc nhập BIP39 sẽ luôn �
 msgid "We encountered an error while connecting to your device:"
 msgstr "Chúng tôi đã gặp lỗi khi kết nối với thiết bị của quý khách:"
 
-msgid "We will send you information about your transaction statuses."
-msgstr "Chúng tôi sẽ gửi cho bạn thông tin về trạng thái giao dịch của bạn."
-
 msgid "While this is less than ideal, it might help if you run Electrum as Administrator."
 msgstr " Mặc dù điều này ít lý tưởng hơn, nhưng nó có thể hữu ích nếu quý khách chạy Electrum dưới dạng Administrator."
 
@@ -3802,9 +3809,6 @@ msgstr "Bạn đã hủy đăng ký ví thành công"
 
 msgid "You have successfully updated your notification preferences"
 msgstr "Bạn đã cập nhật thành công địa chỉ email của bạn."
-
-msgid "You have {number} more attempts."
-msgstr "Bạn còn lại {number} lần thử."
 
 msgid "You may enter a Bitcoin address, a label from your list of contacts (a list of completions will be proposed), or an alias (email-like address that forwards to a Bitcoin address)"
 msgstr " Quý khách có thể nhập địa chỉ Bitcoin, một nhãn từ danh sách liên hệ của mình (danh sách  trong tổng số các hoàn thành sẽ được đề xuất) hoặc một bí danh (địa chỉ giống như email  chuyển tiếp đến địa chỉ Bitcoin) "
@@ -4057,6 +4061,9 @@ msgstr " tiện ích mở rộng hạt giống của quý khách  sẽ <b> khôn
 #, python-brace-format
 msgid "{coins_number} outputs available ({utxos_number} total)"
 msgstr "{coins_number} đầu ra có sẵn (tổng số {utxos_number})"
+
+msgid "{email} is already subscribed to {wallet_name}."
+msgstr "{email} đã được đăng ký với {wallet_name}."
 
 #, python-brace-format
 msgid "{number} confirmations"

@@ -137,6 +137,9 @@ msgstr "&Özet"
 msgid "&Sweep"
 msgstr "&Tara"
 
+msgid "&Terms && Conditions"
+msgstr "&Hüküm & Koşullar"
+
 msgid "&Tools"
 msgstr "&Araçlar"
 
@@ -1818,6 +1821,9 @@ msgstr "Etiketler, işlem Kimlikleri ve adresler uzak sunucuya gönderilmeden ö
 msgid "Language"
 msgstr "Dil"
 
+msgid "Last updated: {date}"
+msgstr "Son güncelleme: {date}"
+
 #, python-brace-format
 msgid "Latest version: {version}"
 msgstr "Son sürüm: {version}"
@@ -2311,6 +2317,7 @@ msgstr "Lütfen {device} cihazınızı kontrol edin"
 msgid "Please confirm"
 msgstr "Lütfen onaylayın"
 
+#, python-brace-format
 msgid "Please enter a valid code. You have {number} more attempts."
 msgstr "Lütfen geçerli bir kod girin. {number} hakkınız kaldı."
 
@@ -3029,6 +3036,9 @@ msgstr "Hedef ücreti:"
 msgid "Terms & Conditions"
 msgstr "Hüküm ve Şartlar"
 
+msgid "Terms & Conditions {version} (Last updated: {date})"
+msgstr "Hüküm & Koşullar {version} (Son güncelleme: {date})"
+
 msgid "Terms of Service"
 msgstr "Hizmet Koşulları"
 
@@ -3707,9 +3717,6 @@ msgstr "BIP39 içeri aktarmalarının Electrum tarafından destekleneceğini gar
 msgid "We encountered an error while connecting to your device:"
 msgstr "Cihazınıza bağlanırken bir hatayla karşılaştık:"
 
-msgid "We will send you information about your transaction statuses."
-msgstr "İşlem durumlarınızla ilgili size bilgi göndereceğiz."
-
 msgid "While this is less than ideal, it might help if you run Electrum as Administrator."
 msgstr "Bu ideal olan olmasa da, Electrum’u Yönetici olarakçalıştırırsanız yardımcı olabilir."
 
@@ -3802,9 +3809,6 @@ msgstr "Cüzdan aboneliğinden başarılı bir şekilde çıktınız"
 
 msgid "You have successfully updated your notification preferences"
 msgstr "Email adresinizi başarılı bir şekilde güncellediniz."
-
-msgid "You have {number} more attempts."
-msgstr "{number} hakkınız kaldı."
 
 msgid "You may enter a Bitcoin address, a label from your list of contacts (a list of completions will be proposed), or an alias (email-like address that forwards to a Bitcoin address)"
 msgstr "Bir Bitcoin adresi girebilirsiniz, bağlantılar listenizden bir etiket (önerilecek bitirmelerin bir listesi), veya bir takma ad (bir Bitcoin adresine yönlendiren e-posta benzeri bir adres) girebilirsiniz"
@@ -4057,6 +4061,9 @@ msgstr "çekirdek uzantınız şifrelenmiş yedeğe dahil <b>edilmeyecek</b>."
 #, python-brace-format
 msgid "{coins_number} outputs available ({utxos_number} total)"
 msgstr "{coins_number} çıktı kullanılabilir ({utxos_number} total)"
+
+msgid "{email} is already subscribed to {wallet_name}."
+msgstr "{email} zaten {wallet_name} için zaten abone."
 
 #, python-brace-format
 msgid "{number} confirmations"

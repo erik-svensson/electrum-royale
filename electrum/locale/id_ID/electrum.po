@@ -136,6 +136,9 @@ msgstr "&Ringkasan"
 msgid "&Sweep"
 msgstr "&Pindai"
 
+msgid "&Terms && Conditions"
+msgstr "&Syarat dan Ketentuan"
+
 msgid "&Tools"
 msgstr "&Alat"
 
@@ -1817,6 +1820,9 @@ msgstr "Label, ID dan alamat transaksi telah diekripsi sebelum dikirim ke remote
 msgid "Language"
 msgstr "Bahasa"
 
+msgid "Last updated: {date}"
+msgstr "Terakhir diperbarui: {date}"
+
 #, python-brace-format
 msgid "Latest version: {version}"
 msgstr "Versi terbaru: {version}"
@@ -2310,6 +2316,7 @@ msgstr "Mohon periksa perangkat {device} Anda."
 msgid "Please confirm"
 msgstr "Mohon konfirmasi"
 
+#, python-brace-format
 msgid "Please enter a valid code. You have {number} more attempts."
 msgstr "Mohon masukkan kode yang valid. Anda memiliki {number} kesempatan tersisa."
 
@@ -3028,6 +3035,9 @@ msgstr "Biaya Target:"
 msgid "Terms & Conditions"
 msgstr "Syarat & Ketentuan"
 
+msgid "Terms & Conditions {version} (Last updated: {date})"
+msgstr "Syarat dan Ketentuan {version} (Terakhir diperbarui: {date})"
+
 msgid "Terms of Service"
 msgstr "Syarat dan Ketentuan"
 
@@ -3706,9 +3716,6 @@ msgstr "Kami tidak dapat memberikan garansi bahwa impor BIP39 akan selalu diduku
 msgid "We encountered an error while connecting to your device:"
 msgstr "Kami menemui kesalahan ketika terhubung dengan perangkat Anda:"
 
-msgid "We will send you information about your transaction statuses."
-msgstr "Kami akan mengirimi Anda notifikasi mengenai status transaksi."
-
 msgid "While this is less than ideal, it might help if you run Electrum as Administrator."
 msgstr "Meskipun kurang ideal, ini dapat membantu Anda menjalankan Electrum sebagai Administrator."
 
@@ -3801,9 +3808,6 @@ msgstr "Anda telah berhenti berlangganan ke dompet"
 
 msgid "You have successfully updated your notification preferences"
 msgstr "Anda telah berhasil memperbarui alamat email Anda."
-
-msgid "You have {number} more attempts."
-msgstr "Anda memiliki {number} kesempatan tersisa."
 
 msgid "You may enter a Bitcoin address, a label from your list of contacts (a list of completions will be proposed), or an alias (email-like address that forwards to a Bitcoin address)"
 msgstr "Anda dapat memasukkan sebuah alamat Bitcoin, sebuah label dari daftar kontak (daftar penyelesaian akan dianjurkan), atau sebuah alias (alamat seperti email yang meneruskan berbagai hal ke alama Bitcoin.)"
@@ -4056,6 +4060,9 @@ msgstr "ekstensi seed Anda <b>tidak</b> akan ditambahkan ke bakup terenkripsi An
 #, python-brace-format
 msgid "{coins_number} outputs available ({utxos_number} total)"
 msgstr "{coins_number} output tersedia ({utxos_number} total)"
+
+msgid "{email} is already subscribed to {wallet_name}."
+msgstr "{email} telah berlangganan ke dompet {wallet_name}."
 
 #, python-brace-format
 msgid "{number} confirmations"

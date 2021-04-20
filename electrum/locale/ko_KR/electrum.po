@@ -137,6 +137,9 @@ msgstr "&요약"
 msgid "&Sweep"
 msgstr "&지우기"
 
+msgid "&Terms && Conditions"
+msgstr "&이용약관"
+
 msgid "&Tools"
 msgstr "&도구"
 
@@ -1818,6 +1821,9 @@ msgstr "라벨, 거래 ID와 주소는 원격 서버로 보내지기 전 암호�
 msgid "Language"
 msgstr "언어"
 
+msgid "Last updated: {date}"
+msgstr "마지막 업데이트: {date}"
+
 #, python-brace-format
 msgid "Latest version: {version}"
 msgstr "최신 버전: {version}"
@@ -2311,6 +2317,7 @@ msgstr "기기{device}를 확인해주세요"
 msgid "Please confirm"
 msgstr "확인해주세요"
 
+#, python-brace-format
 msgid "Please enter a valid code. You have {number} more attempts."
 msgstr "유효한 코드를 입력하십시오. 이제 {number}번 더 시도할 수 있습니다."
 
@@ -3029,6 +3036,9 @@ msgstr "대상 수수료:"
 msgid "Terms & Conditions"
 msgstr "이용 약관"
 
+msgid "Terms & Conditions {version} (Last updated: {date})"
+msgstr "이용약관 {version} (마지막 업데이트: {date})"
+
 msgid "Terms of Service"
 msgstr "서비스 약관"
 
@@ -3707,9 +3717,6 @@ msgstr "BIP39 내보내기가 Electrum에서 지원되지 않을 수 있습니�
 msgid "We encountered an error while connecting to your device:"
 msgstr "기기와 연결하는 중 오류가 발생했습니다:"
 
-msgid "We will send you information about your transaction statuses."
-msgstr "사용자는 거래 상태에 대한 정보를 받을 수 있습니다. "
-
 msgid "While this is less than ideal, it might help if you run Electrum as Administrator."
 msgstr "최적의 상태가 아닌 경우에도 관리자로서 Electrum을 실행할 수 있습니다."
 
@@ -3802,9 +3809,6 @@ msgstr "지갑 알림을 성공적으로 해제했습니다"
 
 msgid "You have successfully updated your notification preferences"
 msgstr "사용자 이메일 주소가 성공적으로 업데이트되었습니다."
-
-msgid "You have {number} more attempts."
-msgstr "이제 {number}번 더 시도할 수 있습니다."
 
 msgid "You may enter a Bitcoin address, a label from your list of contacts (a list of completions will be proposed), or an alias (email-like address that forwards to a Bitcoin address)"
 msgstr "연결 목록(완료된 건이 나타납니다)의 라벨로 Bitcoin 주소를 추가하거나, 또는 가명(Bitcoin 주소로 전송되는 이메일과 같은 주소)로 추가할 수 있습니다"
@@ -4057,6 +4061,9 @@ msgstr "시드 확장이 암호화된 백업에 포함되지 <b>않습니다</b>
 #, python-brace-format
 msgid "{coins_number} outputs available ({utxos_number} total)"
 msgstr "(총 {utxos_number}) 중 {coins_number} 사용 가능"
+
+msgid "{email} is already subscribed to {wallet_name}."
+msgstr "{email}(은)는 이미 {wallet_name}에 알림이 설정되어 있습니다."
 
 #, python-brace-format
 msgid "{number} confirmations"

@@ -137,6 +137,9 @@ msgstr "&Resumo"
 msgid "&Sweep"
 msgstr "&Varrer"
 
+msgid "&Terms && Conditions"
+msgstr "&Termos e Condições"
+
 msgid "&Tools"
 msgstr "&Ferramentas"
 
@@ -1818,6 +1821,9 @@ msgstr "As etiquetas, os IDs de transações e endereços são criptografados an
 msgid "Language"
 msgstr "Língua"
 
+msgid "Last updated: {date}"
+msgstr "Ultima atualização: {date}"
+
 #, python-brace-format
 msgid "Latest version: {version}"
 msgstr "Última versão: {version}"
@@ -2311,6 +2317,7 @@ msgstr "Por favor, verifique o seu dispositivo {device}"
 msgid "Please confirm"
 msgstr "Por favor confirme"
 
+#, python-brace-format
 msgid "Please enter a valid code. You have {number} more attempts."
 msgstr "Por favor introduza um código válido. Tem mais {number} tentativas."
 
@@ -3029,6 +3036,9 @@ msgstr "Taxa pretendida:"
 msgid "Terms & Conditions"
 msgstr "Termos e Condições"
 
+msgid "Terms & Conditions {version} (Last updated: {date})"
+msgstr "Termos e Condições {version} (Ultima atualização: {date})"
+
 msgid "Terms of Service"
 msgstr "Termos de serviço"
 
@@ -3707,9 +3717,6 @@ msgstr "Não garantimos que as importações do BIP39 sempre serão apoiadas na 
 msgid "We encountered an error while connecting to your device:"
 msgstr "Encontramos um erro ao conectar ao seu dispositivo:"
 
-msgid "We will send you information about your transaction statuses."
-msgstr "Iremos enviar-lhe informações sobre o estado das suas transações."
-
 msgid "While this is less than ideal, it might help if you run Electrum as Administrator."
 msgstr "Embora isso seja menos do que ideal, pode ajudar se você executar o Electrum como Administrador."
 
@@ -3802,9 +3809,6 @@ msgstr "Você conseguiu anular a subscrição da carteira."
 
 msgid "You have successfully updated your notification preferences"
 msgstr "Atualizou com sucesso o seu endereço de e-mail."
-
-msgid "You have {number} more attempts."
-msgstr "Tem mais {number} tentativas."
 
 msgid "You may enter a Bitcoin address, a label from your list of contacts (a list of completions will be proposed), or an alias (email-like address that forwards to a Bitcoin address)"
 msgstr "Você pode inserir um endereço Bitcoin, um marcador de sua lista de contatos (uma lista de conclusões serão propostas), ou um alias (endereço de e-mail que reencaminha para um endereço Bitcoin)"
@@ -4057,6 +4061,9 @@ msgstr "A sua extensão de semente <b> não </b> será incluída no backup cript
 #, python-brace-format
 msgid "{coins_number} outputs available ({utxos_number} total)"
 msgstr "{coins_number} saídas disponíveis ({utxos_number} no total)"
+
+msgid "{email} is already subscribed to {wallet_name}."
+msgstr "{email} já está subscrito à {wallet_name}."
 
 #, python-brace-format
 msgid "{number} confirmations"
