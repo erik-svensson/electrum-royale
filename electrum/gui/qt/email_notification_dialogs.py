@@ -639,7 +639,7 @@ class WalletNotificationsMainDialog(WindowModalDialog, ErrorMessageMixin):
 
     def _unsubscribe(self):
         self.close()
-        is_unsub = custom_message_box(
+        unsub_response = custom_message_box(
             icon=QMessageBox.Question,
             parent=self.parent,
             title=_('Unsubscribe from notifications'),
@@ -647,7 +647,7 @@ class WalletNotificationsMainDialog(WindowModalDialog, ErrorMessageMixin):
             buttons=QMessageBox.Yes|QMessageBox.No,
             defaultButton=QMessageBox.No,
         )
-        if is_unsub == QMessageBox.No:
+        if unsub_response == QMessageBox.No:
             return
 
         unsubscribe_dialog = UnsubscribeEmailNotificationDialog(
