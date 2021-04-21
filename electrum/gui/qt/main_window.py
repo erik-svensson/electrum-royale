@@ -44,7 +44,7 @@ from PyQt5.QtWidgets import (QMessageBox, QComboBox, QSystemTrayIcon, QTabWidget
                              QMenuBar, QFileDialog, QCheckBox, QLabel,
                              QVBoxLayout, QGridLayout, QLineEdit, QHBoxLayout, QPushButton, QScrollArea, QTextEdit,
                              QShortcut, QMainWindow, QCompleter, QInputDialog,
-                             QWidget, QSizePolicy, QStatusBar)
+                             QWidget, QSizePolicy, QStatusBar, QTextBrowser)
 
 import electrum
 from electrum import (keystore, ecc, constants, util, bitcoin, commands,
@@ -60,7 +60,7 @@ from electrum.plugin import run_hook
 from electrum.simple_config import SimpleConfig
 from electrum.transaction import (Transaction, PartialTxInput,
                                   PartialTransaction, PartialTxOutput)
-from electrum.util import PR_PAID, PR_FAILED
+from electrum.util import PR_PAID, PR_FAILED, resource_path
 from electrum.util import PR_TYPE_ONCHAIN
 from electrum.util import (format_time, format_satoshis, format_fee_satoshis,
                            format_satoshis_plain, UserCancelled, profiler,
@@ -69,7 +69,7 @@ from electrum.util import (format_time, format_satoshis, format_fee_satoshis,
                            get_new_wallet_name, send_exception_to_crash_reporter,
                            InvalidBitcoinURI)
 from electrum.util import pr_expiration_values
-from electrum.version import ELECTRUM_VERSION
+from electrum.version import ELECTRUM_VERSION, TERMS_AND_CONDITION_LAST_UPDATE
 from electrum.wallet import (Multisig_Wallet, CannotBumpFee, Abstract_Wallet,
                              sweep_preparations, InternalAddressCorruption,
                              ThreeKeysWallet)
@@ -83,6 +83,7 @@ from .history_list import HistoryList, HistoryModel
 from .installwizard import get_wif_help_text
 from .qrcodewidget import QRCodeWidget, QRDialog
 from .qrtextedit import ShowQRTextEdit, ScanQRTextEdit
+from .terms_and_conditions_mixin import load_terms_and_conditions
 from .three_keys_dialogs import PSBTDialog
 from .transaction_dialog import PreviewTxDialog
 from .transaction_dialog import show_transaction
@@ -658,17 +659,38 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
         help_menu.addAction(_("&Documentation"), lambda: webopen("http://docs.electrum.org/")).setShortcut(QKeySequence.HelpContents)
         help_menu.addAction(_("&Report Bug"), self.show_report_bug)
         help_menu.addSeparator()
-        help_menu.addAction(_("&Donate to server"), self.donate_to_server)
+        help_menu.addAction(_("&Terms && Conditions"), self.terms_and_conditions_view)
 
         self.setMenuBar(menubar)
 
-    def donate_to_server(self):
-        d = self.network.get_donation_address()
-        if d:
-            host = self.network.get_parameters().host
-            self.pay_to_URI('bitcoin:%s?message=donation for %s'%(d, host))
-        else:
-            self.show_error(_('No donation address for this server'))
+    def terms_and_conditions_view(self):
+        terms = load_terms_and_conditions(self.config)
+        dialog = WindowModalDialog(self, _('Terms & Conditions'))
+        # size and icon position the same like in install wizard
+        dialog.setMinimumSize(600, 400)
+        main_vbox = QVBoxLayout(dialog)
+        logo_vbox = QVBoxLayout()
+        logo = QLabel()
+        logo.setPixmap(self.windowIcon().pixmap(QSize(60, 60)))
+        logo_vbox.addWidget(logo)
+        logo_vbox.addStretch(1)
+        logo_hbox = QHBoxLayout()
+        logo_hbox.addLayout(logo_vbox)
+        logo_hbox.addSpacing(5)
+        vbox = QVBoxLayout()
+        text_browser = QTextBrowser()
+        text_browser.setReadOnly(True)
+        text_browser.setOpenExternalLinks(True)
+        text_browser.setHtml(terms)
+        vbox.addWidget(text_browser)
+        footer = QHBoxLayout()
+        footer.addWidget(QLabel(_('Last updated: {date}').format(date=TERMS_AND_CONDITION_LAST_UPDATE)))
+        footer.addStretch(1)
+        footer.addWidget(OkButton(dialog))
+        vbox.addLayout(footer)
+        logo_hbox.addLayout(vbox)
+        main_vbox.addLayout(logo_hbox)
+        dialog.exec_()
 
     def show_about(self):
         QMessageBox.about(self, "Electrum Vault",

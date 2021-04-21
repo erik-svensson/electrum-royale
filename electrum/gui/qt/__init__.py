@@ -34,6 +34,7 @@ from .email_notification_dialogs import EmailNotificationWizard
 from .terms_and_conditions_mixin import TermsNotAccepted
 from .three_keys_windows import ElectrumARWindow, ElectrumAIRWindow
 from ...notification_connector import EmailNotificationWallet
+from ...version import TERMS_AND_CONDITION_VERSION
 
 try:
     import PyQt5
@@ -344,12 +345,12 @@ class ElectrumGui(Logger):
 
     def accept_terms_and_conditions(self):
         config_key = 'terms_and_conditions_accepted'
-        if not self.config.get(config_key, False):
+        if float(self.config.get(config_key, 0)) < TERMS_AND_CONDITION_VERSION:
             wizard = InstallWizard(self.config, self.app, self.plugins)
             accepted = wizard.accept_terms_and_conditions()
             wizard.terminate()
             if accepted:
-                self.config.set_key(config_key, True)
+                self.config.set_key(config_key, TERMS_AND_CONDITION_VERSION)
             else:
                 self.stop()
                 raise TermsNotAccepted

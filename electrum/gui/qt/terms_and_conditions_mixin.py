@@ -7,6 +7,7 @@ from electrum.base_wizard import GoBack
 from electrum.gui.qt.util import WindowModalDialog
 from electrum.i18n import _
 from electrum.util import resource_path
+from electrum.version import TERMS_AND_CONDITION_LAST_UPDATE, TERMS_AND_CONDITION_VERSION
 
 
 class TermsNotAccepted(BaseException):
@@ -87,18 +88,19 @@ class TermsAndConditionsTextBrowser(QTextBrowser):
                 self.next_button.setEnabled(True)
 
 
-class TermsAndConditionsMixin:
-    def _read_terms_and_conditions(self) -> str:
-        base_dir = 'terms_and_conditions'
-        language = self.config.get('language', 'en_UK')
-        path = resource_path(base_dir, f'{language}.html')
+def load_terms_and_conditions(config):
+    base_dir = 'terms_and_conditions'
+    language = config.get('language', 'en_UK')
+    path = resource_path(base_dir, f'{language}.html')
+    if not os.path.exists(path):
+        path = resource_path(base_dir, 'en_UK.html')
         if not os.path.exists(path):
-            path = resource_path(base_dir, 'en_UK.html')
-            if not os.path.exists(path):
-                raise FileNotFoundError(f'Cannot open {path}')
-        with open(path, 'r', encoding='utf-8') as file:
-            return file.read()
+            raise FileNotFoundError(f'Cannot open {path}')
+    with open(path, 'r', encoding='utf-8') as file:
+        return file.read()
 
+
+class TermsAndConditionsMixin:
     def _render_main_dialog(self, text, run_warning=True):
         vbox = QVBoxLayout()
         text_browser = TermsAndConditionsTextBrowser(self.next_button)
@@ -108,7 +110,14 @@ class TermsAndConditionsMixin:
         self.back_button.setText(_('I disagree'))
         try:
             # pushing 'I disagree` raises GoBack exception
-            pushed_button = self.exec_layout(vbox, title=_('Terms & Conditions'), next_enabled=True)
+            pushed_button = self.exec_layout(
+                vbox,
+                title=_('Terms & Conditions {version} (Last updated: {date})').format(
+                    date=TERMS_AND_CONDITION_LAST_UPDATE,
+                    version=f'v.{TERMS_AND_CONDITION_VERSION:.1f}'
+                ),
+                next_enabled=True
+            )
             if pushed_button == PushedButton.NEXT:
                 return True
             return False
@@ -135,5 +144,5 @@ class TermsAndConditionsMixin:
 
     def accept_terms_and_conditions(self) -> bool:
         self._remove_stretching_from_inner_vbox()
-        text = self._read_terms_and_conditions()
+        text = load_terms_and_conditions(self.config)
         return self._render_main_dialog(text, run_warning=True)
