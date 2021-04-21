@@ -116,7 +116,10 @@ class InstallWizard(QDialog, MessageBoxMixin, BaseWizard, TermsAndConditionsMixi
         BaseWizard.__init__(self, config, plugins)
         self.app = app
         self.config = config
-        self.setMinimumSize(600, 400)
+        if kwargs.get('minimum_size', None):
+            self.setMinimumSize(*kwargs.get('minimum_size'))
+        else:
+            self.setMinimumSize(600, 400)
         self.accept_signal.connect(self.accept)
         self.title = QLabel()
         self.main_widget = QWidget()
