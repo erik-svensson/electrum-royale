@@ -375,7 +375,7 @@ class EmailNotificationWizard(InstallWizard):
             self.save_notification_email()
             self.show_message(
                 title=_('Success'),
-                msg=_('You have successfully subscribed wallet'),
+                msg=_('You have successfully subscribed wallet to notifications'),
                 rich_text=True,
             )
         elif what_next == self.State.SHOW_EMAIL_SUBSCRIBED:
@@ -544,7 +544,7 @@ class UpdateEmailNotificationDialog(EmailNotificationDialog):
             self.save_notification_email(self._new_email)
             self.show_message(
                 title=_('Success'),
-                msg=_('You have successfully updated email'),
+                msg=_('You have successfully updated your notification preferences'),
                 rich_text=True,
             )
 
