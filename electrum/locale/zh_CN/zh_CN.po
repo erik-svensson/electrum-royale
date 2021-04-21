@@ -1,0 +1,5092 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-10-10 02:26+0200\n"
+"PO-Revision-Date: 2020-10-10 02:26+0200\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#, fuzzy
+msgid "  (No FX rate available)"
+msgstr ""
+
+#, fuzzy
+msgid " confirmation"
+msgstr ""
+
+#, fuzzy
+msgid " is not a valid Lightning invoice: "
+msgstr ""
+
+#, fuzzy
+msgid "&About"
+msgstr ""
+
+#, fuzzy
+msgid "&Addresses"
+msgstr ""
+
+#, fuzzy
+msgid "&Change language"
+msgstr ""
+
+#, fuzzy
+msgid "&Check for updates"
+msgstr ""
+
+#, fuzzy
+msgid "&Documentation"
+msgstr ""
+
+#, fuzzy
+msgid "&Donate to server"
+msgstr ""
+
+#, fuzzy
+msgid "&Encrypt/decrypt message"
+msgstr ""
+
+#, fuzzy
+msgid "&Export"
+msgstr ""
+
+#, fuzzy
+msgid "&File"
+msgstr ""
+
+#, fuzzy
+msgid "&Filter"
+msgstr ""
+
+#, fuzzy
+msgid "&From QR code"
+msgstr ""
+
+#, fuzzy
+msgid "&From file"
+msgstr ""
+
+#, fuzzy
+msgid "&From text"
+msgstr ""
+
+#, fuzzy
+msgid "&From the blockchain"
+msgstr ""
+
+#, fuzzy
+msgid "&Help"
+msgstr ""
+
+#, fuzzy
+msgid "&History"
+msgstr ""
+
+#, fuzzy
+msgid "&Import"
+msgstr ""
+
+#, fuzzy
+msgid "&Information"
+msgstr ""
+
+#, fuzzy
+msgid "&Labels"
+msgstr ""
+
+#, fuzzy
+msgid "&Load transaction"
+msgstr ""
+
+#, fuzzy
+msgid "&Network"
+msgstr ""
+
+#, fuzzy
+msgid "&New"
+msgstr ""
+
+#, fuzzy
+msgid "&New/Restore"
+msgstr ""
+
+#, fuzzy
+msgid "&Official website"
+msgstr ""
+
+#, fuzzy
+msgid "&Open"
+msgstr ""
+
+#, fuzzy
+msgid "&Password"
+msgstr ""
+
+#, fuzzy
+msgid "&Pay to many"
+msgstr ""
+
+#, fuzzy
+msgid "&Plot"
+msgstr ""
+
+#, fuzzy
+msgid "&Plugins"
+msgstr ""
+
+#, fuzzy
+msgid "&Private keys"
+msgstr ""
+
+#, fuzzy
+msgid "&Quit"
+msgstr ""
+
+#, fuzzy
+msgid "&Recently open"
+msgstr ""
+
+#, fuzzy
+msgid "&Report Bug"
+msgstr ""
+
+#, fuzzy
+msgid "&Save Copy"
+msgstr ""
+
+#, fuzzy
+msgid "&Seed"
+msgstr ""
+
+#, fuzzy
+msgid "&Sign/verify message"
+msgstr ""
+
+#, fuzzy
+msgid "&Summary"
+msgstr ""
+
+#, fuzzy
+msgid "&Sweep"
+msgstr ""
+
+#, fuzzy
+msgid "&Tools"
+msgstr ""
+
+#, fuzzy
+msgid "&View"
+msgstr ""
+
+#, fuzzy
+msgid "&Wallet"
+msgstr ""
+
+#, fuzzy
+msgid "'Legacy' is the original address type, while 'Segwit' is the newer address format with lower fees."
+msgstr ""
+
+#, fuzzy
+msgid "+"
+msgstr ""
+
+#, fuzzy
+msgid "1 day"
+msgstr ""
+
+#, fuzzy
+msgid "1 hour"
+msgstr ""
+
+#, fuzzy
+msgid "1 week"
+msgstr ""
+
+#, fuzzy
+msgid "1. Place this paper on a flat and well iluminated surface."
+msgstr ""
+
+#, fuzzy
+msgid "10 minutes"
+msgstr ""
+
+#, fuzzy
+msgid "2-Key Vault"
+msgstr ""
+
+#, fuzzy
+msgid "2. Align your Revealer borderlines to the dashed lines on the top and left."
+msgstr ""
+
+#, fuzzy
+msgid "3-Key Vault"
+msgstr ""
+
+#, fuzzy
+msgid "3. Press slightly the Revealer against the paper and read the numbers that best match on the opposite sides. "
+msgstr ""
+
+#, fuzzy
+msgid "4. Type the numbers in the software"
+msgstr ""
+
+#, fuzzy
+msgid "A copy of your wallet file was created in"
+msgstr ""
+
+#, fuzzy
+msgid "A few examples"
+msgstr ""
+
+#, fuzzy
+msgid "A library is probably missing."
+msgstr ""
+
+#, fuzzy
+msgid "A payment was already initiated for this invoice"
+msgstr ""
+
+#, fuzzy
+msgid "A small fee will be charged on each transaction that uses the remote server.  You may check and modify your billing preferences once the installation is complete."
+msgstr ""
+
+#, fuzzy
+msgid "A suggested fee is automatically added to this field. You may override it. The suggested fee increases with the size of the transaction."
+msgstr ""
+
+#, fuzzy
+msgid "About"
+msgstr ""
+
+#, fuzzy
+msgid "About Electrum"
+msgstr ""
+
+#, fuzzy
+msgid "Accept"
+msgstr ""
+
+#, fuzzy
+msgid "Acquisition price"
+msgstr ""
+
+#, fuzzy
+msgid "Add Cosigner"
+msgstr ""
+
+#, fuzzy
+msgid "Add a cosigner to your multi-sig wallet"
+msgstr ""
+
+#, fuzzy
+msgid "Add an optional virtual keyboard to the password dialog."
+msgstr ""
+
+#, fuzzy
+msgid "Add cosigner"
+msgstr ""
+
+#, fuzzy
+msgid "Additional fees"
+msgstr ""
+
+#, fuzzy
+msgid "Additional {num_satoshis_added} satoshis are going to be added."
+msgstr ""
+
+#, fuzzy
+msgid "Address"
+msgstr ""
+
+#, fuzzy
+msgid "Address Details"
+msgstr ""
+
+#, fuzzy
+msgid "Address copied to clipboard"
+msgstr ""
+
+#, fuzzy
+msgid "Address is frozen"
+msgstr ""
+
+#, fuzzy
+msgid "Address not in wallet."
+msgstr ""
+
+#, fuzzy
+msgid "Address:"
+msgstr ""
+
+#, fuzzy
+msgid "Addresses"
+msgstr ""
+
+#, fuzzy
+msgid "Addresses generated:"
+msgstr ""
+
+#, fuzzy
+msgid "Advanced"
+msgstr ""
+
+#, fuzzy
+msgid "Advanced preview"
+msgstr ""
+
+#, fuzzy
+msgid "All"
+msgstr ""
+
+#, fuzzy
+msgid "All fields must be filled out"
+msgstr ""
+
+#, fuzzy
+msgid "Allows validating if your transactions have instant confirmations by GreenAddress"
+msgstr ""
+
+#, fuzzy
+msgid "Already up to date"
+msgstr ""
+
+#, fuzzy
+msgid "Also, dust is not kept as change, but added to the fee."
+msgstr ""
+
+#, fuzzy
+msgid "Also, when batching RBF transactions, BIP 125 imposes a lower bound on the fee."
+msgstr ""
+
+#, fuzzy
+msgid "Always check your backups."
+msgstr ""
+
+#, fuzzy
+msgid "Amount"
+msgstr ""
+
+#, fuzzy
+msgid "Amount for OP_RETURN output must be zero."
+msgstr ""
+
+#, fuzzy
+msgid "Amount received:"
+msgstr ""
+
+#, fuzzy
+msgid "Amount sent:"
+msgstr ""
+
+#, fuzzy
+msgid "Amount to be sent"
+msgstr ""
+
+#, fuzzy
+msgid "Amount to be sent."
+msgstr ""
+
+#, fuzzy
+msgid "An Error Occurred"
+msgstr ""
+
+#, fuzzy
+msgid "An encrypted transaction was retrieved from cosigning pool."
+msgstr ""
+
+#, fuzzy
+msgid "An unnamed {device_name}"
+msgstr ""
+
+#, fuzzy
+msgid "Are you sure you want to delete this channel? This will purge associated transactions from your wallet history."
+msgstr ""
+
+#, fuzzy
+msgid "Are you sure you want to remove this transaction and {number} child transactions?"
+msgstr ""
+
+#, fuzzy
+msgid "Are you sure you want to remove this transaction?"
+msgstr ""
+
+#, fuzzy
+msgid "At block height: {height}"
+msgstr ""
+
+#, fuzzy
+msgid "At least a hostname must be supplied after the at symbol."
+msgstr ""
+
+#, fuzzy
+msgid "At most 100 satoshis might be lost due to this rounding."
+msgstr ""
+
+#, fuzzy
+msgid "Audio MODEM"
+msgstr ""
+
+#, fuzzy
+msgid "Audio Modem Settings"
+msgstr ""
+
+#, fuzzy
+msgid "Authorization"
+msgstr ""
+
+#, fuzzy
+msgid "Auto connect"
+msgstr ""
+
+#, fuzzy
+msgid "Auto-connect"
+msgstr ""
+
+#, fuzzy
+msgid "Automatically check for software updates"
+msgstr ""
+
+#, fuzzy
+msgid "BIP39 seed (Gold Wallet integration)"
+msgstr ""
+
+#, fuzzy
+msgid "BIP39 seeds can be imported in Electrum, so that users can access funds locked in other wallets."
+msgstr ""
+
+#, fuzzy
+msgid "BIP70 Invoice"
+msgstr ""
+
+#, fuzzy
+msgid "Back"
+msgstr ""
+
+#, fuzzy
+msgid "Balance"
+msgstr ""
+
+#, fuzzy
+msgid "Banner"
+msgstr ""
+
+#, fuzzy
+msgid "Base unit"
+msgstr ""
+
+#, fuzzy
+msgid "Base unit of your wallet."
+msgstr ""
+
+#, fuzzy
+msgid "Batch RBF transactions"
+msgstr ""
+
+#, fuzzy
+msgid "Before reporting a bug, upgrade to the most recent version of Electrum (latest release or git HEAD), and include the version number in your report."
+msgstr ""
+
+#, fuzzy
+msgid "Bit rate [kbps]: "
+msgstr ""
+
+#, fuzzy
+msgid "Bitcoin Address"
+msgstr ""
+
+#, fuzzy
+msgid "Bitcoin Address is None"
+msgstr ""
+
+#, fuzzy
+msgid "Bitcoin transactions are in general not free. A transaction fee is paid by the sender of the funds."
+msgstr ""
+
+#, fuzzy
+msgid "Blacklist"
+msgstr ""
+
+#, fuzzy
+msgid "Blockchain"
+msgstr ""
+
+#, fuzzy
+msgid "Bottom"
+msgstr ""
+
+#, fuzzy
+msgid "Broadcast"
+msgstr ""
+
+#, fuzzy
+msgid "Broadcasting transaction..."
+msgstr ""
+
+#, fuzzy
+msgid "Bump Fee"
+msgstr ""
+
+#, fuzzy
+msgid "Bump fee"
+msgstr ""
+
+#, fuzzy
+msgid "CLTV expiry"
+msgstr ""
+
+#, fuzzy
+msgid "CSV"
+msgstr ""
+
+#, fuzzy
+msgid "Calibration sheet"
+msgstr ""
+
+#, fuzzy
+msgid "Calibration values:"
+msgstr ""
+
+#, fuzzy
+msgid "Can send"
+msgstr ""
+
+#, fuzzy
+msgid "Can't CPFP: unknown fee for parent transaction."
+msgstr ""
+
+#, fuzzy
+msgid "Can't bump fee: unknown fee for original transaction."
+msgstr ""
+
+#, fuzzy
+msgid "Can't plot history."
+msgstr ""
+
+#, fuzzy
+msgid "Cancel"
+msgstr ""
+
+#, fuzzy
+msgid "Cancel seedphrase"
+msgstr ""
+
+#, fuzzy
+msgid "Cancel seedphrase not matching any key in this wallet"
+msgstr ""
+
+#, fuzzy
+msgid "Cancel transaction public key"
+msgstr ""
+
+#, fuzzy
+msgid "Cancelation address"
+msgstr ""
+
+#, fuzzy
+msgid "Cancelled by user"
+msgstr ""
+
+#, fuzzy
+msgid "Cannot add this cosigner:"
+msgstr ""
+
+#, fuzzy
+msgid "Cannot broadcast transaction"
+msgstr ""
+
+#, fuzzy
+msgid "Cannot bump fee"
+msgstr ""
+
+#, fuzzy
+msgid "Cannot create window for wallet"
+msgstr ""
+
+#, fuzzy
+msgid "Cannot load wallet"
+msgstr ""
+
+#, fuzzy
+msgid "Cannot read file"
+msgstr ""
+
+#, fuzzy
+msgid "Cannot sign messages with this type of address:"
+msgstr ""
+
+#, fuzzy
+msgid "Capacity"
+msgstr ""
+
+#, fuzzy
+msgid "Capital Gains"
+msgstr ""
+
+#, fuzzy
+msgid "Capital gains"
+msgstr ""
+
+#, fuzzy
+msgid "Chain split detected at block {0}"
+msgstr ""
+
+#, fuzzy
+msgid "Change"
+msgstr ""
+
+#, fuzzy
+msgid "Change Password"
+msgstr ""
+
+#, fuzzy
+msgid "Change language"
+msgstr ""
+
+#, fuzzy
+msgid "Changing PIN code."
+msgstr ""
+
+#, fuzzy
+msgid "Channel Details"
+msgstr ""
+
+#, fuzzy
+msgid "Channel ID"
+msgstr ""
+
+#, fuzzy
+msgid "Channel ID:"
+msgstr ""
+
+#, fuzzy
+msgid "Channel already closed"
+msgstr ""
+
+#, fuzzy
+msgid "Channel closed"
+msgstr ""
+
+#, fuzzy
+msgid "Channel closed, you may need to wait at least {number} blocks, because of CSV delays"
+msgstr ""
+
+#, fuzzy
+msgid "Channel details"
+msgstr ""
+
+#, fuzzy
+msgid "Channel established."
+msgstr ""
+
+#, fuzzy
+msgid "Channel updates to query."
+msgstr ""
+
+#, fuzzy
+msgid "Channels"
+msgstr ""
+
+#, fuzzy
+msgid "Channels in database."
+msgstr ""
+
+#, fuzzy
+msgid "Check this box to request a new secret. You will need to retype your seed."
+msgstr ""
+
+#, fuzzy
+msgid "Checking for updates..."
+msgstr ""
+
+#, fuzzy
+msgid "Child Pays for Parent"
+msgstr ""
+
+#, fuzzy
+msgid "Child pays for parent"
+msgstr ""
+
+#, fuzzy
+msgid "Chinese Simplified"
+msgstr ""
+
+#, fuzzy
+msgid "Choose PIN code"
+msgstr ""
+
+#, fuzzy
+msgid "Choose Seed type"
+msgstr ""
+
+#, fuzzy
+msgid "Choose a password to encrypt your wallet keys."
+msgstr ""
+
+#, fuzzy
+msgid "Choose a server"
+msgstr ""
+
+#, fuzzy
+msgid "Choose coin (UTXO) selection method for alert transactions.  The following are available:\n\n"
+msgstr ""
+
+#, fuzzy
+msgid "Choose coin (UTXO) selection method for non-alert transactions.  The following are available:\n\n"
+msgstr ""
+
+#, fuzzy
+msgid "Choose from peers"
+msgstr ""
+
+#, fuzzy
+msgid "Choose the number of signatures needed to unlock funds in your wallet:"
+msgstr ""
+
+#, fuzzy
+msgid "Choose the type of addresses in your wallet."
+msgstr ""
+
+#, fuzzy
+msgid "Choose the type of wallet"
+msgstr ""
+
+#, fuzzy
+msgid "Choose transaction type."
+msgstr ""
+
+#, fuzzy
+msgid "Choose which online block explorer to use for functions that open a web browser"
+msgstr ""
+
+#, fuzzy
+msgid "Choose your chain"
+msgstr ""
+
+#, fuzzy
+msgid "Choose..."
+msgstr ""
+
+#, fuzzy
+msgid "Clear"
+msgstr ""
+
+#, fuzzy
+msgid "Click Send to proceed"
+msgstr ""
+
+#, fuzzy
+msgid "Click here to hide this message."
+msgstr ""
+
+#, fuzzy
+msgid "Clipboard is empty"
+msgstr ""
+
+#, fuzzy
+msgid "Close"
+msgstr ""
+
+#, fuzzy
+msgid "Close channel"
+msgstr ""
+
+#, fuzzy
+msgid "Close channel?"
+msgstr ""
+
+#, fuzzy
+msgid "Co&ins"
+msgstr ""
+
+#, fuzzy
+msgid "Code"
+msgstr ""
+
+#, fuzzy
+msgid "Coin control active"
+msgstr ""
+
+#, fuzzy
+msgid "Coin is frozen"
+msgstr ""
+
+#, fuzzy
+msgid "Coin selected to be spent"
+msgstr ""
+
+#, fuzzy
+msgid "Coin selection"
+msgstr ""
+
+#, fuzzy
+msgid "Coin selection (alert)"
+msgstr ""
+
+#, fuzzy
+msgid "Coin selection (non-alert)"
+msgstr ""
+
+#, fuzzy
+msgid "Coin selection active ({num_utxos} UTXOs selected)"
+msgstr ""
+
+#, fuzzy
+msgid "Color theme"
+msgstr ""
+
+#, fuzzy
+msgid "Combine"
+msgstr ""
+
+#, fuzzy
+msgid "Con&sole"
+msgstr ""
+
+#, fuzzy
+msgid "Con&tacts"
+msgstr ""
+
+#, fuzzy
+msgid "Confirm Passphrase:"
+msgstr ""
+
+#, fuzzy
+msgid "Confirm Password:"
+msgstr ""
+
+#, fuzzy
+msgid "Confirm Seed"
+msgstr ""
+
+#, fuzzy
+msgid "Confirm Seed Extension"
+msgstr ""
+
+#, fuzzy
+msgid "Confirm Transaction"
+msgstr ""
+
+#, fuzzy
+msgid "Confirm Transaction on your Ledger device..."
+msgstr ""
+
+#, fuzzy
+msgid "Confirm new PIN"
+msgstr ""
+
+#, fuzzy
+msgid "Confirmation PIN from Gold Wallet:"
+msgstr ""
+
+#, fuzzy
+msgid "Confirmed"
+msgstr ""
+
+#, fuzzy
+msgid "Confirmed. Signing Transaction..."
+msgstr ""
+
+#, fuzzy
+msgid "Connected node"
+msgstr ""
+
+#, fuzzy
+msgid "Connected nodes are on the same chain"
+msgstr ""
+
+#, fuzzy
+msgid "Connected to {0} nodes."
+msgstr ""
+
+#, fuzzy
+msgid "Connecting..."
+msgstr ""
+
+#, fuzzy
+msgid "Connection strings must be in <node_pubkey>@<host>:<port> format"
+msgstr ""
+
+#, fuzzy
+msgid "Connections with Electrum servers"
+msgstr ""
+
+#, fuzzy
+msgid "Connections with lightning nodes"
+msgstr ""
+
+#, fuzzy
+msgid "Consider trying to connect to a different server, or updating Electrum."
+msgstr ""
+
+#, fuzzy
+msgid "Contacts"
+msgstr ""
+
+#, fuzzy
+msgid "Copy"
+msgstr ""
+
+#, fuzzy
+msgid "Copy Address"
+msgstr ""
+
+#, fuzzy
+msgid "Copy Request"
+msgstr ""
+
+#, fuzzy
+msgid "Copy Transaction ID"
+msgstr ""
+
+#, fuzzy
+msgid "Copy and Close"
+msgstr ""
+
+#, fuzzy
+msgid "Copy and paste the recipient address using the Paste button, or use the camera to scan a QR code."
+msgstr ""
+
+#, fuzzy
+msgid "Copy to clipboard"
+msgstr ""
+
+#, fuzzy
+msgid "Copy {column_title}"
+msgstr ""
+
+#, fuzzy
+msgid "Cosign with hardware device"
+msgstr ""
+
+#, fuzzy
+msgid "Cosigner Pool"
+msgstr ""
+
+#, fuzzy
+msgid "Could not close channel: "
+msgstr ""
+
+#, fuzzy
+msgid "Could not force close channel: "
+msgstr ""
+
+#, fuzzy
+msgid "Could not open channel: {error_value}"
+msgstr ""
+
+#, fuzzy
+msgid "Could not retrieve Terms of Service:"
+msgstr ""
+
+#, fuzzy
+msgid "Crash report"
+msgstr ""
+
+#, fuzzy
+msgid "Create a new Revealer"
+msgstr ""
+
+#, fuzzy
+msgid "Create a new seed"
+msgstr ""
+
+#, fuzzy
+msgid "Create keystore from a master key"
+msgstr ""
+
+#, fuzzy
+msgid "Create new wallet"
+msgstr ""
+
+#, fuzzy
+msgid "Create or restore"
+msgstr ""
+
+#, fuzzy
+msgid "Create transaction"
+msgstr ""
+
+#, fuzzy
+msgid "Critical Error"
+msgstr ""
+
+#, fuzzy
+msgid "Current Fee"
+msgstr ""
+
+#, fuzzy
+msgid "Current Fee rate"
+msgstr ""
+
+#, fuzzy
+msgid "Current Password:"
+msgstr ""
+
+#, fuzzy
+msgid "Current feerate"
+msgstr ""
+
+#, fuzzy
+msgid "Current rate"
+msgstr ""
+
+#, fuzzy
+msgid "Current version: {version}"
+msgstr ""
+
+#, fuzzy
+msgid "Custom"
+msgstr ""
+
+#, fuzzy
+msgid "Custom secret"
+msgstr ""
+
+#, fuzzy
+msgid "Dark"
+msgstr ""
+
+#, fuzzy
+msgid "Dark/Light"
+msgstr ""
+
+#, fuzzy
+msgid "Date"
+msgstr ""
+
+#, fuzzy
+msgid "Date: {date}"
+msgstr ""
+
+#, fuzzy
+msgid "Debug logs can be persisted to disk. These are useful for troubleshooting."
+msgstr ""
+
+#, fuzzy
+msgid "Debug message"
+msgstr ""
+
+#, fuzzy
+msgid "Decrypt"
+msgstr ""
+
+#, fuzzy
+msgid "Default"
+msgstr ""
+
+#, fuzzy
+msgid "Default Servers"
+msgstr ""
+
+#, fuzzy
+msgid "Delete"
+msgstr ""
+
+#, fuzzy
+msgid "Delete expired requests?"
+msgstr ""
+
+#, fuzzy
+msgid "Delete invoice?"
+msgstr ""
+
+#, fuzzy
+msgid "Delete request?"
+msgstr ""
+
+#, fuzzy
+msgid "Delete wallet file?"
+msgstr ""
+
+#, fuzzy
+msgid "Delete wallet?"
+msgstr ""
+
+#, fuzzy
+msgid "Denomination"
+msgstr ""
+
+#, fuzzy
+msgid "Description"
+msgstr ""
+
+#, fuzzy
+msgid "Description of the transaction (not mandatory)."
+msgstr ""
+
+#, fuzzy
+msgid "Details"
+msgstr ""
+
+#, fuzzy
+msgid "Details..."
+msgstr ""
+
+#, fuzzy
+msgid "Developers"
+msgstr ""
+
+#, fuzzy
+msgid "Device not in Bitcoin mode"
+msgstr ""
+
+#, fuzzy
+msgid "Digital Revealer ({version}_{code_id}) saved as PNG and PDF at:"
+msgstr ""
+
+#, fuzzy
+msgid "Disable LN"
+msgstr ""
+
+#, fuzzy
+msgid "Disable Lightning?"
+msgstr ""
+
+#, fuzzy
+msgid "Disabled"
+msgstr ""
+
+#, fuzzy
+msgid "Disconnected"
+msgstr ""
+
+#, fuzzy
+msgid "Distributed by Electrum Technologies GmbH"
+msgstr ""
+
+#, fuzzy
+msgid "Do not enter sensitive/private information here. The report will be visible on the public issue tracker."
+msgstr ""
+
+#, fuzzy
+msgid "Do not paste code here that you don't understand. Executing the wrong code could lead to your coins being irreversibly lost."
+msgstr ""
+
+#, fuzzy
+msgid "Do not store it electronically."
+msgstr ""
+
+#, fuzzy
+msgid "Do not use Gold Wallet"
+msgstr ""
+
+#, fuzzy
+msgid "Do you have something to hide ?"
+msgstr ""
+
+#, fuzzy
+msgid "Do you want to create a new seed or to restore a wallet using an existing seed?"
+msgstr ""
+
+#, fuzzy
+msgid "Do you want to create a new seed, or to restore a wallet using an existing seed?"
+msgstr ""
+
+#, fuzzy
+msgid "Do you want to delete '{path}'?"
+msgstr ""
+
+#, fuzzy
+msgid "Do you want to delete the old file"
+msgstr ""
+
+#, fuzzy
+msgid "Do you want to launch the wizard again?"
+msgstr ""
+
+#, fuzzy
+msgid "Do you want to open it now?"
+msgstr ""
+
+#, fuzzy
+msgid "Do you want to remove {address} from your wallet?"
+msgstr ""
+
+#, fuzzy
+msgid "Do you want to send this report?"
+msgstr ""
+
+#, fuzzy
+msgid "Do you want to use Gold Wallet as a transaction authenticator?"
+msgstr ""
+
+#, fuzzy
+msgid "Do you wish to continue?"
+msgstr ""
+
+#, fuzzy
+msgid "Don't know any addresses for node:"
+msgstr ""
+
+#, fuzzy
+msgid "Don't show this again."
+msgstr ""
+
+#, fuzzy
+msgid "Due to a bug, old versions of Electrum will NOT be creating the same wallet as newer versions or other software."
+msgstr ""
+
+#, fuzzy
+msgid "Dynamic fee estimates not available"
+msgstr ""
+
+#, fuzzy
+msgid "ETA"
+msgstr ""
+
+#, fuzzy
+msgid "Each revealer should be used only once."
+msgstr ""
+
+#, fuzzy
+msgid "Edit {title}"
+msgstr ""
+
+#, fuzzy
+msgid "Electrum Plugins"
+msgstr ""
+
+#, fuzzy
+msgid "Electrum cannot pair with your {device}.\n\nBefore you request bitcoins to be sent to addresses in this wallet, ensure you can pair with your device, or that you have its seed (and passphrase, if any).  Otherwise all bitcoins you receive will be unspendable."
+msgstr ""
+
+#, fuzzy
+msgid "Electrum communicates with remote servers to get information about your transactions and addresses. The servers all fulfill the same purpose only differing in hardware. In most cases you simply want to let Electrum pick one at random.  However if you prefer feel free to select a server manually."
+msgstr ""
+
+#, fuzzy
+msgid "Electrum connects to several nodes in order to download block headers and find out the longest blockchain."
+msgstr ""
+
+#, fuzzy
+msgid "Electrum preferences"
+msgstr ""
+
+#, fuzzy
+msgid "Electrum requests your transaction history from a single server. The returned history is checked against blockchain headers sent by other nodes, using Simple Payment Verification (SPV)."
+msgstr ""
+
+#, fuzzy
+msgid "Electrum sends your wallet addresses to a single server, in order to receive your transaction history."
+msgstr ""
+
+#, fuzzy
+msgid "Electrum wallet"
+msgstr ""
+
+#, fuzzy
+msgid "Electrum was unable to copy your wallet file to the specified location."
+msgstr ""
+
+#, fuzzy
+msgid "Electrum was unable to deserialize the transaction:"
+msgstr ""
+
+#, fuzzy
+msgid "Electrum was unable to open your transaction file"
+msgstr ""
+
+#, fuzzy
+msgid "Electrum was unable to parse your transaction"
+msgstr ""
+
+#, fuzzy
+msgid "Electrum was unable to produce a private key-export."
+msgstr ""
+
+#, fuzzy
+msgid "Electrum was unable to produce a transaction export."
+msgstr ""
+
+#, fuzzy
+msgid "Electrum's focus is speed, with low resource usage and simplifying Bitcoin Vault."
+msgstr ""
+
+#, fuzzy
+msgid "Email"
+msgstr ""
+
+#, fuzzy
+msgid "Email settings"
+msgstr ""
+
+#, fuzzy
+msgid "Enable LN"
+msgstr ""
+
+#, fuzzy
+msgid "Enable Lightning?"
+msgstr ""
+
+#, fuzzy
+msgid "Enable output value rounding"
+msgstr ""
+
+#, fuzzy
+msgid "Enable update check"
+msgstr ""
+
+#, fuzzy
+msgid "Enabled"
+msgstr ""
+
+#, fuzzy
+msgid "Encrypt"
+msgstr ""
+
+#, fuzzy
+msgid "Encrypt custom secret"
+msgstr ""
+
+#, fuzzy
+msgid "Encrypt wallet file"
+msgstr ""
+
+#, fuzzy
+msgid "Encrypt {wallet_name}'s seed"
+msgstr ""
+
+#, fuzzy
+msgid "Encrypt/decrypt Message"
+msgstr ""
+
+#, fuzzy
+msgid "Encrypt/decrypt message"
+msgstr ""
+
+#, fuzzy
+msgid "Encrypted"
+msgstr ""
+
+#, fuzzy
+msgid "Encryption and decryption are currently not supported for {device}"
+msgstr ""
+
+#, fuzzy
+msgid "End"
+msgstr ""
+
+#, fuzzy
+msgid "English"
+msgstr ""
+
+#, fuzzy
+msgid "Enter PIN"
+msgstr ""
+
+#, fuzzy
+msgid "Enter PIN code"
+msgstr ""
+
+#, fuzzy
+msgid "Enter PIN:"
+msgstr ""
+
+#, fuzzy
+msgid "Enter Passphrase"
+msgstr ""
+
+#, fuzzy
+msgid "Enter Password"
+msgstr ""
+
+#, fuzzy
+msgid "Enter Remote Node ID or connection string or invoice"
+msgstr ""
+
+#, fuzzy
+msgid "Enter Seed"
+msgstr ""
+
+#, fuzzy
+msgid "Enter Transaction Label"
+msgstr ""
+
+#, fuzzy
+msgid "Enter a filename for the copy of your wallet"
+msgstr ""
+
+#, fuzzy
+msgid "Enter a list of BTCV addresses (this will create a watching-only wallet) or a list of private keys."
+msgstr ""
+
+#, fuzzy
+msgid "Enter a list of outputs in the 'Pay to' field."
+msgstr ""
+
+#, fuzzy
+msgid "Enter addresses"
+msgstr ""
+
+#, fuzzy
+msgid "Enter cosigner key"
+msgstr ""
+
+#, fuzzy
+msgid "Enter cosigner seed"
+msgstr ""
+
+#, fuzzy
+msgid "Enter description"
+msgstr ""
+
+#, fuzzy
+msgid "Enter new PIN"
+msgstr ""
+
+#, fuzzy
+msgid "Enter private keys"
+msgstr ""
+
+#, fuzzy
+msgid "Enter private keys:"
+msgstr ""
+
+#, fuzzy
+msgid "Enter the name of the new wallet or load an existing wallet by clicking \"Choose\"."
+msgstr ""
+
+#, fuzzy
+msgid "Enter the seed for your 2-factor wallet:"
+msgstr ""
+
+#, fuzzy
+msgid "Enter their master private key (xprv) if you want to be able to sign for them."
+msgstr ""
+
+#, fuzzy
+msgid "Enter wallet name"
+msgstr ""
+
+#, fuzzy
+msgid "Enter your PIN code in order to decrypt your private key"
+msgstr ""
+
+#, fuzzy
+msgid "Enter your PIN code in order to decrypt your seed"
+msgstr ""
+
+#, fuzzy
+msgid "Enter your PIN code in order to sign this transaction"
+msgstr ""
+
+#, fuzzy
+msgid "Enter your PIN code to confirm deletion of {wallet}"
+msgstr ""
+
+#, fuzzy
+msgid "Enter your PIN code to proceed"
+msgstr ""
+
+#, fuzzy
+msgid "Enter your current PIN:"
+msgstr ""
+
+#, fuzzy
+msgid "Enter your email address:"
+msgstr ""
+
+#, fuzzy
+msgid "Enter your password or choose another file."
+msgstr ""
+
+#, fuzzy
+msgid "Enter your password to proceed"
+msgstr ""
+
+#, fuzzy
+msgid "Error"
+msgstr ""
+
+#, fuzzy
+msgid "Error adding payment request"
+msgstr ""
+
+#, fuzzy
+msgid "Error combining partial transactions"
+msgstr ""
+
+#, fuzzy
+msgid "Error connecting to server"
+msgstr ""
+
+#, fuzzy
+msgid "Error connecting to {name} server"
+msgstr ""
+
+#, fuzzy
+msgid "Error decrypting message"
+msgstr ""
+
+#, fuzzy
+msgid "Error getting TrustedCoin account info."
+msgstr ""
+
+#, fuzzy
+msgid "Error getting transaction from network"
+msgstr ""
+
+#, fuzzy
+msgid "Error joining partial transactions"
+msgstr ""
+
+#, fuzzy
+msgid "Error opening file"
+msgstr ""
+
+#, fuzzy
+msgid "Error parsing URI"
+msgstr ""
+
+#, fuzzy
+msgid "Error scanning devices"
+msgstr ""
+
+#, fuzzy
+msgid "Error showing address"
+msgstr ""
+
+#, fuzzy
+msgid "Error synchronising labels"
+msgstr ""
+
+#, fuzzy
+msgid "Error: duplicate master public key"
+msgstr ""
+
+#, fuzzy
+msgid "Estimate"
+msgstr ""
+
+#, fuzzy
+msgid "Exit Electrum"
+msgstr ""
+
+#, fuzzy
+msgid "Expenditures"
+msgstr ""
+
+#, fuzzy
+msgid "Expiration date"
+msgstr ""
+
+#, fuzzy
+msgid "Expiration date of your request."
+msgstr ""
+
+#, fuzzy
+msgid "Expired"
+msgstr ""
+
+#, fuzzy
+msgid "Expired requests have to be deleted manually from your list, in order to free the corresponding Bitcoin addresses."
+msgstr ""
+
+#, fuzzy
+msgid "Expires"
+msgstr ""
+
+#, fuzzy
+msgid "Export"
+msgstr ""
+
+#, fuzzy
+msgid "Export History"
+msgstr ""
+
+#, fuzzy
+msgid "Export file"
+msgstr ""
+
+#, fuzzy
+msgid "Export to file"
+msgstr ""
+
+#, fuzzy
+msgid "Exposing a single private key can compromise your entire wallet!"
+msgstr ""
+
+#, fuzzy
+msgid "Extend this seed with custom words"
+msgstr ""
+
+#, fuzzy
+msgid "Failed"
+msgstr ""
+
+#, fuzzy
+msgid "Failed HTLCs"
+msgstr ""
+
+#, fuzzy
+msgid "Failed to create a client for this device."
+msgstr ""
+
+#, fuzzy
+msgid "Failed to decrypt using this hardware device."
+msgstr ""
+
+#, fuzzy
+msgid "Failed to display QR code."
+msgstr ""
+
+#, fuzzy
+msgid "Failed to export to file."
+msgstr ""
+
+#, fuzzy
+msgid "Failed to import from file."
+msgstr ""
+
+#, fuzzy
+msgid "Failed to send transaction to cosigning pool"
+msgstr ""
+
+#, fuzzy
+msgid "Failed to update password"
+msgstr ""
+
+#, fuzzy
+msgid "False"
+msgstr ""
+
+#, fuzzy
+msgid "Fee"
+msgstr ""
+
+#, fuzzy
+msgid "Fee estimation"
+msgstr ""
+
+#, fuzzy
+msgid "Fee for child"
+msgstr ""
+
+#, fuzzy
+msgid "Fee rounding"
+msgstr ""
+
+#, fuzzy
+msgid "Fees"
+msgstr ""
+
+#, fuzzy
+msgid "Fiat"
+msgstr ""
+
+#, fuzzy
+msgid "Fiat currency"
+msgstr ""
+
+#, fuzzy
+msgid "File"
+msgstr ""
+
+#, fuzzy
+msgid "Filter:"
+msgstr ""
+
+#, fuzzy
+msgid "Final"
+msgstr ""
+
+#, fuzzy
+msgid "Final balance"
+msgstr ""
+
+#, fuzzy
+msgid "Finalize"
+msgstr ""
+
+#, fuzzy
+msgid "Find"
+msgstr ""
+
+#, fuzzy
+msgid "Firmware version (or \"Bitcoin\" app) too old for Segwit support. Please update at"
+msgstr ""
+
+#, fuzzy
+msgid "Firmware version too old. Please update at"
+msgstr ""
+
+#, fuzzy
+msgid "Fixed rate"
+msgstr ""
+
+#, fuzzy
+msgid "Follow this branch"
+msgstr ""
+
+#, fuzzy
+msgid "For CoinJoin; strip privates"
+msgstr ""
+
+#, fuzzy
+msgid "For more information, visit"
+msgstr ""
+
+#, fuzzy
+msgid "For security reasons we advise that you always use the latest version of Electrum."
+msgstr ""
+
+#, fuzzy
+msgid "Force-close channel"
+msgstr ""
+
+#, fuzzy
+msgid "Force-close channel?"
+msgstr ""
+
+#, fuzzy
+msgid "Fork detected at block {fork_point}"
+msgstr ""
+
+#, fuzzy
+msgid "Format"
+msgstr ""
+
+#, fuzzy
+msgid "Format: address, amount"
+msgstr ""
+
+#, fuzzy
+msgid "Forwarding"
+msgstr ""
+
+#, fuzzy
+msgid "Freeze"
+msgstr ""
+
+#, fuzzy
+msgid "Freeze Address"
+msgstr ""
+
+#, fuzzy
+msgid "Freeze Addresses"
+msgstr ""
+
+#, fuzzy
+msgid "Freeze Coin"
+msgstr ""
+
+#, fuzzy
+msgid "Freeze Coins"
+msgstr ""
+
+#, fuzzy
+msgid "From"
+msgstr ""
+
+#, fuzzy
+msgid "From {0} cosigners"
+msgstr ""
+
+#, fuzzy
+msgid "Fulfilled HTLCs"
+msgstr ""
+
+#, fuzzy
+msgid "Funded"
+msgstr ""
+
+#, fuzzy
+msgid "Funding Outpoint:"
+msgstr ""
+
+#, fuzzy
+msgid "Funding TXID"
+msgstr ""
+
+#, fuzzy
+msgid "Funding Transaction"
+msgstr ""
+
+#, fuzzy
+msgid "Funds stored in lightning channels are not recoverable from your seed. You must backup your wallet file everytime you create a new channel."
+msgstr ""
+
+#, fuzzy
+msgid "General"
+msgstr ""
+
+#, fuzzy
+msgid "Generate"
+msgstr ""
+
+#, fuzzy
+msgid "Generate an authenticator on Gold Wallet and scan the following QR code: "
+msgstr ""
+
+#, fuzzy
+msgid "Gold Wallet authenticator public key"
+msgstr ""
+
+#, fuzzy
+msgid "Google Authenticator code:"
+msgstr ""
+
+#, fuzzy
+msgid "Gossip"
+msgstr ""
+
+#, fuzzy
+msgid "GreenAddress requires your signature \nto verify that transaction is instant.\nPlease enter your password to sign a\nverification request."
+msgstr ""
+
+#, fuzzy
+msgid "HTLCs in current commitment transaction"
+msgstr ""
+
+#, fuzzy
+msgid "Handler not found for"
+msgstr ""
+
+#, fuzzy
+msgid "Hardware Keystore"
+msgstr ""
+
+#, fuzzy
+msgid "Height"
+msgstr ""
+
+#, fuzzy
+msgid "Hello World"
+msgstr ""
+
+#, fuzzy
+msgid "Help"
+msgstr ""
+
+#, fuzzy
+msgid "Here is your master public key."
+msgstr ""
+
+#, fuzzy
+msgid "Hide"
+msgstr ""
+
+#, fuzzy
+msgid "Hide {tab_description}"
+msgstr ""
+
+#, fuzzy
+msgid "History"
+msgstr ""
+
+#, fuzzy
+msgid "Homepage"
+msgstr ""
+
+#, fuzzy
+msgid "Host"
+msgstr ""
+
+#, fuzzy
+msgid "Hostname"
+msgstr ""
+
+#, fuzzy
+msgid "Hostname does not resolve (getaddrinfo failed)"
+msgstr ""
+
+#, fuzzy
+msgid "How do you want to connect to a server? "
+msgstr ""
+
+#, fuzzy
+msgid "However, hardware wallets do not support message decryption, which makes them not compatible with the current design of cosigner pool."
+msgstr ""
+
+#, fuzzy
+msgid "I already have a seed"
+msgstr ""
+
+#, fuzzy
+msgid "I have lost my Google Authenticator account"
+msgstr ""
+
+#, fuzzy
+msgid "IP/port in format:\n[host]:[port]"
+msgstr ""
+
+#, fuzzy
+msgid "If auto-connect is enabled, Electrum will always use a server that is on the longest blockchain."
+msgstr ""
+
+#, fuzzy
+msgid "If enabled, at most 100 satoshis might be lost due to this, per transaction."
+msgstr ""
+
+#, fuzzy
+msgid "If it is disabled, you have to choose a server you want to use. Electrum will warn you if your server is lagging."
+msgstr ""
+
+#, fuzzy
+msgid "If you are not sure what this is, leave this field unchanged."
+msgstr ""
+
+#, fuzzy
+msgid "If you are online, click on \"{button}\" to continue."
+msgstr ""
+
+#, fuzzy
+msgid "If you check this box, your transactions will be marked as non-final,"
+msgstr ""
+
+#, fuzzy
+msgid "If you check this box, your unconfirmed transactions will be consolidated into a single transaction."
+msgstr ""
+
+#, fuzzy
+msgid "If you do not know what this is, leave this field empty."
+msgstr ""
+
+#, fuzzy
+msgid "If you forget your PIN or lose your device, your seed phrase will be the only way to recover your funds."
+msgstr ""
+
+#, fuzzy
+msgid "If you have an old printer, or want optimal precision"
+msgstr ""
+
+#, fuzzy
+msgid "If you have lost your Google Authenticator account, you can request a new secret. You will need to retype your seed."
+msgstr ""
+
+#, fuzzy
+msgid "If you have lost your second factor, you need to restore your wallet from seed in order to request a new code."
+msgstr ""
+
+#, fuzzy
+msgid "If you keep experiencing network problems, try using a Tor proxy."
+msgstr ""
+
+#, fuzzy
+msgid "If you lose your seed, your money will be permanently lost."
+msgstr ""
+
+#, fuzzy
+msgid "If you use a passphrase, make sure it is correct."
+msgstr ""
+
+#, fuzzy
+msgid "If you want to create new addresses, use a deterministic wallet instead."
+msgstr ""
+
+#, fuzzy
+msgid "If your device is not detected on Windows, go to \"Settings\", \"Devices\", \"Connected devices\", and do \"Remove device\". Then, plug your device again."
+msgstr ""
+
+#, fuzzy
+msgid "If your wallet contains funds, make sure you have saved its seed."
+msgstr ""
+
+#, fuzzy
+msgid "Ignore and continue?"
+msgstr ""
+
+#, fuzzy
+msgid "Import"
+msgstr ""
+
+#, fuzzy
+msgid "Import BTCV addresses"
+msgstr ""
+
+#, fuzzy
+msgid "Import addresses"
+msgstr ""
+
+#, fuzzy
+msgid "Import external watch-only BTCV addresses or private keys"
+msgstr ""
+
+#, fuzzy
+msgid "Import file"
+msgstr ""
+
+#, fuzzy
+msgid "Import private keys"
+msgstr ""
+
+#, fuzzy
+msgid "In order to confirm the transaction, scan the QR codes in the \"Authenticators\" tab in the Gold Wallet app."
+msgstr ""
+
+#, fuzzy
+msgid "In particular, DO NOT use 'redeem private key' services proposed by third parties."
+msgstr ""
+
+#, fuzzy
+msgid "In progress"
+msgstr ""
+
+#, fuzzy
+msgid "In some cases, use up to 3 change addresses in order to break up large coin amounts and obfuscate the recipient address."
+msgstr ""
+
+#, fuzzy
+msgid "In the next block"
+msgstr ""
+
+#, fuzzy
+msgid "Included in block: {header_hash}"
+msgstr ""
+
+#, fuzzy
+msgid "Income"
+msgstr ""
+
+#, fuzzy
+msgid "Incoming payments"
+msgstr ""
+
+#, fuzzy
+msgid "Incorrect password"
+msgstr ""
+
+#, fuzzy
+msgid "Incorrect seed"
+msgstr ""
+
+#, fuzzy
+msgid "Increase fee"
+msgstr ""
+
+#, fuzzy
+msgid "Increase your transaction's fee to improve its position in mempool."
+msgstr ""
+
+#, fuzzy
+msgid "Indonesian"
+msgstr ""
+
+#, fuzzy
+msgid "Info"
+msgstr ""
+
+#, fuzzy
+msgid "Information"
+msgstr ""
+
+#, fuzzy
+msgid "Initial balance"
+msgstr ""
+
+#, fuzzy
+msgid "Initialization of Ledger HW devices is currently disabled."
+msgstr ""
+
+#, fuzzy
+msgid "Initiator"
+msgstr ""
+
+#, fuzzy
+msgid "Input amount"
+msgstr ""
+
+#, fuzzy
+msgid "Input raw transaction"
+msgstr ""
+
+#, fuzzy
+msgid "Inputs"
+msgstr ""
+
+#, fuzzy
+msgid "Install Wizard"
+msgstr ""
+
+#, fuzzy
+msgid "Install the zbar package to enable this."
+msgstr ""
+
+#, fuzzy
+msgid "Instructions:"
+msgstr ""
+
+#, fuzzy
+msgid "Insufficient funds"
+msgstr ""
+
+#, fuzzy
+msgid "Invalid Address"
+msgstr ""
+
+#, fuzzy
+msgid "Invalid Amount"
+msgstr ""
+
+#, fuzzy
+msgid "Invalid Bitcoin Address"
+msgstr ""
+
+#, fuzzy
+msgid "Invalid Bitcoin address"
+msgstr ""
+
+#, fuzzy
+msgid "Invalid Bitcoin address."
+msgstr ""
+
+#, fuzzy
+msgid "Invalid Fee"
+msgstr ""
+
+#, fuzzy
+msgid "Invalid JSON code."
+msgstr ""
+
+#, fuzzy
+msgid "Invalid Lines found:"
+msgstr ""
+
+#, fuzzy
+msgid "Invalid PIN"
+msgstr ""
+
+#, fuzzy
+msgid "Invalid Public key"
+msgstr ""
+
+#, fuzzy
+msgid "Invalid Secure Fast Tx seed"
+msgstr ""
+
+#, fuzzy
+msgid "Invalid address"
+msgstr ""
+
+#, fuzzy
+msgid "Invalid amount"
+msgstr ""
+
+#, fuzzy
+msgid "Invalid cancel seedphrase"
+msgstr ""
+
+#, fuzzy
+msgid "Invalid cancelation address"
+msgstr ""
+
+#, fuzzy
+msgid "Invalid node ID, must be 33 bytes and hexadecimal"
+msgstr ""
+
+#, fuzzy
+msgid "Invalid one-time password."
+msgstr ""
+
+#, fuzzy
+msgid "Invalid seed"
+msgstr ""
+
+#, fuzzy
+msgid "Invoice has expired"
+msgstr ""
+
+#, fuzzy
+msgid "Invoice saved as "
+msgstr ""
+
+#, fuzzy
+msgid "Invoice wants us to risk locking funds for unreasonably long."
+msgstr ""
+
+#, fuzzy
+msgid "Invoices"
+msgstr ""
+
+#, fuzzy
+msgid "It also contains your master public key that allows watching your addresses."
+msgstr ""
+
+#, fuzzy
+msgid "It cannot be \"backed up\" by simply exporting these private keys."
+msgstr ""
+
+#, fuzzy
+msgid "It conflicts with current history."
+msgstr ""
+
+#, fuzzy
+msgid "It sends and receives partially signed transactions from/to your cosigner wallet."
+msgstr ""
+
+#, fuzzy
+msgid "Japanese"
+msgstr ""
+
+#, fuzzy
+msgid "Join inputs/outputs"
+msgstr ""
+
+#, fuzzy
+msgid "Keyboard shortcut: type \"!\" to send all your coins."
+msgstr ""
+
+#, fuzzy
+msgid "Keystore"
+msgstr ""
+
+#, fuzzy
+msgid "Keystore type"
+msgstr ""
+
+#, fuzzy
+msgid "Korean"
+msgstr ""
+
+#, fuzzy
+msgid "Label"
+msgstr ""
+
+#, fuzzy
+msgid "Label Settings"
+msgstr ""
+
+#, fuzzy
+msgid "LabelSync"
+msgstr ""
+
+#, fuzzy
+msgid "Labels, transactions IDs and addresses are encrypted before they are sent to the remote server."
+msgstr ""
+
+#, fuzzy
+msgid "Language"
+msgstr ""
+
+#, fuzzy
+msgid "Latest version: {version}"
+msgstr ""
+
+#, fuzzy
+msgid "Leave this field empty if you want to disable encryption."
+msgstr ""
+
+#, fuzzy
+msgid "Ledger Status"
+msgstr ""
+
+#, fuzzy
+msgid "Ledger Wallet Authentication"
+msgstr ""
+
+#, fuzzy
+msgid "Ledger wallet"
+msgstr ""
+
+#, fuzzy
+msgid "Legacy"
+msgstr ""
+
+#, fuzzy
+msgid "Legacy 2FA"
+msgstr ""
+
+#, fuzzy
+msgid "Library version for '{name}' is incompatible."
+msgstr ""
+
+#, fuzzy
+msgid "Licence"
+msgstr ""
+
+#, fuzzy
+msgid "Light"
+msgstr ""
+
+#, fuzzy
+msgid "Lightning"
+msgstr ""
+
+#, fuzzy
+msgid "Lightning Network"
+msgstr ""
+
+#, fuzzy
+msgid "Lightning Network Statistics"
+msgstr ""
+
+#, fuzzy
+msgid "Lightning keys have been initialized."
+msgstr ""
+
+#, fuzzy
+msgid "Lightning keys have been removed."
+msgstr ""
+
+#, fuzzy
+msgid "Lightning support in Electrum is experimental. Do not put large amounts in lightning channels."
+msgstr ""
+
+#, fuzzy
+msgid "Lightning:"
+msgstr ""
+
+#, fuzzy
+msgid "Line #"
+msgstr ""
+
+#, fuzzy
+msgid "Load transaction"
+msgstr ""
+
+#, fuzzy
+msgid "Local"
+msgstr ""
+
+#, fuzzy
+msgid "Local CTN"
+msgstr ""
+
+#, fuzzy
+msgid "Lookup transaction"
+msgstr ""
+
+#, fuzzy
+msgid "Low fee"
+msgstr ""
+
+#, fuzzy
+msgid "Make sure it is in the correct state."
+msgstr ""
+
+#, fuzzy
+msgid "Make sure you install it with python3"
+msgstr ""
+
+#, fuzzy
+msgid "Make sure you own the seed phrase or the private keys, before you request Bitcoins to be sent to this wallet."
+msgstr ""
+
+#, fuzzy
+msgid "Master Public Key"
+msgstr ""
+
+#, fuzzy
+msgid "Master Public Keys"
+msgstr ""
+
+#, fuzzy
+msgid "Max"
+msgstr ""
+
+#, fuzzy
+msgid "Max fee exceeded"
+msgstr ""
+
+#, fuzzy
+msgid "Maximum number of concurrent HTLCs accepted by peer:"
+msgstr ""
+
+#, fuzzy
+msgid "Maximum value of in-flight HTLCs accepted by peer:"
+msgstr ""
+
+#, fuzzy
+msgid "Memo"
+msgstr ""
+
+#, fuzzy
+msgid "Mempool"
+msgstr ""
+
+#, fuzzy
+msgid "Mempool based: fee rate is targeting a depth in the memory pool"
+msgstr ""
+
+#, fuzzy
+msgid "Mempool depth"
+msgstr ""
+
+#, fuzzy
+msgid "Merge signatures from"
+msgstr ""
+
+#, fuzzy
+msgid "Message"
+msgstr ""
+
+#, fuzzy
+msgid "Method:"
+msgstr ""
+
+#, fuzzy
+msgid "Minimum HTLC value accepted by peer (mSAT):"
+msgstr ""
+
+#, fuzzy
+msgid "Mining fee"
+msgstr ""
+
+#, fuzzy
+msgid "Missing amount"
+msgstr ""
+
+#, fuzzy
+msgid "Missing libraries for {library_name}."
+msgstr ""
+
+#, fuzzy
+msgid "Missing previous tx for legacy input."
+msgstr ""
+
+#, fuzzy
+msgid "Missing report URL."
+msgstr ""
+
+#, fuzzy
+msgid "More info at: {link}"
+msgstr ""
+
+#, fuzzy
+msgid "Multi-Signature Standard"
+msgstr ""
+
+#, fuzzy
+msgid "NOT DEVICE PIN - see above"
+msgstr ""
+
+#, fuzzy
+msgid "Name"
+msgstr ""
+
+#, fuzzy
+msgid "Network"
+msgstr ""
+
+#, fuzzy
+msgid "Network request timed out."
+msgstr ""
+
+#, fuzzy
+msgid "Never"
+msgstr ""
+
+#, fuzzy
+msgid "Never disclose your seed."
+msgstr ""
+
+#, fuzzy
+msgid "Never enter it on any website."
+msgstr ""
+
+#, fuzzy
+msgid "New Contact"
+msgstr ""
+
+#, fuzzy
+msgid "New Fee rate"
+msgstr ""
+
+#, fuzzy
+msgid "New Password:"
+msgstr ""
+
+#, fuzzy
+msgid "New contact"
+msgstr ""
+
+#, fuzzy
+msgid "New transaction: {amount}"
+msgstr ""
+
+#, fuzzy
+msgid "Next"
+msgstr ""
+
+#, fuzzy
+msgid "Next part"
+msgstr ""
+
+#, fuzzy
+msgid "No Data"
+msgstr ""
+
+#, fuzzy
+msgid "No Description"
+msgstr ""
+
+#, fuzzy
+msgid "No Wallet"
+msgstr ""
+
+#, fuzzy
+msgid "No address available. Please remove some of your pending requests."
+msgstr ""
+
+#, fuzzy
+msgid "No data"
+msgstr ""
+
+#, fuzzy
+msgid "No donation address for this server"
+msgstr ""
+
+#, fuzzy
+msgid "No exceptions encountered."
+msgstr ""
+
+#, fuzzy
+msgid "No fork detected"
+msgstr ""
+
+#, fuzzy
+msgid "No hardware device detected."
+msgstr ""
+
+#, fuzzy
+msgid "No inputs found. (Note that inputs need to be confirmed)"
+msgstr ""
+
+#, fuzzy
+msgid "No keystore"
+msgstr ""
+
+#, fuzzy
+msgid "No more addresses in your wallet."
+msgstr ""
+
+#, fuzzy
+msgid "No outputs"
+msgstr ""
+
+#, fuzzy
+msgid "No wallet loaded."
+msgstr ""
+
+#, fuzzy
+msgid "Node ID"
+msgstr ""
+
+#, fuzzy
+msgid "Node ID:"
+msgstr ""
+
+#, fuzzy
+msgid "Nodes"
+msgstr ""
+
+#, fuzzy
+msgid "Nodes in database."
+msgstr ""
+
+#, fuzzy
+msgid "None"
+msgstr ""
+
+#, fuzzy
+msgid "Not Enough Funds"
+msgstr ""
+
+#, fuzzy
+msgid "Not Now"
+msgstr ""
+
+#, fuzzy
+msgid "Not Verified"
+msgstr ""
+
+#, fuzzy
+msgid "Not connected"
+msgstr ""
+
+#, fuzzy
+msgid "Not enough funds"
+msgstr ""
+
+#, fuzzy
+msgid "Not enough funds on address."
+msgstr ""
+
+#, fuzzy
+msgid "Not verified"
+msgstr ""
+
+#, fuzzy
+msgid "Not yet available"
+msgstr ""
+
+#, fuzzy
+msgid "Note that if you have frozen some of your addresses, the available funds will be lower than your total balance."
+msgstr ""
+
+#, fuzzy
+msgid "Note that some merchants do not accept non-final transactions until they are confirmed."
+msgstr ""
+
+#, fuzzy
+msgid "Note that this is NOT your encryption password."
+msgstr ""
+
+#, fuzzy
+msgid "Note that your coins are not locked in this service.  You may withdraw your funds at any time and at no cost, without the remote server, by using the 'restore wallet' option with your wallet seed."
+msgstr ""
+
+#, fuzzy
+msgid "Note: If you enable this setting, you will need your hardware device to open your wallet."
+msgstr ""
+
+#, fuzzy
+msgid "Note: this is an offline transaction, if you want the network to see it, you need to broadcast it."
+msgstr ""
+
+#, fuzzy
+msgid "Nothing set !"
+msgstr ""
+
+#, fuzzy
+msgid "Nothing to plot."
+msgstr ""
+
+#, fuzzy
+msgid "Nothing to summarize."
+msgstr ""
+
+#, fuzzy
+msgid "Number of zeros displayed after the decimal point. For example, if this is set to 2, \"1.\" will be displayed as \"1.00\""
+msgstr ""
+
+#, fuzzy
+msgid "OK"
+msgstr ""
+
+#, fuzzy
+msgid "OR"
+msgstr ""
+
+#, fuzzy
+msgid "Offline"
+msgstr ""
+
+#, fuzzy
+msgid "Ok"
+msgstr ""
+
+#, fuzzy
+msgid "On Linux, you might have to add a new permission to your udev rules."
+msgstr ""
+
+#, fuzzy
+msgid "One output per line."
+msgstr ""
+
+#, fuzzy
+msgid "One-server mode"
+msgstr ""
+
+#, fuzzy
+msgid "Online Block Explorer"
+msgstr ""
+
+#, fuzzy
+msgid "Only OP_RETURN scripts, with one constant push, are supported."
+msgstr ""
+
+#, fuzzy
+msgid "Only connect to a single server"
+msgstr ""
+
+#, fuzzy
+msgid "Open Channel"
+msgstr ""
+
+#, fuzzy
+msgid "Open advanced transaction preview dialog when 'Pay' is clicked."
+msgstr ""
+
+#, fuzzy
+msgid "Open calibration pdf"
+msgstr ""
+
+#, fuzzy
+msgid "Open channel"
+msgstr ""
+
+#, fuzzy
+msgid "Open your cosigner wallet to retrieve it."
+msgstr ""
+
+#, fuzzy
+msgid "Open {title} file"
+msgstr ""
+
+#, fuzzy
+msgid "OpenAlias"
+msgstr ""
+
+#, fuzzy
+msgid "OpenAlias record, used to receive coins and to sign payment requests."
+msgstr ""
+
+#, fuzzy
+msgid "Opening channel..."
+msgstr ""
+
+#, fuzzy
+msgid "Options"
+msgstr ""
+
+#, fuzzy
+msgid "Outdated device firmware"
+msgstr ""
+
+#, fuzzy
+msgid "Outgoing payments"
+msgstr ""
+
+#, fuzzy
+msgid "Output amount"
+msgstr ""
+
+#, fuzzy
+msgid "Output point"
+msgstr ""
+
+#, fuzzy
+msgid "Outputs"
+msgstr ""
+
+#, fuzzy
+msgid "Overview"
+msgstr ""
+
+#, fuzzy
+msgid "PIN codes do not match"
+msgstr ""
+
+#, fuzzy
+msgid "PIN mismatch"
+msgstr ""
+
+#, fuzzy
+msgid "Paid"
+msgstr ""
+
+#, fuzzy
+msgid "Pair your 2-Key Vault wallet with Gold Wallet"
+msgstr ""
+
+#, fuzzy
+msgid "Pair your 3-Key Vault wallet with Gold Wallet"
+msgstr ""
+
+#, fuzzy
+msgid "Partially signed"
+msgstr ""
+
+#, fuzzy
+msgid "Passphrase"
+msgstr ""
+
+#, fuzzy
+msgid "Passphrase:"
+msgstr ""
+
+#, fuzzy
+msgid "Password"
+msgstr ""
+
+#, fuzzy
+msgid "Password Strength"
+msgstr ""
+
+#, fuzzy
+msgid "Password is disabled, this wallet is not protected"
+msgstr ""
+
+#, fuzzy
+msgid "Password was updated successfully"
+msgstr ""
+
+#, fuzzy
+msgid "Password:"
+msgstr ""
+
+#, fuzzy
+msgid "Pay"
+msgstr ""
+
+#, fuzzy
+msgid "Pay multiple invoices"
+msgstr ""
+
+#, fuzzy
+msgid "Pay to"
+msgstr ""
+
+#, fuzzy
+msgid "Pay to many"
+msgstr ""
+
+#, fuzzy
+msgid "Payment Received"
+msgstr ""
+
+#, fuzzy
+msgid "Payment Request"
+msgstr ""
+
+#, fuzzy
+msgid "Payment failed"
+msgstr ""
+
+#, fuzzy
+msgid "Payment hash"
+msgstr ""
+
+#, fuzzy
+msgid "Payment log"
+msgstr ""
+
+#, fuzzy
+msgid "Payment received"
+msgstr ""
+
+#, fuzzy
+msgid "Payment request has expired"
+msgstr ""
+
+#, fuzzy
+msgid "Payment sent."
+msgstr ""
+
+#, fuzzy
+msgid "Payment succeeded"
+msgstr ""
+
+#, fuzzy
+msgid "Payment was sent"
+msgstr ""
+
+#, fuzzy
+msgid "Payments (HTLCs):"
+msgstr ""
+
+#, fuzzy
+msgid "Pending"
+msgstr ""
+
+#, fuzzy
+msgid "Perhaps some dependencies are missing..."
+msgstr ""
+
+#, fuzzy
+msgid "Please briefly describe what led to the error (optional):"
+msgstr ""
+
+#, fuzzy
+msgid "Please check your connection and credentials."
+msgstr ""
+
+#, fuzzy
+msgid "Please check your network connection."
+msgstr ""
+
+#, fuzzy
+msgid "Please check your {device} device"
+msgstr ""
+
+#, fuzzy
+msgid "Please confirm"
+msgstr ""
+
+#, fuzzy
+msgid "Please enter an amount"
+msgstr ""
+
+#, fuzzy
+msgid "Please enter the master public key (xpub) of your cosigner."
+msgstr ""
+
+#, fuzzy
+msgid "Please enter your Google Authenticator code"
+msgstr ""
+
+#, fuzzy
+msgid "Please enter your Google Authenticator code:"
+msgstr ""
+
+#, fuzzy
+msgid "Please enter your e-mail address"
+msgstr ""
+
+#, fuzzy
+msgid "Please enter your password"
+msgstr ""
+
+#, fuzzy
+msgid "Please enter your password to decrypt it."
+msgstr ""
+
+#, fuzzy
+msgid "Please enter your seed phrase in order to restore your wallet."
+msgstr ""
+
+#, fuzzy
+msgid "Please insert your {device}"
+msgstr ""
+
+#, fuzzy
+msgid "Please paste a Cancel transaction public key. Use an existing one, if you are importing a wallet, or generate a new one at"
+msgstr ""
+
+#, fuzzy
+msgid "Please paste a Secure Fast transaction public key. Use an existing one, if you are importing a wallet, or generate a new one at"
+msgstr ""
+
+#, fuzzy
+msgid "Please paste authenticator public key exported from your Gold Wallet application"
+msgstr ""
+
+#, fuzzy
+msgid "Please paste your cosigners master public key, or scan it using the camera button."
+msgstr ""
+
+#, fuzzy
+msgid "Please report any bugs as issues on github:<br/>"
+msgstr ""
+
+#, fuzzy
+msgid "Please report this issue manually"
+msgstr ""
+
+#, fuzzy
+msgid "Please restart Electrum to activate the new GUI settings"
+msgstr ""
+
+#, fuzzy
+msgid "Please retype your seed phrase, to confirm that you properly saved it"
+msgstr ""
+
+#, fuzzy
+msgid "Please save these {0} words on paper (the order is important). "
+msgstr ""
+
+#, fuzzy
+msgid "Please scan a Bitcoin address or a payment request"
+msgstr ""
+
+#, fuzzy
+msgid "Please select which {device} device to use:"
+msgstr ""
+
+#, fuzzy
+msgid "Please share it with your cosigners."
+msgstr ""
+
+#, fuzzy
+msgid "Please sign this transaction in order to save it"
+msgstr ""
+
+#, fuzzy
+msgid "Please try again."
+msgstr ""
+
+#, fuzzy
+msgid "Please type it here."
+msgstr ""
+
+#, fuzzy
+msgid "Please type your seed phrase using the virtual keyboard."
+msgstr ""
+
+#, fuzzy
+msgid "Please wait"
+msgstr ""
+
+#, fuzzy
+msgid "Please wait while Electrum checks for available updates."
+msgstr ""
+
+#, fuzzy
+msgid "Please wait..."
+msgstr ""
+
+#, fuzzy
+msgid "Port"
+msgstr ""
+
+#, fuzzy
+msgid "Port number must be decimal"
+msgstr ""
+
+#, fuzzy
+msgid "Portuguese"
+msgstr ""
+
+#, fuzzy
+msgid "Position in mempool: {size} from tip"
+msgstr ""
+
+#, fuzzy
+msgid "Preferences"
+msgstr ""
+
+#, fuzzy
+msgid "Press 'Next' to choose device to decrypt."
+msgstr ""
+
+#, fuzzy
+msgid "Press 'Next' to create this wallet, or choose another file."
+msgstr ""
+
+#, fuzzy
+msgid "Press 'Next' to create/focus window."
+msgstr ""
+
+#, fuzzy
+msgid "Press 'Next' to open this wallet."
+msgstr ""
+
+#, fuzzy
+msgid "Press Enter"
+msgstr ""
+
+#, fuzzy
+msgid "Press again to exit"
+msgstr ""
+
+#, fuzzy
+msgid "Previous part"
+msgstr ""
+
+#, fuzzy
+msgid "Printer Calibration"
+msgstr ""
+
+#, fuzzy
+msgid "Private key"
+msgstr ""
+
+#, fuzzy
+msgid "Private keys"
+msgstr ""
+
+#, fuzzy
+msgid "Private keys exported."
+msgstr ""
+
+#, fuzzy
+msgid "Problem opening channel: "
+msgstr ""
+
+#, fuzzy
+msgid "Proceed at your own risk."
+msgstr ""
+
+#, fuzzy
+msgid "Provides support for air-gapped transaction signing."
+msgstr ""
+
+#, fuzzy
+msgid "Proxy"
+msgstr ""
+
+#, fuzzy
+msgid "Proxy configuration"
+msgstr ""
+
+#, fuzzy
+msgid "Proxy mode"
+msgstr ""
+
+#, fuzzy
+msgid "Proxy settings apply to all connections: with Electrum servers, but also with third-party services."
+msgstr ""
+
+#, fuzzy
+msgid "Proxy user"
+msgstr ""
+
+#, fuzzy
+msgid "PubKey cropped because too long string passed"
+msgstr ""
+
+#, fuzzy
+msgid "Public key"
+msgstr ""
+
+#, fuzzy
+msgid "Public keys"
+msgstr ""
+
+#, fuzzy
+msgid "QR Code"
+msgstr ""
+
+#, fuzzy
+msgid "QR code"
+msgstr ""
+
+#, fuzzy
+msgid "QR code copied to clipboard"
+msgstr ""
+
+#, fuzzy
+msgid "QR code saved to file"
+msgstr ""
+
+#, fuzzy
+msgid "Question"
+msgstr ""
+
+#, fuzzy
+msgid "Quit"
+msgstr ""
+
+#, fuzzy
+msgid "R/W error accessing path"
+msgstr ""
+
+#, fuzzy
+msgid "Raw Transaction"
+msgstr ""
+
+#, fuzzy
+msgid "Read QR code"
+msgstr ""
+
+#, fuzzy
+msgid "Read file"
+msgstr ""
+
+#, fuzzy
+msgid "Read from microphone"
+msgstr ""
+
+#, fuzzy
+msgid "Ready to encrypt for revealer {version}"
+msgstr ""
+
+#, fuzzy
+msgid "Receive"
+msgstr ""
+
+#, fuzzy
+msgid "Received (mSAT):"
+msgstr ""
+
+#, fuzzy
+msgid "Received HTLC with ID {id}"
+msgstr ""
+
+#, fuzzy
+msgid "Receiving"
+msgstr ""
+
+#, fuzzy
+msgid "Recipient"
+msgstr ""
+
+#, fuzzy
+msgid "Recipient not specified."
+msgstr ""
+
+#, fuzzy
+msgid "Recipient of the funds."
+msgstr ""
+
+#, fuzzy
+msgid "Redeem Script"
+msgstr ""
+
+#, fuzzy
+msgid "Remote"
+msgstr ""
+
+#, fuzzy
+msgid "Remote CTN"
+msgstr ""
+
+#, fuzzy
+msgid "Remote Node ID"
+msgstr ""
+
+#, fuzzy
+msgid "Remote channel reserve:"
+msgstr ""
+
+#, fuzzy
+msgid "Remote dust limit:"
+msgstr ""
+
+#, fuzzy
+msgid "Remote peer ID"
+msgstr ""
+
+#, fuzzy
+msgid "Remove"
+msgstr ""
+
+#, fuzzy
+msgid "Remove from wallet"
+msgstr ""
+
+#, fuzzy
+msgid "Remove {labels} from your list of contacts?"
+msgstr ""
+
+#, fuzzy
+msgid "Replace by fee"
+msgstr ""
+
+#, fuzzy
+msgid "Report contents"
+msgstr ""
+
+#, fuzzy
+msgid "Report sent"
+msgstr ""
+
+#, fuzzy
+msgid "Reporting Bugs"
+msgstr ""
+
+#, fuzzy
+msgid "Request"
+msgstr ""
+
+#, fuzzy
+msgid "Request copied to clipboard"
+msgstr ""
+
+#, fuzzy
+msgid "Request expires"
+msgstr ""
+
+#, fuzzy
+msgid "Request payment"
+msgstr ""
+
+#, fuzzy
+msgid "Request rejected by server"
+msgstr ""
+
+#, fuzzy
+msgid "Request saved successfully"
+msgstr ""
+
+#, fuzzy
+msgid "Request sent."
+msgstr ""
+
+#, fuzzy
+msgid "Requested amount"
+msgstr ""
+
+#, fuzzy
+msgid "Requesting account info from TrustedCoin server..."
+msgstr ""
+
+#, fuzzy
+msgid "Requestor"
+msgstr ""
+
+#, fuzzy
+msgid "Require {0} signatures"
+msgstr ""
+
+#, fuzzy
+msgid "Requires"
+msgstr ""
+
+#, fuzzy
+msgid "Reset"
+msgstr ""
+
+#, fuzzy
+msgid "Restore 2FA wallet"
+msgstr ""
+
+#, fuzzy
+msgid "Restore two-factor Wallet"
+msgstr ""
+
+#, fuzzy
+msgid "Revealer - Printer calibration settings"
+msgstr ""
+
+#, fuzzy
+msgid "Revealer Backup Utility"
+msgstr ""
+
+#, fuzzy
+msgid "Revealer Secret Backup Plugin"
+msgstr ""
+
+#, fuzzy
+msgid "Revealers starting with 0 are not secure due to a vulnerability."
+msgstr ""
+
+#, fuzzy
+msgid "Right side"
+msgstr ""
+
+#, fuzzy
+msgid "Route"
+msgstr ""
+
+#, fuzzy
+msgid "Run PayServer"
+msgstr ""
+
+#, fuzzy
+msgid "Run Watchtower"
+msgstr ""
+
+#, fuzzy
+msgid "SSL cert file"
+msgstr ""
+
+#, fuzzy
+msgid "SSL domain"
+msgstr ""
+
+#, fuzzy
+msgid "SSL key file"
+msgstr ""
+
+#, fuzzy
+msgid "Save"
+msgstr ""
+
+#, fuzzy
+msgid "Save invoice to file"
+msgstr ""
+
+#, fuzzy
+msgid "Save transaction offline"
+msgstr ""
+
+#, fuzzy
+msgid "Save your wallet labels on a remote server, and synchronize them across multiple devices where you use Electrum."
+msgstr ""
+
+#, fuzzy
+msgid "Script type"
+msgstr ""
+
+#, fuzzy
+msgid "Script type and Derivation path"
+msgstr ""
+
+#, fuzzy
+msgid "Secure"
+msgstr ""
+
+#, fuzzy
+msgid "Secure - confirmed after 24 hours. Can be canceled within that time."
+msgstr ""
+
+#, fuzzy
+msgid "Secure Fast - confirmed immediately. Cannot be canceled. Requires an additional seed phrase."
+msgstr ""
+
+#, fuzzy
+msgid "Secure Fast Tx seed"
+msgstr ""
+
+#, fuzzy
+msgid "Secure Fast Tx seed not matching any key in this wallet"
+msgstr ""
+
+#, fuzzy
+msgid "Secure Fast seedphrase"
+msgstr ""
+
+#, fuzzy
+msgid "Secure Fast transaction public key"
+msgstr ""
+
+#, fuzzy
+msgid "Secure fast"
+msgstr ""
+
+#, fuzzy
+msgid "Secure incoming"
+msgstr ""
+
+#, fuzzy
+msgid "Secure outgoing"
+msgstr ""
+
+#, fuzzy
+msgid "Security Card Challenge"
+msgstr ""
+
+#, fuzzy
+msgid "Seed"
+msgstr ""
+
+#, fuzzy
+msgid "Seed available"
+msgstr ""
+
+#, fuzzy
+msgid "Seed extension"
+msgstr ""
+
+#, fuzzy
+msgid "Segwit"
+msgstr ""
+
+#, fuzzy
+msgid "Segwit 2FA"
+msgstr ""
+
+#, fuzzy
+msgid "Segwit wallets use bech32 addresses, defined in BIP173."
+msgstr ""
+
+#, fuzzy
+msgid "Select a device"
+msgstr ""
+
+#, fuzzy
+msgid "Select date"
+msgstr ""
+
+#, fuzzy
+msgid "Select file to export your private keys to"
+msgstr ""
+
+#, fuzzy
+msgid "Select file to export your wallet transactions to"
+msgstr ""
+
+#, fuzzy
+msgid "Select file to save your {title}"
+msgstr ""
+
+#, fuzzy
+msgid "Select installation language"
+msgstr ""
+
+#, fuzzy
+msgid "Select language"
+msgstr ""
+
+#, fuzzy
+msgid "Select server automatically"
+msgstr ""
+
+#, fuzzy
+msgid "Select server manually"
+msgstr ""
+
+#, fuzzy
+msgid "Select where to save file"
+msgstr ""
+
+#, fuzzy
+msgid "Select where to save your payment request"
+msgstr ""
+
+#, fuzzy
+msgid "Select where to save your signed transaction"
+msgstr ""
+
+#, fuzzy
+msgid "Select which language is used in the GUI (after restart)."
+msgstr ""
+
+#, fuzzy
+msgid "Select your server automatically"
+msgstr ""
+
+#, fuzzy
+msgid "Select your transaction file"
+msgstr ""
+
+#, fuzzy
+msgid "Send"
+msgstr ""
+
+#, fuzzy
+msgid "Send Bug Report"
+msgstr ""
+
+#, fuzzy
+msgid "Send and receive payment request with an email account"
+msgstr ""
+
+#, fuzzy
+msgid "Send and receive payment requests via email"
+msgstr ""
+
+#, fuzzy
+msgid "Send cancel transaction"
+msgstr ""
+
+#, fuzzy
+msgid "Send to cosigner"
+msgstr ""
+
+#, fuzzy
+msgid "Send to speaker"
+msgstr ""
+
+#, fuzzy
+msgid "Send via e-mail"
+msgstr ""
+
+#, fuzzy
+msgid "Sending"
+msgstr ""
+
+#, fuzzy
+msgid "Sending crash report..."
+msgstr ""
+
+#, fuzzy
+msgid "Sending transaction to cosigning pool..."
+msgstr ""
+
+#, fuzzy
+msgid "Sent (mSAT):"
+msgstr ""
+
+#, fuzzy
+msgid "Sent HTLC with ID {id}"
+msgstr ""
+
+#, fuzzy
+msgid "Server"
+msgstr ""
+
+#, fuzzy
+msgid "Server hosting your email account"
+msgstr ""
+
+#, fuzzy
+msgid "Server is lagging ({number} blocks)"
+msgstr ""
+
+#, fuzzy
+msgid "Server not reachable."
+msgstr ""
+
+#, fuzzy
+msgid "Server peers"
+msgstr ""
+
+#, fuzzy
+msgid "Server returned unexpected transaction ID."
+msgstr ""
+
+#, fuzzy
+msgid "Server used to query your history."
+msgstr ""
+
+#, fuzzy
+msgid "Services"
+msgstr ""
+
+#, fuzzy
+msgid "Set the value of the change output so that it has similar precision to the other outputs."
+msgstr ""
+
+#, fuzzy
+msgid "Set wallet file encryption."
+msgstr ""
+
+#, fuzzy
+msgid "Settings"
+msgstr ""
+
+#, fuzzy
+msgid "Share Bitcoin Request"
+msgstr ""
+
+#, fuzzy
+msgid "Share Invoice"
+msgstr ""
+
+#, fuzzy
+msgid "Short Chan ID"
+msgstr ""
+
+#, fuzzy
+msgid "Short Channel ID"
+msgstr ""
+
+#, fuzzy
+msgid "Short Channel ID:"
+msgstr ""
+
+#, fuzzy
+msgid "Should this transaction be replaceable?"
+msgstr ""
+
+#, fuzzy
+msgid "Show"
+msgstr ""
+
+#, fuzzy
+msgid "Show Fiat balance for addresses"
+msgstr ""
+
+#, fuzzy
+msgid "Show QR Code"
+msgstr ""
+
+#, fuzzy
+msgid "Show as QR code"
+msgstr ""
+
+#, fuzzy
+msgid "Show on Ledger"
+msgstr ""
+
+#, fuzzy
+msgid "Show on {device}"
+msgstr ""
+
+#, fuzzy
+msgid "Show report contents"
+msgstr ""
+
+#, fuzzy
+msgid "Show {tab_description}"
+msgstr ""
+
+#, fuzzy
+msgid "Show/Hide"
+msgstr ""
+
+#, fuzzy
+msgid "Showing address ..."
+msgstr ""
+
+#, fuzzy
+msgid "Sign"
+msgstr ""
+
+#, fuzzy
+msgid "Sign/verify Message"
+msgstr ""
+
+#, fuzzy
+msgid "Sign/verify message"
+msgstr ""
+
+#, fuzzy
+msgid "Signature"
+msgstr ""
+
+#, fuzzy
+msgid "Signature verified"
+msgstr ""
+
+#, fuzzy
+msgid "Signed"
+msgstr ""
+
+#, fuzzy
+msgid "Signing"
+msgstr ""
+
+#, fuzzy
+msgid "Signing transaction..."
+msgstr ""
+
+#, fuzzy
+msgid "Signing with an address actually means signing with the corresponding private key, and verifying with the corresponding public key. The address you have entered does not have a unique public key, so these operations cannot be performed."
+msgstr ""
+
+#, fuzzy
+msgid "Size:"
+msgstr ""
+
+#, fuzzy
+msgid "Something went wrong while executing Electrum."
+msgstr ""
+
+#, fuzzy
+msgid "Sorry!"
+msgstr ""
+
+#, fuzzy
+msgid "Sorry, but we were unable to check for updates. Please try again later."
+msgstr ""
+
+#, fuzzy
+msgid "Source"
+msgstr ""
+
+#, fuzzy
+msgid "Spanish"
+msgstr ""
+
+#, fuzzy
+msgid "Spend"
+msgstr ""
+
+#, fuzzy
+msgid "Spend from"
+msgstr ""
+
+#, fuzzy
+msgid "Spend only confirmed coins"
+msgstr ""
+
+#, fuzzy
+msgid "Spend only confirmed inputs."
+msgstr ""
+
+#, fuzzy
+msgid "Standard"
+msgstr ""
+
+#, fuzzy
+msgid "Start"
+msgstr ""
+
+#, fuzzy
+msgid "Startup times are instant because it operates in conjunction with high-performance servers that handle the most complicated parts of the Bitcoin Vault system."
+msgstr ""
+
+#, fuzzy
+msgid "State"
+msgstr ""
+
+#, fuzzy
+msgid "Static"
+msgstr ""
+
+#, fuzzy
+msgid "Status"
+msgstr ""
+
+#, fuzzy
+msgid "Status:"
+msgstr ""
+
+#, fuzzy
+msgid "Success"
+msgstr ""
+
+#, fuzzy
+msgid "Summary"
+msgstr ""
+
+#, fuzzy
+msgid "Summary Text PIN (requires dongle replugging)"
+msgstr ""
+
+#, fuzzy
+msgid "Summary Text PIN is Disabled"
+msgstr ""
+
+#, fuzzy
+msgid "Sweep"
+msgstr ""
+
+#, fuzzy
+msgid "Sweep private keys"
+msgstr ""
+
+#, fuzzy
+msgid "Synchronizing..."
+msgstr ""
+
+#, fuzzy
+msgid "Tap to show"
+msgstr ""
+
+#, fuzzy
+msgid "Target"
+msgstr ""
+
+#, fuzzy
+msgid "Target fee:"
+msgstr ""
+
+#, fuzzy
+msgid "Terms of Service"
+msgstr ""
+
+#, fuzzy
+msgid "Testnet"
+msgstr ""
+
+#, fuzzy
+msgid "Testnet coins are worthless."
+msgstr ""
+
+#, fuzzy
+msgid "Testnet is separate from the main Bitcoin Vault network. It is used for testing."
+msgstr ""
+
+#, fuzzy
+msgid "Text copied to clipboard"
+msgstr ""
+
+#, fuzzy
+msgid "Text copied to clipboard."
+msgstr ""
+
+#, fuzzy
+msgid "The amount of fee can be decided freely by the sender. However, transactions with low fees take more time to be processed."
+msgstr ""
+
+#, fuzzy
+msgid "The amount will be displayed in red if you do not have enough funds in your wallet."
+msgstr ""
+
+#, fuzzy
+msgid "The bitcoin address never expires and will always be part of this electrum wallet."
+msgstr ""
+
+#, fuzzy
+msgid "The description is not sent to the recipient of the funds. It is stored in your wallet file, and displayed in the 'History' tab."
+msgstr ""
+
+#, fuzzy
+msgid "The fee could not be verified. Signing non-segwit inputs is risky:\nif this transaction was maliciously modified before you sign,\nyou might end up paying a higher mining fee than displayed."
+msgstr ""
+
+#, fuzzy
+msgid "The fee for this transaction seems unusually high."
+msgstr ""
+
+#, fuzzy
+msgid "The file '{path}' contains an incompletely created wallet.\nDo you want to complete its creation now?"
+msgstr ""
+
+#, fuzzy
+msgid "The file was removed"
+msgstr ""
+
+#, fuzzy
+msgid "The firmware of your hardware device is too old. If possible, you should upgrade it. You can ignore this error and try to continue, however things are likely to break."
+msgstr ""
+
+#, fuzzy
+msgid "The following addresses were added"
+msgstr ""
+
+#, fuzzy
+msgid "The following alias providers are available:"
+msgstr ""
+
+#, fuzzy
+msgid "The following inputs could not be imported"
+msgstr ""
+
+#, fuzzy
+msgid "The new fee rate needs to be higher than the old fee rate."
+msgstr ""
+
+#, fuzzy
+msgid "The next step will generate the seed of your wallet.  This seed will NOT be saved in your computer, and it must be stored on paper.  To be safe from malware, you may want to do this on an offline computer, and move your wallet later to an online computer."
+msgstr ""
+
+#, fuzzy
+msgid "The operation is undefined. Not just in Electrum, but in general."
+msgstr ""
+
+#, fuzzy
+msgid "The server returned an error when broadcasting the transaction."
+msgstr ""
+
+#, fuzzy
+msgid "The server returned an error."
+msgstr ""
+
+#, fuzzy
+msgid "The server returned an unexpected transaction ID when broadcasting the transaction."
+msgstr ""
+
+#, fuzzy
+msgid "The transaction was rejected because it contains multiple OP_RETURN outputs."
+msgstr ""
+
+#, fuzzy
+msgid "The transaction was rejected because it is too large (in bytes)."
+msgstr ""
+
+#, fuzzy
+msgid "The type of addresses used by your wallet will depend on your seed."
+msgstr ""
+
+#, fuzzy
+msgid "The wallet '{path}' contains multiple accounts, which are no longer supported since Electrum 2.7.\n\nDo you want to split your wallet into multiple files?"
+msgstr ""
+
+#, fuzzy
+msgid "Then, enter your Google Authenticator code:"
+msgstr ""
+
+#, fuzzy
+msgid "There is a new update available"
+msgstr ""
+
+#, fuzzy
+msgid "There was a problem with the automatic reporting:"
+msgstr ""
+
+#, fuzzy
+msgid "Therefore, two-factor authentication is disabled."
+msgstr ""
+
+#, fuzzy
+msgid "This address has already been used. For better privacy, do not reuse it for new payments."
+msgstr ""
+
+#, fuzzy
+msgid "This blockchain is used to verify the transactions sent by your transaction server."
+msgstr ""
+
+#, fuzzy
+msgid "This channel will be usable after {number} confirmations"
+msgstr ""
+
+#, fuzzy
+msgid "This feature is not available for watch-only wallets."
+msgstr ""
+
+#, fuzzy
+msgid "This file does not exist."
+msgstr ""
+
+#, fuzzy
+msgid "This file is already open in memory."
+msgstr ""
+
+#, fuzzy
+msgid "This file is encrypted using a hardware device."
+msgstr ""
+
+#, fuzzy
+msgid "This file is encrypted with a password."
+msgstr ""
+
+#, fuzzy
+msgid "This function is only available for standard wallets when using {device}."
+msgstr ""
+
+#, fuzzy
+msgid "This information is seen by the recipient if you send them a signed payment request."
+msgstr ""
+
+#, fuzzy
+msgid "This invoice has been paid already"
+msgstr ""
+
+#, fuzzy
+msgid "This invoice has expired"
+msgstr ""
+
+#, fuzzy
+msgid "This is a watching-only wallet"
+msgstr ""
+
+#, fuzzy
+msgid "This is a watching-only wallet."
+msgstr ""
+
+#, fuzzy
+msgid "This is a watching-only wallet. It does not contain private keys."
+msgstr ""
+
+#, fuzzy
+msgid "This is discouraged."
+msgstr ""
+
+#, fuzzy
+msgid "This is the height of your local copy of the blockchain."
+msgstr ""
+
+#, fuzzy
+msgid "This may result in higher transactions fees."
+msgstr ""
+
+#, fuzzy
+msgid "This means you will not be able to spend Bitcoins with it."
+msgstr ""
+
+#, fuzzy
+msgid "This might improve your privacy somewhat."
+msgstr ""
+
+#, fuzzy
+msgid "This payment request will be signed."
+msgstr ""
+
+#, fuzzy
+msgid "This plug-in allows you to create a visually encrypted backup of your wallet seeds, or of custom alphanumeric secrets."
+msgstr ""
+
+#, fuzzy
+msgid "This plugin adds two-factor authentication to your wallet."
+msgstr ""
+
+#, fuzzy
+msgid "This plugin facilitates the use of multi-signatures wallets."
+msgstr ""
+
+#, fuzzy
+msgid "This public key was already used. Please generate a new one."
+msgstr ""
+
+#, fuzzy
+msgid "This seed will allow you to recover your wallet."
+msgstr ""
+
+#, fuzzy
+msgid "This service uses a multi-signature wallet, where you own 2 of 3 keys.  The third key is stored on a remote server that signs transactions on your behalf. A small fee will be charged on each transaction that uses the remote server."
+msgstr ""
+
+#, fuzzy
+msgid "This setting affects the Send tab, and all balance related fields."
+msgstr ""
+
+#, fuzzy
+msgid "This transaction is not saved. Close anyway?"
+msgstr ""
+
+#, fuzzy
+msgid "This transaction requires a higher fee, or it will not be propagated by your current server"
+msgstr ""
+
+#, fuzzy
+msgid "This type of script is not supported with {device}."
+msgstr ""
+
+#, fuzzy
+msgid "This version supports a maximum of {length} characters."
+msgstr ""
+
+#, fuzzy
+msgid "This wallet has no seed"
+msgstr ""
+
+#, fuzzy
+msgid "This wallet is already registered with TrustedCoin. To finalize wallet creation, please enter your Google Authenticator Code."
+msgstr ""
+
+#, fuzzy
+msgid "This wallet is protected by TrustedCoin's two-factor authentication."
+msgstr ""
+
+#, fuzzy
+msgid "This wallet is watching-only"
+msgstr ""
+
+#, fuzzy
+msgid "This wallet is watching-only."
+msgstr ""
+
+#, fuzzy
+msgid "This wallet was restored from seed, and it contains two master private keys."
+msgstr ""
+
+#, fuzzy
+msgid "This will delete your lightning private keys"
+msgstr ""
+
+#, fuzzy
+msgid "This will save fees."
+msgstr ""
+
+#, fuzzy
+msgid "Time based: fee rate is based on average confirmation time estimates"
+msgstr ""
+
+#, fuzzy
+msgid "To"
+msgstr ""
+
+#, fuzzy
+msgid "To create a spending wallet, please enter a master private key (xprv/yprv/zprv)."
+msgstr ""
+
+#, fuzzy
+msgid "To create a watching-only wallet, please enter your master public key (xpub/ypub/zpub)."
+msgstr ""
+
+#, fuzzy
+msgid "To encrypt your backup, first we need to load some noise."
+msgstr ""
+
+#, fuzzy
+msgid "To help us diagnose and fix the problem, you can send us a bug report that contains useful debug information:"
+msgstr ""
+
+#, fuzzy
+msgid "To make sure that you have properly saved your seed, please retype it here."
+msgstr ""
+
+#, fuzzy
+msgid "To setup a local watchtower, you must run Electrum on a machine\nthat is always connected to the internet. Configure a port if you want it to be public."
+msgstr ""
+
+#, fuzzy
+msgid "To somewhat protect your privacy, Electrum tries to create change with similar precision to other outputs."
+msgstr ""
+
+#, fuzzy
+msgid "To trigger a rescan, press 'Next'."
+msgstr ""
+
+#, fuzzy
+msgid "To try to fix this, we will now re-pair with your device."
+msgstr ""
+
+#, fuzzy
+msgid "Toggle Encryption"
+msgstr ""
+
+#, fuzzy
+msgid "Total fee"
+msgstr ""
+
+#, fuzzy
+msgid "Total feerate"
+msgstr ""
+
+#, fuzzy
+msgid "Total size"
+msgstr ""
+
+#, fuzzy
+msgid "Transaction"
+msgstr ""
+
+#, fuzzy
+msgid "Transaction ID"
+msgstr ""
+
+#, fuzzy
+msgid "Transaction ID:"
+msgstr ""
+
+#, fuzzy
+msgid "Transaction added to wallet history."
+msgstr ""
+
+#, fuzzy
+msgid "Transaction could not be broadcast due to dust outputs."
+msgstr ""
+
+#, fuzzy
+msgid "Transaction could not be saved."
+msgstr ""
+
+#, fuzzy
+msgid "Transaction exported successfully"
+msgstr ""
+
+#, fuzzy
+msgid "Transaction is too large in size."
+msgstr ""
+
+#, fuzzy
+msgid "Transaction is unrelated to this wallet."
+msgstr ""
+
+#, fuzzy
+msgid "Transaction part"
+msgstr ""
+
+#, fuzzy
+msgid "Transaction to join with"
+msgstr ""
+
+#, fuzzy
+msgid "Transaction to merge signatures from"
+msgstr ""
+
+#, fuzzy
+msgid "Transaction type"
+msgstr ""
+
+#, fuzzy
+msgid "Transaction unrelated to your wallet"
+msgstr ""
+
+#, fuzzy
+msgid "Transaction uses non-standard version."
+msgstr ""
+
+#, fuzzy
+msgid "Transaction:"
+msgstr ""
+
+#, fuzzy
+msgid "Transactions"
+msgstr ""
+
+#, fuzzy
+msgid "Transactions are encrypted and stored on a remote server."
+msgstr ""
+
+#, fuzzy
+msgid "Transactions to cancel"
+msgstr ""
+
+#, fuzzy
+msgid "True"
+msgstr ""
+
+#, fuzzy
+msgid "TrustedCoin"
+msgstr ""
+
+#, fuzzy
+msgid "TrustedCoin (2FA) fee for the next batch of transactions"
+msgstr ""
+
+#, fuzzy
+msgid "TrustedCoin Information"
+msgstr ""
+
+#, fuzzy
+msgid "TrustedCoin charges a small fee to co-sign transactions. The fee depends on how many prepaid transactions you buy. An extra output is added to your transaction every time you run out of prepaid transactions."
+msgstr ""
+
+#, fuzzy
+msgid "Try to connect again?"
+msgstr ""
+
+#, fuzzy
+msgid "Try to explain not only what the bug is, but how it occurs."
+msgstr ""
+
+#, fuzzy
+msgid "Try to raise your transaction fee, or use a server with a lower relay fee."
+msgstr ""
+
+#, fuzzy
+msgid "Turkish"
+msgstr ""
+
+#, fuzzy
+msgid "Two Factor Authentication"
+msgstr ""
+
+#, fuzzy
+msgid "Two-factor authentication is a service provided by TrustedCoin.  It uses a multi-signature wallet, where you own 2 of 3 keys.  The third key is stored on a remote server that signs transactions on your behalf.  To use this service, you will need a smartphone with Google Authenticator installed."
+msgstr ""
+
+#, fuzzy
+msgid "Two-factor authentication is a service provided by TrustedCoin. To use it, you must have a separate device with Google Authenticator."
+msgstr ""
+
+#, fuzzy
+msgid "Tx"
+msgstr ""
+
+#, fuzzy
+msgid "Type"
+msgstr ""
+
+#, fuzzy
+msgid "Unable to connect to mail server:\n {error}"
+msgstr ""
+
+#, fuzzy
+msgid "Unable to create backup"
+msgstr ""
+
+#, fuzzy
+msgid "Unable to create csv"
+msgstr ""
+
+#, fuzzy
+msgid "Unable to export history"
+msgstr ""
+
+#, fuzzy
+msgid "Unable to read file or no transaction found"
+msgstr ""
+
+#, fuzzy
+msgid "Unable to send report"
+msgstr ""
+
+#, fuzzy
+msgid "Unconfirmed"
+msgstr ""
+
+#, fuzzy
+msgid "Unconfirmed Parent"
+msgstr ""
+
+#, fuzzy
+msgid "Unexpected password hash version"
+msgstr ""
+
+#, fuzzy
+msgid "Unfreeze"
+msgstr ""
+
+#, fuzzy
+msgid "Unfreeze Address"
+msgstr ""
+
+#, fuzzy
+msgid "Unfreeze Addresses"
+msgstr ""
+
+#, fuzzy
+msgid "Unfreeze Coin"
+msgstr ""
+
+#, fuzzy
+msgid "Unfreeze Coins"
+msgstr ""
+
+#, fuzzy
+msgid "Unknown"
+msgstr ""
+
+#, fuzzy
+msgid "Unknown error"
+msgstr ""
+
+#, fuzzy
+msgid "Unknown error when broadcasting the transaction."
+msgstr ""
+
+#, fuzzy
+msgid "Unmatured"
+msgstr ""
+
+#, fuzzy
+msgid "Unrealized gains"
+msgstr ""
+
+#, fuzzy
+msgid "Unsigned"
+msgstr ""
+
+#, fuzzy
+msgid "Unsupported password hash version"
+msgstr ""
+
+#, fuzzy
+msgid "Unused"
+msgstr ""
+
+#, fuzzy
+msgid "Update Check"
+msgstr ""
+
+#, fuzzy
+msgid "Update check failed"
+msgstr ""
+
+#, fuzzy
+msgid "Update to Electrum {version} is available"
+msgstr ""
+
+#, fuzzy
+msgid "Upgrading wallet format..."
+msgstr ""
+
+#, fuzzy
+msgid "Use Gold Wallet and create a new wallet"
+msgstr ""
+
+#, fuzzy
+msgid "Use Gold Wallet and import an existing wallet"
+msgstr ""
+
+#, fuzzy
+msgid "Use Replace-By-Fee"
+msgstr ""
+
+#, fuzzy
+msgid "Use Tor Proxy"
+msgstr ""
+
+#, fuzzy
+msgid "Use a hardware device"
+msgstr ""
+
+#, fuzzy
+msgid "Use a master key"
+msgstr ""
+
+#, fuzzy
+msgid "Use as server"
+msgstr ""
+
+#, fuzzy
+msgid "Use change addresses"
+msgstr ""
+
+#, fuzzy
+msgid "Use multiple change addresses"
+msgstr ""
+
+#, fuzzy
+msgid "Use proxy"
+msgstr ""
+
+#, fuzzy
+msgid "Use the camera button to scan a QR code."
+msgstr ""
+
+#, fuzzy
+msgid "Use this dialog to add a password to your wallet."
+msgstr ""
+
+#, fuzzy
+msgid "Use this dialog to change your password."
+msgstr ""
+
+#, fuzzy
+msgid "Use this dialog to toggle encryption."
+msgstr ""
+
+#, fuzzy
+msgid "Used"
+msgstr ""
+
+#, fuzzy
+msgid "Username"
+msgstr ""
+
+#, fuzzy
+msgid "Uses icons from the Icons8 icon pack (icons8.com)."
+msgstr ""
+
+#, fuzzy
+msgid "Using change addresses makes it more difficult for other people to track your transactions."
+msgstr ""
+
+#, fuzzy
+msgid "Value"
+msgstr ""
+
+#, fuzzy
+msgid "Verification failed!"
+msgstr ""
+
+#, fuzzy
+msgid "Verification successful!"
+msgstr ""
+
+#, fuzzy
+msgid "Verified block headers"
+msgstr ""
+
+#, fuzzy
+msgid "Verify"
+msgstr ""
+
+#, fuzzy
+msgid "Verify GA instant"
+msgstr ""
+
+#, fuzzy
+msgid "Verify the address below.<br>Type the character from your security card corresponding to the <u><b>BOLD</b></u> character."
+msgstr ""
+
+#, fuzzy
+msgid "Verify the cable is connected and that no other application is using it."
+msgstr ""
+
+#, fuzzy
+msgid "Verifying..."
+msgstr ""
+
+#, fuzzy
+msgid "Version"
+msgstr ""
+
+#, fuzzy
+msgid "Video Device"
+msgstr ""
+
+#, fuzzy
+msgid "Vietnamese"
+msgstr ""
+
+#, fuzzy
+msgid "View in web browser"
+msgstr ""
+
+#, fuzzy
+msgid "View log"
+msgstr ""
+
+#, fuzzy
+msgid "View on block explorer"
+msgstr ""
+
+#, fuzzy
+msgid "WARNING"
+msgstr ""
+
+#, fuzzy
+msgid "WARNING: ALL your private keys are secret."
+msgstr ""
+
+#, fuzzy
+msgid "WARNING: This is a multi-signature wallet."
+msgstr ""
+
+#, fuzzy
+msgid "WARNING: the alias \"{alias}\" could not be validated via an additional security check, DNSSEC, and thus may not be correct."
+msgstr ""
+
+#, fuzzy
+msgid "WIF keys are typed in Electrum, based on script type."
+msgstr ""
+
+#, fuzzy
+msgid "Waiting for TrustedCoin server to sign transaction..."
+msgstr ""
+
+#, fuzzy
+msgid "Wallet"
+msgstr ""
+
+#, fuzzy
+msgid "Wallet Info"
+msgstr ""
+
+#, fuzzy
+msgid "Wallet Information"
+msgstr ""
+
+#, fuzzy
+msgid "Wallet Name"
+msgstr ""
+
+#, fuzzy
+msgid "Wallet backup created"
+msgstr ""
+
+#, fuzzy
+msgid "Wallet change address"
+msgstr ""
+
+#, fuzzy
+msgid "Wallet file corruption detected. Please restore your wallet from seed, and compare the addresses in both files"
+msgstr ""
+
+#, fuzzy
+msgid "Wallet file not found: {name}"
+msgstr ""
+
+#, fuzzy
+msgid "Wallet name"
+msgstr ""
+
+#, fuzzy
+msgid "Wallet receive address"
+msgstr ""
+
+#, fuzzy
+msgid "Wallet removed: {name}"
+msgstr ""
+
+#, fuzzy
+msgid "Wallet type"
+msgstr ""
+
+#, fuzzy
+msgid "Wallet type:"
+msgstr ""
+
+#, fuzzy
+msgid "Warning"
+msgstr ""
+
+#, fuzzy
+msgid "Warning!"
+msgstr ""
+
+#, fuzzy
+msgid "Warning: Please be aware that in the process of using the Secure Transaction feature, a part of the funds left in your wallet might be blocked. This is a normal procedure linked to UTXO and the blockchain parameters of the Bitcoin Vault wallet. Your funds will be unblocked once the transaction is verified (after approximately 24 hrs) or canceled (within 24 hrs)."
+msgstr ""
+
+#, fuzzy
+msgid "Warning: The next address will not be recovered automatically if you restore your wallet from seed; you may need to add it manually.\n\nThis occurs because you have too many unused addresses in your wallet. To avoid this situation, use the existing addresses first.\n\nCreate anyway?"
+msgstr ""
+
+#, fuzzy
+msgid "Warning: do not use this if it makes you pick a weaker password."
+msgstr ""
+
+#, fuzzy
+msgid "Watch-only wallet"
+msgstr ""
+
+#, fuzzy
+msgid "We do not guarantee that BIP39 imports will always be supported in Electrum."
+msgstr ""
+
+#, fuzzy
+msgid "We encountered an error while connecting to your device:"
+msgstr ""
+
+#, fuzzy
+msgid "When you press Ok button application will be restarted"
+msgstr ""
+
+#, fuzzy
+msgid "While this is less than ideal, it might help if you run Electrum as Administrator."
+msgstr ""
+
+#, fuzzy
+msgid "Within {number} blocks"
+msgstr ""
+
+#, fuzzy
+msgid "Witness Script"
+msgstr ""
+
+#, fuzzy
+msgid "Would you like to be notified when there is a newer version of Electrum available?"
+msgstr ""
+
+#, fuzzy
+msgid "Write logs to file"
+msgstr ""
+
+#, fuzzy
+msgid "Wrong PIN"
+msgstr ""
+
+#, fuzzy
+msgid "Wrong key type"
+msgstr ""
+
+#, fuzzy
+msgid "Wrong prefix. It is neither compressed nor uncompressed"
+msgstr ""
+
+#, fuzzy
+msgid "Wrong pubkey format"
+msgstr ""
+
+#, fuzzy
+msgid "Wrong signature"
+msgstr ""
+
+#, fuzzy
+msgid "You are already on the latest version of Electrum."
+msgstr ""
+
+#, fuzzy
+msgid "You are following branch"
+msgstr ""
+
+#, fuzzy
+msgid "You are in testnet mode."
+msgstr ""
+
+#, fuzzy
+msgid "You are most likely using an outdated version of Electrum. Please update."
+msgstr ""
+
+#, fuzzy
+msgid "You are offline."
+msgstr ""
+
+#, fuzzy
+msgid "You are using Electrum in offline mode; restart Electrum if you want to get connected"
+msgstr ""
+
+#, fuzzy
+msgid "You are using a non-deterministic wallet, which cannot create new addresses."
+msgstr ""
+
+#, fuzzy
+msgid "You can disable this setting in '{setting_name}'."
+msgstr ""
+
+#, fuzzy
+msgid "You can download the new version from {url}."
+msgstr ""
+
+#, fuzzy
+msgid "You can override the suggested derivation path."
+msgstr ""
+
+#, fuzzy
+msgid "You can't broadcast a transaction without a live network connection."
+msgstr ""
+
+#, fuzzy
+msgid "You do not need to perform regular backups, because your wallet can be recovered from a secret phrase that you can memorize or write on paper."
+msgstr ""
+
+#, fuzzy
+msgid "You have multiple consecutive whitespaces or leading/trailing whitespaces in your passphrase."
+msgstr ""
+
+#, fuzzy
+msgid "You may enter a Bitcoin address, a label from your list of contacts (a list of completions will be proposed), or an alias (email-like address that forwards to a Bitcoin address)"
+msgstr ""
+
+#, fuzzy
+msgid "You may extend your seed with custom words."
+msgstr ""
+
+#, fuzzy
+msgid "You may load a CSV file using the file icon."
+msgstr ""
+
+#, fuzzy
+msgid "You might have an incompatible library."
+msgstr ""
+
+#, fuzzy
+msgid "You need to be online in order to complete the creation of your wallet.  If you generated your seed on an offline computer, click on \"{button}\" to close this window, move your wallet file to an online computer, and reopen it with Electrum."
+msgstr ""
+
+#, fuzzy
+msgid "Your Ledger Wallet wants to tell you a one-time PIN code.<br><br>For best security you should unplug your device, open a text editor on another computer, put your cursor into it, and plug your device into that computer. It will output a summary of the transaction being signed and a one-time PIN.<br><br>Verify the transaction summary and type the PIN code here.<br><br>Before pressing enter, plug the device back into this computer.<br>"
+msgstr ""
+
+#, fuzzy
+msgid "Your Ledger is locked. Please unlock it."
+msgstr ""
+
+#, fuzzy
+msgid "Your Node ID"
+msgstr ""
+
+#, fuzzy
+msgid "Your PIN code was updated"
+msgstr ""
+
+#, fuzzy
+msgid "Your accounts have been moved to"
+msgstr ""
+
+#, fuzzy
+msgid "Your bitcoins are password protected. However, your wallet file is not encrypted."
+msgstr ""
+
+#, fuzzy
+msgid "Your device might not have support for this functionality."
+msgstr ""
+
+#, fuzzy
+msgid "Your labels have been synchronised."
+msgstr ""
+
+#, fuzzy
+msgid "Your seed extension is"
+msgstr ""
+
+#, fuzzy
+msgid "Your seed extension must be saved together with your seed."
+msgstr ""
+
+#, fuzzy
+msgid "Your seed is important!"
+msgstr ""
+
+#, fuzzy
+msgid "Your server is on branch"
+msgstr ""
+
+#, fuzzy
+msgid "Your transaction was sent to the cosigning pool."
+msgstr ""
+
+#, fuzzy
+msgid "Your wallet file does not contain secrets, mostly just metadata. "
+msgstr ""
+
+#, fuzzy
+msgid "Your wallet file is NOT encrypted."
+msgstr ""
+
+#, fuzzy
+msgid "Your wallet file is encrypted."
+msgstr ""
+
+#, fuzzy
+msgid "Your wallet file is: {path}."
+msgstr ""
+
+#, fuzzy
+msgid "Your wallet generation seed is:"
+msgstr ""
+
+#, fuzzy
+msgid "Your wallet has {number} prepaid transactions."
+msgstr ""
+
+#, fuzzy
+msgid "Your wallet history has been successfully exported."
+msgstr ""
+
+#, fuzzy
+msgid "Your wallet is not protected."
+msgstr ""
+
+#, fuzzy
+msgid "Your wallet is password protected and encrypted."
+msgstr ""
+
+#, fuzzy
+msgid "Your wallet's generated seed is:"
+msgstr ""
+
+#, fuzzy
+msgid "Your {0} were exported to '{1}'"
+msgstr ""
+
+#, fuzzy
+msgid "Your {title} were successfully imported"
+msgstr ""
+
+#, fuzzy
+msgid "Zeros after decimal point"
+msgstr ""
+
+#, fuzzy
+msgid "[Clear]"
+msgstr ""
+
+#, fuzzy
+msgid "[Send]"
+msgstr ""
+
+#, fuzzy
+msgid "[b] - print server banner"
+msgstr ""
+
+#, fuzzy
+msgid "[c] - display contacts"
+msgstr ""
+
+#, fuzzy
+msgid "[h] - displays this help text"
+msgstr ""
+
+#, fuzzy
+msgid "[i] - display transaction history"
+msgstr ""
+
+#, fuzzy
+msgid "[o] - enter payment order"
+msgstr ""
+
+#, fuzzy
+msgid "[p] - print stored payment order"
+msgstr ""
+
+#, fuzzy
+msgid "[q] - quit"
+msgstr ""
+
+#, fuzzy
+msgid "[r] - show own receipt addresses"
+msgstr ""
+
+#, fuzzy
+msgid "[s] - send stored payment order"
+msgstr ""
+
+#, fuzzy
+msgid "add inputs and outputs"
+msgstr ""
+
+#, fuzzy
+msgid "add invoice timed out"
+msgstr ""
+
+#, fuzzy
+msgid "address already in wallet"
+msgstr ""
+
+#, fuzzy
+msgid "and you will have the possibility, while they are unconfirmed, to replace them with transactions that pay higher fees."
+msgstr ""
+
+#, fuzzy
+msgid "are frozen"
+msgstr ""
+
+#, fuzzy
+msgid "blocks"
+msgstr ""
+
+#, fuzzy
+msgid "change"
+msgstr ""
+
+#, fuzzy
+msgid "contacts"
+msgstr ""
+
+#, fuzzy
+msgid "cosigner"
+msgstr ""
+
+#, fuzzy
+msgid "could not find suitable outputs"
+msgstr ""
+
+#, fuzzy
+msgid "current fee unknown"
+msgstr ""
+
+#, fuzzy
+msgid "high fee"
+msgstr ""
+
+#, fuzzy
+msgid "initialized"
+msgstr ""
+
+#, fuzzy
+msgid "invalid address"
+msgstr ""
+
+#, fuzzy
+msgid "invalid private key"
+msgstr ""
+
+#, fuzzy
+msgid "invoices"
+msgstr ""
+
+#, fuzzy
+msgid "json"
+msgstr ""
+
+#, fuzzy
+msgid "keystore"
+msgstr ""
+
+#, fuzzy
+msgid "labels"
+msgstr ""
+
+#, fuzzy
+msgid "more information at <a href=\"https://revealer.cc/faq\">https://revealer.cc/faq</a>"
+msgstr ""
+
+#, fuzzy
+msgid "not implemented type"
+msgstr ""
+
+#, fuzzy
+msgid "open_channel timed out"
+msgstr ""
+
+#, fuzzy
+msgid "or type an existing revealer code below and click 'next':"
+msgstr ""
+
+#, fuzzy
+msgid "please wait..."
+msgstr ""
+
+#, fuzzy
+msgid "print the calibration pdf and follow the instructions "
+msgstr ""
+
+#, fuzzy
+msgid "proxy enabled"
+msgstr ""
+
+#, fuzzy
+msgid "receiving"
+msgstr ""
+
+#, fuzzy
+msgid "secret backup utility"
+msgstr ""
+
+#, fuzzy
+msgid "seed"
+msgstr ""
+
+#, fuzzy
+msgid "transaction is final"
+msgstr ""
+
+#, fuzzy
+msgid "type a custom alphanumerical secret below:"
+msgstr ""
+
+#, fuzzy
+msgid "unconfirmed"
+msgstr ""
+
+#, fuzzy
+msgid "unknown"
+msgstr ""
+
+#, fuzzy
+msgid "unknown parser {name!r} (choices: {choices})"
+msgstr ""
+
+#, fuzzy
+msgid "unmatured"
+msgstr ""
+
+#, fuzzy
+msgid "watching only"
+msgstr ""
+
+#, fuzzy
+msgid "watching-only"
+msgstr ""
+
+#, fuzzy
+msgid "wiped"
+msgstr ""
+
+#, fuzzy
+msgid "your seed extension will <b>not</b> be included in the encrypted backup."
+msgstr ""
+
+#, fuzzy
+msgid "{coins_number} outputs available ({utxos_number} total)"
+msgstr ""
+
+#, fuzzy
+msgid "{number} confirmations"
+msgstr ""
+
+#, fuzzy
+msgid "{number} connections."
+msgstr ""
+
+#, fuzzy
+msgid "{number} new transactions: Total amount received in the new transactions {amount}"
+msgstr ""
+
+#, fuzzy
+msgid "{size} from tip"
+msgstr ""
+
+#, fuzzy
+msgid "{title} copied to clipboard:\n\n{content}"
+msgstr ""
+
+#, fuzzy
+msgid "{txid} is covered by GreenAddress instant confirmation"
+msgstr ""
+
+#, fuzzy
+msgid "{txid} is not covered by GreenAddress instant confirmation"
+msgstr ""
+
+#, fuzzy
+msgid "{wallet_seed} encrypted for Revealer {version}_{checksum} saved as PNG and PDF at: "
+msgstr ""
