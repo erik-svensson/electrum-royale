@@ -469,7 +469,7 @@ class EmailNotificationWizard(InstallWizard):
 class EmailNotificationDialog(EmailNotificationWizard):
     def __init__(self, wallet, *args, **kwargs):
         kwargs['turn_off_icon'] = True
-        kwargs['minimum_size'] = (600, 230)
+        kwargs['minimum_size'] = (600, 300)
         EmailNotificationWizard.__init__(self, wallet, *args, **kwargs)
         self.show_skip_checkbox = False
         self.setWindowTitle(_('Notifications'))
