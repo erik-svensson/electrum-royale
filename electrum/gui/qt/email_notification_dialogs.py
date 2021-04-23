@@ -6,7 +6,8 @@ from enum import IntEnum
 
 from PyQt5.QtCore import QRegExp, Qt
 from PyQt5.QtGui import QRegExpValidator
-from PyQt5.QtWidgets import QVBoxLayout, QLineEdit, QHBoxLayout, QLabel, QCheckBox, QPushButton, QMessageBox
+from PyQt5.QtWidgets import QVBoxLayout, QLineEdit, QHBoxLayout, QLabel, QCheckBox, QPushButton, QMessageBox, \
+    QGridLayout
 
 from electrum.base_wizard import GoBack
 from electrum.gui.qt.installwizard import InstallWizard
