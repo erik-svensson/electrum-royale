@@ -705,7 +705,7 @@ def time_difference(distance_in_time, include_seconds):
         return "over %d years" % (round(distance_in_minutes / 525600))
 
 mainnet_block_explorers = {
-    'BitcoinVault block explorer': ('http://explorer.bitcoinvault.org/',
+    'BitcoinVault block explorer': ('https://explorer.bitcoinvault.global/',
                          {'tx': 'tx/', 'addr': 'address/'}),
 
 }

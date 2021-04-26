@@ -44,7 +44,7 @@ from PyQt5.QtWidgets import (QMessageBox, QComboBox, QSystemTrayIcon, QTabWidget
                              QMenuBar, QFileDialog, QCheckBox, QLabel,
                              QVBoxLayout, QGridLayout, QLineEdit, QHBoxLayout, QPushButton, QScrollArea, QTextEdit,
                              QShortcut, QMainWindow, QCompleter, QInputDialog,
-                             QWidget, QSizePolicy, QStatusBar)
+                             QWidget, QSizePolicy, QStatusBar, QTextBrowser)
 
 import electrum
 from electrum import (keystore, ecc, constants, util, bitcoin, commands,
@@ -60,7 +60,7 @@ from electrum.plugin import run_hook
 from electrum.simple_config import SimpleConfig
 from electrum.transaction import (Transaction, PartialTxInput,
                                   PartialTransaction, PartialTxOutput)
-from electrum.util import PR_PAID, PR_FAILED
+from electrum.util import PR_PAID, PR_FAILED, resource_path
 from electrum.util import PR_TYPE_ONCHAIN
 from electrum.util import (format_time, format_satoshis, format_fee_satoshis,
                            format_satoshis_plain, UserCancelled, profiler,
@@ -69,24 +69,26 @@ from electrum.util import (format_time, format_satoshis, format_fee_satoshis,
                            get_new_wallet_name, send_exception_to_crash_reporter,
                            InvalidBitcoinURI)
 from electrum.util import pr_expiration_values
-from electrum.version import ELECTRUM_VERSION
+from electrum.version import ELECTRUM_VERSION, TERMS_AND_CONDITION_LAST_UPDATE
 from electrum.wallet import (Multisig_Wallet, CannotBumpFee, Abstract_Wallet,
                              sweep_preparations, InternalAddressCorruption,
                              ThreeKeysWallet)
 from .amountedit import AmountEdit, BTCAmountEdit, MyLineEdit, FeerateEdit
 from .channels_list import ChannelsList
 from .confirm_tx_dialog import ConfirmTxDialog
+from .email_notification_dialogs import WalletNotificationsMainDialog
 from .exception_window import Exception_Hook
 from .fee_slider import FeeSlider
 from .history_list import HistoryList, HistoryModel
 from .installwizard import get_wif_help_text
 from .qrcodewidget import QRCodeWidget, QRDialog
 from .qrtextedit import ShowQRTextEdit, ScanQRTextEdit
+from .terms_and_conditions_mixin import load_terms_and_conditions
 from .three_keys_dialogs import PSBTDialog
 from .transaction_dialog import PreviewTxDialog
 from .transaction_dialog import show_transaction
 from .update_checker import UpdateCheck, UpdateCheckThread
-from .util import ButtonsTextEdit
+from .util import ButtonsTextEdit, WaitingDialogWithCancel
 from .util import (read_QIcon, ColorScheme, text_dialog, icon_path, WaitingDialog,
                    WindowModalDialog, ChoicesLayout, HelpLabel, Buttons,
                    OkButton, InfoButton, WWLabel, TaskThread, CancelButton,
@@ -94,6 +96,7 @@ from .util import (read_QIcon, ColorScheme, text_dialog, icon_path, WaitingDialo
                    import_meta_gui, export_meta_gui,
                    filename_field, address_field, char_width_in_lineedit, webopen,
                    TRANSACTION_FILE_EXTENSION_FILTER)
+from ...notification_connector import EmailNotificationWallet
 
 if TYPE_CHECKING:
     from . import ElectrumGui
@@ -586,6 +589,8 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
 
         wallet_menu = menubar.addMenu(_("&Wallet"))
         wallet_menu.addAction(_("&Information"), self.show_wallet_info)
+        if EmailNotificationWallet.is_subscribable(self.wallet):
+            wallet_menu.addAction(_("&Notification"), self.show_notifications)
         wallet_menu.addSeparator()
         self.password_menu = wallet_menu.addAction(_("&Password"), self.change_password_dialog)
         self.seed_menu = wallet_menu.addAction(_("&Seed"), self.show_seed_dialog)
@@ -654,17 +659,38 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
         help_menu.addAction(_("&Documentation"), lambda: webopen("http://docs.electrum.org/")).setShortcut(QKeySequence.HelpContents)
         help_menu.addAction(_("&Report Bug"), self.show_report_bug)
         help_menu.addSeparator()
-        help_menu.addAction(_("&Donate to server"), self.donate_to_server)
+        help_menu.addAction(_("&Terms && Conditions"), self.terms_and_conditions_view)
 
         self.setMenuBar(menubar)
 
-    def donate_to_server(self):
-        d = self.network.get_donation_address()
-        if d:
-            host = self.network.get_parameters().host
-            self.pay_to_URI('bitcoin:%s?message=donation for %s'%(d, host))
-        else:
-            self.show_error(_('No donation address for this server'))
+    def terms_and_conditions_view(self):
+        terms = load_terms_and_conditions(self.config)
+        dialog = WindowModalDialog(self, _('Terms & Conditions'))
+        # size and icon position the same like in install wizard
+        dialog.setMinimumSize(600, 400)
+        main_vbox = QVBoxLayout(dialog)
+        logo_vbox = QVBoxLayout()
+        logo = QLabel()
+        logo.setPixmap(self.windowIcon().pixmap(QSize(60, 60)))
+        logo_vbox.addWidget(logo)
+        logo_vbox.addStretch(1)
+        logo_hbox = QHBoxLayout()
+        logo_hbox.addLayout(logo_vbox)
+        logo_hbox.addSpacing(5)
+        vbox = QVBoxLayout()
+        text_browser = QTextBrowser()
+        text_browser.setReadOnly(True)
+        text_browser.setOpenExternalLinks(True)
+        text_browser.setHtml(terms)
+        vbox.addWidget(text_browser)
+        footer = QHBoxLayout()
+        footer.addWidget(QLabel(_('Last updated: {date}').format(date=TERMS_AND_CONDITION_LAST_UPDATE)))
+        footer.addStretch(1)
+        footer.addWidget(OkButton(dialog))
+        vbox.addLayout(footer)
+        logo_hbox.addLayout(vbox)
+        main_vbox.addLayout(logo_hbox)
+        dialog.exec_()
 
     def show_about(self):
         QMessageBox.about(self, "Electrum Vault",
@@ -2123,6 +2149,22 @@ in the "Authenticators" tab in the Gold Wallet app.')
         vbox.addLayout(btns)
         dialog.setLayout(vbox)
         dialog.exec_()
+
+    def show_notifications(self):
+        dialog = WalletNotificationsMainDialog(self, self.config, self.wallet, self.app)
+
+        def on_error(*args):
+            self.logger.error(str(args[0][1]))
+            dialog.set_error(_('Cannot fetch data from server'))
+            dialog.exec_()
+
+        WaitingDialogWithCancel(
+            self,
+            _('Connecting with server...'),
+            task=dialog.check_subscription,
+            on_success=lambda *args: dialog.exec_(),
+            on_error=on_error,
+        )
 
     def remove_wallet(self):
         if self.question('\n'.join([

@@ -38,9 +38,6 @@ msgstr "&업데이트 확인"
 msgid "&Documentation"
 msgstr "&문서화"
 
-msgid "&Donate to server"
-msgstr "&서버에 기여"
-
 msgid "&Encrypt/decrypt message"
 msgstr "&메시지 암호화/암호화 해제"
 
@@ -92,6 +89,9 @@ msgstr "&신규"
 msgid "&New/Restore"
 msgstr "&신규/복구"
 
+msgid "&Notification"
+msgstr "&알림"
+
 msgid "&Official website"
 msgstr "&공식 웹사이트"
 
@@ -136,6 +136,9 @@ msgstr "&요약"
 
 msgid "&Sweep"
 msgstr "&지우기"
+
+msgid "&Terms && Conditions"
+msgstr "&이용약관"
 
 msgid "&Tools"
 msgstr "&도구"
@@ -227,6 +230,7 @@ msgstr "공동 서명인 추가"
 msgid "Additional fees"
 msgstr "추가 수수료"
 
+#, python-brace-format
 msgid "Additional {num_satoshis_added} satoshis are going to be added."
 msgstr "추가된 {num_satoshis_added} satoshi가 추가됩니다."
 
@@ -305,6 +309,7 @@ msgstr "에러 발생"
 msgid "An encrypted transaction was retrieved from cosigning pool."
 msgstr "암호화된 거래가 공동서명 풀로부터 회수되었습니다."
 
+#, python-brace-format
 msgid "An unnamed {device_name}"
 msgstr "이름이 지정되지 않은 {device_name}"
 
@@ -314,6 +319,7 @@ msgstr "해당 채널을 삭제하시겠습니까? 지갑 내역에서 연관된
 msgid "Are you sure you want to disagree?"
 msgstr "동의하지 않으시겠습니까?"
 
+#, python-brace-format
 msgid "Are you sure you want to remove this transaction and {number} child transactions?"
 msgstr "해당 거래와 {number}번 하위 거래를 삭제하시겠습니까?"
 
@@ -323,6 +329,7 @@ msgstr "해당 거래를 삭제하시겠습니까??"
 msgid "Are you sure?"
 msgstr "확실합니까?"
 
+#, python-brace-format
 msgid "At block height: {height}"
 msgstr "블록 높이: {height}"
 
@@ -350,8 +357,8 @@ msgstr "자동 연결"
 msgid "Automatically check for software updates"
 msgstr "소프트웨어 업데이트를 자동으로 확인합니다"
 
-msgid "BIP39 seed (Gold Wallet integration)"
-msgstr "BIP39 시드 (Gold Wallet 통합)"
+msgid "BIP39 seed"
+msgstr "BIP39 시드"
 
 msgid "BIP39 seeds can be imported in Electrum, so that users can access funds locked in other wallets."
 msgstr "BIP39 시드는 이용자들의 타 지갑 자금에 대한 접근을 위해 Electrum에서 가져올 수 있습니다."
@@ -467,6 +474,9 @@ msgstr "수수료를 범핑할 수 없습니다"
 msgid "Cannot create window for wallet"
 msgstr "지갑창을 생성할 수 없습니다"
 
+msgid "Cannot fetch data from server"
+msgstr "서버에서 데이터를 패치할 수 없음"
+
 msgid "Cannot load wallet"
 msgstr "지갑을 불러올 수 없습니다"
 
@@ -485,6 +495,7 @@ msgstr "자본 이득"
 msgid "Capital gains"
 msgstr "자본 이득"
 
+#, python-brace-format
 msgid "Chain split detected at block {0}"
 msgstr "블록 {0}에서 체인 분할이 감지되었습니다"
 
@@ -493,6 +504,9 @@ msgstr "변경"
 
 msgid "Change Password"
 msgstr "패스워드 변경"
+
+msgid "Change your email"
+msgstr "사용자 이메일을 변경하십시오"
 
 msgid "Changing PIN code."
 msgstr "PIN 코드 변경."
@@ -512,6 +526,7 @@ msgstr "채널이 이미 종료되었습니다"
 msgid "Channel closed"
 msgstr "채널 종료"
 
+#, python-brace-format
 msgid "Channel closed, you may need to wait at least {number} blocks, because of CSV delays"
 msgstr "채널이 종료되었습니다. CSV 지연으로 인해 최소 {number} 블록이 필요합니다"
 
@@ -622,6 +637,9 @@ msgstr "코&인"
 msgid "Code"
 msgstr "코드"
 
+msgid "Code:"
+msgstr "코드:"
+
 msgid "Coin control active"
 msgstr "코인 컨트롤이 활성화되었습니다"
 
@@ -640,6 +658,7 @@ msgstr "코인 선택 (알림)"
 msgid "Coin selection (non-alert)"
 msgstr "코인 선택 (미알림)"
 
+#, python-brace-format
 msgid "Coin selection active ({num_utxos} UTXOs selected)"
 msgstr "코인 선택이 활성화 되었습니다({num_utxos} UTXO가 선택되었습니다)"
 
@@ -676,6 +695,15 @@ msgstr "Ledger 기기의 거래 확인..."
 msgid "Confirm new PIN"
 msgstr "새로운 PIN 확인"
 
+msgid "Confirm your current email address"
+msgstr "현재 사용 중인 사용자 이메일 주소를 확인하십시오"
+
+msgid "Confirm your email address"
+msgstr "사용자 이메일 주소 확인"
+
+msgid "Confirm your new email address"
+msgstr "새로운 사용자 이메일 주소를 확인하십시오"
+
 msgid "Confirmation PIN from Gold Wallet:"
 msgstr "Gold Wallet에서의 PIN 코드:"
 
@@ -691,8 +719,12 @@ msgstr "노드 연결 완료"
 msgid "Connected nodes are on the same chain"
 msgstr "연결된 노드들이 동일 체인에 존재합니다"
 
+#, python-brace-format
 msgid "Connected to {0} nodes."
 msgstr "{0} 노드에 연결되었습니다."
+
+msgid "Connecting with server..."
+msgstr "서버 연결 중..."
 
 msgid "Connecting..."
 msgstr "연결중..."
@@ -733,6 +765,7 @@ msgstr "붙여넣기 버튼을 이용하여 수취인의 지갑주소를 복사 
 msgid "Copy to clipboard"
 msgstr "클립보드에 복사되었습니다"
 
+#, python-brace-format
 msgid "Copy {column_title}"
 msgstr "복사 {column_title}"
 
@@ -748,6 +781,7 @@ msgstr "채널을 종료할 수 없습니다: "
 msgid "Could not force close channel: "
 msgstr "채널을 강제종료할 수 없습니다: "
 
+#, python-brace-format
 msgid "Could not open channel: {error_value}"
 msgstr "채널을 오픈할 수 없습니다: {error_value}"
 
@@ -787,12 +821,16 @@ msgstr "현재 수수료 비율"
 msgid "Current Password:"
 msgstr "현재 패스워드:"
 
+msgid "Current email:"
+msgstr "현재 사용자 이메일:"
+
 msgid "Current feerate"
 msgstr "현재 수수료 비율"
 
 msgid "Current rate"
 msgstr "현재 요율"
 
+#, python-brace-format
 msgid "Current version: {version}"
 msgstr "현재 버전: {version}"
 
@@ -811,6 +849,7 @@ msgstr "어둡게/밝게"
 msgid "Date"
 msgstr "날짜"
 
+#, python-brace-format
 msgid "Date: {date}"
 msgstr "날짜: {date}"
 
@@ -871,6 +910,7 @@ msgstr "개발자"
 msgid "Device not in Bitcoin mode"
 msgstr "기기가 Bitcoin 모드에 있지 않습니다"
 
+#, python-brace-format
 msgid "Digital Revealer ({version}_{code_id}) saved as PNG and PDF at:"
 msgstr "디지털 Revealer ({version}_{code_id})가 PNG와 PDF로 다음에 저장되었습니다:"
 
@@ -910,6 +950,7 @@ msgstr "새로운 시드를 생성하시겠습니까 아니면 기존 시드를 
 msgid "Do you want to create a new seed, or to restore a wallet using an existing seed?"
 msgstr "새로운 시드 생성과 기존의 시드를 이용한 지갑 복원 중 어느 것을 원하십니까?"
 
+#, python-brace-format
 msgid "Do you want to delete '{path}'?"
 msgstr "'{path}'를 삭제하시겠습니까?"
 
@@ -922,11 +963,15 @@ msgstr "마법사를 시행하시겠습니까?"
 msgid "Do you want to open it now?"
 msgstr "지금 파일을 오픈하시겠습니까?"
 
+#, python-brace-format
 msgid "Do you want to remove {address} from your wallet?"
 msgstr "지갑에서 {address}를 삭제하시겠습니까?"
 
 msgid "Do you want to send this report?"
 msgstr "해당 보고를 전송하시겠습니까?"
+
+msgid "Do you want to unsubscribe this wallet from email notifications?"
+msgstr "이 지갑의 이메일 알림 설정을 해제하겠습니까?"
 
 msgid "Do you want to use Gold Wallet as a transaction authenticator?"
 msgstr "Gold Wallet을 거래 인증기로 사용하시겠습니까?"
@@ -952,12 +997,14 @@ msgstr "ETA"
 msgid "Each revealer should be used only once."
 msgstr "각각의 revealer는 단 한번만 사용되어야 합니다."
 
+#, python-brace-format
 msgid "Edit {title}"
 msgstr "수정 {title}"
 
 msgid "Electrum Plugins"
 msgstr "Electrum 플러그인"
 
+#, python-brace-format
 msgid ""
 "Electrum cannot pair with your {device}.\n"
 "\n"
@@ -1009,6 +1056,15 @@ msgstr "Electrum은 속도에 집중하며 최소한의 리소스를 사용하�
 msgid "Email"
 msgstr "이메일"
 
+msgid "Email Notifications"
+msgstr "이메일 알림"
+
+msgid "Email address:"
+msgstr "이메일 주소:"
+
+msgid "Email address: "
+msgstr "이메일 주소:"
+
 msgid "Email settings"
 msgstr "이메일 설정"
 
@@ -1036,6 +1092,7 @@ msgstr "커스텀 비공개 암호화"
 msgid "Encrypt wallet file"
 msgstr "지갑 파일 암호화"
 
+#, python-brace-format
 msgid "Encrypt {wallet_name}'s seed"
 msgstr "{wallet_name}의 시드 암호화"
 
@@ -1048,6 +1105,7 @@ msgstr "메시지 암호화/암호화 해제"
 msgid "Encrypted"
 msgstr "암호화됨"
 
+#, python-brace-format
 msgid "Encryption and decryption are currently not supported for {device}"
 msgstr "이{device}에서 암호화/암호화 해제가 지원되지 않음"
 
@@ -1132,6 +1190,7 @@ msgstr "시드 암호화 해제를 위해 PIN 코드 입력"
 msgid "Enter your PIN code in order to sign this transaction"
 msgstr "거래 서명를 위해 PIN 코드 입력"
 
+#, python-brace-format
 msgid "Enter your PIN code to confirm deletion of {wallet}"
 msgstr "{wallet} 삭제 확정을 위해 PIN 코드 입력"
 
@@ -1162,6 +1221,7 @@ msgstr "부분 거래 통합 오류"
 msgid "Error connecting to server"
 msgstr "서버 접속 오류"
 
+#, python-brace-format
 msgid "Error connecting to {name} server"
 msgstr "{name} 서버 접속 오류"
 
@@ -1176,6 +1236,9 @@ msgstr "네트워크에서 거래 가져오기 오류"
 
 msgid "Error joining partial transactions"
 msgstr "부분 거래 참여 오류"
+
+msgid "Error message: "
+msgstr "오류 메시지:"
 
 msgid "Error opening file"
 msgstr "파일 열기 오류"
@@ -1336,6 +1399,7 @@ msgstr "채널 강제 종료"
 msgid "Force-close channel?"
 msgstr "채널을 강제 종료하시겠습니까?"
 
+#, python-brace-format
 msgid "Fork detected at block {fork_point}"
 msgstr "블록에서 포크 발견 {fork_point}"
 
@@ -1366,6 +1430,7 @@ msgstr "코인 동결"
 msgid "From"
 msgstr "으로부터"
 
+#, python-brace-format
 msgid "From {0} cosigners"
 msgstr "공동 서명자 {0}으로부터"
 
@@ -1398,6 +1463,9 @@ msgstr "Gold Wallet에 인증기를 생성하거나 다음 QR 코드를 스캔�
 
 msgid "Gold Wallet authenticator public key"
 msgstr "Gold Wallet 인증기 공용 키"
+
+msgid "Gold Wallet seed"
+msgstr "Gold Wallet 시드"
 
 msgid "Google Authenticator code:"
 msgstr "구글 인증기 코드:"
@@ -1443,6 +1511,7 @@ msgstr "숨기기"
 msgid "Hide advanced"
 msgstr "고급 옵션 숨김"
 
+#, python-brace-format
 msgid "Hide {tab_description}"
 msgstr "숨기기 {tab_description}"
 
@@ -1498,6 +1567,7 @@ msgstr "비활성화 시, 원하시는 서버를 선택하셔야합니다.Electr
 msgid "If you are not sure what this is, leave this field unchanged."
 msgstr "이 부분이 확실하지 않으시면, 그대로 두시기 바랍니다."
 
+#, python-brace-format
 msgid "If you are online, click on \"{button}\" to continue."
 msgstr "온라인이실 경우, \"{button}\" 을 클릭해서 계속해주세요"
 
@@ -1533,6 +1603,9 @@ msgstr "패스 프레이즈를 사용하실 시, 정확한 입력내용을 확�
 
 msgid "If you want to create new addresses, use a deterministic wallet instead."
 msgstr "신규 주소 생성을 원하시면, deterministic 지갑을 대신 사용하시기 바랍니다."
+
+msgid "If you want to receive email notifications, please enter your email address. We will send you information about your transaction statuses."
+msgstr "이메일 알림을 받으려면 이메일 주소를 입력하십시오. 사용자는 거래 상태에 대한 정보를 받을 수 있습니다. "
 
 msgid "If your device is not detected on Windows, go to \"Settings\", \"Devices\", \"Connected devices\", and do \"Remove device\". Then, plug your device again."
 msgstr "윈도우에서 기기가 인식되지 않을 경우, \"설정\"으로 가셔서, \"기기\"를 선택, \"연결된 기기들\" 선택,  \"기기 제거\"를 선택하시기 바랍니다. 그 다음, 기기를 다시 연결하시기 바랍니다."
@@ -1576,6 +1649,7 @@ msgstr "경우에 따라, 3개의 변경된 주소를 사용하여 대량의 코
 msgid "In the next block"
 msgstr "다음 블록에서"
 
+#, python-brace-format
 msgid "Included in block: {header_hash}"
 msgstr "블록에서 포함: {header_hash}"
 
@@ -1708,6 +1782,9 @@ msgstr "단순히 이 개인 키를 내보내는 것으로 백업할 수 없습�
 msgid "It conflicts with current history."
 msgstr "현재 내역과 충돌이 있습니다."
 
+msgid "It is used to send your transaction notifications from chosen wallet"
+msgstr "선택한 지갑에서 거래 알림을 보내는 데 사용됩니다"
+
 msgid "It sends and receives partially signed transactions from/to your cosigner wallet."
 msgstr "공동 서명 지갑에서/으로 부분 서명 거래를 받거나 보냅니다."
 
@@ -1744,6 +1821,11 @@ msgstr "라벨, 거래 ID와 주소는 원격 서버로 보내지기 전 암호�
 msgid "Language"
 msgstr "언어"
 
+#, python-brace-format
+msgid "Last updated: {date}"
+msgstr "마지막 업데이트: {date}"
+
+#, python-brace-format
 msgid "Latest version: {version}"
 msgstr "최신 버전: {version}"
 
@@ -1765,6 +1847,7 @@ msgstr "레거시"
 msgid "Legacy 2FA"
 msgstr "레거시 2FA"
 
+#, python-brace-format
 msgid "Library version for '{name}' is incompatible."
 msgstr "{name}'의 라이브러리 버전은 호환되지 않습니다."
 
@@ -1870,6 +1953,7 @@ msgstr "채굴 수수료"
 msgid "Missing amount"
 msgstr "누락 금액"
 
+#, python-brace-format
 msgid "Missing libraries for {library_name}."
 msgstr "{library_name}의 라이브러리가 누락되었습니다."
 
@@ -1879,6 +1963,7 @@ msgstr "레거시 입력값에 필요한 이전 거래를 찾을 수 없습니�
 msgid "Missing report URL."
 msgstr "리포트 URL 찾을 수 없음."
 
+#, python-brace-format
 msgid "More info at: {link}"
 msgstr "더 많은 정보는: {link}"
 
@@ -1918,6 +2003,10 @@ msgstr "새로운 패스워드:"
 msgid "New contact"
 msgstr "새로운 연락처"
 
+msgid "New email:"
+msgstr "새로운 이메일:"
+
+#, python-brace-format
 msgid "New transaction: {amount}"
 msgstr "새로운 거래: {amount}"
 
@@ -1941,9 +2030,6 @@ msgstr "주소를 찾을 수 없습니다. 보류 중인 요청을 제거하세�
 
 msgid "No data"
 msgstr "데이터 없음"
-
-msgid "No donation address for this server"
-msgstr "이 서버에 기증 주소 없음"
 
 msgid "No exceptions encountered."
 msgstr "예외 사항 발견되지 않음"
@@ -2041,6 +2127,12 @@ msgstr "플롯할 내용 없음."
 msgid "Nothing to summarize."
 msgstr "요약할 내용 없음."
 
+msgid "Notification address hasn't been set yet"
+msgstr "알림 주소가 아직 설정되지 않았습니다"
+
+msgid "Notifications"
+msgstr "알림"
+
 msgid "Number of zeros displayed after the decimal point. For example, if this is set to 2, \"1.\" will be displayed as \"1.00\""
 msgstr "소수점 뒤에 표시되는 0의 수. 예를 들어, 2로 설정되면,\"1.\" 이며  \"1.00\"으로 표시됨"
 
@@ -2086,6 +2178,7 @@ msgstr "채널 열기"
 msgid "Open your cosigner wallet to retrieve it."
 msgstr "귀하의 공동 서명 지갑을 열어 검색하세요."
 
+#, python-brace-format
 msgid "Open {title} file"
 msgstr "{title} 파일 열기"
 
@@ -2218,11 +2311,15 @@ msgstr "연결 상태와 자격 증명을 확인해주세요."
 msgid "Please check your network connection."
 msgstr "네트워크 연결을 확인해주세요."
 
+#, python-brace-format
 msgid "Please check your {device} device"
 msgstr "기기{device}를 확인해주세요"
 
 msgid "Please confirm"
 msgstr "확인해주세요"
+
+msgid "Please enter a valid code. You have {number} more attempts."
+msgstr "유효한 코드를 입력하십시오. 이제 {number}번 더 시도할 수 있습니다."
 
 msgid "Please enter an amount"
 msgstr "금액을 입력해주세요"
@@ -2248,6 +2345,7 @@ msgstr "암호화 해제를 위해 패스워드를 입력해주세요."
 msgid "Please enter your seed phrase in order to restore your wallet."
 msgstr "지갑 복구를 위해 시드 문구를 입력해주세요."
 
+#, python-brace-format
 msgid "Please insert your {device}"
 msgstr " {device}를 삽입해주세요"
 
@@ -2275,12 +2373,14 @@ msgstr "새로운 GUI 설정을 적용하기 위해 Electrum을 다시 시작해
 msgid "Please retype your seed phrase, to confirm that you properly saved it"
 msgstr "올바르게 저장되었는지 확인하기 위해, 시드 문구를 재입력해주세요"
 
+#, python-brace-format
 msgid "Please save these {0} words on paper (the order is important). "
 msgstr "다음 {0} 단어들을 종이에 기록하세요 (순서가 중요합니다). "
 
 msgid "Please scan a Bitcoin address or a payment request"
 msgstr "Bitcoin 주소나 지불 요청을 스캔해주세요"
 
+#, python-brace-format
 msgid "Please select which {device} device to use:"
 msgstr "사용할 기기 {device}를 선택해주세요:"
 
@@ -2317,6 +2417,7 @@ msgstr "포트 숫자는 소수점이어야 합니다."
 msgid "Portuguese"
 msgstr "포르투갈어"
 
+#, python-brace-format
 msgid "Position in mempool: {size} from tip"
 msgstr "mempool에서 위치: 팁에서 부터 {size}"
 
@@ -2413,6 +2514,9 @@ msgstr "R/W 오류  액세스 경로"
 msgid "Raw Transaction"
 msgstr "원거래"
 
+msgid "Reached connection timeout."
+msgstr "연결 시간 초과."
+
 msgid "Read QR code"
 msgstr "QR 코드 읽기"
 
@@ -2422,6 +2526,7 @@ msgstr "파일 읽기"
 msgid "Read from microphone"
 msgstr "마이크에서 읽기"
 
+#, python-brace-format
 msgid "Ready to encrypt for revealer {version}"
 msgstr "revealer {version}에 암호화 준비"
 
@@ -2431,6 +2536,7 @@ msgstr "받기"
 msgid "Received (mSAT):"
 msgstr "(mSAT) 받음:"
 
+#, python-brace-format
 msgid "Received HTLC with ID {id}"
 msgstr "Received HTLC with ID {id}"
 
@@ -2473,6 +2579,7 @@ msgstr "제거"
 msgid "Remove from wallet"
 msgstr "지갑에서 제거"
 
+#, python-brace-format
 msgid "Remove {labels} from your list of contacts?"
 msgstr "연락처에서 {labels}을 제거 하시겠습니까?"
 
@@ -2518,11 +2625,15 @@ msgstr "서버에서 계정 정보 요청중..."
 msgid "Requestor"
 msgstr "요청자"
 
+#, python-brace-format
 msgid "Require {0} signatures"
 msgstr "{0} 서명이 필요합니다."
 
 msgid "Requires"
 msgstr "필요"
+
+msgid "Resend"
+msgstr "재전송"
 
 msgid "Reset"
 msgstr "리셋"
@@ -2644,6 +2755,7 @@ msgstr "개인 키를 내보낼 파일을 선택하세요"
 msgid "Select file to export your wallet transactions to"
 msgstr "지갑 거래를 내보낼 파일을 선택하세요"
 
+#, python-brace-format
 msgid "Select file to save your {title}"
 msgstr "{title}을 저장할 파일을 선택하세요"
 
@@ -2710,6 +2822,7 @@ msgstr "거래를 공동 서명 풀로 보내는 중..."
 msgid "Sent (mSAT):"
 msgstr "(mSAT) 보냄:"
 
+#, python-brace-format
 msgid "Sent HTLC with ID {id}"
 msgstr "ID {id}와 HTLC 보냄"
 
@@ -2719,6 +2832,7 @@ msgstr "서버"
 msgid "Server hosting your email account"
 msgstr "이메일 계정 호스트 서버"
 
+#, python-brace-format
 msgid "Server is lagging ({number} blocks)"
 msgstr "서버가 ({number} blocks)을 지연하고 있습니다"
 
@@ -2782,12 +2896,14 @@ msgstr "QR 코드로 표시"
 msgid "Show on Ledger"
 msgstr "Ledger에 표시"
 
+#, python-brace-format
 msgid "Show on {device}"
 msgstr "{device}에 표시"
 
 msgid "Show report contents"
 msgstr "리포트 내용 표시"
 
+#, python-brace-format
 msgid "Show {tab_description}"
 msgstr "{tab_description} 표시"
 
@@ -2827,8 +2943,17 @@ msgstr "주소로 서명하는 것은 해당 개인 키로 서명하는 것을 �
 msgid "Size:"
 msgstr "크기:"
 
+msgid "Skip this step"
+msgstr "이 단계 건너뛰기"
+
+msgid "Something went wrong when connecting with server."
+msgstr "서버에 연결하는 중에 오류가 발생했습니다."
+
 msgid "Something went wrong while executing Electrum."
 msgstr "Electrum을 실행 하는 중 오류가 발생했습니다."
+
+msgid "Something went wrong."
+msgstr "문제가 발생했습니다."
 
 msgid "Sorry!"
 msgstr "죄송합니다!"
@@ -2875,6 +3000,9 @@ msgstr "상태"
 msgid "Status:"
 msgstr "상태:"
 
+msgid "Subscribe"
+msgstr "알림 설정"
+
 msgid "Success"
 msgstr "성공"
 
@@ -2907,6 +3035,10 @@ msgstr "대상 수수료:"
 
 msgid "Terms & Conditions"
 msgstr "이용 약관"
+
+#, python-brace-format
+msgid "Terms & Conditions {version} (Last updated: {date})"
+msgstr "이용약관 {version} (마지막 업데이트: {date})"
 
 msgid "Terms of Service"
 msgstr "서비스 약관"
@@ -2950,6 +3082,7 @@ msgstr ""
 msgid "The fee for this transaction seems unusually high."
 msgstr "이 거래의 수수료가 비정상적으로 높게 보여집니다."
 
+#, python-brace-format
 msgid ""
 "The file '{path}' contains an incompletely created wallet.\n"
 "Do you want to complete its creation now?"
@@ -2999,6 +3132,7 @@ msgstr "(바이트)초과로 거래가 거절되었습니다."
 msgid "The type of addresses used by your wallet will depend on your seed."
 msgstr "지갑에서 사용되는 주소 유형은 시드에 따라 달라집니다."
 
+#, python-brace-format
 msgid ""
 "The wallet '{path}' contains multiple accounts, which are no longer supported since Electrum 2.7.\n"
 "\n"
@@ -3026,8 +3160,12 @@ msgstr "주소가 이미 사용되었습니다. 개인 정보 보호를 위해 �
 msgid "This blockchain is used to verify the transactions sent by your transaction server."
 msgstr "거래 서버에서 전송된 거래를 검증하기 위해 해당 Blockchain이 사용되었습니다."
 
+#, python-brace-format
 msgid "This channel will be usable after {number} confirmations"
 msgstr "{number}건의 승인 이후 채널 사용이 가능합니다"
+
+msgid "This code is no longer active. We have sent new code to your email address."
+msgstr "이 코드는 더 이상 유효하지 않습니다. 사용자 이메일 주소로 새로운 코드를 보냈습니다."
 
 msgid "This feature is not available for watch-only wallets."
 msgstr "확인전용 지갑에서는 지원되지 않는 기능입니다."
@@ -3044,6 +3182,7 @@ msgstr "파일이 하드웨어 기기로 암호화 되어있습니다."
 msgid "This file is encrypted with a password."
 msgstr "파일이 패스워드로 암호화 되어있습니다."
 
+#, python-brace-format
 msgid "This function is only available for standard wallets when using {device}."
 msgstr "해당 기능은 {device} 사용시 Standard 지갑에서만 사용 가능합니다."
 
@@ -3110,9 +3249,11 @@ msgstr "거래가 저장되지 않았습니다. 그래도 종료하시겠습니�
 msgid "This transaction requires a higher fee, or it will not be propagated by your current server"
 msgstr "해당 거래에는 높은 수수료가 부과되거나 현재 서버에 전파되지 않을 수 있습니다"
 
+#, python-brace-format
 msgid "This type of script is not supported with {device}."
 msgstr "해당 유형의 스크립트는 {device}를 지원하지 않습니다."
 
+#, python-brace-format
 msgid "This version supports a maximum of {length} characters."
 msgstr "해당 버전에서는 최대 {length} 글자까지 지원됩니다."
 
@@ -3145,6 +3286,9 @@ msgstr "시간 기반: 수수료율은 평균 승인 시간 추정치를 기반�
 
 msgid "To"
 msgstr "-에게"
+
+msgid "To confirm the request, please enter the code we sent to"
+msgstr "요청을 확인하려면 받은 코드를 입력하십시오"
 
 msgid "To create a spending wallet, please enter a master private key (xprv/yprv/zprv)."
 msgstr "전송 지갑을 생성하려면 마스터 공개키를 입력하세요(xprv/yprv/zprv)."
@@ -3288,6 +3432,7 @@ msgstr "Tx"
 msgid "Type"
 msgstr "유형"
 
+#, python-brace-format
 msgid ""
 "Unable to connect to mail server:\n"
 " {error}"
@@ -3352,11 +3497,20 @@ msgstr "실행되지 않은 이익"
 msgid "Unsigned"
 msgstr "서명되지 않음"
 
+msgid "Unsubscribe"
+msgstr "알림 설정 해제"
+
+msgid "Unsubscribe from notifications"
+msgstr "이메일 알림 설정 해제"
+
 msgid "Unsupported password hash version"
 msgstr "지원되지 않는 패스워드 해시 버전"
 
 msgid "Unused"
 msgstr "사용되지 않음"
+
+msgid "Update"
+msgstr "업데이트"
 
 msgid "Update Check"
 msgstr "업데이트 확인"
@@ -3364,6 +3518,7 @@ msgstr "업데이트 확인"
 msgid "Update check failed"
 msgstr "업데이트 확인 실패"
 
+#, python-brace-format
 msgid "Update to Electrum {version} is available"
 msgstr "Electrum {version} 업그레이드가 가능합니다"
 
@@ -3478,6 +3633,7 @@ msgstr "경고: 모든 개인키는 기밀입니다."
 msgid "WARNING: This is a multi-signature wallet."
 msgstr "경고: 다중서명 지갑입니다."
 
+#, python-brace-format
 msgid "WARNING: the alias \"{alias}\" could not be validated via an additional security check, DNSSEC, and thus may not be correct."
 msgstr "경고: 가명\"{alias}\"은 추가 보안 점검, DNSSEC를 통해 인증되지 않았습니다. 따라서 올바르지 않을 수 있습니다."
 
@@ -3508,6 +3664,7 @@ msgstr "지갑 변경 주소"
 msgid "Wallet file corruption detected. Please restore your wallet from seed, and compare the addresses in both files"
 msgstr "지갑 파일에 문제가 감지되었습니다. 시드로부터 지갑을 복원한 후, 두 파일의 주소들을 비교하세요"
 
+#, python-brace-format
 msgid "Wallet file not found: {name}"
 msgstr "지갑 파일이 발견되지 않습니다: {name}"
 
@@ -3517,6 +3674,7 @@ msgstr "지갑 이름"
 msgid "Wallet receive address"
 msgstr "지갑에 주소가 전송되었습니다"
 
+#, python-brace-format
 msgid "Wallet removed: {name}"
 msgstr "삭제된 지갑: {name}"
 
@@ -3563,6 +3721,7 @@ msgstr "기기와 연결하는 중 오류가 발생했습니다:"
 msgid "While this is less than ideal, it might help if you run Electrum as Administrator."
 msgstr "최적의 상태가 아닌 경우에도 관리자로서 Electrum을 실행할 수 있습니다."
 
+#, python-brace-format
 msgid "Within {number} blocks"
 msgstr "{number} 블록 내에 존재합니다"
 
@@ -3614,9 +3773,14 @@ msgstr "Electrum을 오프라인으로 사용하고 있습니다; 연결을 위�
 msgid "You are using a non-deterministic wallet, which cannot create new addresses."
 msgstr "비확정성 지갑을 사용하고 있으므로 새로운 주소를 생성할 수 없습니다."
 
+msgid "You can change your email. It is used to send you transaction notifications from chosen wallet."
+msgstr "사용자 이메일 주소를 변경할 수 있습니다. 선택한 지갑의 거래 알림을 위해 사용됩니다."
+
+#, python-brace-format
 msgid "You can disable this setting in '{setting_name}'."
 msgstr "'{setting_name}'에서 설정을 비활성화할 수 있습니다."
 
+#, python-brace-format
 msgid "You can download the new version from {url}."
 msgstr "{url}에서 새로운 버전 다운로드가 가능합니다."
 
@@ -3629,8 +3793,26 @@ msgstr "실시간 네트워크에 연결되지 않을 경우, 거래를 전파�
 msgid "You do not need to perform regular backups, because your wallet can be recovered from a secret phrase that you can memorize or write on paper."
 msgstr "지갑은 따로 적어둘 수 있는 비밀 문구로 복구가 가능하므로, 정기적인 백업이 필요하지 않습니다."
 
+msgid "You have entered an invalid code 3 times. We have sent new code to your email address."
+msgstr "잘못된 코드를 3번 입력했습니다. 사용자 이메일 주소로 새로운 코드를 보냈습니다."
+
 msgid "You have multiple consecutive whitespaces or leading/trailing whitespaces in your passphrase."
 msgstr "패스 문구에는 다중의 연속된 공백 또는 앞/뒤에 공백을 포함할 수 있습니다."
+
+msgid "You have successfully added your email address."
+msgstr "사용자 이메일 주소를 성공적으로 추가했습니다."
+
+msgid "You have successfully subscribed wallet to notifications"
+msgstr "알림을 성공적으로 설정했습니다"
+
+msgid "You have successfully unsubscribed wallet"
+msgstr "지갑 알림 설정을 성공적으로 해제했습니다"
+
+msgid "You have successfully updated your notification preferences"
+msgstr "사용자 알림 설정이 성공적으로 업데이트되었습니다"
+
+msgid "You have {number} more attempts."
+msgstr "이제 {number}번 더 시도할 수 있습니다."
 
 msgid "You may enter a Bitcoin address, a label from your list of contacts (a list of completions will be proposed), or an alias (email-like address that forwards to a Bitcoin address)"
 msgstr "연결 목록(완료된 건이 나타납니다)의 라벨로 Bitcoin 주소를 추가하거나, 또는 가명(Bitcoin 주소로 전송되는 이메일과 같은 주소)로 추가할 수 있습니다"
@@ -3644,6 +3826,7 @@ msgstr "파일 아이콘을 클릭하여 CSV 파일을 업로드할 수 있습�
 msgid "You might have an incompatible library."
 msgstr "라이브러리가 호환되지 않을 수 있습니다."
 
+#, python-brace-format
 msgid "You need to be online in order to complete the creation of your wallet.  If you generated your seed on an offline computer, click on \"{button}\" to close this window, move your wallet file to an online computer, and reopen it with Electrum."
 msgstr "지갑 생성을 완료하려면 온라인 상태이어야 합니다. 만약시드를 오프라인 컴퓨터에서 생성했다면, \"{button}\"을 클릭하시어이 창을 닫으시기 바라며, 온라인 컴퓨터로 지갑 파일을 옮기시고, Electrum으로다시 여시기 바랍니다."
 
@@ -3695,12 +3878,14 @@ msgstr "지갑 파일이 암호화되지 않았습니다."
 msgid "Your wallet file is encrypted."
 msgstr "지갑 파일이 암호화되었습니다."
 
+#, python-brace-format
 msgid "Your wallet file is: {path}."
 msgstr "귀하의 지갑 파일 위치: {path}."
 
 msgid "Your wallet generation seed is:"
 msgstr "귀하의 지갑 생성 시드:"
 
+#, python-brace-format
 msgid "Your wallet has {number} prepaid transactions."
 msgstr "지갑에 {number}건의 선불 거래가 존재합니다."
 
@@ -3716,9 +3901,11 @@ msgstr "지갑은 패스워드로 보호되며 암호화 됩니다."
 msgid "Your wallet's generated seed is:"
 msgstr "고객님의 지갑의 생성된 시드는:"
 
+#, python-brace-format
 msgid "Your {0} were exported to '{1}'"
 msgstr "{0}에서 '{1}'로 내보내기가 완료되었습니다"
 
+#, python-brace-format
 msgid "Your {title} were successfully imported"
 msgstr "{title} 불러오기가 성공적으로 완료되었습니다"
 
@@ -3875,21 +4062,31 @@ msgstr "밀어내기 완료"
 msgid "your seed extension will <b>not</b> be included in the encrypted backup."
 msgstr "시드 확장이 암호화된 백업에 포함되지 <b>않습니다</b>."
 
+#, python-brace-format
 msgid "{coins_number} outputs available ({utxos_number} total)"
 msgstr "(총 {utxos_number}) 중 {coins_number} 사용 가능"
 
+#, python-brace-format
+msgid "{email} is already subscribed to {wallet_name}."
+msgstr "{email}(은)는 이미 {wallet_name}에 알림이 설정되어 있습니다."
+
+#, python-brace-format
 msgid "{number} confirmations"
 msgstr "{number} 확인"
 
+#, python-brace-format
 msgid "{number} connections."
 msgstr "{number} 연결."
 
+#, python-brace-format
 msgid "{number} new transactions: Total amount received in the new transactions {amount}"
 msgstr "{number} 건의 새 거래: 새 거래로 인한 수취량 {amount}"
 
+#, python-brace-format
 msgid "{size} from tip"
 msgstr "팁에서부터 {size} "
 
+#, python-brace-format
 msgid ""
 "{title} copied to clipboard:\n"
 "\n"
@@ -3899,11 +4096,14 @@ msgstr ""
 "\n"
 "{content}"
 
+#, python-brace-format
 msgid "{txid} is covered by GreenAddress instant confirmation"
 msgstr "GreenAddress에서 {txid}가 즉시 확인되었습니다"
 
+#, python-brace-format
 msgid "{txid} is not covered by GreenAddress instant confirmation"
 msgstr "GreenAddress에서 {txid}를 즉시 확인할 수 없습니다"
 
+#, python-brace-format
 msgid "{wallet_seed} encrypted for Revealer {version}_{checksum} saved as PNG and PDF at: "
 msgstr "Revealer {version}_{checksum}의 암호화된 {wallet_seed}가 다음 위치에 PNG와 PDF로 저장되었습니다: "

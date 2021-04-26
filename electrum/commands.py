@@ -1168,6 +1168,12 @@ def add_global_options(parser):
 def add_wallet_option(parser):
     parser.add_argument("-w", "--wallet", dest="wallet_path", help="wallet path")
 
+
+def add_email_notification_options(parser):
+    parser.add_argument("--email-server", dest="email_server", help="set server host:port for email notification")
+    parser.add_argument("--email-server-timeout", type=int, help="email server response timeout in seconds")
+
+
 def get_parser():
     # create main parser
     parser = argparse.ArgumentParser(
@@ -1181,6 +1187,7 @@ def get_parser():
     parser_gui.add_argument("-m", action="store_true", dest="hide_gui", default=False, help="hide GUI on startup")
     parser_gui.add_argument("-L", "--lang", dest="language", default=None, help="default language used in GUI")
     parser_gui.add_argument("--daemon", action="store_true", dest="daemon", default=False, help="keep daemon running after GUI is closed")
+    add_email_notification_options(parser_gui)
     add_wallet_option(parser_gui)
     add_network_options(parser_gui)
     add_global_options(parser_gui)

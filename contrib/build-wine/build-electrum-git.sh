@@ -90,11 +90,9 @@ with open(pe_file, "rb") as f:
 pe_offset = int.from_bytes(binary[0x3c:0x3c+4], byteorder="little")
 checksum_offset = pe_offset + 88
 checksum = 0
-
 # Pad data to 8-byte boundary.
 remainder = len(binary) % 8
 binary += bytes(8 - remainder)
-
 for i in range(len(binary) // 4):
     if i == checksum_offset // 4:  # Skip the checksum field
         continue
@@ -102,15 +100,12 @@ for i in range(len(binary) // 4):
     checksum = (checksum & 0xffffffff) + dword + (checksum >> 32)
     if checksum > 2 ** 32:
         checksum = (checksum & 0xffffffff) + (checksum >> 32)
-
 checksum = (checksum & 0xffff) + (checksum >> 16)
 checksum = (checksum) + (checksum >> 16)
 checksum = checksum & 0xffff
 checksum += len(binary)
-
 # Set the checksum
 binary[checksum_offset : checksum_offset + 4] = int.to_bytes(checksum, byteorder="little", length=4)
-
 with open(pe_file, "wb") as f:
     f.write(binary)
 EOF

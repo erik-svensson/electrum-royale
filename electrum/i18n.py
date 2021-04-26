@@ -53,3 +53,9 @@ languages = {
     'vi_VN': _('Vietnamese'),
     'zh_CN': _('Chinese Simplified'),
 }
+
+
+def convert_to_iso_639_1(language: str):
+    if len(language) < 2:
+        raise ValueError(f'Cannot convert {language}')
+    return language[:2].lower()

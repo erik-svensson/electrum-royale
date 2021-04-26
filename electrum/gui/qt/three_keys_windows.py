@@ -31,7 +31,6 @@ class ElectrumMultikeyWalletWindow(ElectrumWindow):
         self.tabs.addTab(self.recovery_tab, read_QIcon('recovery.png'), _('Cancel'))
         # update recovery tab when description changed in history tab
         self.history_model.dataChanged.connect(self.update_tabs)
-
         self.READY_TO_UPDATE = True
 
     def timer_actions(self):

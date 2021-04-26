@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-05 11:17+0100\n"
+"POT-Creation-Date: 2021-04-26 08:53+0200\n"
 "PO-Revision-Date: 2020-10-10 02:26+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -37,9 +37,6 @@ msgstr "&Güncellemeleri kontrol et"
 
 msgid "&Documentation"
 msgstr "&Belgelendirme"
-
-msgid "&Donate to server"
-msgstr "&Sunucuya Bağış Yap"
 
 msgid "&Encrypt/decrypt message"
 msgstr "&Mesajı şifrele/şifresini çöz"
@@ -92,6 +89,9 @@ msgstr "&Yeni"
 msgid "&New/Restore"
 msgstr "&Yeni/Geri Yükle"
 
+msgid "&Notification"
+msgstr "Bildirimler"
+
 msgid "&Official website"
 msgstr "&Resmi web sitesi"
 
@@ -136,6 +136,9 @@ msgstr "&Özet"
 
 msgid "&Sweep"
 msgstr "&Tara"
+
+msgid "&Terms && Conditions"
+msgstr "&Hüküm & Koşullar"
 
 msgid "&Tools"
 msgstr "&Araçlar"
@@ -227,6 +230,7 @@ msgstr "Eş imza sahibi ekle"
 msgid "Additional fees"
 msgstr "İlave ücretler"
 
+#, python-brace-format
 msgid "Additional {num_satoshis_added} satoshis are going to be added."
 msgstr "İlave {num_satoshis_added} satoshi eklenecek."
 
@@ -305,6 +309,7 @@ msgstr "Bir Hata Meydana Geldi"
 msgid "An encrypted transaction was retrieved from cosigning pool."
 msgstr "Eş imzalama havuzundan bir işlem geri alındı."
 
+#, python-brace-format
 msgid "An unnamed {device_name}"
 msgstr "İsimsiz bir {device_name}"
 
@@ -314,6 +319,7 @@ msgstr "Bu kanalı silmek istediğinizden emin misiniz? Bu, ilişkili işlemleri
 msgid "Are you sure you want to disagree?"
 msgstr "Kabul etmediğinizden emin misiniz?"
 
+#, python-brace-format
 msgid "Are you sure you want to remove this transaction and {number} child transactions?"
 msgstr "Bu işlemi ve {number} alt işlemi kaldırmak istediğinizden emin misiniz?"
 
@@ -323,6 +329,7 @@ msgstr "Bu işlemi kaldırmak istediğinizden emin misiniz?"
 msgid "Are you sure?"
 msgstr "Emin misiniz?"
 
+#, python-brace-format
 msgid "At block height: {height}"
 msgstr "Blok yüksekliğinde: {height}"
 
@@ -350,8 +357,8 @@ msgstr "Otomatik-bağlan"
 msgid "Automatically check for software updates"
 msgstr "Yazılım güncellemelerini otomatik olarak kontrol et"
 
-msgid "BIP39 seed (Gold Wallet integration)"
-msgstr "BIP39 çekirdeği (Gold Wallet entegrasyonu)"
+msgid "BIP39 seed"
+msgstr "BIP39 Anahtar kelime dizisi"
 
 msgid "BIP39 seeds can be imported in Electrum, so that users can access funds locked in other wallets."
 msgstr "BIP39 çekirdekleri Electrum içine aktarılabilir, böylece kullanıcılar diğer cüzdanlarda kilitli olan fonlara ulaşabilir."
@@ -467,6 +474,9 @@ msgstr "Ücret arttırılamıyor"
 msgid "Cannot create window for wallet"
 msgstr "Cüzdan için pencere oluşturulamıyor"
 
+msgid "Cannot fetch data from server"
+msgstr "Sunucudan veri alınamıyor"
+
 msgid "Cannot load wallet"
 msgstr "Cüzdan yüklenemiyor"
 
@@ -485,6 +495,7 @@ msgstr "Değer Artışları"
 msgid "Capital gains"
 msgstr "Değer artışları"
 
+#, python-brace-format
 msgid "Chain split detected at block {0}"
 msgstr "{0} blokunda zincir bölünmesi algılandı"
 
@@ -493,6 +504,9 @@ msgstr "Değiştir"
 
 msgid "Change Password"
 msgstr "Şifreyi Değiştir"
+
+msgid "Change your email"
+msgstr "Email adresinizi değiştirin"
 
 msgid "Changing PIN code."
 msgstr "PIN kodu değiştiriliyor."
@@ -512,6 +526,7 @@ msgstr "Kanal zaten kapalı"
 msgid "Channel closed"
 msgstr "Kanal kapalı"
 
+#, python-brace-format
 msgid "Channel closed, you may need to wait at least {number} blocks, because of CSV delays"
 msgstr "Kanal kapalı, CSV gecikmeleri nedeniyle en az {number} blok beklemeniz gerekebilir"
 
@@ -622,6 +637,9 @@ msgstr "Co&inler"
 msgid "Code"
 msgstr "Kod"
 
+msgid "Code:"
+msgstr "Kod:"
+
 msgid "Coin control active"
 msgstr "Coin denetimi etkin"
 
@@ -640,6 +658,7 @@ msgstr "Coin seçimi (uyarı)"
 msgid "Coin selection (non-alert)"
 msgstr "Coin seçimi (uyarı değil)"
 
+#, python-brace-format
 msgid "Coin selection active ({num_utxos} UTXOs selected)"
 msgstr "Coin seçimi etkin({num_utxos} UTXO’lar seçildi)"
 
@@ -676,6 +695,15 @@ msgstr "İşleminizi Ledger cihazınızda onaylayın..."
 msgid "Confirm new PIN"
 msgstr "Yeni PIN’i onaylayın"
 
+msgid "Confirm your current email address"
+msgstr "Mevcut email adresinizi onaylayın"
+
+msgid "Confirm your email address"
+msgstr "Email adresinizi onaylayın"
+
+msgid "Confirm your new email address"
+msgstr "Yeni email adresinizi onaylayın"
+
 msgid "Confirmation PIN from Gold Wallet:"
 msgstr "Gold Wallet’tan Onay PIN’i:"
 
@@ -691,8 +719,12 @@ msgstr "Bağlı düğüm"
 msgid "Connected nodes are on the same chain"
 msgstr "Bağlı düğümler aynı zincir üzerindedir"
 
+#, python-brace-format
 msgid "Connected to {0} nodes."
 msgstr "{0} düğüme bağlandı."
+
+msgid "Connecting with server..."
+msgstr "Sunucuyla bağlantı kuruluyor..."
 
 msgid "Connecting..."
 msgstr "Bağlanıyor..."
@@ -733,6 +765,7 @@ msgstr "Alıcı adresini kopyalayın ve Yapıştır düğmesini kullanarak yapı
 msgid "Copy to clipboard"
 msgstr "Panoya kopyala"
 
+#, python-brace-format
 msgid "Copy {column_title}"
 msgstr "{column_title} Kopyala"
 
@@ -748,6 +781,7 @@ msgstr "Kanal kapatılamıyor: "
 msgid "Could not force close channel: "
 msgstr "Kanal kapatılmaya zorlanamıyor: "
 
+#, python-brace-format
 msgid "Could not open channel: {error_value}"
 msgstr "Kanal açılamıyor: {error_value}"
 
@@ -787,12 +821,16 @@ msgstr "Güncel Ücret oranı"
 msgid "Current Password:"
 msgstr "Güncel Şifre:"
 
+msgid "Current email:"
+msgstr "Mevcut email adresiniz:"
+
 msgid "Current feerate"
 msgstr "Güncel ücretoranı"
 
 msgid "Current rate"
 msgstr "Güncel oran"
 
+#, python-brace-format
 msgid "Current version: {version}"
 msgstr "Güncel sürüm: {version}"
 
@@ -811,6 +849,7 @@ msgstr "Koyu/Açık"
 msgid "Date"
 msgstr "Tarih"
 
+#, python-brace-format
 msgid "Date: {date}"
 msgstr "Tarih: {date}"
 
@@ -871,6 +910,7 @@ msgstr "Geliştiriciler"
 msgid "Device not in Bitcoin mode"
 msgstr "Cihaz Bitcoin modunda değil"
 
+#, python-brace-format
 msgid "Digital Revealer ({version}_{code_id}) saved as PNG and PDF at:"
 msgstr "Dijital Revealer ({version}_{code_id}) şurada PNG ve PDF olarak kayıtlı:"
 
@@ -910,6 +950,7 @@ msgstr "Yeni bir çekirdek oluşturmak mı yoksa mevcut çekirdeği kullanarak b
 msgid "Do you want to create a new seed, or to restore a wallet using an existing seed?"
 msgstr "Yeni bir çekirdek oluşturmak mı yoksa mevcut çekirdeği kullanarak bir cüzdanı geri yüklemek mi istiyorsunuz?"
 
+#, python-brace-format
 msgid "Do you want to delete '{path}'?"
 msgstr "'{path}’ silinsin mi?"
 
@@ -922,11 +963,15 @@ msgstr "Sihirbazı yeniden başlatmak istiyor musunuz?"
 msgid "Do you want to open it now?"
 msgstr "Şimdi açmak istiyor musunuz?"
 
+#, python-brace-format
 msgid "Do you want to remove {address} from your wallet?"
 msgstr "Cüzdanınızdan {address} adresini kaldırmak istiyor musunuz?"
 
 msgid "Do you want to send this report?"
 msgstr "Bu raporu göndermek istiyor musunuz?"
+
+msgid "Do you want to unsubscribe this wallet from email notifications?"
+msgstr "Bu cüzdanı email bildirimleri aboneliğinden çıkarmak istiyor musunuz? "
 
 msgid "Do you want to use Gold Wallet as a transaction authenticator?"
 msgstr "İşlem kimlik doğrulayıcı olarak Gold Wallet’i kullanmak istiyor musunuz?"
@@ -952,12 +997,14 @@ msgstr "ETA"
 msgid "Each revealer should be used only once."
 msgstr "Her bir revealer yalnızca bir kez kullanılmalıdır."
 
+#, python-brace-format
 msgid "Edit {title}"
 msgstr "{title} başlığını düzenle"
 
 msgid "Electrum Plugins"
 msgstr "Electrum Eklentileri"
 
+#, python-brace-format
 msgid ""
 "Electrum cannot pair with your {device}.\n"
 "\n"
@@ -1009,6 +1056,15 @@ msgstr "Electrum düşük kaynak kullanımı ile hıza odaklanarak Bitcoin Vault
 msgid "Email"
 msgstr "E-posta"
 
+msgid "Email Notifications"
+msgstr "Email Bildirimleri"
+
+msgid "Email address:"
+msgstr "Email adresi:"
+
+msgid "Email address: "
+msgstr "Email adresi: "
+
 msgid "Email settings"
 msgstr "E-posta ayarları"
 
@@ -1036,6 +1092,7 @@ msgstr "Özel gizli bilgiyi şifrele"
 msgid "Encrypt wallet file"
 msgstr "Cüzdan dosyasını şifrele"
 
+#, python-brace-format
 msgid "Encrypt {wallet_name}'s seed"
 msgstr "{wallet_name} çekirdeğini şifrele"
 
@@ -1048,6 +1105,7 @@ msgstr "Mesajı şifrele/şifresini çöz"
 msgid "Encrypted"
 msgstr "Şifreli"
 
+#, python-brace-format
 msgid "Encryption and decryption are currently not supported for {device}"
 msgstr "{device} için henüz şifreleme ve şifre çözme desteklenmiyor"
 
@@ -1132,6 +1190,7 @@ msgstr "Çekirdeğinizin şifresini çözmek için PIN kodunuzu girin"
 msgid "Enter your PIN code in order to sign this transaction"
 msgstr "Bu işlemi imzalamak için PIN kodunuzu girin"
 
+#, python-brace-format
 msgid "Enter your PIN code to confirm deletion of {wallet}"
 msgstr "{wallet} cüzdanını silmeyi onaylamak için PIN kodunuzu girin"
 
@@ -1162,6 +1221,7 @@ msgstr "Kısmi işlemleri birleştirirken hata"
 msgid "Error connecting to server"
 msgstr "Sunucuya bağlanırken hata"
 
+#, python-brace-format
 msgid "Error connecting to {name} server"
 msgstr "{name} sunucusuna bağlanırken hata"
 
@@ -1176,6 +1236,9 @@ msgstr "Ağdan işlemi alırken hata"
 
 msgid "Error joining partial transactions"
 msgstr "Kısmi işlemleri bir araya getirirken hata"
+
+msgid "Error message: "
+msgstr "Hata mesajı: "
 
 msgid "Error opening file"
 msgstr "Dosyayı açarken hata"
@@ -1336,6 +1399,7 @@ msgstr "Kanalı zorla kapat"
 msgid "Force-close channel?"
 msgstr "Kanal zorla kapatılsın mı?"
 
+#, python-brace-format
 msgid "Fork detected at block {fork_point}"
 msgstr "blok {fork_point} üzerinde çatal tespit edildi"
 
@@ -1366,6 +1430,7 @@ msgstr "Coinleri Dondur"
 msgid "From"
 msgstr "Gönderen"
 
+#, python-brace-format
 msgid "From {0} cosigners"
 msgstr "{0} eş imza sahibinden"
 
@@ -1398,6 +1463,9 @@ msgstr "Gold Wallet’ta bir kimlik doğrulayıcı oluşturun ve aşağıdaki QR
 
 msgid "Gold Wallet authenticator public key"
 msgstr "Gold Wallet kimlik doğrulama açık anahtarı"
+
+msgid "Gold Wallet seed"
+msgstr "Gold Wallet Anahtar kelime dizisi"
 
 msgid "Google Authenticator code:"
 msgstr "Google Authenticator kodu:"
@@ -1443,6 +1511,7 @@ msgstr "Gizle"
 msgid "Hide advanced"
 msgstr "Gelişmiş seçenekleri gizle"
 
+#, python-brace-format
 msgid "Hide {tab_description}"
 msgstr "{tab_description} gizle"
 
@@ -1498,6 +1567,7 @@ msgstr "Devre dışı bırakılırsa, kullanmak istediğiniz sunucuyu seçmelisi
 msgid "If you are not sure what this is, leave this field unchanged."
 msgstr "Bunun ne olduğundan emin değilseniz, bu alanı değiştirmeyin."
 
+#, python-brace-format
 msgid "If you are online, click on \"{button}\" to continue."
 msgstr "Çevrimiçiyseniz devam etmek için \"{button}\" düğmesine tıklayın."
 
@@ -1533,6 +1603,9 @@ msgstr "Bir anahtar parolası kullanıyorsanız, doğru olduğundan emin olun."
 
 msgid "If you want to create new addresses, use a deterministic wallet instead."
 msgstr "Yeni adresler oluşturmak istiyorsanız, onun yerine deterministik cüzdan kullanın."
+
+msgid "If you want to receive email notifications, please enter your email address. We will send you information about your transaction statuses."
+msgstr "Email bildirimleri almak istiyorsanız lütfen email adresinizi girin. İşlem durumlarınızla ilgili size bilgi göndereceğiz."
 
 msgid "If your device is not detected on Windows, go to \"Settings\", \"Devices\", \"Connected devices\", and do \"Remove device\". Then, plug your device again."
 msgstr "Cihazınız Windows’ta algılanmıyorsa, \"Ayarlar\", \"Cihazlar\", \"Bağlı Cihazlar\" ayarına gidin ve \"Cihazı kaldır\" seçimini yapın. Sonra cihazınızı yeniden takın."
@@ -1576,6 +1649,7 @@ msgstr "Bazı durumlarda, büyük coin tutarlarını bölmek ve alıcı adresler
 msgid "In the next block"
 msgstr "Sonraki blokta"
 
+#, python-brace-format
 msgid "Included in block: {header_hash}"
 msgstr "Bloka dahil edildi: {header_hash}"
 
@@ -1708,6 +1782,9 @@ msgstr "Sadece bu özel anahtarları dışarı aktararak \"yedeklenemez\"."
 msgid "It conflicts with current history."
 msgstr "Güncel geçmişle çakışıyor."
 
+msgid "It is used to send your transaction notifications from chosen wallet"
+msgstr "Seçili cüzdandan işlem bildirimleri göndermek için kullanılır"
+
 msgid "It sends and receives partially signed transactions from/to your cosigner wallet."
 msgstr "Eş imza sahibi cüzdanınıza kısmen imzalanmış işlemleri gönderir ve cüzdandan bunları alır."
 
@@ -1744,6 +1821,11 @@ msgstr "Etiketler, işlem Kimlikleri ve adresler uzak sunucuya gönderilmeden ö
 msgid "Language"
 msgstr "Dil"
 
+#, python-brace-format
+msgid "Last updated: {date}"
+msgstr "Son güncelleme: {date}"
+
+#, python-brace-format
 msgid "Latest version: {version}"
 msgstr "Son sürüm: {version}"
 
@@ -1765,6 +1847,7 @@ msgstr "Legacy"
 msgid "Legacy 2FA"
 msgstr "Legacy 2FA"
 
+#, python-brace-format
 msgid "Library version for '{name}' is incompatible."
 msgstr "{name}' için kütüphane sürümü uyumlu değil."
 
@@ -1870,6 +1953,7 @@ msgstr "Madencilik ücreti"
 msgid "Missing amount"
 msgstr "Eksik tutar"
 
+#, python-brace-format
 msgid "Missing libraries for {library_name}."
 msgstr "{library_name} için eksik kütüphaneler."
 
@@ -1879,6 +1963,7 @@ msgstr "Eski girdi için önceki tx eksik."
 msgid "Missing report URL."
 msgstr "Eksik rapor URL’si."
 
+#, python-brace-format
 msgid "More info at: {link}"
 msgstr "Daha fazla bilgi için: {link}"
 
@@ -1918,6 +2003,10 @@ msgstr "Yeni Şifre:"
 msgid "New contact"
 msgstr "Yeni bağlantı"
 
+msgid "New email:"
+msgstr "Yeni email:"
+
+#, python-brace-format
 msgid "New transaction: {amount}"
 msgstr "Yeni işlem: {amount}"
 
@@ -1941,9 +2030,6 @@ msgstr "Kullanılabilir adres. Lütfen bekleyen isteklerinizin bir kısmını ka
 
 msgid "No data"
 msgstr "Veri yok"
-
-msgid "No donation address for this server"
-msgstr "Bu sunucu için bağış adresi yok"
 
 msgid "No exceptions encountered."
 msgstr "Herhangi bir istisnayla karşılaşılmadı."
@@ -2041,6 +2127,12 @@ msgstr "Çizilecek bir şey yok."
 msgid "Nothing to summarize."
 msgstr "Özetlenecek bir şey yok."
 
+msgid "Notification address hasn't been set yet"
+msgstr "Bildirim adresi henüz belirtilmedi"
+
+msgid "Notifications"
+msgstr "Bildirimler"
+
 msgid "Number of zeros displayed after the decimal point. For example, if this is set to 2, \"1.\" will be displayed as \"1.00\""
 msgstr "Ondalık noktasından sonra görüntülenen sıfır sayısı. Örneğin bu 2 olarak ayarlanmışsa, \"1.\" \"1.00\" olarak görüntülenir"
 
@@ -2086,6 +2178,7 @@ msgstr "Kanalı aç"
 msgid "Open your cosigner wallet to retrieve it."
 msgstr "Geri almak için eş imza sahibi cüzdanınızı açın."
 
+#, python-brace-format
 msgid "Open {title} file"
 msgstr "{title} dosyasını aç"
 
@@ -2218,11 +2311,15 @@ msgstr "Lütfen bağlantınızı ve kimlik bilgilerinizi kontrol edin."
 msgid "Please check your network connection."
 msgstr "Lütfen ağ bağlantınızı kontrol edin."
 
+#, python-brace-format
 msgid "Please check your {device} device"
 msgstr "Lütfen {device} cihazınızı kontrol edin"
 
 msgid "Please confirm"
 msgstr "Lütfen onaylayın"
+
+msgid "Please enter a valid code. You have {number} more attempts."
+msgstr "Lütfen geçerli bir kod girin. {number} hakkınız kaldı."
 
 msgid "Please enter an amount"
 msgstr "Lütfen bir tutar girin"
@@ -2248,6 +2345,7 @@ msgstr "Lütfen şifresini çözmek için parolanızı girin."
 msgid "Please enter your seed phrase in order to restore your wallet."
 msgstr "Lütfen cüzdanınızı geri yüklemek için çekirdek ifadenizi girin."
 
+#, python-brace-format
 msgid "Please insert your {device}"
 msgstr "Lütfen {device} cihazınızı girin"
 
@@ -2275,12 +2373,14 @@ msgstr "Lütfen yeni GUI ayarlarını etkinleştirmek için Electrum’u yeniden
 msgid "Please retype your seed phrase, to confirm that you properly saved it"
 msgstr "Lütfen çekirdek ifadenizi yeniden yazarak uygun bir şekilde sakladığınızı onaylayın"
 
+#, python-brace-format
 msgid "Please save these {0} words on paper (the order is important). "
 msgstr "Lütfen bu {0} kelimeyi kağıtta saklayın (sırası önemlidir). "
 
 msgid "Please scan a Bitcoin address or a payment request"
 msgstr "Lütfen bir Bitcoin adresini veya bir ödeme talebini taratın"
 
+#, python-brace-format
 msgid "Please select which {device} device to use:"
 msgstr "Lütfen hangi {device} cihazını kullanacağınızı seçin:"
 
@@ -2317,6 +2417,7 @@ msgstr "Port numarası ondalık olmalıdır"
 msgid "Portuguese"
 msgstr "Portekizce"
 
+#, python-brace-format
 msgid "Position in mempool: {size} from tip"
 msgstr "Mempool içindeki konum: baştan {size}"
 
@@ -2413,6 +2514,9 @@ msgstr "Yola erişirken R/W hatası"
 msgid "Raw Transaction"
 msgstr "Ham İşlem"
 
+msgid "Reached connection timeout."
+msgstr "Bağlantı süresi doldu."
+
 msgid "Read QR code"
 msgstr "QR kodunu oku"
 
@@ -2422,6 +2526,7 @@ msgstr "Dosyayı oku"
 msgid "Read from microphone"
 msgstr "Mikrofondan oku"
 
+#, python-brace-format
 msgid "Ready to encrypt for revealer {version}"
 msgstr "Revealer {version} için şifrelemeye hazır"
 
@@ -2431,6 +2536,7 @@ msgstr "Al"
 msgid "Received (mSAT):"
 msgstr "Alınan (mSAT):"
 
+#, python-brace-format
 msgid "Received HTLC with ID {id}"
 msgstr "{id} Kimliğiyle alınan HTLC"
 
@@ -2473,6 +2579,7 @@ msgstr "Kaldır"
 msgid "Remove from wallet"
 msgstr "Cüzdandan kaldır"
 
+#, python-brace-format
 msgid "Remove {labels} from your list of contacts?"
 msgstr "Bağlantı listenizden {labels} kaldırılsın mı?"
 
@@ -2518,11 +2625,15 @@ msgstr "TrustedCoin sunucusundan hesap bilgisi isteniyor..."
 msgid "Requestor"
 msgstr "İsteyen"
 
+#, python-brace-format
 msgid "Require {0} signatures"
 msgstr "{0} imza gerekir"
 
 msgid "Requires"
 msgstr "Gerekir"
+
+msgid "Resend"
+msgstr "Tekrar gönder"
 
 msgid "Reset"
 msgstr "Sıfırla"
@@ -2644,6 +2755,7 @@ msgstr "Özel anahtarlarınızı dışarı aktarmak için bir dosya seçin"
 msgid "Select file to export your wallet transactions to"
 msgstr "Cüzdan işlemlerinizi dışarı aktarmak için bir dosya seçin"
 
+#, python-brace-format
 msgid "Select file to save your {title}"
 msgstr "{title} kaydetmek için dosya seçin"
 
@@ -2710,6 +2822,7 @@ msgstr "eş imza sahibi havuzuna işlem gönderiliyor..."
 msgid "Sent (mSAT):"
 msgstr "Gönderilen (mSAT):"
 
+#, python-brace-format
 msgid "Sent HTLC with ID {id}"
 msgstr "HTLC {id} Kimliğiyle gönderildi"
 
@@ -2719,6 +2832,7 @@ msgstr "Sunucu"
 msgid "Server hosting your email account"
 msgstr "E-posta adresinizi barındıran sunucu"
 
+#, python-brace-format
 msgid "Server is lagging ({number} blocks)"
 msgstr "Sunucuda ({number} blok) gecikme var"
 
@@ -2782,12 +2896,14 @@ msgstr "QR kodu olarak göster"
 msgid "Show on Ledger"
 msgstr "Ledger’de göster"
 
+#, python-brace-format
 msgid "Show on {device}"
 msgstr "{device} cihazında göster"
 
 msgid "Show report contents"
 msgstr "Rapor içeriğini göster"
 
+#, python-brace-format
 msgid "Show {tab_description}"
 msgstr "{tab_description} Göster"
 
@@ -2827,8 +2943,17 @@ msgstr "Bir adresle imzalamak aslında karşılık gelen özel anahtarla imzalam
 msgid "Size:"
 msgstr "Boyut:"
 
+msgid "Skip this step"
+msgstr "Bu adımı atla"
+
+msgid "Something went wrong when connecting with server."
+msgstr "Sunucuya bağlanırken sorun oluştu."
+
 msgid "Something went wrong while executing Electrum."
 msgstr "Electrum’u yürütürken bir sorun oluştu."
+
+msgid "Something went wrong."
+msgstr "Bir şeyler yanlış gitti"
 
 msgid "Sorry!"
 msgstr "Üzgünüz!"
@@ -2875,6 +3000,9 @@ msgstr "Konum"
 msgid "Status:"
 msgstr "Konum:"
 
+msgid "Subscribe"
+msgstr "Abone ol"
+
 msgid "Success"
 msgstr "Başarılı"
 
@@ -2907,6 +3035,10 @@ msgstr "Hedef ücreti:"
 
 msgid "Terms & Conditions"
 msgstr "Hüküm ve Şartlar"
+
+#, python-brace-format
+msgid "Terms & Conditions {version} (Last updated: {date})"
+msgstr "Hüküm & Koşullar {version} (Son güncelleme: {date})"
 
 msgid "Terms of Service"
 msgstr "Hizmet Koşulları"
@@ -2950,6 +3082,7 @@ msgstr ""
 msgid "The fee for this transaction seems unusually high."
 msgstr "Bu işlemin ücreti sıradışı yüksek görünüyor."
 
+#, python-brace-format
 msgid ""
 "The file '{path}' contains an incompletely created wallet.\n"
 "Do you want to complete its creation now?"
@@ -2999,6 +3132,7 @@ msgstr "İşlem (bayt olarak) çok büyük olduğu için reddedildi."
 msgid "The type of addresses used by your wallet will depend on your seed."
 msgstr "Cüzdanınız tarafından kullanılan adres türleri çekirdeğinizi esas alır."
 
+#, python-brace-format
 msgid ""
 "The wallet '{path}' contains multiple accounts, which are no longer supported since Electrum 2.7.\n"
 "\n"
@@ -3026,8 +3160,12 @@ msgstr "Bu adres zaten kullanılmış. Daha iyi gizlilik için yeni ödemelerde 
 msgid "This blockchain is used to verify the transactions sent by your transaction server."
 msgstr "Bu blockchain işlem sunucunuz tarafından gönderilen işlemleri doğrulamak için kullanılır."
 
+#, python-brace-format
 msgid "This channel will be usable after {number} confirmations"
 msgstr "Bu kanal {number} onay sonrasında kullanılabilir"
+
+msgid "This code is no longer active. We have sent new code to your email address."
+msgstr "Kod artık aktif değil. Email adresinize yeni bir kod gönderdik."
 
 msgid "This feature is not available for watch-only wallets."
 msgstr "Bu özellik yalnızca okunabilir cüzdanlarda kullanılamaz."
@@ -3044,6 +3182,7 @@ msgstr "Bu dosya bir donanım cihazı kullanılarak şifrelenecek."
 msgid "This file is encrypted with a password."
 msgstr "Bu dosya bir şifre ile şifrelenecek."
 
+#, python-brace-format
 msgid "This function is only available for standard wallets when using {device}."
 msgstr "{device} kullanılırken bu işlev yalnızca standard cüzdanlar için kullanılabilir."
 
@@ -3110,9 +3249,11 @@ msgstr "Bu işlem kaydedilmez. Yine de kapatılsın mı?"
 msgid "This transaction requires a higher fee, or it will not be propagated by your current server"
 msgstr "Bu işlem daha yüksek bir ücret gerektirir yoksa güncel sunucunuz tarafından yayılmaz"
 
+#, python-brace-format
 msgid "This type of script is not supported with {device}."
 msgstr "Bu betik türü {device} tarafından desteklenmez."
 
+#, python-brace-format
 msgid "This version supports a maximum of {length} characters."
 msgstr "Bu sürüm maksimum {length} karakter destekler."
 
@@ -3145,6 +3286,9 @@ msgstr "Süre esaslı: ücret oranı, ortalama onay süresi tahminlerini esas al
 
 msgid "To"
 msgstr "Alıcı"
+
+msgid "To confirm the request, please enter the code we sent to"
+msgstr "Talebi onaylamak için lütfen şuraya gönderdiğimiz kodu girin"
 
 msgid "To create a spending wallet, please enter a master private key (xprv/yprv/zprv)."
 msgstr "Gönderen bir cüzdan oluşturmak için lütfen bir ana özel anahtar (xprv/yprv/zprv) girin."
@@ -3288,6 +3432,7 @@ msgstr "Tx"
 msgid "Type"
 msgstr "Tür"
 
+#, python-brace-format
 msgid ""
 "Unable to connect to mail server:\n"
 " {error}"
@@ -3352,11 +3497,20 @@ msgstr "Gerçekleşmemiş kazançlar"
 msgid "Unsigned"
 msgstr "İmzalanmamış"
 
+msgid "Unsubscribe"
+msgstr "Abonelikten çık"
+
+msgid "Unsubscribe from notifications"
+msgstr "Bildirim aboneliğinden çık"
+
 msgid "Unsupported password hash version"
 msgstr "Desteklenmeyen şifre hash sürümü"
 
 msgid "Unused"
 msgstr "Kullanılmayan"
+
+msgid "Update"
+msgstr "Güncelle"
 
 msgid "Update Check"
 msgstr "Güncelleme Kontrolü"
@@ -3364,6 +3518,7 @@ msgstr "Güncelleme Kontrolü"
 msgid "Update check failed"
 msgstr "Güncelleme kontrolü başarısız"
 
+#, python-brace-format
 msgid "Update to Electrum {version} is available"
 msgstr "Electrum {version} sürümüne güncellenebilir"
 
@@ -3478,6 +3633,7 @@ msgstr "UYARI: TÜM özel anahtarlarınız gizlidir."
 msgid "WARNING: This is a multi-signature wallet."
 msgstr "UYARI: Bu çok imzalı bir cüzdandır."
 
+#, python-brace-format
 msgid "WARNING: the alias \"{alias}\" could not be validated via an additional security check, DNSSEC, and thus may not be correct."
 msgstr "UYARI: takma isim \"{alias}\" ilave güvenlik kontrolü olan DNSSEC üzerinden doğrulanamadı ve bu nedenle doğru olmayabilir."
 
@@ -3508,6 +3664,7 @@ msgstr "Cüzdan değiştirme adresi"
 msgid "Wallet file corruption detected. Please restore your wallet from seed, and compare the addresses in both files"
 msgstr "Cüzdan dosyasında bozulma tespit edildi. Lütfen cüzdanınızı çekirdekten geri yükleyin ve her iki dosyadaki adresleri karşılaştırın"
 
+#, python-brace-format
 msgid "Wallet file not found: {name}"
 msgstr "Cüzdan dosyası bulunamadı: {name}"
 
@@ -3517,6 +3674,7 @@ msgstr "Cüzdan adı"
 msgid "Wallet receive address"
 msgstr "Cüzdan alma adresi"
 
+#, python-brace-format
 msgid "Wallet removed: {name}"
 msgstr "Cüzdan kaldırıldı: {name}"
 
@@ -3563,6 +3721,7 @@ msgstr "Cihazınıza bağlanırken bir hatayla karşılaştık:"
 msgid "While this is less than ideal, it might help if you run Electrum as Administrator."
 msgstr "Bu ideal olan olmasa da, Electrum’u Yönetici olarakçalıştırırsanız yardımcı olabilir."
 
+#, python-brace-format
 msgid "Within {number} blocks"
 msgstr "{number} blok içinde"
 
@@ -3614,9 +3773,14 @@ msgstr "Electrum’u çevrimdışı modda kullanıyorsunuz; bağlanmak istiyorsa
 msgid "You are using a non-deterministic wallet, which cannot create new addresses."
 msgstr "Yeni adresler oluşturamayan deterministik olmayan bir cüzdan kullanıyorsunuz."
 
+msgid "You can change your email. It is used to send you transaction notifications from chosen wallet."
+msgstr "Email adresinizi değiştirebilirsiniz. Size seçili cüzdanlardan işlem bildirimleri göndermek için kullanılır."
+
+#, python-brace-format
 msgid "You can disable this setting in '{setting_name}'."
 msgstr "Bu ayarı '{setting_name}’ içinde devre dışı bırakabilirsiniz."
 
+#, python-brace-format
 msgid "You can download the new version from {url}."
 msgstr "Yeni sürümü {url} adresinden indirebilirsiniz."
 
@@ -3629,8 +3793,26 @@ msgstr "Canlı ağ bağlantınız olmadan bir işlemi yayınlayamazsınız."
 msgid "You do not need to perform regular backups, because your wallet can be recovered from a secret phrase that you can memorize or write on paper."
 msgstr "Düzenli olarak yedekleme yapmanıza gerek yok, çünkü cüzdanınızı ezberleyebileceğiniz veya kağıda yazabileceğiniz gizli bir ifade ile geri alabilirsiniz."
 
+msgid "You have entered an invalid code 3 times. We have sent new code to your email address."
+msgstr "3 kere geçersiz bir kod girdiniz. Email adresinize yeni bir kod gönderdik."
+
 msgid "You have multiple consecutive whitespaces or leading/trailing whitespaces in your passphrase."
 msgstr "Anahtar parolanızda art arda boşluklar veya başta/sonra boşluklarvar."
+
+msgid "You have successfully added your email address."
+msgstr "Email adresinizi başarılı bir şekilde eklediniz."
+
+msgid "You have successfully subscribed wallet to notifications"
+msgstr "Cüzdan bildirimleri için başarılı bir şekilde abone oldunuz."
+
+msgid "You have successfully unsubscribed wallet"
+msgstr "Cüzdan aboneliğinden başarılı bir şekilde çıktınız"
+
+msgid "You have successfully updated your notification preferences"
+msgstr "Bildirim tercihlerinizi başarılı bir şekilde güncellediniz."
+
+msgid "You have {number} more attempts."
+msgstr "{number} hakkınız kaldı."
 
 msgid "You may enter a Bitcoin address, a label from your list of contacts (a list of completions will be proposed), or an alias (email-like address that forwards to a Bitcoin address)"
 msgstr "Bir Bitcoin adresi girebilirsiniz, bağlantılar listenizden bir etiket (önerilecek bitirmelerin bir listesi), veya bir takma ad (bir Bitcoin adresine yönlendiren e-posta benzeri bir adres) girebilirsiniz"
@@ -3644,6 +3826,7 @@ msgstr "Dosya simgesini kullanarak bir CSV dosyası yükleyebilirsiniz."
 msgid "You might have an incompatible library."
 msgstr "Uyumlu olmayan bir kütüphaneniz olabilir."
 
+#, python-brace-format
 msgid "You need to be online in order to complete the creation of your wallet.  If you generated your seed on an offline computer, click on \"{button}\" to close this window, move your wallet file to an online computer, and reopen it with Electrum."
 msgstr "Cüzdanınızın oluşturulmasını tamamlamak için online olmalısınız. Çevrimdışıbilgisayarınızda bir çekirdek oluşturduysanız, bu pencereyi kapatmak için \"{button}\" düğmesine tıklayın, cüzdan dosyanızı online bir bilgisayara taşıyın ve Electrum ile tekrar açın."
 
@@ -3695,12 +3878,14 @@ msgstr "Cüzdan dosyanız şifrelenmiş DEĞİL."
 msgid "Your wallet file is encrypted."
 msgstr "Cüzdan dosyanız şifrelendi."
 
+#, python-brace-format
 msgid "Your wallet file is: {path}."
 msgstr "Cüzdan dosyanız: {path}."
 
 msgid "Your wallet generation seed is:"
 msgstr "Cüzdan oluşturma çekirdeğiniz:"
 
+#, python-brace-format
 msgid "Your wallet has {number} prepaid transactions."
 msgstr "Cüzdanınızda {number} ön ödemeli işlem var."
 
@@ -3716,9 +3901,11 @@ msgstr "Cüzdanınız şifre korumalı ve şifrelenmiş."
 msgid "Your wallet's generated seed is:"
 msgstr "Cüzdanınızın oluşturulan çekirdeği:"
 
+#, python-brace-format
 msgid "Your {0} were exported to '{1}'"
 msgstr "Size ait {0} '{1}’ konumuna dışa aktarıldı"
 
+#, python-brace-format
 msgid "Your {title} were successfully imported"
 msgstr "Size ait {title} başarıyla içeri aktarıldı"
 
@@ -3875,21 +4062,31 @@ msgstr "süpürüldü"
 msgid "your seed extension will <b>not</b> be included in the encrypted backup."
 msgstr "çekirdek uzantınız şifrelenmiş yedeğe dahil <b>edilmeyecek</b>."
 
+#, python-brace-format
 msgid "{coins_number} outputs available ({utxos_number} total)"
 msgstr "{coins_number} çıktı kullanılabilir ({utxos_number} total)"
 
+#, python-brace-format
+msgid "{email} is already subscribed to {wallet_name}."
+msgstr "{email} zaten {wallet_name} için zaten abone."
+
+#, python-brace-format
 msgid "{number} confirmations"
 msgstr "{number} onay"
 
+#, python-brace-format
 msgid "{number} connections."
 msgstr "{number} bağlantı."
 
+#, python-brace-format
 msgid "{number} new transactions: Total amount received in the new transactions {amount}"
 msgstr "{number} yeni işlemler: Yeni işlemlerde alınan toplam tutar {amount}"
 
+#, python-brace-format
 msgid "{size} from tip"
 msgstr "baştan {size}"
 
+#, python-brace-format
 msgid ""
 "{title} copied to clipboard:\n"
 "\n"
@@ -3899,11 +4096,14 @@ msgstr ""
 "\n"
 "{content}"
 
+#, python-brace-format
 msgid "{txid} is covered by GreenAddress instant confirmation"
 msgstr "{txid} GreenAddress anında onay kapsamındadır"
 
+#, python-brace-format
 msgid "{txid} is not covered by GreenAddress instant confirmation"
 msgstr "{txid} GreenAddress anında onay kapsamında değildir"
 
+#, python-brace-format
 msgid "{wallet_seed} encrypted for Revealer {version}_{checksum} saved as PNG and PDF at: "
 msgstr "Revealer {version}_{checksum} için şifrelenen {wallet_seed} şuraya PNG ve PDF olarak kaydedildi: "

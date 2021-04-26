@@ -30,8 +30,11 @@ import traceback
 import threading
 from typing import Optional, TYPE_CHECKING
 
+from .email_notification_dialogs import EmailNotificationWizard
 from .terms_and_conditions_mixin import TermsNotAccepted
 from .three_keys_windows import ElectrumARWindow, ElectrumAIRWindow
+from ...notification_connector import EmailNotificationWallet
+from ...version import TERMS_AND_CONDITION_VERSION
 
 try:
     import PyQt5
@@ -232,6 +235,14 @@ class ElectrumGui(Logger):
                     self._num_wizards_in_progress -= 1
         return wrapper
 
+    def add_email_notification(self, wallet):
+        if not EmailNotificationWallet.is_subscribable(wallet):
+            return
+        if not wallet.db.get('notification_email', ''):
+            email_wizard = EmailNotificationWizard(wallet, self.config, self.app, self.plugins)
+            email_wizard.run_notification()
+            email_wizard.terminate()
+
     @count_wizards_in_progress
     def start_new_window(self, path, uri, *, app_is_starting=False):
         '''Raises the window for the wallet if it is open.  Otherwise
@@ -287,6 +298,7 @@ class ElectrumGui(Logger):
 
     def _start_wizard_to_select_or_create_wallet(self, path) -> Optional[Abstract_Wallet]:
         wizard = InstallWizard(self.config, self.app, self.plugins)
+        run_notification = False
         try:
             path, storage = wizard.select_storage(path, self.daemon.get_wallet)
             # storage is None if file does not exist
@@ -294,6 +306,7 @@ class ElectrumGui(Logger):
                 wizard.path = path  # needed by trustedcoin plugin
                 wizard.run('new')
                 storage = wizard.create_storage(path)
+                run_notification = True
             else:
                 wizard.run_upgrades(storage)
         except (UserCancelled, GoBack):
@@ -306,6 +319,8 @@ class ElectrumGui(Logger):
         if storage is None or storage.get_action():
             return
         wallet = Wallet(storage, config=self.config)
+        if run_notification:
+            self.add_email_notification(wallet)
         wallet.start_network(self.daemon.network)
         self.daemon.add_wallet(wallet)
         return wallet
@@ -330,12 +345,12 @@ class ElectrumGui(Logger):
 
     def accept_terms_and_conditions(self):
         config_key = 'terms_and_conditions_accepted'
-        if not self.config.get(config_key, False):
+        if float(self.config.get(config_key, 0)) < TERMS_AND_CONDITION_VERSION:
             wizard = InstallWizard(self.config, self.app, self.plugins)
             accepted = wizard.accept_terms_and_conditions()
             wizard.terminate()
             if accepted:
-                self.config.set_key(config_key, True)
+                self.config.set_key(config_key, TERMS_AND_CONDITION_VERSION)
             else:
                 self.stop()
                 raise TermsNotAccepted
