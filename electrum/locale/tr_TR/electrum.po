@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-05 11:17+0100\n"
+"POT-Creation-Date: 2021-04-26 08:53+0200\n"
 "PO-Revision-Date: 2020-10-10 02:26+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -506,7 +506,7 @@ msgid "Change Password"
 msgstr "Şifreyi Değiştir"
 
 msgid "Change your email"
-msgstr "Email'inizi değiştirin"
+msgstr "Email adresinizi değiştirin"
 
 msgid "Changing PIN code."
 msgstr "PIN kodu değiştiriliyor."
@@ -822,7 +822,7 @@ msgid "Current Password:"
 msgstr "Güncel Şifre:"
 
 msgid "Current email:"
-msgstr "Mevcut email'iniz:"
+msgstr "Mevcut email adresiniz:"
 
 msgid "Current feerate"
 msgstr "Güncel ücretoranı"
@@ -971,7 +971,7 @@ msgid "Do you want to send this report?"
 msgstr "Bu raporu göndermek istiyor musunuz?"
 
 msgid "Do you want to unsubscribe this wallet from email notifications?"
-msgstr "Bu cüzdanı e-posta bildirimlerinden çıkarmak istiyor musunuz? "
+msgstr "Bu cüzdanı email bildirimleri aboneliğinden çıkarmak istiyor musunuz? "
 
 msgid "Do you want to use Gold Wallet as a transaction authenticator?"
 msgstr "İşlem kimlik doğrulayıcı olarak Gold Wallet’i kullanmak istiyor musunuz?"
@@ -1057,13 +1057,13 @@ msgid "Email"
 msgstr "E-posta"
 
 msgid "Email Notifications"
-msgstr "E-posta Bildirimleri"
+msgstr "Email Bildirimleri"
 
 msgid "Email address:"
-msgstr "E-posta adresi:"
+msgstr "Email adresi:"
 
 msgid "Email address: "
-msgstr "E-posta adresi: "
+msgstr "Email adresi: "
 
 msgid "Email settings"
 msgstr "E-posta ayarları"
@@ -1783,7 +1783,7 @@ msgid "It conflicts with current history."
 msgstr "Güncel geçmişle çakışıyor."
 
 msgid "It is used to send your transaction notifications from chosen wallet"
-msgstr "Seçili cüzdandan işlem bildirimlerigöndermek için kullanılır"
+msgstr "Seçili cüzdandan işlem bildirimleri göndermek için kullanılır"
 
 msgid "It sends and receives partially signed transactions from/to your cosigner wallet."
 msgstr "Eş imza sahibi cüzdanınıza kısmen imzalanmış işlemleri gönderir ve cüzdandan bunları alır."
@@ -2004,7 +2004,7 @@ msgid "New contact"
 msgstr "Yeni bağlantı"
 
 msgid "New email:"
-msgstr "Yeni email"
+msgstr "Yeni email:"
 
 #, python-brace-format
 msgid "New transaction: {amount}"
@@ -2633,7 +2633,7 @@ msgid "Requires"
 msgstr "Gerekir"
 
 msgid "Resend"
-msgstr "Kodu tekrar gönder"
+msgstr "Tekrar gönder"
 
 msgid "Reset"
 msgstr "Sıfırla"
@@ -3501,7 +3501,7 @@ msgid "Unsubscribe"
 msgstr "Abonelikten çık"
 
 msgid "Unsubscribe from notifications"
-msgstr "Email bildirimleri aboneliğinden çık"
+msgstr "Bildirim aboneliğinden çık"
 
 msgid "Unsupported password hash version"
 msgstr "Desteklenmeyen şifre hash sürümü"
@@ -3803,13 +3803,13 @@ msgid "You have successfully added your email address."
 msgstr "Email adresinizi başarılı bir şekilde eklediniz."
 
 msgid "You have successfully subscribed wallet to notifications"
-msgstr "Bildirimler için başarıyla abone oldunuz."
+msgstr "Cüzdan bildirimleri için başarılı bir şekilde abone oldunuz."
 
 msgid "You have successfully unsubscribed wallet"
 msgstr "Cüzdan aboneliğinden başarılı bir şekilde çıktınız"
 
 msgid "You have successfully updated your notification preferences"
-msgstr "Email adresinizi başarılı bir şekilde güncellediniz."
+msgstr "Bildirim tercihlerinizi başarılı bir şekilde güncellediniz."
 
 msgid "You have {number} more attempts."
 msgstr "{number} hakkınız kaldı."

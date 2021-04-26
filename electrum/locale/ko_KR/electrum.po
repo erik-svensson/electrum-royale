@@ -90,7 +90,7 @@ msgid "&New/Restore"
 msgstr "&신규/복구"
 
 msgid "&Notification"
-msgstr "알림"
+msgstr "&알림"
 
 msgid "&Official website"
 msgstr "&공식 웹사이트"
@@ -358,7 +358,7 @@ msgid "Automatically check for software updates"
 msgstr "소프트웨어 업데이트를 자동으로 확인합니다"
 
 msgid "BIP39 seed"
-msgstr "BIP39 시드 문구"
+msgstr "BIP39 시드"
 
 msgid "BIP39 seeds can be imported in Electrum, so that users can access funds locked in other wallets."
 msgstr "BIP39 시드는 이용자들의 타 지갑 자금에 대한 접근을 위해 Electrum에서 가져올 수 있습니다."
@@ -475,7 +475,7 @@ msgid "Cannot create window for wallet"
 msgstr "지갑창을 생성할 수 없습니다"
 
 msgid "Cannot fetch data from server"
-msgstr "서버에서 데이터를 가져올 수 없습니다"
+msgstr "서버에서 데이터를 패치할 수 없음"
 
 msgid "Cannot load wallet"
 msgstr "지갑을 불러올 수 없습니다"
@@ -971,7 +971,7 @@ msgid "Do you want to send this report?"
 msgstr "해당 보고를 전송하시겠습니까?"
 
 msgid "Do you want to unsubscribe this wallet from email notifications?"
-msgstr "이 지갑을 이메일 알림에서 수신 거부 하시겠습니까?"
+msgstr "이 지갑의 이메일 알림 설정을 해제하겠습니까?"
 
 msgid "Do you want to use Gold Wallet as a transaction authenticator?"
 msgstr "Gold Wallet을 거래 인증기로 사용하시겠습니까?"
@@ -1063,7 +1063,7 @@ msgid "Email address:"
 msgstr "이메일 주소:"
 
 msgid "Email address: "
-msgstr "이메일 주소: "
+msgstr "이메일 주소:"
 
 msgid "Email settings"
 msgstr "이메일 설정"
@@ -1465,7 +1465,7 @@ msgid "Gold Wallet authenticator public key"
 msgstr "Gold Wallet 인증기 공용 키"
 
 msgid "Gold Wallet seed"
-msgstr "Gold Wallet 시드 문구"
+msgstr "Gold Wallet 시드"
 
 msgid "Google Authenticator code:"
 msgstr "구글 인증기 코드:"
@@ -2004,7 +2004,7 @@ msgid "New contact"
 msgstr "새로운 연락처"
 
 msgid "New email:"
-msgstr "새로운 이메일"
+msgstr "새로운 이메일:"
 
 #, python-brace-format
 msgid "New transaction: {amount}"
@@ -2515,7 +2515,7 @@ msgid "Raw Transaction"
 msgstr "원거래"
 
 msgid "Reached connection timeout."
-msgstr "연결 시간 초과"
+msgstr "연결 시간 초과."
 
 msgid "Read QR code"
 msgstr "QR 코드 읽기"
@@ -2633,7 +2633,7 @@ msgid "Requires"
 msgstr "필요"
 
 msgid "Resend"
-msgstr "코드 재전송"
+msgstr "재전송"
 
 msgid "Reset"
 msgstr "리셋"
@@ -3800,16 +3800,16 @@ msgid "You have multiple consecutive whitespaces or leading/trailing whitespaces
 msgstr "패스 문구에는 다중의 연속된 공백 또는 앞/뒤에 공백을 포함할 수 있습니다."
 
 msgid "You have successfully added your email address."
-msgstr "사용자 이메일 주소를 추가했습니다."
+msgstr "사용자 이메일 주소를 성공적으로 추가했습니다."
 
 msgid "You have successfully subscribed wallet to notifications"
-msgstr "알림을 성공적으로 설정했습니다."
+msgstr "알림을 성공적으로 설정했습니다"
 
 msgid "You have successfully unsubscribed wallet"
-msgstr "지갑 알림을 성공적으로 해제했습니다"
+msgstr "지갑 알림 설정을 성공적으로 해제했습니다"
 
 msgid "You have successfully updated your notification preferences"
-msgstr "사용자 이메일 주소가 성공적으로 업데이트되었습니다."
+msgstr "사용자 알림 설정이 성공적으로 업데이트되었습니다"
 
 msgid "You have {number} more attempts."
 msgstr "이제 {number}번 더 시도할 수 있습니다."
