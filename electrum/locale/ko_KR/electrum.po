@@ -724,7 +724,7 @@ msgid "Connected to {0} nodes."
 msgstr "{0} 노드에 연결되었습니다."
 
 msgid "Connecting with server..."
-msgstr "서버 연결 중…"
+msgstr "서버 연결 중..."
 
 msgid "Connecting..."
 msgstr "연결중..."
