@@ -358,7 +358,7 @@ msgid "Automatically check for software updates"
 msgstr "Buscar actualizaciones de software automáticamente"
 
 msgid "BIP39 seed"
-msgstr "BIP39 Frase semilla "
+msgstr "Frase semilla BIP39"
 
 msgid "BIP39 seeds can be imported in Electrum, so that users can access funds locked in other wallets."
 msgstr "Las semillas BIP39 pueden importarse en Electrum, de manera que los usuarios puedan acceder a los fondos guardados en otros monederos."
@@ -971,7 +971,7 @@ msgid "Do you want to send this report?"
 msgstr "¿Quiere enviar este informe?"
 
 msgid "Do you want to unsubscribe this wallet from email notifications?"
-msgstr "¿Desea cancelar la suscripción de esta billetera a las notificaciones por correo electrónico?"
+msgstr "¿Desea cancelar la suscripción de este monedero a las notificaciones por correo electrónico?"
 
 msgid "Do you want to use Gold Wallet as a transaction authenticator?"
 msgstr "¿Quiere utilizar Gold Wallet como autenficador de transacciones?"
@@ -1465,7 +1465,7 @@ msgid "Gold Wallet authenticator public key"
 msgstr "Clave pública del autenticador de Gold Wallet"
 
 msgid "Gold Wallet seed"
-msgstr "Gold Wallet Frase semilla "
+msgstr "Frase semilla de Gold Wallet"
 
 msgid "Google Authenticator code:"
 msgstr "Código de autenticación de Google:"
@@ -3774,7 +3774,7 @@ msgid "You are using a non-deterministic wallet, which cannot create new address
 msgstr " Está utilizando un monedero no determinista, que no puede crear nuevas direcciones. "
 
 msgid "You can change your email. It is used to send you transaction notifications from chosen wallet."
-msgstr "Puede cambiar su dirección de correo electrónico. Se utiliza para enviarle notificaciones de transacciones de los monederos elegidos. "
+msgstr "Puede cambiar su dirección de correo electrónico. Se utiliza para enviarle notificaciones de transacciones de los monederos elegidos."
 
 #, python-brace-format
 msgid "You can disable this setting in '{setting_name}'."
@@ -3800,16 +3800,16 @@ msgid "You have multiple consecutive whitespaces or leading/trailing whitespaces
 msgstr " Tiene varios espacios en blanco consecutivos o espacios en blanco iniciales / finales en  su frase de contraseña. "
 
 msgid "You have successfully added your email address."
-msgstr "Se ha suscrito con éxito a las notificaciones. "
+msgstr "Ha añadido con éxito su dirección de correo electrónico."
 
 msgid "You have successfully subscribed wallet to notifications"
-msgstr "Se ha suscrito con éxito a las notificaciones. "
+msgstr "Se ha suscrito con éxito su monedero a las notificaciones. "
 
 msgid "You have successfully unsubscribed wallet"
-msgstr "Se ha dado de baja el monedero con éxito"
+msgstr "Ha cancelado con éxito la suscripción del monedero"
 
 msgid "You have successfully updated your notification preferences"
-msgstr "Ha actualizado correctamente su dirección de correo electrónico."
+msgstr "Ha actualizado con éxito sus preferencias de notificación."
 
 msgid "You have {number} more attempts."
 msgstr "Le quedan {number} intentos."

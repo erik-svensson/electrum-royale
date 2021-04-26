@@ -358,7 +358,7 @@ msgid "Automatically check for software updates"
 msgstr "ソフトウェアアップデートを自動で確認します。"
 
 msgid "BIP39 seed"
-msgstr "BIP39 シードフレーズ"
+msgstr "BIP39 シード"
 
 msgid "BIP39 seeds can be imported in Electrum, so that users can access funds locked in other wallets."
 msgstr "BIP39 シードはElectrumからインポートできます。ユーザーが他のウォレットからロックされた資金にアクセスできるようにします。"
@@ -699,7 +699,7 @@ msgid "Confirm your current email address"
 msgstr "現在のメールアドレスを確認してください"
 
 msgid "Confirm your email address"
-msgstr "メールアドレスの確認"
+msgstr "メールアドレスを確認してください"
 
 msgid "Confirm your new email address"
 msgstr "新しいメールアドレスを確認してください"
@@ -971,7 +971,7 @@ msgid "Do you want to send this report?"
 msgstr "このレポートを送信しますか？"
 
 msgid "Do you want to unsubscribe this wallet from email notifications?"
-msgstr "このウォレットの電子メール通知の購読を解除しますか？ "
+msgstr "このウォレットのメール通知登録を解除しますか？ "
 
 msgid "Do you want to use Gold Wallet as a transaction authenticator?"
 msgstr "取引の認証にGold Walletを使用しますか?"
@@ -1465,7 +1465,7 @@ msgid "Gold Wallet authenticator public key"
 msgstr "Gold Wallet認証システムの公開キー"
 
 msgid "Gold Wallet seed"
-msgstr "Gold Wallet シードフレーズ"
+msgstr "Gold Wallet シード"
 
 msgid "Google Authenticator code:"
 msgstr "Google認証システムコード:"
@@ -2633,7 +2633,7 @@ msgid "Requires"
 msgstr "必要"
 
 msgid "Resend"
-msgstr "コードを再送する"
+msgstr "再送"
 
 msgid "Reset"
 msgstr "リセット"
@@ -3288,7 +3288,7 @@ msgid "To"
 msgstr "へ"
 
 msgid "To confirm the request, please enter the code we sent to"
-msgstr "リクエストを確認するには、お送りしたコードを入力してください"
+msgstr "リクエストを確認するには、こちらにお送りしたコードを入力してください"
 
 msgid "To create a spending wallet, please enter a master private key (xprv/yprv/zprv)."
 msgstr "ウォレットを作成するには、マスター個人キーを入力してください(xprv/yprv/zprv)."
@@ -3803,13 +3803,13 @@ msgid "You have successfully added your email address."
 msgstr "メールアドレスの追加が完了しました。"
 
 msgid "You have successfully subscribed wallet to notifications"
-msgstr "通知の登録が完了しました。"
+msgstr "ウォレットの通知登録が完了しました。"
 
 msgid "You have successfully unsubscribed wallet"
 msgstr "ウォレットの登録を解除しました"
 
 msgid "You have successfully updated your notification preferences"
-msgstr "メールアドレスの更新が完了しました。"
+msgstr "通知設定の更新が完了しました。"
 
 msgid "You have {number} more attempts."
 msgstr "あと{number}回試せます。"

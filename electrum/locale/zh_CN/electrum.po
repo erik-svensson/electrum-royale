@@ -2514,7 +2514,7 @@ msgid "Raw Transaction"
 msgstr "原始交易"
 
 msgid "Reached connection timeout."
-msgstr "达到连接超时。"
+msgstr "连接超时。"
 
 msgid "Read QR code"
 msgstr "读取二维码"
@@ -2632,7 +2632,7 @@ msgid "Requires"
 msgstr "需要"
 
 msgid "Resend"
-msgstr "重新发送验证码"
+msgstr "重新发送"
 
 msgid "Reset"
 msgstr "重置"
@@ -3773,7 +3773,7 @@ msgid "You are using a non-deterministic wallet, which cannot create new address
 msgstr "您使用的是不确定的钱包，无法创建新地址。"
 
 msgid "You can change your email. It is used to send you transaction notifications from chosen wallet."
-msgstr "您可以更改您的电子邮件地址。用于向您发送来自选定钱包的交易通知。"
+msgstr "您可以更改您的电子邮件地址。用于向您发送所选定钱包的交易通知。"
 
 #, python-brace-format
 msgid "You can disable this setting in '{setting_name}'."
@@ -3802,13 +3802,13 @@ msgid "You have successfully added your email address."
 msgstr "您已成功添加您的电子邮件地址。"
 
 msgid "You have successfully subscribed wallet to notifications"
-msgstr "您已经成功订阅了通知。"
+msgstr "您已经成功订阅了钱包通知。"
 
 msgid "You have successfully unsubscribed wallet"
 msgstr "您已成功取消订阅钱包"
 
 msgid "You have successfully updated your notification preferences"
-msgstr "您已成功更新您的电子邮件地址。"
+msgstr "您已成功更新通知首选项"
 
 msgid "You have {number} more attempts."
 msgstr "您还有{number}次尝试机会。"

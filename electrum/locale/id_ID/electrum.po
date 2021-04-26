@@ -698,10 +698,10 @@ msgid "Confirm your current email address"
 msgstr "Konfirmasi alamat email Anda yang terdaftar sebelumnya"
 
 msgid "Confirm your email address"
-msgstr "Konfirmas alamat email"
+msgstr "Konfirmasi alamat email"
 
 msgid "Confirm your new email address"
-msgstr "Konfirmasi alamt email baru Anda"
+msgstr "Konfirmasi alamat email baru Anda"
 
 msgid "Confirmation PIN from Gold Wallet:"
 msgstr "PIN Konfirmasi dari Gold Wallet:"
@@ -970,7 +970,7 @@ msgid "Do you want to send this report?"
 msgstr "Apakah Anda ingin mengirimkan laporan ini?"
 
 msgid "Do you want to unsubscribe this wallet from email notifications?"
-msgstr "Apakah Anda ingin berhenti berlangganan dompet ini dari pemberitahuan email? "
+msgstr "Apakah Anda ingin berhenti menerima notifikasi email dari dompet ini? "
 
 msgid "Do you want to use Gold Wallet as a transaction authenticator?"
 msgstr "Apakah Anda ingin menggunakan Gold Wallet sebagai autentikator transaksi?"
@@ -1464,7 +1464,7 @@ msgid "Gold Wallet authenticator public key"
 msgstr "Kunci publik autentikator Gold Wallet"
 
 msgid "Gold Wallet seed"
-msgstr "Gold Wallet Frase kode (Seed phrase)"
+msgstr "Kode Frase (Seed phrase) Gold Wallet"
 
 msgid "Google Authenticator code:"
 msgstr "Kode Google Authenticator"
@@ -1604,7 +1604,7 @@ msgid "If you want to create new addresses, use a deterministic wallet instead."
 msgstr "Apabila Anda ingin membuat alamat baru, gunakan deterministic sebagai gantinya."
 
 msgid "If you want to receive email notifications, please enter your email address. We will send you information about your transaction statuses."
-msgstr "Apabila Anda ingin menerima notifikasi email, mohon masukkan alamat email Anda. Kami akan mengirimi Anda notifikasi mengenai status transaksi."
+msgstr "Jika Anda ingin menerima notifikasi email, mohon masukkan alamat email Anda. Kami akan mengirimi Anda notifikasi mengenai status transaksi."
 
 msgid "If your device is not detected on Windows, go to \"Settings\", \"Devices\", \"Connected devices\", and do \"Remove device\". Then, plug your device again."
 msgstr "Apabila perangkat Anda tidak terdeteksi di Windows, pergi ke \"Settings\", \"Devices\",\"Connected devices\", and lakukan \"Remove device\". Lalu, pasang perangkat Andalagi."
@@ -1782,7 +1782,7 @@ msgid "It conflicts with current history."
 msgstr "Konflik dengan riwayat sekarang"
 
 msgid "It is used to send your transaction notifications from chosen wallet"
-msgstr "Digunakan untuk mengirimm notifikasi transaksi dari dompet yang Anda pilih"
+msgstr "Digunakan untuk mengirim notifikasi transaksi dari dompet yang Anda pilih"
 
 msgid "It sends and receives partially signed transactions from/to your cosigner wallet."
 msgstr "Ini mengirimkan dan menerima transaksi yang ditandatangani secara parsial dari/ke dompet cosigner Anda."
@@ -2632,7 +2632,7 @@ msgid "Requires"
 msgstr "Memerlukan"
 
 msgid "Resend"
-msgstr "Kirim kembali kode:"
+msgstr "Kirim kembali :"
 
 msgid "Reset"
 msgstr "Reset"
@@ -2946,13 +2946,13 @@ msgid "Skip this step"
 msgstr "Lewati langkah ini"
 
 msgid "Something went wrong when connecting with server."
-msgstr "Nampaknya ada yang salah saat mencoba terhubung ke sever."
+msgstr "Nampaknya telah terjadi kesalahan saat mencoba terhubung ke sever."
 
 msgid "Something went wrong while executing Electrum."
 msgstr "Terjadi kesalahan ketika mengeksekusi Electrum"
 
 msgid "Something went wrong."
-msgstr "Nampaknya ada yang salah"
+msgstr "Nampaknya telah terjadi kesalahan"
 
 msgid "Sorry!"
 msgstr "Mohon maaf!"
@@ -3164,7 +3164,7 @@ msgid "This channel will be usable after {number} confirmations"
 msgstr "Channel ini akan dapat digunakan setelah {number} konfirmasi"
 
 msgid "This code is no longer active. We have sent new code to your email address."
-msgstr "Kode ini sudah tidak aktif Kami telah mengirimkan kode bary ke alamat email Anda."
+msgstr "Kode ini sudah tidak aktif Kami telah mengirimkan kode baru ke alamat email Anda."
 
 msgid "This feature is not available for watch-only wallets."
 msgstr "Fitur ini tidak tersedia untuk dompet watch-only."
@@ -3287,7 +3287,7 @@ msgid "To"
 msgstr "Ke"
 
 msgid "To confirm the request, please enter the code we sent to"
-msgstr "Untuk mengkonfirmasi permintaan, mohon masukkan kode yang kami kirim ke"
+msgstr "Untuk mengkonfirmasi permintaan, mohon masukkan kode yang telah kami kirimkan ke"
 
 msgid "To create a spending wallet, please enter a master private key (xprv/yprv/zprv)."
 msgstr "Untuk membuat dompet pengeluaran, harap masukkan kunci pribadi utama (xprv/yprv/zprv)."
@@ -3497,10 +3497,10 @@ msgid "Unsigned"
 msgstr "Belum ditandatangani"
 
 msgid "Unsubscribe"
-msgstr "Berhenti  Berlangganan"
+msgstr "Berhenti  berlangganan"
 
 msgid "Unsubscribe from notifications"
-msgstr "Berhenti berlangganan ke notifikasi"
+msgstr "Berhenti berlangganan dari notifikasi"
 
 msgid "Unsupported password hash version"
 msgstr "Versi kata sandi hash tidak didukung"
@@ -3509,7 +3509,7 @@ msgid "Unused"
 msgstr "Belum diapkai"
 
 msgid "Update"
-msgstr "Update"
+msgstr "Perbarui"
 
 msgid "Update Check"
 msgstr "Periksa Update"
@@ -3793,7 +3793,7 @@ msgid "You do not need to perform regular backups, because your wallet can be re
 msgstr "Anda tidak perlu melakukan backup secara rutin, karena dompet Anda dapat dipulihkan dari frasa rahasia yang dapat anda hafalkan atau tulis di kertas."
 
 msgid "You have entered an invalid code 3 times. We have sent new code to your email address."
-msgstr "Anda telah memasukkan kode yang tidak valid sebanyak 3 kali. Kami telah mengirimkan kode bary ke alamat email Anda."
+msgstr "Anda telah memasukkan kode yang tidak valid sebanyak 3 kali. Kami telah mengirimkan kode baru ke alamat email Anda."
 
 msgid "You have multiple consecutive whitespaces or leading/trailing whitespaces in your passphrase."
 msgstr "Anda memiliki beberapa whitespace (spasi) berurutan atau leading/trailing whitespace (spasi didepan/dibelakang) di passphrase Anda."
@@ -3802,13 +3802,13 @@ msgid "You have successfully added your email address."
 msgstr "Anda telah berhasil menambahkan alamat email."
 
 msgid "You have successfully subscribed wallet to notifications"
-msgstr "Anda telah berlangganan notifikasi"
+msgstr "Anda telah berhasil menambahkan dompet ke daftar notifikasi"
 
 msgid "You have successfully unsubscribed wallet"
 msgstr "Anda telah berhenti berlangganan ke dompet"
 
 msgid "You have successfully updated your notification preferences"
-msgstr "Anda telah berhasil memperbarui alamat email Anda."
+msgstr "Anda telah berhasil memperbarui pengaturan notifikasi Anda."
 
 msgid "You have {number} more attempts."
 msgstr "Anda memiliki {number} kesempatan tersisa."
