@@ -226,6 +226,19 @@ class InstallWizard(QDialog, MessageBoxMixin, BaseWizard, TermsAndConditionsMixi
         hbox2.addWidget(self.pw_e)
         hbox2.addStretch()
         vbox.addLayout(hbox2)
+
+        hbox3 = QHBoxLayout()
+        self.pw_label = QLabel(_('Alternatively') + ':')
+        hbox3.addWidget(self.pw_label)
+        vbox.addLayout(hbox3)
+
+        hbox3 = QHBoxLayout()
+        button2 = QPushButton(_('Create New Wallet'))
+        hbox3.addWidget(button2)
+        hbox3.addWidget(self.pw_e)
+        hbox3.addStretch()
+        vbox.addLayout(hbox3)
+
         self.set_layout(vbox, title=_('Electrum wallet'))
 
         temp_storage = None  # type: Optional[WalletStorage]
@@ -265,7 +278,7 @@ class InstallWizard(QDialog, MessageBoxMixin, BaseWizard, TermsAndConditionsMixi
                               + _('Enter your password or choose another file.')
                         user_needs_to_enter_password = True
                     elif temp_storage.is_encrypted_with_hw_device():
-                        msg = _("This file is encrypted using a hardware device.") + '\n' \
+                                    msg = _("This file is encrypted using a hardware device.") + '\n' \
                               + _("Press 'Next' to choose device to decrypt.")
                     else:
                         msg = _("Press 'Next' to open this wallet.")
@@ -284,11 +297,13 @@ class InstallWizard(QDialog, MessageBoxMixin, BaseWizard, TermsAndConditionsMixi
                 self.pw_e.hide()
 
         button.clicked.connect(on_choose)
+        button2.clicked.connect(lambda: self.loop.exit(2))
         self.name_e.textChanged.connect(on_filename)
         self.name_e.setText(os.path.basename(path))
 
         while True:
             if self.loop.exec_() != 2:  # 2 = next
+
                 raise UserCancelled
             assert temp_storage
             if temp_storage.file_exists() and not temp_storage.is_encrypted():
