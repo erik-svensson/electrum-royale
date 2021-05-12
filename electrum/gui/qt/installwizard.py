@@ -271,14 +271,14 @@ class InstallWizard(QDialog, MessageBoxMixin, BaseWizard, TermsAndConditionsMixi
             if temp_storage:
                 if not temp_storage.file_exists():
                     msg = _("This file does not exist.") + '\n' \
-                    + _("Press 'Next' to create this wallet, or choose another file.")
+                          + _("Press 'Next' to create this wallet, or choose another file.")
                 elif not wallet_from_memory:
                     if temp_storage.is_encrypted_with_user_pw():
                         msg = _("This file is encrypted with a password.") + '\n' \
-                        + _('Enter your password or choose another file.')
+                              + _('Enter your password or choose another file.')
                         user_needs_to_enter_password = True
                     elif temp_storage.is_encrypted_with_hw_device():
-                                    msg = _("This file is encrypted using a hardware device.") + '\n' \
+                        msg = _("This file is encrypted using a hardware device.") + '\n' \
                               + _("Press 'Next' to choose device to decrypt.")
                     else:
                         msg = _("Press 'Next' to open this wallet.")
