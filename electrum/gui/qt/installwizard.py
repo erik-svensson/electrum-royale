@@ -275,7 +275,7 @@ class InstallWizard(QDialog, MessageBoxMixin, BaseWizard, TermsAndConditionsMixi
                 elif not wallet_from_memory:
                     if temp_storage.is_encrypted_with_user_pw():
                         msg = _("This file is encrypted with a password.") + '\n' \
-                              + _('Enter your password or choose another file.')
+                        + _('Enter your password or choose another file.')
                         user_needs_to_enter_password = True
                     elif temp_storage.is_encrypted_with_hw_device():
                                     msg = _("This file is encrypted using a hardware device.") + '\n' \
@@ -303,7 +303,6 @@ class InstallWizard(QDialog, MessageBoxMixin, BaseWizard, TermsAndConditionsMixi
 
         while True:
             if self.loop.exec_() != 2:  # 2 = next
-
                 raise UserCancelled
             assert temp_storage
             if temp_storage.file_exists() and not temp_storage.is_encrypted():
