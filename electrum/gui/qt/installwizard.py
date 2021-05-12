@@ -226,6 +226,19 @@ class InstallWizard(QDialog, MessageBoxMixin, BaseWizard, TermsAndConditionsMixi
         hbox2.addWidget(self.pw_e)
         hbox2.addStretch()
         vbox.addLayout(hbox2)
+
+        hbox3 = QHBoxLayout()
+        self.pw_label = QLabel(_('Alternatively') + ':')
+        hbox3.addWidget(self.pw_label)
+        vbox.addLayout(hbox3)
+
+        hbox3 = QHBoxLayout()
+        button2 = QPushButton(_('Create New Wallet'))
+        hbox3.addWidget(button2)
+        hbox3.addWidget(self.pw_e)
+        hbox3.addStretch()
+        vbox.addLayout(hbox3)
+
         self.set_layout(vbox, title=_('Electrum wallet'))
 
         temp_storage = None  # type: Optional[WalletStorage]
@@ -284,6 +297,7 @@ class InstallWizard(QDialog, MessageBoxMixin, BaseWizard, TermsAndConditionsMixi
                 self.pw_e.hide()
 
         button.clicked.connect(on_choose)
+        button2.clicked.connect(lambda: self.loop.exit(2))
         self.name_e.textChanged.connect(on_filename)
         self.name_e.setText(os.path.basename(path))
 
