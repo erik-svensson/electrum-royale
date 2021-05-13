@@ -582,7 +582,7 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
         self.recently_visited_menu = file_menu.addMenu(_("&Recently open"))
         file_menu.addAction(_("&Open"), self.open_wallet).setShortcut(QKeySequence.Open)
         file_menu.addAction(_("&New/Restore"), self.new_wallet).setShortcut(QKeySequence.New)
-        file_menu.addAction(_("&Save Copy"), self.backup_wallet).setShortcut(QKeySequence.SaveAs)
+        file_menu.addAction(_("&Backup"), self.backup_wallet).setShortcut(QKeySequence.SaveAs)
         file_menu.addAction(_("Delete"), self.remove_wallet)
         file_menu.addSeparator()
         file_menu.addAction(_("&Quit"), self.close)
@@ -1792,7 +1792,7 @@ in the "Authenticators" tab in the Gold Wallet app.')
         from .address_list import AddressList
         self.address_list = l = AddressList(self)
         toolbar = l.create_toolbar(self.config)
-        toolbar_shown = bool(self.config.get('show_toolbar_addresses', False))
+        toolbar_shown = bool(self.config.get('show_toolbar_addresses', True))
         l.show_toolbar(toolbar_shown)
         return self.create_list_tab(l, toolbar)
 
@@ -1963,7 +1963,7 @@ in the "Authenticators" tab in the Gold Wallet app.')
 
         self.search_box = QLineEdit()
         self.search_box.textChanged.connect(self.do_search)
-        self.search_box.hide()
+        self.search_box.setVisible(True)
         sb.addPermanentWidget(self.search_box)
 
         self.update_check_button = QPushButton("")
