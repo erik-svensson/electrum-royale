@@ -1792,7 +1792,7 @@ in the "Authenticators" tab in the Gold Wallet app.')
         from .address_list import AddressList
         self.address_list = l = AddressList(self)
         toolbar = l.create_toolbar(self.config)
-        toolbar_shown = bool(self.config.get('show_toolbar_addresses', True))
+        toolbar_shown = bool(self.config.get('show_toolbar_addresses', False))
         l.show_toolbar(toolbar_shown)
         return self.create_list_tab(l, toolbar)
 
@@ -1963,7 +1963,7 @@ in the "Authenticators" tab in the Gold Wallet app.')
 
         self.search_box = QLineEdit()
         self.search_box.textChanged.connect(self.do_search)
-        self.search_box.setVisible(True)
+        self.search_box.hide()
         sb.addPermanentWidget(self.search_box)
 
         self.update_check_button = QPushButton("")
