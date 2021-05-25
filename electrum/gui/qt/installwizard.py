@@ -585,12 +585,12 @@ class InstallWizard(QDialog, MessageBoxMixin, BaseWizard, TermsAndConditionsMixi
             on_finished()
 
     @wizard_dialog
-    def choice_dialog(self, title, message, choices, run_next):
+    def choice_dialog(self, title, message, choices, run_next, hint=None):
         c_values = [x[0] for x in choices]
         c_titles = [x[1] for x in choices]
         id_ = self.compute_window_id(message, c_titles, list(self.data.values()))
         checked_index = LastChosenState.get_index(id_)
-        clayout = ChoicesLayout(message, c_titles, checked_index=checked_index)
+        clayout = ChoicesLayout(message, c_titles, checked_index=checked_index, hint=hint)
         vbox = QVBoxLayout()
         vbox.addLayout(clayout.layout())
         self.exec_layout(vbox, title)
@@ -599,13 +599,13 @@ class InstallWizard(QDialog, MessageBoxMixin, BaseWizard, TermsAndConditionsMixi
         return action
 
     @wizard_dialog
-    def choice_dialog_with_advanced_options(self, title, message, base_choices, advanced_choices, run_next):
+    def choice_dialog_with_advanced_options(self, title, message, base_choices, advanced_choices, run_next, hint=None):
         choices = base_choices + advanced_choices
         c_values = [x[0] for x in choices]
         c_titles = [x[1] for x in choices]
         id_ = self.compute_window_id(message, c_titles, list(self.data.values()))
         checked_index = LastChosenState.get_index(id_)
-        clayout = ChoicesLayout(message, c_titles, checked_index=checked_index)
+        clayout = ChoicesLayout(message, c_titles, checked_index=checked_index, hint=hint)
         if checked_index < len(base_choices):
             clayout.show_index(len(base_choices))
             self._show_advanced_text()

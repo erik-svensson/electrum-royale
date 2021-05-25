@@ -118,6 +118,24 @@ class HelpLabel(QLabel):
         self.app.setOverrideCursor(QCursor(Qt.ArrowCursor))
         return QLabel.leaveEvent(self, event)
 
+class HintButton(QPushButton):
+    def __init__(self, text, icon):
+        QPushButton.__init__(self, icon=read_QIcon("info.png"))  # zamiast '?' ikonka i tekst
+        self.help_text = text
+        self.clicked.connect(self.onclick)
+
+        self.setFlat(True)
+        self.setMaximumWidth(25)
+        self.setIconSize(QSize(25, 25))
+        self.setCursor(QCursor(Qt.PointingHandCursor))
+
+    def onclick(self):
+        custom_message_box(icon=QMessageBox.Information,
+                           parent=self,
+                           title=_('Help'),
+                           text=self.help_text,
+                           rich_text=True)
+
 
 class HelpButton(QPushButton):
     def __init__(self, text):
@@ -357,11 +375,15 @@ def text_dialog(parent, title, header_layout, ok_label, default=None, allow_mult
 
 
 class ChoicesLayout(object):
-    def __init__(self, msg, choices, on_clicked=None, checked_index=0):
+    def __init__(self, msg, choices, on_clicked=None, checked_index=0, hint=None):
         vbox = QVBoxLayout()
-        if len(msg) > 50:
-            vbox.addWidget(WWLabel(msg))
-            msg = ""
+
+        vbox.addWidget(WWLabel(msg))
+        if hint is not None:
+            hint_button = HintButton(text=hint, icon=None)
+            vbox.addWidget(hint_button)
+        msg = ""
+
         gb2 = QGroupBox(msg)
         vbox.addWidget(gb2)
 

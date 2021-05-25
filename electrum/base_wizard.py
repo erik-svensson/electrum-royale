@@ -142,11 +142,20 @@ class BaseWizard(Logger, AdvancedOptionMixin):
             ('imported', _('Import external watch-only BTCV addresses or private keys')),
         ]
 
+        link = "www.google.com"
+        h_txt = "Więcej"
+        hint = ' '.join([
+            _("<B>Tytuł</B><br/>"),
+            _("Nowe opcje i inne bajery"),
+            _("testowy tekst"),
+            f'''<br/><br/><a href="{link}">{h_txt}</a>''',
+        ])
+
         base_choices = [pair for pair in base_wallet_kinds if pair[0] in wallet_types]
         advanced_choices = [pair for pair in advanced_wallet_kinds if pair[0] in wallet_types]
         self.choice_dialog_with_advanced_options(
             title=title, message=message, base_choices=base_choices, advanced_choices=advanced_choices,
-            run_next=self.on_wallet_type
+            run_next=self.on_wallet_type, hint=hint
         )
 
     def upgrade_storage(self, storage):
@@ -231,7 +240,16 @@ class BaseWizard(Logger, AdvancedOptionMixin):
             ('multikey_standalone', _('Do not use Gold Wallet')),
         ]
 
-        self.choice_dialog(title=title, message=message, choices=choices, run_next=process_choice)
+        link = "www.google.com"
+        h_txt = "Więcej"
+        hint = ' '.join([
+            _("<B>Tytuł</B><br/>"),
+            _("Masa super opcji o tym i tamtym"),
+            _("2 i 3 a nawet multi..."),
+            f'''<br/><br/><a href="{link}">{h_txt}</a>''',
+        ])
+
+        self.choice_dialog(title=title, message=message, choices=choices, run_next=process_choice, hint=hint)
 
     def two_keys_standalone(self):
         self.get_recovery_pubkey(run_next=self.on_two_keys_create)
