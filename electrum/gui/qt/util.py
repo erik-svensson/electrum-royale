@@ -378,12 +378,17 @@ class ChoicesLayout(object):
     def __init__(self, msg, choices, on_clicked=None, checked_index=0, hint=None):
         vbox = QVBoxLayout()
 
-        vbox.addWidget(WWLabel(msg))
-        if hint is not None:
-            hint_button = HintButton(text=hint, icon=None)
-            vbox.addWidget(hint_button)
-        msg = ""
+        hbox2 = QHBoxLayout()
 
+        msg_label = QLabel(msg)
+        hbox2.addWidget(msg_label)
+        if hint is not None:  # dodaje hint button
+            hint_button = HintButton(text=hint, icon=None)
+            hbox2.addWidget(hint_button)
+        hbox2.addStretch()
+        vbox.addLayout(hbox2)
+
+        msg = ""
         gb2 = QGroupBox(msg)
         vbox.addWidget(gb2)
 
