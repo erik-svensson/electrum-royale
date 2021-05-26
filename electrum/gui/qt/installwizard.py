@@ -228,7 +228,6 @@ class InstallWizard(QDialog, MessageBoxMixin, BaseWizard, TermsAndConditionsMixi
         hbox2.addStretch()
         vbox.addLayout(hbox2)
 
-
         vbox.addSpacing(20)
         vbox_create_new = QVBoxLayout()
         vbox_create_new.addWidget(QLabel(_('Alternatively') + ':'), alignment=Qt.AlignLeft)
@@ -288,15 +287,12 @@ class InstallWizard(QDialog, MessageBoxMixin, BaseWizard, TermsAndConditionsMixi
                           + _("Press 'Next' to create/focus window.")
             if msg is None:
                 msg = _('Cannot read file')
-
             self.msg_label.setText(msg)
             widget_create_new.setVisible(bool(temp_storage and temp_storage.file_exists()))
             if user_needs_to_enter_password:
                 self.pw_label.show()
                 self.pw_e.show()
                 self.pw_e.setFocus()
-                # self.alt_label.hide()
-                # self.button2.hide()
             else:
                 self.pw_label.hide()
                 self.pw_e.hide()
