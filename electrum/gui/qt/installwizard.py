@@ -228,6 +228,7 @@ class InstallWizard(QDialog, MessageBoxMixin, BaseWizard, TermsAndConditionsMixi
         hbox2.addStretch()
         vbox.addLayout(hbox2)
 
+
         vbox.addSpacing(20)
         vbox_create_new = QVBoxLayout()
         vbox_create_new.addWidget(QLabel(_('Alternatively') + ':'), alignment=Qt.AlignLeft)
@@ -238,6 +239,7 @@ class InstallWizard(QDialog, MessageBoxMixin, BaseWizard, TermsAndConditionsMixi
         widget_create_new.setLayout(vbox_create_new)
         vbox_create_new.setContentsMargins(0, 0, 0, 0)
         vbox.addWidget(widget_create_new)
+
 
         self.set_layout(vbox, title=_('Electrum wallet'))
 
@@ -298,7 +300,10 @@ class InstallWizard(QDialog, MessageBoxMixin, BaseWizard, TermsAndConditionsMixi
                 self.pw_e.hide()
 
         button.clicked.connect(on_choose)
+
         button2.clicked.connect(partial(self.name_e.setText,get_new_wallet_name(wallet_folder)))
+
+
         self.name_e.textChanged.connect(on_filename)
         self.name_e.setText(os.path.basename(path))
 
