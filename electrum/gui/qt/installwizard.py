@@ -4,6 +4,7 @@
 import os
 import threading
 from typing import Tuple, List, Callable, Optional, TYPE_CHECKING
+from functools import partial
 
 from PyQt5 import QtCore
 from PyQt5.QtCore import QRect, QEventLoop, Qt, pyqtSignal
@@ -15,7 +16,7 @@ from electrum.base_wizard import BaseWizard, HWD_SETUP_DECRYPT_WALLET, GoBack
 from electrum.i18n import _, languages, set_language
 from electrum.plugin import Plugins
 from electrum.storage import WalletStorage, StorageReadWriteError
-from electrum.util import UserCancelled, InvalidPassword, WalletFileException
+from electrum.util import UserCancelled, InvalidPassword, WalletFileException, get_new_wallet_name
 from electrum.wallet import Abstract_Wallet
 from .advanced_option_mixin import LastChosenState
 from .network_dialog import NetworkChoiceLayout
@@ -227,17 +228,17 @@ class InstallWizard(QDialog, MessageBoxMixin, BaseWizard, TermsAndConditionsMixi
         hbox2.addStretch()
         vbox.addLayout(hbox2)
 
-        hbox3 = QHBoxLayout()
-        self.pw_label = QLabel(_('Alternatively') + ':')
-        hbox3.addWidget(self.pw_label)
-        vbox.addLayout(hbox3)
 
-        hbox3 = QHBoxLayout()
+        vbox.addSpacing(20)
+        vbox_create_new = QVBoxLayout()
+        vbox_create_new.addWidget(QLabel(_('Alternatively') + ':'), alignment=Qt.AlignLeft)
         button2 = QPushButton(_('Create New Wallet'))
-        hbox3.addWidget(button2)
-        hbox3.addWidget(self.pw_e)
-        hbox3.addStretch()
-        vbox.addLayout(hbox3)
+        button2.setMinimumWidth(120)
+        vbox_create_new.addWidget(button2, alignment=Qt.AlignLeft)
+        widget_create_new = QWidget()
+        widget_create_new.setLayout(vbox_create_new)
+        vbox_create_new.setContentsMargins(0, 0, 0, 0)
+        vbox.addWidget(widget_create_new)
 
         self.set_layout(vbox, title=_('Electrum wallet'))
 
@@ -287,17 +288,21 @@ class InstallWizard(QDialog, MessageBoxMixin, BaseWizard, TermsAndConditionsMixi
                           + _("Press 'Next' to create/focus window.")
             if msg is None:
                 msg = _('Cannot read file')
+
             self.msg_label.setText(msg)
+            widget_create_new.setVisible(bool(temp_storage and temp_storage.file_exists()))
             if user_needs_to_enter_password:
                 self.pw_label.show()
                 self.pw_e.show()
                 self.pw_e.setFocus()
+                # self.alt_label.hide()
+                # self.button2.hide()
             else:
                 self.pw_label.hide()
                 self.pw_e.hide()
 
         button.clicked.connect(on_choose)
-        button2.clicked.connect(lambda: self.loop.exit(2))
+        button2.clicked.connect(partial(self.name_e.setText,get_new_wallet_name(wallet_folder)))
         self.name_e.textChanged.connect(on_filename)
         self.name_e.setText(os.path.basename(path))
 
