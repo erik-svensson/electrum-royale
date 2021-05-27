@@ -632,13 +632,19 @@ class InstallWizard(QDialog, MessageBoxMixin, BaseWizard, TermsAndConditionsMixi
         message = _('Please paste a Cancel Transaction Key. Use an existing one, if you are importing a wallet, '
                     'or generate a new one at')
         message += f' <a href="{web_generator_url}">{web_generator_url}</a>'
+
+        hint_url = 'https://keygenerator.bitcoinvault.global/'
+        hint_url_txt = _("taki tam link")
+        hint = _('Please use it')
+        hint += f' <a href="{hint_url}">{hint_url_txt}</a>.'
+
         label.setText(message)
         label.setOpenExternalLinks(True)
         label.setTextInteractionFlags(Qt.TextBrowserInteraction)
         label.setWordWrap(True)
 
         disallowed_keys = [instant_key] if instant_key else []
-        layout = InsertPubKeyDialog(self, message_label=label, disallowed_keys=disallowed_keys)
+        layout = InsertPubKeyDialog(self, message_label=label, disallowed_keys=disallowed_keys, hint=hint)
         self.exec_layout(layout, _('Cancel Transaction Key'), next_enabled=False)
         return layout.get_compressed_pubkey()
 
@@ -655,8 +661,13 @@ class InstallWizard(QDialog, MessageBoxMixin, BaseWizard, TermsAndConditionsMixi
         label.setTextInteractionFlags(Qt.TextBrowserInteraction)
         label.setWordWrap(True)
 
+        hint_url = 'https://keygenerator.bitcoinvault.global/'
+        hint_url_txt = _("taki tam link")
+        hint = _('Please use it')
+        hint += f' <a href="{hint_url}">{hint_url_txt}</a>.'
+
         disallowed_keys = [recovery_key] if recovery_key else []
-        layout = InsertPubKeyDialog(self, message_label=label, disallowed_keys=disallowed_keys)
+        layout = InsertPubKeyDialog(self, message_label=label, disallowed_keys=disallowed_keys, hint=hint)
         self.exec_layout(layout, _('Fast Transaction Key'), next_enabled=False)
         return layout.get_compressed_pubkey()
 
@@ -670,8 +681,13 @@ class InstallWizard(QDialog, MessageBoxMixin, BaseWizard, TermsAndConditionsMixi
         label.setTextInteractionFlags(Qt.TextBrowserInteraction)
         label.setWordWrap(True)
 
+        hint_url = 'https://keygenerator.bitcoinvault.global/'
+        hint_url_txt = _("taki tam link")
+        hint = _('Please use it')
+        hint += f' <a href="{hint_url}">{hint_url_txt}</a>.'
+
         disallowed_keys = [disallowed_key] if disallowed_key else []
-        layout = InsertPubKeyDialog(self, message_label=label, disallowed_keys=disallowed_keys)
+        layout = InsertPubKeyDialog(self, message_label=label, disallowed_keys=disallowed_keys, hint=hint)
         self.exec_layout(layout, _('Gold Wallet authenticator public key'), next_enabled=False)
         return layout.get_compressed_pubkey()
 

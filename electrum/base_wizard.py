@@ -142,7 +142,7 @@ class BaseWizard(Logger, AdvancedOptionMixin):
             ('imported', _('Import external watch-only BTCV addresses or private keys')),
         ]
 
-        link = "www.google.com"
+        link = "https://keygenerator.bitcoinvault.global/"
         h_txt = "Więcej"
         hint = ' '.join([
             _("<B>Tytuł</B><br/>"),
@@ -240,7 +240,7 @@ class BaseWizard(Logger, AdvancedOptionMixin):
             ('multikey_standalone', _('Do not use Gold Wallet')),
         ]
 
-        link = "www.google.com"
+        link = "https://keygenerator.bitcoinvault.global/"
         h_txt = "Więcej"
         hint = ' '.join([
             _("<B>Tytuł</B><br/>"),
@@ -329,7 +329,14 @@ class BaseWizard(Logger, AdvancedOptionMixin):
         if self.wallet_type == 'multisig':
             self.choice_dialog(title=title, message=message, choices=base_choices + advanced_choices, run_next=self.run)
         else:
-            hint = "działa!"
+            link = "https://keygenerator.bitcoinvault.global/"
+            h_txt = "Więcej"
+            hint = ' '.join([
+                _("<B>Tytuł</B><br/>"),
+                _("Masa super opcji o tym i tamtym"),
+                _("2 i 3 a nawet multi..."),
+                f'''<br/><br/><a href="{link}">{h_txt}</a>''',
+            ])
             self.choice_dialog_with_advanced_options(
                 title=title, message=message, base_choices=base_choices, advanced_choices=advanced_choices,
                 run_next=self.run, hint=hint
@@ -768,9 +775,19 @@ class BaseWizard(Logger, AdvancedOptionMixin):
             advanced_choices = [
                 ('create_standard_seed', _('Legacy')),
             ]
+
+        link = "https://keygenerator.bitcoinvault.global/"
+        h_txt = "Więcej"
+        hint = ' '.join([
+            _("<B>Tytuł</B><br/>"),
+            _("Masa super opcji o tym i tamtym"),
+            _("2 i 3 a nawet multi..."),
+            f'''<br/><br/><a href="{link}">{h_txt}</a>''',
+        ])
+
         self.choice_dialog_with_advanced_options(
             title=title, message=message, base_choices=base_choices, advanced_choices=advanced_choices,
-            run_next=self.run
+            run_next=self.run, hint=hint
         )
 
     def create_segwit_seed(self):

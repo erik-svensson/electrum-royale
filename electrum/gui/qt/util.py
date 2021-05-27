@@ -377,15 +377,17 @@ def text_dialog(parent, title, header_layout, ok_label, default=None, allow_mult
 class ChoicesLayout(object):
     def __init__(self, msg, choices, on_clicked=None, checked_index=0, hint=None):
         vbox = QVBoxLayout()
-
         hbox2 = QHBoxLayout()
-
         msg_label = QLabel(msg)
+        msg_label.setFixedWidth(400)
+        msg_label.setWordWrap(True)
         hbox2.addWidget(msg_label)
         if hint is not None:  # dodaje hint button
             hint_button = HintButton(text=hint, icon=None)
             hbox2.addWidget(hint_button)
         hbox2.addStretch()
+        hbox2.setAlignment(hint_button, Qt.AlignTop)
+
         vbox.addLayout(hbox2)
 
         msg = ""
