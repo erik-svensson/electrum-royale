@@ -142,13 +142,16 @@ class BaseWizard(Logger, AdvancedOptionMixin):
             ('imported', _('Import external watch-only BTCV addresses or private keys')),
         ]
 
-        link = "https://keygenerator.bitcoinvault.global/"
-        h_txt = "Więcej"
+        link = "https://translations.bitcoinvault.global/pdf/BTCV_Tutorial/BTCV-ShortTutorial-2Pager-en.pdf"
+        h_txt = "Learn more"
         hint = ' '.join([
-            _("<B>Tytuł</B><br/>"),
-            _("Nowe opcje i inne bajery"),
-            _("testowy tekst"),
-            f'''<br/><br/><a href="{link}">{h_txt}</a>''',
+            _("<b>2-Key Vault</b><br/>"),
+            _("Allows users to make Secure and Cancel transactions.<br/><br/>"),
+            _("<b>3-Key Vault</b><br/>"),
+            _("Allows users to make Secure Fast, Secure, and Cancel transactions.<br/><br/>"),
+            _("<b>Standard</b><br/>"),
+            _("Allows users to make Standard transactions.<br/><br/>"),
+            f'''<a href="{link}">{h_txt}</a>''',
         ])
 
         base_choices = [pair for pair in base_wallet_kinds if pair[0] in wallet_types]
