@@ -767,15 +767,8 @@ class BaseWizard(Logger, AdvancedOptionMixin):
             advanced_choices = [
                 ('create_standard_seed', _('Legacy')),
             ]
-
-        link = "https://keygenerator.bitcoinvault.global/"
-        h_txt = "Więcej"
-        hint = ' '.join([
-            _("<B>Tytuł</B><br/>"),
-            _("Masa super opcji o tym i tamtym"),
-            _("2 i 3 a nawet multi..."),
-            f'''<br/><br/><a href="{link}">{h_txt}</a>''',
-        ])
+        hint = _("Legacy is the original address type, while Segwit is the newer one with lower fees."
+                 " Segwit wallets use the bech32 format specified in BIP173. "),
 
         self.choice_dialog_with_advanced_options(
             title=title, message=message, base_choices=base_choices, advanced_choices=advanced_choices,
