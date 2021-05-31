@@ -756,9 +756,7 @@ class BaseWizard(Logger, AdvancedOptionMixin):
         title = _('Choose Seed type')
         if message is None:
             message = ' '.join([
-                _("The type of addresses used by your wallet will depend on your seed."),
-                _("Segwit wallets use bech32 addresses, defined in BIP173."),
-                _("'Legacy' is the original address type, while 'Segwit' is the newer address format with lower fees.")
+                _("The type of addresses used by your wallet will depend on your seed.")
             ])
         if choices is None:
             base_choices = [
@@ -767,8 +765,10 @@ class BaseWizard(Logger, AdvancedOptionMixin):
             advanced_choices = [
                 ('create_standard_seed', _('Legacy')),
             ]
-        hint = _("Legacy is the original address type, while Segwit is the newer one with lower fees."
-                 " Segwit wallets use the bech32 format specified in BIP173. "),
+        hint = ' '.join([
+                _("'Legacy' is the original address type, while 'Segwit' is the newer address format with lower fees.") + '\n',
+                _("Segwit wallets use bech32 addresses, defined in BIP173.")
+            ])
 
         self.choice_dialog_with_advanced_options(
             title=title, message=message, base_choices=base_choices, advanced_choices=advanced_choices,
