@@ -242,7 +242,6 @@ class BaseWizard(Logger, AdvancedOptionMixin):
             ('multikey_2fa_import', _('Use Gold Wallet and import an existing wallet')),
             ('multikey_standalone', _('Do not use Gold Wallet')),
         ]
-
         hint = _("A mobile wallet for BTCV. You can pair it with Electrum Vault and use it to authorize "
                  "transactions to additionally secure your funds.")
 

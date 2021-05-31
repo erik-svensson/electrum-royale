@@ -632,7 +632,6 @@ class InstallWizard(QDialog, MessageBoxMixin, BaseWizard, TermsAndConditionsMixi
         message = _('Please paste a Cancel Transaction Key. Use an existing one, if you are importing a wallet, '
                     'or generate a new one at')
         message += f' <a href="{web_generator_url}">{web_generator_url}</a>'
-
         hint = _('Use the link to generate ECDSA public key on the Key Generator website,'
                  ' copy the string of numbers from the “Public key” section and paste it here. ')
 

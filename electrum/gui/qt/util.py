@@ -381,7 +381,7 @@ class ChoicesLayout(object):
         msg_label = QLabel(msg)
         msg_label.setWordWrap(True)
         hbox2.addWidget(msg_label)
-        if hint is not None:  # dodaje hint button
+        if hint is not None:
             hint_button = HintButton(text=hint, icon=None)
             hbox2.addWidget(hint_button)
         hbox2.setAlignment(hint_button, Qt.AlignTop)

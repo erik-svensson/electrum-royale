@@ -104,17 +104,15 @@ class InsertPubKeyDialog(QVBoxLayout):
         self.validator = PubKeyValidator(edit, error_label, disallowed_keys)
         edit.textChanged.connect(self._on_change)
 
-
         hbox2 = QHBoxLayout()
         hbox2.addWidget(label)
         if hint is not None:  # dodaje hint button
             hint_button = HintButton(text=hint, icon=None)
             hbox2.addWidget(hint_button)
-        hbox2.addStretch()
+
         hbox2.setAlignment(hint_button, Qt.AlignTop)
         self.addLayout(hbox2)
 
-        # self.addWidget(label)
         self.addWidget(edit)
         self.addWidget(error_label)
         self.edit = edit
