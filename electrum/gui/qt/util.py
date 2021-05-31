@@ -384,7 +384,6 @@ class ChoicesLayout(object):
         if hint is not None:  # dodaje hint button
             hint_button = HintButton(text=hint, icon=None)
             hbox2.addWidget(hint_button)
-        hbox2.addStretch()
         hbox2.setAlignment(hint_button, Qt.AlignTop)
 
         vbox.addLayout(hbox2)
