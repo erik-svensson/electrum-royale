@@ -379,7 +379,6 @@ class ChoicesLayout(object):
         vbox = QVBoxLayout()
         hbox2 = QHBoxLayout()
         msg_label = QLabel(msg)
-        msg_label.setFixedWidth(400)
         msg_label.setWordWrap(True)
         hbox2.addWidget(msg_label)
         if hint is not None:  # dodaje hint button
