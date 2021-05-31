@@ -243,14 +243,8 @@ class BaseWizard(Logger, AdvancedOptionMixin):
             ('multikey_standalone', _('Do not use Gold Wallet')),
         ]
 
-        link = "https://keygenerator.bitcoinvault.global/"
-        h_txt = "Więcej"
-        hint = ' '.join([
-            _("<B>Tytuł</B><br/>"),
-            _("Masa super opcji o tym i tamtym"),
-            _("2 i 3 a nawet multi..."),
-            f'''<br/><br/><a href="{link}">{h_txt}</a>''',
-        ])
+        hint = _("A mobile wallet for BTCV. You can pair it with Electrum Vault and use it to authorize "
+                 "transactions to additionally secure your funds.")
 
         self.choice_dialog(title=title, message=message, choices=choices, run_next=process_choice, hint=hint)
 
@@ -332,14 +326,10 @@ class BaseWizard(Logger, AdvancedOptionMixin):
         if self.wallet_type == 'multisig':
             self.choice_dialog(title=title, message=message, choices=base_choices + advanced_choices, run_next=self.run)
         else:
-            link = "https://keygenerator.bitcoinvault.global/"
-            h_txt = "Więcej"
-            hint = ' '.join([
-                _("<B>Tytuł</B><br/>"),
-                _("Masa super opcji o tym i tamtym"),
-                _("2 i 3 a nawet multi..."),
-                f'''<br/><br/><a href="{link}">{h_txt}</a>''',
-            ])
+            hint = _("This is a list of words which store all the information necessary to restore the wallet. "
+                     "Without the seed phrase, you won’t be able to access your funds in case of a technical "
+                     "issue or if your device is stolen. ")
+
             self.choice_dialog_with_advanced_options(
                 title=title, message=message, base_choices=base_choices, advanced_choices=advanced_choices,
                 run_next=self.run, hint=hint

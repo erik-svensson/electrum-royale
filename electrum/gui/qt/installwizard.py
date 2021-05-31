@@ -633,10 +633,8 @@ class InstallWizard(QDialog, MessageBoxMixin, BaseWizard, TermsAndConditionsMixi
                     'or generate a new one at')
         message += f' <a href="{web_generator_url}">{web_generator_url}</a>'
 
-        hint_url = 'https://keygenerator.bitcoinvault.global/'
-        hint_url_txt = _("taki tam link")
-        hint = _('Please use it')
-        hint += f' <a href="{hint_url}">{hint_url_txt}</a>.'
+        hint = _('Use the link to generate ECDSA public key on the Key Generator website,'
+                 ' copy the string of numbers from the “Public key” section and paste it here. ')
 
         label.setText(message)
         label.setOpenExternalLinks(True)
@@ -661,10 +659,8 @@ class InstallWizard(QDialog, MessageBoxMixin, BaseWizard, TermsAndConditionsMixi
         label.setTextInteractionFlags(Qt.TextBrowserInteraction)
         label.setWordWrap(True)
 
-        hint_url = 'https://keygenerator.bitcoinvault.global/'
-        hint_url_txt = _("taki tam link")
-        hint = _('Please use it')
-        hint += f' <a href="{hint_url}">{hint_url_txt}</a>.'
+        hint = _('Use the link to generate ECDSA public key on the Key Generator website, '
+                 'copy the string of numbers from the “Public key” section and paste it here. ')
 
         disallowed_keys = [recovery_key] if recovery_key else []
         layout = InsertPubKeyDialog(self, message_label=label, disallowed_keys=disallowed_keys, hint=hint)
@@ -681,9 +677,12 @@ class InstallWizard(QDialog, MessageBoxMixin, BaseWizard, TermsAndConditionsMixi
         label.setTextInteractionFlags(Qt.TextBrowserInteraction)
         label.setWordWrap(True)
 
-        hint_url = 'https://keygenerator.bitcoinvault.global/'
-        hint_url_txt = _("taki tam link")
-        hint = _('Please use it')
+        if self.wallet_type == '2-key':
+            hint_url = 'https://translations.bitcoinvault.global/pdf/BTCV_Tutorial/BTCV-ExtendedTutorial-en.pdf#page=55'
+        if self.wallet_type == '3-key':
+            hint_url = 'https://translations.bitcoinvault.global/pdf/BTCV_Tutorial/BTCV-ExtendedTutorial-en.pdf#page=63'
+        hint_url_txt = _("HERE")
+        hint = _('Find instructions on how to create and share an authenticator')
         hint += f' <a href="{hint_url}">{hint_url_txt}</a>.'
 
         disallowed_keys = [disallowed_key] if disallowed_key else []
