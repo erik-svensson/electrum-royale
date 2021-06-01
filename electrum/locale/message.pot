@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-31 14:23+0200\n"
+"POT-Creation-Date: 2021-06-01 15:12+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -185,15 +185,6 @@ msgstr ""
 msgid "4. Type the numbers in the software"
 msgstr ""
 
-msgid "<b>2-Key Vault</b><br/>"
-msgstr ""
-
-msgid "<b>3-Key Vault</b><br/>"
-msgstr ""
-
-msgid "<b>Standard</b><br/>"
-msgstr ""
-
 msgid "A copy of your wallet file was created in"
 msgstr ""
 
@@ -282,13 +273,13 @@ msgstr ""
 msgid "All fields must be filled out"
 msgstr ""
 
-msgid "Allows users to make Secure Fast, Secure, and Cancel transactions.<br/><br/>"
+msgid "Allows users to make Secure Fast, Secure, and Cancel transactions."
 msgstr ""
 
-msgid "Allows users to make Secure and Cancel transactions.<br/><br/>"
+msgid "Allows users to make Secure and Cancel transactions."
 msgstr ""
 
-msgid "Allows users to make Standard transactions.<br/><br/>"
+msgid "Allows users to make Standard transactions."
 msgstr ""
 
 msgid "Allows validating if your transactions have instant confirmations by GreenAddress"
