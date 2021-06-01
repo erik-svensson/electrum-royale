@@ -629,12 +629,8 @@ class MyTreeView(QTreeView):
         for b in buttons:
             b.setVisible(False)
             hbox.addWidget(b)
-        hide_button = QPushButton('x')
-        hide_button.setVisible(False)
-        hide_button.pressed.connect(lambda: self.show_toolbar(False, config))
-        self.toolbar_buttons = buttons + (hide_button,)
+        self.toolbar_buttons = buttons
         hbox.addStretch()
-        hbox.addWidget(hide_button)
         return hbox
 
     def save_toolbar_state(self, state, config):

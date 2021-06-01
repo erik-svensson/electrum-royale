@@ -98,7 +98,7 @@ class AddressList(MyTreeView):
         self.import_button.pressed.connect(self.parent.do_import_labels)
         self.export_button = QPushButton(self)
         self.export_button.setText(_('Export'))
-        self.import_button.pressed.connect(self.parent.do_export_labels)
+        self.export_button.pressed.connect(self.parent.do_export_labels)
         self.update()
 
     def get_toolbar_buttons(self):
