@@ -149,7 +149,7 @@ class BaseWizard(Logger, AdvancedOptionMixin):
             _('2-Key Vault'),
             '</b><br/>',
             _('Allows users to make Secure and Cancel transactions.'),
-            _('<br/><br/><b>'),
+            '<br/><br/><b>',
             _('3-Key Vault'),
             '</b><br/>',
             _('Allows users to make Secure Fast, Secure, and Cancel transactions.'),
@@ -762,9 +762,9 @@ class BaseWizard(Logger, AdvancedOptionMixin):
     def choose_seed_type(self, message=None, choices=None):
         title = _('Choose Seed type')
         if message is None:
-            message = _("The type of addresses used by your wallet will depend on your seed."),\
-                      _("Segwit wallets use bech32 addresses, defined in BIP173."),\
-                      _("'Legacy' is the original address type, while 'Segwit' is the newer address format with lower fees.")
+            message = _("The type of addresses used by your wallet will depend on your seed. "
+                        "Segwit wallets use bech32 addresses, defined in BIP173.'Legacy' is the original "
+                        "address type, while 'Segwit' is the newer address format with lower fees.")
 
         if choices is None:
             base_choices = [
