@@ -8,13 +8,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-26 08:57+0200\n"
+"POT-Creation-Date: 2021-06-01 15:12+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 msgid "  (No FX rate available)"
@@ -194,6 +194,9 @@ msgstr ""
 msgid "A library is probably missing."
 msgstr ""
 
+msgid "A mobile wallet for BTCV. You can pair it with Electrum Vault and use it to authorize transactions to additionally secure your funds."
+msgstr ""
+
 msgid "A payment was already initiated for this invoice"
 msgstr ""
 
@@ -270,6 +273,15 @@ msgstr ""
 msgid "All fields must be filled out"
 msgstr ""
 
+msgid "Allows users to make Secure Fast, Secure, and Cancel transactions."
+msgstr ""
+
+msgid "Allows users to make Secure and Cancel transactions."
+msgstr ""
+
+msgid "Allows users to make Standard transactions."
+msgstr ""
+
 msgid "Allows validating if your transactions have instant confirmations by GreenAddress"
 msgstr ""
 
@@ -280,6 +292,9 @@ msgid "Also, dust is not kept as change, but added to the fee."
 msgstr ""
 
 msgid "Also, when batching RBF transactions, BIP 125 imposes a lower bound on the fee."
+msgstr ""
+
+msgid "Alternatively"
 msgstr ""
 
 msgid "Always check your backups."
@@ -785,6 +800,9 @@ msgid "Could not retrieve Terms of Service:"
 msgstr ""
 
 msgid "Crash report"
+msgstr ""
+
+msgid "Create New Wallet"
 msgstr ""
 
 msgid "Create a new Revealer"
@@ -1365,6 +1383,9 @@ msgstr ""
 msgid "Find"
 msgstr ""
 
+msgid "Find instructions on how to create and share an authenticator"
+msgstr ""
+
 msgid "Firmware version (or \"Bitcoin\" app) too old for Segwit support. Please update at"
 msgstr ""
 
@@ -1471,6 +1492,9 @@ msgid ""
 "to verify that transaction is instant.\n"
 "Please enter your password to sign a\n"
 "verification request."
+msgstr ""
+
+msgid "HERE"
 msgstr ""
 
 msgid "HTLCs in current commitment transaction"
@@ -3175,6 +3199,9 @@ msgstr ""
 msgid "This invoice has expired"
 msgstr ""
 
+msgid "This is a list of words which store all the information necessary to restore the wallet. Without the seed phrase, you won’t be able to access your funds in case of a technical issue or if your device is stolen. "
+msgstr ""
+
 msgid "This is a watching-only wallet"
 msgstr ""
 
@@ -3532,6 +3559,9 @@ msgid "Use proxy"
 msgstr ""
 
 msgid "Use the camera button to scan a QR code."
+msgstr ""
+
+msgid "Use the link to generate ECDSA public key on the Key Generator website, copy the string of numbers from the “Public key” section and paste it here. "
 msgstr ""
 
 msgid "Use this dialog to add a password to your wallet."
