@@ -120,7 +120,7 @@ class HelpLabel(QLabel):
 
 class HintButton(QPushButton):
     def __init__(self, text, icon):
-        QPushButton.__init__(self, icon=read_QIcon("info.png"))  # zamiast '?' ikonka i tekst
+        QPushButton.__init__(self, icon=read_QIcon("info.png"))
         self.help_text = text
         self.clicked.connect(self.onclick)
 

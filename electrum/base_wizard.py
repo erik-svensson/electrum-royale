@@ -142,16 +142,23 @@ class BaseWizard(Logger, AdvancedOptionMixin):
             ('imported', _('Import external watch-only BTCV addresses or private keys')),
         ]
 
-        link = "https://translations.bitcoinvault.global/pdf/BTCV_Tutorial/BTCV-ShortTutorial-2Pager-en.pdf"
-        h_txt = "Learn more"
+        link = 'https://translations.bitcoinvault.global/pdf/BTCV_Tutorial/BTCV-ShortTutorial-2Pager-en.pdf'
+        h_txt = 'Learn more'
         hint = ' '.join([
-            _("<b>2-Key Vault</b><br/>"),
-            _("Allows users to make Secure and Cancel transactions.<br/><br/>"),
-            _("<b>3-Key Vault</b><br/>"),
-            _("Allows users to make Secure Fast, Secure, and Cancel transactions.<br/><br/>"),
-            _("<b>Standard</b><br/>"),
-            _("Allows users to make Standard transactions.<br/><br/>"),
-            f'''<a href="{link}">{h_txt}</a>''',
+            '<b>',
+            _('2-Key Vault'),
+            '</b><br/>',
+            _('Allows users to make Secure and Cancel transactions.'),
+            _('<br/><br/><b>'),
+            _('3-Key Vault'),
+            '</b><br/>',
+            _('Allows users to make Secure Fast, Secure, and Cancel transactions.'),
+            '<br/><br/><b>',
+            _('Standard'),
+            '</b><br/>',
+            _('Allows users to make Standard transactions.'),
+            '<br/><br/>',
+            f'<a href="{link}">{h_txt}</a>',
         ])
 
         base_choices = [pair for pair in base_wallet_kinds if pair[0] in wallet_types]
@@ -755,11 +762,10 @@ class BaseWizard(Logger, AdvancedOptionMixin):
     def choose_seed_type(self, message=None, choices=None):
         title = _('Choose Seed type')
         if message is None:
-            message = ' '.join([
-                _("The type of addresses used by your wallet will depend on your seed."),
-                _("Segwit wallets use bech32 addresses, defined in BIP173."),
-                _("'Legacy' is the original address type, while 'Segwit' is the newer address format with lower fees.")
-            ])
+            message = _("The type of addresses used by your wallet will depend on your seed."),\
+                      _("Segwit wallets use bech32 addresses, defined in BIP173."),\
+                      _("'Legacy' is the original address type, while 'Segwit' is the newer address format with lower fees.")
+
         if choices is None:
             base_choices = [
                 ('create_segwit_seed', _('Segwit')),

@@ -678,7 +678,7 @@ class InstallWizard(QDialog, MessageBoxMixin, BaseWizard, TermsAndConditionsMixi
 
         if self.wallet_type == '2-key':
             hint_url = 'https://translations.bitcoinvault.global/pdf/BTCV_Tutorial/BTCV-ExtendedTutorial-en.pdf#page=55'
-        if self.wallet_type == '3-key':
+        elif self.wallet_type == '3-key':
             hint_url = 'https://translations.bitcoinvault.global/pdf/BTCV_Tutorial/BTCV-ExtendedTutorial-en.pdf#page=63'
         hint_url_txt = _("HERE")
         hint = _('Find instructions on how to create and share an authenticator')
