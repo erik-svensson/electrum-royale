@@ -27,7 +27,7 @@ from enum import IntEnum
 
 from PyQt5.QtCore import Qt, QPersistentModelIndex, QModelIndex
 from PyQt5.QtGui import QStandardItemModel, QStandardItem, QFont
-from PyQt5.QtWidgets import QAbstractItemView, QComboBox, QLabel, QMenu
+from PyQt5.QtWidgets import QAbstractItemView, QComboBox, QLabel, QMenu, QPushButton
 
 from electrum.i18n import _
 from electrum.util import block_explorer_URL, profiler
@@ -93,10 +93,16 @@ class AddressList(MyTreeView):
         for addr_usage_state in AddressUsageStateFilter.__members__.values():  # type: AddressUsageStateFilter
             self.used_button.addItem(addr_usage_state.ui_text())
         self.setModel(QStandardItemModel(self))
+        self.import_button = QPushButton(self)
+        self.import_button.setText(_('Import'))
+        self.import_button.pressed.connect(self.parent.do_import_labels)
+        self.export_button = QPushButton(self)
+        self.export_button.setText(_('Export'))
+        self.import_button.pressed.connect(self.parent.do_export_labels)
         self.update()
 
     def get_toolbar_buttons(self):
-        return QLabel(_("Filter:")), self.change_button, self.used_button
+        return QLabel(_("Filter:")), self.change_button, self.used_button, self.export_button, self.import_button
 
     def on_hide_toolbar(self):
         self.show_change = AddressTypeFilter.ALL  # type: AddressTypeFilter
