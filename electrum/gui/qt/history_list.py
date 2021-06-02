@@ -478,8 +478,16 @@ class HistoryList(MyTreeView, AcceptFileDragDrop):
         self.period_combo.addItems([_('All'), _('Custom')])
         self.period_combo.activated.connect(self.on_combo)
 
+        self.summary_button = QPushButton(self)
+        self.summary_button.setText(_('Summary'))
+        self.summary_button.pressed.connect(self.history_list.show_summary)
+
+        # history_menu.addAction(_("&Summary"), self.history_list.show_summary)
+        # history_menu.addAction(_("&Plot"), self.history_list.plot_history_dialog)
+        # history_menu.addAction(_("&Export"), self.history_list.export_history_dialog)
+
     def get_toolbar_buttons(self):
-        return self.period_combo, self.start_button, self.end_button
+        return self.period_combo, self.start_button, self.end_button, self.summary_button
 
     def on_hide_toolbar(self):
         self.start_timestamp = None
