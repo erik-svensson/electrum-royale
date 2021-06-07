@@ -95,13 +95,15 @@ from .util import (read_QIcon, ColorScheme, text_dialog, icon_path, WaitingDialo
                    CloseButton, HelpButton, MessageBoxMixin, EnterButton,
                    import_meta_gui, export_meta_gui,
                    filename_field, address_field, char_width_in_lineedit, webopen,
-                   TRANSACTION_FILE_EXTENSION_FILTER)
+                   TRANSACTION_FILE_EXTENSION_FILTER, HowToButton)
+
 from ...notification_connector import EmailNotificationWallet
 
 if TYPE_CHECKING:
     from . import ElectrumGui
 
 LN_NUM_PAYMENT_ATTEMPTS = 10
+
 
 class StatusBarButton(QPushButton):
     def __init__(self, icon, tooltip, func):
@@ -111,7 +113,7 @@ class StatusBarButton(QPushButton):
         self.setMaximumWidth(25)
         self.clicked.connect(self.onPress)
         self.func = func
-        self.setIconSize(QSize(25,25))
+        self.setIconSize(QSize(25, 25))
         self.setCursor(QCursor(Qt.PointingHandCursor))
 
     def onPress(self, checked=False):
@@ -124,11 +126,10 @@ class StatusBarButton(QPushButton):
 
 
 class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
-
     payment_request_ok_signal = pyqtSignal()
     payment_request_error_signal = pyqtSignal()
     network_signal = pyqtSignal(str, object)
-    #ln_payment_attempt_signal = pyqtSignal(str)
+    # ln_payment_attempt_signal = pyqtSignal(str)
     alias_received_signal = pyqtSignal()
     computing_privkeys_signal = pyqtSignal()
     show_privkeys_signal = pyqtSignal()
@@ -221,8 +222,10 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
         QShortcut(QKeySequence("Ctrl+Q"), self, self.close)
         QShortcut(QKeySequence("Ctrl+R"), self, self.update_wallet)
         QShortcut(QKeySequence("F5"), self, self.update_wallet)
-        QShortcut(QKeySequence("Ctrl+PgUp"), self, lambda: wrtabs.setCurrentIndex((wrtabs.currentIndex() - 1)%wrtabs.count()))
-        QShortcut(QKeySequence("Ctrl+PgDown"), self, lambda: wrtabs.setCurrentIndex((wrtabs.currentIndex() + 1)%wrtabs.count()))
+        QShortcut(QKeySequence("Ctrl+PgUp"), self,
+                  lambda: wrtabs.setCurrentIndex((wrtabs.currentIndex() - 1) % wrtabs.count()))
+        QShortcut(QKeySequence("Ctrl+PgDown"), self,
+                  lambda: wrtabs.setCurrentIndex((wrtabs.currentIndex() + 1) % wrtabs.count()))
 
         for i in range(wrtabs.count()):
             QShortcut(QKeySequence("Alt+" + str(i + 1)), self, lambda i=i: wrtabs.setCurrentIndex(i))
@@ -248,7 +251,7 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
             self.console.showMessage(self.network.banner)
 
         # update fee slider in case we missed the callback
-        #self.fee_slider.update()
+        # self.fee_slider.update()
         self.load_wallet(wallet)
         gui_object.timer.timeout.connect(self.timer_actions)
         self.fetch_alias()
@@ -256,7 +259,8 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
         # If the option hasn't been set yet
         if config.get('check_updates') is None:
             choice = self.question(title="Electrum - " + _("Enable update check"),
-                                   msg=_("For security reasons we advise that you always use the latest version of Electrum.") + " " +
+                                   msg=_(
+                                       "For security reasons we advise that you always use the latest version of Electrum.") + " " +
                                        _("Would you like to be notified when there is a newer version of Electrum available?"))
             config.set_key('check_updates', bool(choice), save=True)
 
@@ -268,6 +272,7 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
                     self.update_check_button.setText(_("Update to Electrum {version} is available").format(version=v))
                     self.update_check_button.clicked.connect(lambda: self.show_update_check(v))
                     self.update_check_button.show()
+
             self._update_check_thread = UpdateCheckThread(self)
             self._update_check_thread.checked.connect(on_version_received)
             self._update_check_thread.start()
@@ -294,7 +299,8 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
     def toggle_tab(self, tab):
         show = not self.config.get('show_{}_tab'.format(tab.tab_name), False)
         self.config.set_key('show_{}_tab'.format(tab.tab_name), show)
-        item_text = (_("Hide {tab_description}") if show else _("Show {tab_description}")).format(tab_description=tab.tab_description)
+        item_text = (_("Hide {tab_description}") if show else _("Show {tab_description}")).format(
+            tab_description=tab.tab_description)
         tab.menu_action.setText(item_text)
         if show:
             # Find out where to place the tab
@@ -328,7 +334,7 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
         return self.top_level_window_recurse(override, test_func)
 
     def diagnostic_name(self):
-        #return '{}:{}'.format(self.__class__.__name__, self.wallet.diagnostic_name())
+        # return '{}:{}'.format(self.__class__.__name__, self.wallet.diagnostic_name())
         return self.wallet.diagnostic_name()
 
     def is_hidden(self):
@@ -401,11 +407,11 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
                 self.history_model.update_tx_mined_status(tx_hash, tx_mined_status)
         elif event == 'fee':
             if self.config.is_dynfee():
-                #self.fee_slider.update()
+                # self.fee_slider.update()
                 self.require_fee_update = True
         elif event == 'fee_histogram':
             if self.config.is_dynfee():
-                #self.fee_slider.update()
+                # self.fee_slider.update()
                 self.require_fee_update = True
             self.history_model.on_fee_histogram()
         else:
@@ -416,9 +422,11 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
         alias = self.config.get('alias')
         if alias:
             alias = str(alias)
+
             def f():
                 self.alias_info = self.contacts.resolve_openalias(alias)
                 self.alias_received_signal.emit()
+
             t = threading.Thread(target=f)
             t.setDaemon(True)
             t.start()
@@ -471,11 +479,11 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
     def watching_only_changed(self):
         name = "Electrum Vault"
         title = '%s %s  -  %s' % (name, ELECTRUM_VERSION,
-                                        self.wallet.basename())
+                                  self.wallet.basename())
         extra = [self.wallet.get_wallet_label()]
         if self.wallet.is_watching_only():
             extra.append(_('watching only'))
-        title += '  [%s]'% ', '.join(extra)
+        title += '  [%s]' % ', '.join(extra)
         self.setWindowTitle(title)
         self.password_menu.setEnabled(self.wallet.may_have_password())
         self.import_privkey_menu.setVisible(self.wallet.can_import_privkey())
@@ -508,9 +516,11 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
         ])
         cb = QCheckBox(_("Don't show this again."))
         cb_checked = False
+
         def on_cb(x):
             nonlocal cb_checked
             cb_checked = x == Qt.Checked
+
         cb.stateChanged.connect(on_cb)
         self.show_warning(msg, title=_('Testnet'), checkbox=cb)
         if cb_checked:
@@ -527,20 +537,23 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
             return
         self.gui_object.new_window(filename)
 
-
     def backup_wallet(self):
         path = self.wallet.storage.path
         wallet_folder = os.path.dirname(path)
-        filename, __ = QFileDialog.getSaveFileName(self, _('Enter a filename for the copy of your wallet'), wallet_folder)
+        filename, __ = QFileDialog.getSaveFileName(self, _('Enter a filename for the copy of your wallet'),
+                                                   wallet_folder)
         if not filename:
             return
         new_path = os.path.join(wallet_folder, filename)
         if new_path != path:
             try:
                 shutil.copy2(path, new_path)
-                self.show_message(_("A copy of your wallet file was created in")+" '%s'" % str(new_path), title=_("Wallet backup created"))
+                self.show_message(_("A copy of your wallet file was created in") + " '%s'" % str(new_path),
+                                  title=_("Wallet backup created"))
             except BaseException as reason:
-                self.show_critical(_("Electrum was unable to copy your wallet file to the specified location.") + "\n" + str(reason), title=_("Unable to create backup"))
+                self.show_critical(
+                    _("Electrum was unable to copy your wallet file to the specified location.") + "\n" + str(reason),
+                    title=_("Unable to create backup"))
 
     def update_recently_visited(self, filename):
         recent = self.config.get('recently_open', [])
@@ -557,9 +570,11 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
         self.recently_visited_menu.clear()
         for i, k in enumerate(sorted(recent)):
             b = os.path.basename(k)
+
             def loader(k):
                 return lambda: self.gui_object.new_window(k)
-            self.recently_visited_menu.addAction(b, loader(k)).setShortcut(QKeySequence("Ctrl+%d"%(i+1)))
+
+            self.recently_visited_menu.addAction(b, loader(k)).setShortcut(QKeySequence("Ctrl+%d" % (i + 1)))
         self.recently_visited_menu.setEnabled(len(recent))
 
     def get_wallet_folder(self):
@@ -628,7 +643,8 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
         tools_menu = menubar.addMenu(_("&Tools"))
 
         # Settings / Preferences are all reserved keywords in macOS using this as work around
-        tools_menu.addAction(_("Electrum preferences") if sys.platform == 'darwin' else _("Preferences"), self.settings_dialog)
+        tools_menu.addAction(_("Electrum preferences") if sys.platform == 'darwin' else _("Preferences"),
+                             self.settings_dialog)
         tools_menu.addAction(_("&Network"), lambda: self.gui_object.show_network_dialog(self))
         tools_menu.addAction(_("&Plugins"), self.plugins_dialog)
         tools_menu.addSeparator()
@@ -651,7 +667,8 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
         help_menu.addAction(_("&Check for updates"), self.show_update_check)
         help_menu.addAction(_("&Official website"), lambda: webopen("https://bitcoinvault.global"))
         help_menu.addSeparator()
-        help_menu.addAction(_("&Documentation"), lambda: webopen("http://docs.electrum.org/")).setShortcut(QKeySequence.HelpContents)
+        help_menu.addAction(_("&Documentation"), lambda: webopen("http://docs.electrum.org/")).setShortcut(
+            QKeySequence.HelpContents)
         help_menu.addAction(_("&Report Bug"), self.show_report_bug)
         help_menu.addSeparator()
         help_menu.addAction(_("&Terms && Conditions"), self.terms_and_conditions_view)
@@ -689,12 +706,12 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
 
     def show_about(self):
         QMessageBox.about(self, "Electrum Vault",
-                          (_("Version")+" %s" % ELECTRUM_VERSION + "\n\n" +
+                          (_("Version") + " %s" % ELECTRUM_VERSION + "\n\n" +
                            _("Electrum's focus is speed, with low resource usage and simplifying Bitcoin Vault.") + " " +
                            _("You do not need to perform regular backups, because your wallet can be "
-                              "recovered from a secret phrase that you can memorize or write on paper.") + " " +
+                             "recovered from a secret phrase that you can memorize or write on paper.") + " " +
                            _("Startup times are instant because it operates in conjunction with high-performance "
-                              "servers that handle the most complicated parts of the Bitcoin Vault system.") + "\n\n" +
+                             "servers that handle the most complicated parts of the Bitcoin Vault system.") + "\n\n" +
                            _("Uses icons from the Icons8 icon pack (icons8.com).")))
 
     def show_update_check(self, version=None):
@@ -706,7 +723,7 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
             f'''<a href="{constants.GIT_REPO_ISSUES_URL}">{constants.GIT_REPO_ISSUES_URL}</a><br/><br/>''',
             _("Before reporting a bug, upgrade to the most recent version of Electrum (latest release or git HEAD), and include the version number in your report."),
             _("Try to explain not only what the bug is, but how it occurs.")
-         ])
+        ])
         self.show_message(msg, title="Electrum - " + _("Reporting Bugs"), rich_text=True)
 
     def notify_transactions(self):
@@ -752,16 +769,16 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
                 self.tray.showMessage("Electrum Vault", message, QSystemTrayIcon.Information, 20000)
 
     # custom wrappers for getOpenFileName and getSaveFileName, that remember the path selected by the user
-    def getOpenFileName(self, title, filter = ""):
+    def getOpenFileName(self, title, filter=""):
         directory = self.config.get('io_dir', os.path.expanduser('~'))
         fileName, __ = QFileDialog.getOpenFileName(self, title, directory, filter)
         if fileName and directory != os.path.dirname(fileName):
             self.config.set_key('io_dir', os.path.dirname(fileName), True)
         return fileName
 
-    def getSaveFileName(self, title, filename, filter = ""):
+    def getSaveFileName(self, title, filename, filter=""):
         directory = self.config.get('io_dir', os.path.expanduser('~'))
-        path = os.path.join( directory, filename )
+        path = os.path.join(directory, filename)
         fileName, __ = QFileDialog.getSaveFileName(self, title, path, filter)
         if fileName and directory != os.path.dirname(fileName):
             self.config.set_key('io_dir', os.path.dirname(fileName), True)
@@ -781,7 +798,7 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
         self.payto_e.resolve()
         # update fee
         if self.require_fee_update:
-            #self.do_update_fee()
+            # self.do_update_fee()
             self.require_fee_update = False
         self.notify_transactions()
 
@@ -789,15 +806,15 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
         return format_satoshis(x, self.num_zeros, self.decimal_point, is_diff=is_diff, whitespaces=whitespaces)
 
     def format_amount_and_units(self, amount):
-        text = self.format_amount(amount) + ' '+ self.base_unit()
+        text = self.format_amount(amount) + ' ' + self.base_unit()
         x = self.fx.format_amount_and_units(amount) if self.fx else None
         if text and x:
-            text += ' (%s)'%x
+            text += ' (%s)' % x
         return text
 
     def format_fee_rate(self, fee_rate):
         # fee_rate is in sat/kB
-        return format_fee_satoshis(fee_rate/1000, num_zeros=self.num_zeros) + ' sat/byte'
+        return format_fee_satoshis(fee_rate / 1000, num_zeros=self.num_zeros) + ' sat/byte'
 
     def get_decimal_point(self):
         return self.decimal_point
@@ -853,7 +870,7 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
         elif self.network.is_connected():
             server_height = self.network.get_server_height()
             server_lag = self.network.get_local_height() - server_height
-            fork_str = "_fork" if len(self.network.get_blockchains())>1 else ""
+            fork_str = "_fork" if len(self.network.get_blockchains()) > 1 else ""
             # Server height can be 0 after switching to a new server
             # until we get a headers subscription request response.
             # Display the synchronizing message in that case.
@@ -864,7 +881,7 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
                 icon = read_QIcon("status_waiting.png")
             elif server_lag > 1:
                 text = _("Server is lagging ({number} blocks)").format(number=server_lag)
-                icon = read_QIcon("status_lagging%s.png"%fork_str)
+                icon = read_QIcon("status_lagging%s.png" % fork_str)
             else:
                 balance = self.wallet.get_balance()
                 c, u, x = balance[:3]
@@ -872,27 +889,27 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
                 if len(balance) == 5:
                     ai, ao = balance[3:]
 
-                text =  _("Balance" ) + ": %s "%(self.format_amount_and_units(c))
+                text = _("Balance") + ": %s " % (self.format_amount_and_units(c))
                 if u:
-                    text +=  " [%s "%(self.format_amount(u, is_diff=True).strip()) + _("unconfirmed") + "]"
+                    text += " [%s " % (self.format_amount(u, is_diff=True).strip()) + _("unconfirmed") + "]"
                 if x:
-                    text +=  " [%s "%(self.format_amount(x, is_diff=True).strip()) + _("unmatured") + "]"
+                    text += " [%s " % (self.format_amount(x, is_diff=True).strip()) + _("unmatured") + "]"
                 if ai:
-                    text +=  " [%s "%(self.format_amount(ai, is_diff=True).strip()) + _("Secure incoming") + "]"
+                    text += " [%s " % (self.format_amount(ai, is_diff=True).strip()) + _("Secure incoming") + "]"
                 if ao:
-                    text +=  " [%s "%(self.format_amount(ao, is_diff=True).strip()) + _("Secure outgoing") + "]"
+                    text += " [%s " % (self.format_amount(ao, is_diff=True).strip()) + _("Secure outgoing") + "]"
                 if self.wallet.lnworker:
                     l = self.wallet.lnworker.get_balance()
-                    text += u'    \U0001f5f2 %s'%(self.format_amount_and_units(l).strip())
+                    text += u'    \U0001f5f2 %s' % (self.format_amount_and_units(l).strip())
 
                 # append fiat balance and price
                 if self.fx.is_enabled():
                     text += self.fx.get_fiat_status_text(c + u + x,
-                        self.base_unit(), self.get_decimal_point()) or ''
+                                                         self.base_unit(), self.get_decimal_point()) or ''
                 if not self.network.proxy:
-                    icon = read_QIcon("status_connected%s.png"%fork_str)
+                    icon = read_QIcon("status_connected%s.png" % fork_str)
                 else:
-                    icon = read_QIcon("status_connected_proxy%s.png"%fork_str)
+                    icon = read_QIcon("status_connected_proxy%s.png" % fork_str)
         else:
             if self.network.proxy:
                 text = "{} ({})".format(_("Not connected"), _("proxy enabled"))
@@ -902,7 +919,7 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
 
         self.tray.setToolTip("%s (%s)" % (text, self.wallet.basename()))
         self.balance_label.setText(text)
-        self.status_button.setIcon( icon )
+        self.status_button.setIcon(icon)
 
     def update_wallet(self):
         self.update_status()
@@ -957,12 +974,12 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
                 return [data]
 
             chunks = []
-            chunks_count = len(data)//max_size + 1
-            chunk_size = (len(data)//chunks_count) + 1
+            chunks_count = len(data) // max_size + 1
+            chunk_size = (len(data) // chunks_count) + 1
             for c in range(chunks_count):
                 # chunk_no ; chunk_count ; chunk_data
                 chunk = str(c + 1) + ';' + str(chunks_count) + ';'
-                chunk += data[c*chunk_size:(c+1)*chunk_size]
+                chunk += data[c * chunk_size:(c + 1) * chunk_size]
                 chunks.append(chunk)
 
             return chunks
@@ -1019,8 +1036,10 @@ in the "Authenticators" tab in the Gold Wallet app.')
         self.expires_combo.addItems(evl_values)
         self.expires_combo.setCurrentIndex(i)
         self.expires_combo.setFixedWidth(self.receive_amount_e.width())
+
         def on_expiry(i):
             self.config.set_key('request_expiry', evl_keys[i])
+
         self.expires_combo.currentIndexChanged.connect(on_expiry)
         msg = ' '.join([
             _('Expiration date of your request.'),
@@ -1141,10 +1160,11 @@ in the "Authenticators" tab in the Gold Wallet app.')
                     _('No more addresses in your wallet.'),
                     _('You are using a non-deterministic wallet, which cannot create new addresses.'),
                     _('If you want to create new addresses, use a deterministic wallet instead.')
-                   ]
+                ]
                 self.show_message(' '.join(msg))
                 return
-            if not self.question(_("Warning: The next address will not be recovered automatically if you restore your wallet from seed; you may need to add it manually.\n\nThis occurs because you have too many unused addresses in your wallet. To avoid this situation, use the existing addresses first.\n\nCreate anyway?")):
+            if not self.question(
+                    _("Warning: The next address will not be recovered automatically if you restore your wallet from seed; you may need to add it manually.\n\nThis occurs because you have too many unused addresses in your wallet. To avoid this situation, use the existing addresses first.\n\nCreate anyway?")):
                 return
             addr = self.wallet.create_new_address(False)
         req = self.wallet.make_payment_request(addr, amount, message, expiration)
@@ -1235,15 +1255,22 @@ in the "Authenticators" tab in the Gold Wallet app.')
     def create_send_tab(self):
         # A 4-column grid layout.  All the stretch is in the last column.
         # The exchange rate plugin adds a fiat widget in column 2
+        how_to_msg = _('If you want to send funds to more than one wallet, use this format:') + '<br><br>' \
+                     + _("Address #1, amount to send") + '<br>' + _("Address #2, amount to send ") \
+                     + '<br>' + _("You can also load a CSV file using the folder icon.")
+
         self.send_grid = grid = QGridLayout()
+        self.how_to_many_button = HowToButton(button_text="How to pay to many?", msg_text=how_to_msg,
+                                              icon=read_QIcon("info.png"))
         grid.setSpacing(8)
         grid.setColumnStretch(3, 1)
 
         from .paytoedit import PayToEdit
         self.amount_e = BTCAmountEdit(self.get_decimal_point)
         self.payto_e = PayToEdit(self)
-        msg = _('Recipient of the funds.') + '\n\n'\
-              + _('You may enter a Bitcoin address, a label from your list of contacts (a list of completions will be proposed), or an alias (email-like address that forwards to a Bitcoin address)')
+        msg = _('Recipient of the funds.') + '\n\n' \
+              + _(
+            'You may enter a Bitcoin address, a label from your list of contacts (a list of completions will be proposed), or an alias (email-like address that forwards to a Bitcoin address)')
         payto_label = HelpLabel(_('Pay to'), msg)
         grid.addWidget(payto_label, 1, 0)
         grid.addWidget(self.payto_e, 1, 1, 1, -1)
@@ -1253,8 +1280,9 @@ in the "Authenticators" tab in the Gold Wallet app.')
         self.payto_e.set_completer(completer)
         completer.setModel(self.completions)
 
-        msg = _('Description of the transaction (not mandatory).') + '\n\n'\
-              + _('The description is not sent to the recipient of the funds. It is stored in your wallet file, and displayed in the \'History\' tab.')
+        msg = _('Description of the transaction (not mandatory).') + '\n\n' \
+              + _(
+            'The description is not sent to the recipient of the funds. It is stored in your wallet file, and displayed in the \'History\' tab.')
         description_label = HelpLabel(_('Description'), msg)
         grid.addWidget(description_label, 2, 0)
         self.message_e = MyLineEdit()
@@ -1263,7 +1291,8 @@ in the "Authenticators" tab in the Gold Wallet app.')
 
         msg = _('Amount to be sent.') + '\n\n' \
               + _('The amount will be displayed in red if you do not have enough funds in your wallet.') + ' ' \
-              + _('Note that if you have frozen some of your addresses, the available funds will be lower than your total balance.') + '\n\n' \
+              + _(
+            'Note that if you have frozen some of your addresses, the available funds will be lower than your total balance.') + '\n\n' \
               + _('Keyboard shortcut: type "!" to send all your coins.')
         amount_label = HelpLabel(_('Amount'), msg)
         grid.addWidget(amount_label, 3, 0)
@@ -1287,6 +1316,7 @@ in the "Authenticators" tab in the Gold Wallet app.')
 
         buttons = QHBoxLayout()
         buttons.addStretch(1)
+        buttons.addWidget(self.how_to_many_button)
         buttons.addWidget(self.clear_button)
         buttons.addWidget(self.save_button)
         buttons.addWidget(self.send_button)
@@ -1297,7 +1327,8 @@ in the "Authenticators" tab in the Gold Wallet app.')
         def reset_max(text):
             self.max_button.setChecked(False)
             enable = not bool(text) and not self.amount_e.isReadOnly()
-            #self.max_button.setEnabled(enable)
+            # self.max_button.setEnabled(enable)
+
         self.amount_e.textEdited.connect(reset_max)
         self.fiat_send_e.textEdited.connect(reset_max)
 
@@ -1337,12 +1368,12 @@ in the "Authenticators" tab in the Gold Wallet app.')
             is_sweep=False)
 
         tx = make_tx(None)
-        amount = tx.output_value()#sum(x.value_sats() for x in self.get_coins())
+        amount = tx.output_value()  # sum(x.value_sats() for x in self.get_coins())
         self.amount_e.setAmount(amount)
         ## substract extra fee
-        #__, x_fee_amount = run_hook('get_tx_extra_fee', self.wallet, tx) or (None, 0)
-        #amount_after_all_fees = amount - x_fee_amount
-        #self.amount_e.setAmount(amount_after_all_fees)
+        # __, x_fee_amount = run_hook('get_tx_extra_fee', self.wallet, tx) or (None, 0)
+        # amount_after_all_fees = amount - x_fee_amount
+        # self.amount_e.setAmount(amount_after_all_fees)
 
     def get_contact_payto(self, key):
         _type, label = self.contacts.get(key)
@@ -1357,6 +1388,7 @@ in the "Authenticators" tab in the Gold Wallet app.')
         as the 'password' named argument.  "None" indicates either an
         unencrypted wallet, or the user cancelled the password request.
         An empty input is passed as the empty string.'''
+
         def request_password(self, *args, **kwargs):
             parent = self.top_level_window()
             password = None
@@ -1374,6 +1406,7 @@ in the "Authenticators" tab in the Gold Wallet app.')
 
             kwargs['password'] = password
             return func(self, *args, **kwargs)
+
         return request_password
 
     @protected
@@ -1419,8 +1452,9 @@ in the "Authenticators" tab in the Gold Wallet app.')
             errors = self.payto_e.get_errors()
             if errors:
                 self.show_warning(_("Invalid Lines found:") + "\n\n" +
-                                  '\n'.join([_("Line #") + f"{err.idx+1}: {err.line_content[:40]}... ({repr(err.exc)})"
-                                             for err in errors]))
+                                  '\n'.join(
+                                      [_("Line #") + f"{err.idx + 1}: {err.line_content[:40]}... ({repr(err.exc)})"
+                                       for err in errors]))
                 return True
 
             if self.payto_e.is_alias and self.payto_e.validated is False:
@@ -1502,7 +1536,7 @@ in the "Authenticators" tab in the Gold Wallet app.')
         # trustedcoin requires this
         if run_hook('abort_send', self):
             return
-        is_sweep = False # Was bool(external_keypairs). Should be good to keep it false, since we do not use trustedcoin
+        is_sweep = False  # Was bool(external_keypairs). Should be good to keep it false, since we do not use trustedcoin
         make_tx = lambda fee_est: self.wallet.make_unsigned_transaction(
             coins=inputs,
             outputs=outputs,
@@ -1526,6 +1560,7 @@ in the "Authenticators" tab in the Gold Wallet app.')
             def sign_done(success):
                 if success:
                     self.broadcast_or_show(tx, invoice=invoice)
+
             self.sign_tx_with_password(tx, sign_done, password, external_keypairs)
         else:
             self.preview_tx_dialog(make_tx, outputs, external_keypairs=external_keypairs, invoice=invoice)
@@ -1551,11 +1586,14 @@ in the "Authenticators" tab in the Gold Wallet app.')
         '''Sign the transaction in a separate thread.  When done, calls
         the callback with a success code of True or False.
         '''
+
         def on_success(result):
             callback(True)
+
         def on_failure(exc_info):
             self.on_error(exc_info)
             callback(False)
+
         on_success = run_hook('tc_sign_wrapper', self.wallet, tx, on_success, on_failure) or on_success
         if isinstance(self.wallet, ThreeKeysWallet) and self.wallet.is_instant_mode():
             task = partial(self.wallet.sign_instant_transaction, tx, password, external_keypairs)
@@ -1633,8 +1671,10 @@ in the "Authenticators" tab in the Gold Wallet app.')
             return
         # read funding_sat from tx; converts '!' to int value
         funding_sat = funding_tx.output_value_for_address(ln_dummy_address())
+
         def task():
             return self.wallet.lnworker.open_channel(connect_str, funding_tx, funding_sat, push_amt, password)
+
         def on_success(chan):
             n = chan.constraints.funding_txn_minimum_depth
             message = '\n'.join([
@@ -1643,9 +1683,11 @@ in the "Authenticators" tab in the Gold Wallet app.')
                 _('This channel will be usable after {number} confirmations').format(number=n)
             ])
             self.show_message(message)
+
         def on_failure(exc_info):
             type_, e, traceback = exc_info
             self.show_error(_('Could not open channel: {error_value}').format(error_value=e))
+
         WaitingDialog(self, _('Opening channel...'), task, on_success, on_failure)
 
     def query_choice(self, msg, choices):
@@ -1748,7 +1790,6 @@ in the "Authenticators" tab in the Gold Wallet app.')
             self.amount_e.setAmount(amount)
             self.amount_e.textEdited.emit("")
 
-
     def do_clear(self):
         self.max_button.setChecked(False)
         self.payment_request = None
@@ -1776,8 +1817,8 @@ in the "Authenticators" tab in the Gold Wallet app.')
         w.searchable_list = l
         vbox = QVBoxLayout()
         w.setLayout(vbox)
-        #vbox.setContentsMargins(0, 0, 0, 0)
-        #vbox.setSpacing(0)
+        # vbox.setContentsMargins(0, 0, 0, 0)
+        # vbox.setSpacing(0)
         if toolbar:
             vbox.addLayout(toolbar)
         vbox.addWidget(l)
@@ -1810,12 +1851,9 @@ in the "Authenticators" tab in the Gold Wallet app.')
     def paytomany(self):
         self.show_send_tab()
         self.payto_e.paytomany()
-        msg = '\n'.join([
-            _('Enter a list of outputs in the \'Pay to\' field.'),
-            _('One output per line.'),
-            _('Format: address, amount'),
-            _('You may load a CSV file using the file icon.')
-        ])
+        msg = _('If you want to send funds to more than one wallet, use this format:') + '\n\n' \
+              + _("Address #1, amount to send") + '\n' + _("Address #2, amount to send ") \
+              + '\n\n' + _("You can also load a CSV file using the folder icon.")
         self.show_message(msg, title=_('Pay to many'))
 
     def payto_contacts(self, labels):
@@ -1842,7 +1880,7 @@ in the "Authenticators" tab in the Gold Wallet app.')
 
     def delete_contacts(self, labels):
         if not self.question(_("Remove {labels} from your list of contacts?")
-                             .format(labels=" + ".join(labels))):
+                                     .format(labels=" + ".join(labels))):
             return
         for label in labels:
             self.contacts.pop(label)
@@ -1869,7 +1907,8 @@ in the "Authenticators" tab in the Gold Wallet app.')
         grid.addWidget(QLabel(_("Requestor") + ':'), 0, 0)
         grid.addWidget(QLabel(pr.get_requestor()), 0, 1)
         grid.addWidget(QLabel(_("Amount") + ':'), 1, 0)
-        outputs_str = '\n'.join(map(lambda x: self.format_amount(x[2])+ self.base_unit() + ' @ ' + x[1], pr.get_outputs()))
+        outputs_str = '\n'.join(
+            map(lambda x: self.format_amount(x[2]) + self.base_unit() + ' @ ' + x[1], pr.get_outputs()))
         grid.addWidget(QLabel(outputs_str), 1, 1)
         expires = pr.get_expiration_date()
         grid.addWidget(QLabel(_("Memo") + ':'), 2, 0)
@@ -1880,6 +1919,7 @@ in the "Authenticators" tab in the Gold Wallet app.')
             grid.addWidget(QLabel(_("Expires") + ':'), 4, 0)
             grid.addWidget(QLabel(format_time(expires)), 4, 1)
         vbox.addLayout(grid)
+
         def do_export():
             name = str(key) + '.bip70'
             fn = self.getSaveFileName(_("Save invoice to file"), name, filter="*.bip70")
@@ -1888,13 +1928,16 @@ in the "Authenticators" tab in the Gold Wallet app.')
             with open(fn, 'wb') as f:
                 data = f.write(pr.raw)
             self.show_message(_('Invoice saved as' + ' ' + fn))
+
         exportButton = EnterButton(_('Save'), do_export)
+
         def do_delete():
             if self.question(_('Delete invoice?')):
                 self.wallet.delete_invoices(key)
                 self.history_list.update()
                 self.invoice_list.update()
                 d.close()
+
         deleteButton = EnterButton(_('Delete'), do_delete)
         vbox.addLayout(Buttons(exportButton, deleteButton, CloseButton(d)))
         d.exec_()
@@ -1935,13 +1978,15 @@ in the "Authenticators" tab in the Gold Wallet app.')
                               network=self.network,
                               callback=lambda: self.console.set_json(True))
         methods = {}
+
         def mkfunc(f, method):
             return lambda *args, **kwargs: f(method,
                                              args,
                                              self.password_dialog,
                                              **{**kwargs, 'wallet': self.wallet})
+
         for m in dir(c):
-            if m[0]=='_' or m in ['network','wallet','config']: continue
+            if m[0] == '_' or m in ['network', 'wallet', 'config']: continue
             methods[m] = mkfunc(c._run, m)
 
         console.updateNamespace(methods)
@@ -1968,13 +2013,14 @@ in the "Authenticators" tab in the Gold Wallet app.')
         self.update_check_button.hide()
         sb.addPermanentWidget(self.update_check_button)
 
-        self.password_button = StatusBarButton(QIcon(), _("Password"), self.change_password_dialog )
+        self.password_button = StatusBarButton(QIcon(), _("Password"), self.change_password_dialog)
         sb.addPermanentWidget(self.password_button)
 
-        sb.addPermanentWidget(StatusBarButton(read_QIcon("preferences.png"), _("Preferences"), self.settings_dialog ) )
-        self.seed_button = StatusBarButton(read_QIcon("seed.png"), _("Seed"), self.show_seed_dialog )
+        sb.addPermanentWidget(StatusBarButton(read_QIcon("preferences.png"), _("Preferences"), self.settings_dialog))
+        self.seed_button = StatusBarButton(read_QIcon("seed.png"), _("Seed"), self.show_seed_dialog)
         sb.addPermanentWidget(self.seed_button)
-        self.status_button = StatusBarButton(read_QIcon("status_disconnected.png"), _("Network"), lambda: self.gui_object.show_network_dialog(self))
+        self.status_button = StatusBarButton(read_QIcon("status_disconnected.png"), _("Network"),
+                                             lambda: self.gui_object.show_network_dialog(self))
         sb.addPermanentWidget(self.status_button)
         run_hook('create_status_bar', sb)
         self.setStatusBar(sb)
@@ -1982,7 +2028,7 @@ in the "Authenticators" tab in the Gold Wallet app.')
     def create_coincontrol_statusbar(self):
         self.coincontrol_sb = sb = QStatusBar()
         sb.setSizeGripEnabled(False)
-        #sb.setFixedHeight(3 * char_width_in_lineedit())
+        # sb.setFixedHeight(3 * char_width_in_lineedit())
         sb.setStyleSheet('QStatusBar::item {border: None;} '
                          + ColorScheme.GREEN.as_stylesheet(True))
 
@@ -2050,7 +2096,8 @@ in the "Authenticators" tab in the Gold Wallet app.')
             self.logger.exception('Failed to update password')
             self.show_error(_('Failed to update password'))
             return
-        msg = _('Password was updated successfully') if self.wallet.has_password() else _('Password is disabled, this wallet is not protected')
+        msg = _('Password was updated successfully') if self.wallet.has_password() else _(
+            'Password is disabled, this wallet is not protected')
         self.show_message(msg, title=_("Success"))
         self.update_lock_icon()
 
@@ -2096,11 +2143,11 @@ in the "Authenticators" tab in the Gold Wallet app.')
         keystore_types = [k.get_type_text() for k in self.wallet.get_keystores()]
         grid = QGridLayout()
         basename = os.path.basename(self.wallet.storage.path)
-        grid.addWidget(QLabel(_("Wallet name")+ ':'), 0, 0)
+        grid.addWidget(QLabel(_("Wallet name") + ':'), 0, 0)
         grid.addWidget(QLabel(basename), 0, 1)
-        grid.addWidget(QLabel(_("Wallet type")+ ':'), 1, 0)
+        grid.addWidget(QLabel(_("Wallet type") + ':'), 1, 0)
         grid.addWidget(QLabel(wallet_type), 1, 1)
-        grid.addWidget(QLabel(_("Script type")+ ':'), 2, 0)
+        grid.addWidget(QLabel(_("Script type") + ':'), 2, 0)
         grid.addWidget(QLabel(self.wallet.txin_type), 2, 1)
         grid.addWidget(QLabel(_("Seed available") + ':'), 3, 0)
         grid.addWidget(QLabel(str(seed_available)), 3, 1)
@@ -2118,15 +2165,15 @@ in the "Authenticators" tab in the Gold Wallet app.')
             def show_mpk(index):
                 mpk_text.setText(mpk_list[index])
                 mpk_text.repaint()  # macOS hack for #4777
-                
+
             # only show the combobox in case multiple accounts are available
             if len(mpk_list) > 1:
                 # only show the combobox if multiple master keys are defined
                 def label(idx, ks):
                     if isinstance(self.wallet, Multisig_Wallet) and hasattr(ks, 'label'):
-                        return _("cosigner") + f' {idx+1}: {ks.get_type_text()} {ks.label}'
+                        return _("cosigner") + f' {idx + 1}: {ks.get_type_text()} {ks.label}'
                     else:
-                        return _("keystore") + f' {idx+1}'
+                        return _("keystore") + f' {idx + 1}'
 
                 labels = [label(idx, ks) for idx, ks in enumerate(self.wallet.get_keystores())]
 
@@ -2163,9 +2210,9 @@ in the "Authenticators" tab in the Gold Wallet app.')
 
     def remove_wallet(self):
         if self.question('\n'.join([
-                _('Delete wallet file?'),
-                "%s"%self.wallet.storage.path,
-                _('If your wallet contains funds, make sure you have saved its seed.')])):
+            _('Delete wallet file?'),
+            "%s" % self.wallet.storage.path,
+            _('If your wallet contains funds, make sure you have saved its seed.')])):
             self._delete_wallet()
 
     @protected
@@ -2195,7 +2242,7 @@ in the "Authenticators" tab in the Gold Wallet app.')
         d = SeedDialog(self, seed, passphrase)
         d.exec_()
 
-    def show_qrcode(self, data, title = _("QR code"), parent=None):
+    def show_qrcode(self, data, title=_("QR code"), parent=None):
         if not data:
             return
         d = QRDialog(data, parent or self, title)
@@ -2231,14 +2278,14 @@ in the "Authenticators" tab in the Gold Wallet app.')
         d.exec_()
 
     msg_sign = _("Signing with an address actually means signing with the corresponding "
-                "private key, and verifying with the corresponding public key. The "
-                "address you have entered does not have a unique public key, so these "
-                "operations cannot be performed.") + '\n\n' + \
+                 "private key, and verifying with the corresponding public key. The "
+                 "address you have entered does not have a unique public key, so these "
+                 "operations cannot be performed.") + '\n\n' + \
                _('The operation is undefined. Not just in Electrum, but in general.')
 
     @protected
     def do_sign(self, address, message, signature, password):
-        address  = address.text().strip()
+        address = address.text().strip()
         message = message.toPlainText().strip()
         if not bitcoin.is_address(address):
             self.show_message(_('Invalid Bitcoin address.'))
@@ -2266,7 +2313,7 @@ in the "Authenticators" tab in the Gold Wallet app.')
         self.wallet.thread.add(task, on_success=show_signed_message)
 
     def do_verify(self, address, message, signature):
-        address  = address.text().strip()
+        address = address.text().strip()
         message = message.toPlainText().strip().encode('utf-8')
         if not bitcoin.is_address(address):
             self.show_message(_('Invalid Bitcoin address.'))
@@ -2292,7 +2339,7 @@ in the "Authenticators" tab in the Gold Wallet app.')
         message_e.setAcceptRichText(False)
         layout.addWidget(QLabel(_('Message')), 1, 0)
         layout.addWidget(message_e, 1, 1)
-        layout.setRowStretch(2,3)
+        layout.setRowStretch(2, 3)
 
         address_e = QLineEdit()
         address_e.setText(address)
@@ -2303,7 +2350,7 @@ in the "Authenticators" tab in the Gold Wallet app.')
         signature_e.setAcceptRichText(False)
         layout.addWidget(QLabel(_('Signature')), 3, 0)
         layout.addWidget(signature_e, 3, 1)
-        layout.setRowStretch(3,1)
+        layout.setRowStretch(3, 1)
 
         hbox = QHBoxLayout()
 
@@ -2360,7 +2407,7 @@ in the "Authenticators" tab in the Gold Wallet app.')
         message_e.setAcceptRichText(False)
         layout.addWidget(QLabel(_('Message')), 1, 0)
         layout.addWidget(message_e, 1, 1)
-        layout.setRowStretch(2,3)
+        layout.setRowStretch(2, 3)
 
         pubkey_e = QLineEdit()
         if address:
@@ -2373,7 +2420,7 @@ in the "Authenticators" tab in the Gold Wallet app.')
         encrypted_e.setAcceptRichText(False)
         layout.addWidget(QLabel(_('Encrypted')), 3, 0)
         layout.addWidget(encrypted_e, 3, 1)
-        layout.setRowStretch(3,1)
+        layout.setRowStretch(3, 1)
 
         hbox = QHBoxLayout()
         b = QPushButton(_("Encrypt"))
@@ -2501,6 +2548,7 @@ in the "Authenticators" tab in the Gold Wallet app.')
         addresses = self.wallet.get_addresses()
         done = False
         cancelled = False
+
         def privkeys_thread():
             for addr in addresses:
                 time.sleep(0.1)
@@ -2514,7 +2562,7 @@ in the "Authenticators" tab in the Gold Wallet app.')
                 self.show_privkeys_signal.emit()
 
         def show_privkeys():
-            s = "\n".join( map( lambda x: x[0] + "\t"+ x[1], private_keys.items()))
+            s = "\n".join(map(lambda x: x[0] + "\t" + x[1], private_keys.items()))
             e.setText(s)
             b.setEnabled(True)
             self.show_privkeys_signal.disconnect()
@@ -2529,7 +2577,8 @@ in the "Authenticators" tab in the Gold Wallet app.')
                 self.computing_privkeys_signal.disconnect()
                 self.show_privkeys_signal.disconnect()
 
-        self.computing_privkeys_signal.connect(lambda: e.setText("Please wait... %d/%d"%(len(private_keys),len(addresses))))
+        self.computing_privkeys_signal.connect(
+            lambda: e.setText("Please wait... %d/%d" % (len(private_keys), len(addresses))))
         self.show_privkeys_signal.connect(show_privkeys)
         d.finished.connect(on_dialog_closed)
         threading.Thread(target=privkeys_thread).start()
@@ -2563,9 +2612,9 @@ in the "Authenticators" tab in the Gold Wallet app.')
                 transaction = csv.writer(f)
                 transaction.writerow(["address", "private_key"])
                 for addr, pk in pklist.items():
-                    transaction.writerow(["%34s"%addr,pk])
+                    transaction.writerow(["%34s" % addr, pk])
             else:
-                f.write(json.dumps(pklist, indent = 4))
+                f.write(json.dumps(pklist, indent=4))
 
     def do_import_labels(self):
         def import_labels(path):
@@ -2575,15 +2624,18 @@ in the "Authenticators" tab in the Gold Wallet app.')
             def import_labels_assign(data):
                 for key, value in data.items():
                     self.wallet.set_label(key, value)
+
             import_meta(path, _validate, import_labels_assign)
 
         def on_import():
             self.need_update.set()
+
         import_meta_gui(self, _('labels'), import_labels, on_import)
 
     def do_export_labels(self):
         def export_labels(filename):
             export_meta(self.wallet.labels, filename)
+
         export_meta_gui(self, _('labels'), export_labels)
 
     def sweep_key_dialog(self):
@@ -2630,7 +2682,9 @@ in the "Authenticators" tab in the Gold Wallet app.')
             else:
                 button.setToolTip('')
             button.setEnabled(get_address() is not None and valid_privkeys)
-        on_address = lambda text: address_e.setStyleSheet((ColorScheme.DEFAULT if get_address() else ColorScheme.RED).as_stylesheet())
+
+        on_address = lambda text: address_e.setStyleSheet(
+            (ColorScheme.DEFAULT if get_address() else ColorScheme.RED).as_stylesheet())
         keys_e.textChanged.connect(on_edit)
         address_e.textChanged.connect(on_edit)
         address_e.textChanged.connect(on_address)
@@ -2676,7 +2730,7 @@ in the "Authenticators" tab in the Gold Wallet app.')
     def import_addresses(self):
         if not self.wallet.can_import_address():
             return
-        title, msg = _('Import addresses'), _("Enter addresses")+':'
+        title, msg = _('Import addresses'), _("Enter addresses") + ':'
         self._do_import(title, msg, self.wallet.import_addresses)
 
     @protected
@@ -2685,7 +2739,7 @@ in the "Authenticators" tab in the Gold Wallet app.')
             return
         title = _('Import private keys')
         header_layout = QHBoxLayout()
-        header_layout.addWidget(QLabel(_("Enter private keys")+':'))
+        header_layout.addWidget(QLabel(_("Enter private keys") + ':'))
         header_layout.addWidget(InfoButton(get_wif_help_text()), alignment=Qt.AlignRight)
         self._do_import(title, header_layout, lambda x: self.wallet.import_private_keys(x, password))
 
@@ -2724,8 +2778,8 @@ in the "Authenticators" tab in the Gold Wallet app.')
         self.config.set_key("is_maximized", self.isMaximized())
         if not self.isMaximized():
             g = self.geometry()
-            self.wallet.storage.put("winpos-qt", [g.left(),g.top(),
-                                                  g.width(),g.height()])
+            self.wallet.storage.put("winpos-qt", [g.left(), g.top(),
+                                                  g.width(), g.height()])
         self.wallet.storage.put("qt-console-history", self.console.history[-50:])
         if self.qr_window:
             self.qr_window.close()
@@ -2745,7 +2799,7 @@ in the "Authenticators" tab in the Gold Wallet app.')
         scroll = QScrollArea()
         scroll.setEnabled(True)
         scroll.setWidgetResizable(True)
-        scroll.setMinimumSize(400,250)
+        scroll.setMinimumSize(400, 250)
         vbox.addWidget(scroll)
 
         w = QWidget()
@@ -2753,7 +2807,7 @@ in the "Authenticators" tab in the Gold Wallet app.')
         w.setMinimumHeight(plugins.count() * 35)
 
         grid = QGridLayout()
-        grid.setColumnStretch(0,1)
+        grid.setColumnStretch(0, 1)
         w.setLayout(grid)
 
         settings_widgets = {}
@@ -2815,13 +2869,13 @@ in the "Authenticators" tab in the Gold Wallet app.')
             "child transaction.")
         vbox.addWidget(WWLabel(_(msg)))
         msg2 = ("The proposed fee is computed using your "
-            "fee/kB settings, applied to the total size of both child and "
-            "parent transactions. After you broadcast a CPFP transaction, "
-            "it is normal to see a new unconfirmed transaction in your history.")
+                "fee/kB settings, applied to the total size of both child and "
+                "parent transactions. After you broadcast a CPFP transaction, "
+                "it is normal to see a new unconfirmed transaction in your history.")
         vbox.addWidget(WWLabel(_(msg2)))
         grid = QGridLayout()
         grid.addWidget(QLabel(_('Total size') + ':'), 0, 0)
-        grid.addWidget(QLabel('%d bytes'% total_size), 0, 1)
+        grid.addWidget(QLabel('%d bytes' % total_size), 0, 1)
         max_fee = new_tx.output_value()
         grid.addWidget(QLabel(_('Input amount') + ':'), 1, 0)
         grid.addWidget(QLabel(self.format_amount(max_fee) + ' ' + self.base_unit()), 1, 1)
@@ -2832,6 +2886,7 @@ in the "Authenticators" tab in the Gold Wallet app.')
         # FIXME with dyn fees, without estimates, there are all kinds of crashes here
         combined_fee = QLabel('')
         combined_feerate = QLabel('')
+
         def on_fee_edit(x):
             out_amt = max_fee - fee_e.get_amount()
             out_amt_str = (self.format_amount(out_amt) + ' ' + self.base_unit()) if out_amt else ''
@@ -2842,12 +2897,15 @@ in the "Authenticators" tab in the Gold Wallet app.')
             comb_feerate = comb_fee / total_size * 1000
             comb_feerate_str = self.format_fee_rate(comb_feerate) if comb_feerate else ''
             combined_feerate.setText(comb_feerate_str)
+
         fee_e.textChanged.connect(on_fee_edit)
+
         def get_child_fee_from_total_feerate(fee_per_kb):
             fee = fee_per_kb * total_size / 1000 - parent_fee
             fee = min(max_fee, fee)
             fee = max(total_size, fee)  # pay at least 1 sat/byte for combined size
             return fee
+
         suggested_feerate = self.config.fee_per_kb()
         if suggested_feerate is None:
             self.show_error(f'''{_("Can't CPFP'")}: {_('Dynamic fee estimates not available')}''')
@@ -2856,9 +2914,11 @@ in the "Authenticators" tab in the Gold Wallet app.')
         fee_e.setAmount(fee)
         grid.addWidget(QLabel(_('Fee for child') + ':'), 3, 0)
         grid.addWidget(fee_e, 3, 1)
+
         def on_rate(dyn, pos, fee_rate):
             fee = get_child_fee_from_total_feerate(fee_rate)
             fee_e.setAmount(fee)
+
         fee_slider = FeeSlider(self, self.config, on_rate)
         fee_slider.update()
         grid.addWidget(fee_slider, 4, 1)
@@ -2891,12 +2951,13 @@ in the "Authenticators" tab in the Gold Wallet app.')
         d = WindowModalDialog(self, _('Bump Fee'))
         vbox = QVBoxLayout(d)
         vbox.addWidget(WWLabel(_("Increase your transaction's fee to improve its position in mempool.")))
-        vbox.addWidget(QLabel(_('Current Fee') + ': %s'% self.format_amount(fee) + ' ' + self.base_unit()))
+        vbox.addWidget(QLabel(_('Current Fee') + ': %s' % self.format_amount(fee) + ' ' + self.base_unit()))
         vbox.addWidget(QLabel(_('Current Fee rate') + ': %s' % self.format_fee_rate(1000 * old_fee_rate)))
         vbox.addWidget(QLabel(_('New Fee rate') + ':'))
 
         def on_textedit_rate():
             fee_slider.deactivate()
+
         feerate_e = FeerateEdit(lambda: 0)
         feerate_e.setAmount(max(old_fee_rate * 1.5, old_fee_rate + 1))
         feerate_e.textEdited.connect(on_textedit_rate)
@@ -2906,6 +2967,7 @@ in the "Authenticators" tab in the Gold Wallet app.')
             fee_slider.activate()
             if fee_rate is not None:
                 feerate_e.setAmount(fee_rate / 1000)
+
         fee_slider = FeeSlider(self, self.config, on_slider_rate)
         fee_slider.deactivate()
         vbox.addWidget(fee_slider)
