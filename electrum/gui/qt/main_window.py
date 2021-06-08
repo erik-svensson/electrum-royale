@@ -1257,7 +1257,7 @@ in the "Authenticators" tab in the Gold Wallet app.')
         # The exchange rate plugin adds a fiat widget in column 2
         how_to_msg = _('If you want to send funds to more than one wallet, use this format:') + '<br><br>' \
                      + _("Address #1, amount to send") + '<br>' + _("Address #2, amount to send ") \
-                     + '<br>' + _("You can also load a CSV file using the folder icon.")
+                     + '<br><br>' + _("You can also load a CSV file using the folder icon.")
 
         self.send_grid = grid = QGridLayout()
         self.how_to_many_button = HowToButton(button_text="How to pay to many?", msg_text=how_to_msg,
