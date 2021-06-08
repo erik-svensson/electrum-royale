@@ -614,17 +614,6 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
         self.import_privkey_menu = self.private_keys_menu.addAction(_("&Import"), self.do_import_privkey)
         self.export_menu = self.private_keys_menu.addAction(_("&Export"), self.export_privkeys_dialog)
         self.import_address_menu = wallet_menu.addAction(_("Import addresses"), self.import_addresses)
-        wallet_menu.addSeparator()
-
-        # history_menu = wallet_menu.addMenu(_("&History"))
-        # history_menu.addAction(_("&Filter"), lambda: self.history_list.toggle_toolbar(self.config))
-        # history_menu.addAction(_("&Summary"), self.history_list.show_summary)
-        # history_menu.addAction(_("&Plot"), self.history_list.plot_history_dialog)
-        # history_menu.addAction(_("&Export"), self.history_list.export_history_dialog)
-        contacts_menu = wallet_menu.addMenu(_("Contacts"))
-        contacts_menu.addAction(_("&New"), self.new_contact_dialog)
-        contacts_menu.addAction(_("Import"), lambda: self.contact_list.import_contacts())
-        contacts_menu.addAction(_("Export"), lambda: self.contact_list.export_contacts())
 
         wallet_menu.addSeparator()
         wallet_menu.addAction(_("Find"), self.toggle_search).setShortcut(QKeySequence("Ctrl+F"))
@@ -950,7 +939,7 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
         self.history_model.set_view(self.history_list)
         l.searchable_list = l
         toolbar = l.create_toolbar(self.config)
-        toolbar_shown = bool(self.config.get('show_toolbar_history', False))
+        toolbar_shown = bool(self.config.get('show_toolbar_history', True))
         l.show_toolbar(toolbar_shown)
         return self.create_list_tab(l, toolbar)
 
@@ -1828,7 +1817,7 @@ in the "Authenticators" tab in the Gold Wallet app.')
         from .address_list import AddressList
         self.address_list = l = AddressList(self)
         toolbar = l.create_toolbar(self.config)
-        toolbar_shown = bool(self.config.get('show_toolbar_addresses', False))
+        toolbar_shown = bool(self.config.get('show_toolbar_addresses', True))
         l.show_toolbar(toolbar_shown)
         return self.create_list_tab(l, toolbar)
 
@@ -1840,7 +1829,12 @@ in the "Authenticators" tab in the Gold Wallet app.')
     def create_contacts_tab(self):
         from .contact_list import ContactList
         self.contact_list = l = ContactList(self)
-        return self.create_list_tab(l)
+
+        toolbar = l.create_toolbar(self.config)
+        toolbar_shown = bool(self.config.get('show_toolbar_addresses', True))
+        l.show_toolbar(toolbar_shown)
+
+        return self.create_list_tab(l, toolbar)
 
     def remove_address(self, addr):
         if self.question(_("Do you want to remove {address} from your wallet?").format(address=addr)):

@@ -641,7 +641,7 @@ class MyTreeView(QTreeView):
         hbox = QHBoxLayout()
         buttons = self.get_toolbar_buttons()
         for b in buttons:
-            b.setVisible(False)
+            b.setVisible(True)
             hbox.addWidget(b)
         self.toolbar_buttons = buttons
         hbox.addStretch()
