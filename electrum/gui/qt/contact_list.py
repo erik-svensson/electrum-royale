@@ -127,7 +127,7 @@ class ContactList(MyTreeView):
 
     def create_toolbar_buttons(self):
         self.new_button = QPushButton(self)
-        self.new_button.setText(_('new'))
+        self.new_button.setText(_('New'))
         self.new_button.pressed.connect(self.parent.new_contact_dialog)
         self.export_button = QPushButton(self)
         self.export_button.setText(_('Export'))
