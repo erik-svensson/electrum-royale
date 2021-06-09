@@ -134,20 +134,6 @@ class HelpButton(QPushButton):
                            text=self.help_text,
                            rich_text=True)
 
-class HowToButton(QPushButton):
-    def __init__(self, icon, button_text, msg_text):
-        QPushButton.__init__(self, text=button_text, icon=icon)
-        self.help_text = msg_text
-        self.setCursor(QCursor(Qt.PointingHandCursor))
-        self.clicked.connect(self.onclick)
-
-    def onclick(self):
-        custom_message_box(icon=QMessageBox.Information,
-                           parent=self,
-                           title=_('Help'),
-                           text=self.help_text,
-                           rich_text=True)
-
 
 class InfoButton(QPushButton):
     def __init__(self, text):
@@ -957,5 +943,3 @@ if __name__ == "__main__":
     t = WaitingDialog(None, 'testing ...', lambda: [time.sleep(1)], lambda x: QMessageBox.information(None, 'done', "done"))
     t.start()
     app.exec_()
-
-
