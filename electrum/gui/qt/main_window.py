@@ -1243,7 +1243,14 @@ in the "Authenticators" tab in the Gold Wallet app.')
         self.amount_e = BTCAmountEdit(self.get_decimal_point)
         self.payto_e = PayToEdit(self)
         msg = _('Recipient of the funds.') + '\n\n'\
-              + _('You may enter a Bitcoin address, a label from your list of contacts (a list of completions will be proposed), or an alias (email-like address that forwards to a Bitcoin address)')
+            + _('You may enter a Bitcoin address, a label from your list of contacts '
+                '(a list of completions will be proposed), or an alias '
+                '(email-like address that forwards to a Bitcoin address)') + '\n\n'\
+            + _('How to send to many?') + '\n\n' \
+            + _('If you want to send funds to more than one wallet, use this format:') + '\n\n' \
+            + _('Address #1, amount to send') + '\n' + _('Address #2, amount to send ') \
+                     + '\n\n' + _('You can also load a CSV file using the folder icon.')
+
         payto_label = HelpLabel(_('Pay to'), msg)
         grid.addWidget(payto_label, 1, 0)
         grid.addWidget(self.payto_e, 1, 1, 1, -1)
