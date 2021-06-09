@@ -13,7 +13,7 @@ from electrum.i18n import _
 from .qrcodewidget import QRCodeWidget, QRDialog
 from .transaction_dialog import PreviewTxDialog
 from ...three_keys import short_mnemonic
-from .util import filter_non_printable, WindowModalDialog, get_parent_main_window
+from .util import filter_non_printable, WindowModalDialog, get_parent_main_window, HintButton
 from ...transaction import PartialTransaction
 
 
@@ -91,18 +91,29 @@ class ErrorLabel(QLabel):
 
 
 class InsertPubKeyDialog(QVBoxLayout):
-    def __init__(self, parent, message_label, disallowed_keys: List[str] = None):
+    def __init__(self, parent, message_label, disallowed_keys: List[str] = None, hint=None):
         disallowed_keys = disallowed_keys or []
         super().__init__()
         self.parent = parent
         self._if_apply_validation_logic = True
         label = message_label
+        label.setFixedWidth(400)
         edit = QTextEdit()
         error_label = ErrorLabel()
 
         self.validator = PubKeyValidator(edit, error_label, disallowed_keys)
         edit.textChanged.connect(self._on_change)
-        self.addWidget(label)
+
+        hbox2 = QHBoxLayout()
+        hbox2.addWidget(label)
+        hbox2.setAlignment(label, Qt.AlignLeft)
+        if hint is not None:
+            hint_button = HintButton(text=hint, icon=None)
+            hbox2.addWidget(hint_button)
+
+        hbox2.setAlignment(hint_button, Qt.AlignTop)
+        self.addLayout(hbox2)
+
         self.addWidget(edit)
         self.addWidget(error_label)
         self.edit = edit

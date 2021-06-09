@@ -587,12 +587,12 @@ class InstallWizard(QDialog, MessageBoxMixin, BaseWizard, TermsAndConditionsMixi
             on_finished()
 
     @wizard_dialog
-    def choice_dialog(self, title, message, choices, run_next):
+    def choice_dialog(self, title, message, choices, run_next, hint=None):
         c_values = [x[0] for x in choices]
         c_titles = [x[1] for x in choices]
         id_ = self.compute_window_id(message, c_titles, list(self.data.values()))
         checked_index = LastChosenState.get_index(id_)
-        clayout = ChoicesLayout(message, c_titles, checked_index=checked_index)
+        clayout = ChoicesLayout(message, c_titles, checked_index=checked_index, hint=hint)
         vbox = QVBoxLayout()
         vbox.addLayout(clayout.layout())
         self.exec_layout(vbox, title)
@@ -601,13 +601,13 @@ class InstallWizard(QDialog, MessageBoxMixin, BaseWizard, TermsAndConditionsMixi
         return action
 
     @wizard_dialog
-    def choice_dialog_with_advanced_options(self, title, message, base_choices, advanced_choices, run_next):
+    def choice_dialog_with_advanced_options(self, title, message, base_choices, advanced_choices, run_next, hint=None):
         choices = base_choices + advanced_choices
         c_values = [x[0] for x in choices]
         c_titles = [x[1] for x in choices]
         id_ = self.compute_window_id(message, c_titles, list(self.data.values()))
         checked_index = LastChosenState.get_index(id_)
-        clayout = ChoicesLayout(message, c_titles, checked_index=checked_index)
+        clayout = ChoicesLayout(message, c_titles, checked_index=checked_index, hint=hint)
         if checked_index < len(base_choices):
             clayout.show_index(len(base_choices))
             self._show_advanced_text()
@@ -634,13 +634,16 @@ class InstallWizard(QDialog, MessageBoxMixin, BaseWizard, TermsAndConditionsMixi
         message = _('Please paste a Cancel Transaction Key. Use an existing one, if you are importing a wallet, '
                     'or generate a new one at')
         message += f' <a href="{web_generator_url}">{web_generator_url}</a>'
+        hint = _('Use the link to generate ECDSA public key on the Key Generator website,'
+                 ' copy the string of numbers from the “Public key” section and paste it here. ')
+
         label.setText(message)
         label.setOpenExternalLinks(True)
         label.setTextInteractionFlags(Qt.TextBrowserInteraction)
         label.setWordWrap(True)
 
         disallowed_keys = [instant_key] if instant_key else []
-        layout = InsertPubKeyDialog(self, message_label=label, disallowed_keys=disallowed_keys)
+        layout = InsertPubKeyDialog(self, message_label=label, disallowed_keys=disallowed_keys, hint=hint)
         self.exec_layout(layout, _('Cancel Transaction Key'), next_enabled=False)
         return layout.get_compressed_pubkey()
 
@@ -657,8 +660,11 @@ class InstallWizard(QDialog, MessageBoxMixin, BaseWizard, TermsAndConditionsMixi
         label.setTextInteractionFlags(Qt.TextBrowserInteraction)
         label.setWordWrap(True)
 
+        hint = _('Use the link to generate ECDSA public key on the Key Generator website, '
+                 'copy the string of numbers from the “Public key” section and paste it here. ')
+
         disallowed_keys = [recovery_key] if recovery_key else []
-        layout = InsertPubKeyDialog(self, message_label=label, disallowed_keys=disallowed_keys)
+        layout = InsertPubKeyDialog(self, message_label=label, disallowed_keys=disallowed_keys, hint=hint)
         self.exec_layout(layout, _('Fast Transaction Key'), next_enabled=False)
         return layout.get_compressed_pubkey()
 
@@ -672,8 +678,16 @@ class InstallWizard(QDialog, MessageBoxMixin, BaseWizard, TermsAndConditionsMixi
         label.setTextInteractionFlags(Qt.TextBrowserInteraction)
         label.setWordWrap(True)
 
+        if self.wallet_type == '2-key':
+            hint_url = 'https://translations.bitcoinvault.global/pdf/BTCV_Tutorial/BTCV-ExtendedTutorial-en.pdf#page=55'
+        elif self.wallet_type == '3-key':
+            hint_url = 'https://translations.bitcoinvault.global/pdf/BTCV_Tutorial/BTCV-ExtendedTutorial-en.pdf#page=63'
+        hint_url_txt = _("HERE")
+        hint = _('Find instructions on how to create and share an authenticator')
+        hint += f' <a href="{hint_url}">{hint_url_txt}</a>.'
+
         disallowed_keys = [disallowed_key] if disallowed_key else []
-        layout = InsertPubKeyDialog(self, message_label=label, disallowed_keys=disallowed_keys)
+        layout = InsertPubKeyDialog(self, message_label=label, disallowed_keys=disallowed_keys, hint=hint)
         self.exec_layout(layout, _('Gold Wallet authenticator public key'), next_enabled=False)
         return layout.get_compressed_pubkey()
 

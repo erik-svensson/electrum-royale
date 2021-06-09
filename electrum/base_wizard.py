@@ -142,11 +142,30 @@ class BaseWizard(Logger, AdvancedOptionMixin):
             ('imported', _('Import external watch-only BTCV addresses or private keys')),
         ]
 
+        link = 'https://translations.bitcoinvault.global/pdf/BTCV_Tutorial/BTCV-ShortTutorial-2Pager-en.pdf'
+        h_txt = 'Learn more'
+        hint = ' '.join([
+            '<b>',
+            _('2-Key Vault'),
+            '</b><br/>',
+            _('Allows users to make Secure and Cancel transactions.'),
+            '<br/><br/><b>',
+            _('3-Key Vault'),
+            '</b><br/>',
+            _('Allows users to make Secure Fast, Secure, and Cancel transactions.'),
+            '<br/><br/><b>',
+            _('Standard'),
+            '</b><br/>',
+            _('Allows users to make Standard transactions.'),
+            '<br/><br/>',
+            f'<a href="{link}">{h_txt}</a>',
+        ])
+
         base_choices = [pair for pair in base_wallet_kinds if pair[0] in wallet_types]
         advanced_choices = [pair for pair in advanced_wallet_kinds if pair[0] in wallet_types]
         self.choice_dialog_with_advanced_options(
             title=title, message=message, base_choices=base_choices, advanced_choices=advanced_choices,
-            run_next=self.on_wallet_type
+            run_next=self.on_wallet_type, hint=hint
         )
 
     def upgrade_storage(self, storage):
@@ -230,8 +249,10 @@ class BaseWizard(Logger, AdvancedOptionMixin):
             ('multikey_2fa_import', _('Use Gold Wallet and import an existing wallet')),
             ('multikey_standalone', _('Do not use Gold Wallet')),
         ]
+        hint = _("A mobile wallet for BTCV. You can pair it with Electrum Vault and use it to authorize "
+                 "transactions to additionally secure your funds.")
 
-        self.choice_dialog(title=title, message=message, choices=choices, run_next=process_choice)
+        self.choice_dialog(title=title, message=message, choices=choices, run_next=process_choice, hint=hint)
 
     def two_keys_standalone(self):
         self.get_recovery_pubkey(run_next=self.on_two_keys_create)
@@ -311,9 +332,13 @@ class BaseWizard(Logger, AdvancedOptionMixin):
         if self.wallet_type == 'multisig':
             self.choice_dialog(title=title, message=message, choices=base_choices + advanced_choices, run_next=self.run)
         else:
+            hint = _("This is a list of words which store all the information necessary to restore the wallet. "
+                     "Without the seed phrase, you won’t be able to access your funds in case of a technical "
+                     "issue or if your device is stolen. ")
+
             self.choice_dialog_with_advanced_options(
                 title=title, message=message, base_choices=base_choices, advanced_choices=advanced_choices,
-                run_next=self.run
+                run_next=self.run, hint=hint
             )
 
     def import_addresses_or_keys(self):
@@ -737,11 +762,8 @@ class BaseWizard(Logger, AdvancedOptionMixin):
     def choose_seed_type(self, message=None, choices=None):
         title = _('Choose Seed type')
         if message is None:
-            message = ' '.join([
-                _("The type of addresses used by your wallet will depend on your seed."),
-                _("Segwit wallets use bech32 addresses, defined in BIP173."),
-                _("'Legacy' is the original address type, while 'Segwit' is the newer address format with lower fees.")
-            ])
+            message = _("The type of addresses used by your wallet will depend on your seed.")
+
         if choices is None:
             base_choices = [
                 ('create_segwit_seed', _('Segwit')),
@@ -749,9 +771,15 @@ class BaseWizard(Logger, AdvancedOptionMixin):
             advanced_choices = [
                 ('create_standard_seed', _('Legacy')),
             ]
+        hint = ' '.join([
+                _("'Legacy' is the original address type, while 'Segwit' is the newer address format with lower fees."),
+                "\n",
+                _("Segwit wallets use bech32 addresses, defined in BIP173.")
+            ])
+
         self.choice_dialog_with_advanced_options(
             title=title, message=message, base_choices=base_choices, advanced_choices=advanced_choices,
-            run_next=self.run
+            run_next=self.run, hint=hint
         )
 
     def create_segwit_seed(self):
