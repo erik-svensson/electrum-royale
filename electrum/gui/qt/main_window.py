@@ -1806,7 +1806,10 @@ in the "Authenticators" tab in the Gold Wallet app.')
     def create_contacts_tab(self):
         from .contact_list import ContactList
         self.contact_list = l = ContactList(self)
-        return self.create_list_tab(l)
+        toolbar = l.create_toolbar(self.config)
+        toolbar_shown = bool(self.config.get('show_toolbar_addresses', True))
+        l.show_toolbar(toolbar_shown)
+        return self.create_list_tab(l, toolbar)
 
     def remove_address(self, addr):
         if self.question(_("Do you want to remove {address} from your wallet?").format(address=addr)):
