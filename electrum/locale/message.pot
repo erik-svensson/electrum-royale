@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-01 15:12+0200\n"
+"POT-Creation-Date: 2021-06-09 11:36+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -30,6 +30,9 @@ msgid "&About"
 msgstr ""
 
 msgid "&Addresses"
+msgstr ""
+
+msgid "&Backup"
 msgstr ""
 
 msgid "&Check for updates"
@@ -238,6 +241,12 @@ msgid "Additional {num_satoshis_added} satoshis are going to be added."
 msgstr ""
 
 msgid "Address"
+msgstr ""
+
+msgid "Address #1, amount to send"
+msgstr ""
+
+msgid "Address #2, amount to send "
 msgstr ""
 
 msgid "Address Details"
@@ -1546,6 +1555,9 @@ msgstr ""
 msgid "How do you want to connect to a server? "
 msgstr ""
 
+msgid "How to send to many?"
+msgstr ""
+
 msgid "However, hardware wallets do not support message decryption, which makes them not compatible with the current design of cosigner pool."
 msgstr ""
 
@@ -1616,6 +1628,9 @@ msgid "If you want to create new addresses, use a deterministic wallet instead."
 msgstr ""
 
 msgid "If you want to receive email notifications, please enter your email address. We will send you information about your transaction statuses."
+msgstr ""
+
+msgid "If you want to send funds to more than one wallet, use this format:"
 msgstr ""
 
 msgid "If your device is not detected on Windows, go to \"Settings\", \"Devices\", \"Connected devices\", and do \"Remove device\". Then, plug your device again."
@@ -2000,6 +2015,9 @@ msgid "Never disclose your seed."
 msgstr ""
 
 msgid "Never enter it on any website."
+msgstr ""
+
+msgid "New"
 msgstr ""
 
 msgid "New Contact"
@@ -3772,6 +3790,9 @@ msgid "You are using Electrum in offline mode; restart Electrum if you want to g
 msgstr ""
 
 msgid "You are using a non-deterministic wallet, which cannot create new addresses."
+msgstr ""
+
+msgid "You can also load a CSV file using the folder icon."
 msgstr ""
 
 msgid "You can change your email. It is used to send you transaction notifications from chosen wallet."
