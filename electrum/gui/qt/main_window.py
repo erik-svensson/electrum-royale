@@ -601,21 +601,6 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
         self.import_address_menu = wallet_menu.addAction(_("Import addresses"), self.import_addresses)
         wallet_menu.addSeparator()
 
-        addresses_menu = wallet_menu.addMenu(_("&Addresses"))
-        addresses_menu.addAction(_("&Filter"), lambda: self.address_list.toggle_toolbar(self.config))
-        labels_menu = wallet_menu.addMenu(_("&Labels"))
-        labels_menu.addAction(_("&Import"), self.do_import_labels)
-        labels_menu.addAction(_("&Export"), self.do_export_labels)
-        history_menu = wallet_menu.addMenu(_("&History"))
-        history_menu.addAction(_("&Filter"), lambda: self.history_list.toggle_toolbar(self.config))
-        history_menu.addAction(_("&Summary"), self.history_list.show_summary)
-        history_menu.addAction(_("&Plot"), self.history_list.plot_history_dialog)
-        history_menu.addAction(_("&Export"), self.history_list.export_history_dialog)
-        contacts_menu = wallet_menu.addMenu(_("Contacts"))
-        contacts_menu.addAction(_("&New"), self.new_contact_dialog)
-        contacts_menu.addAction(_("Import"), lambda: self.contact_list.import_contacts())
-        contacts_menu.addAction(_("Export"), lambda: self.contact_list.export_contacts())
-
         wallet_menu.addSeparator()
         wallet_menu.addAction(_("Find"), self.toggle_search).setShortcut(QKeySequence("Ctrl+F"))
 
@@ -640,8 +625,6 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
         tools_menu.addAction(_("&Sign/verify message"), self.sign_verify_message)
         tools_menu.addAction(_("&Encrypt/decrypt message"), self.encrypt_message)
         tools_menu.addSeparator()
-
-        paytomany_menu = tools_menu.addAction(_("&Pay to many"), self.paytomany)
 
         raw_transaction_menu = tools_menu.addMenu(_("&Load transaction"))
         raw_transaction_menu.addAction(_("&From file"), self.do_process_from_file)
@@ -1248,7 +1231,14 @@ in the "Authenticators" tab in the Gold Wallet app.')
         self.amount_e = BTCAmountEdit(self.get_decimal_point)
         self.payto_e = PayToEdit(self)
         msg = _('Recipient of the funds.') + '\n\n'\
-              + _('You may enter a Bitcoin address, a label from your list of contacts (a list of completions will be proposed), or an alias (email-like address that forwards to a Bitcoin address)')
+            + _('You may enter a Bitcoin address, a label from your list of contacts '
+                '(a list of completions will be proposed), or an alias '
+                '(email-like address that forwards to a Bitcoin address)') + '\n\n'\
+            + _('How to send to many?') + '\n\n' \
+            + _('If you want to send funds to more than one wallet, use this format:') + '\n\n' \
+            + _('Address #1, amount to send') + '\n' + _('Address #2, amount to send ') \
+                     + '\n\n' + _('You can also load a CSV file using the folder icon.')
+
         payto_label = HelpLabel(_('Pay to'), msg)
         grid.addWidget(payto_label, 1, 0)
         grid.addWidget(self.payto_e, 1, 1, 1, -1)
@@ -1804,7 +1794,10 @@ in the "Authenticators" tab in the Gold Wallet app.')
     def create_contacts_tab(self):
         from .contact_list import ContactList
         self.contact_list = l = ContactList(self)
-        return self.create_list_tab(l)
+        toolbar = l.create_toolbar(self.config)
+        toolbar_shown = bool(self.config.get('show_toolbar_addresses', True))
+        l.show_toolbar(toolbar_shown)
+        return self.create_list_tab(l, toolbar)
 
     def remove_address(self, addr):
         if self.question(_("Do you want to remove {address} from your wallet?").format(address=addr)):

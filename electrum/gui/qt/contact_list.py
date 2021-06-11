@@ -27,7 +27,7 @@ from enum import IntEnum
 
 from PyQt5.QtGui import QStandardItemModel, QStandardItem
 from PyQt5.QtCore import Qt, QPersistentModelIndex, QModelIndex
-from PyQt5.QtWidgets import (QAbstractItemView, QMenu)
+from PyQt5.QtWidgets import (QAbstractItemView, QMenu, QPushButton)
 
 from electrum.i18n import _
 from electrum.bitcoin import is_address
@@ -38,7 +38,6 @@ from .util import MyTreeView, import_meta_gui, export_meta_gui, webopen
 
 
 class ContactList(MyTreeView):
-
     class Columns(IntEnum):
         NAME = 0
         ADDRESS = 1
@@ -56,6 +55,7 @@ class ContactList(MyTreeView):
         self.setModel(QStandardItemModel(self))
         self.setSelectionMode(QAbstractItemView.ExtendedSelection)
         self.setSortingEnabled(True)
+        self.create_toolbar_buttons()
         self.update()
 
     def on_edited(self, idx, user_role, text):
@@ -122,3 +122,17 @@ class ContactList(MyTreeView):
         self.sortByColumn(self.Columns.NAME, Qt.AscendingOrder)
         self.filter()
         run_hook('update_contacts_tab', self)
+
+    def create_toolbar_buttons(self):
+        self.new_button = QPushButton(self)
+        self.new_button.setText(_('New'))
+        self.new_button.pressed.connect(self.parent.new_contact_dialog)
+        self.export_button = QPushButton(self)
+        self.export_button.setText(_('Export'))
+        self.export_button.pressed.connect(self.export_contacts)
+        self.import_button = QPushButton(self)
+        self.import_button.setText(_('Import'))
+        self.import_button.pressed.connect(self.import_contacts)
+
+    def get_toolbar_buttons(self):
+        return self.new_button, self.export_button, self.import_button
