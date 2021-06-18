@@ -1,8 +1,3 @@
-# Indonesian translations for PACKAGE package.
-# Copyright (C) 2020 THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# Automatically generated, 2020.
-#
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
@@ -229,7 +224,6 @@ msgstr "Tambahkan cosigner"
 msgid "Additional fees"
 msgstr "Biaya tambahan"
 
-#, python-brace-format
 msgid "Additional {num_satoshis_added} satoshis are going to be added."
 msgstr "Tambahan {num_satoshis_added} akan ditambahkan"
 
@@ -308,7 +302,6 @@ msgstr "Sebuah kesalahan telah terjadi"
 msgid "An encrypted transaction was retrieved from cosigning pool."
 msgstr "sebuah transaksi terenkripsi telah diterima dari cosigning pool"
 
-#, python-brace-format
 msgid "An unnamed {device_name}"
 msgstr "{device_name} tidak dinamai"
 
@@ -318,7 +311,6 @@ msgstr "Apakah Anda yakin ingin menghapus channel ini? Ini akan menghilangkan tr
 msgid "Are you sure you want to disagree?"
 msgstr "Apakah Anda masih tidak menyetujui?"
 
-#, python-brace-format
 msgid "Are you sure you want to remove this transaction and {number} child transactions?"
 msgstr "Apakah Anda yakin ingin menghapus transaksi ini dan {number} anak transaksi?"
 
@@ -328,7 +320,6 @@ msgstr "Apakah Anda yakin ingin menghapus transaksi ini?"
 msgid "Are you sure?"
 msgstr "Apakah Anda yakin?"
 
-#, python-brace-format
 msgid "At block height: {height}"
 msgstr "Pada ketinggian blok: {height}"
 
@@ -494,7 +485,6 @@ msgstr "Penambahan Kapital"
 msgid "Capital gains"
 msgstr "Penambahan kapital"
 
-#, python-brace-format
 msgid "Chain split detected at block {0}"
 msgstr "Chain split dideteksi pada blok {0}"
 
@@ -525,7 +515,6 @@ msgstr "Channel telah ditutup"
 msgid "Channel closed"
 msgstr "Channel ditutup"
 
-#, python-brace-format
 msgid "Channel closed, you may need to wait at least {number} blocks, because of CSV delays"
 msgstr "Channel ditutup, mohon tunggu paling tidak {number} blok, karena keterlambatan CSV"
 
@@ -571,19 +560,11 @@ msgstr "Pilih kata sandi baru untuk mengenkripsi kunci dompet Anda."
 msgid "Choose a server"
 msgstr "Pilih sebuah server"
 
-msgid ""
-"Choose coin (UTXO) selection method for alert transactions.  The following are available:\n"
-"\n"
-msgstr ""
-"Pilih metode seleksi koin (UTXO) untuk transaksi alert/peringatan. Pilihan yang tersedia:\n"
-"\n"
+msgid "Choose coin (UTXO) selection method for alert transactions.  The following are available:\n\n"
+msgstr "Pilih metode seleksi koin (UTXO) untuk transaksi alert/peringatan. Pilihan yang tersedia:\n\n"
 
-msgid ""
-"Choose coin (UTXO) selection method for non-alert transactions.  The following are available:\n"
-"\n"
-msgstr ""
-"Pilih metode seleksi koin (UTXO) untuk transaksi non-alert/non-peringatan. Pilihan yangtersedia:\n"
-"\n"
+msgid "Choose coin (UTXO) selection method for non-alert transactions.  The following are available:\n\n"
+msgstr "Pilih metode seleksi koin (UTXO) untuk transaksi non-alert/non-peringatan. Pilihan yangtersedia:\n\n"
 
 msgid "Choose from peers"
 msgstr "Pilih dari peers"
@@ -657,7 +638,6 @@ msgstr "Seleksi koin (alert)"
 msgid "Coin selection (non-alert)"
 msgstr "seleksi koin (non-alert)"
 
-#, python-brace-format
 msgid "Coin selection active ({num_utxos} UTXOs selected)"
 msgstr "Seleksi koin aktif (UTXOs {num_utxos} telah dipilih)"
 
@@ -718,7 +698,6 @@ msgstr "Node Terhubung"
 msgid "Connected nodes are on the same chain"
 msgstr "Node Terhubung berada di chain yang sama"
 
-#, python-brace-format
 msgid "Connected to {0} nodes."
 msgstr "Terhubung ke {0} node."
 
@@ -764,7 +743,6 @@ msgstr "Salin dan tempel alamat penerima menggunakan tombol Tempet, atau gunakan
 msgid "Copy to clipboard"
 msgstr "Salin ke papan klip"
 
-#, python-brace-format
 msgid "Copy {column_title}"
 msgstr "Salin {column_title}"
 
@@ -780,7 +758,6 @@ msgstr "Tidak dapat menutup channel:"
 msgid "Could not force close channel: "
 msgstr "Tidak dapat memaksa untuk menutup channel:"
 
-#, python-brace-format
 msgid "Could not open channel: {error_value}"
 msgstr "Tidak dapat membuka channel: {error_value}"
 
@@ -829,7 +806,6 @@ msgstr "Tarif Biaya sekarang"
 msgid "Current rate"
 msgstr "Kurs sekarang"
 
-#, python-brace-format
 msgid "Current version: {version}"
 msgstr "Versi sekarang: {version}"
 
@@ -848,7 +824,6 @@ msgstr "Gelap/Terang"
 msgid "Date"
 msgstr "Tanggal"
 
-#, python-brace-format
 msgid "Date: {date}"
 msgstr "Tanggal: {date}"
 
@@ -909,7 +884,6 @@ msgstr "Developers"
 msgid "Device not in Bitcoin mode"
 msgstr "Perangkat tidak dalam mode Bitcoin"
 
-#, python-brace-format
 msgid "Digital Revealer ({version}_{code_id}) saved as PNG and PDF at:"
 msgstr "Revealer Digital ({version}_{code_id}) disimpan sebagai PNG dan PDF di:"
 
@@ -949,7 +923,6 @@ msgstr "Apakah Anda ingin membuat seed baru atau memulihkan (restore) dompet men
 msgid "Do you want to create a new seed, or to restore a wallet using an existing seed?"
 msgstr "Apakah Anda ingin membuat seed baru, atau memulihkan sebuah dompet menggunakan seed yang sudah Ada?"
 
-#, python-brace-format
 msgid "Do you want to delete '{path}'?"
 msgstr "Apakah Anda ingin menghapus '{path}'?"
 
@@ -962,7 +935,6 @@ msgstr "Apakah Anda ingin meluncurkan wizard lagi?"
 msgid "Do you want to open it now?"
 msgstr "Apakah Anda ingin membukanya sekarang?"
 
-#, python-brace-format
 msgid "Do you want to remove {address} from your wallet?"
 msgstr "Apakah Anda ingin menghapuskan {address} dari dompet Anda?"
 
@@ -996,21 +968,15 @@ msgstr "ETA"
 msgid "Each revealer should be used only once."
 msgstr "Setiap revealer hanya dapat digunakan sekali"
 
-#, python-brace-format
 msgid "Edit {title}"
 msgstr "Ubah {title}"
 
 msgid "Electrum Plugins"
 msgstr "Plugin Electrum"
 
-#, python-brace-format
-msgid ""
-"Electrum cannot pair with your {device}.\n"
-"\n"
-"Before you request bitcoins to be sent to addresses in this wallet, ensure you can pair with your device, or that you have its seed (and passphrase, if any).  Otherwise all bitcoins you receive will be unspendable."
+msgid "Electrum cannot pair with your {device}.\n\nBefore you request bitcoins to be sent to addresses in this wallet, ensure you can pair with your device, or that you have its seed (and passphrase, if any).  Otherwise all bitcoins you receive will be unspendable."
 msgstr ""
-"Electrum tidak dapat menyambungkan dengan {device} Anda.\n"
-"\n"
+"Electrum tidak dapat menyambungkan dengan {device} Anda."
 "Sebelum Anda dapat meminta bitcoin untuk dikirimkan ke alamat Anda di dompet ini, pastikan bahwa Anda dapat tersambung dengan perangkat Anda, atau Anda telah memiliki seed (dan passphrase, apabila ada).Jika tidak semua bitcoin yang Anda terima tidak akan dapat digunakan."
 
 msgid "Electrum communicates with remote servers to get information about your transactions and addresses. The servers all fulfill the same purpose only differing in hardware. In most cases you simply want to let Electrum pick one at random.  However if you prefer feel free to select a server manually."
@@ -1091,7 +1057,6 @@ msgstr "Enkripsi rahasia kustom"
 msgid "Encrypt wallet file"
 msgstr "Enkripsi file dompet"
 
-#, python-brace-format
 msgid "Encrypt {wallet_name}'s seed"
 msgstr "Enkripsi seed {wallet_name}"
 
@@ -1104,7 +1069,6 @@ msgstr "Enkripsi/dekripsi pesan"
 msgid "Encrypted"
 msgstr "Dienkripsi"
 
-#, python-brace-format
 msgid "Encryption and decryption are currently not supported for {device}"
 msgstr "Enkripsi dan dekripsi tidak didukung untuk {device}"
 
@@ -1189,7 +1153,6 @@ msgstr "Masukkan kode PIN Anda guna mendekripsikan seed Anda."
 msgid "Enter your PIN code in order to sign this transaction"
 msgstr "Masukkan kode PIN Anda untuk menandatangani transaksi ini"
 
-#, python-brace-format
 msgid "Enter your PIN code to confirm deletion of {wallet}"
 msgstr "Masukkan kode PIN Anda untuk mengkonfirmasi penghapusan {wallet}"
 
@@ -1220,7 +1183,6 @@ msgstr "Terjadi kesalahan dalam pengombinasian transaksi parsial"
 msgid "Error connecting to server"
 msgstr "Terjadi kesalahan dalam menyambungkan ke server"
 
-#, python-brace-format
 msgid "Error connecting to {name} server"
 msgstr "Terjadi kesalahan dalam menyambungkan ke server {name}"
 
@@ -1398,7 +1360,6 @@ msgstr "Tutup paksa channel"
 msgid "Force-close channel?"
 msgstr "Tutup paksa channel ?"
 
-#, python-brace-format
 msgid "Fork detected at block {fork_point}"
 msgstr "Fork dideteksi di blok {fork_point}"
 
@@ -1429,7 +1390,6 @@ msgstr "Bekukan Banyak Koin"
 msgid "From"
 msgstr "Dari"
 
-#, python-brace-format
 msgid "From {0} cosigners"
 msgstr "Dari {0} cosigners."
 
@@ -1472,15 +1432,11 @@ msgstr "Kode Google Authenticator"
 msgid "Gossip"
 msgstr "Gosip"
 
-msgid ""
-"GreenAddress requires your signature \n"
-"to verify that transaction is instant.\n"
-"Please enter your password to sign a\n"
-"verification request."
+msgid "GreenAddress requires your signature \nto verify that transaction is instant.\nPlease enter your password to sign a\nverification request."
 msgstr ""
-"GreenAddress memerlukan tandatangan Anda \n"
-"untuk memverifikasi bahwa transaksi Anda adalah transaksi instan.\n"
-"Mohon masukkan kata sandi Anda untuk menandatangani\n"
+"GreenAddress memerlukan tandatangan Anda "
+"untuk memverifikasi bahwa transaksi Anda adalah transaksi instan."
+"Mohon masukkan kata sandi Anda untuk menandatangani"
 "permintaan verifikasi."
 
 msgid "HTLCs in current commitment transaction"
@@ -1510,7 +1466,6 @@ msgstr "Sembunyikan"
 msgid "Hide advanced"
 msgstr "Sembunyikan opsi lanjutan"
 
-#, python-brace-format
 msgid "Hide {tab_description}"
 msgstr "Sembunyikan {tab_description}"
 
@@ -1547,11 +1502,9 @@ msgstr "Saya tidak setuju"
 msgid "I have lost my Google Authenticator account"
 msgstr "Saya kehilangan akun Google Authenticator saya"
 
-msgid ""
-"IP/port in format:\n"
-"[host]:[port]"
+msgid "IP/port in format:\n[host]:[port]"
 msgstr ""
-"IP/port di format:\n"
+"IP/port di format:"
 "[host]:[port]"
 
 msgid "If auto-connect is enabled, Electrum will always use a server that is on the longest blockchain."
@@ -1566,7 +1519,6 @@ msgstr "Apabila dinonaktifkan, Anda akan diwajibkan untuk memilih server yang An
 msgid "If you are not sure what this is, leave this field unchanged."
 msgstr "Apabila Anda tidak yakin apa ini, jangan ubah kolom ini"
 
-#, python-brace-format
 msgid "If you are online, click on \"{button}\" to continue."
 msgstr "Apabila Anda online, klik di \"{button}\" untuk melanjutkan."
 
@@ -1648,7 +1600,6 @@ msgstr "Di beberapa kasus, gunakan hingga 3 alamat pengubahan untuk memecahkan k
 msgid "In the next block"
 msgstr "Di blok selanjutnya"
 
-#, python-brace-format
 msgid "Included in block: {header_hash}"
 msgstr "Termasuk dalam blok: {header_hash}"
 
@@ -1820,11 +1771,9 @@ msgstr "Label, ID dan alamat transaksi telah diekripsi sebelum dikirim ke remote
 msgid "Language"
 msgstr "Bahasa"
 
-#, python-brace-format
 msgid "Last updated: {date}"
 msgstr "Terakhir diperbarui: {date}"
 
-#, python-brace-format
 msgid "Latest version: {version}"
 msgstr "Versi terbaru: {version}"
 
@@ -1846,7 +1795,6 @@ msgstr "Legacy"
 msgid "Legacy 2FA"
 msgstr "Legacy 2FA"
 
-#, python-brace-format
 msgid "Library version for '{name}' is incompatible."
 msgstr "Versi terbaru untuk '{name}' tidak cocok."
 
@@ -1952,7 +1900,6 @@ msgstr "Biaya Penambangan"
 msgid "Missing amount"
 msgstr "Jumlah hilang"
 
-#, python-brace-format
 msgid "Missing libraries for {library_name}."
 msgstr "Perpustakaan tidak ditemukan untuk {library_name}."
 
@@ -1962,7 +1909,6 @@ msgstr "Input tx sebelumnya untuk legacy input tidak ditemukan"
 msgid "Missing report URL."
 msgstr "Report URL tidak ditemukan."
 
-#, python-brace-format
 msgid "More info at: {link}"
 msgstr "Informasi lebih lanjut di: {link}"
 
@@ -2005,7 +1951,6 @@ msgstr "Kontak baru"
 msgid "New email:"
 msgstr "Email Baru"
 
-#, python-brace-format
 msgid "New transaction: {amount}"
 msgstr "Transaksi baru: {amount}"
 
@@ -2177,7 +2122,6 @@ msgstr "Channel terbuka"
 msgid "Open your cosigner wallet to retrieve it."
 msgstr "Buka dompet cosigner Anda untuk menerima."
 
-#, python-brace-format
 msgid "Open {title} file"
 msgstr "Buka file {title}"
 
@@ -2310,7 +2254,6 @@ msgstr "Mohon periksa koneksi dan kredensial Anda."
 msgid "Please check your network connection."
 msgstr "Mohon periksa koneksi jaringan Anda."
 
-#, python-brace-format
 msgid "Please check your {device} device"
 msgstr "Mohon periksa perangkat {device} Anda."
 
@@ -2344,7 +2287,6 @@ msgstr "Mohon masukkan kata sandi Anda untuk mendekripsikannya."
 msgid "Please enter your seed phrase in order to restore your wallet."
 msgstr "Mohon masukkan seed phrase Anda untuk memulihkan dompet Anda."
 
-#, python-brace-format
 msgid "Please insert your {device}"
 msgstr "Mohon masukkan {device} Anda."
 
@@ -2372,14 +2314,12 @@ msgstr "Mohon luncurkan kembali (restart) Electrum untuk mengaktifkan pengaturan
 msgid "Please retype your seed phrase, to confirm that you properly saved it"
 msgstr "Mohon ketik ulang seed phrase Anda, untuk mengkonfirmasi bahwa Anda telah benar-benar menyimpannya"
 
-#, python-brace-format
 msgid "Please save these {0} words on paper (the order is important). "
 msgstr "Mohon simpan {0} frase ini di selembar kertas (Urutan frase juga penting untuk disimpan)."
 
 msgid "Please scan a Bitcoin address or a payment request"
 msgstr "Mohon pindah alamat Bitcoin atau permintaan pembayaran"
 
-#, python-brace-format
 msgid "Please select which {device} device to use:"
 msgstr "Mohon pilih perangkat {device} mana yang ingin Anda gunakan."
 
@@ -2416,7 +2356,6 @@ msgstr "Nomor port harus dalam bentuk desimal"
 msgid "Portuguese"
 msgstr "Bahasa Portugis"
 
-#, python-brace-format
 msgid "Position in mempool: {size} from tip"
 msgstr "Posisi di mempool: {size} dari ujung"
 
@@ -2525,7 +2464,6 @@ msgstr "Baca file"
 msgid "Read from microphone"
 msgstr "Baca dari microphone"
 
-#, python-brace-format
 msgid "Ready to encrypt for revealer {version}"
 msgstr "Baca untuk mengenkripsi revealer {version}"
 
@@ -2535,7 +2473,6 @@ msgstr "Terima"
 msgid "Received (mSAT):"
 msgstr "Diterima (mSAT):"
 
-#, python-brace-format
 msgid "Received HTLC with ID {id}"
 msgstr "HTLC diterima dengan ID {id}"
 
@@ -2578,7 +2515,6 @@ msgstr "Hapus"
 msgid "Remove from wallet"
 msgstr "Hapus dari dompet"
 
-#, python-brace-format
 msgid "Remove {labels} from your list of contacts?"
 msgstr "Hapus {labels} dari daftar kontak Anda?"
 
@@ -2624,7 +2560,6 @@ msgstr "Meminta info akun dari server TrustedCoin…"
 msgid "Requestor"
 msgstr "Pemohon"
 
-#, python-brace-format
 msgid "Require {0} signatures"
 msgstr "Memerlukan {0} tandatangan"
 
@@ -2754,7 +2689,6 @@ msgstr "Pilih file tujuan ekspor kunci pribadi Anda"
 msgid "Select file to export your wallet transactions to"
 msgstr "Pilih fire tujuan ekspor transaksi dompet Anda"
 
-#, python-brace-format
 msgid "Select file to save your {title}"
 msgstr "Pilih file untuk menyimpan {title} Anda"
 
@@ -2821,7 +2755,6 @@ msgstr "Mengirimkan transaksi ke cosinging pool…"
 msgid "Sent (mSAT):"
 msgstr "Dikirim (mSAT):"
 
-#, python-brace-format
 msgid "Sent HTLC with ID {id}"
 msgstr "HTLC dikitim dengan ID {id}"
 
@@ -2831,7 +2764,6 @@ msgstr "Server"
 msgid "Server hosting your email account"
 msgstr "Server hosting akun Email Anda."
 
-#, python-brace-format
 msgid "Server is lagging ({number} blocks)"
 msgstr "Server lambat ({number} blok)"
 
@@ -2895,14 +2827,12 @@ msgstr "Tampilkan sebagai kode QR"
 msgid "Show on Ledger"
 msgstr "Tampilkan di Ledger"
 
-#, python-brace-format
 msgid "Show on {device}"
 msgstr "Tampilkan di {device}"
 
 msgid "Show report contents"
 msgstr "Tampilkan isi laporan"
 
-#, python-brace-format
 msgid "Show {tab_description}"
 msgstr "Tampilkan {tab_description}"
 
@@ -3035,7 +2965,6 @@ msgstr "Biaya Target:"
 msgid "Terms & Conditions"
 msgstr "Syarat & Ketentuan"
 
-#, python-brace-format
 msgid "Terms & Conditions {version} (Last updated: {date})"
 msgstr "Syarat dan Ketentuan {version} (Terakhir diperbarui: {date})"
 
@@ -3069,24 +2998,18 @@ msgstr "Alamat Bitcoin tidak memiliki waktu habis tempo dan akan selalu menjadi 
 msgid "The description is not sent to the recipient of the funds. It is stored in your wallet file, and displayed in the 'History' tab."
 msgstr "Deskripsi tidak dikirim ke penerima saldo. Ini disimpan di file dompet Anda, dan ditampilkan di tab 'Riwayat'."
 
-msgid ""
-"The fee could not be verified. Signing non-segwit inputs is risky:\n"
-"if this transaction was maliciously modified before you sign,\n"
-"you might end up paying a higher mining fee than displayed."
+msgid "The fee could not be verified. Signing non-segwit inputs is risky:\nif this transaction was maliciously modified before you sign,\nyou might end up paying a higher mining fee than displayed."
 msgstr ""
-"Biaya tidak dapat diverifikasi. Menandatangani input non-segwit adalah hal yang sangat berisiko:\n"
-"apabila transaksi ini diubah secara mencurigakan sebelum Anda tandatangani,\n"
+"Biaya tidak dapat diverifikasi. Menandatangani input non-segwit adalah hal yang sangat berisiko:"
+"apabila transaksi ini diubah secara mencurigakan sebelum Anda tandatangani,"
 "Anda akan membayar biaya penambangan yang lebih tinggi dari apa yang ditampilkan."
 
 msgid "The fee for this transaction seems unusually high."
 msgstr "Biaya untuk transaksi ini terlihat sangat tinggi. "
 
-#, python-brace-format
-msgid ""
-"The file '{path}' contains an incompletely created wallet.\n"
-"Do you want to complete its creation now?"
+msgid "The file '{path}' contains an incompletely created wallet.\nDo you want to complete its creation now?"
 msgstr ""
-"File {path} mengandung dompet yang belum selesai dibuat.\n"
+"File {path} mengandung dompet yang belum selesai dibuat."
 "Apakah Anda ingin menyelesaikan pembuatannya sekarang?"
 
 msgid "The file was removed"
@@ -3131,14 +3054,9 @@ msgstr "Transaksi ditolah karena ukurannya terlalu besar (dalam bytes)."
 msgid "The type of addresses used by your wallet will depend on your seed."
 msgstr "Tipe alamat yang digunakan oleh dompet Anda akan tergantung pada seed Anda."
 
-#, python-brace-format
-msgid ""
-"The wallet '{path}' contains multiple accounts, which are no longer supported since Electrum 2.7.\n"
-"\n"
-"Do you want to split your wallet into multiple files?"
+msgid "The wallet '{path}' contains multiple accounts, which are no longer supported since Electrum 2.7.\n\nDo you want to split your wallet into multiple files?"
 msgstr ""
-"Dompet '{path}' mengandung lebih dari satu akun, yang tidak lagi didukung sejak Electrum 2.7. \n"
-"\n"
+"Dompet '{path}' mengandung lebih dari satu akun, yang tidak lagi didukung sejak Electrum 2.7. "
 "Apakah Anda ingin memecah dompet Anda menjadi beberapa file?"
 
 msgid "Then, enter your Google Authenticator code:"
@@ -3159,7 +3077,6 @@ msgstr "Alamat ini telah digunakan. Untuk privasi yang lebih baik, jangan gunana
 msgid "This blockchain is used to verify the transactions sent by your transaction server."
 msgstr "Blockchain ini digunakan untuk memverifikasi transaksi yang digunakan oleh server transaksi Anda."
 
-#, python-brace-format
 msgid "This channel will be usable after {number} confirmations"
 msgstr "Channel ini akan dapat digunakan setelah {number} konfirmasi"
 
@@ -3181,7 +3098,6 @@ msgstr "File ini dienkripsi menggunakan perangkat keras."
 msgid "This file is encrypted with a password."
 msgstr "File ini dienkripsi dengan kata sandi."
 
-#, python-brace-format
 msgid "This function is only available for standard wallets when using {device}."
 msgstr "fungsi ini hanya tersedia untuk dompet standard ketika menggunakan {device}."
 
@@ -3248,11 +3164,9 @@ msgstr "Transaksi ini belum disimpan. Tetap tutup?"
 msgid "This transaction requires a higher fee, or it will not be propagated by your current server"
 msgstr "Transaksi Ini membutuhkan biaya yang lebih tinggi, atau tidak akan disebarkan oleh server Anda yang sekarang."
 
-#, python-brace-format
 msgid "This type of script is not supported with {device}."
 msgstr "Skrip tipe ini tidak didukung oleh {device}"
 
-#, python-brace-format
 msgid "This version supports a maximum of {length} characters."
 msgstr "Versi ini mendukung maksimum karakter sepanjang {length}."
 
@@ -3304,11 +3218,9 @@ msgstr "Untuk membantu kami mendiagnosa dan memperbaiki masalah, Anda dapat meng
 msgid "To make sure that you have properly saved your seed, please retype it here."
 msgstr "Untuk memastikan bahwa Anda telah menyimpan seed Anda dengan benar, mohon tulis kembali disini."
 
-msgid ""
-"To setup a local watchtower, you must run Electrum on a machine\n"
-"that is always connected to the internet. Configure a port if you want it to be public."
+msgid "To setup a local watchtower, you must run Electrum on a machine\nthat is always connected to the internet. Configure a port if you want it to be public."
 msgstr ""
-"Untuk memasang dan mengatur watchtower lokal, Anda harus menjalankan Electrum di perangkat\n"
+"Untuk memasang dan mengatur watchtower lokal, Anda harus menjalankan Electrum di perangkat"
 "yang selalu terhubung ke internet. Atur port apabila Anda inginhal ini menjadi publik."
 
 msgid "To somewhat protect your privacy, Electrum tries to create change with similar precision to other outputs."
@@ -3431,12 +3343,9 @@ msgstr "Tx"
 msgid "Type"
 msgstr "Tipe"
 
-#, python-brace-format
-msgid ""
-"Unable to connect to mail server:\n"
-" {error}"
+msgid "Unable to connect to mail server:\n {error}"
 msgstr ""
-"Tidak dapat terhubung ke mail server:\n"
+"Tidak dapat terhubung ke mail server:"
 "{error}"
 
 msgid "Unable to create backup"
@@ -3517,7 +3426,6 @@ msgstr "Periksa Update"
 msgid "Update check failed"
 msgstr "Pemeriksaan update gagal"
 
-#, python-brace-format
 msgid "Update to Electrum {version} is available"
 msgstr "Update Electrum {version} tersedia"
 
@@ -3632,7 +3540,6 @@ msgstr "PERINGATAN: Semua kunci pribadi Anda bersifat rahasia."
 msgid "WARNING: This is a multi-signature wallet."
 msgstr "PERINGATAN: Ini adalah dompet multi-signatur."
 
-#, python-brace-format
 msgid "WARNING: the alias \"{alias}\" could not be validated via an additional security check, DNSSEC, and thus may not be correct."
 msgstr "PERINGATAN: alias \"{alias}\" tidak dapat divalidasi via pemeriksaan keamanan tambahan, DNSSEC, dan oleh karenanya mungkin tidak benar."
 
@@ -3663,7 +3570,6 @@ msgstr "Alamat dompet perubahan"
 msgid "Wallet file corruption detected. Please restore your wallet from seed, and compare the addresses in both files"
 msgstr "Kerusakan file dompet terdeteksi. Mohon pulihkan dompet Anda dari seed, dan bandingkan alamat tertera di kedua file"
 
-#, python-brace-format
 msgid "Wallet file not found: {name}"
 msgstr "File dompet tidak ditemukan: {name}"
 
@@ -3673,7 +3579,6 @@ msgstr "Nama dompet"
 msgid "Wallet receive address"
 msgstr "Alamat penerimaan dompet"
 
-#, python-brace-format
 msgid "Wallet removed: {name}"
 msgstr "Dompet dihapus: {name}"
 
@@ -3692,17 +3597,10 @@ msgstr "Peringatan!"
 msgid "Warning: Please be aware that in the process of using the Secure Transaction feature, a part of the funds left in your wallet might be blocked. This is a normal procedure linked to UTXO and the blockchain parameters of the Bitcoin Vault wallet. Your funds will be unblocked once the transaction is verified (after approximately 24 hrs) or canceled (within 24 hrs)."
 msgstr "Peringatan: Mohon diingat bahwa proses ini menggunakan fitur Transaksi Secure (Aman), dimana sebagian dari saldo yang tersisa di dompet Anda akan diblokir untuk sementara. Ini merupakan sebuah prosedurnormal yang terhubung dengan UTXO dan parameter Blockchain milik dompet Bitcoin Vault. Saldo Anda akan dibuka blokirnya (dicairkan) setelah transaksi Anda telah dikonfirmasi (Setelah kurang lebih 24 jam) atau dibatalkan (Dalam waktu 24 jam)."
 
-msgid ""
-"Warning: The next address will not be recovered automatically if you restore your wallet from seed; you may need to add it manually.\n"
-"\n"
-"This occurs because you have too many unused addresses in your wallet. To avoid this situation, use the existing addresses first.\n"
-"\n"
-"Create anyway?"
+msgid "Warning: The next address will not be recovered automatically if you restore your wallet from seed; you may need to add it manually.\n\nThis occurs because you have too many unused addresses in your wallet. To avoid this situation, use the existing addresses first.\n\nCreate anyway?"
 msgstr ""
-"Peringatan: Alamat selanjutnya tidak akan dapat dipulihkan secara otomatis apabila anda memulihkandompet Anda dari seed; Anda mungkin perlu untuk menambahkannya secara manual.\n"
-"\n"
-"Hal ini terjadi karena Anda memiliki terlalu banyak alamat didompet Anda yang tidak digunakan. Untuk menghindari situati ini, pertama gunakan alamat dompet yang telah tersedia.\n"
-"\n"
+"Peringatan: Alamat selanjutnya tidak akan dapat dipulihkan secara otomatis apabila anda memulihkandompet Anda dari seed; Anda mungkin perlu untuk menambahkannya secara manual."
+"Hal ini terjadi karena Anda memiliki terlalu banyak alamat didompet Anda yang tidak digunakan. Untuk menghindari situati ini, pertama gunakan alamat dompet yang telah tersedia."
 "Tetap buat?"
 
 msgid "Warning: do not use this if it makes you pick a weaker password."
@@ -3720,7 +3618,6 @@ msgstr "Kami menemui kesalahan ketika terhubung dengan perangkat Anda:"
 msgid "While this is less than ideal, it might help if you run Electrum as Administrator."
 msgstr "Meskipun kurang ideal, ini dapat membantu Anda menjalankan Electrum sebagai Administrator."
 
-#, python-brace-format
 msgid "Within {number} blocks"
 msgstr "Didalam blok {number}"
 
@@ -3775,11 +3672,9 @@ msgstr "Anda menggunakan dompet non-deterministic, yang tidak dapat membuat alam
 msgid "You can change your email. It is used to send you transaction notifications from chosen wallet."
 msgstr "Anda dapat mengubah Alamat Email Anda. Email digunakan untuk mengirimi Anda notifkasi dari dompet yang dipilih."
 
-#, python-brace-format
 msgid "You can disable this setting in '{setting_name}'."
 msgstr "Anda dapat menonaktifkan pengaturan ini di '{setting_name}'."
 
-#, python-brace-format
 msgid "You can download the new version from {url}."
 msgstr "Anda dapat mendapatkan versi baru dari {url}."
 
@@ -3810,9 +3705,6 @@ msgstr "Anda telah berhenti berlangganan ke dompet"
 msgid "You have successfully updated your notification preferences"
 msgstr "Anda telah berhasil memperbarui pengaturan notifikasi Anda."
 
-msgid "You have {number} more attempts."
-msgstr "Anda memiliki {number} kesempatan tersisa."
-
 msgid "You may enter a Bitcoin address, a label from your list of contacts (a list of completions will be proposed), or an alias (email-like address that forwards to a Bitcoin address)"
 msgstr "Anda dapat memasukkan sebuah alamat Bitcoin, sebuah label dari daftar kontak (daftar penyelesaian akan dianjurkan), atau sebuah alias (alamat seperti email yang meneruskan berbagai hal ke alama Bitcoin.)"
 
@@ -3825,7 +3717,6 @@ msgstr "Anda dapat memuat file CSV menggunakan ikon file."
 msgid "You might have an incompatible library."
 msgstr "Anda mungmin memiliki perpustakaan yang tidak kompatibel."
 
-#, python-brace-format
 msgid "You need to be online in order to complete the creation of your wallet.  If you generated your seed on an offline computer, click on \"{button}\" to close this window, move your wallet file to an online computer, and reopen it with Electrum."
 msgstr "Anda harus online untuk menyelesaikan pembuatan dompet Anda. ApabilaAnd a membuat seed anda di sebuah komputer yang offline, klik di \"{button}\" untukmenutup jendela ini, memindahkan file dompet Anda sebuah komputer yang online, dan membuka kembalidompet Anda dengan Electrum."
 
@@ -3877,14 +3768,12 @@ msgstr "File dompet Anda TIDAK dienkripsi."
 msgid "Your wallet file is encrypted."
 msgstr "File dompet Anda dienkripsi."
 
-#, python-brace-format
 msgid "Your wallet file is: {path}."
 msgstr "File dompet Anda adalah: {path}."
 
 msgid "Your wallet generation seed is:"
 msgstr "Seed generasi dompet Anda adalah:"
 
-#, python-brace-format
 msgid "Your wallet has {number} prepaid transactions."
 msgstr "Dompet Anda memiliki {number} transaksi prabayar."
 
@@ -3900,11 +3789,9 @@ msgstr "Dompet Anda dilindungi dengan kata sandi dan dienkripsi."
 msgid "Your wallet's generated seed is:"
 msgstr "Seed dompet Anda adalah:"
 
-#, python-brace-format
 msgid "Your {0} were exported to '{1}'"
 msgstr "{0} Anda diekspor ke '{1}'"
 
-#, python-brace-format
 msgid "Your {title} were successfully imported"
 msgstr "{title} berhasil diimpor"
 
@@ -4061,48 +3948,85 @@ msgstr "dibersihkan"
 msgid "your seed extension will <b>not</b> be included in the encrypted backup."
 msgstr "ekstensi seed Anda <b>tidak</b> akan ditambahkan ke bakup terenkripsi Anda."
 
-#, python-brace-format
 msgid "{coins_number} outputs available ({utxos_number} total)"
 msgstr "{coins_number} output tersedia ({utxos_number} total)"
 
-#, python-brace-format
 msgid "{email} is already subscribed to {wallet_name}."
 msgstr "{email} telah berlangganan ke dompet {wallet_name}."
 
-#, python-brace-format
 msgid "{number} confirmations"
 msgstr "{number} konfirmasi"
 
-#, python-brace-format
 msgid "{number} connections."
 msgstr "{number} koneksi."
 
-#, python-brace-format
 msgid "{number} new transactions: Total amount received in the new transactions {amount}"
 msgstr "{number} transaksi baru: Total yang diterima di transaksi baru {amount}"
 
-#, python-brace-format
 msgid "{size} from tip"
 msgstr "{size} dari ujung"
 
-#, python-brace-format
-msgid ""
-"{title} copied to clipboard:\n"
-"\n"
-"{content}"
+msgid "{title} copied to clipboard:\n\n{content}"
 msgstr ""
-"{title} disalin ke papan klip:\n"
-"\n"
+"{title} disalin ke papan klip:"
 "{content}"
 
-#, python-brace-format
 msgid "{txid} is covered by GreenAddress instant confirmation"
 msgstr "{txid} dilindungi oleh konfirmasi instan GreenAddress"
 
-#, python-brace-format
 msgid "{txid} is not covered by GreenAddress instant confirmation"
 msgstr "{txid} tidak dilindungi oleh konfirmasi instan GreenAddress"
 
-#, python-brace-format
 msgid "{wallet_seed} encrypted for Revealer {version}_{checksum} saved as PNG and PDF at: "
 msgstr "{wallet_seed} yang dienkripsi untuk Revealer {version}_{checksum} disimpan sebagai PNG dan PDF di: "
+
+msgid "A mobile wallet for BTCV. You can pair it with Electrum Vault and use it to authorize transactions to additionally secure your funds."
+msgstr "Aplikasi mobile untuk BTCV. Anda dapat menghubungkan aplikasi dengan Electrum Vault dan menggunakannya untuk mengautorisasi transaksi untuk menambah tingkat keamanan dana Anda."
+
+msgid "Allows users to make Secure Fast, Secure, and Cancel transactions."
+msgstr "Izinkan pengguna untuk melakukan transaksi Cepat, Cepat, dan Batal."
+
+msgid "Allows users to make Secure and Cancel transactions."
+msgstr "Izinkan pengguna untuk melakukan transaksi Aman dan Batal."
+
+msgid "Allows users to make Standard transactions."
+msgstr "Izinkan pengguna untuk melakukan transaksi Standard."
+
+msgid "Alternatively"
+msgstr "Jika Tidak"
+
+msgid "Create New Wallet"
+msgstr "Buat Dompet Baru"
+
+msgid "Find instructions on how to create and share an authenticator"
+msgstr "Temukan instruksi cara membuat dan membagikan autentikator"
+
+msgid "HERE"
+msgstr "DI SINI"
+
+msgid "This is a list of words which store all the information necessary to restore the wallet. Without the seed phrase, you won’t be able to access your funds in case of a technical issue or if your device is stolen. "
+msgstr "Berikut adalah daftar kata-kata yang menyimpan seluruh informasi yang Anda butuhkan untuk memulihkan dompet. Tanpa Seed Phrase (Frase Benih) ini, Anda tidak akan bisa mengakses dana Anda jika terjadi masalah teknis atau jika terjadi pencurian terhadap perangkan Anda."
+
+msgid "Use the link to generate ECDSA public key on the Key Generator website, copy the string of numbers from the “Public key” section and paste it here. "
+msgstr "Gunakan tautan ini untuk mengasilkan kunci publik ECDSA di website Key Generator, salin deretan Anda dari bagian \"Public Key\" (Kunci Publik) dan salin di sini. "
+
+msgid "&Backup"
+msgstr "&Backup"
+
+msgid "Address #1, amount to send"
+msgstr "Alamat #1, jumlah yang akan dikirim "
+
+msgid "Address #2, amount to send "
+msgstr "Alamat #2, jumlah yang akan dikirim "
+
+msgid "How to send to many?"
+msgstr "Bagaimana cara mengirim ke banyak?"
+
+msgid "If you want to send funds to more than one wallet, use this format:"
+msgstr "Jika Anda ingin mengirim dana ke lebih dari satu dompet, mohon gunakan format ini:"
+
+msgid "New"
+msgstr "Baru"
+
+msgid "You can also load a CSV file using the folder icon."
+msgstr "Anda juga dapat memuat file CSV dengan menggunakan ikon folder."
