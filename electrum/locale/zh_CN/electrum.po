@@ -1,20 +1,21 @@
-# Chinese translations for PACKAGE package.
-# Copyright (C) 2020 THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# Automatically generated, 2020.
-#
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: electrum\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-10 02:26+0200\n"
-"PO-Revision-Date: 2020-10-10 02:26+0200\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"POT-Creation-Date: 2020-12-09 09:54+0000\n"
+"PO-Revision-Date: 2020-12-09 09:54\n"
+"Last-Translator: \n"
+"Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Crowdin-Project: electrum\n"
+"X-Crowdin-Project-ID: 20482\n"
+"X-Crowdin-Language: zh-CN\n"
+"X-Crowdin-File: /electrum-client/messages.pot\n"
+"X-Crowdin-File-ID: 68\n"
 
 msgid "  (No FX rate available)"
 msgstr "  (无可用的外汇兑换率)"
@@ -229,7 +230,6 @@ msgstr "添加共同签署者"
 msgid "Additional fees"
 msgstr "附加费用"
 
-#, python-brace-format
 msgid "Additional {num_satoshis_added} satoshis are going to be added."
 msgstr "{num_satoshis_added} 添加Satoshis"
 
@@ -308,7 +308,6 @@ msgstr "发生错误"
 msgid "An encrypted transaction was retrieved from cosigning pool."
 msgstr "从联署池检索了加密的交易"
 
-#, python-brace-format
 msgid "An unnamed {device_name}"
 msgstr "未命名的{device_name}"
 
@@ -318,7 +317,6 @@ msgstr "您确定要删除此频道吗？ 这将从您的钱包历史记录中�
 msgid "Are you sure you want to disagree?"
 msgstr "您确定不同意吗？"
 
-#, python-brace-format
 msgid "Are you sure you want to remove this transaction and {number} child transactions?"
 msgstr "您确定要删除此交易记录和{number}个子交易记录吗？"
 
@@ -328,7 +326,6 @@ msgstr "您确定要删除此交易记录？"
 msgid "Are you sure?"
 msgstr "您确定吗？"
 
-#, python-brace-format
 msgid "At block height: {height}"
 msgstr "区块高度：{height}"
 
@@ -494,7 +491,6 @@ msgstr "资本收益"
 msgid "Capital gains"
 msgstr "资本收益"
 
-#, python-brace-format
 msgid "Chain split detected at block {0}"
 msgstr "在{0}号区块上检测到链拆分"
 
@@ -525,7 +521,6 @@ msgstr "通道已关闭"
 msgid "Channel closed"
 msgstr "通道关闭"
 
-#, python-brace-format
 msgid "Channel closed, you may need to wait at least {number} blocks, because of CSV delays"
 msgstr "通道已关闭，由于CSV延迟，您可能需要至少等待{number}个区块"
 
@@ -571,19 +566,11 @@ msgstr "选择一个密码来加密您的钱包密钥。"
 msgid "Choose a server"
 msgstr "选择服务器"
 
-msgid ""
-"Choose coin (UTXO) selection method for alert transactions.  The following are available:\n"
-"\n"
-msgstr ""
-"选择币(UTXO)选择方式进行提醒交易。以下是可用的:\n"
-"\n"
+msgid "Choose coin (UTXO) selection method for alert transactions.  The following are available:\n\n"
+msgstr "选择币(UTXO)选择方式进行提醒交易。以下是可用的:\n\n"
 
-msgid ""
-"Choose coin (UTXO) selection method for non-alert transactions.  The following are available:\n"
-"\n"
-msgstr ""
-"选择币 (UTXO) 选择方式进行无提醒交易。则 以下为可用:\n"
-"\n"
+msgid "Choose coin (UTXO) selection method for non-alert transactions.  The following are available:\n\n"
+msgstr "选择币 (UTXO) 选择方式进行无提醒交易。则 以下为可用:\n\n"
 
 msgid "Choose from peers"
 msgstr "选择同行"
@@ -657,7 +644,6 @@ msgstr "币选择（警报）"
 msgid "Coin selection (non-alert)"
 msgstr "币选择（非警报）"
 
-#, python-brace-format
 msgid "Coin selection active ({num_utxos} UTXOs selected)"
 msgstr "币选择激活（已选择{num_utxos}个UTXO）"
 
@@ -718,7 +704,6 @@ msgstr "连接的节点"
 msgid "Connected nodes are on the same chain"
 msgstr "连接的节点在同一链上"
 
-#, python-brace-format
 msgid "Connected to {0} nodes."
 msgstr "已连接到{0}个节点。"
 
@@ -764,7 +749,6 @@ msgstr "使用粘贴按钮,复制并粘贴收件人地址，或使用相机扫�
 msgid "Copy to clipboard"
 msgstr "复制到剪贴板"
 
-#, python-brace-format
 msgid "Copy {column_title}"
 msgstr "复制{column_title}"
 
@@ -780,7 +764,6 @@ msgstr "无法关闭频道："
 msgid "Could not force close channel: "
 msgstr "无法强制关闭频道："
 
-#, python-brace-format
 msgid "Could not open channel: {error_value}"
 msgstr "无法打开通道：{error_value}"
 
@@ -829,7 +812,6 @@ msgstr "当前费率"
 msgid "Current rate"
 msgstr "当前率"
 
-#, python-brace-format
 msgid "Current version: {version}"
 msgstr "当前版本：{version}"
 
@@ -848,7 +830,6 @@ msgstr "暗/亮"
 msgid "Date"
 msgstr "日期"
 
-#, python-brace-format
 msgid "Date: {date}"
 msgstr "日期：{date}"
 
@@ -909,7 +890,6 @@ msgstr "开发人员"
 msgid "Device not in Bitcoin mode"
 msgstr "设备不在比特币模式下"
 
-#, python-brace-format
 msgid "Digital Revealer ({version}_{code_id}) saved as PNG and PDF at:"
 msgstr " Digital Revealer（{version} _ {code_id}）在以下位置另存为PNG和PDF："
 
@@ -949,7 +929,6 @@ msgstr "您是要创建一个新的密语种子，还是要用之前已有的密
 msgid "Do you want to create a new seed, or to restore a wallet using an existing seed?"
 msgstr "您是要创建新种子，还是要使用现有种子还原钱包？"
 
-#, python-brace-format
 msgid "Do you want to delete '{path}'?"
 msgstr "您要删除'{path}'吗？"
 
@@ -962,7 +941,6 @@ msgstr "您要再次启动该向导吗？"
 msgid "Do you want to open it now?"
 msgstr "您现在要打开它吗？"
 
-#, python-brace-format
 msgid "Do you want to remove {address} from your wallet?"
 msgstr "您要从钱包中删除{address}吗？"
 
@@ -996,21 +974,15 @@ msgstr "ETA"
 msgid "Each revealer should be used only once."
 msgstr "每个展示器只能使用一次。"
 
-#, python-brace-format
 msgid "Edit {title}"
 msgstr "编辑{title}"
 
 msgid "Electrum Plugins"
 msgstr "Electrum插件"
 
-#, python-brace-format
-msgid ""
-"Electrum cannot pair with your {device}.\n"
-"\n"
-"Before you request bitcoins to be sent to addresses in this wallet, ensure you can pair with your device, or that you have its seed (and passphrase, if any).  Otherwise all bitcoins you receive will be unspendable."
+msgid "Electrum cannot pair with your {device}.\n\nBefore you request bitcoins to be sent to addresses in this wallet, ensure you can pair with your device, or that you have its seed (and passphrase, if any).  Otherwise all bitcoins you receive will be unspendable."
 msgstr ""
-"Electrum 不能与您的 {device}配对。\n"
-"\n"
+"Electrum 不能与您的 {device}配对。"
 "在请求将比特币发送到此钱包中的地址之前，请确保您可以与您的设备配对，或者您有它的密语种子 (和口令，如有)。否则，您收到的所有比特币将无法使用。"
 
 msgid "Electrum communicates with remote servers to get information about your transactions and addresses. The servers all fulfill the same purpose only differing in hardware. In most cases you simply want to let Electrum pick one at random.  However if you prefer feel free to select a server manually."
@@ -1091,7 +1063,6 @@ msgstr "加密自定义机密"
 msgid "Encrypt wallet file"
 msgstr "加密钱包文件"
 
-#, python-brace-format
 msgid "Encrypt {wallet_name}'s seed"
 msgstr "加密{wallet_name}的种子"
 
@@ -1104,7 +1075,6 @@ msgstr "加密/解密消息"
 msgid "Encrypted"
 msgstr "已加密"
 
-#, python-brace-format
 msgid "Encryption and decryption are currently not supported for {device}"
 msgstr " {device}当前不支持加密和解密"
 
@@ -1189,7 +1159,6 @@ msgstr "输入您的PIN码以解密您的种子"
 msgid "Enter your PIN code in order to sign this transaction"
 msgstr "输入您的PIN码以签署此交易"
 
-#, python-brace-format
 msgid "Enter your PIN code to confirm deletion of {wallet}"
 msgstr "输入您的PIN码以确认删除{wallet}"
 
@@ -1220,7 +1189,6 @@ msgstr "合并部分交易时出错"
 msgid "Error connecting to server"
 msgstr "连接服务器时出错"
 
-#, python-brace-format
 msgid "Error connecting to {name} server"
 msgstr "连接到{name}服务器时出错"
 
@@ -1398,7 +1366,6 @@ msgstr "强制关闭通道"
 msgid "Force-close channel?"
 msgstr "强制关闭频道吗？"
 
-#, python-brace-format
 msgid "Fork detected at block {fork_point}"
 msgstr "在区块{fork_point}处检测到叉子"
 
@@ -1429,7 +1396,6 @@ msgstr "冻结币"
 msgid "From"
 msgstr "来自"
 
-#, python-brace-format
 msgid "From {0} cosigners"
 msgstr "来自{0}个共同签署者"
 
@@ -1472,15 +1438,11 @@ msgstr " Google身份验证器码："
 msgid "Gossip"
 msgstr "Gossip"
 
-msgid ""
-"GreenAddress requires your signature \n"
-"to verify that transaction is instant.\n"
-"Please enter your password to sign a\n"
-"verification request."
+msgid "GreenAddress requires your signature \nto verify that transaction is instant.\nPlease enter your password to sign a\nverification request."
 msgstr ""
-"GreenAddress需要您的签名\n"
-"以确认交易是即时的。\n"
-"请输入您的密码以签名\n"
+"GreenAddress需要您的签名"
+"以确认交易是即时的。"
+"请输入您的密码以签名"
 "验证请求。"
 
 msgid "HTLCs in current commitment transaction"
@@ -1510,7 +1472,6 @@ msgstr "隐藏"
 msgid "Hide advanced"
 msgstr "隐藏高级选项"
 
-#, python-brace-format
 msgid "Hide {tab_description}"
 msgstr "隐藏{tab_description}"
 
@@ -1547,11 +1508,9 @@ msgstr "我不同意"
 msgid "I have lost my Google Authenticator account"
 msgstr "我丢失了我的Google Authenticator帐户"
 
-msgid ""
-"IP/port in format:\n"
-"[host]:[port]"
+msgid "IP/port in format:\n[host]:[port]"
 msgstr ""
-"IP /端口，格式：\n"
+"IP /端口，格式："
 "[主机]：[端口]"
 
 msgid "If auto-connect is enabled, Electrum will always use a server that is on the longest blockchain."
@@ -1566,7 +1525,6 @@ msgstr "如果已禁用，则必须选择要使用的服务器。如果您的服
 msgid "If you are not sure what this is, leave this field unchanged."
 msgstr "如果不确定这是什么，请保留此空格不变。"
 
-#, python-brace-format
 msgid "If you are online, click on \"{button}\" to continue."
 msgstr "如果您在线，请单击\" {button} \"继续。"
 
@@ -1648,7 +1606,6 @@ msgstr "根据情况，使用3个已变更的地址，以分配大量的币，�
 msgid "In the next block"
 msgstr "下一个区块里"
 
-#, python-brace-format
 msgid "Included in block: {header_hash}"
 msgstr "区块中包含：{header_hash}"
 
@@ -1820,11 +1777,9 @@ msgstr "标签, 交易 ID和地址加密后才发送至远程服务器"
 msgid "Language"
 msgstr "语言"
 
-#, python-brace-format
 msgid "Last updated: {date}"
 msgstr "最近更新时间：{date}"
 
-#, python-brace-format
 msgid "Latest version: {version}"
 msgstr "最新版本: {version}"
 
@@ -1846,7 +1801,6 @@ msgstr "Legacy"
 msgid "Legacy 2FA"
 msgstr "Legacy 2FA"
 
-#, python-brace-format
 msgid "Library version for '{name}' is incompatible."
 msgstr " '{name}'的程序库版本不能共存."
 
@@ -1952,7 +1906,6 @@ msgstr "挖矿手续费"
 msgid "Missing amount"
 msgstr "丢失金额"
 
-#, python-brace-format
 msgid "Missing libraries for {library_name}."
 msgstr "{library_name}的资料室发生遗漏"
 
@@ -1962,7 +1915,6 @@ msgstr "无法找到遗留信息所必需的前一交易"
 msgid "Missing report URL."
 msgstr "找不到报告URL"
 
-#, python-brace-format
 msgid "More info at: {link}"
 msgstr "更多信息： {link}"
 
@@ -2005,7 +1957,6 @@ msgstr "新的联系人"
 msgid "New email:"
 msgstr "新邮件"
 
-#, python-brace-format
 msgid "New transaction: {amount}"
 msgstr "新的交易： {amount}"
 
@@ -2177,7 +2128,6 @@ msgstr "打开通道"
 msgid "Open your cosigner wallet to retrieve it."
 msgstr "打开您的共同签署钱包，然后进行查找"
 
-#, python-brace-format
 msgid "Open {title} file"
 msgstr "{title} 打开文件"
 
@@ -2310,7 +2260,6 @@ msgstr "请检查您的连接状态和凭据"
 msgid "Please check your network connection."
 msgstr "请检查网络连接"
 
-#, python-brace-format
 msgid "Please check your {device} device"
 msgstr "请检查您的{device}设备"
 
@@ -2344,7 +2293,6 @@ msgstr "请输入密码以解密"
 msgid "Please enter your seed phrase in order to restore your wallet."
 msgstr "请输入您的密语种子以恢复钱包"
 
-#, python-brace-format
 msgid "Please insert your {device}"
 msgstr "请插入{device}"
 
@@ -2372,14 +2320,12 @@ msgstr "请重新启动Electrum以激活新的GUI设置"
 msgid "Please retype your seed phrase, to confirm that you properly saved it"
 msgstr "请重新输入您的密语种子，以确认您已正确保存它"
 
-#, python-brace-format
 msgid "Please save these {0} words on paper (the order is important). "
 msgstr "请将这{0}个单词依次写在纸上（顺序排序十分重要） "
 
 msgid "Please scan a Bitcoin address or a payment request"
 msgstr "请扫描比特币地址或付款请求"
 
-#, python-brace-format
 msgid "Please select which {device} device to use:"
 msgstr "请选择要使用的{device}设备："
 
@@ -2416,7 +2362,6 @@ msgstr "端口号必须为十进制"
 msgid "Portuguese"
 msgstr "葡萄牙语"
 
-#, python-brace-format
 msgid "Position in mempool: {size} from tip"
 msgstr "内存池中的位置：？的{size}"
 
@@ -2525,7 +2470,6 @@ msgstr "读取文件"
 msgid "Read from microphone"
 msgstr "从麦克风读取"
 
-#, python-brace-format
 msgid "Ready to encrypt for revealer {version}"
 msgstr "准备对revealer程序{version}进行加密"
 
@@ -2535,7 +2479,6 @@ msgstr "接收"
 msgid "Received (mSAT):"
 msgstr "接收完毕（mSAT）："
 
-#, python-brace-format
 msgid "Received HTLC with ID {id}"
 msgstr "接收的HTLC与ID {id}"
 
@@ -2578,7 +2521,6 @@ msgstr "删除"
 msgid "Remove from wallet"
 msgstr "从钱包中删除"
 
-#, python-brace-format
 msgid "Remove {labels} from your list of contacts?"
 msgstr "从您的联系人列表中删除{labels}？"
 
@@ -2624,7 +2566,6 @@ msgstr "正在从TrustedCoin服务器请求帐户信息..."
 msgid "Requestor"
 msgstr "申请人"
 
-#, python-brace-format
 msgid "Require {0} signatures"
 msgstr "需要{0}签名"
 
@@ -2754,7 +2695,6 @@ msgstr "选择要导出密钥的文件"
 msgid "Select file to export your wallet transactions to"
 msgstr "选择要导出钱包交易的文件"
 
-#, python-brace-format
 msgid "Select file to save your {title}"
 msgstr "选择文件来保存{title}"
 
@@ -2821,7 +2761,6 @@ msgstr "正在将交易发送到共同签名池..."
 msgid "Sent (mSAT):"
 msgstr "已发送（mSAT）："
 
-#, python-brace-format
 msgid "Sent HTLC with ID {id}"
 msgstr "发送了ID为{id}的HTLC"
 
@@ -2831,7 +2770,6 @@ msgstr "服务器"
 msgid "Server hosting your email account"
 msgstr "托管您的电子邮件帐户的服务器"
 
-#, python-brace-format
 msgid "Server is lagging ({number} blocks)"
 msgstr "服务器滞后（{number}个区块）"
 
@@ -2895,14 +2833,12 @@ msgstr "显示为QR二维码"
 msgid "Show on Ledger"
 msgstr "在Ledger上显示"
 
-#, python-brace-format
 msgid "Show on {device}"
 msgstr "在{device}上显示"
 
 msgid "Show report contents"
 msgstr "显示报告内容"
 
-#, python-brace-format
 msgid "Show {tab_description}"
 msgstr "显示{tab_description}"
 
@@ -3035,7 +2971,6 @@ msgstr "目标手续费："
 msgid "Terms & Conditions"
 msgstr "服务条款"
 
-#, python-brace-format
 msgid "Terms & Conditions {version} (Last updated: {date})"
 msgstr "条款和条件 {version} (最近更新时间：{date}) "
 
@@ -3069,24 +3004,18 @@ msgstr "比特币地址永不过期，并且将始终是electrum钱包的一部�
 msgid "The description is not sent to the recipient of the funds. It is stored in your wallet file, and displayed in the 'History' tab."
 msgstr "记录未发送给收款人。 已存储在您的钱包文件中，并显示在'历史记录'标签中。"
 
-msgid ""
-"The fee could not be verified. Signing non-segwit inputs is risky:\n"
-"if this transaction was maliciously modified before you sign,\n"
-"you might end up paying a higher mining fee than displayed."
+msgid "The fee could not be verified. Signing non-segwit inputs is risky:\nif this transaction was maliciously modified before you sign,\nyou might end up paying a higher mining fee than displayed."
 msgstr ""
-"费用无法验证。 签署non-segwit 输入是有风险的：\n"
-"如果在您签署之前，该交易被恶意修改了，\n"
+"费用无法验证。 签署non-segwit 输入是有风险的："
+"如果在您签署之前，该交易被恶意修改了，"
 "您可能最终会支付比显示的更高的挖矿服务费。"
 
 msgid "The fee for this transaction seems unusually high."
 msgstr "这项交易的费用似乎异常高昂。"
 
-#, python-brace-format
-msgid ""
-"The file '{path}' contains an incompletely created wallet.\n"
-"Do you want to complete its creation now?"
+msgid "The file '{path}' contains an incompletely created wallet.\nDo you want to complete its creation now?"
 msgstr ""
-"文件'{path}'包含一个不完整创建的钱包。\n"
+"文件'{path}'包含一个不完整创建的钱包。"
 "您现在要完成其创建吗？"
 
 msgid "The file was removed"
@@ -3131,14 +3060,9 @@ msgstr "该交易被拒绝，因为太大（以字节为单位）。"
 msgid "The type of addresses used by your wallet will depend on your seed."
 msgstr "您的钱包使用的地址类型取决于您的种子。"
 
-#, python-brace-format
-msgid ""
-"The wallet '{path}' contains multiple accounts, which are no longer supported since Electrum 2.7.\n"
-"\n"
-"Do you want to split your wallet into multiple files?"
+msgid "The wallet '{path}' contains multiple accounts, which are no longer supported since Electrum 2.7.\n\nDo you want to split your wallet into multiple files?"
 msgstr ""
-"钱包'{path}'包含多个帐户，自Electrum 2.7版本后起，不再支持多个账户。\n"
-"\n"
+"钱包'{path}'包含多个帐户，自Electrum 2.7版本后起，不再支持多个账户。"
 "您要将钱包分成多个文件吗？"
 
 msgid "Then, enter your Google Authenticator code:"
@@ -3159,7 +3083,6 @@ msgstr "该地址已被使用。 为了获得更好的隐私，请勿将其重�
 msgid "This blockchain is used to verify the transactions sent by your transaction server."
 msgstr "此区块链用于验证您的交易服务器发送的交易"
 
-#, python-brace-format
 msgid "This channel will be usable after {number} confirmations"
 msgstr "在{number}条确认后，该通道才可用"
 
@@ -3181,7 +3104,6 @@ msgstr "此文件使用硬件设备加密。"
 msgid "This file is encrypted with a password."
 msgstr "此文件已使用密码加密。"
 
-#, python-brace-format
 msgid "This function is only available for standard wallets when using {device}."
 msgstr "在使用{device}时，此功能仅适用于Standard钱包"
 
@@ -3248,11 +3170,9 @@ msgstr "此交易未保存。是否关闭？"
 msgid "This transaction requires a higher fee, or it will not be propagated by your current server"
 msgstr "此交易需要支付更高的费用，否则您当前的服务器将不会传播此交易"
 
-#, python-brace-format
 msgid "This type of script is not supported with {device}."
 msgstr " {device}不支持这种类型的脚本。"
 
-#, python-brace-format
 msgid "This version supports a maximum of {length} characters."
 msgstr "此版本最多支持{length}个字符。"
 
@@ -3304,11 +3224,9 @@ msgstr "为了帮助我们诊断和解决问题，您可以向我们发送包含
 msgid "To make sure that you have properly saved your seed, please retype it here."
 msgstr "为确保您已正确保存种子，请在此处重新输入"
 
-msgid ""
-"To setup a local watchtower, you must run Electrum on a machine\n"
-"that is always connected to the internet. Configure a port if you want it to be public."
+msgid "To setup a local watchtower, you must run Electrum on a machine\nthat is always connected to the internet. Configure a port if you want it to be public."
 msgstr ""
-" 要设置本地观望塔，必须在计算机上运行Electrum \n"
+" 要设置本地观望塔，必须在计算机上运行Electrum "
 "该计算机应始终连接到互联网， 如果要使其公开，请配置端口。"
 
 msgid "To somewhat protect your privacy, Electrum tries to create change with similar precision to other outputs."
@@ -3431,12 +3349,9 @@ msgstr "Tx"
 msgid "Type"
 msgstr "类型"
 
-#, python-brace-format
-msgid ""
-"Unable to connect to mail server:\n"
-" {error}"
+msgid "Unable to connect to mail server:\n {error}"
 msgstr ""
-"无法连接到邮件服务器：\n"
+"无法连接到邮件服务器："
 " {error}"
 
 msgid "Unable to create backup"
@@ -3517,7 +3432,6 @@ msgstr "更新检查"
 msgid "Update check failed"
 msgstr "更新检查失败"
 
-#, python-brace-format
 msgid "Update to Electrum {version} is available"
 msgstr "可以更新到Electrum {version}"
 
@@ -3632,7 +3546,6 @@ msgstr "警告：您的所有密钥都是保密的"
 msgid "WARNING: This is a multi-signature wallet."
 msgstr "警告：这是一个多签名钱包"
 
-#, python-brace-format
 msgid "WARNING: the alias \"{alias}\" could not be validated via an additional security check, DNSSEC, and thus may not be correct."
 msgstr "警告：别名\" {alias} \"无法通过其他安全检查，无法通过DNSSEC认证，因此可能不正确"
 
@@ -3663,7 +3576,6 @@ msgstr "钱包更改地址"
 msgid "Wallet file corruption detected. Please restore your wallet from seed, and compare the addresses in both files"
 msgstr "检测到钱包文件损坏。请从种子中恢复您的钱包，然后比较两个文件中的地址"
 
-#, python-brace-format
 msgid "Wallet file not found: {name}"
 msgstr "找不到钱包文件： {name}"
 
@@ -3673,7 +3585,6 @@ msgstr "钱包名称"
 msgid "Wallet receive address"
 msgstr "钱包接收地址"
 
-#, python-brace-format
 msgid "Wallet removed: {name}"
 msgstr "已删除钱包：{name}"
 
@@ -3692,17 +3603,10 @@ msgstr "警告！"
 msgid "Warning: Please be aware that in the process of using the Secure Transaction feature, a part of the funds left in your wallet might be blocked. This is a normal procedure linked to UTXO and the blockchain parameters of the Bitcoin Vault wallet. Your funds will be unblocked once the transaction is verified (after approximately 24 hrs) or canceled (within 24 hrs)."
 msgstr "警告：请注意，在使用安全交易功能的过程中，您钱包中剩余的部分资金可能会被冻结。这是关联于 UTXO 和 Bitcoin Vault 钱包区块链参数的常规过程。交易通过验证（大约 24 小时后）或被取消（24 小时内），您的资金将被取消冻结。"
 
-msgid ""
-"Warning: The next address will not be recovered automatically if you restore your wallet from seed; you may need to add it manually.\n"
-"\n"
-"This occurs because you have too many unused addresses in your wallet. To avoid this situation, use the existing addresses first.\n"
-"\n"
-"Create anyway?"
+msgid "Warning: The next address will not be recovered automatically if you restore your wallet from seed; you may need to add it manually.\n\nThis occurs because you have too many unused addresses in your wallet. To avoid this situation, use the existing addresses first.\n\nCreate anyway?"
 msgstr ""
-"警告：如果您从种子中恢复钱包，下一个地址将不会自动恢复； 您可能需要手动添加。\n"
-"\n"
-"这是由于您的钱包中有太多未使用的地址。要避免这种情况，请先使用现有地址。\n"
-"\n"
+"警告：如果您从种子中恢复钱包，下一个地址将不会自动恢复； 您可能需要手动添加。"
+"这是由于您的钱包中有太多未使用的地址。要避免这种情况，请先使用现有地址。"
 "还是要创建吗？"
 
 msgid "Warning: do not use this if it makes you pick a weaker password."
@@ -3720,7 +3624,6 @@ msgstr "连接到您的设备时遇到错误："
 msgid "While this is less than ideal, it might help if you run Electrum as Administrator."
 msgstr "虽然不是理想状态，但是如果您以管理员身份运行Electrum可能会有所帮助。"
 
-#, python-brace-format
 msgid "Within {number} blocks"
 msgstr "在{number}个区块内"
 
@@ -3775,11 +3678,9 @@ msgstr "您使用的是不确定的钱包，无法创建新地址。"
 msgid "You can change your email. It is used to send you transaction notifications from chosen wallet."
 msgstr "您可以更改您的电子邮件地址。用于向您发送所选定钱包的交易通知。"
 
-#, python-brace-format
 msgid "You can disable this setting in '{setting_name}'."
 msgstr "您可以在'{setting_name}'中禁用此设置。"
 
-#, python-brace-format
 msgid "You can download the new version from {url}."
 msgstr "您可以从{url}下载新版本。"
 
@@ -3810,9 +3711,6 @@ msgstr "您已成功取消订阅钱包"
 msgid "You have successfully updated your notification preferences"
 msgstr "您已成功更新通知首选项"
 
-msgid "You have {number} more attempts."
-msgstr "您还有{number}次尝试机会。"
-
 msgid "You may enter a Bitcoin address, a label from your list of contacts (a list of completions will be proposed), or an alias (email-like address that forwards to a Bitcoin address)"
 msgstr "您可以输入一个比特币地址，从您的联系人列表中输入一个标签(一个完成列表 将被提出), 或输入一个别名 (类似于可转发到比特币地址的电子邮件的地址)"
 
@@ -3825,7 +3723,6 @@ msgstr "您可以点击文件图标来加载CSV文件"
 msgid "You might have an incompatible library."
 msgstr "您可能有一个不兼容的资源库"
 
-#, python-brace-format
 msgid "You need to be online in order to complete the creation of your wallet.  If you generated your seed on an offline computer, click on \"{button}\" to close this window, move your wallet file to an online computer, and reopen it with Electrum."
 msgstr "您需要在线才能完成钱包的创建。 如果 您在离线计算机上生成密语种子，点击 \"{button}\" 以关闭此窗口，将您的钱包文件移至在线的计算机上，然后用 Electrum 重新打开。"
 
@@ -3877,14 +3774,12 @@ msgstr "您的钱包文件没有加密"
 msgid "Your wallet file is encrypted."
 msgstr "您的钱包文件已加密"
 
-#, python-brace-format
 msgid "Your wallet file is: {path}."
 msgstr "钱包文件位置: {path}."
 
 msgid "Your wallet generation seed is:"
 msgstr "您的钱包生成的种子是:"
 
-#, python-brace-format
 msgid "Your wallet has {number} prepaid transactions."
 msgstr "您的钱包有{number} 预付交易"
 
@@ -3900,11 +3795,9 @@ msgstr "钱包有密码保护并加密的"
 msgid "Your wallet's generated seed is:"
 msgstr "生成您的钱包密语种子为："
 
-#, python-brace-format
 msgid "Your {0} were exported to '{1}'"
 msgstr "您的 {0} 被导出到了 '{1}'"
 
-#, python-brace-format
 msgid "Your {title} were successfully imported"
 msgstr "您的 {title} 已成功被导入"
 
@@ -4061,47 +3954,85 @@ msgstr "已擦掉"
 msgid "your seed extension will <b>not</b> be included in the encrypted backup."
 msgstr "您的种子扩展名将<b>不</b>包含在加密的备份中"
 
-#, python-brace-format
 msgid "{coins_number} outputs available ({utxos_number} total)"
 msgstr "{coins_number}可用产出({utxos_number}总数)"
 
-#, python-brace-format
 msgid "{email} is already subscribed to {wallet_name}."
 msgstr "{email}已经订阅了{wallet_name}。"
 
-#, python-brace-format
 msgid "{number} confirmations"
 msgstr "{number} 确认"
 
-#, python-brace-format
 msgid "{number} connections."
 msgstr "{number} 连接"
 
-#, python-brace-format
 msgid "{number} new transactions: Total amount received in the new transactions {amount}"
 msgstr "{number} 新交易：新交易中收到的总金额{amount}"
 
-#, python-brace-format
 msgid "{size} from tip"
 msgstr "{size} from tip"
 
-#, python-brace-format
-msgid ""
-"{title} copied to clipboard:\n"
-"\n"
-"{content}"
+msgid "{title} copied to clipboard:\n\n{content}"
 msgstr ""
-"{title} 已复制在剪贴板中\n"
+"{title} 已复制在剪贴板中"
 "{content}"
 
-#, python-brace-format
 msgid "{txid} is covered by GreenAddress instant confirmation"
 msgstr "{txid}已被GreenAddress即时确认所覆盖"
 
-#, python-brace-format
 msgid "{txid} is not covered by GreenAddress instant confirmation"
 msgstr "{txid} 不在GreenAddress 即时确认范围内"
 
-#, python-brace-format
 msgid "{wallet_seed} encrypted for Revealer {version}_{checksum} saved as PNG and PDF at: "
 msgstr "{wallet_seed}为Revealer {version}_{checksum}加密，保存为PNG和PDF格式"
+
+msgid "A mobile wallet for BTCV. You can pair it with Electrum Vault and use it to authorize transactions to additionally secure your funds."
+msgstr "BTCV 的移动钱包。 您可以将其与 Electrum Vault 配对并使用它来授权交易以额外保护您的资金。 "
+
+msgid "Allows users to make Secure Fast, Secure, and Cancel transactions."
+msgstr "允许用户进行安全快速交易、安全交易和取消交易。 "
+
+msgid "Allows users to make Secure and Cancel transactions."
+msgstr "允许用户进行安全交易和取消交易。"
+
+msgid "Allows users to make Standard transactions."
+msgstr "允许用户进行标准交易。"
+
+msgid "Alternatively"
+msgstr "或者"
+
+msgid "Create New Wallet"
+msgstr "创建新钱包"
+
+msgid "Find instructions on how to create and share an authenticator"
+msgstr "查找如何创建和共享身份验证器的说明"
+
+msgid "HERE"
+msgstr "这里"
+
+msgid "This is a list of words which store all the information necessary to restore the wallet. Without the seed phrase, you won’t be able to access your funds in case of a technical issue or if your device is stolen. "
+msgstr "这是一个单词列表，其中存储了恢复钱包所需的所有信息。 如果没有种子短语，您将无法在出现技术问题或设备被盗时访问您的资金。"
+
+msgid "Use the link to generate ECDSA public key on the Key Generator website, copy the string of numbers from the “Public key” section and paste it here. "
+msgstr "使用密钥生成器网站上的链接生成 ECDSA 公钥，从“公钥”部分复制数字字符串并将其粘贴到此处。 "
+
+msgid "&Backup"
+msgstr "&Backup"
+
+msgid "Address #1, amount to send"
+msgstr "地址#1，发送金额 "
+
+msgid "Address #2, amount to send "
+msgstr "地址#2，发送金额 "
+
+msgid "How to send to many?"
+msgstr "如何发送给多人？"
+
+msgid "If you want to send funds to more than one wallet, use this format:"
+msgstr "如果您想将资金发送到多个钱包，请使用以下格式："
+
+msgid "New"
+msgstr "新的"
+
+msgid "You can also load a CSV file using the folder icon."
+msgstr "您还可以使用文件夹图标加载 CSV 文件。"
