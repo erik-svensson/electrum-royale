@@ -567,12 +567,10 @@ msgid "Choose a server"
 msgstr "서버를 선택하세요"
 
 msgid "Choose coin (UTXO) selection method for alert transactions.  The following are available:\n\n"
-msgstr ""
-"경보 거래를 위한 코인 (UTXO) 선택 방법을 고르세요. 다음을 사용할 수 있습니다:"
+msgstr "경보 거래를 위한 코인 (UTXO) 선택 방법을 고르세요. 다음을 사용할 수 있습니다:\n\n"
 
 msgid "Choose coin (UTXO) selection method for non-alert transactions.  The following are available:\n\n"
-msgstr ""
-"비 경보 거래를 위한 코인 (UTXO) 선택 방법을 고르세요. 다음을 사용할 수 있습니다:"
+msgstr "비 경보 거래를 위한 코인 (UTXO) 선택 방법을 고르세요. 다음을 사용할 수 있습니다:\n\n"
 
 msgid "Choose from peers"
 msgstr "피어에서 선택하세요"

@@ -567,12 +567,10 @@ msgid "Choose a server"
 msgstr "选择服务器"
 
 msgid "Choose coin (UTXO) selection method for alert transactions.  The following are available:\n\n"
-msgstr ""
-"选择币(UTXO)选择方式进行提醒交易。以下是可用的:"
+msgstr "选择币(UTXO)选择方式进行提醒交易。以下是可用的:\n\n"
 
 msgid "Choose coin (UTXO) selection method for non-alert transactions.  The following are available:\n\n"
-msgstr ""
-"选择币 (UTXO) 选择方式进行无提醒交易。则 以下为可用:"
+msgstr "选择币 (UTXO) 选择方式进行无提醒交易。则 以下为可用:\n\n"
 
 msgid "Choose from peers"
 msgstr "选择同行"

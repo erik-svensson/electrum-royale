@@ -561,12 +561,10 @@ msgid "Choose a server"
 msgstr "Pilih sebuah server"
 
 msgid "Choose coin (UTXO) selection method for alert transactions.  The following are available:\n\n"
-msgstr ""
-"Pilih metode seleksi koin (UTXO) untuk transaksi alert/peringatan. Pilihan yang tersedia:"
+msgstr "Pilih metode seleksi koin (UTXO) untuk transaksi alert/peringatan. Pilihan yang tersedia:\n\n"
 
 msgid "Choose coin (UTXO) selection method for non-alert transactions.  The following are available:\n\n"
-msgstr ""
-"Pilih metode seleksi koin (UTXO) untuk transaksi non-alert/non-peringatan. Pilihan yangtersedia:"
+msgstr "Pilih metode seleksi koin (UTXO) untuk transaksi non-alert/non-peringatan. Pilihan yangtersedia:\n\n"
 
 msgid "Choose from peers"
 msgstr "Pilih dari peers"

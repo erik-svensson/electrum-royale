@@ -567,12 +567,10 @@ msgid "Choose a server"
 msgstr "Chọn máy chủ"
 
 msgid "Choose coin (UTXO) selection method for alert transactions.  The following are available:\n\n"
-msgstr ""
-"Chọn phương pháp lựa chọn tiền xu (UTXO) cho các giao dịch cảnh báo. Phần tiếp theocó sẵn:"
+msgstr "Chọn phương pháp lựa chọn tiền xu (UTXO) cho các giao dịch cảnh báo. Phần tiếp theocó sẵn:\n\n"
 
 msgid "Choose coin (UTXO) selection method for non-alert transactions.  The following are available:\n\n"
-msgstr ""
-"Chọn phương pháp chọn tiền xu (UTXO) cho các giao dịch không cảnh báo. Phần tiếp theo có tại:"
+msgstr "Chọn phương pháp chọn tiền xu (UTXO) cho các giao dịch không cảnh báo. Phần tiếp theo có tại:\n\n"
 
 msgid "Choose from peers"
 msgstr "Chọn từ các peers"
