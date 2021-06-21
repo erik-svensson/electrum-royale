@@ -39,7 +39,7 @@ msgid "&Export"
 msgstr "&Ekspor"
 
 msgid "&File"
-msgstr "&File"
+msgstr "&Berkas"
 
 msgid "&Filter"
 msgstr "&Filter"
