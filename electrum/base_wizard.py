@@ -143,7 +143,7 @@ class BaseWizard(Logger, AdvancedOptionMixin):
         ]
 
         link = 'https://translations.bitcoinvault.global/pdf/BTCV_Tutorial/BTCV-ShortTutorial-2Pager-en.pdf'
-        h_txt = _('Read Mode')
+        h_txt = _('Read more')
         hint = ' '.join([
             '<b>',
             _('2-Key Vault'),
