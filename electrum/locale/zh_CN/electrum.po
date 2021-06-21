@@ -567,12 +567,10 @@ msgid "Choose a server"
 msgstr "选择服务器"
 
 msgid "Choose coin (UTXO) selection method for alert transactions.  The following are available:\n\n"
-msgstr ""
-"选择币(UTXO)选择方式进行提醒交易。以下是可用的:"
+msgstr "选择币(UTXO)选择方式进行提醒交易。以下是可用的:\n\n"
 
 msgid "Choose coin (UTXO) selection method for non-alert transactions.  The following are available:\n\n"
-msgstr ""
-"选择币 (UTXO) 选择方式进行无提醒交易。则 以下为可用:"
+msgstr "选择币 (UTXO) 选择方式进行无提醒交易。则 以下为可用:\n\n"
 
 msgid "Choose from peers"
 msgstr "选择同行"
@@ -983,9 +981,7 @@ msgid "Electrum Plugins"
 msgstr "Electrum插件"
 
 msgid "Electrum cannot pair with your {device}.\n\nBefore you request bitcoins to be sent to addresses in this wallet, ensure you can pair with your device, or that you have its seed (and passphrase, if any).  Otherwise all bitcoins you receive will be unspendable."
-msgstr ""
-"Electrum 不能与您的 {device}配对。"
-"在请求将比特币发送到此钱包中的地址之前，请确保您可以与您的设备配对，或者您有它的密语种子 (和口令，如有)。否则，您收到的所有比特币将无法使用。"
+msgstr "Electrum 不能与您的 {device}配对。\n\n在请求将比特币发送到此钱包中的地址之前，请确保您可以与您的设备配对，或者您有它的密语种子 (和口令，如有)。否则，您收到的所有比特币将无法使用。"
 
 msgid "Electrum communicates with remote servers to get information about your transactions and addresses. The servers all fulfill the same purpose only differing in hardware. In most cases you simply want to let Electrum pick one at random.  However if you prefer feel free to select a server manually."
 msgstr "Electrum 与远程服务器通信，以获取您交易和地址的信息。所有服务器都实现相同的目的，只是硬件有所不同。在大多数情况下，您可让 Electrum 随机选择一个。但是，如果您愿意，可以随时手动选择服务器。"
@@ -1441,11 +1437,7 @@ msgid "Gossip"
 msgstr "Gossip"
 
 msgid "GreenAddress requires your signature \nto verify that transaction is instant.\nPlease enter your password to sign a\nverification request."
-msgstr ""
-"GreenAddress需要您的签名"
-"以确认交易是即时的。"
-"请输入您的密码以签名"
-"验证请求。"
+msgstr "GreenAddress需要您的签名\n以确认交易是即时的。\n请输入您的密码以签名\n验证请求。"
 
 msgid "HTLCs in current commitment transaction"
 msgstr "HTLC在当前承诺交易中"
@@ -1511,9 +1503,7 @@ msgid "I have lost my Google Authenticator account"
 msgstr "我丢失了我的Google Authenticator帐户"
 
 msgid "IP/port in format:\n[host]:[port]"
-msgstr ""
-"IP /端口，格式："
-"[主机]：[端口]"
+msgstr "IP /端口，格式：\n[主机]：[端口]"
 
 msgid "If auto-connect is enabled, Electrum will always use a server that is on the longest blockchain."
 msgstr "如果启用了自动连接，Electrum将始终使用 最长的区块链上的服务器。"
@@ -3007,18 +2997,13 @@ msgid "The description is not sent to the recipient of the funds. It is stored i
 msgstr "记录未发送给收款人。 已存储在您的钱包文件中，并显示在'历史记录'标签中。"
 
 msgid "The fee could not be verified. Signing non-segwit inputs is risky:\nif this transaction was maliciously modified before you sign,\nyou might end up paying a higher mining fee than displayed."
-msgstr ""
-"费用无法验证。 签署non-segwit 输入是有风险的："
-"如果在您签署之前，该交易被恶意修改了，"
-"您可能最终会支付比显示的更高的挖矿服务费。"
+msgstr "费用无法验证。 签署non-segwit 输入是有风险的：\n如果在您签署之前，该交易被恶意修改了，\n您可能最终会支付比显示的更高的挖矿服务费。"
 
 msgid "The fee for this transaction seems unusually high."
 msgstr "这项交易的费用似乎异常高昂。"
 
 msgid "The file '{path}' contains an incompletely created wallet.\nDo you want to complete its creation now?"
-msgstr ""
-"文件'{path}'包含一个不完整创建的钱包。"
-"您现在要完成其创建吗？"
+msgstr "文件'{path}'包含一个不完整创建的钱包。\n您现在要完成其创建吗？"
 
 msgid "The file was removed"
 msgstr "文件已删除"
@@ -3063,9 +3048,7 @@ msgid "The type of addresses used by your wallet will depend on your seed."
 msgstr "您的钱包使用的地址类型取决于您的种子。"
 
 msgid "The wallet '{path}' contains multiple accounts, which are no longer supported since Electrum 2.7.\n\nDo you want to split your wallet into multiple files?"
-msgstr ""
-"钱包'{path}'包含多个帐户，自Electrum 2.7版本后起，不再支持多个账户。"
-"您要将钱包分成多个文件吗？"
+msgstr "钱包'{path}'包含多个帐户，自Electrum 2.7版本后起，不再支持多个账户。\n\n您要将钱包分成多个文件吗？"
 
 msgid "Then, enter your Google Authenticator code:"
 msgstr "然后，输入您的Google Authenticator双重验证代码："
@@ -3227,9 +3210,7 @@ msgid "To make sure that you have properly saved your seed, please retype it her
 msgstr "为确保您已正确保存种子，请在此处重新输入"
 
 msgid "To setup a local watchtower, you must run Electrum on a machine\nthat is always connected to the internet. Configure a port if you want it to be public."
-msgstr ""
-" 要设置本地观望塔，必须在计算机上运行Electrum "
-"该计算机应始终连接到互联网， 如果要使其公开，请配置端口。"
+msgstr " 要设置本地观望塔，必须在计算机上运行Electrum \n该计算机应始终连接到互联网， 如果要使其公开，请配置端口。"
 
 msgid "To somewhat protect your privacy, Electrum tries to create change with similar precision to other outputs."
 msgstr "为保护您的隐私，Electrum尝试以与其他输出类似的精度来创建变更。"
@@ -3352,9 +3333,7 @@ msgid "Type"
 msgstr "类型"
 
 msgid "Unable to connect to mail server:\n {error}"
-msgstr ""
-"无法连接到邮件服务器："
-" {error}"
+msgstr "无法连接到邮件服务器：\n {error}"
 
 msgid "Unable to create backup"
 msgstr "无法创建备份"
@@ -3606,10 +3585,7 @@ msgid "Warning: Please be aware that in the process of using the Secure Transact
 msgstr "警告：请注意，在使用安全交易功能的过程中，您钱包中剩余的部分资金可能会被冻结。这是关联于 UTXO 和 Bitcoin Vault 钱包区块链参数的常规过程。交易通过验证（大约 24 小时后）或被取消（24 小时内），您的资金将被取消冻结。"
 
 msgid "Warning: The next address will not be recovered automatically if you restore your wallet from seed; you may need to add it manually.\n\nThis occurs because you have too many unused addresses in your wallet. To avoid this situation, use the existing addresses first.\n\nCreate anyway?"
-msgstr ""
-"警告：如果您从种子中恢复钱包，下一个地址将不会自动恢复； 您可能需要手动添加。"
-"这是由于您的钱包中有太多未使用的地址。要避免这种情况，请先使用现有地址。"
-"还是要创建吗？"
+msgstr "警告：如果您从种子中恢复钱包，下一个地址将不会自动恢复； 您可能需要手动添加。\n\n这是由于您的钱包中有太多未使用的地址。要避免这种情况，请先使用现有地址。\n\n还是要创建吗？"
 
 msgid "Warning: do not use this if it makes you pick a weaker password."
 msgstr "警告：您选择的密码较弱，请不要使用此密码"
@@ -3712,9 +3688,6 @@ msgstr "您已成功取消订阅钱包"
 
 msgid "You have successfully updated your notification preferences"
 msgstr "您已成功更新通知首选项"
-
-msgid "You may enter a Bitcoin address, a label from your list of contacts (a list of completions will be proposed), or an alias (email-like address that forwards to a Bitcoin address)"
-msgstr "您可以输入一个比特币地址，从您的联系人列表中输入一个标签(一个完成列表 将被提出), 或输入一个别名 (类似于可转发到比特币地址的电子邮件的地址)"
 
 msgid "You may extend your seed with custom words."
 msgstr "您可以自定义词语来扩展您的种子"
@@ -3975,9 +3948,7 @@ msgid "{size} from tip"
 msgstr "{size} from tip"
 
 msgid "{title} copied to clipboard:\n\n{content}"
-msgstr ""
-"{title} 已复制在剪贴板中"
-"{content}"
+msgstr "{title} 已复制在剪贴板中\n{content}"
 
 msgid "{txid} is covered by GreenAddress instant confirmation"
 msgstr "{txid}已被GreenAddress即时确认所覆盖"
@@ -4038,3 +4009,9 @@ msgstr "新的"
 
 msgid "You can also load a CSV file using the folder icon."
 msgstr "您还可以使用文件夹图标加载 CSV 文件。"
+
+msgid "Read more"
+msgstr "阅读更多"
+
+msgid "You may enter a Bitcoin Vault address, a label from your list of contacts (a list of completions will be proposed), or an alias (email-like address that forwards to a Bitcoin Vault address)"
+msgstr "您可以输入 Bitcoin Vault 地址，输入联系人列表中的标签（将显示完整的列表），或输入别名（类似于可以转发到 Bitcoin Vault 地址的电子邮件地址）"
