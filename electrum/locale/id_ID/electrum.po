@@ -39,7 +39,7 @@ msgid "&Export"
 msgstr "&Ekspor"
 
 msgid "&File"
-msgstr "&File"
+msgstr "&Berkas"
 
 msgid "&Filter"
 msgstr "&Filter"
@@ -561,10 +561,12 @@ msgid "Choose a server"
 msgstr "Pilih sebuah server"
 
 msgid "Choose coin (UTXO) selection method for alert transactions.  The following are available:\n\n"
-msgstr "Pilih metode seleksi koin (UTXO) untuk transaksi alert/peringatan. Pilihan yang tersedia:\n\n"
+msgstr ""
+"Pilih metode seleksi koin (UTXO) untuk transaksi alert/peringatan. Pilihan yang tersedia:"
 
 msgid "Choose coin (UTXO) selection method for non-alert transactions.  The following are available:\n\n"
-msgstr "Pilih metode seleksi koin (UTXO) untuk transaksi non-alert/non-peringatan. Pilihan yangtersedia:\n\n"
+msgstr ""
+"Pilih metode seleksi koin (UTXO) untuk transaksi non-alert/non-peringatan. Pilihan yangtersedia:"
 
 msgid "Choose from peers"
 msgstr "Pilih dari peers"
@@ -4011,7 +4013,7 @@ msgid "Use the link to generate ECDSA public key on the Key Generator website, c
 msgstr "Gunakan tautan ini untuk mengasilkan kunci publik ECDSA di website Key Generator, salin deretan Anda dari bagian \"Public Key\" (Kunci Publik) dan salin di sini. "
 
 msgid "&Backup"
-msgstr "&Backup"
+msgstr "&Cadangan"
 
 msgid "Address #1, amount to send"
 msgstr "Alamat #1, jumlah yang akan dikirim "
