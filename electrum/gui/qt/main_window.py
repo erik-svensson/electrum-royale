@@ -1236,8 +1236,8 @@ in the "Authenticators" tab in the Gold Wallet app.')
                 '(email-like address that forwards to a Bitcoin address)') + '\n\n'\
             + _('How to send to many?') + '\n\n' \
             + _('If you want to send funds to more than one wallet, use this format:') + '\n\n' \
-            + _('Address #1, amount to send') + '\n' + _('Address #2, amount to send ') \
-                     + '\n\n' + _('You can also load a CSV file using the folder icon.')
+            + _('Address #1, amount to send') + '\n' + _('Address #2, amount to send ') + '\n\n' \
+            + _('You can also load a CSV file using the folder icon.')
 
         payto_label = HelpLabel(_('Pay to'), msg)
         grid.addWidget(payto_label, 1, 0)
