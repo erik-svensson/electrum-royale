@@ -561,12 +561,10 @@ msgid "Choose a server"
 msgstr "Pilih sebuah server"
 
 msgid "Choose coin (UTXO) selection method for alert transactions.  The following are available:\n\n"
-msgstr ""
-"Pilih metode seleksi koin (UTXO) untuk transaksi alert/peringatan. Pilihan yang tersedia:"
+msgstr "Pilih metode seleksi koin (UTXO) untuk transaksi alert/peringatan. Pilihan yang tersedia:\n\n"
 
 msgid "Choose coin (UTXO) selection method for non-alert transactions.  The following are available:\n\n"
-msgstr ""
-"Pilih metode seleksi koin (UTXO) untuk transaksi non-alert/non-peringatan. Pilihan yangtersedia:"
+msgstr "Pilih metode seleksi koin (UTXO) untuk transaksi non-alert/non-peringatan. Pilihan yangtersedia:\n\n"
 
 msgid "Choose from peers"
 msgstr "Pilih dari peers"
@@ -977,9 +975,7 @@ msgid "Electrum Plugins"
 msgstr "Plugin Electrum"
 
 msgid "Electrum cannot pair with your {device}.\n\nBefore you request bitcoins to be sent to addresses in this wallet, ensure you can pair with your device, or that you have its seed (and passphrase, if any).  Otherwise all bitcoins you receive will be unspendable."
-msgstr ""
-"Electrum tidak dapat menyambungkan dengan {device} Anda."
-"Sebelum Anda dapat meminta bitcoin untuk dikirimkan ke alamat Anda di dompet ini, pastikan bahwa Anda dapat tersambung dengan perangkat Anda, atau Anda telah memiliki seed (dan passphrase, apabila ada).Jika tidak semua bitcoin yang Anda terima tidak akan dapat digunakan."
+msgstr "Electrum tidak dapat menyambungkan dengan {device} Anda.\n\nSebelum Anda dapat meminta bitcoin untuk dikirimkan ke alamat Anda di dompet ini, pastikan bahwa Anda dapat tersambung dengan perangkat Anda, atau Anda telah memiliki seed (dan passphrase, apabila ada).Jika tidak semua bitcoin yang Anda terima tidak akan dapat digunakan."
 
 msgid "Electrum communicates with remote servers to get information about your transactions and addresses. The servers all fulfill the same purpose only differing in hardware. In most cases you simply want to let Electrum pick one at random.  However if you prefer feel free to select a server manually."
 msgstr "Electrum berkomunikasi dengan server jarak jauh untuk mendapatkan informasi mengenai transaksi dan alamat Anda. Semua server memenuhi tujuan yang sama dan hanya berbeda dalam hal perangkat keras. Pada sebagian besar kasus Anda hanya perlu untuk membiarkan Electrum untuk memilih satu secara acak.Namun apabila Anda ingin memilih server sendiri Anda dapat melakukannya secara manual."
@@ -1435,11 +1431,7 @@ msgid "Gossip"
 msgstr "Gosip"
 
 msgid "GreenAddress requires your signature \nto verify that transaction is instant.\nPlease enter your password to sign a\nverification request."
-msgstr ""
-"GreenAddress memerlukan tandatangan Anda "
-"untuk memverifikasi bahwa transaksi Anda adalah transaksi instan."
-"Mohon masukkan kata sandi Anda untuk menandatangani"
-"permintaan verifikasi."
+msgstr "GreenAddress memerlukan tandatangan Anda \nuntuk memverifikasi bahwa transaksi Anda adalah transaksi instan.\nMohon masukkan kata sandi Anda untuk menandatangani\npermintaan verifikasi."
 
 msgid "HTLCs in current commitment transaction"
 msgstr "HTLCs berada dalam komitmen transasi terbaru"
@@ -1505,9 +1497,7 @@ msgid "I have lost my Google Authenticator account"
 msgstr "Saya kehilangan akun Google Authenticator saya"
 
 msgid "IP/port in format:\n[host]:[port]"
-msgstr ""
-"IP/port di format:"
-"[host]:[port]"
+msgstr "IP/port di format:\n[host]:[port]"
 
 msgid "If auto-connect is enabled, Electrum will always use a server that is on the longest blockchain."
 msgstr "Apabila koneksi automatis diaktifkan, Electrum akan selalu menggunakan server yang berada diblockchain terpanjang."
@@ -3001,18 +2991,13 @@ msgid "The description is not sent to the recipient of the funds. It is stored i
 msgstr "Deskripsi tidak dikirim ke penerima saldo. Ini disimpan di file dompet Anda, dan ditampilkan di tab 'Riwayat'."
 
 msgid "The fee could not be verified. Signing non-segwit inputs is risky:\nif this transaction was maliciously modified before you sign,\nyou might end up paying a higher mining fee than displayed."
-msgstr ""
-"Biaya tidak dapat diverifikasi. Menandatangani input non-segwit adalah hal yang sangat berisiko:"
-"apabila transaksi ini diubah secara mencurigakan sebelum Anda tandatangani,"
-"Anda akan membayar biaya penambangan yang lebih tinggi dari apa yang ditampilkan."
+msgstr "Biaya tidak dapat diverifikasi. Menandatangani input non-segwit adalah hal yang sangat berisiko:\napabila transaksi ini diubah secara mencurigakan sebelum Anda tandatangani,\nAnda akan membayar biaya penambangan yang lebih tinggi dari apa yang ditampilkan."
 
 msgid "The fee for this transaction seems unusually high."
 msgstr "Biaya untuk transaksi ini terlihat sangat tinggi. "
 
 msgid "The file '{path}' contains an incompletely created wallet.\nDo you want to complete its creation now?"
-msgstr ""
-"File {path} mengandung dompet yang belum selesai dibuat."
-"Apakah Anda ingin menyelesaikan pembuatannya sekarang?"
+msgstr "File {path} mengandung dompet yang belum selesai dibuat.\nApakah Anda ingin menyelesaikan pembuatannya sekarang?"
 
 msgid "The file was removed"
 msgstr "File telah dihapus"
@@ -3057,9 +3042,7 @@ msgid "The type of addresses used by your wallet will depend on your seed."
 msgstr "Tipe alamat yang digunakan oleh dompet Anda akan tergantung pada seed Anda."
 
 msgid "The wallet '{path}' contains multiple accounts, which are no longer supported since Electrum 2.7.\n\nDo you want to split your wallet into multiple files?"
-msgstr ""
-"Dompet '{path}' mengandung lebih dari satu akun, yang tidak lagi didukung sejak Electrum 2.7. "
-"Apakah Anda ingin memecah dompet Anda menjadi beberapa file?"
+msgstr "Dompet '{path}' mengandung lebih dari satu akun, yang tidak lagi didukung sejak Electrum 2.7. \n\nApakah Anda ingin memecah dompet Anda menjadi beberapa file?"
 
 msgid "Then, enter your Google Authenticator code:"
 msgstr "Lalu, masukkan kode Google Authenticator Anda:"
@@ -3221,9 +3204,7 @@ msgid "To make sure that you have properly saved your seed, please retype it her
 msgstr "Untuk memastikan bahwa Anda telah menyimpan seed Anda dengan benar, mohon tulis kembali disini."
 
 msgid "To setup a local watchtower, you must run Electrum on a machine\nthat is always connected to the internet. Configure a port if you want it to be public."
-msgstr ""
-"Untuk memasang dan mengatur watchtower lokal, Anda harus menjalankan Electrum di perangkat"
-"yang selalu terhubung ke internet. Atur port apabila Anda inginhal ini menjadi publik."
+msgstr "Untuk memasang dan mengatur watchtower lokal, Anda harus menjalankan Electrum di perangkat\nyang selalu terhubung ke internet. Atur port apabila Anda inginhal ini menjadi publik."
 
 msgid "To somewhat protect your privacy, Electrum tries to create change with similar precision to other outputs."
 msgstr "Untuk memberikan sedikit perlindungan terhadap privasi Anda, Electrum mencoba untuk melakukan perubahan dengan presisi yang mirip dengan output lain."
@@ -3346,9 +3327,7 @@ msgid "Type"
 msgstr "Tipe"
 
 msgid "Unable to connect to mail server:\n {error}"
-msgstr ""
-"Tidak dapat terhubung ke mail server:"
-"{error}"
+msgstr "Tidak dapat terhubung ke mail server:\n{error}"
 
 msgid "Unable to create backup"
 msgstr "Tidak dapat membuat cadangan"
@@ -3600,10 +3579,7 @@ msgid "Warning: Please be aware that in the process of using the Secure Transact
 msgstr "Peringatan: Mohon diingat bahwa proses ini menggunakan fitur Transaksi Secure (Aman), dimana sebagian dari saldo yang tersisa di dompet Anda akan diblokir untuk sementara. Ini merupakan sebuah prosedurnormal yang terhubung dengan UTXO dan parameter Blockchain milik dompet Bitcoin Vault. Saldo Anda akan dibuka blokirnya (dicairkan) setelah transaksi Anda telah dikonfirmasi (Setelah kurang lebih 24 jam) atau dibatalkan (Dalam waktu 24 jam)."
 
 msgid "Warning: The next address will not be recovered automatically if you restore your wallet from seed; you may need to add it manually.\n\nThis occurs because you have too many unused addresses in your wallet. To avoid this situation, use the existing addresses first.\n\nCreate anyway?"
-msgstr ""
-"Peringatan: Alamat selanjutnya tidak akan dapat dipulihkan secara otomatis apabila anda memulihkandompet Anda dari seed; Anda mungkin perlu untuk menambahkannya secara manual."
-"Hal ini terjadi karena Anda memiliki terlalu banyak alamat didompet Anda yang tidak digunakan. Untuk menghindari situati ini, pertama gunakan alamat dompet yang telah tersedia."
-"Tetap buat?"
+msgstr "Peringatan: Alamat selanjutnya tidak akan dapat dipulihkan secara otomatis apabila anda memulihkandompet Anda dari seed; Anda mungkin perlu untuk menambahkannya secara manual.\n\nHal ini terjadi karena Anda memiliki terlalu banyak alamat didompet Anda yang tidak digunakan. Untuk menghindari situati ini, pertama gunakan alamat dompet yang telah tersedia.\n\nTetap buat?"
 
 msgid "Warning: do not use this if it makes you pick a weaker password."
 msgstr "Peringatan: jangan gunakan ini apabila Anda memilih kata sandi yang lebih lemah."
@@ -3706,9 +3682,6 @@ msgstr "Anda telah berhenti berlangganan ke dompet"
 
 msgid "You have successfully updated your notification preferences"
 msgstr "Anda telah berhasil memperbarui pengaturan notifikasi Anda."
-
-msgid "You may enter a Bitcoin address, a label from your list of contacts (a list of completions will be proposed), or an alias (email-like address that forwards to a Bitcoin address)"
-msgstr "Anda dapat memasukkan sebuah alamat Bitcoin, sebuah label dari daftar kontak (daftar penyelesaian akan dianjurkan), atau sebuah alias (alamat seperti email yang meneruskan berbagai hal ke alama Bitcoin.)"
 
 msgid "You may extend your seed with custom words."
 msgstr "Anda dapat memperpanjang seed Anda menggunakan kata-kata buatan."
@@ -3969,9 +3942,7 @@ msgid "{size} from tip"
 msgstr "{size} dari ujung"
 
 msgid "{title} copied to clipboard:\n\n{content}"
-msgstr ""
-"{title} disalin ke papan klip:"
-"{content}"
+msgstr "{title} disalin ke papan klip:\n\n{content}"
 
 msgid "{txid} is covered by GreenAddress instant confirmation"
 msgstr "{txid} dilindungi oleh konfirmasi instan GreenAddress"
@@ -4032,3 +4003,9 @@ msgstr "Baru"
 
 msgid "You can also load a CSV file using the folder icon."
 msgstr "Anda juga dapat memuat file CSV dengan menggunakan ikon folder."
+
+msgid "Read more"
+msgstr "Baca lebih lanjut"
+
+msgid "You may enter a Bitcoin Vault address, a label from your list of contacts (a list of completions will be proposed), or an alias (email-like address that forwards to a Bitcoin Vault address)"
+msgstr "Anda dapat memasukkan sebuah alamat Bitcoin Vault, sebuah label dari daftar kontak (daftar penyelesaian akan dianjurkan), atau sebuah alias (alamat seperti email yang meneruskan berbagai hal ke alama Bitcoin Vault.)"

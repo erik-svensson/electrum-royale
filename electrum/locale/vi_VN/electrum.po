@@ -981,9 +981,7 @@ msgid "Electrum Plugins"
 msgstr "Electrum Plugins"
 
 msgid "Electrum cannot pair with your {device}.\n\nBefore you request bitcoins to be sent to addresses in this wallet, ensure you can pair with your device, or that you have its seed (and passphrase, if any).  Otherwise all bitcoins you receive will be unspendable."
-msgstr ""
-"Electrum không thể kết nối với {device} của bạn."
-"Trước khi bạn yêu cầu gửi bitcoin đến các địa chỉ trong ví này, hãy chắc chắn bạn có thể kết nối với thiết bị của mình hoặc bạn có hạt giống bảo mât của nó (và cụm mật khẩu, nếu có). Nếu không, tất cả bitcoin bạn nhận sẽ không thể sử dụng được."
+msgstr "Electrum không thể kết nối với {device} của bạn.\n\nTrước khi bạn yêu cầu gửi bitcoin đến các địa chỉ trong ví này, hãy chắc chắn bạn có thể kết nối với thiết bị của mình hoặc bạn có hạt giống bảo mât của nó (và cụm mật khẩu, nếu có). Nếu không, tất cả bitcoin bạn nhận sẽ không thể sử dụng được."
 
 msgid "Electrum communicates with remote servers to get information about your transactions and addresses. The servers all fulfill the same purpose only differing in hardware. In most cases you simply want to let Electrum pick one at random.  However if you prefer feel free to select a server manually."
 msgstr "Electrum kết nối với các máy chủ từ xa để nhận thông tin của bạn về giao dịch và địa chỉ. Tất cả các máy chủ đều chỉ thực hiện cùng một mục đích khác biệt về phần cứng. Trong hầu hết các trường hợp, bạn chỉ muốn để Electrum chọn một cách ngẫu nhiên. Tuy nhiên, nếu bạn muốn, hãy chọn máy chủ theo cách thủ công. "
@@ -1505,9 +1503,7 @@ msgid "I have lost my Google Authenticator account"
 msgstr "Tôi đã mất tài khoản Google Authenticator của mình"
 
 msgid "IP/port in format:\n[host]:[port]"
-msgstr ""
-"IP/port in format:"
-"[host]:[port]"
+msgstr "IP/port in format:\n[host]:[port]"
 
 msgid "If auto-connect is enabled, Electrum will always use a server that is on the longest blockchain."
 msgstr " Nếu kết nối tự động được bật, Electrum sẽ luôn sử dụng máy chủ trên  chuỗi khối dài nhất."
@@ -3001,10 +2997,7 @@ msgid "The description is not sent to the recipient of the funds. It is stored i
 msgstr " Mô tả không được gửi đến người nhận tiền. Nó được lưu trữ trong  tệp ví của bạn và được hiển thị trong mục 'Lịch sử'."
 
 msgid "The fee could not be verified. Signing non-segwit inputs is risky:\nif this transaction was maliciously modified before you sign,\nyou might end up paying a higher mining fee than displayed."
-msgstr ""
-"Không thể xác minh khoản phí. Việc ký các đầu vào không phải segwit rất rủi ro: "
-" nếu giao dịch này bị sửa đổi một cách cố ý trước khi bạn ký, "
-" bạn có thể phải trả một khoản phí khai thác cao hơn so với hiển thị."
+msgstr "Không thể xác minh khoản phí. Việc ký các đầu vào không phải segwit rất rủi ro: \n nếu giao dịch này bị sửa đổi một cách cố ý trước khi bạn ký, \n bạn có thể phải trả một khoản phí khai thác cao hơn so với hiển thị."
 
 msgid "The fee for this transaction seems unusually high."
 msgstr "Phí cho giao dịch này có vẻ cao bất thường."
@@ -3340,9 +3333,7 @@ msgid "Type"
 msgstr "Thể loại"
 
 msgid "Unable to connect to mail server:\n {error}"
-msgstr ""
-" Không thể kết nối với máy chủ : "
-" {error}"
+msgstr " Không thể kết nối với máy chủ : \n {error}"
 
 msgid "Unable to create backup"
 msgstr "Không thể tạo bản sao lưu"
@@ -3594,10 +3585,7 @@ msgid "Warning: Please be aware that in the process of using the Secure Transact
 msgstr "Cảnh báo: Xin lưu ý rằng trong quá trình sử dụng tính năng Giao dịch An Toàn, một phần số tiền còn lại trong ví của bạn có thể bị chặn. Đây là một quy trình thông thường được liên kết với UTXO và các tham số blockchain của ví Bitcoin Vault Tiền của bạn sẽ được bỏ chặn sau khi giao dịch được xác minh (sau khoảng 24 giờ) hoặc bị hủy (trong vòng 24 giờ)."
 
 msgid "Warning: The next address will not be recovered automatically if you restore your wallet from seed; you may need to add it manually.\n\nThis occurs because you have too many unused addresses in your wallet. To avoid this situation, use the existing addresses first.\n\nCreate anyway?"
-msgstr ""
-"Cảnh báo: Địa chỉ tiếp theo sẽ không được phục hồi tự động nếu bạn khôi phục ví của mình từ hạt giống; bạn có thể cần phải thêm nó theo cách thủ công. "
-" Điều này xảy ra do bạn có quá nhiều địa chỉ không sử dụng trong ví của mình. Để tránh trường hợp này, trước tiên hãy sử dụng các địa chỉ hiện có."
-" Vẫn tạo?"
+msgstr "Cảnh báo: Địa chỉ tiếp theo sẽ không được phục hồi tự động nếu bạn khôi phục ví của mình từ hạt giống; bạn có thể cần phải thêm nó theo cách thủ công. \n\n Điều này xảy ra do bạn có quá nhiều địa chỉ không sử dụng trong ví của mình. Để tránh trường hợp này, trước tiên hãy sử dụng các địa chỉ hiện có.\n\n Vẫn tạo?"
 
 msgid "Warning: do not use this if it makes you pick a weaker password."
 msgstr "Cảnh báo: không sử dụng điều này nếu nó khiến bạn chọn một mật khẩu yếu hơn."
@@ -3700,9 +3688,6 @@ msgstr "Bạn đã hủy đăng ký ví thành công"
 
 msgid "You have successfully updated your notification preferences"
 msgstr "Bạn đã cập nhật thành công địa chỉ email."
-
-msgid "You may enter a Bitcoin address, a label from your list of contacts (a list of completions will be proposed), or an alias (email-like address that forwards to a Bitcoin address)"
-msgstr "Bạn có thể nhập địa chỉ Bitcoin, một nhãn từ danh sách liên hệ của mình (danh sách  trong tổng số các hoàn thành sẽ được đề xuất) hoặc một bí danh (địa chỉ giống như email chuyển tiếp đến địa chỉ Bitcoin)"
 
 msgid "You may extend your seed with custom words."
 msgstr "Bạn có thể mở rộng hạt giống của mình bằng các từ tùy chỉnh."
@@ -3963,9 +3948,7 @@ msgid "{size} from tip"
 msgstr "{size} từ mẹo"
 
 msgid "{title} copied to clipboard:\n\n{content}"
-msgstr ""
-"{title} đã được sao chép vào clipboard: "
-"{content}"
+msgstr "{title} đã được sao chép vào clipboard: \n\n{content}"
 
 msgid "{txid} is covered by GreenAddress instant confirmation"
 msgstr "{txid} được nằm trong xác nhận tức thì của GreenAddress"
@@ -4026,3 +4009,9 @@ msgstr "Mới"
 
 msgid "You can also load a CSV file using the folder icon."
 msgstr "Bạn cũng có thể tải một tệp CSV bằng cách chọn biểu tượng thư mục."
+
+msgid "Read more"
+msgstr "Xem thêm"
+
+msgid "You may enter a Bitcoin Vault address, a label from your list of contacts (a list of completions will be proposed), or an alias (email-like address that forwards to a Bitcoin Vault address)"
+msgstr "Bạn có thể nhập địa chỉ Bitcoin Vault, một nhãn từ danh sách liên hệ của mình (danh sách  trong tổng số các hoàn thành sẽ được đề xuất) hoặc một bí danh (địa chỉ giống như email chuyển tiếp đến địa chỉ Bitcoin Vault)"

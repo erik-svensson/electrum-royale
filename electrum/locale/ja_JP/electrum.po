@@ -981,9 +981,7 @@ msgid "Electrum Plugins"
 msgstr "Electrumプラグイン "
 
 msgid "Electrum cannot pair with your {device}.\n\nBefore you request bitcoins to be sent to addresses in this wallet, ensure you can pair with your device, or that you have its seed (and passphrase, if any).  Otherwise all bitcoins you receive will be unspendable."
-msgstr ""
-"Electrumがお客様の {device}とペアリングできません。"
-"このウォレットアドレスにBTCの送金をリクエストする前に、デバイスとペアリングできるか、該当のシード(あるいはパスフレーズ)を持っているかを確認してください。そうでなければ受取ったBTCは全て使用できません。"
+msgstr "Electrumがお客様の {device}とペアリングできません。\n\nこのウォレットアドレスにBTCの送金をリクエストする前に、デバイスとペアリングできるか、該当のシード(あるいはパスフレーズ)を持っているかを確認してください。そうでなければ受取ったBTCは全て使用できません。"
 
 msgid "Electrum communicates with remote servers to get information about your transactions and addresses. The servers all fulfill the same purpose only differing in hardware. In most cases you simply want to let Electrum pick one at random.  However if you prefer feel free to select a server manually."
 msgstr "Electrumは遠隔サーバーからお客様の取引とアドレス情報を共有します。全てのサーバーはハードウェアのみ異なり、同じ目的を達成します。大体の場合、Electrumがランダムで自動選択します。しかし、希望によっては手動でサーバーを選択することもできます。"
@@ -1439,11 +1437,7 @@ msgid "Gossip"
 msgstr "ゴシップ"
 
 msgid "GreenAddress requires your signature \nto verify that transaction is instant.\nPlease enter your password to sign a\nverification request."
-msgstr ""
-"GreenAddressにあなたの署名が必要です。"
-"該当取引の検証は即時処理されます。 "
-"a"
-" 検証要求に署名するため、パスワードを入力してください"
+msgstr "GreenAddressにあなたの署名が必要です。\n該当取引の検証は即時処理されます。 \na\n検証要求に署名するため、パスワードを入力してください"
 
 msgid "HTLCs in current commitment transaction"
 msgstr "現在コミットメント取引のHTLC"
@@ -1509,9 +1503,7 @@ msgid "I have lost my Google Authenticator account"
 msgstr "Google認証アカウントを失いました"
 
 msgid "IP/port in format:\n[host]:[port]"
-msgstr ""
-"IP/port in format:"
-"[host]:[port]"
+msgstr "IP/port in format:\n[host]:[port]"
 
 msgid "If auto-connect is enabled, Electrum will always use a server that is on the longest blockchain."
 msgstr "自動接続が有効化されると、Electurmは常に最長のブロックチェーンのサーバーを使います。"
@@ -3005,18 +2997,13 @@ msgid "The description is not sent to the recipient of the funds. It is stored i
 msgstr "詳細は資金の受取人には送信されません。あなたのウォレットファイルに保存され、'履歴' タブに表示されます。"
 
 msgid "The fee could not be verified. Signing non-segwit inputs is risky:\nif this transaction was maliciously modified before you sign,\nyou might end up paying a higher mining fee than displayed."
-msgstr ""
-"手数料を検証できません。segwitではない入力値を署名する行為は大変危険です。:"
-"この取引が署名する前に悪意的に修正されていた場合、"
-"表示されているよりも高いマイニング手数料を支払うことになるかもしれません。"
+msgstr "手数料を検証できません。segwitではない入力値を署名する行為は大変危険です。:\nこの取引が署名する前に悪意的に修正されていた場合、\n表示されているよりも高いマイニング手数料を支払うことになるかもしれません。"
 
 msgid "The fee for this transaction seems unusually high."
 msgstr "この取引に対する手数料は異常に高いものです。"
 
 msgid "The file '{path}' contains an incompletely created wallet.\nDo you want to complete its creation now?"
-msgstr ""
-"ファイル'{path}'に未完成のウォレットが含まれています。"
-"そのウォレットの作成を今完了させますか？"
+msgstr "ファイル'{path}'に未完成のウォレットが含まれています。\nそのウォレットの作成を今完了させますか？"
 
 msgid "The file was removed"
 msgstr "ファイルが削除されました。"
@@ -3061,9 +3048,7 @@ msgid "The type of addresses used by your wallet will depend on your seed."
 msgstr "ウォレットで使用されるウォレットタイプはシードにより変動します。"
 
 msgid "The wallet '{path}' contains multiple accounts, which are no longer supported since Electrum 2.7.\n\nDo you want to split your wallet into multiple files?"
-msgstr ""
-"ウォレット'{path}'がElectrum 2.7以降サポートされていない複数のアカウントを含んでいます。"
-"ウォレットを複数のファイルへ分割しますか？"
+msgstr "ウォレット'{path}'がElectrum 2.7以降サポートされていない複数のアカウントを含んでいます。\n\nウォレットを複数のファイルへ分割しますか？"
 
 msgid "Then, enter your Google Authenticator code:"
 msgstr "その後、Google認証コードを入力してください:"
@@ -3225,9 +3210,7 @@ msgid "To make sure that you have properly saved your seed, please retype it her
 msgstr "シードが正しく保存されたことを確認するため、ここに再度入力してください。"
 
 msgid "To setup a local watchtower, you must run Electrum on a machine\nthat is always connected to the internet. Configure a port if you want it to be public."
-msgstr ""
-"ローカルウォッチタワーを設定するには、"
-"常にインターネットに接続されているデバイスからElectrumを起動しなければなりません。公開を希望される場合にはポート環境を設定してください。"
+msgstr "ローカルウォッチタワーを設定するには、\n常にインターネットに接続されているデバイスからElectrumを起動しなければなりません。公開を希望される場合にはポート環境を設定してください。"
 
 msgid "To somewhat protect your privacy, Electrum tries to create change with similar precision to other outputs."
 msgstr "プライバシー保護のため、Electrumが他の出力と同様の精度で変更を作成します"
@@ -3350,9 +3333,7 @@ msgid "Type"
 msgstr "タイプ"
 
 msgid "Unable to connect to mail server:\n {error}"
-msgstr ""
-"メールサーバーに接続できません:"
-" {error}"
+msgstr "メールサーバーに接続できません:\n {error}"
 
 msgid "Unable to create backup"
 msgstr "バックアップを作成できません"
@@ -3604,10 +3585,7 @@ msgid "Warning: Please be aware that in the process of using the Secure Transact
 msgstr "警告: 保安取引機能を使用する過程で、ウォレットの資金の一部がブロックされている可能性があります。これはUTXOとBitcoin Vaultウォレットのブロックチェーンパラメーターに関連する通常の手順です。取引が承認されたら資金のブロックは解除されるか(約24時間後)、またはキャンセルされます(24時間内)。"
 
 msgid "Warning: The next address will not be recovered automatically if you restore your wallet from seed; you may need to add it manually.\n\nThis occurs because you have too many unused addresses in your wallet. To avoid this situation, use the existing addresses first.\n\nCreate anyway?"
-msgstr ""
-"警告: シードからウォレットを復元したい場合、次のアドレスは自動的に復元されません。手動で追加する必要があるかもしれません。"
-"これはあなたのウォレット内に使用されていない多数のアドレスが存在するためです。このような状況を回避するには、最初に既存のアドレスを使用してください。"
-"とにかく作成しますか？"
+msgstr "警告: シードからウォレットを復元したい場合、次のアドレスは自動的に復元されません。手動で追加する必要があるかもしれません。\n\nこれはあなたのウォレット内に使用されていない多数のアドレスが存在するためです。このような状況を回避するには、最初に既存のアドレスを使用してください。\n\nとにかく作成しますか？"
 
 msgid "Warning: do not use this if it makes you pick a weaker password."
 msgstr "警告: より脆弱なパスワードを作成させようとするときは、それを使用しないでください。"
@@ -3710,9 +3688,6 @@ msgstr "ウォレットの登録を解除しました"
 
 msgid "You have successfully updated your notification preferences"
 msgstr "通知設定の更新が完了しました。"
-
-msgid "You may enter a Bitcoin address, a label from your list of contacts (a list of completions will be proposed), or an alias (email-like address that forwards to a Bitcoin address)"
-msgstr "Bitcoinのアドレス、連絡リスト(完了リストが提示されます)のラベル、またはエイリアス(Bitcoinアドレスへ転送するメールアドレスのようなアドレス)を入力できます。"
 
 msgid "You may extend your seed with custom words."
 msgstr "単語のカスタムでシードを拡張できます。"
@@ -3973,9 +3948,7 @@ msgid "{size} from tip"
 msgstr " tipから{size}"
 
 msgid "{title} copied to clipboard:\n\n{content}"
-msgstr ""
-"{title}がクリップボードにコピーされました。:"
-"{content}"
+msgstr "{title}がクリップボードにコピーされました。:\n\n{content}"
 
 msgid "{txid} is covered by GreenAddress instant confirmation"
 msgstr "{txid}はGreenAddressの即時確認によってカバーされています"
@@ -4036,3 +4009,9 @@ msgstr "新規"
 
 msgid "You can also load a CSV file using the folder icon."
 msgstr "フォルダアイコンを使ってCSVファイルを読み込むこともできます。"
+
+msgid "Read more"
+msgstr "続きを読む"
+
+msgid "You may enter a Bitcoin Vault address, a label from your list of contacts (a list of completions will be proposed), or an alias (email-like address that forwards to a Bitcoin Vault address)"
+msgstr "Bitcoin Vault のアドレス、連絡リスト(完了リストが提示されます)のラベル、またはエイリアス(Bitcoin Vault アドレスへ転送するメールアドレスのようなアドレス)を入力できます。"
