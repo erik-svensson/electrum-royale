@@ -981,9 +981,7 @@ msgid "Electrum Plugins"
 msgstr "Electrum Eklentileri"
 
 msgid "Electrum cannot pair with your {device}.\n\nBefore you request bitcoins to be sent to addresses in this wallet, ensure you can pair with your device, or that you have its seed (and passphrase, if any).  Otherwise all bitcoins you receive will be unspendable."
-msgstr ""
-"Electrum {device} cihazınızla eşleşemiyor."
-"Bitcoinlerin bu cüzdandaki adreslere gönderilmesini talep etmeden önce, cihazınızla eşleştirebildiğinizden veya çekirdeğine (varsa anahtar parolasına) sahip olduğunuzdan emin olun. Aksi takdirde alacağınız tüm bitcoinler harcanamaz olur."
+msgstr "Electrum {device} cihazınızla eşleşemiyor.\n\nBitcoinlerin bu cüzdandaki adreslere gönderilmesini talep etmeden önce, cihazınızla eşleştirebildiğinizden veya çekirdeğine (varsa anahtar parolasına) sahip olduğunuzdan emin olun. Aksi takdirde alacağınız tüm bitcoinler harcanamaz olur."
 
 msgid "Electrum communicates with remote servers to get information about your transactions and addresses. The servers all fulfill the same purpose only differing in hardware. In most cases you simply want to let Electrum pick one at random.  However if you prefer feel free to select a server manually."
 msgstr "Electrum işlemleriniz ve adresleriniz hakkında bilgi almak için uzak sunucularla çalışır. Sunucuların hepsi aynı işe yarar ancak farklı bir donanımla çalışır Çoğu durumda Electrum’un rastgele bir tane seçmesine izin vermek istersiniz. Ancak isterseniz bir sunucuyu manüel olarak seçmekte özgürsünüz."
@@ -1439,11 +1437,7 @@ msgid "Gossip"
 msgstr "Dedikodu"
 
 msgid "GreenAddress requires your signature \nto verify that transaction is instant.\nPlease enter your password to sign a\nverification request."
-msgstr ""
-"GreenAddress işlemin anlık olduğunu "
-"doğrulamak için imzanıza ihtiyaç duyar."
-"Lütfen bir doğrulama isteğini imzalamak"
-"için parolanızı girin."
+msgstr "GreenAddress işlemin anlık olduğunu \ndoğrulamak için imzanıza ihtiyaç duyar.\nLütfen bir doğrulama isteğini imzalamak\niçin parolanızı girin."
 
 msgid "HTLCs in current commitment transaction"
 msgstr "Güncel taahhüt işlemindeki HTLC’ler"
@@ -1509,9 +1503,7 @@ msgid "I have lost my Google Authenticator account"
 msgstr "Google Authenticator hesabımı kaybettim"
 
 msgid "IP/port in format:\n[host]:[port]"
-msgstr ""
-"IP/şu biçimdeki port:"
-"[host]:[port]"
+msgstr "IP/şu biçimdeki port:\n[host]:[port]"
 
 msgid "If auto-connect is enabled, Electrum will always use a server that is on the longest blockchain."
 msgstr "Otomatik bağlan etkinleştirilirse, Electrum her zaman en uzun blockchainde olansunucuyu kullanır."
@@ -3005,18 +2997,13 @@ msgid "The description is not sent to the recipient of the funds. It is stored i
 msgstr "Açıklama fonların alıcısına gönderilmedi. Cüzdan dosyanızda saklanır ve 'Geçmiş' sekmesinde görüntülenir."
 
 msgid "The fee could not be verified. Signing non-segwit inputs is risky:\nif this transaction was maliciously modified before you sign,\nyou might end up paying a higher mining fee than displayed."
-msgstr ""
-"Ücret doğrulanamadı. segwit olmayan girdileri imzalamak risklidir:"
-"bu işlem siz imzalamadan önce kötü amaçlı değiştirildiyse,"
-"görüntülenenden daha yüksek bir madencilik ücreti ödemek zorunda kalabilirsiniz."
+msgstr "Ücret doğrulanamadı. segwit olmayan girdileri imzalamak risklidir:\nbu işlem siz imzalamadan önce kötü amaçlı değiştirildiyse,\ngörüntülenenden daha yüksek bir madencilik ücreti ödemek zorunda kalabilirsiniz."
 
 msgid "The fee for this transaction seems unusually high."
 msgstr "Bu işlemin ücreti sıradışı yüksek görünüyor."
 
 msgid "The file '{path}' contains an incompletely created wallet.\nDo you want to complete its creation now?"
-msgstr ""
-"Dosya '{path}' eksik oluşturulmuş cüzdan içeriyor."
-"Oluşturmayı şimdi tamamlamak ister misiniz?"
+msgstr "Dosya '{path}' eksik oluşturulmuş cüzdan içeriyor.\nOluşturmayı şimdi tamamlamak ister misiniz?"
 
 msgid "The file was removed"
 msgstr "Dosya kaldırıldı"
@@ -3061,9 +3048,7 @@ msgid "The type of addresses used by your wallet will depend on your seed."
 msgstr "Cüzdanınız tarafından kullanılan adres türleri çekirdeğinizi esas alır."
 
 msgid "The wallet '{path}' contains multiple accounts, which are no longer supported since Electrum 2.7.\n\nDo you want to split your wallet into multiple files?"
-msgstr ""
-"Cüzdan '{path}' çok sayıda hesap içerir, bu hesaplar Electrum 2.7’den itibaren desteklenmemektedir."
-"Cüzdanınızı birden fazla dosyaya bölmek istiyor musunuz?"
+msgstr "Cüzdan '{path}' çok sayıda hesap içerir, bu hesaplar Electrum 2.7’den itibaren desteklenmemektedir.\n\nCüzdanınızı birden fazla dosyaya bölmek istiyor musunuz?"
 
 msgid "Then, enter your Google Authenticator code:"
 msgstr "Sonra Google Authenticator kodunu girin:"
@@ -3225,9 +3210,7 @@ msgid "To make sure that you have properly saved your seed, please retype it her
 msgstr "Çekirdeğinizi uygun bir şekilde sakladığınızdan emin olmak için lütfen onu buraya yeniden yazın."
 
 msgid "To setup a local watchtower, you must run Electrum on a machine\nthat is always connected to the internet. Configure a port if you want it to be public."
-msgstr ""
-"Yerel bir watchtower kurmak için Electrum’u sürekli internete bağlı olan bir makinede"
-"çalıştırmalısınız. Halka açık olmasını istiyorsanız bir portu yapılandırın."
+msgstr "Yerel bir watchtower kurmak için Electrum’u sürekli internete bağlı olan bir makinede\nçalıştırmalısınız. Halka açık olmasını istiyorsanız bir portu yapılandırın."
 
 msgid "To somewhat protect your privacy, Electrum tries to create change with similar precision to other outputs."
 msgstr "Gizliliğinizi bir şekilde korumak için, Electrum diğer çıktılara benzer hassasiyetle değişiklik sağlar."
@@ -3350,9 +3333,7 @@ msgid "Type"
 msgstr "Tür"
 
 msgid "Unable to connect to mail server:\n {error}"
-msgstr ""
-"E-posta sunucusuna bağlanılamadı:"
-" {error}"
+msgstr "E-posta sunucusuna bağlanılamadı:\n {error}"
 
 msgid "Unable to create backup"
 msgstr "Yedek oluşturulamadı"
@@ -3604,10 +3585,7 @@ msgid "Warning: Please be aware that in the process of using the Secure Transact
 msgstr "Uyarı: Lütfen Güvenli İşlem kullanma özelliği sırasında cüzdanınızda kalan paranınbir kısmının bloke edilebileceğini dikkate alın. Bu UTXO ile ve Bitcoin Vault’un blockchain parametreleriyle ilişkili normal bir prosedürdür. İşlem doğrulandıktan sonra fonlarınızın kilidi açılacaktır (yaklaşık 24 saat sonra) veya iptal edilecektir (24 saat içinde)."
 
 msgid "Warning: The next address will not be recovered automatically if you restore your wallet from seed; you may need to add it manually.\n\nThis occurs because you have too many unused addresses in your wallet. To avoid this situation, use the existing addresses first.\n\nCreate anyway?"
-msgstr ""
-"Uyarı: Cüzdanınızı çekirdekten geri yüklerseniz sonraki adres otomatik olarak geri yüklenemeyebilir; manuel olarak eklemeniz gerekir."
-"Bunun nedeni cüzdanınızda çok fazla kullanılmayan adres olmasıdır. Bu durumu önlemek için önce mevcut adresleri kullanın."
-"Yine de oluşturulsun mu?"
+msgstr "Uyarı: Cüzdanınızı çekirdekten geri yüklerseniz sonraki adres otomatik olarak geri yüklenemeyebilir; manuel olarak eklemeniz gerekir.\n\nBunun nedeni cüzdanınızda çok fazla kullanılmayan adres olmasıdır. Bu durumu önlemek için önce mevcut adresleri kullanın.\n\nYine de oluşturulsun mu?"
 
 msgid "Warning: do not use this if it makes you pick a weaker password."
 msgstr "Uyarı: daha zayıf bir şifre seçmenize neden oluyorsa bunu kullanmayın."
@@ -3710,9 +3688,6 @@ msgstr "Cüzdan aboneliğinden başarılı bir şekilde çıktınız"
 
 msgid "You have successfully updated your notification preferences"
 msgstr "Bildirim tercihlerinizi başarılı bir şekilde güncellediniz."
-
-msgid "You may enter a Bitcoin address, a label from your list of contacts (a list of completions will be proposed), or an alias (email-like address that forwards to a Bitcoin address)"
-msgstr "Bir Bitcoin adresi girebilirsiniz, bağlantılar listenizden bir etiket (önerilecek bitirmelerin bir listesi), veya bir takma ad (bir Bitcoin adresine yönlendiren e-posta benzeri bir adres) girebilirsiniz"
 
 msgid "You may extend your seed with custom words."
 msgstr "Özel kelimelerle çekirdeğinizi genişletebilirsiniz."
@@ -3973,9 +3948,7 @@ msgid "{size} from tip"
 msgstr "baştan {size}"
 
 msgid "{title} copied to clipboard:\n\n{content}"
-msgstr ""
-"{title} panoya kopyalandı:"
-"{content}"
+msgstr "{title} panoya kopyalandı:\n\n{content}"
 
 msgid "{txid} is covered by GreenAddress instant confirmation"
 msgstr "{txid} GreenAddress anında onay kapsamındadır"
@@ -4036,3 +4009,9 @@ msgstr "Yeni"
 
 msgid "You can also load a CSV file using the folder icon."
 msgstr "Klasör ikonunu kullanarak bir CSV dosyası da yükleyebilirsiniz."
+
+msgid "Read more"
+msgstr "Daha fazla okuyun"
+
+msgid "You may enter a Bitcoin Vault address, a label from your list of contacts (a list of completions will be proposed), or an alias (email-like address that forwards to a Bitcoin Vault address)"
+msgstr "Bir Bitcoin Vault adresi girebilirsiniz, bağlantılar listenizden bir etiket (önerilecek bitirmelerin bir listesi), veya bir takma ad (bir Bitcoin Vault adresine yönlendiren e-posta benzeri bir adres) girebilirsiniz"
