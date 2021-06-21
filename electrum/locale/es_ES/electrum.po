@@ -981,9 +981,7 @@ msgid "Electrum Plugins"
 msgstr "Complementos de Electrum"
 
 msgid "Electrum cannot pair with your {device}.\n\nBefore you request bitcoins to be sent to addresses in this wallet, ensure you can pair with your device, or that you have its seed (and passphrase, if any).  Otherwise all bitcoins you receive will be unspendable."
-msgstr ""
-"Electrum no puede emparejarse con su {device}."
-"Antes de que solicite que los bitcoins se envíen a la dirección en este monedero, asegúrese de que se pueda emparejar con su dispositivo, o de que tenga su semilla (o frase de contraseña, si hay alguna). De lo contrario, todos los bitcoins que reciba no se podrán gastar."
+msgstr "Electrum no puede emparejarse con su {device}.\n\nAntes de que solicite que los bitcoins se envíen a la dirección en este monedero, asegúrese de que se pueda emparejar con su dispositivo, o de que tenga su semilla (o frase de contraseña, si hay alguna). De lo contrario, todos los bitcoins que reciba no se podrán gastar."
 
 msgid "Electrum communicates with remote servers to get information about your transactions and addresses. The servers all fulfill the same purpose only differing in hardware. In most cases you simply want to let Electrum pick one at random.  However if you prefer feel free to select a server manually."
 msgstr "Electrum se comunica con servidores remotos para obtener información sobre sus transacciones y direcciones. Todos los servidores desempeñan sólo el mismo objetivo, difiriéndose en el hardware. En la mayoría de los casos simplemente quiere que Electrum escoja uno al azar. No obstante, si lo prefiere, siéntese libre para escoger un servidor manualmente."
@@ -1439,11 +1437,7 @@ msgid "Gossip"
 msgstr "Gossip"
 
 msgid "GreenAddress requires your signature \nto verify that transaction is instant.\nPlease enter your password to sign a\nverification request."
-msgstr ""
-" GreenAddress requiere su firma "
-" para verificar que la transacción sea instantánea."
-" Introduzca su contraseña para firmar una"
-" solicitud de verificación "
+msgstr " GreenAddress requiere su firma \n para verificar que la transacción sea instantánea.\n Introduzca su contraseña para firmar una\n solicitud de verificación "
 
 msgid "HTLCs in current commitment transaction"
 msgstr "HTLC en la transacción de compromiso actual"
@@ -1509,9 +1503,7 @@ msgid "I have lost my Google Authenticator account"
 msgstr "Perdí mi cuenta de Google Authenticator"
 
 msgid "IP/port in format:\n[host]:[port]"
-msgstr ""
-"IP/port in format:"
-"[host]:[port]"
+msgstr "IP/port in format:\n[host]:[port]"
 
 msgid "If auto-connect is enabled, Electrum will always use a server that is on the longest blockchain."
 msgstr " Si la conexión automática está habilitada, Electrum siempre usará un servidor que esté en la  cadena de bloques más larga."
@@ -3005,18 +2997,13 @@ msgid "The description is not sent to the recipient of the funds. It is stored i
 msgstr " La descripción no se envía al destinatario de los fondos. Se almacena en  su archivo de monedero, y se muestra en la pestaña 'Historial'. "
 
 msgid "The fee could not be verified. Signing non-segwit inputs is risky:\nif this transaction was maliciously modified before you sign,\nyou might end up paying a higher mining fee than displayed."
-msgstr ""
-"No se pudo verificar la tarifa. Firmar entradas que no sean segwit es arriesgado: "
-"si esta transacción se modificó de forma maliciosa antes de firmar, "
-"podría terminar pagando una tarifa de minería más alta que la que se muestra."
+msgstr "No se pudo verificar la tarifa. Firmar entradas que no sean segwit es arriesgado: \nsi esta transacción se modificó de forma maliciosa antes de firmar, \npodría terminar pagando una tarifa de minería más alta que la que se muestra."
 
 msgid "The fee for this transaction seems unusually high."
 msgstr "La tarifa por esta transacción parece inusualmente alta."
 
 msgid "The file '{path}' contains an incompletely created wallet.\nDo you want to complete its creation now?"
-msgstr ""
-" El archivo '{path}' contiene un monedero creado de manera incompleta. "
-" ¿Quiere completar su creación ahora? "
+msgstr " El archivo '{path}' contiene un monedero creado de manera incompleta. \n ¿Quiere completar su creación ahora? "
 
 msgid "The file was removed"
 msgstr "El archivo fue eliminado"
@@ -3061,9 +3048,7 @@ msgid "The type of addresses used by your wallet will depend on your seed."
 msgstr "El tipo de direcciones utilizadas por su monedero dependerá de su semilla."
 
 msgid "The wallet '{path}' contains multiple accounts, which are no longer supported since Electrum 2.7.\n\nDo you want to split your wallet into multiple files?"
-msgstr ""
-" La '{path} del monedero contiene varias cuentas, que ya no son  compatibles a partir de Electrum 2.7."
-" ¿Quiere dividir su monedero en varios archivos? "
+msgstr " La '{path} del monedero contiene varias cuentas, que ya no son  compatibles a partir de Electrum 2.7.\n\n ¿Quiere dividir su monedero en varios archivos? "
 
 msgid "Then, enter your Google Authenticator code:"
 msgstr "Luego, ingrese su código de Autenticador de Google:"
@@ -3225,9 +3210,7 @@ msgid "To make sure that you have properly saved your seed, please retype it her
 msgstr " Para asegurarse de que ha guardado correctamente su semilla, vuelva a escribirla aquí."
 
 msgid "To setup a local watchtower, you must run Electrum on a machine\nthat is always connected to the internet. Configure a port if you want it to be public."
-msgstr ""
-"Para configurar una atalaya local, debe ejecutar Electrum en una máquina "
-"que siempre está conectado a Internet. Configure un puerto si lo desea ser público. "
+msgstr "Para configurar una atalaya local, debe ejecutar Electrum en una máquina \nque siempre está conectado a Internet. Configure un puerto si lo desea ser público. "
 
 msgid "To somewhat protect your privacy, Electrum tries to create change with similar precision to other outputs."
 msgstr " Para proteger un poco su privacidad, Electrum intenta crear un cambio con  precisión similar a otras salidas. "
@@ -3350,9 +3333,7 @@ msgid "Type"
 msgstr "Tipo"
 
 msgid "Unable to connect to mail server:\n {error}"
-msgstr ""
-"No se puede conectar al servidor de correo: "
-" {error} "
+msgstr "No se puede conectar al servidor de correo: \n {error} "
 
 msgid "Unable to create backup"
 msgstr "No se puede crear una copia de seguridad"
@@ -3604,10 +3585,7 @@ msgid "Warning: Please be aware that in the process of using the Secure Transact
 msgstr " Advertencia: tenga en cuenta que en el proceso de uso de Transacción Segura , una parte de los fondos que quedan en su monedero podrían estar bloqueados. Esto es un  procedimiento normal vinculado a UTXO y los parámetros de blockchain del monedero de Bitcoin Vault. Sus fondos se desbloquearán una vez que se verifique la transacción  (después de aproximadamente 24 horas) o cancele (dentro de las 24 horas). "
 
 msgid "Warning: The next address will not be recovered automatically if you restore your wallet from seed; you may need to add it manually.\n\nThis occurs because you have too many unused addresses in your wallet. To avoid this situation, use the existing addresses first.\n\nCreate anyway?"
-msgstr ""
-" Advertencia: la siguiente dirección no se recuperará automáticamente si restaura   su monedero de la semilla; es posible que deba agregarlo manualmente. "
-" Esto ocurre porque tiene demasiadas direcciones sin usar en su monedero. Para  evitar esta situación, utilice primero las direcciones existentes. "
-" ¿Crear de todos modos? "
+msgstr " Advertencia: la siguiente dirección no se recuperará automáticamente si restaura   su monedero de la semilla; es posible que deba agregarlo manualmente. \n\n Esto ocurre porque tiene demasiadas direcciones sin usar en su monedero. Para  evitar esta situación, utilice primero las direcciones existentes. \n\n ¿Crear de todos modos? "
 
 msgid "Warning: do not use this if it makes you pick a weaker password."
 msgstr "Advertencia: no use esto si le obliga a elegir una contraseña más débil."
@@ -3710,9 +3688,6 @@ msgstr "Ha cancelado con éxito la suscripción del monedero"
 
 msgid "You have successfully updated your notification preferences"
 msgstr "Ha actualizado con éxito sus preferencias de notificación."
-
-msgid "You may enter a Bitcoin address, a label from your list of contacts (a list of completions will be proposed), or an alias (email-like address that forwards to a Bitcoin address)"
-msgstr " Puede ingresar una dirección de Bitcoin, una etiqueta de su lista de contactos (se propondrá una lista  de finalizaciones), o un alias (dirección de correo electrónico que  redirige a una dirección de Bitcoin) "
 
 msgid "You may extend your seed with custom words."
 msgstr "Puede extender su semilla con palabras personalizadas."
@@ -3973,9 +3948,7 @@ msgid "{size} from tip"
 msgstr "{size} desde la parte superior de la pila"
 
 msgid "{title} copied to clipboard:\n\n{content}"
-msgstr ""
-"{title} copiado al portapapeles: "
-"{content}"
+msgstr "{title} copiado al portapapeles: \n\n{content}"
 
 msgid "{txid} is covered by GreenAddress instant confirmation"
 msgstr "{txid} está cubierto por la confirmación instantánea de GreenAddress"
@@ -4036,3 +4009,9 @@ msgstr "Nuevo"
 
 msgid "You can also load a CSV file using the folder icon."
 msgstr "También puede cargar un archivo CSV utilizando el icono de la carpeta."
+
+msgid "Read more"
+msgstr "Leer más"
+
+msgid "You may enter a Bitcoin Vault address, a label from your list of contacts (a list of completions will be proposed), or an alias (email-like address that forwards to a Bitcoin Vault address)"
+msgstr " Puede ingresar una dirección de Bitcoin Vault, una etiqueta de su lista de contactos (se propondrá una lista  de finalizaciones), o un alias (dirección de correo electrónico que  redirige a una dirección de Bitcoin Vault) "

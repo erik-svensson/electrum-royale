@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-09 11:36+0200\n"
+"POT-Creation-Date: 2021-06-21 14:03+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -50,9 +50,6 @@ msgstr ""
 msgid "&File"
 msgstr ""
 
-msgid "&Filter"
-msgstr ""
-
 msgid "&From QR code"
 msgstr ""
 
@@ -68,25 +65,16 @@ msgstr ""
 msgid "&Help"
 msgstr ""
 
-msgid "&History"
-msgstr ""
-
 msgid "&Import"
 msgstr ""
 
 msgid "&Information"
 msgstr ""
 
-msgid "&Labels"
-msgstr ""
-
 msgid "&Load transaction"
 msgstr ""
 
 msgid "&Network"
-msgstr ""
-
-msgid "&New"
 msgstr ""
 
 msgid "&New/Restore"
@@ -104,12 +92,6 @@ msgstr ""
 msgid "&Password"
 msgstr ""
 
-msgid "&Pay to many"
-msgstr ""
-
-msgid "&Plot"
-msgstr ""
-
 msgid "&Plugins"
 msgstr ""
 
@@ -125,16 +107,10 @@ msgstr ""
 msgid "&Report Bug"
 msgstr ""
 
-msgid "&Save Copy"
-msgstr ""
-
 msgid "&Seed"
 msgstr ""
 
 msgid "&Sign/verify message"
-msgstr ""
-
-msgid "&Summary"
 msgstr ""
 
 msgid "&Sweep"
@@ -2556,6 +2532,9 @@ msgstr ""
 msgid "Read from microphone"
 msgstr ""
 
+msgid "Read more"
+msgstr ""
+
 #, python-brace-format
 msgid "Ready to encrypt for revealer {version}"
 msgstr ""
@@ -3833,7 +3812,7 @@ msgstr ""
 msgid "You have successfully updated your notification preferences"
 msgstr ""
 
-msgid "You may enter a Bitcoin address, a label from your list of contacts (a list of completions will be proposed), or an alias (email-like address that forwards to a Bitcoin address)"
+msgid "You may enter a Bitcoin Vault address, a label from your list of contacts (a list of completions will be proposed), or an alias (email-like address that forwards to a Bitcoin Vault address)"
 msgstr ""
 
 msgid "You may extend your seed with custom words."
