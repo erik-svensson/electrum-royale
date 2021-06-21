@@ -567,10 +567,12 @@ msgid "Choose a server"
 msgstr "选择服务器"
 
 msgid "Choose coin (UTXO) selection method for alert transactions.  The following are available:\n\n"
-msgstr "选择币(UTXO)选择方式进行提醒交易。以下是可用的:\n\n"
+msgstr ""
+"选择币(UTXO)选择方式进行提醒交易。以下是可用的:"
 
 msgid "Choose coin (UTXO) selection method for non-alert transactions.  The following are available:\n\n"
-msgstr "选择币 (UTXO) 选择方式进行无提醒交易。则 以下为可用:\n\n"
+msgstr ""
+"选择币 (UTXO) 选择方式进行无提醒交易。则 以下为可用:"
 
 msgid "Choose from peers"
 msgstr "选择同行"
@@ -618,7 +620,7 @@ msgid "Close channel?"
 msgstr "确定关闭通道吗？"
 
 msgid "Co&ins"
-msgstr "Co&ins"
+msgstr "选币"
 
 msgid "Code"
 msgstr "编码"
@@ -654,10 +656,10 @@ msgid "Combine"
 msgstr "结合"
 
 msgid "Con&sole"
-msgstr "Con&sole"
+msgstr "控制台"
 
 msgid "Con&tacts"
-msgstr "Con&tacts"
+msgstr "联系人"
 
 msgid "Confirm Passphrase:"
 msgstr "确认密码："
@@ -4017,7 +4019,7 @@ msgid "Use the link to generate ECDSA public key on the Key Generator website, c
 msgstr "使用密钥生成器网站上的链接生成 ECDSA 公钥，从“公钥”部分复制数字字符串并将其粘贴到此处。 "
 
 msgid "&Backup"
-msgstr "&Backup"
+msgstr "&导出备份"
 
 msgid "Address #1, amount to send"
 msgstr "地址#1，发送金额 "
