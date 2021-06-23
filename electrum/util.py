@@ -711,6 +711,8 @@ mainnet_block_explorers = {
 }
 
 testnet_block_explorers = {
+     'BitcoinVault Testnetblock explorer': ('https://explorer.testnet.bitcoinvault.global/',
+                         {'tx': 'tx/', 'addr': 'address/'}),
 }
 
 def block_explorer_info():
