@@ -711,7 +711,7 @@ mainnet_block_explorers = {
 }
 
 testnet_block_explorers = {
-     'BitcoinVault Testnetblock explorer': ('https://explorer.testnet.bitcoinvault.global/',
+     'BitcoinVault block explorer': ('https://explorer.testnet.bitcoinvault.global/',
                          {'tx': 'tx/', 'addr': 'address/'}),
 }
 
@@ -721,7 +721,7 @@ def block_explorer_info():
 
 def block_explorer(config: 'SimpleConfig') -> str:
     from . import constants
-    default_ = 'Blockstream.info'
+    default_ = 'BitcoinVault block explorer'
     be_key = config.get('block_explorer', default_)
     be = block_explorer_info().get(be_key)
     return be_key if be is not None else default_
