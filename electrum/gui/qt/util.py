@@ -275,6 +275,7 @@ def custom_message_box(*, icon, parent, title, text, buttons=QMessageBox.Ok,
     else:
         d = QMessageBox(icon, title, str(text), buttons, parent)
     d.setWindowModality(Qt.WindowModal)
+    d.setWindowFlags(Qt.Window)
     d.setDefaultButton(defaultButton)
     if rich_text:
         d.setTextInteractionFlags(Qt.TextSelectableByMouse | Qt.LinksAccessibleByMouse)
@@ -296,6 +297,7 @@ class WindowModalDialog(QDialog, MessageBoxMixin):
     daemon model as other wallet windows can still be accessed.'''
     def __init__(self, parent, title=None):
         QDialog.__init__(self, parent)
+        self.setWindowFlags(Qt.Window)
         self.setWindowModality(Qt.WindowModal)
         if title:
             self.setWindowTitle(title)
