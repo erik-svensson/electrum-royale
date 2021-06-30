@@ -143,7 +143,7 @@ class BaseWizard(Logger, AdvancedOptionMixin):
         ]
 
         link = 'https://translations.bitcoinvault.global/pdf/BTCV_Tutorial/BTCV-ShortTutorial-2Pager-en.pdf'
-        h_txt = _('Read more'),
+        h_txt = _('Read more')
         hint = ' '.join([
             '<b> 2-Key Vault </b><br/>',
             _('Allows users to make Secure and Cancel transactions. Secure transactions are by default delayed by 144 '
@@ -253,7 +253,7 @@ class BaseWizard(Logger, AdvancedOptionMixin):
             ('multikey_2fa_import', _('Use Gold Wallet and import an existing wallet')),
             ('multikey_standalone', _('Do not use Gold Wallet')),
         ]
-        hint = ' '.join(['<b>Gold Wallet<b/><br/><br/>',
+        hint = ' '.join(['<b>Gold Wallet</b><br/><br/>',
                          _("A mobile wallet for BTCV. You can pair it with Electrum Vault and use "
                            "it to authorize transactions to additionally secure your funds.")
                          ])
