@@ -638,7 +638,7 @@ class InstallWizard(QDialog, MessageBoxMixin, BaseWizard, TermsAndConditionsMixi
             '<b>',
             _('Cancel Transaction Key'),
             '</b><br/>',
-            _('Use the link to generate ECDSA public key on the Key Generator website,copy the string of numbers '
+            _('Use the link to generate ECDSA public key on the Key Generator website, copy the string of numbers '
               'from the “Public key” section and paste it here. ')
         ])
 
