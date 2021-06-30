@@ -112,6 +112,7 @@ class InstallWizard(QDialog, MessageBoxMixin, BaseWizard, TermsAndConditionsMixi
 
     def __init__(self, config: 'SimpleConfig', app: QApplication, plugins: 'Plugins', **kwargs):
         QDialog.__init__(self, parent=kwargs.get('parent', None))
+        self.setWindowFlags(Qt.Window)
         if kwargs.get('parent', None):
             self.setWindowModality(QtCore.Qt.ApplicationModal)
         BaseWizard.__init__(self, config, plugins)
