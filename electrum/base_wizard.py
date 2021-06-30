@@ -147,7 +147,8 @@ class BaseWizard(Logger, AdvancedOptionMixin):
         hint = ' '.join([
             '<b> 2-Key Vault </b><br/>',
             _('Allows users to make Secure and Cancel transactions. Secure transactions are by default delayed by 144 '
-              'blocks, which means approximately 24 hours. This gives users enough time to perform a Cancel transaction '
+              'blocks, which means approximately 24 hours. This gives users enough time to perform a Cancel '
+              'transaction '
               'and reverse the transfer before it is confirmed on the blockchain in case of a hack or technical issue. '
               'Both transactions are secured with unique keys.'),
             '<br/><b><br/>',
@@ -159,7 +160,7 @@ class BaseWizard(Logger, AdvancedOptionMixin):
               'keys to be performed.'),
             '<br/><br/><b>',
             'Standard',
-            '<b/><br/>',
+            '</b><br/>',
             _('Allows users to make Standard transactions secured with one key.'),
             '<br/><br/>',
             f'<a href="{link}">{h_txt}</a>',
@@ -338,9 +339,14 @@ class BaseWizard(Logger, AdvancedOptionMixin):
         if self.wallet_type == 'multisig':
             self.choice_dialog(title=title, message=message, choices=base_choices + advanced_choices, run_next=self.run)
         else:
-            hint = _("This is a list of words which store all the information necessary to restore the wallet. "
-                     "Without the seed phrase, you won’t be able to access your funds in case of a technical "
-                     "issue or if your device is stolen. ")
+            hint = ' '.join([
+                '<b>',
+                _('Seed phrase'),
+                '</b><br/>',
+                _("This is a list of words which store all the information necessary to restore the wallet. "
+                  "Without the seed phrase, you won’t be able to access your funds in case of a technical "
+                  "issue or if your device is stolen. ")
+            ])
 
             self.choice_dialog_with_advanced_options(
                 title=title, message=message, base_choices=base_choices, advanced_choices=advanced_choices,
@@ -778,10 +784,11 @@ class BaseWizard(Logger, AdvancedOptionMixin):
                 ('create_standard_seed', _('Legacy')),
             ]
         hint = ' '.join([
-                _("'Legacy' is the original address type, while 'Segwit' is the newer address format with lower fees."),
-                "\n",
-                _("Segwit wallets use bech32 addresses, defined in BIP173.")
-            ])
+            _('Choose Seed type'),
+            _("'Legacy' is the original address type, while 'Segwit' is the newer address format with lower fees."),
+            "\n",
+            _("Segwit wallets use bech32 addresses, defined in BIP173.")
+        ])
 
         self.choice_dialog_with_advanced_options(
             title=title, message=message, base_choices=base_choices, advanced_choices=advanced_choices,
