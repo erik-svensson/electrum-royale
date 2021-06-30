@@ -143,24 +143,22 @@ class BaseWizard(Logger, AdvancedOptionMixin):
         ]
 
         link = 'https://translations.bitcoinvault.global/pdf/BTCV_Tutorial/BTCV-ShortTutorial-2Pager-en.pdf'
-        h_txt = _('Learn more'),
+        h_txt = _('Read more'),
         hint = ' '.join([
-            '<b>',
-            _('2-Key Vault'),
-            '</b><br/>',
+            '<b> 2-Key Vault </b><br/>',
             _('Allows users to make Secure and Cancel transactions. Secure transactions are by default delayed by 144 '
               'blocks, which means approximately 24 hours. This gives users enough time to perform a Cancel transaction '
               'and reverse the transfer before it is confirmed on the blockchain in case of a hack or technical issue. '
               'Both transactions are secured with unique keys.'),
             '<br/><b><br/>',
-            _('3-Key Vault'),
+            '3-Key Vault',
             '</b><br/>',
             _('Allows users to make Secure and Cancel transactions, just like in the 2-Key Vault wallet. But it also '
               'adds the possibility to perform quick Secure Fast transactions. These transfers are confirmed in '
               'approximately 10 minutes and can’t be reversed. All three transactions require unique '
               'keys to be performed.'),
             '<br/><br/><b>',
-            _('Standard'),
+            'Standard',
             '<b/><br/>',
             _('Allows users to make Standard transactions secured with one key.'),
             '<br/><br/>',
@@ -255,12 +253,10 @@ class BaseWizard(Logger, AdvancedOptionMixin):
             ('multikey_2fa_import', _('Use Gold Wallet and import an existing wallet')),
             ('multikey_standalone', _('Do not use Gold Wallet')),
         ]
-        hint = ' '.join(['<b>',
-               _('Gold Wallet'),
-               '<b/><br/><br/>',
-               _("A mobile wallet for BTCV. You can pair it with Electrum Vault and use it to authorize transactions "
-                 "to additionally secure your funds.")
-        ])
+        hint = ' '.join(['<b>Gold Wallet<b/><br/><br/>',
+                         _("A mobile wallet for BTCV. You can pair it with Electrum Vault and use "
+                           "it to authorize transactions to additionally secure your funds.")
+                         ])
 
         self.choice_dialog(title=title, message=message, choices=choices, run_next=process_choice, hint=hint)
 
