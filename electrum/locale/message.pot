@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-30 14:21+0200\n"
+"POT-Creation-Date: 2021-06-30 14:27+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3562,6 +3562,9 @@ msgid "Use proxy"
 msgstr ""
 
 msgid "Use the camera button to scan a QR code."
+msgstr ""
+
+msgid "Use the link to generate ECDSA public key on the Key Generator website, copy the string of numbers from the “Public key” section and paste it here. "
 msgstr ""
 
 msgid "Use the link to generate ECDSA public key on the Key Generator website,copy the string of numbers from the “Public key” section and paste it here. "
