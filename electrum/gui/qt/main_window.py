@@ -67,7 +67,8 @@ from electrum.util import (format_time, format_satoshis, format_fee_satoshis,
                            export_meta, import_meta, bfh, InvalidPassword,
                            decimal_point_to_base_unit_name, UnknownBaseUnit, DECIMAL_POINT_DEFAULT, UserFacingException,
                            get_new_wallet_name, send_exception_to_crash_reporter,
-                           InvalidBitcoinURI)
+                           InvalidBitcoinURI, NotEnoughFunds,
+                           NoDynamicFeeEstimates)
 from electrum.util import pr_expiration_values
 from electrum.version import ELECTRUM_VERSION, TERMS_AND_CONDITION_LAST_UPDATE
 from electrum.wallet import (Multisig_Wallet, CannotBumpFee, Abstract_Wallet,
@@ -1322,14 +1323,20 @@ in the "Authenticators" tab in the Gold Wallet app.')
         outputs = self.payto_e.get_outputs(True)
         if not outputs:
             return
-        self.max_button.setChecked(True)
         make_tx = lambda fee_est: self.wallet.make_unsigned_transaction(
             coins=self.get_coins(),
             outputs=outputs,
             fee=fee_est,
             is_sweep=False)
 
-        tx = make_tx(None)
+        try:
+            tx = make_tx(None)
+        except (NotEnoughFunds, NoDynamicFeeEstimates) as e:
+            self.max_button.setChecked(False)
+            self.show_error(str(e))
+            return
+
+        self.max_button.setChecked(True)
         amount = tx.output_value()#sum(x.value_sats() for x in self.get_coins())
         self.amount_e.setAmount(amount)
         ## substract extra fee
