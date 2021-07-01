@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-21 14:03+0200\n"
+"POT-Creation-Date: 2021-06-30 14:27+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -258,13 +258,13 @@ msgstr ""
 msgid "All fields must be filled out"
 msgstr ""
 
-msgid "Allows users to make Secure Fast, Secure, and Cancel transactions."
+msgid "Allows users to make Secure and Cancel transactions, just like in the 2-Key Vault wallet. But it also adds the possibility to perform quick Secure Fast transactions. These transfers are confirmed in approximately 10 minutes and can’t be reversed. All three transactions require unique keys to be performed."
 msgstr ""
 
-msgid "Allows users to make Secure and Cancel transactions."
+msgid "Allows users to make Secure and Cancel transactions. Secure transactions are by default delayed by 144 blocks, which means approximately 24 hours. This gives users enough time to perform a Cancel transaction and reverse the transfer before it is confirmed on the blockchain in case of a hack or technical issue. Both transactions are secured with unique keys."
 msgstr ""
 
-msgid "Allows users to make Standard transactions."
+msgid "Allows users to make Standard transactions secured with one key."
 msgstr ""
 
 msgid "Allows validating if your transactions have instant confirmations by GreenAddress"
@@ -343,6 +343,9 @@ msgid "Audio MODEM"
 msgstr ""
 
 msgid "Audio Modem Settings"
+msgstr ""
+
+msgid "Authenticator public key"
 msgstr ""
 
 msgid "Authorization"
@@ -2743,6 +2746,9 @@ msgstr ""
 msgid "Seed extension"
 msgstr ""
 
+msgid "Seed phrase"
+msgstr ""
+
 msgid "Segwit"
 msgstr ""
 
@@ -3559,6 +3565,9 @@ msgid "Use the camera button to scan a QR code."
 msgstr ""
 
 msgid "Use the link to generate ECDSA public key on the Key Generator website, copy the string of numbers from the “Public key” section and paste it here. "
+msgstr ""
+
+msgid "Use the link to generate ECDSA public key on the Key Generator website,copy the string of numbers from the “Public key” section and paste it here. "
 msgstr ""
 
 msgid "Use this dialog to add a password to your wallet."
