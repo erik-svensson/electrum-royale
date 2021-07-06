@@ -110,10 +110,10 @@ class InsertPubKeyDialog(QVBoxLayout):
         if hint is not None:
             hint_button = HintButton(text=hint, icon=None)
             hbox2.addWidget(hint_button)
+            hbox2.setAlignment(hint_button, Qt.AlignTop)
 
-        hbox2.setAlignment(hint_button, Qt.AlignTop)
+
         self.addLayout(hbox2)
-
         self.addWidget(edit)
         self.addWidget(error_label)
         self.edit = edit
