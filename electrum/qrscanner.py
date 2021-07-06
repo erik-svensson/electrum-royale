@@ -27,6 +27,10 @@ import os
 import sys
 import ctypes
 
+from .logging import get_logger
+
+_logger = get_logger(__name__)
+
 if sys.platform == 'darwin':
     name = 'libzbar.dylib'
 elif sys.platform in ('windows', 'win32'):
@@ -35,13 +39,32 @@ else:
     name = 'libzbar.so.0'
 
 try:
-    libzbar = ctypes.cdll.LoadLibrary(name)
-except BaseException:
-    libzbar = None
+    libzbar = ctypes.cdll.LoadLibrary(os.path.join(os.path.dirname(__file__), name))
+except BaseException as e1:
+    try:
+        libzbar = ctypes.cdll.LoadLibrary(name)
+    except BaseException as e2:
+        libzbar = None
+        if sys.platform != 'darwin':
+            _logger.error(f"failed to load zbar. exceptions: {[e1,e2]!r}")
+
+
+# if sys.platform == 'darwin':
+#     name = 'libzbar.dylib'
+# elif sys.platform in ('windows', 'win32'):
+#     name = 'libzbar-0.dll'
+# else:
+#     name = 'libzbar.so.0'
+#
+# try:
+#     libzbar = ctypes.cdll.LoadLibrary(name)
+# except BaseException:
+#     libzbar = None
 
 
 def scan_barcode_ctypes(device='', timeout=-1, display=True, threaded=False, try_again=True):
     if libzbar is None:
+        # raise RuntimeError("Cannot start QR scanner; zbar not available.")
         raise RuntimeError("Cannot start QR scanner; zbar not available.")
     libzbar.zbar_symbol_get_data.restype = ctypes.c_char_p
     libzbar.zbar_processor_create.restype = ctypes.POINTER(ctypes.c_int)
