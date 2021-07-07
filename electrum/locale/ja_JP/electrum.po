@@ -47,9 +47,6 @@ msgstr "&エキスポート"
 msgid "&File"
 msgstr "&ファイル"
 
-msgid "&Filter"
-msgstr "&フィルター"
-
 msgid "&From QR code"
 msgstr "&QRコードより"
 
@@ -65,26 +62,17 @@ msgstr "&ブロックチェーンより"
 msgid "&Help"
 msgstr "&ヘルプ"
 
-msgid "&History"
-msgstr "&履歴"
-
 msgid "&Import"
 msgstr "&インポート"
 
 msgid "&Information"
 msgstr "&情報"
 
-msgid "&Labels"
-msgstr "&ラベル"
-
 msgid "&Load transaction"
 msgstr "&取引を読み込む"
 
 msgid "&Network"
 msgstr "&ネットワーク"
-
-msgid "&New"
-msgstr "&新規"
 
 msgid "&New/Restore"
 msgstr "&新規/復旧"
@@ -101,12 +89,6 @@ msgstr "&開く"
 msgid "&Password"
 msgstr "&パスワード"
 
-msgid "&Pay to many"
-msgstr "&複数への送金"
-
-msgid "&Plot"
-msgstr "&プロット"
-
 msgid "&Plugins"
 msgstr "&プラグイン"
 
@@ -122,17 +104,11 @@ msgstr "&最近開いたデータ"
 msgid "&Report Bug"
 msgstr "&不具合報告"
 
-msgid "&Save Copy"
-msgstr "&コピーの保存"
-
 msgid "&Seed"
 msgstr "&シード"
 
 msgid "&Sign/verify message"
 msgstr "&署名／メッセージ承認"
-
-msgid "&Summary"
-msgstr "&概要"
 
 msgid "&Sweep"
 msgstr "&取消"
@@ -3962,15 +3938,6 @@ msgstr "Revealer {version}_{checksum}のために暗号化された{wallet_seed}
 msgid "A mobile wallet for BTCV. You can pair it with Electrum Vault and use it to authorize transactions to additionally secure your funds."
 msgstr "BTCV用モバイルウォレットです。Electrum Vaultとペアリングし、取引の認証に使用することで、資金をより安全に保つことが出来ます。"
 
-msgid "Allows users to make Secure Fast, Secure, and Cancel transactions."
-msgstr "ユーザーは保安クイック取引、保安取引、そしてキャンセル取引を実行できます。"
-
-msgid "Allows users to make Secure and Cancel transactions."
-msgstr "ユーザーは保安取引とキャンセル取引を実行できます。"
-
-msgid "Allows users to make Standard transactions."
-msgstr "ユーザーはスタンダード取引を実行できます。"
-
 msgid "Alternatively"
 msgstr "または"
 
@@ -4015,3 +3982,18 @@ msgstr "続きを読む"
 
 msgid "You may enter a Bitcoin Vault address, a label from your list of contacts (a list of completions will be proposed), or an alias (email-like address that forwards to a Bitcoin Vault address)"
 msgstr "Bitcoin Vault のアドレス、連絡リスト(完了リストが提示されます)のラベル、またはエイリアス(Bitcoin Vault アドレスへ転送するメールアドレスのようなアドレス)を入力できます。"
+
+msgid "Allows users to make Secure and Cancel transactions, just like in the 2-Key Vault wallet. But it also adds the possibility to perform quick Secure Fast transactions. These transfers are confirmed in approximately 10 minutes and can’t be reversed. All three transactions require unique keys to be performed."
+msgstr "ユーザーは、2-Key Vaultウォレットと同様に、保安取引とキャンセル取引を実行できます。それに加えて、保安・クイック取引を実行することもできます。これらの取引は約10分で確認され、取り消すことはできません。3つの取引を行うには、それぞれのキーが必要です。"
+
+msgid "Allows users to make Secure and Cancel transactions. Secure transactions are by default delayed by 144 blocks, which means approximately 24 hours. This gives users enough time to perform a Cancel transaction and reverse the transfer before it is confirmed on the blockchain in case of a hack or technical issue. Both transactions are secured with unique keys."
+msgstr "ユーザーは、保安取引とキャンセル取引を実行できます。保安取引では、デフォルトで約24時間に相当する144ブロックの遅延を発生させます。これより、ハッキングや技術的な問題が発生した場合、ユーザーはブロックチェーン上で確認される前にキャンセル取引を実行し、送金を取り消すための時間を得ることが出来ます。どちらの取引も、それぞれのキーで保護されます。"
+
+msgid "Allows users to make Standard transactions secured with one key."
+msgstr "ユーザーは、1つのキーで保護されるスタンダード取引を実行できます。"
+
+msgid "Authenticator public key"
+msgstr "認証システム用公開鍵"
+
+msgid "Seed phrase"
+msgstr "シードフレーズ"

@@ -47,9 +47,6 @@ msgstr "&Xuất"
 msgid "&File"
 msgstr "&Tập tin"
 
-msgid "&Filter"
-msgstr "& Bộ lọc"
-
 msgid "&From QR code"
 msgstr "& Từ mã QR"
 
@@ -65,26 +62,17 @@ msgstr "&Từ blockchain"
 msgid "&Help"
 msgstr "&Trợ giúp"
 
-msgid "&History"
-msgstr "&Lịch sử"
-
 msgid "&Import"
 msgstr "&Nhập"
 
 msgid "&Information"
 msgstr "&Thông tin"
 
-msgid "&Labels"
-msgstr "&Nhãn"
-
 msgid "&Load transaction"
 msgstr "&Tải giao dịch"
 
 msgid "&Network"
 msgstr "&Mạng lưới"
-
-msgid "&New"
-msgstr "&Tin tức"
 
 msgid "&New/Restore"
 msgstr "& Mới / Khôi phục"
@@ -101,12 +89,6 @@ msgstr "&Mở"
 msgid "&Password"
 msgstr "&Mật khẩu"
 
-msgid "&Pay to many"
-msgstr "& Trả tiền cho nhiều người"
-
-msgid "&Plot"
-msgstr "Sự cố"
-
 msgid "&Plugins"
 msgstr "& Bổ sung"
 
@@ -122,17 +104,11 @@ msgstr "& Mở gần đây"
 msgid "&Report Bug"
 msgstr "&Báo cáo lỗi"
 
-msgid "&Save Copy"
-msgstr "& Lưu bản sao"
-
 msgid "&Seed"
 msgstr "&Hạt giống"
 
 msgid "&Sign/verify message"
 msgstr "& Ký / xác minh tin nhắn"
-
-msgid "&Summary"
-msgstr "&Tóm tắt"
 
 msgid "&Sweep"
 msgstr "& Quét"
@@ -3962,15 +3938,6 @@ msgstr "{wallet_seed} được mã hóa cho Revealer {version} _ {checksum} đư
 msgid "A mobile wallet for BTCV. You can pair it with Electrum Vault and use it to authorize transactions to additionally secure your funds."
 msgstr "Một ví di động dành cho BTCV. Bạn có thể ghép đôi với Electrum Vault và sử dụng chúng để uỷ quyền các giao dịch nhằm tăng thêm tính bảo mật cho các quỹ của mình. "
 
-msgid "Allows users to make Secure Fast, Secure, and Cancel transactions."
-msgstr "Cho phép người dùng thực hiện các giao dịch Nhanh An Toàn (Secure Fast), An Toàn (Secure), và Huỷ giao dịch."
-
-msgid "Allows users to make Secure and Cancel transactions."
-msgstr "Cho phép người dùng thực hiện các giao dịch An Toàn (Secure) và Huỷ giao dịch"
-
-msgid "Allows users to make Standard transactions."
-msgstr "Cho phép người dùng thực hiện các giao dịch Tiêu Chuẩn (Standard)"
-
 msgid "Alternatively"
 msgstr "Lựa chọn thay thế"
 
@@ -4015,3 +3982,18 @@ msgstr "Xem thêm"
 
 msgid "You may enter a Bitcoin Vault address, a label from your list of contacts (a list of completions will be proposed), or an alias (email-like address that forwards to a Bitcoin Vault address)"
 msgstr "Bạn có thể nhập địa chỉ Bitcoin Vault, một nhãn từ danh sách liên hệ của mình (danh sách  trong tổng số các hoàn thành sẽ được đề xuất) hoặc một bí danh (địa chỉ giống như email chuyển tiếp đến địa chỉ Bitcoin Vault)"
+
+msgid "Allows users to make Secure and Cancel transactions, just like in the 2-Key Vault wallet. But it also adds the possibility to perform quick Secure Fast transactions. These transfers are confirmed in approximately 10 minutes and can’t be reversed. All three transactions require unique keys to be performed."
+msgstr "Cho phép người dùng thực hiện các Giao Dịch An Toàn và Giao Dịch Huỷ, tương tự như ví 2-Key Vault. Nhưng đồng thời thêm khả năng thực hiện nhanh chóng các Giao Dịch Nhanh An Toàn. Chuyển khoản được xác nhận trong khoảng 10 phút và không thể hoàn tác. Cả ba loại giao dịch đều yêu cầu cung cấp các chìa khoá độc nhất để thực hiện quá trình."
+
+msgid "Allows users to make Secure and Cancel transactions. Secure transactions are by default delayed by 144 blocks, which means approximately 24 hours. This gives users enough time to perform a Cancel transaction and reverse the transfer before it is confirmed on the blockchain in case of a hack or technical issue. Both transactions are secured with unique keys."
+msgstr "Cho phép người dùng thực hiện các Giao Dịch An Toàn và Giao Dịch Huỷ. Các Giao Dịch An Toàn bị trì hoãn mặc định với 144 khối, tương đương với 24 giờ. Điều này cho phép người dùng có đủ thời gian để thực hiện một Giao Dịch Huỷ và đảo ngược chuyển khoản trước khi nó được xác minh trên blockchain trong trường hợp bị hack hoặc gặp vấn đề kỹ thuật. Cả hai loại giao dịch đều được bảo mật với các chìa khoá độc nhất."
+
+msgid "Allows users to make Standard transactions secured with one key."
+msgstr "Cho phép người dùng bảo mật các Giao Dịch Tiêu Chuẩn với một chìa khoá."
+
+msgid "Authenticator public key"
+msgstr "Chìa khoá mã xác nhận công khai"
+
+msgid "Seed phrase"
+msgstr "Giai đoạn hạt giống"

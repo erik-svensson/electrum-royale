@@ -41,9 +41,6 @@ msgstr "&Ekspor"
 msgid "&File"
 msgstr "&Berkas"
 
-msgid "&Filter"
-msgstr "&Filter"
-
 msgid "&From QR code"
 msgstr "&Dari kode QR"
 
@@ -59,26 +56,17 @@ msgstr "&Dari blockchain"
 msgid "&Help"
 msgstr "&Bantuan"
 
-msgid "&History"
-msgstr "&Riwayat"
-
 msgid "&Import"
 msgstr "&Import"
 
 msgid "&Information"
 msgstr "&Informasi"
 
-msgid "&Labels"
-msgstr "&Label"
-
 msgid "&Load transaction"
 msgstr "&Muat transaksi"
 
 msgid "&Network"
 msgstr "&Jaringan"
-
-msgid "&New"
-msgstr "&Baru"
 
 msgid "&New/Restore"
 msgstr "&Baru/Pulihkan"
@@ -95,12 +83,6 @@ msgstr "&Buka"
 msgid "&Password"
 msgstr "&Kata Sandi"
 
-msgid "&Pay to many"
-msgstr "&Bayar ke banyak"
-
-msgid "&Plot"
-msgstr "&Plot"
-
 msgid "&Plugins"
 msgstr "&Plugins"
 
@@ -116,17 +98,11 @@ msgstr "&Baru dibuka"
 msgid "&Report Bug"
 msgstr "&Laporkan Bug"
 
-msgid "&Save Copy"
-msgstr "&Simpan Salinan"
-
 msgid "&Seed"
 msgstr "&Seed"
 
 msgid "&Sign/verify message"
 msgstr "&Tandai/verifikasi pesan"
-
-msgid "&Summary"
-msgstr "&Ringkasan"
 
 msgid "&Sweep"
 msgstr "&Pindai"
@@ -3956,15 +3932,6 @@ msgstr "{wallet_seed} yang dienkripsi untuk Revealer {version}_{checksum} disimp
 msgid "A mobile wallet for BTCV. You can pair it with Electrum Vault and use it to authorize transactions to additionally secure your funds."
 msgstr "Aplikasi mobile untuk BTCV. Anda dapat menghubungkan aplikasi dengan Electrum Vault dan menggunakannya untuk mengautorisasi transaksi untuk menambah tingkat keamanan dana Anda."
 
-msgid "Allows users to make Secure Fast, Secure, and Cancel transactions."
-msgstr "Izinkan pengguna untuk melakukan transaksi Cepat, Cepat, dan Batal."
-
-msgid "Allows users to make Secure and Cancel transactions."
-msgstr "Izinkan pengguna untuk melakukan transaksi Aman dan Batal."
-
-msgid "Allows users to make Standard transactions."
-msgstr "Izinkan pengguna untuk melakukan transaksi Standard."
-
 msgid "Alternatively"
 msgstr "Jika Tidak"
 
@@ -4009,3 +3976,18 @@ msgstr "Baca lebih lanjut"
 
 msgid "You may enter a Bitcoin Vault address, a label from your list of contacts (a list of completions will be proposed), or an alias (email-like address that forwards to a Bitcoin Vault address)"
 msgstr "Anda dapat memasukkan sebuah alamat Bitcoin Vault, sebuah label dari daftar kontak (daftar penyelesaian akan dianjurkan), atau sebuah alias (alamat seperti email yang meneruskan berbagai hal ke alama Bitcoin Vault.)"
+
+msgid "Allows users to make Secure and Cancel transactions, just like in the 2-Key Vault wallet. But it also adds the possibility to perform quick Secure Fast transactions. These transfers are confirmed in approximately 10 minutes and can’t be reversed. All three transactions require unique keys to be performed."
+msgstr "Memungkinkan pengguna untuk melakukan transaksi Aman dan Batal, sama halnya dengan dompet 2-Key Vault. Perbedaannya terletak pada fitur tambahan yang memungkinkan pengguna untuk melakukan transaksi Cepat Aman. Transfer jenis ini dikonfirmasi dalam waktu kurang lebih 10 menit dan transaksi tidak dapat dibatalkan. Ketiga transaksi membutuhkan kunci unik agar dapat digunakan dengan baik."
+
+msgid "Allows users to make Secure and Cancel transactions. Secure transactions are by default delayed by 144 blocks, which means approximately 24 hours. This gives users enough time to perform a Cancel transaction and reverse the transfer before it is confirmed on the blockchain in case of a hack or technical issue. Both transactions are secured with unique keys."
+msgstr "Memungkinkan pengguna untuk melakukan transaksi Aman dan Batal. Transaksi aman secara default ditunda selama 144 blok, atau kurang lebih selama 24 jam. Hal ini memberikan pengguna waktu yang cukup untuk melakukan transaksi Batal dan membalikkan transaksi sebelum transaksi tersebut dikonfirmasi di blockchain terutama jika terjadi peretasan atau masalah teknis. Kedua transaksi diamankan oleh kunci unik."
+
+msgid "Allows users to make Standard transactions secured with one key."
+msgstr "Memungkinkan pengguna untuk melakukan transaksi Standar yang diamankan dengan satu kunci."
+
+msgid "Authenticator public key"
+msgstr "Kunci Publik Authencator "
+
+msgid "Seed phrase"
+msgstr "Frasa Benih"

@@ -47,9 +47,6 @@ msgstr "&Exportar"
 msgid "&File"
 msgstr "&Archivo"
 
-msgid "&Filter"
-msgstr "&Filtrar"
-
 msgid "&From QR code"
 msgstr "&Desde un código QR"
 
@@ -65,26 +62,17 @@ msgstr "&Desde la blockchain"
 msgid "&Help"
 msgstr "&Ayuda"
 
-msgid "&History"
-msgstr "&Historial"
-
 msgid "&Import"
 msgstr "&Importar"
 
 msgid "&Information"
 msgstr "&Información"
 
-msgid "&Labels"
-msgstr "&Etiquetas"
-
 msgid "&Load transaction"
 msgstr "&Cargar transacción"
 
 msgid "&Network"
 msgstr "&Red"
-
-msgid "&New"
-msgstr "&Nueva"
 
 msgid "&New/Restore"
 msgstr "&Nueva/Restaurar"
@@ -101,12 +89,6 @@ msgstr "&Abrir"
 msgid "&Password"
 msgstr "&Contraseña"
 
-msgid "&Pay to many"
-msgstr "&Pagar a varios"
-
-msgid "&Plot"
-msgstr "&Trazar"
-
 msgid "&Plugins"
 msgstr "&Complementos"
 
@@ -122,17 +104,11 @@ msgstr "&Abierto recientemente"
 msgid "&Report Bug"
 msgstr "&Informar fallo"
 
-msgid "&Save Copy"
-msgstr "&Guardar copia"
-
 msgid "&Seed"
 msgstr "&Semilla"
 
 msgid "&Sign/verify message"
 msgstr "&Firmar/validar mensaje"
-
-msgid "&Summary"
-msgstr "&Resumen"
 
 msgid "&Sweep"
 msgstr "&Barrer"
@@ -3962,15 +3938,6 @@ msgstr "{wallet_seed} cifrado para revelador {version}_{checksum} guardado como 
 msgid "A mobile wallet for BTCV. You can pair it with Electrum Vault and use it to authorize transactions to additionally secure your funds."
 msgstr "Un monedero móvil para BTCV. Puede emparejarlo con Electrum Vault y usarlo para autorizar transacciones para asegurar adicionalmente sus fondos."
 
-msgid "Allows users to make Secure Fast, Secure, and Cancel transactions."
-msgstr "Permite a los usuarios realizar transacciones Rápidas, Seguras y de Cancelación."
-
-msgid "Allows users to make Secure and Cancel transactions."
-msgstr "Permite a los usuarios realizar transacciones Seguras y de Cancelación."
-
-msgid "Allows users to make Standard transactions."
-msgstr "Permite a los usuarios realizar transacciones Estándar."
-
 msgid "Alternatively"
 msgstr "Alternativamente"
 
@@ -4015,3 +3982,18 @@ msgstr "Leer más"
 
 msgid "You may enter a Bitcoin Vault address, a label from your list of contacts (a list of completions will be proposed), or an alias (email-like address that forwards to a Bitcoin Vault address)"
 msgstr " Puede ingresar una dirección de Bitcoin Vault, una etiqueta de su lista de contactos (se propondrá una lista  de finalizaciones), o un alias (dirección de correo electrónico que  redirige a una dirección de Bitcoin Vault) "
+
+msgid "Allows users to make Secure and Cancel transactions, just like in the 2-Key Vault wallet. But it also adds the possibility to perform quick Secure Fast transactions. These transfers are confirmed in approximately 10 minutes and can’t be reversed. All three transactions require unique keys to be performed."
+msgstr "Permite a los usuarios realizar transacciones Seguras y de Cancelación. Las transacciones Seguras se retrasan por defecto 144 bloques, lo que significa aproximadamente 24 horas. Esto da a los usuarios tiempo suficiente para realizar una transacción de Cancelación y revertir la transferencia antes de que se confirme en la blockchain en caso de un hackeo o un problema técnico. Ambas transacciones están aseguradas con claves únicas."
+
+msgid "Allows users to make Secure and Cancel transactions. Secure transactions are by default delayed by 144 blocks, which means approximately 24 hours. This gives users enough time to perform a Cancel transaction and reverse the transfer before it is confirmed on the blockchain in case of a hack or technical issue. Both transactions are secured with unique keys."
+msgstr "Allows users to make Secure and Cancel transactions. Secure transactions are by default delayed by 144 blocks, which means approximately 24 hours. This gives users enough time to perform a Cancel transaction and reverse the transfer before it is confirmed on the blockchain in case of a hack or technical issue. Both transactions are secured with unique keys."
+
+msgid "Allows users to make Standard transactions secured with one key."
+msgstr "Permite a los usuarios realizar transacciones estándar de forma segura con una sola clave."
+
+msgid "Authenticator public key"
+msgstr "Clave pública del autentificador"
+
+msgid "Seed phrase"
+msgstr "Frase semilla"

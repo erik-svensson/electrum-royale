@@ -47,9 +47,6 @@ msgstr "导出"
 msgid "&File"
 msgstr "&文档"
 
-msgid "&Filter"
-msgstr "&筛选"
-
 msgid "&From QR code"
 msgstr "&来自QR二维码"
 
@@ -65,26 +62,17 @@ msgstr "&来自区块链"
 msgid "&Help"
 msgstr "&帮助"
 
-msgid "&History"
-msgstr "&历史记录"
-
 msgid "&Import"
 msgstr "&导入"
 
 msgid "&Information"
 msgstr "&信息"
 
-msgid "&Labels"
-msgstr "&标签"
-
 msgid "&Load transaction"
 msgstr "&加载交易"
 
 msgid "&Network"
 msgstr "&网络"
-
-msgid "&New"
-msgstr "&新启"
 
 msgid "&New/Restore"
 msgstr "&新启/恢复"
@@ -101,12 +89,6 @@ msgstr "&打开"
 msgid "&Password"
 msgstr "&密码"
 
-msgid "&Pay to many"
-msgstr "&多次支付"
-
-msgid "&Plot"
-msgstr "&情节"
-
 msgid "&Plugins"
 msgstr "&插件"
 
@@ -122,17 +104,11 @@ msgstr "&最近打开过"
 msgid "&Report Bug"
 msgstr "&软件缺陷报告"
 
-msgid "&Save Copy"
-msgstr "&保存 粘贴"
-
 msgid "&Seed"
 msgstr "&种子"
 
 msgid "&Sign/verify message"
 msgstr "&注册/确认信息"
-
-msgid "&Summary"
-msgstr "&总结"
 
 msgid "&Sweep"
 msgstr "&清除"
@@ -3962,15 +3938,6 @@ msgstr "{wallet_seed}为Revealer {version}_{checksum}加密，保存为PNG和PDF
 msgid "A mobile wallet for BTCV. You can pair it with Electrum Vault and use it to authorize transactions to additionally secure your funds."
 msgstr "BTCV 的移动钱包。 您可以将其与 Electrum Vault 配对并使用它来授权交易以额外保护您的资金。 "
 
-msgid "Allows users to make Secure Fast, Secure, and Cancel transactions."
-msgstr "允许用户进行安全快速交易、安全交易和取消交易。 "
-
-msgid "Allows users to make Secure and Cancel transactions."
-msgstr "允许用户进行安全交易和取消交易。"
-
-msgid "Allows users to make Standard transactions."
-msgstr "允许用户进行标准交易。"
-
 msgid "Alternatively"
 msgstr "或者"
 
@@ -4015,3 +3982,18 @@ msgstr "阅读更多"
 
 msgid "You may enter a Bitcoin Vault address, a label from your list of contacts (a list of completions will be proposed), or an alias (email-like address that forwards to a Bitcoin Vault address)"
 msgstr "您可以输入 Bitcoin Vault 地址，输入联系人列表中的标签（将显示完整的列表），或输入别名（类似于可以转发到 Bitcoin Vault 地址的电子邮件地址）"
+
+msgid "Allows users to make Secure and Cancel transactions, just like in the 2-Key Vault wallet. But it also adds the possibility to perform quick Secure Fast transactions. These transfers are confirmed in approximately 10 minutes and can’t be reversed. All three transactions require unique keys to be performed."
+msgstr "允许用户执行安全和取消交易，就像在 2-Key Vault 钱包中一样。 同时，它还添加了执行安全快速交易的选项。 转账会在大约 10 分钟内得到确认，且无法撤消。 这三种交易类型都需要唯一的密钥来执行。"
+
+msgid "Allows users to make Secure and Cancel transactions. Secure transactions are by default delayed by 144 blocks, which means approximately 24 hours. This gives users enough time to perform a Cancel transaction and reverse the transfer before it is confirmed on the blockchain in case of a hack or technical issue. Both transactions are secured with unique keys."
+msgstr "允许用户进行安全和取消交易。 默认情况下，安全交易会延迟 144 个区块，这意味着延迟大约 为24 小时。这为用户提供了足够的时间来执行取消交易，并可以在黑客攻击或出现技术问题时，当交易在区块链上确认之前撤销转账。 两个交易都使用唯一的密钥进行保护。"
+
+msgid "Allows users to make Standard transactions secured with one key."
+msgstr "允许用户使用一键保护标准交易。 "
+
+msgid "Authenticator public key"
+msgstr "认证器公钥"
+
+msgid "Seed phrase"
+msgstr "密语种子"

@@ -47,9 +47,6 @@ msgstr "&내보내기"
 msgid "&File"
 msgstr "&파일"
 
-msgid "&Filter"
-msgstr "&필터"
-
 msgid "&From QR code"
 msgstr "&QR 코드로부터"
 
@@ -65,26 +62,17 @@ msgstr "&Blockchain으로부터"
 msgid "&Help"
 msgstr "&도움"
 
-msgid "&History"
-msgstr "&내역"
-
 msgid "&Import"
 msgstr "&가져오기"
 
 msgid "&Information"
 msgstr "&정보"
 
-msgid "&Labels"
-msgstr "&라벨"
-
 msgid "&Load transaction"
 msgstr "&거래내역 불러오기"
 
 msgid "&Network"
 msgstr "&네트워크"
-
-msgid "&New"
-msgstr "&신규"
 
 msgid "&New/Restore"
 msgstr "&신규/복구"
@@ -101,12 +89,6 @@ msgstr "&열기"
 msgid "&Password"
 msgstr "&패스워드"
 
-msgid "&Pay to many"
-msgstr "&다건이체"
-
-msgid "&Plot"
-msgstr "&플롯"
-
 msgid "&Plugins"
 msgstr "&플러그인"
 
@@ -122,17 +104,11 @@ msgstr "&최근 열어본 "
 msgid "&Report Bug"
 msgstr "&오류 보고"
 
-msgid "&Save Copy"
-msgstr "&사본 저장"
-
 msgid "&Seed"
 msgstr "&시드"
 
 msgid "&Sign/verify message"
 msgstr "&서명/메시지 승인"
-
-msgid "&Summary"
-msgstr "&요약"
 
 msgid "&Sweep"
 msgstr "&지우기"
@@ -3962,15 +3938,6 @@ msgstr "Revealer {version}_{checksum}의 암호화된 {wallet_seed}가 다음 �
 msgid "A mobile wallet for BTCV. You can pair it with Electrum Vault and use it to authorize transactions to additionally secure your funds."
 msgstr "BTCV용 모바일 지갑입니다. 이를 Electrum Vault와 페어링하여 거래를 승인하도록 함으로써 사용자의 자금을 추가로 보호할 수 있습니다."
 
-msgid "Allows users to make Secure Fast, Secure, and Cancel transactions."
-msgstr "사용자가 보안 고속 거래, 보안 거래, 취소 거래를 수행할 수 있도록 허용합니다."
-
-msgid "Allows users to make Secure and Cancel transactions."
-msgstr "사용자가 보안 거래 및 취소 거래를 수행할 수 있도록 허용합니다."
-
-msgid "Allows users to make Standard transactions."
-msgstr "사용자가 표준 거래를 수행할 수 있도록 허용합니다."
-
 msgid "Alternatively"
 msgstr "대안으로"
 
@@ -4015,3 +3982,18 @@ msgstr "더 읽기"
 
 msgid "You may enter a Bitcoin Vault address, a label from your list of contacts (a list of completions will be proposed), or an alias (email-like address that forwards to a Bitcoin Vault address)"
 msgstr "연결 목록(완료된 건이 나타납니다)의 라벨로 Bitcoin Vault 주소를 추가하거나, 또는 가명(Bitcoin Vault 주소로 전송되는 이메일과 같은 주소)로 추가할 수 있습니다"
+
+msgid "Allows users to make Secure and Cancel transactions, just like in the 2-Key Vault wallet. But it also adds the possibility to perform quick Secure Fast transactions. These transfers are confirmed in approximately 10 minutes and can’t be reversed. All three transactions require unique keys to be performed."
+msgstr "2-Key Vault 지갑과 마찬가지로 사용자는 보안 거래와 취소 거래를 수행할 수 있습니다. 또한, 보안 고속 거래를 수행할 수 있는 기능도 추가합니다. 이러한 이체는 약 10분 후에 확인되며 되돌릴 수 없습니다. 세 가지 거래 모두 수행하려면 고유한 키가 필요합니다."
+
+msgid "Allows users to make Secure and Cancel transactions. Secure transactions are by default delayed by 144 blocks, which means approximately 24 hours. This gives users enough time to perform a Cancel transaction and reverse the transfer before it is confirmed on the blockchain in case of a hack or technical issue. Both transactions are secured with unique keys."
+msgstr "사용자가 보안 거래와 취소 거래를 수행할 수 있습니다. 보안 거래는 기본적으로 약 24시간(블록 144개)이 지연됩니다. 이를 통해, 사용자는 해커나 기술적 문제가 발생할 경우, 해당 블록체인에서 확인되기 전에 취소 거래를 수행하고 이체를 되돌릴 수 있는 충분한 시간을 갖게 됩니다. 두 거래 모두 고유한 키로 보호됩니다."
+
+msgid "Allows users to make Standard transactions secured with one key."
+msgstr "사용자가 하나의 키로 표준 거래를 보호할 수 있습니다."
+
+msgid "Authenticator public key"
+msgstr "인증기 공개 키"
+
+msgid "Seed phrase"
+msgstr "시드 문구"
