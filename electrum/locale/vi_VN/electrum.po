@@ -47,9 +47,6 @@ msgstr "&Xuất"
 msgid "&File"
 msgstr "&Tập tin"
 
-msgid "&Filter"
-msgstr "& Bộ lọc"
-
 msgid "&From QR code"
 msgstr "& Từ mã QR"
 
@@ -65,26 +62,17 @@ msgstr "&Từ blockchain"
 msgid "&Help"
 msgstr "&Trợ giúp"
 
-msgid "&History"
-msgstr "&Lịch sử"
-
 msgid "&Import"
 msgstr "&Nhập"
 
 msgid "&Information"
 msgstr "&Thông tin"
 
-msgid "&Labels"
-msgstr "&Nhãn"
-
 msgid "&Load transaction"
 msgstr "&Tải giao dịch"
 
 msgid "&Network"
 msgstr "&Mạng lưới"
-
-msgid "&New"
-msgstr "&Tin tức"
 
 msgid "&New/Restore"
 msgstr "& Mới / Khôi phục"
@@ -101,12 +89,6 @@ msgstr "&Mở"
 msgid "&Password"
 msgstr "&Mật khẩu"
 
-msgid "&Pay to many"
-msgstr "& Trả tiền cho nhiều người"
-
-msgid "&Plot"
-msgstr "Sự cố"
-
 msgid "&Plugins"
 msgstr "& Bổ sung"
 
@@ -122,17 +104,11 @@ msgstr "& Mở gần đây"
 msgid "&Report Bug"
 msgstr "&Báo cáo lỗi"
 
-msgid "&Save Copy"
-msgstr "& Lưu bản sao"
-
 msgid "&Seed"
 msgstr "&Hạt giống"
 
 msgid "&Sign/verify message"
 msgstr "& Ký / xác minh tin nhắn"
-
-msgid "&Summary"
-msgstr "&Tóm tắt"
 
 msgid "&Sweep"
 msgstr "& Quét"
@@ -357,7 +333,7 @@ msgid "BIP39 seed"
 msgstr "BIP39 Cụm từ hạt giống"
 
 msgid "BIP39 seeds can be imported in Electrum, so that users can access funds locked in other wallets."
-msgstr " Hạt giống BIP39 có thể được nhập vào Electrum, để người dùng có thể truy cập vào tiềnbị khóa trong các ví khác. "
+msgstr "Hạt giống BIP39 có thể được nhập vào Electrum, để người dùng có thể truy cập vào tiềnbị khóa trong các ví khác. "
 
 msgid "BIP70 Invoice"
 msgstr "Hóa đơn BIP70"
@@ -963,7 +939,7 @@ msgid "Don't show this again."
 msgstr "Không hiển thị cái này nữa."
 
 msgid "Due to a bug, old versions of Electrum will NOT be creating the same wallet as newer versions or other software."
-msgstr " Do lỗi, các phiên bản Electrum cũ sẽ KHÔNG tạo cùng một ví dưới dạng phiên bản mới hơn hoặc phần mềm khác. "
+msgstr "Do lỗi, các phiên bản Electrum cũ sẽ KHÔNG tạo cùng một ví dưới dạng phiên bản mới hơn hoặc phần mềm khác. "
 
 msgid "Dynamic fee estimates not available"
 msgstr "Ước tính phí động không có sẵn"
@@ -987,7 +963,7 @@ msgid "Electrum communicates with remote servers to get information about your t
 msgstr "Electrum kết nối với các máy chủ từ xa để nhận thông tin của bạn về giao dịch và địa chỉ. Tất cả các máy chủ đều chỉ thực hiện cùng một mục đích khác biệt về phần cứng. Trong hầu hết các trường hợp, bạn chỉ muốn để Electrum chọn một cách ngẫu nhiên. Tuy nhiên, nếu bạn muốn, hãy chọn máy chủ theo cách thủ công. "
 
 msgid "Electrum connects to several nodes in order to download block headers and find out the longest blockchain."
-msgstr " Kết nối Electrum với một số nút để tải xuống block tiêu đề và  tìm ra chuỗi khối dài. "
+msgstr "Kết nối Electrum với một số nút để tải xuống block tiêu đề và  tìm ra chuỗi khối dài. "
 
 msgid "Electrum preferences"
 msgstr "Tùy chọn Electrum"
@@ -1488,7 +1464,7 @@ msgid "How do you want to connect to a server? "
 msgstr "Bạn muốn kết nối với máy chủ như thế nào?"
 
 msgid "However, hardware wallets do not support message decryption, which makes them not compatible with the current design of cosigner pool."
-msgstr " Tuy nhiên, ví phần cứng không hỗ trợ giải mã tin nhắn, điều này khiến  chúng không tương thích với thiết kế hiện tại của cosigner pool."
+msgstr "Tuy nhiên, ví phần cứng không hỗ trợ giải mã tin nhắn, điều này khiến  chúng không tương thích với thiết kế hiện tại của cosigner pool."
 
 msgid "I agree"
 msgstr "Tôi đồng ý"
@@ -1506,7 +1482,7 @@ msgid "IP/port in format:\n[host]:[port]"
 msgstr "IP/port in format:\n[host]:[port]"
 
 msgid "If auto-connect is enabled, Electrum will always use a server that is on the longest blockchain."
-msgstr " Nếu kết nối tự động được bật, Electrum sẽ luôn sử dụng máy chủ trên  chuỗi khối dài nhất."
+msgstr "Nếu kết nối tự động được bật, Electrum sẽ luôn sử dụng máy chủ trên  chuỗi khối dài nhất."
 
 msgid "If enabled, at most 100 satoshis might be lost due to this, per transaction."
 msgstr " Nếu được bật, tối đa 100 satoshi có thể bị mất do điều này, cho mỗi giao dịch. "
@@ -1818,7 +1794,7 @@ msgid "Lightning keys have been removed."
 msgstr "Các phím Lightning đã bị loại bỏ."
 
 msgid "Lightning support in Electrum is experimental. Do not put large amounts in lightning channels."
-msgstr " Hỗ trợ Lightning trong Electrum là thử nghiệm. Đừng đặt số lượng lớn vào   kênh lightning. "
+msgstr "Hỗ trợ Lightning trong Electrum là thử nghiệm. Đừng đặt số lượng lớn vào   kênh lightning. "
 
 msgid "Lightning:"
 msgstr "Lightning:"
@@ -2991,10 +2967,10 @@ msgid "The amount will be displayed in red if you do not have enough funds in yo
 msgstr "Số tiền sẽ được hiển thị màu đỏ nếu bạn không có đủ tiền trong ví."
 
 msgid "The bitcoin address never expires and will always be part of this electrum wallet."
-msgstr " Địa chỉ bitcoin không bao giờ hết hạn và sẽ luôn là một phần của ví electrum này."
+msgstr "Địa chỉ bitcoin không bao giờ hết hạn và sẽ luôn là một phần của ví electrum này."
 
 msgid "The description is not sent to the recipient of the funds. It is stored in your wallet file, and displayed in the 'History' tab."
-msgstr " Mô tả không được gửi đến người nhận tiền. Nó được lưu trữ trong  tệp ví của bạn và được hiển thị trong mục 'Lịch sử'."
+msgstr "Mô tả không được gửi đến người nhận tiền. Nó được lưu trữ trong  tệp ví của bạn và được hiển thị trong mục 'Lịch sử'."
 
 msgid "The fee could not be verified. Signing non-segwit inputs is risky:\nif this transaction was maliciously modified before you sign,\nyou might end up paying a higher mining fee than displayed."
 msgstr "Không thể xác minh khoản phí. Việc ký các đầu vào không phải segwit rất rủi ro: \n nếu giao dịch này bị sửa đổi một cách cố ý trước khi bạn ký, \n bạn có thể phải trả một khoản phí khai thác cao hơn so với hiển thị."
@@ -3063,7 +3039,7 @@ msgid "Therefore, two-factor authentication is disabled."
 msgstr "Do đó, xác thực hai yếu tố bị vô hiệu hóa."
 
 msgid "This address has already been used. For better privacy, do not reuse it for new payments."
-msgstr " Địa chỉ này đã được sử dụng. Để bảo mật tốt hơn, không sử dụng lại nó cho  thanh toán mới. "
+msgstr "Địa chỉ này đã được sử dụng. Để bảo mật tốt hơn, không sử dụng lại nó cho  thanh toán mới. "
 
 msgid "This blockchain is used to verify the transactions sent by your transaction server."
 msgstr "Blockchain này được sử dụng để xác minh các giao dịch được gửi bởi giao dịch máy chủ của bạn"
@@ -3090,7 +3066,7 @@ msgid "This file is encrypted with a password."
 msgstr "Tệp này được mã hóa bằng mật khẩu."
 
 msgid "This function is only available for standard wallets when using {device}."
-msgstr " Chức năng này chỉ khả dụng cho các ví standard khi sử dụng {device}.  "
+msgstr "Chức năng này chỉ khả dụng cho các ví standard khi sử dụng {device}.  "
 
 msgid "This information is seen by the recipient if you send them a signed payment request."
 msgstr "Người nhận sẽ nhìn thấy thông tin này nếu bạn gửi cho họ một khoản yêu cầu thanh toán đã ký."
@@ -3495,7 +3471,7 @@ msgid "Verify the address below.<br>Type the character from your security card c
 msgstr "Xác minh địa chỉ bên dưới. <br> Nhập ký tự từ thẻ bảo mật của bạn tương ứng với ký tự <u><b>BOLD</b> </u>."
 
 msgid "Verify the cable is connected and that no other application is using it."
-msgstr " Xác minh rằng cáp được kết nối và không có ứng dụng nào khác đang sử dụng nó."
+msgstr "Xác minh rằng cáp được kết nối và không có ứng dụng nào khác đang sử dụng nó."
 
 msgid "Verifying..."
 msgstr "Đang xác nhận"
@@ -3642,7 +3618,7 @@ msgid "You are in testnet mode."
 msgstr "Bạn đang ở chế độ testnet."
 
 msgid "You are most likely using an outdated version of Electrum. Please update."
-msgstr " Rất có thể bạn đang sử dụng phiên bản Electrum lỗi thời. Vui lòng cập nhật."
+msgstr "Rất có thể bạn đang sử dụng phiên bản Electrum lỗi thời. Vui lòng cập nhật."
 
 msgid "You are offline."
 msgstr "Bạn đang ngoại tuyến."
@@ -3962,15 +3938,6 @@ msgstr "{wallet_seed} được mã hóa cho Revealer {version} _ {checksum} đư
 msgid "A mobile wallet for BTCV. You can pair it with Electrum Vault and use it to authorize transactions to additionally secure your funds."
 msgstr "Một ví di động dành cho BTCV. Bạn có thể ghép đôi với Electrum Vault và sử dụng chúng để uỷ quyền các giao dịch nhằm tăng thêm tính bảo mật cho các quỹ của mình. "
 
-msgid "Allows users to make Secure Fast, Secure, and Cancel transactions."
-msgstr "Cho phép người dùng thực hiện các giao dịch Nhanh An Toàn (Secure Fast), An Toàn (Secure), và Huỷ giao dịch."
-
-msgid "Allows users to make Secure and Cancel transactions."
-msgstr "Cho phép người dùng thực hiện các giao dịch An Toàn (Secure) và Huỷ giao dịch"
-
-msgid "Allows users to make Standard transactions."
-msgstr "Cho phép người dùng thực hiện các giao dịch Tiêu Chuẩn (Standard)"
-
 msgid "Alternatively"
 msgstr "Lựa chọn thay thế"
 
@@ -4015,3 +3982,18 @@ msgstr "Xem thêm"
 
 msgid "You may enter a Bitcoin Vault address, a label from your list of contacts (a list of completions will be proposed), or an alias (email-like address that forwards to a Bitcoin Vault address)"
 msgstr "Bạn có thể nhập địa chỉ Bitcoin Vault, một nhãn từ danh sách liên hệ của mình (danh sách  trong tổng số các hoàn thành sẽ được đề xuất) hoặc một bí danh (địa chỉ giống như email chuyển tiếp đến địa chỉ Bitcoin Vault)"
+
+msgid "Allows users to make Secure and Cancel transactions, just like in the 2-Key Vault wallet. But it also adds the possibility to perform quick Secure Fast transactions. These transfers are confirmed in approximately 10 minutes and can’t be reversed. All three transactions require unique keys to be performed."
+msgstr "Cho phép người dùng thực hiện các Giao Dịch An Toàn và Giao Dịch Huỷ, tương tự như ví 2-Key Vault. Nhưng đồng thời thêm khả năng thực hiện nhanh chóng các Giao Dịch Nhanh An Toàn. Chuyển khoản được xác nhận trong khoảng 10 phút và không thể hoàn tác. Cả ba loại giao dịch đều yêu cầu cung cấp các chìa khoá độc nhất để thực hiện quá trình."
+
+msgid "Allows users to make Secure and Cancel transactions. Secure transactions are by default delayed by 144 blocks, which means approximately 24 hours. This gives users enough time to perform a Cancel transaction and reverse the transfer before it is confirmed on the blockchain in case of a hack or technical issue. Both transactions are secured with unique keys."
+msgstr "Cho phép người dùng thực hiện các Giao Dịch An Toàn và Giao Dịch Huỷ. Các Giao Dịch An Toàn bị trì hoãn mặc định với 144 khối, tương đương với 24 giờ. Điều này cho phép người dùng có đủ thời gian để thực hiện một Giao Dịch Huỷ và đảo ngược chuyển khoản trước khi nó được xác minh trên blockchain trong trường hợp bị hack hoặc gặp vấn đề kỹ thuật. Cả hai loại giao dịch đều được bảo mật với các chìa khoá độc nhất."
+
+msgid "Allows users to make Standard transactions secured with one key."
+msgstr "Cho phép người dùng bảo mật các Giao Dịch Tiêu Chuẩn với một chìa khoá."
+
+msgid "Authenticator public key"
+msgstr "Chìa khoá mã xác nhận công khai"
+
+msgid "Seed phrase"
+msgstr "Giai đoạn hạt giống"

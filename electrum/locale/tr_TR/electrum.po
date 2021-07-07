@@ -47,9 +47,6 @@ msgstr "&Dışa Aktar"
 msgid "&File"
 msgstr "&Dosya"
 
-msgid "&Filter"
-msgstr "&Filtre"
-
 msgid "&From QR code"
 msgstr "&QR kodundan"
 
@@ -65,26 +62,17 @@ msgstr "&Blockchain"
 msgid "&Help"
 msgstr "&Yardım"
 
-msgid "&History"
-msgstr "&Geçmiş"
-
 msgid "&Import"
 msgstr "&İçeri aktar"
 
 msgid "&Information"
 msgstr "&Bilgi"
 
-msgid "&Labels"
-msgstr "&Etiketler"
-
 msgid "&Load transaction"
 msgstr "&Yük aktarımı"
 
 msgid "&Network"
 msgstr "&Ağ"
-
-msgid "&New"
-msgstr "&Yeni"
 
 msgid "&New/Restore"
 msgstr "&Yeni/Geri Yükle"
@@ -101,12 +89,6 @@ msgstr "&Açık"
 msgid "&Password"
 msgstr "&Şifre"
 
-msgid "&Pay to many"
-msgstr "&Çoklu ödeme yap"
-
-msgid "&Plot"
-msgstr "&Çizdir"
-
 msgid "&Plugins"
 msgstr "&Eklentiler"
 
@@ -122,17 +104,11 @@ msgstr "&Yakın zamanda açılan"
 msgid "&Report Bug"
 msgstr "&Hata Bildir"
 
-msgid "&Save Copy"
-msgstr "&Kopyasını Sakla"
-
 msgid "&Seed"
 msgstr "&Çekirdek"
 
 msgid "&Sign/verify message"
 msgstr "&Mesajı imzala/doğrula"
-
-msgid "&Summary"
-msgstr "&Özet"
 
 msgid "&Sweep"
 msgstr "&Tara"
@@ -3962,15 +3938,6 @@ msgstr "Revealer {version}_{checksum} için şifrelenen {wallet_seed} şuraya PN
 msgid "A mobile wallet for BTCV. You can pair it with Electrum Vault and use it to authorize transactions to additionally secure your funds."
 msgstr "BTCV için mobil cüzdan. Cüzdanı Electrum Vault ile eşleştirebilir ve fonlarınızın güvenliğini artırmak amacıyla işlemlerinizi doğrulamak için kullanabilirsiniz."
 
-msgid "Allows users to make Secure Fast, Secure, and Cancel transactions."
-msgstr "Kullanıcıların Güvenli Hızlı, Güvenli ve İptal işlemleri yapmasına izin verir"
-
-msgid "Allows users to make Secure and Cancel transactions."
-msgstr "Kullanıcıların Güvenli ve İptal işlemleri yapmasına izin verir"
-
-msgid "Allows users to make Standard transactions."
-msgstr "Kullanıcıların Standart işlem yapmasına izin verir"
-
 msgid "Alternatively"
 msgstr "Alternatif olarak"
 
@@ -4015,3 +3982,18 @@ msgstr "Daha fazla okuyun"
 
 msgid "You may enter a Bitcoin Vault address, a label from your list of contacts (a list of completions will be proposed), or an alias (email-like address that forwards to a Bitcoin Vault address)"
 msgstr "Bir Bitcoin Vault adresi girebilirsiniz, bağlantılar listenizden bir etiket (önerilecek bitirmelerin bir listesi), veya bir takma ad (bir Bitcoin Vault adresine yönlendiren e-posta benzeri bir adres) girebilirsiniz"
+
+msgid "Allows users to make Secure and Cancel transactions, just like in the 2-Key Vault wallet. But it also adds the possibility to perform quick Secure Fast transactions. These transfers are confirmed in approximately 10 minutes and can’t be reversed. All three transactions require unique keys to be performed."
+msgstr "2-Key Vault cüzdanında olduğu gibi kullanıcıların Güvenli ve İptal işlemleri yapmalarına izin verir. Ancak ayrıca çabuk Güvenli Hızlı işlemler gerçekleştirme olanağı da ekler. Bu transferler yaklaşık 10 dakika içerisinde onaylanır ve geri döndürülemez. Üç işlemin de gerçekleştirilmesi için özgün anahtarlar gerekmektedir."
+
+msgid "Allows users to make Secure and Cancel transactions. Secure transactions are by default delayed by 144 blocks, which means approximately 24 hours. This gives users enough time to perform a Cancel transaction and reverse the transfer before it is confirmed on the blockchain in case of a hack or technical issue. Both transactions are secured with unique keys."
+msgstr "Kullanıcıların Güvenli ve İptal işlemleri yapmalarına izin verir. Güvenli işlemler varsayılan olarak 144 blok gecikmeli gerçekleştirilir, bu da yaklaşık 24 saat demektir. Bu sayede kullanıcıların korsanlık veya teknik bir arıza durumunda işlemleri blockchain'de onaylanmadan önce bir İptal işlemi gerçekleştirip transferi geri döndürmek için yeterli vakti olur. İki işlem de özgün anahtarlarla korunmaktadır."
+
+msgid "Allows users to make Standard transactions secured with one key."
+msgstr "Kullanıcıların bir anahtarla korunan Standart işlem yapmalarına izin verir."
+
+msgid "Authenticator public key"
+msgstr "Kimlik doğrulayıcı genel anahtarı"
+
+msgid "Seed phrase"
+msgstr "Anahtar kelime dizisi"
