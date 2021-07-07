@@ -45,21 +45,7 @@ except BaseException as e1:
         libzbar = ctypes.cdll.LoadLibrary(name)
     except BaseException as e2:
         libzbar = None
-        if sys.platform != 'darwin':
-            _logger.error(f"failed to load zbar. exceptions: {[e1,e2]!r}")
-
-
-# if sys.platform == 'darwin':
-#     name = 'libzbar.dylib'
-# elif sys.platform in ('windows', 'win32'):
-#     name = 'libzbar-0.dll'
-# else:
-#     name = 'libzbar.so.0'
-#
-# try:
-#     libzbar = ctypes.cdll.LoadLibrary(name)
-# except BaseException:
-#     libzbar = None
+        _logger.error(f"failed to load zbar. exceptions: {[e1,e2]!r}")
 
 
 def scan_barcode_ctypes(device='', timeout=-1, display=True, threaded=False, try_again=True):
