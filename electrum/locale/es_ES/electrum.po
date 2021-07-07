@@ -47,9 +47,6 @@ msgstr "&Exportar"
 msgid "&File"
 msgstr "&Archivo"
 
-msgid "&Filter"
-msgstr "&Filtrar"
-
 msgid "&From QR code"
 msgstr "&Desde un código QR"
 
@@ -65,26 +62,17 @@ msgstr "&Desde la blockchain"
 msgid "&Help"
 msgstr "&Ayuda"
 
-msgid "&History"
-msgstr "&Historial"
-
 msgid "&Import"
 msgstr "&Importar"
 
 msgid "&Information"
 msgstr "&Información"
 
-msgid "&Labels"
-msgstr "&Etiquetas"
-
 msgid "&Load transaction"
 msgstr "&Cargar transacción"
 
 msgid "&Network"
 msgstr "&Red"
-
-msgid "&New"
-msgstr "&Nueva"
 
 msgid "&New/Restore"
 msgstr "&Nueva/Restaurar"
@@ -101,12 +89,6 @@ msgstr "&Abrir"
 msgid "&Password"
 msgstr "&Contraseña"
 
-msgid "&Pay to many"
-msgstr "&Pagar a varios"
-
-msgid "&Plot"
-msgstr "&Trazar"
-
 msgid "&Plugins"
 msgstr "&Complementos"
 
@@ -122,17 +104,11 @@ msgstr "&Abierto recientemente"
 msgid "&Report Bug"
 msgstr "&Informar fallo"
 
-msgid "&Save Copy"
-msgstr "&Guardar copia"
-
 msgid "&Seed"
 msgstr "&Semilla"
 
 msgid "&Sign/verify message"
 msgstr "&Firmar/validar mensaje"
-
-msgid "&Summary"
-msgstr "&Resumen"
 
 msgid "&Sweep"
 msgstr "&Barrer"
@@ -588,7 +564,7 @@ msgid "Choose transaction type."
 msgstr "Elija el tipo de transacción."
 
 msgid "Choose which online block explorer to use for functions that open a web browser"
-msgstr " Elija qué explorador de bloques en línea utilizar para las funciones que abren un navegador web"
+msgstr "Elija qué explorador de bloques en línea utilizar para las funciones que abren un navegador web"
 
 msgid "Choose your chain"
 msgstr "Seleccione su cadena"
@@ -744,7 +720,7 @@ msgid "Copy and Close"
 msgstr "Copiar y cerrar"
 
 msgid "Copy and paste the recipient address using the Paste button, or use the camera to scan a QR code."
-msgstr " Copie y pegue la dirección del destinatario con el botón Pegar o utilice la  cámara para escanear un código QR."
+msgstr "Copie y pegue la dirección del destinatario con el botón Pegar o utilice la  cámara para escanear un código QR."
 
 msgid "Copy to clipboard"
 msgstr "Copiar al portapapeles"
@@ -834,7 +810,7 @@ msgid "Date: {date}"
 msgstr "Fecha: {date}"
 
 msgid "Debug logs can be persisted to disk. These are useful for troubleshooting."
-msgstr " Los registros de depuración se pueden conservar en el disco ya que son útiles para solucionar problemas."
+msgstr "Los registros de depuración se pueden conservar en el disco ya que son útiles para solucionar problemas."
 
 msgid "Debug message"
 msgstr "Mensaje de depuración"
@@ -909,10 +885,10 @@ msgid "Distributed by Electrum Technologies GmbH"
 msgstr "Distribuido por Electrum Technologies GmbH"
 
 msgid "Do not enter sensitive/private information here. The report will be visible on the public issue tracker."
-msgstr " No ingrese aquí información confidencial/privada. El informe será visible  en el rastreador de problemas públicos. "
+msgstr "No ingrese aquí información confidencial/privada. El informe será visible  en el rastreador de problemas públicos. "
 
 msgid "Do not paste code here that you don't understand. Executing the wrong code could lead to your coins being irreversibly lost."
-msgstr " No pegue aquí código que no comprenda. La ejecución de código incorrecto  podría provocar la pérdida irreversible de sus monedas. "
+msgstr "No pegue aquí código que no comprenda. La ejecución de código incorrecto  podría provocar la pérdida irreversible de sus monedas. "
 
 msgid "Do not store it electronically."
 msgstr "No almacenar electrónicamente."
@@ -927,7 +903,7 @@ msgid "Do you want to create a new seed or to restore a wallet using an existing
 msgstr "¿Quiere crear una nueva semilla o restaurar su monedero usando una semilla existente?"
 
 msgid "Do you want to create a new seed, or to restore a wallet using an existing seed?"
-msgstr " ¿Desea crear una nueva semilla o restaurar un monedero usando una  semilla? "
+msgstr "¿Desea crear una nueva semilla o restaurar un monedero usando una  semilla? "
 
 msgid "Do you want to delete '{path}'?"
 msgstr "¿Quiere eliminar '{path}'?"
@@ -963,7 +939,7 @@ msgid "Don't show this again."
 msgstr "No volver a mostrar esto."
 
 msgid "Due to a bug, old versions of Electrum will NOT be creating the same wallet as newer versions or other software."
-msgstr " Debido a un error, las versiones antiguas de Electrum NO crearán el mismo monedero  como versiones más recientes u otro software. "
+msgstr "Debido a un error, las versiones antiguas de Electrum NO crearán el mismo monedero  como versiones más recientes u otro software. "
 
 msgid "Dynamic fee estimates not available"
 msgstr "Estimaciones de tarifas dinámicas no disponibles"
@@ -993,7 +969,7 @@ msgid "Electrum preferences"
 msgstr "Preferencias de Electrum"
 
 msgid "Electrum requests your transaction history from a single server. The returned history is checked against blockchain headers sent by other nodes, using Simple Payment Verification (SPV)."
-msgstr " Electrum solicita su historial de transacciones desde un solo servidor. Los  el historial devuelto se compara con los encabezados de blockchain enviados por otros nodos, mediante la verificación de pago simple (SPV)."
+msgstr "Electrum solicita su historial de transacciones desde un solo servidor. Los  el historial devuelto se compara con los encabezados de blockchain enviados por otros nodos, mediante la verificación de pago simple (SPV)."
 
 msgid "Electrum sends your wallet addresses to a single server, in order to receive your transaction history."
 msgstr " Electrum envía las direcciones de su monedero a un solo servidor, para recibir  su historial de transacciones."
@@ -1242,7 +1218,7 @@ msgid "Expired"
 msgstr "Caducado"
 
 msgid "Expired requests have to be deleted manually from your list, in order to free the corresponding Bitcoin addresses."
-msgstr " Las solicitudes caducadas deben eliminarse manualmente de su lista para  Libera las direcciones Bitcoin correspondientes."
+msgstr "Las solicitudes caducadas deben eliminarse manualmente de su lista para  Libera las direcciones Bitcoin correspondientes."
 
 msgid "Expires"
 msgstr "Caduca"
@@ -1338,7 +1314,7 @@ msgid "Find"
 msgstr "Buscar"
 
 msgid "Firmware version (or \"Bitcoin\" app) too old for Segwit support. Please update at"
-msgstr " La versión de firmware (o la aplicación \"Bitcoin\") es demasiado antigua para el soportar Segwit. Por favor  actualícela en "
+msgstr "La versión de firmware (o la aplicación \"Bitcoin\") es demasiado antigua para el soportar Segwit. Por favor  actualícela en "
 
 msgid "Firmware version too old. Please update at"
 msgstr "La versión del firmware es demasiado antigua. Actualícela en"
@@ -1356,7 +1332,7 @@ msgid "For more information, visit"
 msgstr "Para obtener más información, visite"
 
 msgid "For security reasons we advise that you always use the latest version of Electrum."
-msgstr " Por motivos de seguridad, le recomendamos que utilice siempre la última versión de  Electrum."
+msgstr "Por motivos de seguridad, le recomendamos que utilice siempre la última versión de  Electrum."
 
 msgid "Force-close channel"
 msgstr "Forzar cierre del canal"
@@ -1422,7 +1398,7 @@ msgid "Generate"
 msgstr "Generar"
 
 msgid "Generate an authenticator on Gold Wallet and scan the following QR code: "
-msgstr " Genere un autenticador en Gold Wallet y escanee el siguiente código QR: "
+msgstr "Genere un autenticador en Gold Wallet y escanee el siguiente código QR: "
 
 msgid "Gold Wallet authenticator public key"
 msgstr "Clave pública del autenticador de Gold Wallet"
@@ -1437,7 +1413,7 @@ msgid "Gossip"
 msgstr "Gossip"
 
 msgid "GreenAddress requires your signature \nto verify that transaction is instant.\nPlease enter your password to sign a\nverification request."
-msgstr " GreenAddress requiere su firma \n para verificar que la transacción sea instantánea.\n Introduzca su contraseña para firmar una\n solicitud de verificación "
+msgstr "GreenAddress requiere su firma \n para verificar que la transacción sea instantánea.\n Introduzca su contraseña para firmar una\n solicitud de verificación "
 
 msgid "HTLCs in current commitment transaction"
 msgstr "HTLC en la transacción de compromiso actual"
@@ -1509,10 +1485,10 @@ msgid "If auto-connect is enabled, Electrum will always use a server that is on 
 msgstr " Si la conexión automática está habilitada, Electrum siempre usará un servidor que esté en la  cadena de bloques más larga."
 
 msgid "If enabled, at most 100 satoshis might be lost due to this, per transaction."
-msgstr " Si está habilitada, como máximo se pueden perder 100 satoshis debido a esto, por transacción. "
+msgstr "Si está habilitada, como máximo se pueden perder 100 satoshis debido a esto, por transacción. "
 
 msgid "If it is disabled, you have to choose a server you want to use. Electrum will warn you if your server is lagging."
-msgstr " Si está inhabilitado, debe elegir el servidor que desea utilizar. Electrum  le advertirá si su servidor funciona con lentitud. "
+msgstr "Si está inhabilitado, debe elegir el servidor que desea utilizar. Electrum  le advertirá si su servidor funciona con lentitud. "
 
 msgid "If you are not sure what this is, leave this field unchanged."
 msgstr "Si no está seguro de qué es esto, deje este campo como está."
@@ -1524,22 +1500,22 @@ msgid "If you check this box, your transactions will be marked as non-final,"
 msgstr "Si marca esta casilla, sus transacciones se marcarán como no definitivas"
 
 msgid "If you check this box, your unconfirmed transactions will be consolidated into a single transaction."
-msgstr " Si marca esta casilla, sus transacciones no confirmadas se consolidarán  en una sola transacción. "
+msgstr "Si marca esta casilla, sus transacciones no confirmadas se consolidarán  en una sola transacción. "
 
 msgid "If you do not know what this is, leave this field empty."
 msgstr "Si no sabe qué es esto, deje este campo vacío."
 
 msgid "If you forget your PIN or lose your device, your seed phrase will be the only way to recover your funds."
-msgstr " Si olvida su PIN o pierde su dispositivo, su frase semilla será  la única forma de recuperar sus fondos."
+msgstr "Si olvida su PIN o pierde su dispositivo, su frase semilla será  la única forma de recuperar sus fondos."
 
 msgid "If you have an old printer, or want optimal precision"
 msgstr "Si tiene una impresora antigua o desea una precisión óptima"
 
 msgid "If you have lost your Google Authenticator account, you can request a new secret. You will need to retype your seed."
-msgstr " Si ha perdido su cuenta de Google Authenticator, puede solicitar una nueva secreto. Deberá volver a escribir su semilla. "
+msgstr "Si ha perdido su cuenta de Google Authenticator, puede solicitar una nueva secreto. Deberá volver a escribir su semilla. "
 
 msgid "If you have lost your second factor, you need to restore your wallet from seed in order to request a new code."
-msgstr " Si ha perdido su segundo factor, debe restaurar su monedero desde  semilla para solicitar un nuevo código. "
+msgstr "Si ha perdido su segundo factor, debe restaurar su monedero desde  semilla para solicitar un nuevo código. "
 
 msgid "If you keep experiencing network problems, try using a Tor proxy."
 msgstr "Si sigues experimentando problemas de red, intenta usar un proxy Tor."
@@ -1764,7 +1740,7 @@ msgid "LabelSync"
 msgstr "LabelSync"
 
 msgid "Labels, transactions IDs and addresses are encrypted before they are sent to the remote server."
-msgstr " Las etiquetas, los ID de transacciones y las direcciones se cifran antes de enviarse al  servidor remoto. "
+msgstr "Las etiquetas, los ID de transacciones y las direcciones se cifran antes de enviarse al  servidor remoto. "
 
 msgid "Language"
 msgstr "Idioma"
@@ -1848,7 +1824,7 @@ msgid "Make sure you install it with python3"
 msgstr "Asegúrese de instalarlo con python3"
 
 msgid "Make sure you own the seed phrase or the private keys, before you request Bitcoins to be sent to this wallet."
-msgstr " Asegúrese de ser el propietario de la frase semilla o de las claves privadas antes de solicitar  el envío de Bitcoins a este monedero."
+msgstr "Asegúrese de ser el propietario de la frase semilla o de las claves privadas antes de solicitar  el envío de Bitcoins a este monedero."
 
 msgid "Master Public Key"
 msgstr "Clave pública maestra"
@@ -2043,22 +2019,22 @@ msgid "Note that if you disagree to our Terms & Conditions you won't be able to 
 msgstr "Tenga en cuenta que si no está de acuerdo con nuestros Términos y Condiciones,no podrá utilizar la aplicación Electrum Vault."
 
 msgid "Note that if you have frozen some of your addresses, the available funds will be lower than your total balance."
-msgstr " Tenga en cuenta que si ha congelado algunas de sus direcciones, los fondos disponibles  será menor que su balance total. "
+msgstr "Tenga en cuenta que si ha congelado algunas de sus direcciones, los fondos disponibles  será menor que su balance total. "
 
 msgid "Note that some merchants do not accept non-final transactions until they are confirmed."
-msgstr " Tenga en cuenta que algunos comerciantes no aceptan transacciones no finales hasta que confirmado."
+msgstr "Tenga en cuenta que algunos comerciantes no aceptan transacciones no finales hasta que confirmado."
 
 msgid "Note that this is NOT your encryption password."
 msgstr "Tenga en cuenta que esta NO es su contraseña de cifrado."
 
 msgid "Note that your coins are not locked in this service.  You may withdraw your funds at any time and at no cost, without the remote server, by using the 'restore wallet' option with your wallet seed."
-msgstr " Tenga en cuenta que sus monedas no están bloqueadas en este servicio. Puede retirar sus  fondos en cualquier momento y sin costo, sin el servidor remoto, usando el  Opción 'restaurar monedero' con la semilla de su monedero. "
+msgstr "Tenga en cuenta que sus monedas no están bloqueadas en este servicio. Puede retirar sus  fondos en cualquier momento y sin costo, sin el servidor remoto, usando el  Opción 'restaurar monedero' con la semilla de su monedero. "
 
 msgid "Note: If you enable this setting, you will need your hardware device to open your wallet."
-msgstr " Nota: si habilita esta configuración, necesitará que su dispositivo de hardware se abra  tu monedero. "
+msgstr "Nota: si habilita esta configuración, necesitará que su dispositivo de hardware se abra  tu monedero. "
 
 msgid "Note: this is an offline transaction, if you want the network to see it, you need to broadcast it."
-msgstr " Nota: esta es una transacción fuera de línea, si desea que la red la vea,  Necesito transmitirlo. "
+msgstr "Nota: esta es una transacción fuera de línea, si desea que la red la vea,  Necesito transmitirlo. "
 
 msgid "Nothing set !"
 msgstr "¡Nada establecido!"
@@ -2076,7 +2052,7 @@ msgid "Notifications"
 msgstr "Notificaciones "
 
 msgid "Number of zeros displayed after the decimal point. For example, if this is set to 2, \"1.\" will be displayed as \"1.00\""
-msgstr " Número de ceros que se muestran después del punto decimal. Por ejemplo, si es  establecido en 2, \"1.\" se mostrará como \"1.00 \""
+msgstr "Número de ceros que se muestran después del punto decimal. Por ejemplo, si es  establecido en 2, \"1.\" se mostrará como \"1.00 \""
 
 msgid "OK"
 msgstr "OKAY"
@@ -2289,16 +2265,16 @@ msgid "Please insert your {device}"
 msgstr "Inserta tu {device}"
 
 msgid "Please paste a Cancel Transaction Key. Use an existing one, if you are importing a wallet, or generate a new one at"
-msgstr " Pegue una Clave de Transacción de Cancelación. Utilice una existente, si  está importando un monedero o genera uno nuevo en "
+msgstr "Pegue una Clave de Transacción de Cancelación. Utilice una existente, si  está importando un monedero o genera uno nuevo en "
 
 msgid "Please paste a Fast Transaction Key. Use an existing one, if you are importing a wallet, or generate a new one at"
-msgstr " Pegue una Clave de Transacción Rápida. Utilice uno existente, si  está importando un monedero o genera uno nuevo en "
+msgstr "Pegue una Clave de Transacción Rápida. Utilice uno existente, si  está importando un monedero o genera uno nuevo en "
 
 msgid "Please paste authenticator public key exported from your Gold Wallet application"
-msgstr " Pegue la clave pública del autenticador exportada desde su Gold Wallet solicitud"
+msgstr "Pegue la clave pública del autenticador exportada desde su Gold Wallet solicitud"
 
 msgid "Please paste your cosigners master public key, or scan it using the camera button."
-msgstr " Pegue la clave pública maestra de sus cosignatarios o escanee con la cámara botón."
+msgstr "Pegue la clave pública maestra de sus cosignatarios o escanee con la cámara botón."
 
 msgid "Please report any bugs as issues on github:<br/>"
 msgstr "Informe cualquier error como problema en github: <br/>"
@@ -2988,10 +2964,10 @@ msgid "The amount of fee can be decided freely by the sender. However, transacti
 msgstr " El remitente puede decidir libremente el importe de la tarifa. Sin embargo, las transacciones  con tarifas bajas toma más tiempo para ser procesado. "
 
 msgid "The amount will be displayed in red if you do not have enough funds in your wallet."
-msgstr " La cantidad se mostrará en rojo si no tiene fondos suficientes en su monedero."
+msgstr "La cantidad se mostrará en rojo si no tiene fondos suficientes en su monedero."
 
 msgid "The bitcoin address never expires and will always be part of this electrum wallet."
-msgstr " La dirección de bitcoin nunca caduca y siempre será parte de este electrum monedero."
+msgstr "La dirección de bitcoin nunca caduca y siempre será parte de este electrum monedero."
 
 msgid "The description is not sent to the recipient of the funds. It is stored in your wallet file, and displayed in the 'History' tab."
 msgstr " La descripción no se envía al destinatario de los fondos. Se almacena en  su archivo de monedero, y se muestra en la pestaña 'Historial'. "
@@ -3003,7 +2979,7 @@ msgid "The fee for this transaction seems unusually high."
 msgstr "La tarifa por esta transacción parece inusualmente alta."
 
 msgid "The file '{path}' contains an incompletely created wallet.\nDo you want to complete its creation now?"
-msgstr " El archivo '{path}' contiene un monedero creado de manera incompleta. \n ¿Quiere completar su creación ahora? "
+msgstr "El archivo '{path}' contiene un monedero creado de manera incompleta. \n ¿Quiere completar su creación ahora? "
 
 msgid "The file was removed"
 msgstr "El archivo fue eliminado"
@@ -3036,10 +3012,10 @@ msgid "The server returned an error."
 msgstr "El servidor devolvió un error."
 
 msgid "The server returned an unexpected transaction ID when broadcasting the transaction."
-msgstr " El servidor devolvió un ID de transacción inesperado al transmitir el transacción."
+msgstr "El servidor devolvió un ID de transacción inesperado al transmitir el transacción."
 
 msgid "The transaction was rejected because it contains multiple OP_RETURN outputs."
-msgstr " La transacción fue rechazada porque contiene múltiples salidas OP_RETURN. "
+msgstr "La transacción fue rechazada porque contiene múltiples salidas OP_RETURN. "
 
 msgid "The transaction was rejected because it is too large (in bytes)."
 msgstr "La transacción fue rechazada porque es demasiado grande (en bytes)."
@@ -3066,7 +3042,7 @@ msgid "This address has already been used. For better privacy, do not reuse it f
 msgstr " Esta dirección ya se ha utilizado. Para una mejor privacidad, no lo reutilice para  nuevos pagos."
 
 msgid "This blockchain is used to verify the transactions sent by your transaction server."
-msgstr " Esta cadena de bloques se utiliza para verificar las transacciones enviadas por su transacción servidor."
+msgstr "Esta cadena de bloques se utiliza para verificar las transacciones enviadas por su transacción servidor."
 
 msgid "This channel will be usable after {number} confirmations"
 msgstr "Este canal se podrá utilizar después de {number} confirmaciones"
@@ -3090,10 +3066,10 @@ msgid "This file is encrypted with a password."
 msgstr "Este archivo está cifrado con una contraseña."
 
 msgid "This function is only available for standard wallets when using {device}."
-msgstr " Esta función solo está disponible para monederos standard cuando se usa {device}."
+msgstr "Esta función solo está disponible para monederos standard cuando se usa {device}."
 
 msgid "This information is seen by the recipient if you send them a signed payment request."
-msgstr " El destinatario puede ver esta información si le envía un pago firmado solicitud."
+msgstr "El destinatario puede ver esta información si le envía un pago firmado solicitud."
 
 msgid "This invoice has been paid already"
 msgstr "Esta factura ya se pagó"
@@ -3165,7 +3141,7 @@ msgid "This wallet has no seed"
 msgstr "Este monedero no tiene semilla"
 
 msgid "This wallet is already registered with TrustedCoin. To finalize wallet creation, please enter your Google Authenticator Code."
-msgstr " Este monedero ya está registrada con TrustedCoin. Para finalizar la creación de su monedero,  ingrese su código de autenticación de Google."
+msgstr "Este monedero ya está registrada con TrustedCoin. Para finalizar la creación de su monedero,  ingrese su código de autenticación de Google."
 
 msgid "This wallet is protected by TrustedCoin's two-factor authentication."
 msgstr "Este monedero está protegida por la autenticación de dos factores de TrustedCoin."
@@ -3207,7 +3183,7 @@ msgid "To help us diagnose and fix the problem, you can send us a bug report tha
 msgstr " Para ayudarnos a diagnosticar y solucionar el problema, puede enviarnos un informe de error que  contenga información útil para la depuración:"
 
 msgid "To make sure that you have properly saved your seed, please retype it here."
-msgstr " Para asegurarse de que ha guardado correctamente su semilla, vuelva a escribirla aquí."
+msgstr "Para asegurarse de que ha guardado correctamente su semilla, vuelva a escribirla aquí."
 
 msgid "To setup a local watchtower, you must run Electrum on a machine\nthat is always connected to the internet. Configure a port if you want it to be public."
 msgstr "Para configurar una atalaya local, debe ejecutar Electrum en una máquina \nque siempre está conectado a Internet. Configure un puerto si lo desea ser público. "
@@ -3321,10 +3297,10 @@ msgid "Two Factor Authentication"
 msgstr "Autenticación de dos factores"
 
 msgid "Two-factor authentication is a service provided by TrustedCoin.  It uses a multi-signature wallet, where you own 2 of 3 keys.  The third key is stored on a remote server that signs transactions on your behalf.  To use this service, you will need a smartphone with Google Authenticator installed."
-msgstr " La autenticación de dos factores es un servicio proporcionado por TrustedCoin. Utilice un monedero multi-firma , en el que posee 2 de 3 claves. La tercera clave se almacena  en un servidor remoto que firma transacciones en su nombre. Para usar éste , necesitará un teléfono inteligente con Google Authenticator instalado. "
+msgstr "La autenticación de dos factores es un servicio proporcionado por TrustedCoin. Utilice un monedero multi-firma , en el que posee 2 de 3 claves. La tercera clave se almacena  en un servidor remoto que firma transacciones en su nombre. Para usar éste , necesitará un teléfono inteligente con Google Authenticator instalado. "
 
 msgid "Two-factor authentication is a service provided by TrustedCoin. To use it, you must have a separate device with Google Authenticator."
-msgstr " La autenticación de dos factores es un servicio proporcionado por TrustedCoin. Para usarlo,  debe tener un dispositivo independiente con Google Authenticator. "
+msgstr "La autenticación de dos factores es un servicio proporcionado por TrustedCoin. Para usarlo,  debe tener un dispositivo independiente con Google Authenticator. "
 
 msgid "Tx"
 msgstr "Tx"
@@ -3471,7 +3447,7 @@ msgid "Uses icons from the Icons8 icon pack (icons8.com)."
 msgstr "Utiliza iconos del paquete de iconos Icons8 (icons8.com)."
 
 msgid "Using change addresses makes it more difficult for other people to track your transactions."
-msgstr " El uso de direcciones de cambio dificulta el seguimiento de otras personas  sus transacciones. "
+msgstr "El uso de direcciones de cambio dificulta el seguimiento de otras personas  sus transacciones. "
 
 msgid "Value"
 msgstr "Valor"
@@ -3492,10 +3468,10 @@ msgid "Verify GA instant"
 msgstr "Verificar GA instantáneo"
 
 msgid "Verify the address below.<br>Type the character from your security card corresponding to the <u><b>BOLD</b></u> character."
-msgstr " Verifique la dirección a continuación. <br> Escriba el carácter de su tarjeta de seguridad  correspondiente al carácter <u><b>BOLD</b> </u>. "
+msgstr "Verifique la dirección a continuación. <br> Escriba el carácter de su tarjeta de seguridad  correspondiente al carácter <u><b>BOLD</b> </u>. "
 
 msgid "Verify the cable is connected and that no other application is using it."
-msgstr " Verifique que el cable esté conectado y que ninguna otra aplicación lo esté utilizando."
+msgstr "Verifique que el cable esté conectado y que ninguna otra aplicación lo esté utilizando."
 
 msgid "Verifying..."
 msgstr "Verificando ..."
@@ -3528,7 +3504,7 @@ msgid "WARNING: This is a multi-signature wallet."
 msgstr "ADVERTENCIA: Este es un monedero multi firma."
 
 msgid "WARNING: the alias \"{alias}\" could not be validated via an additional security check, DNSSEC, and thus may not be correct."
-msgstr " ADVERTENCIA: el alias \"{alias}\" no se pudo validar mediante un adicional  control de seguridad, DNSSEC, y por lo tanto puede no ser correcto. "
+msgstr "ADVERTENCIA: el alias \"{alias}\" no se pudo validar mediante un adicional  control de seguridad, DNSSEC, y por lo tanto puede no ser correcto. "
 
 msgid "WIF keys are typed in Electrum, based on script type."
 msgstr "Las claves WIF se escriben en Electrum, según el tipo de script."
@@ -3555,7 +3531,7 @@ msgid "Wallet change address"
 msgstr "Cambiar dirección del monedero"
 
 msgid "Wallet file corruption detected. Please restore your wallet from seed, and compare the addresses in both files"
-msgstr " Detectado daño en el archivo del monedero. Restaure su monedero desde la semilla y  comparar las direcciones en ambos archivos "
+msgstr "Detectado daño en el archivo del monedero. Restaure su monedero desde la semilla y  comparar las direcciones en ambos archivos "
 
 msgid "Wallet file not found: {name}"
 msgstr "No se encontró el archivo de Wallet: {name}"
@@ -3600,7 +3576,7 @@ msgid "We encountered an error while connecting to your device:"
 msgstr "Encontramos un error al conectarnos a su dispositivo:"
 
 msgid "While this is less than ideal, it might help if you run Electrum as Administrator."
-msgstr " Si bien esto es menos que ideal, podría ayudar si ejecuta Electrum como Administrador."
+msgstr "Si bien esto es menos que ideal, podría ayudar si ejecuta Electrum como Administrador."
 
 msgid "Within {number} blocks"
 msgstr "Dentro de {number} bloques"
@@ -3651,7 +3627,7 @@ msgid "You are using Electrum in offline mode; restart Electrum if you want to g
 msgstr " Está utilizando Electrum en modo fuera de línea; reinicie Electrum si desea obtener conectado"
 
 msgid "You are using a non-deterministic wallet, which cannot create new addresses."
-msgstr " Está utilizando un monedero no determinista, que no puede crear nuevas direcciones. "
+msgstr "Está utilizando un monedero no determinista, que no puede crear nuevas direcciones. "
 
 msgid "You can change your email. It is used to send you transaction notifications from chosen wallet."
 msgstr "Puede cambiar su dirección de correo electrónico. Se utiliza para enviarle notificaciones de transacciones de los monederos elegidos."
@@ -3669,7 +3645,7 @@ msgid "You can't broadcast a transaction without a live network connection."
 msgstr "No se puede transmitir una transacción sin una conexión de red en vivo."
 
 msgid "You do not need to perform regular backups, because your wallet can be recovered from a secret phrase that you can memorize or write on paper."
-msgstr " No es necesario realizar copias de seguridad periódicas, porque su monedero puede ser  recuperado de una frase secreta que puede memorizar o escribir en papel. "
+msgstr "No es necesario realizar copias de seguridad periódicas, porque su monedero puede ser  recuperado de una frase secreta que puede memorizar o escribir en papel. "
 
 msgid "You have entered an invalid code 3 times. We have sent new code to your email address."
 msgstr "Ha introducido un código no válido 3 veces. Hemos enviado un nuevo código a su dirección de correo electrónico."
@@ -3699,10 +3675,10 @@ msgid "You might have an incompatible library."
 msgstr "Es posible que tenga una biblioteca no compatible."
 
 msgid "You need to be online in order to complete the creation of your wallet.  If you generated your seed on an offline computer, click on \"{button}\" to close this window, move your wallet file to an online computer, and reopen it with Electrum."
-msgstr " Debe estar en línea para completar la creación de su monedero. Si  generó su semilla en una computadora sin conexión, haga clic en \" {button} \" para  cerrar esta ventana, mueva el archivo de su monedero a una computadora en línea y vuelva a abrir  Con Electrum. "
+msgstr "Debe estar en línea para completar la creación de su monedero. Si  generó su semilla en una computadora sin conexión, haga clic en \" {button} \" para  cerrar esta ventana, mueva el archivo de su monedero a una computadora en línea y vuelva a abrir  Con Electrum. "
 
 msgid "Your Ledger Wallet wants to tell you a one-time PIN code.<br><br>For best security you should unplug your device, open a text editor on another computer, put your cursor into it, and plug your device into that computer. It will output a summary of the transaction being signed and a one-time PIN.<br><br>Verify the transaction summary and type the PIN code here.<br><br>Before pressing enter, plug the device back into this computer.<br>"
-msgstr " Su monedero Ledger quiere indicarle un código PIN único.<br><br> Para mayor  seguridad, debe desconectar su dispositivo, abrir un editor de texto en otro  ordenador, coloque el cursor en éste y conecte su dispositivo a ese ordenador. Aparecerá un resumen de la transacción que se estará firmando y un PIN de un solo uso. <br><br> Verifique el resumen de la transacción y escriba el código PIN aquí. <br><br> Antes de presionar Intro, vuelva a conectar el dispositivo a este ordenador.<br> "
+msgstr "Su monedero Ledger quiere indicarle un código PIN único.<br><br> Para mayor  seguridad, debe desconectar su dispositivo, abrir un editor de texto en otro  ordenador, coloque el cursor en éste y conecte su dispositivo a ese ordenador. Aparecerá un resumen de la transacción que se estará firmando y un PIN de un solo uso. <br><br> Verifique el resumen de la transacción y escriba el código PIN aquí. <br><br> Antes de presionar Intro, vuelva a conectar el dispositivo a este ordenador.<br> "
 
 msgid "Your Ledger is locked. Please unlock it."
 msgstr "Su Ledger está bloqueado. Desbloquéelo."
@@ -3717,7 +3693,7 @@ msgid "Your accounts have been moved to"
 msgstr "Sus cuentas se han movido a"
 
 msgid "Your bitcoins are password protected. However, your wallet file is not encrypted."
-msgstr " Sus bitcoins están protegidos con contraseña. Sin embargo, su archivo de monedero no es cifrado."
+msgstr "Sus bitcoins están protegidos con contraseña. Sin embargo, su archivo de monedero no es cifrado."
 
 msgid "Your device might not have support for this functionality."
 msgstr "Es posible que su dispositivo no sea compatible con esta función."
@@ -3822,7 +3798,7 @@ msgid "address already in wallet"
 msgstr "dirección ya existe en el monedero"
 
 msgid "and you will have the possibility, while they are unconfirmed, to replace them with transactions that pay higher fees."
-msgstr " y tendrá la posibilidad, mientras no estén confirmados, de reemplazarlos  por transacciones que pagan tarifas más altas."
+msgstr "y tendrá la posibilidad, mientras no estén confirmados, de reemplazarlos  por transacciones que pagan tarifas más altas."
 
 msgid "are frozen"
 msgstr "Están congelados"
@@ -3962,15 +3938,6 @@ msgstr "{wallet_seed} cifrado para revelador {version}_{checksum} guardado como 
 msgid "A mobile wallet for BTCV. You can pair it with Electrum Vault and use it to authorize transactions to additionally secure your funds."
 msgstr "Un monedero móvil para BTCV. Puede emparejarlo con Electrum Vault y usarlo para autorizar transacciones para asegurar adicionalmente sus fondos."
 
-msgid "Allows users to make Secure Fast, Secure, and Cancel transactions."
-msgstr "Permite a los usuarios realizar transacciones Rápidas, Seguras y de Cancelación."
-
-msgid "Allows users to make Secure and Cancel transactions."
-msgstr "Permite a los usuarios realizar transacciones Seguras y de Cancelación."
-
-msgid "Allows users to make Standard transactions."
-msgstr "Permite a los usuarios realizar transacciones Estándar."
-
 msgid "Alternatively"
 msgstr "Alternativamente"
 
@@ -4014,4 +3981,19 @@ msgid "Read more"
 msgstr "Leer más"
 
 msgid "You may enter a Bitcoin Vault address, a label from your list of contacts (a list of completions will be proposed), or an alias (email-like address that forwards to a Bitcoin Vault address)"
-msgstr " Puede ingresar una dirección de Bitcoin Vault, una etiqueta de su lista de contactos (se propondrá una lista  de finalizaciones), o un alias (dirección de correo electrónico que  redirige a una dirección de Bitcoin Vault) "
+msgstr "Puede ingresar una dirección de Bitcoin Vault, una etiqueta de su lista de contactos (se propondrá una lista  de finalizaciones), o un alias (dirección de correo electrónico que  redirige a una dirección de Bitcoin Vault) "
+
+msgid "Allows users to make Secure and Cancel transactions, just like in the 2-Key Vault wallet. But it also adds the possibility to perform quick Secure Fast transactions. These transfers are confirmed in approximately 10 minutes and can’t be reversed. All three transactions require unique keys to be performed."
+msgstr "Permite a los usuarios realizar transacciones Seguras y de Cancelación, al igual que en el monedero 2-Key Vault. Pero también añade la posibilidad de realizar transacciones rápidas Secure Fast. Estas transferencias se confirman en aproximadamente 10 minutos y no pueden ser revertidas. Las tres transacciones requieren claves únicas para ser realizadas."
+
+msgid "Allows users to make Secure and Cancel transactions. Secure transactions are by default delayed by 144 blocks, which means approximately 24 hours. This gives users enough time to perform a Cancel transaction and reverse the transfer before it is confirmed on the blockchain in case of a hack or technical issue. Both transactions are secured with unique keys."
+msgstr "Permite a los usuarios realizar transacciones Seguras y de Cancelación. Las transacciones seguras se retrasan por defecto 144 bloques, lo que significa aproximadamente 24 horas. Esto da a los usuarios tiempo suficiente para realizar una transacción de Cancelación y revertir la transferencia antes de que se confirme en la blockchain en caso de un hackeo o un problema técnico. Ambas transacciones están aseguradas con claves únicas."
+
+msgid "Allows users to make Standard transactions secured with one key."
+msgstr "Permite a los usuarios realizar transacciones estándar de forma segura con una sola clave."
+
+msgid "Authenticator public key"
+msgstr "Clave pública del autentificador"
+
+msgid "Seed phrase"
+msgstr "Frase semilla"
