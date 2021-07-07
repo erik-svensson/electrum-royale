@@ -47,9 +47,6 @@ msgstr "导出"
 msgid "&File"
 msgstr "&文档"
 
-msgid "&Filter"
-msgstr "&筛选"
-
 msgid "&From QR code"
 msgstr "&来自QR二维码"
 
@@ -65,26 +62,17 @@ msgstr "&来自区块链"
 msgid "&Help"
 msgstr "&帮助"
 
-msgid "&History"
-msgstr "&历史记录"
-
 msgid "&Import"
 msgstr "&导入"
 
 msgid "&Information"
 msgstr "&信息"
 
-msgid "&Labels"
-msgstr "&标签"
-
 msgid "&Load transaction"
 msgstr "&加载交易"
 
 msgid "&Network"
 msgstr "&网络"
-
-msgid "&New"
-msgstr "&新启"
 
 msgid "&New/Restore"
 msgstr "&新启/恢复"
@@ -101,12 +89,6 @@ msgstr "&打开"
 msgid "&Password"
 msgstr "&密码"
 
-msgid "&Pay to many"
-msgstr "&多次支付"
-
-msgid "&Plot"
-msgstr "&情节"
-
 msgid "&Plugins"
 msgstr "&插件"
 
@@ -122,17 +104,11 @@ msgstr "&最近打开过"
 msgid "&Report Bug"
 msgstr "&软件缺陷报告"
 
-msgid "&Save Copy"
-msgstr "&保存 粘贴"
-
 msgid "&Seed"
 msgstr "&种子"
 
 msgid "&Sign/verify message"
 msgstr "&注册/确认信息"
-
-msgid "&Summary"
-msgstr "&总结"
 
 msgid "&Sweep"
 msgstr "&清除"
@@ -357,10 +333,10 @@ msgid "BIP39 seed"
 msgstr "BIP39 种子短语"
 
 msgid "BIP39 seeds can be imported in Electrum, so that users can access funds locked in other wallets."
-msgstr " BIP39种子可以被导入Electrum中，以便用户可以获得锁定在其他钱包中的资金"
+msgstr "BIP39种子可以被导入Electrum中，以便用户可以获得锁定在其他钱包中的资金"
 
 msgid "BIP70 Invoice"
-msgstr " BIP70发票"
+msgstr "BIP70发票"
 
 msgid "Back"
 msgstr "返回"
@@ -417,10 +393,10 @@ msgid "Bump fee"
 msgstr "Bump Fee"
 
 msgid "CLTV expiry"
-msgstr " CLTV到期"
+msgstr "CLTV到期"
 
 msgid "CSV"
-msgstr " CSV"
+msgstr "CSV"
 
 msgid "Calibration sheet"
 msgstr "校准表单"
@@ -891,7 +867,7 @@ msgid "Device not in Bitcoin mode"
 msgstr "设备不在比特币模式下"
 
 msgid "Digital Revealer ({version}_{code_id}) saved as PNG and PDF at:"
-msgstr " Digital Revealer（{version} _ {code_id}）在以下位置另存为PNG和PDF："
+msgstr "Digital Revealer（{version} _ {code_id}）在以下位置另存为PNG和PDF："
 
 msgid "Disable LN"
 msgstr "禁用LN"
@@ -987,13 +963,13 @@ msgid "Electrum communicates with remote servers to get information about your t
 msgstr "Electrum 与远程服务器通信，以获取您交易和地址的信息。所有服务器都实现相同的目的，只是硬件有所不同。在大多数情况下，您可让 Electrum 随机选择一个。但是，如果您愿意，可以随时手动选择服务器。"
 
 msgid "Electrum connects to several nodes in order to download block headers and find out the longest blockchain."
-msgstr " Electrum连接到多个节点，以便下载区块头并找出最长的区块链。"
+msgstr "Electrum连接到多个节点，以便下载区块头并找出最长的区块链。"
 
 msgid "Electrum preferences"
 msgstr "Electrum偏好"
 
 msgid "Electrum requests your transaction history from a single server. The returned history is checked against blockchain headers sent by other nodes, using Simple Payment Verification (SPV)."
-msgstr " Electrum从单个服务器请求您的交易历史记录。使用简单付款验证（SPV），对照其他节点发送的区块链标头检查返回的历史记录。"
+msgstr "Electrum从单个服务器请求您的交易历史记录。使用简单付款验证（SPV），对照其他节点发送的区块链标头检查返回的历史记录。"
 
 msgid "Electrum sends your wallet addresses to a single server, in order to receive your transaction history."
 msgstr " Electrum将您的钱包地址发送到一台服务器，以便接收您的交易历史记录。"
@@ -1431,7 +1407,7 @@ msgid "Gold Wallet seed"
 msgstr "Gold Wallet 种子短语"
 
 msgid "Google Authenticator code:"
-msgstr " Google身份验证器码："
+msgstr "Google身份验证器码："
 
 msgid "Gossip"
 msgstr "Gossip"
@@ -1794,7 +1770,7 @@ msgid "Legacy 2FA"
 msgstr "Legacy 2FA"
 
 msgid "Library version for '{name}' is incompatible."
-msgstr " '{name}'的程序库版本不能共存."
+msgstr "'{name}'的程序库版本不能共存."
 
 msgid "Licence"
 msgstr "许可证"
@@ -3093,7 +3069,7 @@ msgid "This function is only available for standard wallets when using {device}.
 msgstr "在使用{device}时，此功能仅适用于Standard钱包"
 
 msgid "This information is seen by the recipient if you send them a signed payment request."
-msgstr " 如果您向他们发送已签名的付款请求，收件人将看到此信息"
+msgstr "如果您向他们发送已签名的付款请求，收件人将看到此信息"
 
 msgid "This invoice has been paid already"
 msgstr "此发票已付清"
@@ -3210,7 +3186,7 @@ msgid "To make sure that you have properly saved your seed, please retype it her
 msgstr "为确保您已正确保存种子，请在此处重新输入"
 
 msgid "To setup a local watchtower, you must run Electrum on a machine\nthat is always connected to the internet. Configure a port if you want it to be public."
-msgstr " 要设置本地观望塔，必须在计算机上运行Electrum \n该计算机应始终连接到互联网， 如果要使其公开，请配置端口。"
+msgstr "要设置本地观望塔，必须在计算机上运行Electrum \n该计算机应始终连接到互联网， 如果要使其公开，请配置端口。"
 
 msgid "To somewhat protect your privacy, Electrum tries to create change with similar precision to other outputs."
 msgstr "为保护您的隐私，Electrum尝试以与其他输出类似的精度来创建变更。"
@@ -3615,7 +3591,7 @@ msgid "Write logs to file"
 msgstr "将日志写入文件"
 
 msgid "Wrong PIN"
-msgstr " PIN码错误"
+msgstr "PIN码错误"
 
 msgid "Wrong key type"
 msgstr "密钥类型错误"
@@ -3962,15 +3938,6 @@ msgstr "{wallet_seed}为Revealer {version}_{checksum}加密，保存为PNG和PDF
 msgid "A mobile wallet for BTCV. You can pair it with Electrum Vault and use it to authorize transactions to additionally secure your funds."
 msgstr "BTCV 的移动钱包。 您可以将其与 Electrum Vault 配对并使用它来授权交易以额外保护您的资金。 "
 
-msgid "Allows users to make Secure Fast, Secure, and Cancel transactions."
-msgstr "允许用户进行安全快速交易、安全交易和取消交易。 "
-
-msgid "Allows users to make Secure and Cancel transactions."
-msgstr "允许用户进行安全交易和取消交易。"
-
-msgid "Allows users to make Standard transactions."
-msgstr "允许用户进行标准交易。"
-
 msgid "Alternatively"
 msgstr "或者"
 
@@ -4015,3 +3982,18 @@ msgstr "阅读更多"
 
 msgid "You may enter a Bitcoin Vault address, a label from your list of contacts (a list of completions will be proposed), or an alias (email-like address that forwards to a Bitcoin Vault address)"
 msgstr "您可以输入 Bitcoin Vault 地址，输入联系人列表中的标签（将显示完整的列表），或输入别名（类似于可以转发到 Bitcoin Vault 地址的电子邮件地址）"
+
+msgid "Allows users to make Secure and Cancel transactions, just like in the 2-Key Vault wallet. But it also adds the possibility to perform quick Secure Fast transactions. These transfers are confirmed in approximately 10 minutes and can’t be reversed. All three transactions require unique keys to be performed."
+msgstr "允许用户执行安全和取消交易，就像在 2-Key Vault 钱包中一样。 同时，它还添加了执行安全快速交易的选项。 转账会在大约 10 分钟内得到确认，且无法撤消。 这三种交易类型都需要唯一的密钥来执行。"
+
+msgid "Allows users to make Secure and Cancel transactions. Secure transactions are by default delayed by 144 blocks, which means approximately 24 hours. This gives users enough time to perform a Cancel transaction and reverse the transfer before it is confirmed on the blockchain in case of a hack or technical issue. Both transactions are secured with unique keys."
+msgstr "允许用户进行安全和取消交易。 默认情况下，安全交易会延迟 144 个区块，这意味着延迟大约 为24 小时。这为用户提供了足够的时间来执行取消交易，并可以在黑客攻击或出现技术问题时，当交易在区块链上确认之前撤销转账。 两个交易都使用唯一的密钥进行保护。"
+
+msgid "Allows users to make Standard transactions secured with one key."
+msgstr "允许用户使用一键保护标准交易。 "
+
+msgid "Authenticator public key"
+msgstr "认证器公钥"
+
+msgid "Seed phrase"
+msgstr "密语种子"

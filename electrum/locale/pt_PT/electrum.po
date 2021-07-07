@@ -47,9 +47,6 @@ msgstr "&Exportar"
 msgid "&File"
 msgstr "&Ficheiro"
 
-msgid "&Filter"
-msgstr "&Filtro"
-
 msgid "&From QR code"
 msgstr "&Através do Qr Code"
 
@@ -65,26 +62,17 @@ msgstr "&Através do Blockchain"
 msgid "&Help"
 msgstr "&Ajuda"
 
-msgid "&History"
-msgstr "&Historia"
-
 msgid "&Import"
 msgstr "&Importar"
 
 msgid "&Information"
 msgstr "&Informação"
 
-msgid "&Labels"
-msgstr "&Etiquetas"
-
 msgid "&Load transaction"
 msgstr "&Transação em procedimento"
 
 msgid "&Network"
 msgstr "&Rede"
-
-msgid "&New"
-msgstr "&Novo"
 
 msgid "&New/Restore"
 msgstr "&Novo / Restaurar"
@@ -101,12 +89,6 @@ msgstr "&Abrir"
 msgid "&Password"
 msgstr "&Palavra-passe"
 
-msgid "&Pay to many"
-msgstr "&Pague a vários"
-
-msgid "&Plot"
-msgstr "&traçar"
-
 msgid "&Plugins"
 msgstr "&Complementos"
 
@@ -122,17 +104,11 @@ msgstr "&Aberto recentemente"
 msgid "&Report Bug"
 msgstr "&Reportar bug"
 
-msgid "&Save Copy"
-msgstr "&Salvar cópia"
-
 msgid "&Seed"
 msgstr "&Semente"
 
 msgid "&Sign/verify message"
 msgstr "&Assinar / verificar mensagem"
-
-msgid "&Summary"
-msgstr "&Resumo"
 
 msgid "&Sweep"
 msgstr "&Varrer"
@@ -1494,7 +1470,7 @@ msgid "I agree"
 msgstr "Eu concordo"
 
 msgid "I already have a seed"
-msgstr " Já tenho uma semente"
+msgstr "Já tenho uma semente"
 
 msgid "I disagree"
 msgstr "Eu discordo"
@@ -2298,7 +2274,7 @@ msgid "Please paste authenticator public key exported from your Gold Wallet appl
 msgstr "Por favor, cole a chave pública do autenticador exportada da sua aplicação Gold Wallet"
 
 msgid "Please paste your cosigners master public key, or scan it using the camera button."
-msgstr " Por favor, cole a chave pública mestra do fiador ou digitalize-a usando o botão da câmera."
+msgstr "Por favor, cole a chave pública mestra do fiador ou digitalize-a usando o botão da câmera."
 
 msgid "Please report any bugs as issues on github:<br/>"
 msgstr "Por favor, reporte quaisquer bugs como problemas no github: <br/>"
@@ -2988,7 +2964,7 @@ msgid "The amount of fee can be decided freely by the sender. However, transacti
 msgstr "O valor da taxa pode ser decidido livremente pelo remetente. No entanto,para transações com taxas baixas leva mais tempo a ser processado."
 
 msgid "The amount will be displayed in red if you do not have enough funds in your wallet."
-msgstr " O valor será exibido em vermelho se você não tiver fundos suficientes na sua carteira."
+msgstr "O valor será exibido em vermelho se você não tiver fundos suficientes na sua carteira."
 
 msgid "The bitcoin address never expires and will always be part of this electrum wallet."
 msgstr "O endereço bitcoin nunca expira e sempre fará parte desta carteira electum."
@@ -3036,7 +3012,7 @@ msgid "The server returned an error."
 msgstr "O servidor retornou um erro."
 
 msgid "The server returned an unexpected transaction ID when broadcasting the transaction."
-msgstr "  O servidor retornou um ID de transação inesperado ao transmitir a transação."
+msgstr "O servidor retornou um ID de transação inesperado ao transmitir a transação."
 
 msgid "The transaction was rejected because it contains multiple OP_RETURN outputs."
 msgstr "A transação foi rejeitada porque contém várias saídas OP_RETURN."
@@ -3699,7 +3675,7 @@ msgid "You might have an incompatible library."
 msgstr "Você pode ter uma biblioteca incompatível."
 
 msgid "You need to be online in order to complete the creation of your wallet.  If you generated your seed on an offline computer, click on \"{button}\" to close this window, move your wallet file to an online computer, and reopen it with Electrum."
-msgstr " Precisa estar conectado para concluir a criação da sua carteira. Se criar a sua semente num computador offline, clique em \" {button} \" para fechar esta janela, mova o seu arquivo de carteira para um computador online e reabra com Electrum."
+msgstr "Precisa estar conectado para concluir a criação da sua carteira. Se criar a sua semente num computador offline, clique em \"{button}\" para fechar esta janela, mova o seu arquivo de carteira para um computador online e reabra com Electrum."
 
 msgid "Your Ledger Wallet wants to tell you a one-time PIN code.<br><br>For best security you should unplug your device, open a text editor on another computer, put your cursor into it, and plug your device into that computer. It will output a summary of the transaction being signed and a one-time PIN.<br><br>Verify the transaction summary and type the PIN code here.<br><br>Before pressing enter, plug the device back into this computer.<br>"
 msgstr "A sua carteira de contabilidade deseja informar um código PIN único. <br> <br> Para o melhor segurança você deve desligar o seu dispositivo, abrir um editor de texto em outro computador, coloque o cursor nele e conecte o dispositivo a esse computador. Ele irá gerar um resumo da transação sendo assinada e um PIN único.<br> <br> Verifique o resumo da transação e digite o código PIN aqui.<br> <br> Antes de pressionar Enter, conecte o dispositivo novamente a este computador. <br>"
@@ -3720,7 +3696,7 @@ msgid "Your bitcoins are password protected. However, your wallet file is not en
 msgstr "Os seus bitcoins são protegidos por palavra-passe. No entanto, o seu arquivo de carteira não écriptografado."
 
 msgid "Your device might not have support for this functionality."
-msgstr " O seu dispositivo pode não ter suporte para esta funcionalidade."
+msgstr "O seu dispositivo pode não ter suporte para esta funcionalidade."
 
 msgid "Your labels have been synchronised."
 msgstr "Os seus marcadores foram sincronizados."
@@ -3962,15 +3938,6 @@ msgstr "{wallet_seed} criptografado para Revealer {version}_{checksum} salvo com
 msgid "A mobile wallet for BTCV. You can pair it with Electrum Vault and use it to authorize transactions to additionally secure your funds."
 msgstr "Uma carteira móvel para BTCV. Pode emparelhá-la com a carteira Electrum Vault e utilizá-la para autorizar transações para proteger adicionalmente os seus activos."
 
-msgid "Allows users to make Secure Fast, Secure, and Cancel transactions."
-msgstr "Permite aos utilizadores fazer transações Rápidas e Seguras, Seguras e de Cancelamento."
-
-msgid "Allows users to make Secure and Cancel transactions."
-msgstr "Permite aos utilizadores fazer transações Seguras e de Cancelamento."
-
-msgid "Allows users to make Standard transactions."
-msgstr "Permite que os utilizadores façam transações Padrão."
-
 msgid "Alternatively"
 msgstr "Em alternativa"
 
@@ -4015,3 +3982,18 @@ msgstr "Ler mais"
 
 msgid "You may enter a Bitcoin Vault address, a label from your list of contacts (a list of completions will be proposed), or an alias (email-like address that forwards to a Bitcoin Vault address)"
 msgstr "Você pode inserir um endereço Bitcoin Vault, um marcador de sua lista de contatos (uma lista de conclusões serão propostas), ou um alias (endereço de e-mail que reencaminha para um endereço Bitcoin Vault)"
+
+msgid "Allows users to make Secure and Cancel transactions, just like in the 2-Key Vault wallet. But it also adds the possibility to perform quick Secure Fast transactions. These transfers are confirmed in approximately 10 minutes and can’t be reversed. All three transactions require unique keys to be performed."
+msgstr "Permite aos utilizadores fazer transações Seguras e de Cancelamento, tal como na carteira 2-Key Vault. Como também acrescenta a possibilidade de realizar com rapidez, transações Rápidas e Seguras. Estas transferências são confirmadas em cerca de 10 minutos e não podem ser revertidas. Todas as três transações requerem a utilização de chaves únicas."
+
+msgid "Allows users to make Secure and Cancel transactions. Secure transactions are by default delayed by 144 blocks, which means approximately 24 hours. This gives users enough time to perform a Cancel transaction and reverse the transfer before it is confirmed on the blockchain in case of a hack or technical issue. Both transactions are secured with unique keys."
+msgstr "Permite aos utilizadores fazer transações Seguras e de Cancelamento. As transações Seguras são por predefinição, atrasadas em 144 blocos, o que significa cerca de 24 horas. Isto dá aos utilizadores, tempo suficiente para realizar uma transação de Cancelar e inverter a transferência antes de ser confirmada no blockchain no caso de um pirataria informática ou um problema técnico. Ambas as transações são asseguradas com chaves únicas."
+
+msgid "Allows users to make Standard transactions secured with one key."
+msgstr "Permite que os utilizadores façam transações Padrão seguras com uma chave."
+
+msgid "Authenticator public key"
+msgstr "Autenticador da chave pública"
+
+msgid "Seed phrase"
+msgstr "frase semente"
