@@ -97,7 +97,7 @@ class InsertPubKeyDialog(QVBoxLayout):
         self.parent = parent
         self._if_apply_validation_logic = True
         label = message_label
-        label.setFixedWidth(400)
+        label.adjustSize()
         edit = QTextEdit()
         error_label = ErrorLabel()
 
@@ -106,7 +106,6 @@ class InsertPubKeyDialog(QVBoxLayout):
 
         hbox2 = QHBoxLayout()
         hbox2.addWidget(label)
-        hbox2.setAlignment(label, Qt.AlignLeft)
         if hint is not None:
             hint_button = HintButton(text=hint, icon=None)
             hbox2.addWidget(hint_button)
