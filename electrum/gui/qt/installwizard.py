@@ -647,7 +647,6 @@ class InstallWizard(QDialog, MessageBoxMixin, BaseWizard, TermsAndConditionsMixi
         label.setOpenExternalLinks(True)
         label.setTextInteractionFlags(Qt.TextBrowserInteraction)
         label.setWordWrap(True)
-        label.setFixedHeight(39)
 
         disallowed_keys = [instant_key] if instant_key else []
         layout = InsertPubKeyDialog(self, message_label=label, disallowed_keys=disallowed_keys, hint=hint)
