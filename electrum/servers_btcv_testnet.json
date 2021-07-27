@@ -1,5 +1,5 @@
 {
-    "electrumx.testnet.btcv.stage.rnd.land": {
+    "electrumx.testnet.bitcoinvault.global": {
         "pruning": "-",
         "s": "443",
         "t": "50001",
