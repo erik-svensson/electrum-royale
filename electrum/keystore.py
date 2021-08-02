@@ -792,12 +792,11 @@ def bip39_is_checksum_valid(mnemonic: str) -> Tuple[bool, bool]:
 
 
 def from_bip39_seed(seed, passphrase, derivation, xtype=None):
-    k = BIP32_KeyStore({})
+    k = BIP32_KeyStore({'seed': seed})
     bip32_seed = bip39_to_seed(seed, passphrase)
     if xtype is None:
         xtype = xtype_from_derivation(derivation)
     k.add_xprv_from_seed(bip32_seed, xtype, derivation)
-    k.seed = seed
     del bip32_seed
     return k
 
