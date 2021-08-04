@@ -1,5 +1,5 @@
-ELECTRUM_VERSION = '5.2.1' # version of the client package
-APK_VERSION = '5.2.1'      # read by buildozer.spec
+ELECTRUM_VERSION = '5.2.2' # version of the client package
+APK_VERSION = '5.2.2'      # read by buildozer.spec
 TERMS_AND_CONDITION_VERSION = 2.0
 TERMS_AND_CONDITION_LAST_UPDATE = '28.04.2021'  # used in T&C view
 
