@@ -110,20 +110,19 @@ class LNChannelVerifier(NetworkJobOnDefaultServer):
         # we use electrum servers to do this. however we don't trust electrum servers either...
         try:
             result = await self.network.get_txid_from_txpos(
-                block_height, short_channel_id.txpos, True)
+                block_height, short_channel_id.txpos, False)
         except aiorpcx.jsonrpc.RPCError:
             # the electrum server is complaining about the txpos for given block.
             # it is not clear what to do now, but let's believe the server.
             self._blacklist_short_channel_id(short_channel_id)
             return
         tx_hash = result['tx_hash']
-        merkle_branch = result['merkle']
         # we need to wait if header sync/reorg is still ongoing, hence lock:
         async with self.network.bhi_lock:
             header = self.network.blockchain().read_header(block_height)
         try:
-            verify_tx_is_in_block(tx_hash, merkle_branch, short_channel_id.txpos, header, block_height)
-        except MerkleVerificationFailure as e:
+            await verify_tx_is_in_block(self.network, tx_hash, short_channel_id.txpos, header, block_height)
+        except Exception as e:
             # the electrum server sent an incorrect proof. blame is on server, not the ln peer
             raise GracefulDisconnect(e) from e
         try:

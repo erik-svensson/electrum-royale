@@ -118,28 +118,12 @@ class SPV(NetworkJobOnDefaultServer):
         self.wallet.add_verified_tx(tx_hash, tx_info)
 
     async def _request_and_verify_single_proof(self, tx_hash, tx_height, tx_type):
-        try:
-            merkle = await self.network.get_merkle_for_transaction(tx_hash, tx_height)
-        except UntrustedServerReturnedError as e:
-            if not isinstance(e.original_exception, aiorpcx.jsonrpc.RPCError):
-                raise
-            self.logger.info(f'tx {tx_hash} not at height {tx_height}')
-            self.wallet.remove_unverified_tx(tx_hash, tx_height)
-            self.requested_merkle.discard(tx_hash)
-            return
-        # Verify the hash of the server-provided merkle branch to a
-        # transaction matches the merkle root of its block
-        if tx_height != merkle.get('block_height'):
-            self.logger.info('requested tx_height {} differs from received tx_height {} for txid {}'
-                             .format(tx_height, merkle.get('block_height'), tx_hash))
-        tx_height = merkle.get('block_height')
-        pos = merkle.get('pos')
-        merkle_branch = merkle.get('merkle')
         # we need to wait if header sync/reorg is still ongoing, hence lock:
+        tx_pos = -1
         async with self.network.bhi_lock:
             header = self.network.blockchain().read_header(tx_height)
         try:
-            verify_tx_is_in_block(tx_hash, merkle_branch, pos, header, tx_height)
+            tx_pos = await verify_tx_is_in_block(self.network, tx_hash, header, tx_height)
         except MerkleVerificationFailure as e:
             if self.network.config.get("skipmerklecheck"):
                 self.logger.info(f"skipping merkle proof check {tx_hash}")
@@ -153,7 +137,7 @@ class SPV(NetworkJobOnDefaultServer):
         header_hash = hash_header(header)
         tx_info = TxMinedInfo(height=tx_height,
                               timestamp=header.get('timestamp'),
-                              txpos=pos,
+                              txpos=tx_pos,
                               header_hash=header_hash,
                               txtype=tx_type)
         self.wallet.add_verified_tx(tx_hash, tx_info)
@@ -214,16 +198,19 @@ class SPV(NetworkJobOnDefaultServer):
         return not self.requested_merkle
 
 
-def verify_tx_is_in_block(tx_hash: str, merkle_branch: Sequence[str],
-                          leaf_pos_in_tree: int, block_header: Optional[dict],
-                          block_height: int) -> None:
+async def verify_tx_is_in_block(network, tx_hash: str, block_header: Optional[dict],
+                            block_height: int):
     """Raise MerkleVerificationFailure if verification fails."""
     if not block_header:
-        raise MissingBlockHeader("merkle verification failed for {} (missing header {})"
-                                 .format(tx_hash, block_height))
-    if len(merkle_branch) > 30:
-        raise MerkleVerificationFailure(f"merkle branch too long: {len(merkle_branch)}")
-    calc_merkle_root = SPV.hash_merkle_root(merkle_branch, tx_hash, leaf_pos_in_tree)
-    if block_header.get('merkle_root') != calc_merkle_root:
-        raise MerkleRootMismatch("merkle verification failed for {} ({} != {})".format(
-            tx_hash, block_header.get('merkle_root'), calc_merkle_root))
+        raise MissingBlockHeader("tx verification failed for {} (missing header {})"
+                                    .format(tx_hash, block_height))
+    try:
+        res = await network.get_transaction(tx_hash, verbose=True)
+
+        block = await network.get_block(res["blockhash"], verbose=True)
+    except Exception as e:
+        print(e)
+        raise
+    if block["height"] != block_height or tx_hash not in block["tx"]:
+        raise MerkleVerificationFailure("Tx is not in block verify_tx_is_in_block()")
+    return block["tx"].index(tx_hash)
