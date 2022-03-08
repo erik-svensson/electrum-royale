@@ -34,7 +34,7 @@ from . import ecc
 from . import constants
 from .util import bh2u, bfh, NetworkJobOnDefaultServer
 from .lnutil import funding_output_script_from_keys, ShortChannelID
-from .verifier import verify_tx_is_in_block, MerkleVerificationFailure
+from .verifier import verify_tx_is_in_block, TransactionVerificationFailure
 from .transaction import Transaction
 from .interface import GracefulDisconnect
 from .crypto import sha256d

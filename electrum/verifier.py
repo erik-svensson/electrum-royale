@@ -41,10 +41,10 @@ if TYPE_CHECKING:
     from .address_synchronizer import AddressSynchronizer
 
 
-class MerkleVerificationFailure(Exception): pass
-class MissingBlockHeader(MerkleVerificationFailure): pass
-class MerkleRootMismatch(MerkleVerificationFailure): pass
-class InnerNodeOfSpvProofIsValidTx(MerkleVerificationFailure): pass
+class TransactionVerificationFailure(Exception): pass
+class MissingBlockHeader(TransactionVerificationFailure): pass
+class MerkleRootMismatch(TransactionVerificationFailure): pass
+class InnerNodeOfSpvProofIsValidTx(TransactionVerificationFailure): pass
 
 
 class SPV(NetworkJobOnDefaultServer):
@@ -124,7 +124,7 @@ class SPV(NetworkJobOnDefaultServer):
             header = self.network.blockchain().read_header(tx_height)
         try:
             tx_pos = await verify_tx_is_in_block(self.network, tx_hash, header, tx_height)
-        except MerkleVerificationFailure as e:
+        except TransactionVerificationFailure as e:
             if self.network.config.get("skipmerklecheck"):
                 self.logger.info(f"skipping merkle proof check {tx_hash}")
             else:
@@ -141,28 +141,6 @@ class SPV(NetworkJobOnDefaultServer):
                               header_hash=header_hash,
                               txtype=tx_type)
         self.wallet.add_verified_tx(tx_hash, tx_info)
-
-    @classmethod
-    def hash_merkle_root(cls, merkle_branch: Sequence[str], tx_hash: str, leaf_pos_in_tree: int):
-        """Return calculated merkle root."""
-        try:
-            h = hash_decode(tx_hash)
-            merkle_branch_bytes = [hash_decode(item) for item in merkle_branch]
-            leaf_pos_in_tree = int(leaf_pos_in_tree)  # raise if invalid
-        except Exception as e:
-            raise MerkleVerificationFailure(e)
-        if leaf_pos_in_tree < 0:
-            raise MerkleVerificationFailure('leaf_pos_in_tree must be non-negative')
-        index = leaf_pos_in_tree
-        for item in merkle_branch_bytes:
-            if len(item) != 32:
-                raise MerkleVerificationFailure('all merkle branch items have to 32 bytes long')
-            h = sha256d(item + h) if (index & 1) else sha256d(h + item)
-            index >>= 1
-            cls._raise_if_valid_tx(bh2u(h))
-        if index != 0:
-            raise MerkleVerificationFailure(f'leaf_pos_in_tree too large for branch')
-        return hash_encode(h)
 
     @classmethod
     def _raise_if_valid_tx(cls, raw_tx: str):
@@ -200,7 +178,7 @@ class SPV(NetworkJobOnDefaultServer):
 
 async def verify_tx_is_in_block(network, tx_hash: str, block_header: Optional[dict],
                             block_height: int):
-    """Raise MerkleVerificationFailure if verification fails."""
+    """Raise TransactionVerificationFailure if verification fails."""
     if not block_header:
         raise MissingBlockHeader("tx verification failed for {} (missing header {})"
                                     .format(tx_hash, block_height))
@@ -212,5 +190,5 @@ async def verify_tx_is_in_block(network, tx_hash: str, block_header: Optional[di
         print(e)
         raise
     if block["height"] != block_height or tx_hash not in block["tx"]:
-        raise MerkleVerificationFailure("Tx is not in block verify_tx_is_in_block()")
+        raise TransactionVerificationFailure("Tx is not in block verify_tx_is_in_block()")
     return block["tx"].index(tx_hash)
