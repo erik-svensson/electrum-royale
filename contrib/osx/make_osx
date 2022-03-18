@@ -14,6 +14,7 @@ export GCC_STRIP_BINARIES="1"
 
 CONTRIB_OSX="$(dirname "$(realpath "$0")")"
 CONTRIB="$CONTRIB_OSX/.."
+PROJECT_ROOT="$CONTRIB/.."
 ROOT_FOLDER="$CONTRIB/.."
 
 src_dir=$(dirname "$0")
