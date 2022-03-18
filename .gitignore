@@ -43,6 +43,20 @@ venv
 .DS_Store
 
 # Temporary bulds files
+contrib/secp256k1
 contrib/osx/libsecp256k1.0.dylib
 contrib/osx/libusb-1.0.dylib
+electrum/libsecp256k1-0.dll
+electrum/libsecp256k1.so.0
 prebuilt_qr/
+
+# generated locale's
+contrib/deterministic-build/electrum-locale
+electrum/es_ES
+electrum/id_ID
+electrum/ja_JP
+electrum/ko_KR
+electrum/pt_PT
+electrum/tr_TR
+electrum/vi_VN
+electrum/zh_CN
