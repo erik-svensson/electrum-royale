@@ -50,25 +50,3 @@ jobs:
           path: dist/*.AppImage
           if-no-files-found: error
           retention-days: 7
-
-  tarball:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.7
-      - name: Builder image
-        run: docker build --no-cache -t electrum-sdist-builder-img ./contrib/build-linux/sdist/
-      - name: Compile Linux tarball
-        run: |
-          echo "Building sdist at $PWD"
-          docker run --name electrum-sdist-builder-cont -v $PWD:/opt/electrum --rm --workdir /opt/electrum/contrib/build-linux/sdist electrum-sdist-builder-img ./build.sh
-      - name: 'Upload Artifact'
-        uses: actions/upload-artifact@v2
-        with:
-          name: artifact-tarball
-          path: dist/*.tar.gz
-          if-no-files-found: error
-          retention-days: 7
