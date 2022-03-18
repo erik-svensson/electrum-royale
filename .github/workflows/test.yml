@@ -1,0 +1,29 @@
+name: "Test"
+
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.7
+      - name: Install system dependencies
+        run: |
+          sudo apt-get -qq update
+          sudo apt-get install -yq libsecp256k1-0
+      - name: Install dependencies
+        run: |
+          pip install -r contrib/requirements/requirements.txt
+          pip install electrumx flake8
+      - name: Flake8 linter tests
+        run: flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+      - name: Unittests
+        run: python -m unittest -v electrum/tests/test_*.py
