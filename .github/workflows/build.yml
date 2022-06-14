@@ -1,0 +1,93 @@
+name: "Build"
+
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+
+env:
+  BUILD_CERTIFICATE_BASE64: ${{ secrets.OSX_BUILD_CERTIFICATE_BASE64 }}
+  P12_PASSWORD: ${{ secrets.OSX_P12_PASSWORD }}
+  KEYCHAIN_PASSWORD: ${{ secrets.OSX_KEYCHAIN_PASSWORD }}
+  CODESIGN_CERT: ${{ secrets.OSX_CODESIGN_CERT }}
+  APPLE_ID_USER: ${{ secrets.OSX_APPLE_ID_USER }}
+  APPLE_ID_PASSWORD: ${{ secrets.OSX_APPLE_ID_PASSWORD }}
+  APPLE_ID_PROVIDER_SHORT_NAME: ${{ secrets.OSX_APPLE_ID_PROVIDER_SHORT_NAME }}
+
+jobs:
+  macos:
+    runs-on: macos-10.15
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Install the Apple certificate
+        run: |
+          set -e
+          # create variables
+          CERTIFICATE_PATH=$RUNNER_TEMP/build_certificate.p12
+          KEYCHAIN_PATH=$RUNNER_TEMP/app-signing.keychain-db
+
+          # import certificate and provisioning profile from secrets
+          echo -n "$BUILD_CERTIFICATE_BASE64" | base64 --decode --output $CERTIFICATE_PATH
+
+          # create temporary keychain
+          security create-keychain -p "$KEYCHAIN_PASSWORD" $KEYCHAIN_PATH
+          security set-keychain-settings -lut 21600 $KEYCHAIN_PATH
+          security unlock-keychain -p "$KEYCHAIN_PASSWORD" $KEYCHAIN_PATH
+
+          # import certificate to keychain
+          security import $CERTIFICATE_PATH -P $P12_PASSWORD -A -t cert -f pkcs12 -k $KEYCHAIN_PATH
+          security list-keychain -d user -s $KEYCHAIN_PATH
+      - name: Build app
+        run: ./contrib/osx/make_osx $CODESIGN_CERT
+      - name: 'Upload Artifact'
+        uses: actions/upload-artifact@v2
+        with:
+          name: artifact-macos
+          path: dist/*.dmg
+          
+  windows:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.7
+      - name: Builder image
+        env:
+          TARGET_OS: Windows
+        run: docker build --no-cache -t electrum-wine-builder-img ./contrib/build-wine/
+      - name: Compile Windows binary
+        env:
+          TARGET_OS: Windows
+        run: docker run --name electrum-wine-builder-cont -v $PWD:/opt/wine64/drive_c/electrum --rm --workdir /opt/wine64/drive_c/electrum/contrib/build-wine electrum-wine-builder-img ./build.sh
+      - name: 'Upload Artifact'
+        uses: actions/upload-artifact@v2
+        with:
+          name: artifact-windows
+          path: contrib/build-wine/dist/*.exe
+          if-no-files-found: error
+          retention-days: 7
+
+  appimage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.7
+      - name: Builder image
+        run: docker build --no-cache -t electrum-appimage-builder-img ./contrib/build-linux/appimage/
+      - name: Compile Linux AppImage
+        run: docker run --name electrum-appimage-builder-cont -v $PWD:/opt/electrum --rm --workdir /opt/electrum/contrib/build-linux/appimage electrum-appimage-builder-img ./build.sh
+      - name: 'Upload Artifact'
+        uses: actions/upload-artifact@v2
+        with:
+          name: artifact-appimage
+          path: dist/*.AppImage
+          if-no-files-found: error
+          retention-days: 7
