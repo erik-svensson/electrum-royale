@@ -6,7 +6,6 @@ on:
       - opened
       - synchronize
 
-<<<<<<< HEAD
 env:
   BUILD_CERTIFICATE_BASE64: ${{ secrets.OSX_BUILD_CERTIFICATE_BASE64 }}
   P12_PASSWORD: ${{ secrets.OSX_P12_PASSWORD }}
@@ -47,8 +46,7 @@ jobs:
         with:
           name: artifact-macos
           path: dist/*.dmg
-=======
-jobs:
+          
   windows:
     runs-on: ubuntu-latest
     steps:
@@ -90,6 +88,5 @@ jobs:
         with:
           name: artifact-appimage
           path: dist/*.AppImage
->>>>>>> e0d5305f (ci(build): add workflow to prepare artifacts for linux/windows (#169))
           if-no-files-found: error
           retention-days: 7
