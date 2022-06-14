@@ -118,9 +118,6 @@ class NotificationSession(RPCSession):
         except CodeMessageError as e:
             self.maybe_log(f"--> {repr(e)} (id: {msg_id})")
             raise
-        except Exception as e:
-            self.maybe_log(f"--> {repr(e)} (id: {msg_id})")
-            raise
         else:
             self.maybe_log(f"--> {response} (id: {msg_id})")
             return response

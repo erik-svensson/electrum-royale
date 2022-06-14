@@ -1054,18 +1054,10 @@ class Network(Logger):
 
     @best_effort_reliable
     @catch_server_exceptions
-    async def get_transaction(self, tx_hash: str, *, timeout=None, verbose=False):
+    async def get_transaction(self, tx_hash: str, *, timeout=None) -> str:
         if not is_hash256_str(tx_hash):
             raise Exception(f"{repr(tx_hash)} is not a txid")
-        return await self.interface.session.send_request('blockchain.transaction.get', [tx_hash, verbose],
-                                                         timeout=timeout)
-
-    @best_effort_reliable
-    @catch_server_exceptions
-    async def get_block(self, block_hash: str, *, timeout=None, verbose=False):
-        if not is_hash256_str(block_hash):
-            raise Exception(f"{repr(block_hash)} is not a block hash")
-        return await self.interface.session.send_request('blockchain.block.get_block', [block_hash, verbose],
+        return await self.interface.session.send_request('blockchain.transaction.get', [tx_hash],
                                                          timeout=timeout)
 
     @best_effort_reliable
