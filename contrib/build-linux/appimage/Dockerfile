@@ -25,10 +25,13 @@ RUN apt-get update -q && \
         libdbus-1-3=1.10.6-1ubuntu3.6 \
         libxkbcommon-x11-0=0.5.0-1ubuntu2.1 \
 <<<<<<< HEAD
+<<<<<<< HEAD
         libxcb-util1=0.4.0-0ubuntu3 \
         libxcb-xinerama0=1.11.1-1ubuntu1 \
 =======
 >>>>>>> 674b801c (ci(build): update lib dependences to correct versions)
+=======
+>>>>>>> e0d5305f (ci(build): add workflow to prepare artifacts for linux/windows (#169))
         libc6-dev=2.23-0ubuntu11.3 \
         && \
     rm -rf /var/lib/apt/lists/* && \

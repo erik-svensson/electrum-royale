@@ -9,12 +9,17 @@ RUN dpkg --add-architecture i386 && \
         gnupg2=2.2.4-1ubuntu1.4 \
         dirmngr=2.2.4-1ubuntu1.4 \
 <<<<<<< HEAD
+<<<<<<< HEAD
         python3-software-properties=0.96.24.32.1 \
         software-properties-common=0.96.24.32.1
 =======
         python3-software-properties=0.96.24.32.14 \
         software-properties-common=0.96.24.32.14
 >>>>>>> 674b801c (ci(build): update lib dependences to correct versions)
+=======
+        python3-software-properties=0.96.24.32.14 \
+        software-properties-common=0.96.24.32.14
+>>>>>>> e0d5305f (ci(build): add workflow to prepare artifacts for linux/windows (#169))
 
 RUN apt-get update -q && \
         apt-get install -qy \
