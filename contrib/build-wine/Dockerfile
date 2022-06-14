@@ -1,4 +1,3 @@
-
 FROM ubuntu:18.04@sha256:b58746c8a89938b8c9f5b77de3b8cf1fe78210c696ab03a1442e235eea65d84f
 
 ENV LC_ALL=C.UTF-8 LANG=C.UTF-8
@@ -9,8 +8,13 @@ RUN dpkg --add-architecture i386 && \
         wget=1.19.4-1ubuntu2.2 \
         gnupg2=2.2.4-1ubuntu1.4 \
         dirmngr=2.2.4-1ubuntu1.4 \
+<<<<<<< HEAD
         python3-software-properties=0.96.24.32.1 \
         software-properties-common=0.96.24.32.1
+=======
+        python3-software-properties=0.96.24.32.14 \
+        software-properties-common=0.96.24.32.14
+>>>>>>> 674b801c (ci(build): update lib dependences to correct versions)
 
 RUN apt-get update -q && \
         apt-get install -qy \
@@ -24,7 +28,7 @@ RUN apt-get update -q && \
         autopoint=0.19.8.1-6ubuntu0.3 \
         autoconf=2.69-11 \
         libtool=2.4.6-2 \
-        gettext=0.19.8.1-6
+        gettext=0.19.8.1-6ubuntu0.3
 
 RUN wget -nc https://dl.winehq.org/wine-builds/Release.key && \
         echo "c51bcb8cc4a12abfbd7c7660eaf90f49674d15e222c262f27e6c96429111b822 Release.key" | sha256sum -c - && \
