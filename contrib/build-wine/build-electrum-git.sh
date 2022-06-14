@@ -11,6 +11,7 @@ export PYTHONHASHSEED=22
 PYHOME=c:/python3
 PYTHON="wine $PYHOME/python.exe -OO -B"
 
+git config --global --add safe.directory $WINEPREFIX/drive_c/electrum
 
 # Let's begin!
 set -e
@@ -60,7 +61,7 @@ rm -rf dist/
 
 # build standalone and portable versions
 info "Running pyinstaller..."
-wine "$PYHOME/scripts/pyinstaller.exe" --noconfirm --ascii --clean --name $NAME_ROOT-$VERSION -w deterministic.spec
+wine "$PYHOME/scripts/pyinstaller.exe" --noconfirm --ascii --clean deterministic.spec
 
 # set timestamps in dist, in order to make the installer reproducible
 pushd dist
