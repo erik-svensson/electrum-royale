@@ -7,7 +7,7 @@ Electrum Vault - Lightweight Bitcoin Vault wallet
   Language: Python (>= 3.7)
   Homepage: https://bitcoinvault.global
 
-
+ 
 Getting started
 ===============
 
